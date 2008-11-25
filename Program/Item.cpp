@@ -1,5 +1,3 @@
-using namespace std;
-
 #include "Item.h"
 
 AnsiString& Item::getName() {
