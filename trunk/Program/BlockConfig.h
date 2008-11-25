@@ -1,4 +1,6 @@
-#include <string>
+#include <System.hpp>
+#include <Graphics.hpp>
+#include <Controls.hpp>
 #include <vector>
 #include <exception>
 using namespace std;
@@ -6,48 +8,70 @@ using namespace std;
 #ifndef __BlockConfig_h__
 #define __BlockConfig_h__
 
-#include "BlockElement.h"
-#include "Block.h"
 #include "Item.h"
 
+/**
+* BlockConfig - Klasa przechowuj¹ca dane w postaci hashmapy, u¿ywana jako miejsce do przechowywania konfiguracji dowolnego bloczka.
+* @author Piotr Zegar
+* @date 2008.11.25
+* @version 1.1
+*/
 class BlockConfig
 {
-		private: vector<Item> map;
+		private:
+				 vector<Item*> map;
 				 bool changed;
 
-				 bool addItem(item aValue);
-				 PIWO::Item getItem(string aName);
+				 Item* getItem(const AnsiString aName);
 		public:
-				 bool addString(string aName, string aValue);
-				 bool addBoolean(string aName, bool aValue);
-				 bool addInt(string aName, int aValue);
-				 bool addDouble(string aName, double aValue);
-				 bool addBitmap(string aName, TBitmap aValue);
-				 bool addStream(string aName, TStream aValue);
-				 bool setString(string aName, string aValue);
-				 bool setBoolean(string aName, bool aValue);
-				 bool setInt(string aName, int aValue);
-				 bool setDouble(string aName, double aValue);
-				 bool setBitmap(string aName, TBitmap aValue);
-				 bool setStream(string aName, TStream aValue);
-				 String getString(string aName);
-				 bool getBoolean(string aName);
-				 int getInt(string aName);
-				 double getDouble(string aName);
-				 TBitmap getBitmap(string aName);
-				 TStream getStream(string aName);
-				 bool isString(string aName);
-				 bool isBoolean(string aName);
-				 bool isInt(string aName);
-				 bool isDouble(string aName);
-				 bool isBitmap(string aName);
-				 bool isStream(string aName);
-				 string getType(string aName);
-				 bool isExist(string aName);
-				 bool remove(string aName);
-				 bool saveToStream(TStream aWhere);
-				 bool loadFromStream(TStream aFrom);
-				 bool isChanged();
+				/**
+				* Konstruktor.
+				*/
+				BlockConfig();
+
+				/**
+				* Destruktor
+				*/
+				~BlockConfig();
+
+				/**
+				* Wrzuca obiekt typu string (aTyp) na listê pod nazw¹ aName.
+				* @param aName nazwa pod jak¹ obiekt ma widnieœc na liœcie
+				* @param aValue dane jakie maj¹ zostaæ wrzucone na listê
+				* @return zwraca true jeœli obiekt zosta³ dodany
+				*/
+				bool addString(const AnsiString aName, const AnsiString aValue);
+
+				bool addBoolean(const AnsiString aName, bool aValue);
+				bool addInt(const AnsiString aName, int aValue);
+				bool addDouble(const AnsiString aName, double aValue);
+				bool addBitmap(const AnsiString aName, Graphics::TBitmap &aValue);
+				bool addStream(const AnsiString aName, TStream &aValue);
+				bool setString(const AnsiString aName, const AnsiString aValue);
+				bool setBoolean(const AnsiString aName, bool aValue);
+				bool setInt(const AnsiString aName, int aValue);
+				bool setDouble(const AnsiString aName, double aValue);
+				bool setBitmap(const AnsiString aName, Graphics::TBitmap &aValue);
+				bool setStream(const AnsiString aName, TStream &aValue);
+				AnsiString& getString(const AnsiString aName);
+				bool getBoolean(const AnsiString aName);
+				int getInt(const AnsiString aName);
+				double getDouble(const AnsiString aName);
+				Graphics::TBitmap& getBitmap(const AnsiString aName);
+				TStream& getStream(const AnsiString aName);
+				bool isString(const AnsiString aName);
+				bool isBoolean(const AnsiString aName);
+				bool isInt(const AnsiString aName);
+				bool isDouble(const AnsiString aName);
+				bool isBitmap(const AnsiString aName);
+				bool isStream(const AnsiString aName);
+				AnsiString& getType(const AnsiString aName);
+				bool isExist(const AnsiString aName);
+				bool remove(const AnsiString aName);
+				bool saveToStream(TStream &aWhere);
+				bool loadFromStream(TStream &aFrom);
+				bool isChanged();
+				void clear();
 };
 
 #endif

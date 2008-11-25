@@ -51,6 +51,10 @@ class Item
 				*/
 				void* getObject();
 
+
+
+				bool setObject(void* aObiekt);
+
 				/**
 				* Pobiera i zwraca nazwê typu danych jak¹ user powi¹za³ z danymi i t¹ nazw¹, nigdy nie zwraca pustego stringu
 				* @return type
