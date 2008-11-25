@@ -10,7 +10,7 @@ string PIWO::Item::getName() {
 	throw "Not yet implemented";
 }
 
-void PIWO::Item::getObject() {
+void* PIWO::Item::getObject() {
 	throw "Not yet implemented";
 }
 

@@ -6,28 +6,15 @@ using namespace std;
 #ifndef __TypeConfig_h__
 #define __TypeConfig_h__
 
-// #include "BlockConfig.h"
+#include "BlockConfig.h"
 
-namespace PIWO
+class TypeConfig: public PIWO::BlockConfig
 {
-	class BlockConfig;
-	class TypeConfig;
-}
-
-namespace PIWO
-{
-	class TypeConfig: public PIWO::BlockConfig
-	{
 		private: string name;
-
 		public:  TypeConfig(string aName);
-
-		public: bool saveToStream(TStream aWhere);
-
-		public: bool loadFromStream(TStream aFrom);
-
-		public: string getName();
-	};
-}
+				 bool saveToStream(TStream aWhere);
+				 bool loadFromStream(TStream aFrom);
+				 string getName();
+};
 
 #endif

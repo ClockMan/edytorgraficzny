@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <exception>
+
 using namespace std;
 
 #ifndef __TypeDLL_h__
@@ -8,25 +9,12 @@ using namespace std;
 
 #include "PluginContener.h"
 #include "TypeConfig.h"
-
-namespace PIWO
+class TypeDLL
 {
-	class PluginContener;
-	class TypeConfig;
-	class TypeDLL;
-}
-
-namespace PIWO
-{
-	class TypeDLL
-	{
-		private: string type;
-		std::vector<PIWO::PluginContener*> listOfType;
-
-		public: bool show(int aHandle, PIWO::TypeConfig aData);
-
-		public: bool isValid(TypeConfig() aData);
-	};
-}
+   private: string type;
+			std::vector<PIWO::PluginContener*> listOfType;
+   public: bool show(int aHandle, PIWO::TypeConfig aData);
+   public: bool isValid(TypeConfig() aData);
+};
 
 #endif

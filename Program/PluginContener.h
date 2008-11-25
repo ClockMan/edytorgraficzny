@@ -9,24 +9,13 @@ using namespace std;
 #include "TypeDLL.h"
 #include "FunctionDLL.h"
 
-namespace PIWO
+class PluginContener
 {
-	class TypeDLL;
-	class FunctionDLL;
-	class PluginContener;
-}
-
-namespace PIWO
-{
-	class PluginContener
-	{
 		private: vector<PIWO::TypeDLL> listOfType;
-		private: vector<PIWO::FunctionDLL> listOfFunction;
+				 vector<PIWO::FunctionDLL> listOfFunction;
 
 		public: bool addType(string aPath);
-
-		public: bool addFunction(string aPath);
-	};
-}
+				bool addFunction(string aPath);
+};
 
 #endif

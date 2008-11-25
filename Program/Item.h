@@ -8,29 +8,17 @@ using namespace std;
 
 #include "BlockConfig.h"
 
-namespace PIWO
+class Item
 {
-	class BlockConfig;
-	class Item;
-}
-
-namespace PIWO
-{
-	class Item
-	{
 		private: string name;
-		private: string* wsk;
-		private: string type;
-		std::vector<PIWO::BlockConfig*> map;
+				 void* wsk;
+				 string type;
 
 		public: string getName();
+				void getObject();
+				string getType();
+				Item(string aName, void* aObiekt, string aTyp);
+};
 
-		public: void getObject();
-
-		public: string getType();
-
-		public:  Item(string aName, string* aObiekt, string aTyp);
-	};
-}
 
 #endif
