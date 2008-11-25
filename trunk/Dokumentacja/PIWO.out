@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Etap wstepny}{}
+\BOOKMARK [2][-]{subsection.1.1}{Opis dziedziny przedmiotowej}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Cel projektu \205 po co?}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Zakres projektu \205 co i jak?}{section.1}
+\BOOKMARK [2][-]{subsection.1.4}{Opracowanie wymagan wstepnych}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Oczekiwana funkcjonalnosc systemu}{subsection.1.4}
+\BOOKMARK [3][-]{subsubsection.1.4.2}{Opis rzeczywistych obiekt\363w i zaleznosci miedzy nimi}{subsection.1.4}
+\BOOKMARK [3][-]{subsubsection.1.4.3}{Ograniczenia \(system, srodowisko, specyficzne wymagania\)}{subsection.1.4}
+\BOOKMARK [2][-]{subsection.1.5}{Harmonogram prac}{section.1}
+\BOOKMARK [1][-]{section.2}{Etap projektowania}{}
+\BOOKMARK [2][-]{subsection.2.1}{Wymagania funkcjonalne}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Struktura}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Silnik aplikacji}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.2}{GUI}{subsection.2.2}
+\BOOKMARK [2][-]{subsection.2.3}{Slownik systemu}{section.2}
+\BOOKMARK [1][-]{section.3}{Etap implementacji}{}
+\BOOKMARK [2][-]{subsection.3.1}{Formatowanie Kodu}{section.3}
+\BOOKMARK [1][-]{section.4}{Etap \215wdrozenia\216}{}
