@@ -8,7 +8,7 @@ using namespace std;
 #include "BlockInput.h"
 #include "BlockOutput.h"
 
-PIWO::BlockConfig PIWO::Block::getConfig() {
+PIWO::BlockConfig* PIWO::Block::getConfig() {
 	throw "Not yet implemented";
 }
 

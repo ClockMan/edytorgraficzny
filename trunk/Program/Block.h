@@ -10,24 +10,14 @@ using namespace std;
 #include "BlockInput.h"
 #include "BlockOutput.h"
 
-namespace PIWO
+class Block
 {
-	class BlockConfig;
-	class BlockInput;
-	class BlockOutput;
-	class Block;
-}
-
-namespace PIWO
-{
-	class Block
-	{
-		private: PIWO::BlockConfig config;
-		public: vector<PIWO::BlockInput> input;
-		public: vector<PIWO::BlockOutput> output;
-
-		public: PIWO::BlockConfig getConfig();
-	};
-}
+		private:
+				PIWO::BlockConfig config;
+		public:
+				vector<PIWO::BlockInput*> input;
+				vector<PIWO::BlockOutput*> output;
+				PIWO::BlockConfig* getConfig();
+};
 
 #endif

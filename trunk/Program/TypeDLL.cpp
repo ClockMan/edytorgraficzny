@@ -11,7 +11,7 @@ bool PIWO::TypeDLL::show(int aHandle, PIWO::TypeConfig aData) {
 	throw "Not yet implemented";
 }
 
-bool PIWO::TypeDLL::isValid(TypeConfig() aData) {
+bool PIWO::TypeDLL::isValid(PIWO::TypeConfig aData) {
 	throw "Not yet implemented";
 }
 

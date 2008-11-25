@@ -8,40 +8,26 @@ using namespace std;
 
 #include "BlockConfig.h"
 
-namespace PIWO
+class BlockElement
 {
-	class BlockConfig;
-	class BlockElement;
-}
+		private:
+			string description;
+			int errorCode;
+			string errorDescription;
+			PIWO::BlockConfig object;
+			string name;
 
-namespace PIWO
-{
-	class BlockElement
-	{
-		private: string description;
-		private: int errorCode;
-		private: string errorDescription;
-		private: PIWO::BlockConfig object;
-		private: string name;
+		public:
+			BlockElement(string aName);
+			string getDescription();
+			int getErrorCode();
+			string geErrorDescription();
+			string getName();
+			PIWO::BlockConfig getObject();
+			bool setDescription(string aDescription);
+			bool setErrorCode(int aError);
+			bool setObject(PIWO::BlockConfig aData);
+};
 
-		public:  BlockElement(string aName);
-
-		public: string getDescription();
-
-		public: int getErrorCode();
-
-		public: string geErrorDescription();
-
-		public: string getName();
-
-		public: PIWO::BlockConfig getObject();
-
-		public: bool setDescription(string aDescription);
-
-		public: bool setErrorCode(int aError);
-
-		public: bool setObject(PIWO::BlockConfig aData);
-	};
-}
 
 #endif
