@@ -1,5 +1,5 @@
-#include <string>
 #include <vector>
+#include <System.hpp>
 #include <exception>
 using namespace std;
 
@@ -17,9 +17,9 @@ using namespace std;
 class Item
 {
 		private:
-				 string name;
+				 AnsiString name;
 				 void* wsk;
-				 string type;
+				 AnsiString type;
 		public:
 				/**
 				* Konstruktor.
@@ -29,7 +29,7 @@ class Item
 				* @param aTyp informacja o typie obiektu, nie u¿ywana wewn¹trz klasy, nie mo¿e byæ puste
 				* @see Item(Item &kopia)
 				*/
-				Item(string aName, void* aObiekt, string aTyp);
+				Item(AnsiString &aName, void* aObiekt, AnsiString &aTyp);
 
 				/**
 				* Konstruktor kopiuj¹cy
@@ -43,7 +43,7 @@ class Item
 				* Pobiera i zwraca nazwê podawan¹ w konstruktorze, zwracana wartoœc nie jest pustym stringiem
 				* @return name
 				*/
-				string getName();
+				AnsiString& getName();
 
 				/**
 				* Pobiera i zwraca wskaŸnik do danych jakie przechowuje obiekt, zwracana wartoœc nie ejst nullem
@@ -55,7 +55,7 @@ class Item
 				* Pobiera i zwraca nazwê typu danych jak¹ user powi¹za³ z danymi i t¹ nazw¹, nigdy nie zwraca pustego stringu
 				* @return type
 				*/
-				string getType();
+				AnsiString& getType();
 
 };
 

@@ -1,11 +1,8 @@
-#include <string>
-#include <vector>
-#include <exception>
 using namespace std;
 
 #include "Item.h"
 
-string Item::getName() {
+AnsiString& Item::getName() {
 	return name;
 }
 
@@ -13,14 +10,14 @@ void* Item::getObject() {
 	return wsk;
 }
 
-string Item::getType() {
+AnsiString& Item::getType() {
 	return type;
 }
 
-Item::Item(string aName, void* aObiekt, string aTyp)
+Item::Item(AnsiString& aName, void* aObiekt, AnsiString& aTyp)
 {
-	if (aName.empty()) throw "Parametr aName jest pustym stringiem";
-	if (aTyp.empty()) throw "Parametr aTyp jest pustym stringiem";
+	if (aName.IsEmpty()) throw "Parametr aName jest pustym stringiem";
+	if (aTyp.IsEmpty()) throw "Parametr aTyp jest pustym stringiem";
 	if (aObiekt==NULL) throw "Parametr aObiekt jest NULL'em";
 	name=aName;
 	wsk=aObiekt;
