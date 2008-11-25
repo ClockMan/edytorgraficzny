@@ -6,18 +6,57 @@ using namespace std;
 #ifndef __Item_h__
 #define __Item_h__
 
-#include "BlockConfig.h"
+/**
+* Item - Klasa pojemnik przechowuj¹ca elementy dla listy BlockConfig/TypeConfig
+* UWAGA: Klasa nie zwalnia danych przesy³anych jako wskaŸnik do konstruktora (aObiekt), osoba u¿ywaj¹ca klasy sama musi to oprogramowaæ.
+* @author Piotr Zegar
+* @date 2008.11.25
+* @version 1.1
+*/
 
 class Item
 {
-		private: string name;
+		private:
+				 string name;
 				 void* wsk;
 				 string type;
-
-		public: string getName();
-				void getObject();
-				string getType();
+		public:
+				/**
+				* Konstruktor.
+				* Inicjuje pola prywatne nie pozwalaj¹c na ich zmiannê, konstruktor wywala wyj¹tek gdy parametry s¹ b³êdne
+				* @param aName Nazwa pod jak¹ bêd¹ przechowywane te dane, niemo¿e byæ pusta
+				* @param aObiekt Obiekt który ma zostaæ powi¹zany z nazw¹, niemo¿e byæ NULL
+				* @param aTyp informacja o typie obiektu, nie u¿ywana wewn¹trz klasy, nie mo¿e byæ puste
+				* @see Item(Item &kopia)
+				*/
 				Item(string aName, void* aObiekt, string aTyp);
+
+				/**
+				* Konstruktor kopiuj¹cy
+				* Kopiuje obiekt, wymagany dla vector
+				* @param kopia obiekt kopiowany
+				* @see Item(string aName, void* aObiekt, string aTyp)
+				*/
+				Item(Item &kopia);
+
+				/**
+				* Pobiera i zwraca nazwê podawan¹ w konstruktorze, zwracana wartoœc nie jest pustym stringiem
+				* @return name
+				*/
+				string getName();
+
+				/**
+				* Pobiera i zwraca wskaŸnik do danych jakie przechowuje obiekt, zwracana wartoœc nie ejst nullem
+				* @return wsk
+				*/
+				void* getObject();
+
+				/**
+				* Pobiera i zwraca nazwê typu danych jak¹ user powi¹za³ z danymi i t¹ nazw¹, nigdy nie zwraca pustego stringu
+				* @return type
+				*/
+				string getType();
+
 };
 
 

@@ -4,21 +4,33 @@
 using namespace std;
 
 #include "Item.h"
-#include "BlockConfig.h"
 
-string PIWO::Item::getName() {
-	throw "Not yet implemented";
+string Item::getName() {
+	return name;
 }
 
-void* PIWO::Item::getObject() {
-	throw "Not yet implemented";
+void* Item::getObject() {
+	return wsk;
 }
 
-string PIWO::Item::getType() {
-	throw "Not yet implemented";
+string Item::getType() {
+	return type;
 }
 
- PIWO::Item::Item(string aName, string* aObiekt, string aTyp) {
-	throw "Not yet implemented";
+Item::Item(string aName, void* aObiekt, string aTyp)
+{
+	if (aName.empty()) throw "Parametr aName jest pustym stringiem";
+	if (aTyp.empty()) throw "Parametr aTyp jest pustym stringiem";
+	if (aObiekt==NULL) throw "Parametr aObiekt jest NULL'em";
+	name=aName;
+	wsk=aObiekt;
+	type=aTyp;
+}
+
+Item::Item(Item &kopia)
+{
+	name=kopia.name;
+	wsk=kopia.wsk;
+	type=kopia.type;
 }
 
