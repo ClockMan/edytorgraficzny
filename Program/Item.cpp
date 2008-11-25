@@ -12,7 +12,7 @@ AnsiString& Item::getType() {
 	return type;
 }
 
-Item::Item(AnsiString& aName, void* aObiekt, AnsiString& aTyp)
+Item::Item(const AnsiString aName, void* aObiekt, const AnsiString aTyp)
 {
 	if (aName.IsEmpty()) throw "Parametr aName jest pustym stringiem";
 	if (aTyp.IsEmpty()) throw "Parametr aTyp jest pustym stringiem";

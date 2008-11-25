@@ -29,7 +29,7 @@ class Item
 				* @param aTyp informacja o typie obiektu, nie u¿ywana wewn¹trz klasy, nie mo¿e byæ puste
 				* @see Item(Item &kopia)
 				*/
-				Item(AnsiString &aName, void* aObiekt, AnsiString &aTyp);
+				Item(const AnsiString aName, void* aObiekt, const AnsiString aTyp);
 
 				/**
 				* Konstruktor kopiuj¹cy
