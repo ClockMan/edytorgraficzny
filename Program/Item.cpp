@@ -8,6 +8,17 @@ void* Item::getObject() {
 	return wsk;
 }
 
+bool Item::setObject(void* aObiekt)
+{
+	if (aObiekt!=NULL)
+					{
+					 wsk=aObiekt;
+					 return true;
+					}
+	 return false;
+}
+
+
 AnsiString& Item::getType() {
 	return type;
 }

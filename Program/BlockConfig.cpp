@@ -1,138 +1,471 @@
-#include <string>
-#include <vector>
-#include <exception>
-using namespace std;
-
 #include "BlockConfig.h"
-#include "BlockElement.h"
-#include "Block.h"
-#include "Item.h"
 
-bool PIWO::BlockConfig::addString(string aName, string aValue) {
-	throw "Not yet implemented";
+Item* BlockConfig::getItem(const AnsiString aName)
+{
+	int i=map.size()-1;
+	for(;i>=0;--i)
+	{
+	   if (map[i]->getName()==aName) return map[i];
+	}
+	throw "Niema takiego itemu na liœcie";
 }
 
-bool PIWO::BlockConfig::addBoolean(string aName, bool aValue) {
-	throw "Not yet implemented";
+BlockConfig::BlockConfig()
+{
+	changed=false;
 }
 
-bool PIWO::BlockConfig::addInt(string aName, int aValue) {
-	throw "Not yet implemented";
+BlockConfig::~BlockConfig()
+{
+	clear();
 }
 
-bool PIWO::BlockConfig::addDouble(string aName, double aValue) {
-	throw "Not yet implemented";
+void BlockConfig::clear()
+{
+	int i=map.size()-1;
+	for(;i>=0;++i)
+	{
+	   if (map[i]->getType()=="TBitmap") {
+		 delete (Graphics::TBitmap*)(map[i]->getObject());
+	   }
+	   else
+	   if (map[i]->getType()=="TStream") {
+		 delete (TMemoryStream*)(map[i]->getObject());
+	   }
+	   else
+	   if (map[i]->getType()=="AnsiString") {
+		 delete (AnsiString*)(map[i]->getObject());
+	   }
+	   else
+	   if (map[i]->getType()=="Boolean") {
+		 delete (bool*)(map[i]->getObject());
+	   }
+	   else
+	   if (map[i]->getType()=="Integer") {
+		 delete (int*)(map[i]->getObject());
+	   }
+	   else
+	   if (map[i]->getType()=="Double") {
+		 delete (double*)(map[i]->getObject());
+	   }
+	}
+	map.clear();
 }
 
-bool PIWO::BlockConfig::addBitmap(string aName, TBitmap aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::addString(const AnsiString aName, const AnsiString aValue)
+{
+  if (isExist(aName)) return false;
+  AnsiString *d=new AnsiString(aValue);
+  Item *it=new Item(aName, (void*)d, "AnsiString");
+  map.push_back(it);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::addStream(string aName, TStream aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::addBoolean(const AnsiString aName, bool aValue)
+{
+  if (isExist(aName)) return false;
+  bool *d=new bool;
+  *d=aValue;
+  Item *it=new Item(aName, (void*)d, "Boolean");
+  map.push_back(it);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::addItem(item aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::addInt(const AnsiString aName, int aValue)
+{
+  if (isExist(aName)) return false;
+  int *d=new int;
+  *d=aValue;
+  Item *it=new Item(aName, (void*)d, "Integer");
+  map.push_back(it);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::setString(string aName, string aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::addDouble(const AnsiString aName, double aValue)
+{
+  if (isExist(aName)) return false;
+  double *d=new double;
+  *d=aValue;
+  Item *it=new Item(aName, (void*)d, "Double");
+  map.push_back(it);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::setBoolean(string aName, bool aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::addBitmap(const AnsiString aName, Graphics::TBitmap &aValue)
+{
+  if (isExist(aName)) return false;
+  Graphics::TBitmap *d=new Graphics::TBitmap(aValue);
+  Item *it=new Item(aName, (void*)d, "TBitmap");
+  map.push_back(it);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::setInt(string aName, int aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::addStream(const AnsiString aName, TStream &aValue)
+{
+  if (isExist(aName)) return false;
+  TStream *d=new TMemoryStream();
+  d->CopyFrom(&aValue,0);
+  Item *it=new Item(aName, (void*)d, "TStream");
+  map.push_back(it);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::setDouble(string aName, double aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::setString(const AnsiString aName, const AnsiString aValue)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="AnsiString") return false;
+  AnsiString *d=new AnsiString(aValue);
+  delete (AnsiString*)(it->getObject());
+  it->setObject((void*)d);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::setBitmap(string aName, TBitmap aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::setBoolean(const AnsiString aName, bool aValue)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="Boolean") return false;
+  bool *d=new bool;
+  *d=aValue;
+  delete (bool*)(it->getObject());
+  it->setObject((void*)d);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::setStream(string aName, TStream aValue) {
-	throw "Not yet implemented";
+bool BlockConfig::setInt(const AnsiString aName, int aValue)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="Integer") return false;
+  int *d=new int;
+  *d=aValue;
+  delete (int*)(it->getObject());
+  it->setObject((void*)d);
+  changed=true;
+  return true;
 }
 
-String PIWO::BlockConfig::getString(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::setDouble(const AnsiString aName, double aValue)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="Double") return false;
+  double *d=new double;
+  *d=aValue;
+  delete (double*)(it->getObject());
+  it->setObject((void*)d);
+  changed=true;
+  return true;
 }
 
-bool PIWO::BlockConfig::getBoolean(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::setBitmap(const AnsiString aName, Graphics::TBitmap &aValue)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="TBitmap") return false;
+  Graphics::TBitmap *d=new Graphics::TBitmap(aValue);
+  delete (Graphics::TBitmap*)(it->getObject());
+  it->setObject((void*)d);
+  changed=true;
+  return true;
 }
 
-int PIWO::BlockConfig::getInt(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::setStream(const AnsiString aName, TStream &aValue)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="TStream") return false;
+  TStream *d=new TMemoryStream();
+  d->CopyFrom(&aValue,0);
+  delete (TMemoryStream*)(it->getObject());
+  it->setObject((void*)d);
+  changed=true;
+  return true;
 }
 
-double PIWO::BlockConfig::getDouble(string aName) {
-	throw "Not yet implemented";
+AnsiString& BlockConfig::getString(const AnsiString aName)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="AnsiString") throw "Otzrymano b³êdny typ danych";
+  return *((AnsiString*)(it->getObject()));
 }
 
-TBitmap PIWO::BlockConfig::getBitmap(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::getBoolean(const AnsiString aName)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="Boolean") throw "Otzrymano b³êdny typ danych";
+  return *((bool*)(it->getObject()));
 }
 
-TStream PIWO::BlockConfig::getStream(string aName) {
-	throw "Not yet implemented";
+int BlockConfig::getInt(const AnsiString aName)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="Integer") throw "Otzrymano b³êdny typ danych";
+  return *((int*)(it->getObject()));
 }
 
-PIWO::Item PIWO::BlockConfig::getItem(string aName) {
-	throw "Not yet implemented";
+double BlockConfig::getDouble(const AnsiString aName)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="Double") throw "Otzrymano b³êdny typ danych";
+  return *((double*)(it->getObject()));
 }
 
-bool PIWO::BlockConfig::isString(string aName) {
-	throw "Not yet implemented";
+Graphics::TBitmap& BlockConfig::getBitmap(const AnsiString aName)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="TBitmap") throw "Otzrymano b³êdny typ danych";
+  return *((Graphics::TBitmap*)(it->getObject()));
 }
 
-bool PIWO::BlockConfig::isBoolean(string aName) {
-	throw "Not yet implemented";
+TStream& BlockConfig::getStream(const AnsiString aName)
+{
+  Item *it=getItem(aName);
+  if (it->getType()!="TStream") throw "Otzrymano b³êdny typ danych";
+  return *((TStream*)(it->getObject()));
 }
 
-bool PIWO::BlockConfig::isInt(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::isString(const AnsiString aName)
+{
+  return getItem(aName)->getType()=="AnsiString";
 }
 
-bool PIWO::BlockConfig::isDouble(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::isBoolean(const AnsiString aName)
+{
+  return getItem(aName)->getType()=="Boolean";
 }
 
-bool PIWO::BlockConfig::isBitmap(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::isInt(const AnsiString aName)
+{
+  return getItem(aName)->getType()=="Integer";
 }
 
-bool PIWO::BlockConfig::isStream(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::isDouble(const AnsiString aName)
+{
+  return getItem(aName)->getType()=="Double";
 }
 
-string PIWO::BlockConfig::getType(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::isBitmap(const AnsiString aName)
+{
+  return getItem(aName)->getType()=="TBitmap";
 }
 
-bool PIWO::BlockConfig::isExist(string aName) {
-	throw "Not yet implemented";
+bool BlockConfig::isStream(const AnsiString aName)
+{
+  return getItem(aName)->getType()=="TStream";
 }
 
-bool PIWO::BlockConfig::remove(string aName) {
-	throw "Not yet implemented";
+AnsiString& BlockConfig::getType(const AnsiString aName)
+{
+  return getItem(aName)->getType();
 }
 
-bool PIWO::BlockConfig::saveToStream(TStream aWhere) {
-	throw "Not yet implemented";
+bool BlockConfig::isExist(const AnsiString aName)
+{
+  try
+  {
+	 getItem(aName);
+	 return true;
+  }  catch(Exception &e)
+  {
+	 return false;
+  }
 }
 
-bool PIWO::BlockConfig::loadFromStream(TStream aFrom) {
-	throw "Not yet implemented";
+bool BlockConfig::remove(const AnsiString aName)
+{
+  try
+  {
+	   Item *it=getItem(aName);
+
+	   if (it->getType()=="TBitmap") {
+		 delete (Graphics::TBitmap*)(it->getObject());
+	   }
+	   else
+	   if (it->getType()=="TStream") {
+		 delete (TMemoryStream*)(it->getObject());
+	   }
+	   else
+	   if (it->getType()=="AnsiString") {
+		 delete (AnsiString*)(it->getObject());
+	   }
+	   else
+	   if (it->getType()=="Boolean") {
+		 delete (bool*)(it->getObject());
+	   }
+	   else
+	   if (it->getType()=="Integer") {
+		 delete (int*)(it->getObject());
+	   }
+	   else
+	   if (it->getType()=="Double") {
+		 delete (double*)(it->getObject());
+	   }
+
+	   int i=map.size()-1;
+	   for(;i>=0;--i)
+	   {
+		 if (map[i]==it)
+		 {
+			 if ((unsigned int)i!=map.size()-1) {
+			   map[i]=map[map.size()-1];
+			 }
+			 map.pop_back();
+			 changed=true;
+         }
+	   }
+	   return true;
+  }  catch(Exception &e)
+  {
+	 return false;
+  }
 }
 
-bool PIWO::BlockConfig::isChanged() {
-	throw "Not yet implemented";
+bool BlockConfig::saveToStream(TStream &aWhere)
+{
+   char id;
+   id='B';
+   aWhere.Write(&id, 1);
+   id='C';
+   aWhere.Write(&id, 1);
+   
+   unsigned long count=map.size();
+   aWhere.Write(&count,sizeof(unsigned long));
+   for(unsigned int i=0;i<map.size();++i)
+   {
+		count=map[i]->getType().Length();
+		aWhere.Write(&count,sizeof(unsigned long));
+		aWhere.Write(map[i]->getType().c_str(),count);
+
+		count=map[i]->getName().Length();
+		aWhere.Write(&count,sizeof(unsigned long));
+		aWhere.Write(map[i]->getName().c_str(),count);
+
+	   if (map[i]->getType()=="TBitmap") {
+		 TMemoryStream *tmp=new TMemoryStream();
+		 ((Graphics::TBitmap*)(map[i]->getObject()))->SaveToStream(tmp);
+		 count=tmp->Size;
+		 aWhere.Write(&count,sizeof(unsigned long));
+		 aWhere.CopyFrom(tmp, 0);
+		 delete tmp;
+	   }
+	   else
+	   if (map[i]->getType()=="TStream") {
+		 TMemoryStream *tmp=((TMemoryStream*)(map[i]->getObject()));
+		 count=tmp->Size;
+		 aWhere.Write(&count,sizeof(unsigned long));
+		 aWhere.CopyFrom(tmp, 0);
+	   }
+	   else
+	   if (map[i]->getType()=="AnsiString") {
+		 count=((AnsiString*)map[i]->getObject())->Length();
+		 aWhere.Write(&count,sizeof(unsigned long));
+		 aWhere.Write(((AnsiString*)map[i]->getObject())->c_str(),count);
+	   }
+	   else
+	   if (map[i]->getType()=="Boolean") {
+		 aWhere.Write(((bool*)map[i]->getObject()),sizeof(bool));
+	   }
+	   else
+	   if (map[i]->getType()=="Integer") {
+		 aWhere.Write(((int*)map[i]->getObject()),sizeof(int));
+	   }
+	   else
+	   if (map[i]->getType()=="Double") {
+		 aWhere.Write(((double*)map[i]->getObject()),sizeof(double));
+	   }
+   }
+   return true;
 }
 
+bool BlockConfig::loadFromStream(TStream &aFrom)
+{
+   clear();
+   char id1,id2;
+   aFrom.Read(&id1, 1);aFrom.Read(&id2, 1);
+   if ((id1!='B')||(id2!='C')) return false;
+   unsigned long count;
+   aFrom.Read(&count, sizeof(unsigned long));
+   for(unsigned int i=0;i<count;++i)
+   {
+	  unsigned long itmp;
+	  aFrom.Read(&itmp, sizeof(unsigned long));
+	  char *typ1=new char[itmp+1];
+	  aFrom.Read(typ1, itmp);
+	  typ1[itmp]='\0';
+	  AnsiString *typ=new AnsiString(typ1);
+	  delete typ1;
+
+	  aFrom.Read(&itmp, sizeof(unsigned long));
+	  typ1=new char[itmp+1];
+	  aFrom.Read(typ1, itmp);
+	  typ1[itmp]='\0';
+	  AnsiString *name=new AnsiString(typ1);
+	  delete typ1;
+
+	   if ((*typ)=="TBitmap") {
+		  unsigned long siz;
+		  aFrom.Read(&siz, sizeof(unsigned long));
+		  TMemoryStream *tmp=new TMemoryStream();
+		  if (siz!=0) tmp->CopyFrom(&aFrom, siz);
+		  Graphics::TBitmap *d=new Graphics::TBitmap();
+		  d->LoadFromStream(tmp);
+		  Item *it=new Item(*name, (void*)d, *typ);
+		  map.push_back(it);
+		  delete tmp;
+	   }
+	   else
+	   if ((*typ)=="TStream") {
+		  unsigned long siz;
+		  aFrom.Read(&siz, sizeof(unsigned long));
+		  TMemoryStream *tmp=new TMemoryStream();
+		  if (siz!=0) tmp->CopyFrom(&aFrom, siz);
+		  Item *it=new Item(*name, (void*)tmp, *typ);
+		  map.push_back(it);
+	   }
+	   else
+	   if ((*typ)=="AnsiString") {
+		  unsigned long siz;
+		  aFrom.Read(&siz, sizeof(unsigned long));
+		  char *yp1=new char[siz+1];
+		  aFrom.Read(yp1, siz);
+		  yp1[siz]='\0';
+		  AnsiString *na=new AnsiString(yp1);
+		  Item *it=new Item(*name, (void*)na, *typ);
+		  map.push_back(it);
+		  delete yp1;
+	   }
+	   else
+	   if ((*typ)=="Boolean") {
+		 bool *tmp=new bool;
+		 aFrom.Read(tmp, sizeof(bool));
+		 Item *it=new Item(*name, (void*)tmp, *typ);
+		 map.push_back(it);
+	   }
+	   else
+	   if ((*typ)=="Integer") {
+		 int *tmp=new int;
+		 aFrom.Read(tmp, sizeof(int));
+		 Item *it=new Item(*name, (void*)tmp, *typ);
+		 map.push_back(it);
+	   }
+	   else
+	   if ((*typ)=="Double") {
+		 double *tmp=new double;
+		 aFrom.Read(tmp, sizeof(double));
+		 Item *it=new Item(*name, (void*)tmp, *typ);
+		 map.push_back(it);
+	   }
+	   delete name;
+	   delete typ;
+   }
+   return true;
+}
+
+bool BlockConfig::isChanged()
+{
+	return changed;
+}
