@@ -6,7 +6,7 @@ using namespace std;
 #ifndef __BlockElement_h__
 #define __BlockElement_h__
 
-#include "BlockConfig.h"
+#include "TypeConfig.h"
 
 class BlockElement
 {
@@ -14,7 +14,7 @@ class BlockElement
 			AnsiString description;
 			int errorCode;
 			AnsiString errorDescription;
-			BlockConfig *object;
+			TypeConfig *object;
 			AnsiString name;
 
 		public:
@@ -26,11 +26,11 @@ class BlockElement
 			int getErrorCode();
 			AnsiString& geErrorDescription();
 			AnsiString& getName();
-			BlockConfig* getObject();
+			TypeConfig* getObject();
 			void setDescription(const AnsiString aDescription);
 			void setErrorDescription(const AnsiString aErrorDescription);
 			void setErrorCode(int aError);
-			void setObject(BlockConfig &aData);
+			void setObject(TypeConfig &aData);
 };
 
 

@@ -2,13 +2,13 @@
 
 BlockElement::BlockElement(const AnsiString aName)
 {
-   object=new BlockConfig();
+   object=NULL;
    name=aName;
 }
 
 BlockElement::BlockElement(BlockElement &block)
 {
-   object=new BlockConfig(*(block.object));
+   object=new TypeConfig(*(block.object));
    name=block.name;
    errorDescription=block.errorDescription;
    description=block.description;
@@ -17,7 +17,7 @@ BlockElement::BlockElement(BlockElement &block)
 
 BlockElement::~BlockElement()
 {
-	delete object;
+	if (object) delete object;
 }
 
 AnsiString& BlockElement::getDescription()
@@ -40,7 +40,7 @@ AnsiString& BlockElement::getName()
 	return name;
 }
 
-BlockConfig* BlockElement::getObject()
+TypeConfig* BlockElement::getObject()
 {
 	return object;
 }
@@ -60,8 +60,8 @@ void BlockElement::setErrorCode(int aError)
    errorCode=aError;
 }
 
-void BlockElement::setObject(BlockConfig &aData)
+void BlockElement::setObject(TypeConfig &aData)
 {
-   delete object;
-   object=new BlockConfig(aData);
+   if (object) delete object;
+   object=new TypeConfig(aData);
 }
