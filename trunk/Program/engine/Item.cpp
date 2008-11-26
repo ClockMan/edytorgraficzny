@@ -32,14 +32,14 @@ Item::Item(const AnsiString aName, void* aObject, const AnsiString aType)
 	if (aType.IsEmpty()) throw "Parametr aTyp jest pustym stringiem";
 	if (aObject==NULL) throw "Parametr aObiekt jest NULL'em";
 	name=aName;
-	pointer=aObiekt;
+	pointer=aObject;
 	type=aType;
 }
 
 Item::Item(Item &copy)
 {
-	name=kopia.name;
-	pointer=kopia.pointer;
-	type=kopia.type;
+	name=copy.name;
+	pointer=copy.pointer;
+	type=copy.type;
 }
 

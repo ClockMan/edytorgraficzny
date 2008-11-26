@@ -1,0 +1,7 @@
+Plikiem konifguracyjnym bêdzie plik INI o dowolnej nazwie (najlepiej nazwatypu.ini) i struktórze.
+
+[type]
+fullname=Pe³na nazwa //np. Bitmapa monochromatyczna
+name=Nazwa typu //np. Bitmap1bit, uwaga nazwa ta musi byæ taka sama jak w DLL
+description=Opis typu, parê s³ów
+dll=Nazwa pliku dll
