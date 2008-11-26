@@ -1,0 +1,95 @@
+\hypertarget{class_item}{
+\section{Item Class Reference}
+\label{class_item}\index{Item@{Item}}
+}
+{\tt \#include $<$Item.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_item_8e9a1c1241d56987c3737be4e8a99078}{Item} (const AnsiString aName, void $\ast$aObiekt, const AnsiString aTyp)
+\item 
+\hyperlink{class_item_9270939f5cb3afa10910fa375b18a0c6}{Item} (\hyperlink{class_item}{Item} \&kopia)
+\item 
+AnsiString \& \hyperlink{class_item_550ef0630b4f3666f6a2a968533d88cd}{getName} ()
+\item 
+void $\ast$ \hyperlink{class_item_22ca3797e0e23bf171710380df10cdaf}{getObject} ()
+\item 
+AnsiString \& \hyperlink{class_item_0a7a5b69520ece64cbe8cf239f75f384}{getType} ()
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_item}{Item} - Klasa pojemnik przechowuj¹ca elementy dla listy BlockConfig/TypeConfig UWAGA: Klasa nie zwalnia danych przesy³anych jako wskaŸnik do konstruktora (aObiekt), osoba u¿ywaj¹ca klasy sama musi to oprogramowaæ. \begin{Desc}
+\item[Author:]Piotr Zegar \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]1.1 \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_item_8e9a1c1241d56987c3737be4e8a99078}{
+\index{Item@{Item}!Item@{Item}}
+\index{Item@{Item}!Item@{Item}}
+\subsubsection[{Item}]{\setlength{\rightskip}{0pt plus 5cm}Item::Item (const AnsiString {\em aName}, \/  void $\ast$ {\em aObiekt}, \/  const AnsiString {\em aTyp})}}
+\label{class_item_8e9a1c1241d56987c3737be4e8a99078}
+
+
+Konstruktor. Inicjuje pola prywatne nie pozwalaj¹c na ich zmiannê, konstruktor wywala wyj¹tek gdy parametry s¹ b³êdne \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]Nazwa pod jak¹ bêd¹ przechowywane te dane, niemo¿e byæ pusta \item[{\em aObiekt}]Obiekt który ma zostaæ powi¹zany z nazw¹, niemo¿e byæ NULL \item[{\em aTyp}]informacja o typie obiektu, nie u¿ywana wewn¹trz klasy, nie mo¿e byæ puste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{class_item_9270939f5cb3afa10910fa375b18a0c6}{Item(Item \&kopia)} \end{Desc}
+\hypertarget{class_item_9270939f5cb3afa10910fa375b18a0c6}{
+\index{Item@{Item}!Item@{Item}}
+\index{Item@{Item}!Item@{Item}}
+\subsubsection[{Item}]{\setlength{\rightskip}{0pt plus 5cm}Item::Item ({\bf Item} \& {\em kopia})}}
+\label{class_item_9270939f5cb3afa10910fa375b18a0c6}
+
+
+Konstruktor kopiuj¹cy Kopiuje obiekt, wymagany dla vector \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em kopia}]obiekt kopiowany \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]Item(string aName, void$\ast$ aObiekt, string aTyp) \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_item_550ef0630b4f3666f6a2a968533d88cd}{
+\index{Item@{Item}!getName@{getName}}
+\index{getName@{getName}!Item@{Item}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& Item::getName ()}}
+\label{class_item_550ef0630b4f3666f6a2a968533d88cd}
+
+
+Pobiera i zwraca nazwê podawan¹ w konstruktorze, zwracana wartoœc nie jest pustym stringiem \begin{Desc}
+\item[Returns:]name \end{Desc}
+\hypertarget{class_item_22ca3797e0e23bf171710380df10cdaf}{
+\index{Item@{Item}!getObject@{getObject}}
+\index{getObject@{getObject}!Item@{Item}}
+\subsubsection[{getObject}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Item::getObject ()}}
+\label{class_item_22ca3797e0e23bf171710380df10cdaf}
+
+
+Pobiera i zwraca wskaŸnik do danych jakie przechowuje obiekt, zwracana wartoœc nie ejst nullem \begin{Desc}
+\item[Returns:]wsk \end{Desc}
+\hypertarget{class_item_0a7a5b69520ece64cbe8cf239f75f384}{
+\index{Item@{Item}!getType@{getType}}
+\index{getType@{getType}!Item@{Item}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& Item::getType ()}}
+\label{class_item_0a7a5b69520ece64cbe8cf239f75f384}
+
+
+Pobiera i zwraca nazwê typu danych jak¹ user powi¹za³ z danymi i t¹ nazw¹, nigdy nie zwraca pustego stringu \begin{Desc}
+\item[Returns:]type \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Pulpit/Projekt - Piwo/Program/Item.h\item 
+Pulpit/Projekt - Piwo/Program/Item.cpp\end{CompactItemize}
