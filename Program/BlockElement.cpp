@@ -1,44 +1,67 @@
-#include <string>
-#include <vector>
-#include <exception>
-using namespace std;
-
 #include "BlockElement.h"
-#include "BlockConfig.h"
 
- PIWO::BlockElement::BlockElement(string aName) {
-	throw "Not yet implemented";
+BlockElement::BlockElement(const AnsiString aName)
+{
+   object=new BlockConfig();
+   name=aName;
 }
 
-string PIWO::BlockElement::getDescription() {
-	throw "Not yet implemented";
+BlockElement::BlockElement(BlockElement &block)
+{
+   object=new BlockConfig(*(block.object));
+   name=block.name;
+   errorDescription=block.errorDescription;
+   description=block.description;
+   errorCode=block.errorCode;
 }
 
-int PIWO::BlockElement::getErrorCode() {
-	throw "Not yet implemented";
+BlockElement::~BlockElement()
+{
+	delete object;
 }
 
-string PIWO::BlockElement::geErrorDescription() {
-	throw "Not yet implemented";
+AnsiString& BlockElement::getDescription()
+{
+   return description;
 }
 
-string PIWO::BlockElement::getName() {
-	throw "Not yet implemented";
+int BlockElement::getErrorCode()
+{
+	return errorCode;
 }
 
-PIWO::BlockConfig PIWO::BlockElement::getObject() {
-	throw "Not yet implemented";
+AnsiString& BlockElement::geErrorDescription()
+{
+	return errorDescription;
 }
 
-bool PIWO::BlockElement::setDescription(string aDescription) {
-	throw "Not yet implemented";
+AnsiString& BlockElement::getName()
+{           
+	return name;
 }
 
-bool PIWO::BlockElement::setErrorCode(int aError) {
-	throw "Not yet implemented";
+BlockConfig* BlockElement::getObject()
+{
+	return object;
 }
 
-bool PIWO::BlockElement::setObject(PIWO::BlockConfig aData) {
-	throw "Not yet implemented";
+void BlockElement::setDescription(const AnsiString aDescription)
+{
+   description=aDescription;
 }
 
+void BlockElement::setErrorDescription(const AnsiString aErrorDescription)
+{
+   errorDescription=aErrorDescription;
+}
+
+void BlockElement::setErrorCode(int aError)
+{
+   errorCode=aError;
+}
+
+void BlockElement::setObject(BlockConfig &aData)
+{
+   delete object;
+   object=new BlockConfig(aData);
+}

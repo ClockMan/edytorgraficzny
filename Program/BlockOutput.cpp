@@ -1,17 +1,26 @@
-#include <string>
-#include <vector>
-#include <exception>
-using namespace std;
-
 #include "BlockOutput.h"
-#include "Block.h"
-#include "BlockElement.h"
 
-string PIWO::BlockOutput::getOutputType() {
-	throw "Not yet implemented";
+BlockOutput::BlockOutput(const AnsiString aName):BlockElement(aName)
+{
 }
 
-bool PIWO::BlockOutput::setOutputType(string aName) {
-	throw "Not yet implemented";
+BlockOutput::BlockOutput(BlockOutput &kopia):BlockElement(kopia)
+{
+   outputType=kopia.outputType;
 }
 
+BlockOutput::~BlockOutput()
+{
+}
+
+AnsiString& BlockOutput::getOutputType()
+{
+   return outputType;
+}
+
+bool BlockOutput::setOutputType(AnsiString aName)
+{
+   if (aName.IsEmpty()) return false;
+   outputType=aName;
+   return true;
+}
