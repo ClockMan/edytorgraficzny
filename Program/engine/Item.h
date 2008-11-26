@@ -56,7 +56,7 @@ class Item
 		 * @return true/false w zaleznosci czy obiekt zosta³ pomyœlnei zainicjalizowany
 		 */
 
-		bool setObject(void* aObiekt);
+		bool setObject(void* aObject);
 
 		/**
 		 * Pobiera i zwraca nazwê typu danych jak¹ user powi¹za³ z danymi i t¹ nazw¹, nigdy nie zwraca pustego stringu

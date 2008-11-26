@@ -326,7 +326,7 @@ bool BlockConfig::isExist(const AnsiString aName)
   {
 	 getItem(aName);
 	 return true;
-  }  catch(Exception &e)
+  }  catch(char* e)
   {
 	 return false;
   }
