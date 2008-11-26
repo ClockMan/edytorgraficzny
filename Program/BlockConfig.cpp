@@ -15,6 +15,62 @@ BlockConfig::BlockConfig()
 	changed=false;
 }
 
+BlockConfig::BlockConfig(TStream &stream)
+{
+   if (!loadFromStream(stream)) throw "B³êdny format";
+}
+
+void BlockConfig::copyFrom(BlockConfig &kopia)
+{
+   for(unsigned int i=0;i<=kopia.map.size();++i)
+	{
+	   if (kopia.map[i]->getType()=="TBitmap") {
+		  Graphics::TBitmap *d=new Graphics::TBitmap(*((Graphics::TBitmap*)kopia.map[i]->getObject()));
+		  Item *it=new Item(kopia.map[i]->getName(), (void*)d, kopia.map[i]->getType());
+		  map.push_back(it);
+	   }
+	   else
+	   if (kopia.map[i]->getType()=="TStream") {
+		  TMemoryStream *tmp=new TMemoryStream();
+		  tmp->CopyFrom(((TStream*)kopia.map[i]->getObject()), 0);
+		  Item *it=new Item(kopia.map[i]->getName(), (void*)tmp, kopia.map[i]->getType());
+		  map.push_back(it);
+	   }
+	   else
+	   if (kopia.map[i]->getType()=="AnsiString") {
+		  AnsiString *na=new AnsiString(*((AnsiString*)(kopia.map[i]->getObject())));
+		  Item *it=new Item(kopia.map[i]->getName(), (void*)na, kopia.map[i]->getType());
+		  map.push_back(it);
+	   }
+	   else
+	   if (kopia.map[i]->getType()=="Boolean") {
+		 bool *tmp=new bool;
+		 *tmp=*((bool*)(kopia.map[i]->getObject()));
+		 Item *it=new Item(kopia.map[i]->getName(), (void*)tmp, kopia.map[i]->getType());
+		 map.push_back(it);
+	   }
+	   else
+	   if (kopia.map[i]->getType()=="Integer") {
+		 int *tmp=new int;
+		 *tmp=*((int*)(kopia.map[i]->getObject()));
+		 Item *it=new Item(kopia.map[i]->getName(), (void*)tmp, kopia.map[i]->getType());
+		 map.push_back(it);
+	   }
+	   else
+	   if (kopia.map[i]->getType()=="Double") {
+		 double *tmp=new double;
+		 *tmp=*((double*)(kopia.map[i]->getObject()));
+		 Item *it=new Item(kopia.map[i]->getName(), (void*)tmp, kopia.map[i]->getType());
+		 map.push_back(it);
+	   }
+	}
+}
+
+BlockConfig::BlockConfig(BlockConfig &kopia)
+{
+   copyFrom(kopia);
+}
+
 BlockConfig::~BlockConfig()
 {
 	clear();
@@ -48,6 +104,7 @@ void BlockConfig::clear()
 	   if (map[i]->getType()=="Double") {
 		 delete (double*)(map[i]->getObject());
 	   }
+	   delete (Item*)map[i];
 	}
 	map.clear();
 }
@@ -314,6 +371,7 @@ bool BlockConfig::remove(const AnsiString aName)
 			   map[i]=map[map.size()-1];
 			 }
 			 map.pop_back();
+			 delete it;
 			 changed=true;
          }
 	   }
@@ -324,14 +382,8 @@ bool BlockConfig::remove(const AnsiString aName)
   }
 }
 
-bool BlockConfig::saveToStream(TStream &aWhere)
+bool BlockConfig::saveToStream2(TStream &aWhere)
 {
-   char id;
-   id='B';
-   aWhere.Write(&id, 1);
-   id='C';
-   aWhere.Write(&id, 1);
-   
    unsigned long count=map.size();
    aWhere.Write(&count,sizeof(unsigned long));
    for(unsigned int i=0;i<map.size();++i)
@@ -381,12 +433,18 @@ bool BlockConfig::saveToStream(TStream &aWhere)
    return true;
 }
 
-bool BlockConfig::loadFromStream(TStream &aFrom)
+bool BlockConfig::saveToStream(TStream &aWhere)
 {
-   clear();
-   char id1,id2;
-   aFrom.Read(&id1, 1);aFrom.Read(&id2, 1);
-   if ((id1!='B')||(id2!='C')) return false;
+   char id;
+   id='B';
+   aWhere.Write(&id, 1);
+   id='C';
+   aWhere.Write(&id, 1);
+   return saveToStream2(aWhere);
+}
+
+bool BlockConfig::loadFromStream2(TStream &aFrom)
+{
    unsigned long count;
    aFrom.Read(&count, sizeof(unsigned long));
    for(unsigned int i=0;i<count;++i)
@@ -463,6 +521,15 @@ bool BlockConfig::loadFromStream(TStream &aFrom)
 	   delete typ;
    }
    return true;
+}
+
+bool BlockConfig::loadFromStream(TStream &aFrom)
+{
+   clear();
+   char id1,id2;
+   aFrom.Read(&id1, 1);aFrom.Read(&id2, 1);
+   if ((id1!='B')||(id2!='C')) return false;
+   return loadFromStream2(aFrom);
 }
 
 bool BlockConfig::isChanged()
