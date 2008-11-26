@@ -1,10 +1,34 @@
 #include "TypeDLL.h"
 
-bool TypeDLL::show(int aHandle, TypeConfig &aData) {
-	throw "Not yet implemented";
+TypeDLL::TypeDLL(const AnsiString file, const AnsiString stype)
+{
+   DLLHandle=LoadLibrary(file.c_str());
+   if (!DLLHandle) throw "B³¹d podczas za³adowania DLL";
+   fshow=(TypeDLL_show)GetProcAddress(DLLHandle, "_show");
+   fisValid=(TypeDLL_isValid)GetProcAddress(DLLHandle, "_isValid");
+   if ((!fshow)||(!fisValid))
+   {
+	   FreeLibrary(DLLHandle);
+	   throw "To nie jest DLL'ka typu";
+   }
+   type=stype;
 }
 
-bool TypeDLL::isValid(TypeConfig &aData) {
-	throw "Not yet implemented";
+TypeDLL::~TypeDLL()
+{
+   FreeLibrary(DLLHandle);
+}
+
+TForm* TypeDLL::show(TComponent* parent, TypeConfig* aData) {
+	return fshow(parent, aData);
+}
+
+bool TypeDLL::isValid(TypeConfig *aData) {
+	return fisValid(aData);
+}
+
+AnsiString& TypeDLL::getType()
+{
+  return type;
 }
 

@@ -2,12 +2,12 @@
 
 Block::Block()
 {
-	config=new BlockConfig(copy.config);
+	config=new BlockConfig();
 }
 
 Block::Block(Block &copy)
 {
-	config=new BlockConfig(copy.config);
+	config=new BlockConfig(*copy.config);
 	//@TODO do napisania kopiowanie listy wejsc i wyjsc
 }
 
@@ -18,7 +18,6 @@ Block::~Block()
 
 BlockConfig* Block::getConfig()
 {
-    (new TBitmap())->PixelFormat
 	return config;
 }
 
