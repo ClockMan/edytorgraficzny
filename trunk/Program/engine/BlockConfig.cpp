@@ -2,8 +2,7 @@
 
 Item* BlockConfig::getItem(const AnsiString aName)
 {
-	int i=map.size()-1;
-	for(;i>=0;--i)
+	for(int i=map.size()-1;i>=0;--i)
 	{
 	   if (map[i]->getName()==aName) return map[i];
 	}
@@ -527,7 +526,8 @@ bool BlockConfig::loadFromStream(TStream &aFrom)
 {
    clear();
    char id1,id2;
-   aFrom.Read(&id1, 1);aFrom.Read(&id2, 1);
+   aFrom.Read(&id1, 1);
+   aFrom.Read(&id2, 1);
    if ((id1!='B')||(id2!='C')) return false;
    return loadFromStream2(aFrom);
 }
