@@ -1,4 +1,4 @@
-#include <string>
+#include <System.hpp>
 #include <vector>
 #include <exception>
 using namespace std;
@@ -8,13 +8,18 @@ using namespace std;
 
 #include "BlockConfig.h"
 
-class TypeConfig: public PIWO::BlockConfig
+class TypeConfig: public BlockConfig
 {
-		private: string name;
-		public:  TypeConfig(string aName);
-				 bool saveToStream(TStream aWhere);
-				 bool loadFromStream(TStream aFrom);
-				 string getName();
+		protected:
+				 AnsiString nazwa;
+		public:
+				 TypeConfig(const AnsiString aName);
+				 TypeConfig(TypeConfig &kopia);
+				 TypeConfig(TStream &stream);
+				 ~TypeConfig();
+				 bool saveToStream(TStream &aWhere);
+				 bool loadFromStream(TStream &aFrom);
+				 AnsiString& getName();
 };
 
 #endif

@@ -18,17 +18,22 @@ using namespace std;
 */
 class BlockConfig
 {
-		private:
+		protected:
 				 vector<Item*> map;
 				 bool changed;
-
 				 Item* getItem(const AnsiString aName);
+				 bool loadFromStream2(TStream &aFrom);
+				 bool saveToStream2(TStream &aWhere);
+				 void copyFrom(BlockConfig &kopia);
 		public:
 				/**
 				* Konstruktor.
 				*/
 				BlockConfig();
 
+				BlockConfig(BlockConfig &kopia);
+
+				BlockConfig(TStream &stream);
 				/**
 				* Destruktor
 				*/
