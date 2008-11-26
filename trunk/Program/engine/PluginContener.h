@@ -9,13 +9,32 @@ using namespace std;
 #include "TypeDLL.h"
 #include "FunctionDLL.h"
 
+/**
+* Item - Klasa pojemnik przechowuj¹ca pluginy
+* @author Piotr
+* @date 2008.11.25
+* @version 0.1
+*/
+
 class PluginContener
 {
-		private: vector<PIWO::TypeDLL> listOfType;
-				 vector<PIWO::FunctionDLL> listOfFunction;
+		private:
+			vector<PIWO::TypeDLL> listOfType;
+			vector<PIWO::FunctionDLL> listOfFunction;
 
-		public: bool addType(string aPath);
-				bool addFunction(string aPath);
+		public:
+		/**
+		* Dodaje nowy typ (plugin)
+		* @param aPath scie¿ka do pliku
+		* @return poprawnoœæ wykonanej operacji
+		*/
+			bool addType(string aPath);
+		/**
+		* Dodaje now¹ funkcjê (plugin)
+		* @param aPath scie¿ka do pliku
+		* @return poprawnoœæ wykonanej operacji
+		*/
+			bool addFunction(string aPath);
 };
 
 #endif
