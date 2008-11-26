@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2008-11-26 12:27:46.675.cpp,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.cpp=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.cpp</Transaction>
+    <Transaction>2008-11-26 12:27:46.675.h,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.h=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.h</Transaction>
+    <Transaction>2008-11-26 12:27:46.675.dfm,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.dfm=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.dfm</Transaction>
+    <Transaction>2008-11-26 12:29:30.051.bdsproj,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\PIWO.bdsproj</Transaction>
+    <Transaction>2008-11-26 12:39:46.699.bdsproj,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\PIWO.bdsproj=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\PIWO.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
