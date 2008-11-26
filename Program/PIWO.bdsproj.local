@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
+	<Transactions>
     <Transaction>2008-11-26 12:27:46.675.cpp,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.cpp=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.cpp</Transaction>
     <Transaction>2008-11-26 12:27:46.675.h,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.h=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.h</Transaction>
     <Transaction>2008-11-26 12:27:46.675.dfm,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.dfm=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.dfm</Transaction>
