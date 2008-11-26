@@ -1,65 +1,67 @@
 \hypertarget{class_item}{
-\section{Item Class Reference}
+\section{Dokumentacja klasy Item}
 \label{class_item}\index{Item@{Item}}
 }
 {\tt \#include $<$Item.h$>$}
 
-\subsection*{Public Member Functions}
+\subsection*{Metody publiczne}
 \begin{CompactItemize}
 \item 
-\hyperlink{class_item_8e9a1c1241d56987c3737be4e8a99078}{Item} (const AnsiString aName, void $\ast$aObiekt, const AnsiString aTyp)
+\hyperlink{class_item_09e65c0f4048f2199fbc0911247f2ff8}{Item} (const AnsiString aName, void $\ast$aObject, const AnsiString aType)
 \item 
-\hyperlink{class_item_9270939f5cb3afa10910fa375b18a0c6}{Item} (\hyperlink{class_item}{Item} \&kopia)
+\hyperlink{class_item_8fbd319d14019713af8a108266775bda}{Item} (\hyperlink{class_item}{Item} \&copy)
 \item 
 AnsiString \& \hyperlink{class_item_550ef0630b4f3666f6a2a968533d88cd}{getName} ()
 \item 
 void $\ast$ \hyperlink{class_item_22ca3797e0e23bf171710380df10cdaf}{getObject} ()
 \item 
+bool \hyperlink{class_item_bfe885883e2a8c929c253b443af64987}{setObject} (void $\ast$aObject)
+\item 
 AnsiString \& \hyperlink{class_item_0a7a5b69520ece64cbe8cf239f75f384}{getType} ()
 \end{CompactItemize}
 
 
-\subsection{Detailed Description}
+\subsection{Opis szczegÃ³Å‚owy}
 \hyperlink{class_item}{Item} - Klasa pojemnik przechowuj¹ca elementy dla listy BlockConfig/TypeConfig UWAGA: Klasa nie zwalnia danych przesy³anych jako wskaŸnik do konstruktora (aObiekt), osoba u¿ywaj¹ca klasy sama musi to oprogramowaæ. \begin{Desc}
-\item[Author:]Piotr Zegar \end{Desc}
+\item[Autor:]Piotr Zegar \end{Desc}
 \begin{Desc}
-\item[Date:]2008.11.25 \end{Desc}
+\item[Data:]2008.11.25 \end{Desc}
 \begin{Desc}
-\item[Version:]1.1 \end{Desc}
+\item[Wersja:]0.1 \end{Desc}
 
 
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_item_8e9a1c1241d56987c3737be4e8a99078}{
+\subsection{Dokumentacja konstruktora i destruktora}
+\hypertarget{class_item_09e65c0f4048f2199fbc0911247f2ff8}{
 \index{Item@{Item}!Item@{Item}}
 \index{Item@{Item}!Item@{Item}}
-\subsubsection[{Item}]{\setlength{\rightskip}{0pt plus 5cm}Item::Item (const AnsiString {\em aName}, \/  void $\ast$ {\em aObiekt}, \/  const AnsiString {\em aTyp})}}
-\label{class_item_8e9a1c1241d56987c3737be4e8a99078}
+\subsubsection[{Item}]{\setlength{\rightskip}{0pt plus 5cm}Item::Item (const AnsiString {\em aName}, \/  void $\ast$ {\em aObject}, \/  const AnsiString {\em aType})}}
+\label{class_item_09e65c0f4048f2199fbc0911247f2ff8}
 
 
 Konstruktor. Inicjuje pola prywatne nie pozwalaj¹c na ich zmiannê, konstruktor wywala wyj¹tek gdy parametry s¹ b³êdne \begin{Desc}
-\item[Parameters:]
+\item[Parametry:]
 \begin{description}
-\item[{\em aName}]Nazwa pod jak¹ bêd¹ przechowywane te dane, niemo¿e byæ pusta \item[{\em aObiekt}]Obiekt który ma zostaæ powi¹zany z nazw¹, niemo¿e byæ NULL \item[{\em aTyp}]informacja o typie obiektu, nie u¿ywana wewn¹trz klasy, nie mo¿e byæ puste \end{description}
+\item[{\em aName}]Nazwa pod jak¹ bêd¹ przechowywane te dane, niemo¿e byæ pusta \item[{\em aObiekt}]Obiekt który ma zostaæ powi¹zany z nazw¹, niemo¿e byæ NULL \item[{\em aType}]informacja o typie obiektu, nie u¿ywana wewn¹trz klasy, nie mo¿e byæ puste \end{description}
 \end{Desc}
 \begin{Desc}
-\item[See also:]\hyperlink{class_item_9270939f5cb3afa10910fa375b18a0c6}{Item(Item \&kopia)} \end{Desc}
-\hypertarget{class_item_9270939f5cb3afa10910fa375b18a0c6}{
+\item[Zobacz rÃ³wnieÅ¼:]\hyperlink{class_item_8fbd319d14019713af8a108266775bda}{Item(Item \&kopia)} \end{Desc}
+\hypertarget{class_item_8fbd319d14019713af8a108266775bda}{
 \index{Item@{Item}!Item@{Item}}
 \index{Item@{Item}!Item@{Item}}
-\subsubsection[{Item}]{\setlength{\rightskip}{0pt plus 5cm}Item::Item ({\bf Item} \& {\em kopia})}}
-\label{class_item_9270939f5cb3afa10910fa375b18a0c6}
+\subsubsection[{Item}]{\setlength{\rightskip}{0pt plus 5cm}Item::Item ({\bf Item} \& {\em copy})}}
+\label{class_item_8fbd319d14019713af8a108266775bda}
 
 
 Konstruktor kopiuj¹cy Kopiuje obiekt, wymagany dla vector \begin{Desc}
-\item[Parameters:]
+\item[Parametry:]
 \begin{description}
 \item[{\em kopia}]obiekt kopiowany \end{description}
 \end{Desc}
 \begin{Desc}
-\item[See also:]Item(string aName, void$\ast$ aObiekt, string aTyp) \end{Desc}
+\item[Zobacz rÃ³wnieÅ¼:]Item(string aName, void$\ast$ aObject, string aType) \end{Desc}
 
 
-\subsection{Member Function Documentation}
+\subsection{Dokumentacja funkcji skÅ‚adowych}
 \hypertarget{class_item_550ef0630b4f3666f6a2a968533d88cd}{
 \index{Item@{Item}!getName@{getName}}
 \index{getName@{getName}!Item@{Item}}
@@ -68,7 +70,7 @@ Konstruktor kopiuj¹cy Kopiuje obiekt, wymagany dla vector \begin{Desc}
 
 
 Pobiera i zwraca nazwê podawan¹ w konstruktorze, zwracana wartoœc nie jest pustym stringiem \begin{Desc}
-\item[Returns:]name \end{Desc}
+\item[Zwraca:]name \end{Desc}
 \hypertarget{class_item_22ca3797e0e23bf171710380df10cdaf}{
 \index{Item@{Item}!getObject@{getObject}}
 \index{getObject@{getObject}!Item@{Item}}
@@ -77,7 +79,7 @@ Pobiera i zwraca nazwê podawan¹ w konstruktorze, zwracana wartoœc nie jest pusty
 
 
 Pobiera i zwraca wskaŸnik do danych jakie przechowuje obiekt, zwracana wartoœc nie ejst nullem \begin{Desc}
-\item[Returns:]wsk \end{Desc}
+\item[Zwraca:]wsk \end{Desc}
 \hypertarget{class_item_0a7a5b69520ece64cbe8cf239f75f384}{
 \index{Item@{Item}!getType@{getType}}
 \index{getType@{getType}!Item@{Item}}
@@ -86,10 +88,24 @@ Pobiera i zwraca wskaŸnik do danych jakie przechowuje obiekt, zwracana wartoœc n
 
 
 Pobiera i zwraca nazwê typu danych jak¹ user powi¹za³ z danymi i t¹ nazw¹, nigdy nie zwraca pustego stringu \begin{Desc}
-\item[Returns:]type \end{Desc}
+\item[Zwraca:]type \end{Desc}
+\hypertarget{class_item_bfe885883e2a8c929c253b443af64987}{
+\index{Item@{Item}!setObject@{setObject}}
+\index{setObject@{setObject}!Item@{Item}}
+\subsubsection[{setObject}]{\setlength{\rightskip}{0pt plus 5cm}bool Item::setObject (void $\ast$ {\em aObject})}}
+\label{class_item_bfe885883e2a8c929c253b443af64987}
 
 
-The documentation for this class was generated from the following files:\begin{CompactItemize}
+Ustawia nowy obiekt \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em aObiekt}]obiekt który zostanie dodany do listy. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Zwraca:]true/false w zaleznosci czy obiekt zosta³ pomyœlnei zainicjalizowany \end{Desc}
+
+
+Dokumentacja dla tej klasy zostaÅ‚a wygenerowana z plikÃ³w:\begin{CompactItemize}
 \item 
-Pulpit/Projekt - Piwo/Program/Item.h\item 
-Pulpit/Projekt - Piwo/Program/Item.cpp\end{CompactItemize}
+Pulpit/PIWO/Program/engine/Item.h\item 
+Pulpit/PIWO/Program/engine/Item.cpp\end{CompactItemize}

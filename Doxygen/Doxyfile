@@ -3,12 +3,12 @@
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-DOXYFILE_ENCODING      = UTF-8
+DOXYFILE_ENCODING      = utf-8
 PROJECT_NAME           = PIWO
 PROJECT_NUMBER         = 0.1
-OUTPUT_DIRECTORY       = "C:/Documents and Settings/User/Pulpit/Projekt - Piwo/Doxygen"
+OUTPUT_DIRECTORY       = "C:/Documents and Settings/User/Pulpit/PIWO/Doxygen"
 CREATE_SUBDIRS         = NO
-OUTPUT_LANGUAGE        = English
+OUTPUT_LANGUAGE        = Polish
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
 ABBREVIATE_BRIEF       = "The $name class" \
@@ -94,7 +94,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = "C:/Documents and Settings/User/Pulpit/Projekt - Piwo/Program"
+INPUT                  = "C:/Documents and Settings/User/Pulpit/PIWO/Program"
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -127,7 +127,7 @@ FILE_PATTERNS          = *.c \
                          *.f \
                          *.vhd \
                          *.vhdl
-RECURSIVE              = NO
+RECURSIVE              = YES
 EXCLUDE                = 
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = 
