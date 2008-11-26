@@ -7,6 +7,8 @@ using namespace std;
 
 TypeConfig::TypeConfig(const AnsiString aName)
 {
+	if(aName.IsEmpty())
+    	throw "Nazwa nie mo¿e byæ pusta";
    nazwa=aName;
 }
 
@@ -23,7 +25,7 @@ TypeConfig::TypeConfig(TypeConfig &kopia)
 
 TypeConfig::~TypeConfig()
 {
-   clear();
+   //clear();
 }
 
 bool TypeConfig::saveToStream(TStream &aWhere)

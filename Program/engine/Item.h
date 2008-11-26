@@ -11,7 +11,7 @@ using namespace std;
 * UWAGA: Klasa nie zwalnia danych przesy³anych jako wskaŸnik do konstruktora (aObiekt), osoba u¿ywaj¹ca klasy sama musi to oprogramowaæ.
 * @author Piotr Zegar
 * @date 2008.11.25
-* @version 1.1
+* @version 0.1
 */
 
 class Item
