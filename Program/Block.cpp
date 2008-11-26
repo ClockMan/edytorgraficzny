@@ -18,6 +18,7 @@ Block::~Block()
 
 BlockConfig* Block::getConfig()
 {
+    (new TBitmap())->PixelFormat
 	return config;
 }
 
