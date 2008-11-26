@@ -1,4 +1,4 @@
-#include <string>
+#include <System.hpp>
 #include <vector>
 #include <exception>
 using namespace std;
@@ -13,11 +13,20 @@ using namespace std;
 class Block
 {
 		private:
-				PIWO::BlockConfig config;
+				BlockConfig *config;
 		public:
-				vector<PIWO::BlockInput*> input;
-				vector<PIWO::BlockOutput*> output;
-				PIWO::BlockConfig* getConfig();
+				//zastanawiams ie czy tu dac wskaznik do tych obiektow czy moze tak jak ejst teraz
+				//bo i tak user to bedzie modyfikowal z poziomu dll'ki, imo wskaznik moze zaoszczedzic kopiowania
+				//pomysl i zmien tak jak ci sie bedzie podobac
+				vector<BlockInput> input;
+				vector<BlockOutput> output;
+
+				Block();
+				Block(Block &copy);
+				~Block();
+
+				BlockConfig* getConfig();
+				void setConfig(BlockConfig &ob);
 };
 
 #endif
