@@ -1,4 +1,4 @@
-#include <string>
+#include <System.hpp>
 #include <vector>
 #include <exception>
 using namespace std;
@@ -10,23 +10,27 @@ using namespace std;
 
 class BlockElement
 {
-		private:
-			string description;
+		protected:
+			AnsiString description;
 			int errorCode;
-			string errorDescription;
-			PIWO::BlockConfig object;
-			string name;
+			AnsiString errorDescription;
+			BlockConfig *object;
+			AnsiString name;
 
 		public:
-			BlockElement(string aName);
-			string getDescription();
+			BlockElement(const AnsiString aName);
+			BlockElement(BlockElement &block);
+			~BlockElement();
+
+			AnsiString& getDescription();
 			int getErrorCode();
-			string geErrorDescription();
-			string getName();
-			PIWO::BlockConfig getObject();
-			bool setDescription(string aDescription);
-			bool setErrorCode(int aError);
-			bool setObject(PIWO::BlockConfig aData);
+			AnsiString& geErrorDescription();
+			AnsiString& getName();
+			BlockConfig* getObject();
+			void setDescription(const AnsiString aDescription);
+			void setErrorDescription(const AnsiString aErrorDescription);
+			void setErrorCode(int aError);
+			void setObject(BlockConfig &aData);
 };
 
 

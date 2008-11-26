@@ -1,4 +1,4 @@
-#include <string>
+#include <System.hpp>
 #include <vector>
 #include <exception>
 using namespace std;
@@ -6,17 +6,19 @@ using namespace std;
 #ifndef __BlockOutput_h__
 #define __BlockOutput_h__
 
-#include "Block.h"
 #include "BlockElement.h"
 
-class BlockOutput: public PIWO::BlockElement
+class BlockOutput: public BlockElement
 {
 		private:
-				string outputType;
-				std::vector<PIWO::Block*> output;
+				AnsiString outputType;
 		public:
-				string getOutputType();
-				bool setOutputType(string aName);
+				BlockOutput(const AnsiString aName);
+				BlockOutput(BlockOutput &kopia);
+				~BlockOutput();
+
+				AnsiString& getOutputType();
+				bool setOutputType(AnsiString aName);
 };
 
 #endif

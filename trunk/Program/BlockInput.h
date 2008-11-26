@@ -1,4 +1,4 @@
-#include <string>
+#include <System.hpp>
 #include <vector>
 #include <exception>
 using namespace std;
@@ -6,17 +6,21 @@ using namespace std;
 #ifndef __BlockInput_h__
 #define __BlockInput_h__
 
-#include "Block.h"
 #include "BlockElement.h"
 
-class BlockInput: public PIWO::BlockElement
+class BlockInput: public BlockElement
 {
-		private:
-				string inputType;
 		public:
-				vector<string> allowedTypes;
-				bool connect(string aName);
-				bool disconnect();
+				AnsiString inputType;
+		public:
+				BlockInput(const AnsiString aName);
+				BlockInput(BlockInput &kopia);
+				~BlockInput();
+
+				vector<AnsiString> allowedTypes;
+				bool connect(const AnsiString aName);
+				AnsiString& getConnectedType();
+				void disconnect();
 };
 
 #endif
