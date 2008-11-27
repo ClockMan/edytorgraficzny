@@ -21,7 +21,7 @@ BlockInput::BlockInput(const AnsiString aName):BlockElement(aName)
 {
 }
 
-BlockInput::BlockInput(BlockInput &kopia):BlockElement(kopia)
+BlockInput::BlockInput(const BlockInput &kopia):BlockElement(kopia)
 {
    inputType=kopia.inputType;
 }

@@ -4,7 +4,7 @@ BlockOutput::BlockOutput(const AnsiString aName):BlockElement(aName)
 {
 }
 
-BlockOutput::BlockOutput(BlockOutput &kopia):BlockElement(kopia)
+BlockOutput::BlockOutput(const BlockOutput &kopia):BlockElement(kopia)
 {
    outputType=kopia.outputType;
 }

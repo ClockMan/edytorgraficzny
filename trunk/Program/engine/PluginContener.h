@@ -1,4 +1,4 @@
-#include <string>
+#include <System.hpp>
 #include <vector>
 #include <exception>
 using namespace std;
@@ -8,32 +8,37 @@ using namespace std;
 
 #include "TypeDLL.h"
 #include "FunctionDLL.h"
-/**
- * Item - Klasa pojemnik przechowujaca pluginy
- * @author Piotr
- * @date 2008.11.25
- * @version 0.1
- */
 
+/**
+* Item - Klasa pojemnik przechowuj¹ca pluginy
+* @author Piotr
+* @date 2008.11.25
+* @version 0.1
+*/
 class PluginContener
 {
-	private:
-		vector<PIWO::TypeDLL> listOfType;
-		vector<PIWO::FunctionDLL> listOfFunction;
+		private:
+		   vector<TypeDLL*> listOfType;
+		   vector<FunctionDLL*> listOfFunction;
+		public:
 
-	public:
+		~PluginContener();
+		
 		/**
-		 * Dodaje nowy typ (plugin)
-		 * @param aPath sciezka do pliku
-		 * @return poprawnosc wykonanej operacji
-		 */
-		bool addType(string aPath);
+		* Dodaje nowy typ (plugin)
+		* @param aPath scie¿ka do pliku
+		* @return poprawnoœæ wykonanej operacji
+		*/
+			bool addType(const AnsiString &aPath, const AnsiString &type);
 		/**
-		 * Dodaje nowa funkcje (plugin)
-		 * @param aPath sciezka do pliku
-		 * @return poprawnosc wykonanej operacji
-		 */
-		bool addFunction(string aPath);
+		* Dodaje now¹ funkcjê (plugin)
+		* @param aPath scie¿ka do pliku
+		* @return poprawnoœæ wykonanej operacji
+		*/
+			bool addFunction(const AnsiString &aPath, const AnsiString &name);
+
+			TypeDLL* getTypeDLL(const AnsiString &type);
+			FunctionDLL* getFunctionDLL(const AnsiString &name);
 };
 
 #endif
