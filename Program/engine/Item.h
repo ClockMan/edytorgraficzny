@@ -37,7 +37,7 @@ class Item
 		 * @param kopia obiekt kopiowany
 		 * @see Item(string aName, void* aObject, string aType)
 		 */
-		Item(Item &copy);
+		Item(const Item &copy);
 
 		/**
 		 * Pobiera i zwraca nazwê podawan¹ w konstruktorze, zwracana wartoœc nie jest pustym stringiem

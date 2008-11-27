@@ -5,11 +5,11 @@ Block::Block()
 	config=new BlockConfig();
 }
 
-Block::Block(Block &copy)
+Block::Block(const Block &copy)
 {
 	config=new BlockConfig(*copy.config);
-	input.assign(copy.input);
-    output.assign(copy.output);
+	input=copy.input;
+	output=copy.output;
 }
 
 Block::~Block()

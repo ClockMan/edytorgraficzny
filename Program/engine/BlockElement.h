@@ -35,7 +35,7 @@ class BlockElement
 			* Konstruktor
 			* @param aName nazwa tworzonego wejœcia/wyjœcia
 			*/
-			BlockElement(BlockElement &block);
+			BlockElement(const BlockElement &block);
 			/*
 			* Destruktor
 			*/

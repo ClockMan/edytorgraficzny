@@ -27,7 +27,7 @@ class TypeConfig: public BlockConfig
 				/**
 				* Konstruktor kopiuj¹cy.
 				*/
-				TypeConfig(TypeConfig &kopia);
+				TypeConfig(const TypeConfig &kopia);
 				/**
 				* Konstruktor
 				* @param stream - strumien z którego zostan¹ odczytane dane.

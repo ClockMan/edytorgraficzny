@@ -35,7 +35,7 @@ class Block
 				/*
 				* Konstruktor kopiuj¹cy
 				*/
-				Block(Block &copy);
+				Block(const Block &copy);
 				/*
 				* Destruktor
 				*/

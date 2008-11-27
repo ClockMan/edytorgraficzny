@@ -26,7 +26,7 @@ class BlockInput: public BlockElement
 		/**
 		* Konstruktor kopiuj¹cy
 		*/
-				BlockInput(BlockInput &kopia);
+				BlockInput(const BlockInput &kopia);
 		 /**
 		 * Destruktor
 		 */

@@ -8,8 +8,6 @@ USEFORM("main.cpp", Form1);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-typedef int* (*typ_funkcji)(double,int);
-typedef TForm* (*funciton_pointer1)( TComponent *,  int *);
 	try
 	{
 		Application->Initialize();

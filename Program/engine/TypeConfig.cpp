@@ -17,9 +17,8 @@ TypeConfig::TypeConfig(TStream &stream)
    if (!loadFromStream(stream)) throw "B³êdny format";
 }
 
-TypeConfig::TypeConfig(TypeConfig &kopia)
+TypeConfig::TypeConfig(const TypeConfig &kopia):BlockConfig(kopia)
 {
-   copyFrom((BlockConfig)kopia);
    nazwa=kopia.nazwa;
 }
 

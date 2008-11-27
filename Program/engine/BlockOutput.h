@@ -27,7 +27,7 @@ class BlockOutput: public BlockElement
 			* Konstruktor kopiuj¹cy.
 			* @param copy obiekt który zostanie skopiowany
 			*/
-				BlockOutput(BlockOutput &copy);
+				BlockOutput(const BlockOutput &copy);
 			/**
 			* Destruktor
 			*/

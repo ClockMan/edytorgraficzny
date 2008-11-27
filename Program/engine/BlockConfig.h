@@ -12,9 +12,9 @@ using namespace std;
 
 /**
 * BlockConfig - Klasa przechowuj¹ca dane w postaci hashmapy, u¿ywana jako miejsce do przechowywania konfiguracji dowolnego bloczka.
-* @author Piotr Zegar
+* @author Piotr
 * @date 2008.11.25
-* @version 1.1
+* @version 0.1
 */
 class BlockConfig
 {
@@ -24,7 +24,7 @@ class BlockConfig
 				 Item* getItem(const AnsiString aName);
 				 bool loadFromStream2(TStream &aFrom);
 				 bool saveToStream2(TStream &aWhere);
-				 void copyFrom(BlockConfig &aCopy);
+				 void copyFrom(const BlockConfig &aCopy);
 		public:
 				/**
 				* Konstruktor.
@@ -33,7 +33,7 @@ class BlockConfig
 				/**
 				* Konsrutkor Kopiuj¹cy
 				*/
-				BlockConfig(BlockConfig &aCopy);
+				BlockConfig(const BlockConfig &aCopy);
 
 				BlockConfig(TStream &stream);
 				/**
