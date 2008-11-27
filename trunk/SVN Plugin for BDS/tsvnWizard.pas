@@ -438,6 +438,7 @@ begin
 
     WizardServices.RemoveWizard( wizardID );
 
+    
 end;
 
 function InitWizard(const BorlandIDEServices: IBorlandIDEServices;

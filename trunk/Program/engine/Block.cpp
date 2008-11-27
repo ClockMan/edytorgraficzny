@@ -8,7 +8,8 @@ Block::Block()
 Block::Block(Block &copy)
 {
 	config=new BlockConfig(*copy.config);
-	//@TODO do napisania kopiowanie listy wejsc i wyjsc
+	input.assign(copy.input);
+    output.assign(copy.output);
 }
 
 Block::~Block()
