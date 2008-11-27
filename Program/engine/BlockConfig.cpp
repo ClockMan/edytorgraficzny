@@ -21,7 +21,7 @@ BlockConfig::BlockConfig(TStream &stream)
 
 void BlockConfig::copyFrom(const BlockConfig &kopia)
 {
-   for(unsigned int i=0;i<=kopia.map.size();++i)
+   for(unsigned int i=0;i<kopia.map.size();++i)
 	{
 	   if (kopia.map[i]->getType()=="TBitmap") {
 		  Graphics::TBitmap *d=new Graphics::TBitmap(*((Graphics::TBitmap*)kopia.map[i]->getObject()));
@@ -245,42 +245,42 @@ bool BlockConfig::setStream(const AnsiString aName, TStream &aValue)
 AnsiString& BlockConfig::getString(const AnsiString aName)
 {
   Item *it=getItem(aName);
-  if (it->getType()!="AnsiString") throw "Otzrymano b³êdny typ danych";
+  if (it->getType()!="AnsiString") throw "Otrzymano b³êdny typ danych";
   return *((AnsiString*)(it->getObject()));
 }
 
 bool BlockConfig::getBoolean(const AnsiString aName)
 {
   Item *it=getItem(aName);
-  if (it->getType()!="Boolean") throw "Otzrymano b³êdny typ danych";
+  if (it->getType()!="Boolean") throw "Otrzymano b³êdny typ danych";
   return *((bool*)(it->getObject()));
 }
 
 int BlockConfig::getInt(const AnsiString aName)
 {
   Item *it=getItem(aName);
-  if (it->getType()!="Integer") throw "Otzrymano b³êdny typ danych";
+  if (it->getType()!="Integer") throw "Otrzymano b³êdny typ danych";
   return *((int*)(it->getObject()));
 }
 
 double BlockConfig::getDouble(const AnsiString aName)
 {
   Item *it=getItem(aName);
-  if (it->getType()!="Double") throw "Otzrymano b³êdny typ danych";
+  if (it->getType()!="Double") throw "Otrzymano b³êdny typ danych";
   return *((double*)(it->getObject()));
 }
 
 Graphics::TBitmap& BlockConfig::getBitmap(const AnsiString aName)
 {
   Item *it=getItem(aName);
-  if (it->getType()!="TBitmap") throw "Otzrymano b³êdny typ danych";
+  if (it->getType()!="TBitmap") throw "Otrzymano b³êdny typ danych";
   return *((Graphics::TBitmap*)(it->getObject()));
 }
 
 TStream& BlockConfig::getStream(const AnsiString aName)
 {
   Item *it=getItem(aName);
-  if (it->getType()!="TStream") throw "Otzrymano b³êdny typ danych";
+  if (it->getType()!="TStream") throw "Otrzymano b³êdny typ danych";
   return *((TStream*)(it->getObject()));
 }
 
@@ -473,6 +473,7 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		  Item *it=new Item(*name, (void*)d, *typ);
 		  map.push_back(it);
 		  delete tmp;
+		  delete it;//bug
 	   }
 	   else
 	   if ((*typ)=="TStream") {
@@ -482,6 +483,8 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		  if (siz!=0) tmp->CopyFrom(&aFrom, siz);
 		  Item *it=new Item(*name, (void*)tmp, *typ);
 		  map.push_back(it);
+		  delete tmp;//bug
+		  delete it;//bug
 	   }
 	   else
 	   if ((*typ)=="AnsiString") {
@@ -494,6 +497,8 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		  Item *it=new Item(*name, (void*)na, *typ);
 		  map.push_back(it);
 		  delete yp1;
+		  delete na;//bug
+		  delete it;//bug
 	   }
 	   else
 	   if ((*typ)=="Boolean") {
@@ -501,6 +506,8 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		 aFrom.Read(tmp, sizeof(bool));
 		 Item *it=new Item(*name, (void*)tmp, *typ);
 		 map.push_back(it);
+		 delete tmp;
+		 delete it;//bug
 	   }
 	   else
 	   if ((*typ)=="Integer") {
@@ -508,6 +515,7 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		 aFrom.Read(tmp, sizeof(int));
 		 Item *it=new Item(*name, (void*)tmp, *typ);
 		 map.push_back(it);
+		 delete it;//bug
 	   }
 	   else
 	   if ((*typ)=="Double") {
@@ -515,6 +523,7 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		 aFrom.Read(tmp, sizeof(double));
 		 Item *it=new Item(*name, (void*)tmp, *typ);
 		 map.push_back(it);
+		 delete it;//bug
 	   }
 	   delete name;
 	   delete typ;
