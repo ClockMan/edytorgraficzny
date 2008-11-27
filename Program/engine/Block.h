@@ -23,11 +23,11 @@ class Block
 				/*
 				* Lista wejœæ bloku.
 				*/
-				vector<BlockInput*> input;
+				vector<BlockInput> input;
 				/*
 				* Lista wyjœæ bloku.
 				*/
-				vector<BlockOutput*> output;
+				vector<BlockOutput> output;
 				/*
 				* Konstruktor domyœlny.
 				*/
