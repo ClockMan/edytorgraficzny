@@ -8,37 +8,47 @@ using namespace std;
 
 #include "TypeDLL.h"
 #include "FunctionDLL.h"
-
 /**
-* Item - Klasa pojemnik przechowuj¹ca pluginy
-* @author Piotr
-* @date 2008.11.25
-* @version 0.1
-*/
+ * Item - Klasa pojemnik przechowujaca pluginy
+ * @author Piotr
+ * @date 2008.11.25
+ * @version 0.1
+ */
 class PluginContener
 {
-		private:
-		   vector<TypeDLL*> listOfType;
-		   vector<FunctionDLL*> listOfFunction;
-		public:
-
+	private:
+		vector<TypeDLL*> listOfType;
+		vector<FunctionDLL*> listOfFunction;
+	public:
+		/**
+		 * Destruktor
+		 */
 		~PluginContener();
-		
-		/**
-		* Dodaje nowy typ (plugin)
-		* @param aPath scie¿ka do pliku
-		* @return poprawnoœæ wykonanej operacji
-		*/
-			bool addType(const AnsiString &aPath, const AnsiString &type);
-		/**
-		* Dodaje now¹ funkcjê (plugin)
-		* @param aPath scie¿ka do pliku
-		* @return poprawnoœæ wykonanej operacji
-		*/
-			bool addFunction(const AnsiString &aPath, const AnsiString &name);
 
-			TypeDLL* getTypeDLL(const AnsiString &type);
-			FunctionDLL* getFunctionDLL(const AnsiString &name);
+		/**
+		 * Dodaje nowy typ (plugin)
+		 * @param aPath sciezka do pliku
+		 * @return poprawnosc wykonanej operacji
+		 */
+		bool addType(const AnsiString &aPath, const AnsiString &type);
+		/**
+		 * Dodaje nowa funkcje (plugin)
+		 * @param aPath sciezka do pliku
+		 * @return poprawnosc wykonanej operacji
+		 */
+		bool addFunction(const AnsiString &aPath, const AnsiString &name);
+		/**
+		 * funkcja umozliwiajaca pobranie obiektu opisujacego TypeDll znajac jego nazwe
+		 * @param type nazwa typu
+		 * @return wskaznik do obiektu TypeDll
+		 */	
+		TypeDLL* getTypeDLL(const AnsiString &type);
+		/**
+		 * funkcja umozliwiajaca pobranie obiektu opisujacego FunctionDLL znajac jego nazwe
+		 * @param name nazwa funkcji
+		 * @return wskaznik do obiektu FunctionDLL
+		 */
+		FunctionDLL* getFunctionDLL(const AnsiString &name);
 };
 
 #endif
