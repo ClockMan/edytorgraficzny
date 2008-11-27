@@ -19,7 +19,7 @@ BlockConfig::BlockConfig(TStream &stream)
    if (!loadFromStream(stream)) throw "B³êdny format";
 }
 
-void BlockConfig::copyFrom(const BlockConfig &kopia)
+void BlockConfig::copyFrom(BlockConfig &kopia)
 {
    for(unsigned int i=0;i<=kopia.map.size();++i)
 	{
@@ -65,7 +65,7 @@ void BlockConfig::copyFrom(const BlockConfig &kopia)
 	}
 }
 
-BlockConfig::BlockConfig(const BlockConfig &kopia)
+BlockConfig::BlockConfig(BlockConfig &kopia)
 {
    copyFrom(kopia);
 }

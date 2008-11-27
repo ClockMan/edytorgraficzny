@@ -6,7 +6,7 @@ BlockElement::BlockElement(const AnsiString aName)
    name=aName;
 }
 
-BlockElement::BlockElement(const BlockElement &block)
+BlockElement::BlockElement(BlockElement &block)
 {
    object=new TypeConfig(*(block.object));
    name=block.name;

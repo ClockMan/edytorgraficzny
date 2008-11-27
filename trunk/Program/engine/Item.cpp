@@ -36,7 +36,7 @@ Item::Item(const AnsiString aName, void* aObject, const AnsiString aType)
 	type=aType;
 }
 
-Item::Item(const Item &copy)
+Item::Item(Item &copy)
 {
 	name=copy.name;
 	pointer=copy.pointer;

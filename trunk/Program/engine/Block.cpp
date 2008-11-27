@@ -5,11 +5,10 @@ Block::Block()
 	config=new BlockConfig();
 }
 
-Block::Block(const Block &copy)
+Block::Block(Block &copy)
 {
 	config=new BlockConfig(*copy.config);
-	input=copy.input;
-	output=copy.output;
+	//@TODO do napisania kopiowanie listy wejsc i wyjsc
 }
 
 Block::~Block()
