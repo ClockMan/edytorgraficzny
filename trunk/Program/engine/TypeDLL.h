@@ -9,15 +9,16 @@ using namespace std;
 
 #include "TypeConfig.h"
 
+
+typedef TForm* ( *TypeDLL_show )(TComponent*, TypeConfig*);
+typedef bool ( *TypeDLL_isValid )(TypeConfig*);
+
 /**
 * Interfejs pozwalaj¹cy na ³¹dowanie i u¿ywanie biblioteki typu
 * @author Piotr
 * @date 2008.11.25
 * @version 0.1
 */
-typedef TForm* ( *TypeDLL_show )(TComponent*, TypeConfig*);
-typedef bool ( *TypeDLL_isValid )(TypeConfig*);
-
 class TypeDLL
 {
 		private:
@@ -32,7 +33,7 @@ class TypeDLL
 		* @param file sciezka do pliku
 		* @param stype
 		*/
-			TypeDLL(const AnsiString file, const AnsiString stype);
+			TypeDLL(const AnsiString &file, const AnsiString &stype);
 		/**
 		* Destruktor
 		*/
