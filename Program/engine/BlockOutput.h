@@ -5,43 +5,44 @@ using namespace std;
 
 #ifndef __BlockOutput_h__
 #define __BlockOutput_h__
+
 #include "BlockElement.h"
 /**
- * BlockInput - Klasa pojemnik przechowujaca wejscia i wyjscia bloku
- * @author Piotr
- * @date 2008.11.25
- * @version 0.1
- */
+* BlockInput - Klasa pojemnik przechowuj¹ca wejœcia i wyjscia bloku
+* @author Piotr
+* @date 2008.11.25
+* @version 0.1
+*/
 class BlockOutput: public BlockElement
 {
-	private:
-		AnsiString outputType;
-	public:
-		/**
-		 * Konstruktor
-		 * @param aName nazwa wyjscia.
-		 */
-		BlockOutput(const AnsiString aName);
-		/**
-		 * Konstruktor kopiujacy.
-		 * @param copy obiekt ktory zostanie skopiowany
-		 */
-		BlockOutput(BlockOutput &copy);
-		/**
-		 * Destruktor
-		 */
-		~BlockOutput();
-		/**
-		 * Zwraca typ wyjscia.
-		 * @return typ wyjscia
-		 */
-		AnsiString& getOutputType();
-		/**
-		 * Ustawia typ wyjscia.
-		 * @param aName typ wyjscia.
-		 * @return poprawnosc wykonanej operacji
-		 */
-		bool setOutputType(AnsiString aName);
+		private:
+				AnsiString outputType;
+		public:
+			/**
+			* Konstruktor
+			* @param aName nazwa wyjœcia.
+			*/
+				BlockOutput(const AnsiString aName);
+			/**
+			* Konstruktor kopiuj¹cy.
+			* @param copy obiekt który zostanie skopiowany
+			*/
+				BlockOutput(const BlockOutput &copy);
+			/**
+			* Destruktor
+			*/
+				~BlockOutput();
+			/**
+			* Zwraca typ wyjœcia.
+			* @return AnsiString typ wyjœcia
+			*/
+				AnsiString& getOutputType();
+			/**
+			* Ustawia typ wyjœcia.
+			* @param aName typ wyjœcia.
+			* @return poprawnoœæ wykonanej operacji
+			*/
+				bool setOutputType(AnsiString aName);
 };
 
 #endif
