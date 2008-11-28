@@ -409,6 +409,7 @@ bool BlockConfig::saveToStream2(TStream &aWhere)
 		 count=tmp->Size;
 		 aWhere.Write(&count,sizeof(unsigned long));
 		 aWhere.CopyFrom(tmp, 0);
+		 delete tmp;
 	   }
 	   else
 	   if (map[i]->getType()=="AnsiString") {
@@ -473,7 +474,7 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		  Item *it=new Item(*name, (void*)d, *typ);
 		  map.push_back(it);
 		  delete tmp;
-		  delete it;//bug
+		  //delete it; <- to nie bug, na liœcie przechowójemy wskaŸniki a nie obiekty, dlatego niemo¿na tego usun¹æ
 	   }
 	   else
 	   if ((*typ)=="TStream") {
@@ -483,8 +484,8 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		  if (siz!=0) tmp->CopyFrom(&aFrom, siz);
 		  Item *it=new Item(*name, (void*)tmp, *typ);
 		  map.push_back(it);
-		  delete tmp;//bug
-		  delete it;//bug
+		  //delete tmp; <- tego te¿ nie mo¿na usun¹æ, bo jest kopiowane jako wskaŸnik do itema
+		  //delete it; <- to nie bug, na liœcie przechowójemy wskaŸniki a nie obiekty, dlatego niemo¿na tego usun¹æ
 	   }
 	   else
 	   if ((*typ)=="AnsiString") {
@@ -497,8 +498,8 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		  Item *it=new Item(*name, (void*)na, *typ);
 		  map.push_back(it);
 		  delete yp1;
-		  delete na;//bug
-		  delete it;//bug
+		  //delete na; to samo co wy¿ej
+		  //delete it; to samo co wy¿ej
 	   }
 	   else
 	   if ((*typ)=="Boolean") {
@@ -506,8 +507,8 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		 aFrom.Read(tmp, sizeof(bool));
 		 Item *it=new Item(*name, (void*)tmp, *typ);
 		 map.push_back(it);
-		 delete tmp;
-		 delete it;//bug
+		 //delete tmp;
+		 //delete it;
 	   }
 	   else
 	   if ((*typ)=="Integer") {
@@ -515,7 +516,7 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		 aFrom.Read(tmp, sizeof(int));
 		 Item *it=new Item(*name, (void*)tmp, *typ);
 		 map.push_back(it);
-		 delete it;//bug
+		 //delete it;
 	   }
 	   else
 	   if ((*typ)=="Double") {
@@ -523,7 +524,7 @@ bool BlockConfig::loadFromStream2(TStream &aFrom)
 		 aFrom.Read(tmp, sizeof(double));
 		 Item *it=new Item(*name, (void*)tmp, *typ);
 		 map.push_back(it);
-		 delete it;//bug
+		 //delete it;
 	   }
 	   delete name;
 	   delete typ;
