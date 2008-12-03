@@ -10,7 +10,11 @@
 #include "VisualBlock.h"
 
 /**
- * Klasa ma wykonywaæ po³¹czenia najkrótsz¹ mo¿liw¹ drog¹.
+ * @author Piotr Zegar
+ * @date 2008.12.03
+ * @version 0.1
+ *
+ *  Klasa zajmuje siê generowaniem po³¹czeñ miedzy 2 blokami.
  */
 class Connection
 {
