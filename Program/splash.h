@@ -1,22 +1,22 @@
 //$$---- Form HDR ----
 //---------------------------------------------------------------------------
 
-#ifndef mainH
-#define mainH
+#ifndef splashH
+#define splashH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TForm2 : public TForm
 {
 __published:	// IDE-managed Components
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TForm2(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TForm2 *Form2;
 //---------------------------------------------------------------------------
 #endif

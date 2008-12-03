@@ -1,16 +1,14 @@
-#ifndef VisualBlockH
-#define VisualBlockH
+#ifndef RunDropH
+#define RunDropH
 #include <SysUtils.hpp>
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <ExtCtrls.hpp>
 
-class VisualBlock : public TPanel
+class RunDrop
 {
 private:
 protected:
 public:
-	__fastcall VisualBlock(TComponent* Owner);
-__published:
 };
 #endif

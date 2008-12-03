@@ -4,7 +4,7 @@
 #pragma package(smart_init)
 
 
-__fastcall TVisualBlock::TVisualBlock(TComponent* Owner)
+__fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	: TPanel(Owner)
 {
 }

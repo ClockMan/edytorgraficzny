@@ -6,5 +6,8 @@
     <Transaction>2008-11-26 12:27:46.675.dfm,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.dfm=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.dfm</Transaction>
     <Transaction>2008-11-26 12:29:30.051.bdsproj,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\PIWO.bdsproj</Transaction>
     <Transaction>2008-11-26 12:39:46.699.bdsproj,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\PIWO.bdsproj=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\PIWO.bdsproj</Transaction>
+    <Transaction>2008-12-03 16:13:22.250.cpp,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.cpp=D:\System\ClockMan\Pulpit\PIWO\Program\splash.cpp</Transaction>
+    <Transaction>2008-12-03 16:13:22.250.h,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.h=D:\System\ClockMan\Pulpit\PIWO\Program\splash.h</Transaction>
+    <Transaction>2008-12-03 16:13:22.250.dfm,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.dfm=D:\System\ClockMan\Pulpit\PIWO\Program\splash.dfm</Transaction>
   </Transactions>
 </BorlandProject>

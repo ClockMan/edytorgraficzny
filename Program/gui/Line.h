@@ -4,7 +4,7 @@
 #include <Classes.hpp>
 #include <Controls.hpp>
 
-class TLine : protected TWinControl
+class Line : protected TWinControl
 {
 	friend class Connection;
 	
@@ -14,7 +14,7 @@ class TLine : protected TWinControl
 		bool fvertical;
 		TPoint oldPos;
 	public:
-		__fastcall TLine(TWinControl* Owner, bool vertical);
+		__fastcall Line(TWinControl* Owner, bool vertical);
 	__published:
 		__property Width;
 		__property Height;
