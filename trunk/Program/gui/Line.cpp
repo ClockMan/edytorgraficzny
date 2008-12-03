@@ -9,5 +9,6 @@ __fastcall Line::Line(TWinControl* Owner, bool vertical) : TWinControl(Owner)
    fresized=false;
    Parent=Owner;
    fvertical=vertical;
+   ShowHint=true;
 }
 
