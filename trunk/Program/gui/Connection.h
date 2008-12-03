@@ -15,7 +15,7 @@
 class Connection
 {
 	 protected:
-		vector<TLine*> lines;
+		vector<Line*> lines;
 		TColor fonOverColor;
 		TColor fonOutColor;
 		TColor fonClickColor;
@@ -23,14 +23,14 @@ class Connection
 	 public:
 		BlockInput* input;
 		BlockOutput* output;
-		TVisualBlock* inBlock;
-		TVisualBlock* outBlock;
+		VisualBlock* inBlock;
+		VisualBlock* outBlock;
 
 		Connection(TWinControl* owner);
 		~Connection();
 
 		bool draw();
-		bool redraw(TLine* object);
+		bool redraw(Line* object);
 		
 
 };
