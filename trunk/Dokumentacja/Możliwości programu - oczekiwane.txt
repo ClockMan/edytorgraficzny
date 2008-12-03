@@ -1,0 +1,19 @@
+1.0 Stable:
++ dodawanie, usuwanie, przesuwanie, duplikowanie bloczków
++ konfiguracja bloczków
+- brak histori operacji na bloczkach
++ ³¹czenie dowolnych bloczków pod warunkiem ¿e niema powi¹zañ cyklicznych.
++ mo¿liwoœc pod³¹czenia tylko jednego typu danych na jedno wejœcie
++ ob³uga pluginów i typów nie wbudowanych
++ mo¿liwoœæ ustawiania podpowiedzi na bloczkach, po³¹czeniach
++ przesuanie po³¹czeñ, zmianna ich koloru zale¿na od typu danych jaki jest pod³¹czony
++ mo¿liwoœæ usuwania po³¹czeñ, bloczków
++ mo¿liwoœæ podgl¹dnieæia danych wchodz¹cych i wychodz¹cych z bloczków
+- brak obs³ugi pentl, warunków, chodŸ bêdzie to zaimplementowane graficznie to niebêdzie mia³o wsparcia.
++ zapisywanie ca³ych projektów ³¹cznie z danymi do pliku
++ wczytywanie ca³ych projektów z pliku
+- mo¿liwoœc prowadzenia 1 projektu na 1 kopi programu (w przysz³oœci mo¿liwe bêzie zaimplementowanie wiêkszej iloœci)
++ dynamiczn tworzone menu do wstawiania bloczków
++ przy dodawaniu bloczka automatycznie bêdzie wyœwietlana wpierw okno konfiguracji bloczka
++ panel logów, do logowania wszystkich komunikatów wyrzucanych przez program (np o nieprawid³owej prubie pod³¹czenia bloczka)
++ ³adowanie pluginów typów danych i bloczków przy uruchamianiu programu, w przypadku znaleŸienia b³êdnego pluginu zostanie on pominiêty.
