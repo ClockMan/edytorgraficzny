@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-12-07 15:58:10.575.cpp,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\reflection_dll.cpp</Transaction>
+    <Transaction>2008-12-07 15:58:14.441.bdsproj,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\reflection.bdsproj</Transaction>
+    <Transaction>2008-12-07 17:09:36.408.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\reflection.cpp</Transaction>
+    <Transaction>2008-12-07 17:09:36.408.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\reflection.h</Transaction>
+    <Transaction>2008-12-07 17:43:49.951.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\configWindow.cpp</Transaction>
+    <Transaction>2008-12-07 17:43:49.951.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\configWindow.h</Transaction>
+    <Transaction>2008-12-07 17:43:49.951.dfm,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\Unit1.dfm=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\reflection\configWindow.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
