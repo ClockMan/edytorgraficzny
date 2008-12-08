@@ -5,10 +5,10 @@
 
 __fastcall Line::Line(TWinControl* Owner, bool vertical) : TWinControl(Owner)
 {
-   fresize=false;
-   fresized=false;
+   Resize=false;
+   Resized=false;
    Parent=Owner;
-   fvertical=vertical;
+   Vertical=vertical;
    ShowHint=true;
 }
 
