@@ -156,7 +156,7 @@ bool BlockConfig::addBitmap(const AnsiString aName, const Graphics::TBitmap &aVa
 {
   if (isExist(aName)) return false;
   Graphics::TBitmap *d=new Graphics::TBitmap();
-  d->Assign(&aValue);
+  d->Assign(const_cast<Graphics::TBitmap*>(&aValue));
   Item *it=new Item(aName, (void*)d, "TBitmap");
   map.push_back(it);
   changed=true;
@@ -226,7 +226,7 @@ bool BlockConfig::setBitmap(const AnsiString aName, const Graphics::TBitmap &aVa
   Item *it=getItem(aName);
   if (it->getType()!="TBitmap") return false;
   Graphics::TBitmap *d=new Graphics::TBitmap();
-  d->Assign(&aValue);
+  d->Assign(const_cast<Graphics::TBitmap*>(&aValue));
   delete (Graphics::TBitmap*)(it->getObject());
   it->setObject((void*)d);
   changed=true;
