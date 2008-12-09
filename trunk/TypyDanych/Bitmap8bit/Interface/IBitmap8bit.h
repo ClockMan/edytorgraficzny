@@ -12,7 +12,7 @@ using namespace std;
 class IBitmap8bit
 {
 	public:
-			static Graphics::TBitmap* getBitmap(TypeConfig *type);
+			static const Graphics::TBitmap& getBitmap(TypeConfig *type);
 			static bool setBitmap(TypeConfig *type, Graphics::TBitmap &bitmap);
 			static TypeConfig* getNew();
 };

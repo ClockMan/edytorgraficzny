@@ -22,7 +22,7 @@ BlockConfig* Block::getConfig()
 	return config;
 }
 
-void Block::setConfig(BlockConfig &ob)
+void Block::setConfig(const BlockConfig &ob)
 {
 	delete config;
 	config=new BlockConfig(ob);

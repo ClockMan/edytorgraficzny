@@ -1,9 +1,9 @@
 #include "IBitmap32bit.h"
 
-Graphics::TBitmap* IBitmap32bit::getBitmap(TypeConfig *type)
+const Graphics::TBitmap& IBitmap32bit::getBitmap(TypeConfig *type)
 {
-   if (type->getName()!="Bitmap32bit") return NULL;
-   return &(type->getBitmap("bitmapa"));
+   if (type->getName()!="Bitmap32bit") throw "To nie jest Bitmap32bit";;
+   return (type->getBitmap("bitmapa"));
 }
 
 bool IBitmap32bit::setBitmap(TypeConfig *type, Graphics::TBitmap &bitmap)

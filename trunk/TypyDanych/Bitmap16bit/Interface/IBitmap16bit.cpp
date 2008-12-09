@@ -1,9 +1,9 @@
 #include "IBitmap16bit.h"
 
-Graphics::TBitmap* IBitmap16bit::getBitmap(TypeConfig *type)
+const Graphics::TBitmap& IBitmap16bit::getBitmap(TypeConfig *type)
 {
-   if (type->getName()!="Bitmap16bit") return NULL;
-   return &(type->getBitmap("bitmapa"));
+   if (type->getName()!="Bitmap16bit") throw "To nie jest Bitmap16bit";;
+   return (type->getBitmap("bitmapa"));
 }
 
 bool IBitmap16bit::setBitmap(TypeConfig *type, Graphics::TBitmap &bitmap)

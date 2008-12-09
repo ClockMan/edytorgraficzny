@@ -49,7 +49,7 @@ class Block
 		 * Ustawia wlasciwosci obiektu.
 		 * @param ob wlasciowsci obiektu.
 		 */
-		void setConfig(BlockConfig &ob);
+		void setConfig(const BlockConfig &ob);
 };
 
 #endif

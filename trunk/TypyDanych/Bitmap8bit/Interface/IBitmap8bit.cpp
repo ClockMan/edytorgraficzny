@@ -1,9 +1,9 @@
 #include "IBitmap8bit.h"
 
-Graphics::TBitmap* IBitmap8bit::getBitmap(TypeConfig *type)
+const Graphics::TBitmap& IBitmap8bit::getBitmap(TypeConfig *type)
 {
-   if (type->getName()!="Bitmap8bit") return NULL;
-   return &(type->getBitmap("bitmapa"));
+   if (type->getName()!="Bitmap8bit") throw "To nie jest Bitmap8bit";;
+   return (type->getBitmap("bitmapa"));
 }
 
 bool IBitmap8bit::setBitmap(TypeConfig *type, Graphics::TBitmap &bitmap)
