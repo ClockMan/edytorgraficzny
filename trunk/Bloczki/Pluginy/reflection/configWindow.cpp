@@ -17,30 +17,29 @@ __fastcall TcfgWindow::TcfgWindow(TComponent* Owner)
 void __fastcall TcfgWindow::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
-	delete cfg_;
-	cfg_ = 0;
 	Action = caFree;
 }
 //---------------------------------------------------------------------------
 void TcfgWindow::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
-	cfg_->addInt("mode",0);
+	
+	if(!cfg_->isInt("mode"));
+		cfg_->addInt("mode",0);
 }
 //---------------------------------------------------------------------------
-void __fastcall TcfgWindow::VerticallyClick(TObject *Sender)
+void __fastcall TcfgWindow::OKClick(TObject *Sender)
 {
-	cfg_->setInt("mode",0);
+	if(Vertically->Checked)
+		cfg_->setInt("mode",0);
+	else
+		cfg_->setInt("mode",1);
+
+	Close();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TcfgWindow::HorizontallyClick(TObject *Sender)
-{
-	cfg_->setInt("mode",1);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TcfgWindow::Button1Click(TObject *Sender)
+void __fastcall TcfgWindow::CancelClick(TObject *Sender)
 {
 	Close();
 }

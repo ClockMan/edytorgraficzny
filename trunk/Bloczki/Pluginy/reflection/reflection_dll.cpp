@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #include <windows.h>
@@ -51,16 +51,13 @@ bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 	cfgWindow->SetConfig(aBlock);
 
 	cfgWindow->ShowModal();
-	delete cfgWindow;
 	return true;
 }
 
 //---------------------------------------------------------------------------
 int __stdcall validate(Block *aBlock)
 {
-	//error code 0 - ok, 1 - warrning, 2- error (można użyć tylko w funkcji run)
-	//return code= 0 validate - bez zmian, 1 - zmiana wartości error, 2 - zmieniła sie liczba wejśc / wyjśc
-	if((aBlock->input.size() == 0)&&(aBlock->output.size() == 0))
+	if((aBlock->input.size() == 0) && (aBlock->output.size() == 0))
 	{
 		BlockInput input1("input1");
 		input1.allowedTypes.push_back("Bitmap1bit");
@@ -73,8 +70,7 @@ int __stdcall validate(Block *aBlock)
 		input1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejściu");
 		aBlock->input.push_back(input1);
-		
-		
+
 		BlockOutput output1("output1");
 		output1.setOutputType("Bitmap24bit");
 		output1.setDescription("Domyślne wyjście");
@@ -97,7 +93,7 @@ int __stdcall validate(Block *aBlock)
 		} 
 		else
 		{
-			if (aBlock->output[0].getOutputType()!=aBlock->input[0].getConnectedType())
+			if (aBlock->output[0].getOutputType()!= aBlock->input[0].getConnectedType())
 			{
 				aBlock->output[0].setOutputType(aBlock->input[0].getConnectedType());
 				aBlock->input[0].setErrorCode(0);
@@ -109,39 +105,58 @@ int __stdcall validate(Block *aBlock)
 		}
 	}
 	
-			aBlock->input[0].setErrorCode(0);
-			aBlock->output[0].setErrorCode(0);
-			aBlock->input[0].setErrorDescription("");
-			aBlock->output[0].setErrorDescription("");
+	aBlock->input[0].setErrorCode(0);
+	aBlock->output[0].setErrorCode(0);
+	aBlock->input[0].setErrorDescription("");
+	aBlock->output[0].setErrorDescription("");
+
 	return 0;
 }
 //---------------------------------------------------------------------------
 int __stdcall run(Block *aBlock)
 {
-	//return code: 0 - wykonalo sie, 1 - brak potrzebnych danych, 2 - error
-	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty()) return 1;
+	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
+		return 1;
 
-	Graphics::TBitmap* picture;
+	Graphics::TBitmap* picture = new Graphics::TBitmap();
 
 	if(aBlock->input[0].getConnectedType() == "Bitmap1bit")
-		picture = IBitmap1bit::getBitmap(aBlock->input[0].getObject());
-	else 	if(aBlock->input[0].getConnectedType() == "Bitmap4bit")
-		picture = IBitmap4bit::getBitmap(aBlock->input[0].getObject());
-	else 	if(aBlock->input[0].getConnectedType() == "Bitmap8bit")
-		picture = IBitmap8bit::getBitmap(aBlock->input[0].getObject());
-	else 	if(aBlock->input[0].getConnectedType() == "Bitmap16bit")
-		picture = IBitmap16bit::getBitmap(aBlock->input[0].getObject());
-	else 	if(aBlock->input[0].getConnectedType() == "Bitmap24bit")
-		picture = IBitmap24bit::getBitmap(aBlock->input[0].getObject());
-	else 	if(aBlock->input[0].getConnectedType() == "Bitmap32bit")
-		picture = IBitmap32bit::getBitmap(aBlock->input[0].getObject());
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap1bit::getBitmap(aBlock->input[0].getObject()))));
 
-	int mode = aBlock->getConfig()->getInt("mode");		
+	else 	if(aBlock->input[0].getConnectedType() == "Bitmap4bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap4bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else 	if(aBlock->input[0].getConnectedType() == "Bitmap8bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else 	if(aBlock->input[0].getConnectedType() == "Bitmap16bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else 	if(aBlock->input[0].getConnectedType() == "Bitmap24bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else 	if(aBlock->input[0].getConnectedType() == "Bitmap32bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
+
+
+	int mode = aBlock->getConfig()->getInt("mode");
 
 	if(mode == 0)
-		if(!ReflectionVertically(picture)) { aBlock->output[0].setErrorCode(2);	aBlock->output[0].setErrorDescription("sdsd"); return 2;}
+		if(!ReflectionVertically(picture))
+		{
+			aBlock->output[0].setErrorCode(2);
+			aBlock->output[0].setErrorDescription("Pusta bitmapa");
+			delete picture;
+			return 2;
+		}
 	else
-		if(!ReflectionHorizontally(picture)) { aBlock->output[0].setErrorCode(2);	aBlock->output[0].setErrorDescription("sdsd"); return 2;}
+		if(!ReflectionHorizontally(picture))
+		{
+			aBlock->output[0].setErrorCode(2);
+			aBlock->output[0].setErrorDescription("Pusta bitmapa");
+			delete picture;
+			return 2;
+		}
 
 	TypeConfig* copy;
 
@@ -177,6 +192,7 @@ int __stdcall run(Block *aBlock)
 	}
 
 	aBlock->output[0].setObject(*copy);
+	delete picture;
 
 	return 0;
 }
