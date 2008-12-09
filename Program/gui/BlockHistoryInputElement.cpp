@@ -9,7 +9,7 @@ BlockHistoryInputElement::BlockHistoryInputElement()
 	data=NULL;
 }
 
-BlockHistoryInputElement::BlockHistoryInputElement()
+BlockHistoryInputElement::~BlockHistoryInputElement()
 { 
 	if (data!=NULL) delete data;
 }

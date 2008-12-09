@@ -10,12 +10,12 @@ class BlockHistoryInputElement
 	TypeConfig* data;
      public:
 	BlockInput* input;
-	
+
+	void setData(TypeConfig &d);
+	TypeConfig* getData();
+
 	BlockHistoryInputElement();
 	~BlockHistoryInputElement();
-
-	void setData(TYpeConfig &d);
-	TypeConfig* getData();
 };
 
 

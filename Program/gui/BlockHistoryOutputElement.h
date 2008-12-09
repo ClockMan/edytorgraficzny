@@ -10,7 +10,10 @@ class BlockHistoryOutputElement
 	TypeConfig* data;
      public:
 	BlockOutput* output;
-	
+
+	void setData(TypeConfig &d);
+	TypeConfig* getData();
+
 	BlockHistoryOutputElement();
 	~BlockHistoryOutputElement();
 };
