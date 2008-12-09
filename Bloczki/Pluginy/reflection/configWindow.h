@@ -16,11 +16,11 @@ __published:	// IDE-managed Components
 	TGroupBox *GroupBox1;
 	TRadioButton *Vertically;
 	TRadioButton *Horizontally;
-	TButton *Button1;
+	TButton *OK;
+	TButton *Cancel;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall VerticallyClick(TObject *Sender);
-	void __fastcall HorizontallyClick(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall OKClick(TObject *Sender);
+	void __fastcall CancelClick(TObject *Sender);
 private:	// User declarations
 	BlockConfig* cfg_;
 public:		// User declarations

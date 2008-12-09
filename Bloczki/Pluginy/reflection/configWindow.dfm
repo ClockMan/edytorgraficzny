@@ -43,7 +43,6 @@ object cfgWindow: TcfgWindow
       ParentFont = False
       TabOrder = 0
       TabStop = True
-      OnClick = VerticallyClick
     end
     object Horizontally: TRadioButton
       Left = 16
@@ -58,16 +57,24 @@ object cfgWindow: TcfgWindow
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      OnClick = HorizontallyClick
     end
   end
-  object Button1: TButton
-    Left = 62
+  object OK: TButton
+    Left = 23
     Top = 119
     Width = 75
     Height = 25
     Caption = 'OK'
     TabOrder = 1
-    OnClick = Button1Click
+    OnClick = OKClick
+  end
+  object Cancel: TButton
+    Left = 104
+    Top = 119
+    Width = 75
+    Height = 25
+    Caption = 'Anuluj'
+    TabOrder = 2
+    OnClick = CancelClick
   end
 end
