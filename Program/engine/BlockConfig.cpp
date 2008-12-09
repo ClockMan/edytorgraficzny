@@ -151,7 +151,7 @@ bool BlockConfig::addDouble(const AnsiString aName, double aValue)
   return true;
 }
 
-bool BlockConfig::addBitmap(const AnsiString aName, Graphics::TBitmap &aValue)
+bool BlockConfig::addBitmap(const AnsiString aName, const Graphics::TBitmap &aValue)
 {
   if (isExist(aName)) return false;
   Graphics::TBitmap *d=new Graphics::TBitmap(aValue);
@@ -219,7 +219,7 @@ bool BlockConfig::setDouble(const AnsiString aName, double aValue)
   return true;
 }
 
-bool BlockConfig::setBitmap(const AnsiString aName, Graphics::TBitmap &aValue)
+bool BlockConfig::setBitmap(const AnsiString aName, const Graphics::TBitmap &aValue)
 {
   Item *it=getItem(aName);
   if (it->getType()!="TBitmap") return false;
@@ -242,7 +242,7 @@ bool BlockConfig::setStream(const AnsiString aName, TStream &aValue)
   return true;
 }
 
-AnsiString& BlockConfig::getString(const AnsiString aName)
+const AnsiString& BlockConfig::getString(const AnsiString aName)
 {
   Item *it=getItem(aName);
   if (it->getType()!="AnsiString") throw "Otrzymano b³êdny typ danych";
@@ -270,14 +270,14 @@ double BlockConfig::getDouble(const AnsiString aName)
   return *((double*)(it->getObject()));
 }
 
-Graphics::TBitmap& BlockConfig::getBitmap(const AnsiString aName)
+const Graphics::TBitmap& BlockConfig::getBitmap(const AnsiString aName)
 {
   Item *it=getItem(aName);
   if (it->getType()!="TBitmap") throw "Otrzymano b³êdny typ danych";
   return *((Graphics::TBitmap*)(it->getObject()));
 }
 
-TStream& BlockConfig::getStream(const AnsiString aName)
+const TStream& BlockConfig::getStream(const AnsiString aName)
 {
   Item *it=getItem(aName);
   if (it->getType()!="TStream") throw "Otrzymano b³êdny typ danych";
@@ -314,7 +314,7 @@ bool BlockConfig::isStream(const AnsiString aName)
   return getItem(aName)->getType()=="TStream";
 }
 
-AnsiString& BlockConfig::getType(const AnsiString aName)
+const AnsiString& BlockConfig::getType(const AnsiString aName)
 {
   return getItem(aName)->getType();
 }

@@ -1,9 +1,9 @@
 #include "IBitmap1bit.h"
 
-Graphics::TBitmap* IBitmap1bit::getBitmap(TypeConfig *type)
+const Graphics::TBitmap& IBitmap1bit::getBitmap(TypeConfig *type)
 {
-   if (type->getName()!="Bitmap1bit") return NULL;
-   return &(type->getBitmap("bitmapa"));
+   if (type->getName()!="Bitmap1bit") throw "To nie jest Bitmap1bit";
+   return type->getBitmap("bitmapa");
 }
 
 bool IBitmap1bit::setBitmap(TypeConfig *type, Graphics::TBitmap &bitmap)

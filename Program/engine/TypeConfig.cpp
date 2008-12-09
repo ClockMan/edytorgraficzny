@@ -60,7 +60,7 @@ bool TypeConfig::loadFromStream(TStream &aFrom)
    return loadFromStream2(aFrom);
 }
 
-AnsiString& TypeConfig::getName()
+const AnsiString& TypeConfig::getName()
 {
    return nazwa;
 }

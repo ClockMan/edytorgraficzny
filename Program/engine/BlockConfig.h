@@ -75,7 +75,7 @@ class BlockConfig
 		 * @param aValue dane jakie maja zostac wrzucone na liste
 		 * @return zwraca true jesli obiekt zostal dodany
 		 */
-		bool addBitmap(const AnsiString aName, Graphics::TBitmap &aValue);
+		bool addBitmap(const AnsiString aName, const Graphics::TBitmap &aValue);
 		/**
 		 * Dodaje obiekt typu TStream (aTyp) na listê pod nazwa aName.
 		 * @param aName nazwa pod jaka obiekt ma widniesc na liœcie
@@ -117,7 +117,7 @@ class BlockConfig
 		 * @param aValue dane jakie maja zostac wrzucone na liste
 		 * @return zwraca true jesli obiekt zostal dodany
 		 */
-		bool setBitmap(const AnsiString aName, Graphics::TBitmap &aValue);
+		bool setBitmap(const AnsiString aName, const Graphics::TBitmap &aValue);
 		/**
 		 * Zmienia obiekt typu TStream (aTyp) na liscie pod nazwa aName.
 		 * @param aName nazwa pod jaka obiekt ma widniesc na liœcie
@@ -130,7 +130,7 @@ class BlockConfig
 		 * @param aName nazwa obiektu
 		 * @return wartosc danego obiektu
 		 */
-		AnsiString& getString(const AnsiString aName);
+		const AnsiString& getString(const AnsiString aName);
 		/**
 		 * Pobiera obiekt typu boolean (aTyp) z listy pod nazwa aName.
 		 * @param aName nazwa obiektu
@@ -154,13 +154,13 @@ class BlockConfig
 		 * @param aName nazwa obiektu
 		 * @return wartosc danego obiektu
 		 */
-		Graphics::TBitmap& getBitmap(const AnsiString aName);
+		const Graphics::TBitmap& getBitmap(const AnsiString aName);
 		/**
 		 * Pobiera obiekt typu Stream (aTyp) z listy pod nazwa aName.
 		 * @param aName nazwa obiektu
 		 * @return wartosc danego obiektu
 		 */
-		TStream& getStream(const AnsiString aName);
+		const TStream& getStream(const AnsiString aName);
 		/**
 		 * Sprawdza czy obiekt pod nazwa aName jest typu String.
 		 * @param aName nazwa obiektu
@@ -202,7 +202,7 @@ class BlockConfig
 		 * @param aName nazwa obiektu
 		 * @return string okreslajacy typ.
 		 */
-		AnsiString& getType(const AnsiString aName);
+		const AnsiString& getType(const AnsiString aName);
 		/**
 		 * Sprawdza czy obiekt pod nazwa aName istnieje.
 		 * @param aName nazwa obiektu

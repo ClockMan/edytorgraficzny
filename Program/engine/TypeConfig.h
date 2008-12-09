@@ -53,7 +53,7 @@ class TypeConfig: public BlockConfig
 		 * Pobiera nazwe.
 		 * @return nazwa obiektu.
 		 */
-		AnsiString& getName();
+		const AnsiString& getName();
 };
 
 #endif

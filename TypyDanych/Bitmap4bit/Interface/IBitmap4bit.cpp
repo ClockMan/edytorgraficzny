@@ -1,9 +1,9 @@
 #include "IBitmap4bit.h"
 
-Graphics::TBitmap* IBitmap4bit::getBitmap(TypeConfig *type)
+const Graphics::TBitmap& IBitmap4bit::getBitmap(TypeConfig *type)
 {
-   if (type->getName()!="Bitmap4bit") return NULL;
-   return &(type->getBitmap("bitmapa"));
+   if (type->getName()!="Bitmap4bit") throw "To nie jest Bitmap4bit";;
+   return (type->getBitmap("bitmapa"));
 }
 
 bool IBitmap4bit::setBitmap(TypeConfig *type, Graphics::TBitmap &bitmap)
