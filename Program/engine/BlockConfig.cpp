@@ -24,7 +24,8 @@ void BlockConfig::copyFrom(const BlockConfig &kopia)
    for(unsigned int i=0;i<kopia.map.size();++i)
 	{
 	   if (kopia.map[i]->getType()=="TBitmap") {
-		  Graphics::TBitmap *d=new Graphics::TBitmap(*((Graphics::TBitmap*)kopia.map[i]->getObject()));
+		  Graphics::TBitmap *d=new Graphics::TBitmap();
+		  d->Assign((Graphics::TBitmap*)kopia.map[i]->getObject());
 		  Item *it=new Item(kopia.map[i]->getName(), (void*)d, kopia.map[i]->getType());
 		  map.push_back(it);
 	   }
@@ -154,7 +155,8 @@ bool BlockConfig::addDouble(const AnsiString aName, double aValue)
 bool BlockConfig::addBitmap(const AnsiString aName, const Graphics::TBitmap &aValue)
 {
   if (isExist(aName)) return false;
-  Graphics::TBitmap *d=new Graphics::TBitmap(aValue);
+  Graphics::TBitmap *d=new Graphics::TBitmap();
+  d->Assign(&aValue);
   Item *it=new Item(aName, (void*)d, "TBitmap");
   map.push_back(it);
   changed=true;
@@ -223,7 +225,8 @@ bool BlockConfig::setBitmap(const AnsiString aName, const Graphics::TBitmap &aVa
 {
   Item *it=getItem(aName);
   if (it->getType()!="TBitmap") return false;
-  Graphics::TBitmap *d=new Graphics::TBitmap(aValue);
+  Graphics::TBitmap *d=new Graphics::TBitmap();
+  d->Assign(&aValue);
   delete (Graphics::TBitmap*)(it->getObject());
   it->setObject((void*)d);
   changed=true;
