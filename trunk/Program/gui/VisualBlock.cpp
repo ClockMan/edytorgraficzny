@@ -11,6 +11,9 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	BevelWidth = 2;
 	Width=80;
 	Height=60;
+	selected=false;
+	moving=false;
+
 
 	configButton=new TSpeedButton(this);
 	configButton->Parent=this;
@@ -41,6 +44,10 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	OnVisualOutputSelected=NULL;
 	OnVInputHistory=NULL;
 	OnVOutputHistory=NULL;
+	OnBlockMove=NULL;
+	OnUnselect=NULL;
+	OnSelect=NULL;
+	OnSelectAdd=NULL;
 }
 
 __fastcall VisualBlock::~VisualBlock()
@@ -156,7 +163,7 @@ void __fastcall VisualBlock::SpeedButtonClick(TObject *Sender)
    }
 }
 
-bool VisualBlock::setConfigButtonGlyph(AnsiString file)
+bool VisualBlock::setConfigButtonGlyph(AnsiString &file)
 {
    if (!FileExists(file)) return false;
    Graphics::TBitmap* bmp=new Graphics::TBitmap();
@@ -305,7 +312,62 @@ bool VisualBlock::updateVisualComponents()
 	 }
      rightOutputTmp.push_back(tmp);
    }
-   //@TODO - sprawdzanie histori i czyszczenie jej
+
+   while(leftInput.size()>0)
+   {
+	 delete leftInput[0];
+	 leftInput.erase(leftInput.begin());
+   }
+   while(rightOutput.size()>0)
+   {
+	 delete rightOutput[0];
+	 rightOutput.erase(rightOutput.begin());
+   }
+
+   leftInput=leftInputTmp;
+   rightOutput=rightOutputTmp;
+
+   //historia
+   for(i=0;i<history.size();++i)
+   {
+	 if ((history[i]->leftInput.size()!=leftInput.size())||
+		(history[i]->rightOutput.size()!=rightOutput.size())||
+		(history[i]->topInput.size()!=topInput.size())||
+		(history[i]->bottomOutput.size()!=bottomOutput.size()))
+	 {
+	   delete history[i];
+	   history.erase(history.begin()+i);
+	   i--;
+	   continue;
+	 }
+	 else
+	 {
+		 unsigned int j;
+		 bool end=false;
+		 for(j=0;((j<leftInput.size())&&(!end));--j)
+			if ((history[i]->leftInput[j]->input!=leftInput[j]->input)&&
+			   (history[i]->leftInput[j]->getData()->getName()!=leftInput[j]->input->getConnectedType()))
+				end=true;
+		 for(j=0;((j<topInput.size())&&(!end));--j)
+			if ((history[i]->topInput[j]->input!=topInput[j]->input)&&
+			   (history[i]->topInput[j]->getData()->getName()!=topInput[j]->input->getConnectedType()))
+				end=true;
+		 for(j=0;((j<rightOutput.size())&&(!end));--j)
+			if ((history[i]->rightOutput[j]->output!=rightOutput[j]->output)&&
+			   (history[i]->rightOutput[j]->getData()->getName()!=rightOutput[j]->output->getOutputType()))
+				end=true;
+		 for(j=0;((j<bottomOutput.size())&&(!end));--j)
+			if ((history[i]->bottomOutput[j]->output!=bottomOutput[j]->output)&&
+			   (history[i]->bottomOutput[j]->getData()->getName()!=bottomOutput[j]->output->getOutputType()))
+				end=true;
+		 if (end) {
+			delete history[i];
+			history.erase(history.begin()+i);
+			i--;
+			continue;
+		 }
+	 }
+   }
    resizeAll();
    return ret;
 }
