@@ -193,6 +193,7 @@ int __stdcall run(Block *aBlock)
 
 	aBlock->output[0].setObject(*copy);
 	delete picture;
+	delete copy; //wyżej obiekt copy jest kopiowany jako wyjście i ta kopia co tu przechowujesz nie jest już potrzebna.
 
 	return 0;
 }
