@@ -578,7 +578,7 @@ void __fastcall VisualBlock::BlockMouseMove(TObject *Sender, TShiftState Shift, 
 	if (button) {
 	   //przenoszenie all
 	   if (OnBlockMove!=NULL)
-				OnBlockMove(this, true,cl.x-oldPoint.x,cl.y-oldPoint.y);
+				OnBlockMove(this, true ,cl.x-oldPoint.x,cl.y-oldPoint.y);
 	}
 	else
 	{
