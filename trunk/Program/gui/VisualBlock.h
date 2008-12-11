@@ -17,12 +17,12 @@ struct Position {
    char direction; //0 - Left, 1 - Top, 2 - Right, 3 - Bottom, 4 - nie znaleüiono
 };
 
-
-typedef bool ( *VisualBlock_FunctionI )(VisualInput*,  TObject*);
-typedef bool ( *VisualBlock_FunctionO )(VisualOutput*, TObject*);
-typedef bool ( *VisualBlock_FunctionHI )(VisualInput*, vector<BlockHistory*>*);
-typedef bool ( *VisualBlock_FunctionHO )(VisualOutput*, vector<BlockHistory*>*);
-typedef bool ( *VisualBlock_FunctionMove )(TObject*, int, int);
+typedef vector<BlockHistory*> vectorBlockHistory;
+typedef bool (__closure *VisualBlock_FunctionI )(VisualInput*,  TObject*);
+typedef bool (__closure *VisualBlock_FunctionO )(VisualOutput*, TObject*);
+typedef bool (__closure *VisualBlock_FunctionHI )(VisualInput*, vectorBlockHistory*);
+typedef bool (__closure *VisualBlock_FunctionHO )(VisualOutput*, vectorBlockHistory*);
+typedef bool (__closure *VisualBlock_FunctionMove )(TObject*, int, int);
 
 class VisualBlock : public TPanel
 {
@@ -34,27 +34,27 @@ class VisualBlock : public TPanel
 		vector<VisualInput*> topInput;
 		vector<VisualOutput*> rightOutput;
 		vector<VisualOutput*> bottomOutput;
-		vector<BlockHistory*> history;
+		vectorBlockHistory history;
 		bool selected;
 		bool moving;
 		TPoint oldPoint;
 		void __fastcall SpeedButtonClick(TObject *Sender);
 		void __fastcall InputSelected(TObject *Sender);
 		void __fastcall OutputSelected(TObject *Sender);
-		void __fastcall InputShowHistory(TObject *Sender);
-		void __fastcall OutputShowHistory(TObject *Sender);
+		void InputShowHistory(TObject *Sender);
+		void OutputShowHistory(TObject *Sender);
 		
 		void resizeAll();
 	public:
-		Classes::TNotifyEvent OnConfigClick;
+		VisualFunction OnConfigClick;
 		VisualBlock_FunctionI OnVisualInputSelected;
 		VisualBlock_FunctionO OnVisualOutputSelected;
 		VisualBlock_FunctionHI OnVInputHistory;
 		VisualBlock_FunctionHO OnVOutputHistory;
 		VisualBlock_FunctionMove OnBlockMove;
-		Classes::TNotifyEvent OnUnselect;
-		Classes::TNotifyEvent OnSelect;
-		Classes::TNotifyEvent OnSelectAdd;
+		VisualFunction OnUnselect;
+		VisualFunction OnSelect;
+		VisualFunction OnSelectAdd;
 
 		__fastcall VisualBlock(TComponent* Owner);
 		__fastcall ~VisualBlock();

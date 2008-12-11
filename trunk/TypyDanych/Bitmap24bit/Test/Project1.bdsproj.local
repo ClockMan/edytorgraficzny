@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2008-11-26 12:35:58.390.cpp,D:\system\ClockMan\Moje dokumenty\Borland Studio Projects\Unit1.cpp=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\Test\Unit1.cpp</Transaction>
-    <Transaction>2008-11-26 12:35:58.390.h,D:\system\ClockMan\Moje dokumenty\Borland Studio Projects\Unit1.h=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\Test\Unit1.h</Transaction>
-    <Transaction>2008-11-26 12:35:58.390.dfm,D:\system\ClockMan\Moje dokumenty\Borland Studio Projects\Unit1.dfm=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\Test\Unit1.dfm</Transaction>
-    <Transaction>2008-11-26 12:35:59.203.bdsproj,D:\system\ClockMan\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\Test\Project1.bdsproj</Transaction>
-  </Transactions>
-</BorlandProject>
