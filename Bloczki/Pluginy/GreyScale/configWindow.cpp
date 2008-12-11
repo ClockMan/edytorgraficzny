@@ -14,10 +14,15 @@ __fastcall TcfgWindow::TcfgWindow(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
+void __fastcall TcfgWindow::CancelClick(TObject *Sender)
+{
+	Close();	
+}
+//---------------------------------------------------------------------------
 void __fastcall TcfgWindow::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
-	Action = caFree;
+	Action = caFree;	
 }
 //---------------------------------------------------------------------------
 void __fastcall TcfgWindow::SetConfig(Block* block)
@@ -28,14 +33,21 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 		cfg_->addInt("mode",0);
 	else
 		if(cfg_->getInt("mode") == 0)
-			Vertically->Checked = true;
+			GreyScale->Checked = true;
 		else
-    	Horizontally->Checked = true;
+			GreyBalance->Checked = true;
+
+	if(!cfg_->isInt("limit"))
+		cfg_->addInt("limit",2);
+	else
+	{
+		TrackLimit->Position = cfg_->getInt("limit");
+		EditLimit->Text = IntToStr(cfg_->getInt("limit"));
+	}
 }
-//---------------------------------------------------------------------------
 void __fastcall TcfgWindow::OKClick(TObject *Sender)
 {
-	if(Vertically->Checked)
+	if(GreyScale->Checked)
 		cfg_->setInt("mode",0);
 	else
 		cfg_->setInt("mode",1);
@@ -43,9 +55,18 @@ void __fastcall TcfgWindow::OKClick(TObject *Sender)
 	Close();
 }
 //---------------------------------------------------------------------------
-void __fastcall TcfgWindow::CancelClick(TObject *Sender)
+void __fastcall TcfgWindow::TrackLimitChange(TObject *Sender)
 {
-	Close();
+	EditLimit->Text = IntToStr(TrackLimit->Position);
+	cfg_->setInt("limit",TrackLimit->Position);
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TcfgWindow::EditLimitChange(TObject *Sender)
+{
+	int limit = EditLimit->Text.ToIntDef(2);
+	if(limit < 2 || limit > 50) limit = 2;
+	
+	TrackLimit->Position = limit;
+	cfg_->setInt("limit",EditLimit->Text.ToIntDef(2));
+}
+//---------------------------------------------------------------------------

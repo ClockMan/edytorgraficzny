@@ -13,29 +13,32 @@
 bool ReflectionHorizontally(Graphics::TBitmap* picture)
 {
 	if(picture->Empty) return false;
+	
 	picture->PixelFormat = pf32bit;
 
 	for(int i(0); i < picture->Height; ++i)
 	{
-		int *Line = (int*) picture->ScanLine[i];
+		int *line = reinterpret_cast<int*>(picture->ScanLine[i]);
 
 		for(int j = 0; j <= ((picture->Width & (-2)) - 1) / 2; ++j)
 		{
-			int temp = Line[j];
-			Line[j] = Line[picture->Width - j - 1];
-			Line[picture->Width - j - 1] = temp;
+			int temp = line[j];
+			line[j] = line[picture->Width - j - 1];
+			line[picture->Width - j - 1] = temp;
 		}
 	}
+	
 	return true;
 }
 
 bool ReflectionVertically(Graphics::TBitmap* picture)
 {
 	if(picture->Empty) return false;
+	
 	picture->PixelFormat = pf32bit;
 
 	int idx = picture->Width * 4;
-	void *Buffer = new int[idx];
+	void* Buffer = new int[idx];
 
 	for(int i(0); i <= ((picture->Height & (-2)) - 1) / 2; ++i)
 	{
@@ -43,6 +46,7 @@ bool ReflectionVertically(Graphics::TBitmap* picture)
 		Move(picture->ScanLine[picture->Height - i - 1], picture->ScanLine[i], idx);
 		Move(Buffer, picture->ScanLine[picture->Height - i - 1], idx);
 	}
+	
 	delete []Buffer;
 	return true;
 }
