@@ -13,7 +13,13 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	Height=60;
 	selected=false;
 	moving=false;
+	BevelOuter=bvRaised;
+	BevelInner=bvNone;
 
+	OnClick=BlockClick;
+	OnMouseUp=BlockMouseUp;
+	OnMouseDown=BlockMouseDown;
+	OnMouseMove=BlockMouseMove;
 
 	configButton=new TSpeedButton(this);
 	configButton->Parent=this;
@@ -39,6 +45,10 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	title->AutoSize=false;
 	title->Height=13;
 	title->Alignment=taCenter;
+	title->OnClick=BlockClick;
+	title->OnMouseUp=BlockMouseUp;
+	title->OnMouseDown=BlockMouseDown;
+	title->OnMouseMove=BlockMouseMove;
 
 	OnVisualInputSelected=NULL;
 	OnVisualOutputSelected=NULL;
@@ -470,4 +480,125 @@ void VisualBlock::OutputShowHistory(TObject *Sender)
 {
 	if (OnVOutputHistory==NULL) return;
 		OnVOutputHistory((VisualOutput*)Sender, &history);
+}
+
+void VisualBlock::setSelected(bool status)
+{
+  if (status) {
+	 selected=true;
+	 BevelInner=bvLowered;
+  }
+  else
+  {
+	BevelInner=bvNone;
+	selected=false;
+  }
+}
+
+bool VisualBlock::isSelected()
+{
+    return selected;
+}
+
+void __fastcall VisualBlock::BlockClick(TObject *Sender)
+{
+	if (!moving)
+	{
+	  if (ctrlDown()&&!altDown())
+	  {
+		 if (selected)
+		 {
+			if (OnUnselect!=NULL) OnUnselect(this);
+			setSelected(false);
+		 }
+		 else
+		 {
+			if (OnSelectAdd!=NULL) OnSelectAdd(this);
+			setSelected(true);
+		 }
+	  }
+	  else
+	  {
+		  if (OnSelect!=NULL) OnSelect(this);
+		  setSelected(true);
+	  }
+	}
+}
+
+void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+   //przesówanie aktywuje: prawy przycisk myszy, lewy przycisk myszy z shiftem, prawy przycisk myszy pozawala na przesówanie jednego obiektu bez zaznaczania
+   if ((Button==mbLeft)&&(Shift.Contains(ssShift)))
+   {
+		if(!selected)
+		{
+			if (Shift.Contains(ssCtrl)&&!Shift.Contains(ssAlt))
+			{
+				if (OnSelectAdd!=NULL) OnSelectAdd(this);
+				setSelected(true);
+			}
+			else
+			{
+				if (OnSelect!=NULL) OnSelect(this);
+				setSelected(true);
+			}
+		}
+		else
+		{
+			if (!(Shift.Contains(ssCtrl)&&!Shift.Contains(ssAlt)))
+				  OnSelect(this);
+		}
+
+	   GetCursorPos(&oldPoint);
+	   moving=true;
+	   button=true;
+   }
+   else
+   if (Button==mbRight)
+   {
+	   GetCursorPos(&oldPoint);
+	   moving=true;
+	   button=false;
+   }
+}
+
+void __fastcall VisualBlock::BlockMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+   moving=false;
+}
+
+void __fastcall VisualBlock::BlockMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
+{
+	if (!moving) return;
+	TPoint cl;
+	GetCursorPos(&cl);
+	this->Left=this->Left+cl.x-oldPoint.x;
+	this->Top=this->Top+cl.y-oldPoint.y;
+
+	if (button) {
+	   //przenoszenie all
+	   if (OnBlockMove!=NULL)
+				OnBlockMove(this, true,cl.x-oldPoint.x,cl.y-oldPoint.y);
+	}
+	else
+	{
+	   //przenoszenie all
+	   if (OnBlockMove!=NULL)
+				OnBlockMove(this, (Shift.Contains(ssCtrl)&&!Shift.Contains(ssAlt)) ,cl.x-oldPoint.x,cl.y-oldPoint.y);
+	}
+	oldPoint=cl;
+}
+
+bool ctrlDown()
+{
+  TKeyboardState State;
+  GetKeyboardState(State);
+  return (State[VK_CONTROL]&128);
+}
+
+bool altDown()
+{
+  TKeyboardState State;
+  GetKeyboardState(State);
+  return (State[VK_MENU]&128);
 }

@@ -22,7 +22,7 @@ typedef bool (__closure *VisualBlock_FunctionI )(VisualInput*,  TObject*);
 typedef bool (__closure *VisualBlock_FunctionO )(VisualOutput*, TObject*);
 typedef bool (__closure *VisualBlock_FunctionHI )(VisualInput*, vectorBlockHistory*);
 typedef bool (__closure *VisualBlock_FunctionHO )(VisualOutput*, vectorBlockHistory*);
-typedef bool (__closure *VisualBlock_FunctionMove )(TObject*, int, int);
+typedef bool (__closure *VisualBlock_FunctionMove )(TObject*, bool, int, int);
 
 class VisualBlock : public TPanel
 {
@@ -37,13 +37,17 @@ class VisualBlock : public TPanel
 		vectorBlockHistory history;
 		bool selected;
 		bool moving;
+		bool button;
 		TPoint oldPoint;
 		void __fastcall SpeedButtonClick(TObject *Sender);
 		void __fastcall InputSelected(TObject *Sender);
 		void __fastcall OutputSelected(TObject *Sender);
 		void InputShowHistory(TObject *Sender);
 		void OutputShowHistory(TObject *Sender);
-		
+		void __fastcall BlockClick(TObject *Sender);
+		void __fastcall BlockMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
+		void __fastcall BlockMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
+		void __fastcall BlockMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 		void resizeAll();
 	public:
 		VisualFunction OnConfigClick;
@@ -64,6 +68,11 @@ class VisualBlock : public TPanel
 		void setTitle(AnsiString &s);
 		AnsiString getTitle();
 		bool updateVisualComponents();
-        //@TODO przenoszenie, zaznaczanie, usuwanie, odznaczanie, anulowanie zaznaczen - bloczka, bloczków
+		void setSelected(bool status);
+		bool isSelected();
+		//@TODO przenoszenie, zaznaczanie, usuwanie, odznaczanie, anulowanie zaznaczen - bloczka, bloczków
 };
+
+bool ctrlDown();
+bool altDown();
 #endif
