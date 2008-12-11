@@ -26,6 +26,8 @@ __published:	// IDE-managed Components
 	void __fastcall OKClick(TObject *Sender);
 	void __fastcall TrackLimitChange(TObject *Sender);
 	void __fastcall EditLimitChange(TObject *Sender);
+	void __fastcall GreyScaleClick(TObject *Sender);
+	void __fastcall GreyBalanceClick(TObject *Sender);
 private:	// User declarations
 	BlockConfig* cfg_;
 public:		// User declarations

@@ -33,9 +33,17 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 		cfg_->addInt("mode",0);
 	else
 		if(cfg_->getInt("mode") == 0)
+		{
 			GreyScale->Checked = true;
+			TrackLimit->Enabled = false;
+			EditLimit->Enabled = false;
+		}
 		else
+		{
 			GreyBalance->Checked = true;
+			TrackLimit->Enabled = true;
+			EditLimit->Enabled = true;
+		}
 
 	if(!cfg_->isInt("limit"))
 		cfg_->addInt("limit",2);
@@ -70,3 +78,17 @@ void __fastcall TcfgWindow::EditLimitChange(TObject *Sender)
 	cfg_->setInt("limit",EditLimit->Text.ToIntDef(2));
 }
 //---------------------------------------------------------------------------
+void __fastcall TcfgWindow::GreyScaleClick(TObject *Sender)
+{
+	TrackLimit->Enabled = false;
+	EditLimit->Enabled = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TcfgWindow::GreyBalanceClick(TObject *Sender)
+{
+	TrackLimit->Enabled = true;
+	EditLimit->Enabled = true;
+}
+//---------------------------------------------------------------------------
+

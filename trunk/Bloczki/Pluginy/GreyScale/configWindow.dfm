@@ -43,6 +43,7 @@ object cfgWindow: TcfgWindow
       ParentFont = False
       TabOrder = 0
       TabStop = True
+      OnClick = GreyScaleClick
     end
     object GreyBalance: TRadioButton
       Left = 40
@@ -57,6 +58,7 @@ object cfgWindow: TcfgWindow
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      OnClick = GreyBalanceClick
     end
     object EditLimit: TEdit
       Left = 232
