@@ -1,0 +1,18 @@
+Wczytywanie obrazu z pliku - 0 wejœc, 1 wyjœcie - Konfiguracja: œcie¿ka do pliku, bitrate
+Zapisywanie obrazu do pliku - 1 wejœcie, 0 wyjœc - Konfiguracja: œæie¿ka do pliku, folderu, do wyboru z automatycznie generowan¹ nazw¹, format, bitrate (auto, 1 bit, 2, 4, 8, 16, 24, 32)
+Tworzenie nowego typu Boolean - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(true/false)
+Tworzenie nowego typu Integer - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(int)
+Tworzenie nowego typu Double - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(double)
+Tworzenie nowego typu Mask3x3 - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(macie¿ 3x3)
+Tworzenie nowego typu Mask5x5 - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(macie¿ 5x5)
+Dodawanie obrazów - 2 lub wiêcej wejœæ, 1 wyjœcie - konfiguracja: ewentualnie ile % z ka¿dego obraz ma byæ w obrazie wynikowym (domyœlnie 100%) [konfiguracja nie ejst konieczna], czy normalizowaæ
+Odejmowanie obrazów - 2 wejœæ, 1 wyjœcie - konfiguracja: brak
+Wyrównanie histogramu - 1 wejœc, 1 wyjœæ - konfiguracja: brak
+Obrót obrazu w prawo - 1 wejœc, 1 wyjœæ - konfiguracja: brak
+Obrót obrazu w lewo - 1 wejœc, 1 wyjœæ - konfiguracja: brak
+Przerzucenie obrazu w pionie/poziomie - 1 wejœæ, 1 wyjœc - konfiguracja jak ma byæ przecone
+Zamiana obrazu na czarnobia³y - 1 wejœc, 1 wyjœc - konfiguracja: ?
+Konwersja miedzy bitrate - 1 wejœc, 1 wyjœæ - konfiguracja: na jaki bitrate ma konwertowaæ
+
+
+Kto ma pomyss³y to prosze uzupe³niæ proponowan¹ listê operacji
