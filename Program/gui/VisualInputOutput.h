@@ -6,6 +6,8 @@
 #include <Controls.hpp>
 #include <ExtCtrls.hpp>
 
+typedef void ( __closure *VisualFunction )(TObject*);
+
 class PACKAGE VisualInputOutput : public TPanel
 {
 private:
@@ -14,7 +16,7 @@ private:
 	void __fastcall MouseDownF(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 	protected:
 public:
-	Classes::TNotifyEvent OnShowHistory;
+	VisualFunction OnShowHistory;
 	__fastcall VisualInputOutput(Classes::TComponent* AOwner);
 };
 

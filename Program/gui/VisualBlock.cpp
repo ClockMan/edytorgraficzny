@@ -460,13 +460,13 @@ void __fastcall VisualBlock::OutputSelected(TObject *Sender)
 	   OnVisualOutputSelected((VisualOutput*)Sender, this);
 }
 
-void __fastcall VisualBlock::InputShowHistory(TObject *Sender)
+void VisualBlock::InputShowHistory(TObject *Sender)
 {
 	if (OnVInputHistory==NULL) return;
 	   OnVInputHistory((VisualInput*)Sender, &history);
 }
 
-void __fastcall VisualBlock::OutputShowHistory(TObject *Sender)
+void VisualBlock::OutputShowHistory(TObject *Sender)
 {
 	if (OnVOutputHistory==NULL) return;
 		OnVOutputHistory((VisualOutput*)Sender, &history);
