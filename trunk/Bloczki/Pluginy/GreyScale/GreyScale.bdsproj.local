@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-12-11 00:01:44.178.cpp,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\GreyScale_dll.cpp</Transaction>
+    <Transaction>2008-12-11 00:01:49.415.bdsproj,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\GreyScale.bdsproj</Transaction>
+    <Transaction>2008-12-11 00:08:35.369.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\GreyScale.cpp</Transaction>
+    <Transaction>2008-12-11 00:08:35.369.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\GreyScale.h</Transaction>
+    <Transaction>2008-12-11 00:12:37.898.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\configWindow.cpp</Transaction>
+    <Transaction>2008-12-11 00:12:37.898.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\configWindow.h</Transaction>
+    <Transaction>2008-12-11 00:12:37.898.dfm,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\Unit1.dfm=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale\configWindow.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
