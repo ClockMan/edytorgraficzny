@@ -4,6 +4,9 @@
 #include <Classes.hpp>
 #include <Controls.hpp>
 
+typedef bool (__closure *Line_FunctionMove)(TObject*, int);
+typedef bool (__closure *Line_FunctionSelected )(TObject*);
+
 /**
  * @author Piotr Zegar
  * @date 2008.12.03
@@ -13,20 +16,35 @@
  */
 class Line : public TWinControl
 {
-	public:
+	private:
+		bool moving;
+		TPoint oldPos;
 
+		__property OnMouseMove;
+		__property OnMouseDown;
+		__property OnMouseUp;
+
+		void __fastcall LineMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
+		void __fastcall LineMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
+		void __fastcall LineMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	public:
+		 Line_FunctionMove OnLineMove;
+		 Line_FunctionSelected OnConnectionSelectRequest;
+		 
 		/**
 		 *  W³aœciwoœæ - czy linia by³a przesówana przez u¿ytkownika
 		 */
 		 bool Resized;
 
-		 bool Resize;
-
 		 /**
 		 *  W³aœciwoœæ - orientacja - true : pionowa, false : pozioma
 		 */
 		 bool Vertical;
-		 TPoint oldPos;
+
+		 /**
+		 *  W³aœciwoœæ - czy linia mo¿e byæ przenoszona
+		 */
+		 bool CanBeMoved;
 
 		/**
 		 * Konstruktor
