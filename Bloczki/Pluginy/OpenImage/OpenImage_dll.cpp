@@ -4,9 +4,11 @@
 #include <windows.h>
 #pragma hdrstop
 
-#include "GreyScale.h"
+#include "OpenImage.h"
 #include "configWindow.h"
 
+#include "IBitmap1bit.h"
+#include "IBitmap4bit.h"
 #include "IBitmap8bit.h"
 #include "IBitmap16bit.h"
 #include "IBitmap24bit.h"
@@ -42,7 +44,6 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 }
 //---------------------------------------------------------------------------
 
-
 bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 {
 	cfgWindow = new TcfgWindow(owner);
@@ -51,109 +52,91 @@ bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 	cfgWindow->ShowModal();
 	return true;
 }
-
 //---------------------------------------------------------------------------
 int __stdcall validate(Block *aBlock)
 {
-	if((aBlock->input.size() == 0) && (aBlock->output.size() == 0))
+  // brak wejscia, jedno wyjscie
+	if(aBlock->output.size() == 0)
 	{
-		BlockInput input1("input1");
-		input1.allowedTypes.push_back("Bitmap8bit");
-		input1.allowedTypes.push_back("Bitmap16bit");
-		input1.allowedTypes.push_back("Bitmap24bit");
-		input1.allowedTypes.push_back("Bitmap32bit");
-		input1.setDescription("Domyœlne wejœcie");
-		input1.setErrorCode(1);
-		input1.setErrorDescription("Brak obiektu na wejœciu");
-		aBlock->input.push_back(input1);
-
 		BlockOutput output1("output1");
-		output1.setOutputType("Bitmap8bit"); //przy skali szarosci na wyjsciu zawsze musi byc 8bit
+		output1.setOutputType("Bitmap24bit");
 		output1.setDescription("Domyœlne wyjœcie");
 		output1.setErrorCode(1);
-		input1.setErrorDescription("Brak obiektu na wejœciu");
+		output1.setErrorDescription("Brak obiektu na wyjœciu");
 		aBlock->output.push_back(output1);
 
 		return 2;
 	}
 	else
 	{
-		if(aBlock->input[0].getConnectedType().IsEmpty())
+		if(aBlock->output[0].getOutputType()!= aBlock->getConfig()->getString("bitrate"))
 		{
-			aBlock->input[0].setErrorCode(1);
-			aBlock->input[0].setErrorDescription("Brak obiektu na wejœciu");
-			aBlock->output[0].setErrorCode(1);
-			aBlock->output[0].setErrorDescription("Brak obiektu na wejœciu");
-
-			return 1;
-		} 
-		else
-		{
-			aBlock->input[0].setErrorCode(0);
+			aBlock->output[0].setOutputType(aBlock->getConfig()->getString("bitrate"));
 			aBlock->output[0].setErrorCode(0);
-			aBlock->input[0].setErrorDescription("");
 			aBlock->output[0].setErrorDescription("");
 
-			return 0;
-		}
-	}
-}
-//---------------------------------------------------------------------------
-int __stdcall run(Block *aBlock)
-{
-	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
-		return 1;
-
-	Graphics::TBitmap* picture = new Graphics::TBitmap();
-	AnsiString connectedType(aBlock->input[0].getConnectedType());
-
-	if(connectedType == "Bitmap8bit")
-		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[0].getObject()))));
-
-	else if(connectedType == "Bitmap16bit")
-		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[0].getObject()))));
-
-	else if(connectedType == "Bitmap24bit")
-		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[0].getObject()))));
-
-	else if(connectedType == "Bitmap32bit")
-		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
-
-
-	int mode(aBlock->getConfig()->getInt("mode"));
-
-	if(mode == 0)
-		if(!GreyScale(picture))
-		{
-			aBlock->output[0].setErrorCode(2);
-			aBlock->output[0].setErrorDescription("Pusta bitmapa");
-			picture->Free();
-			return 2;
-		}
-	else
-	{
-		int limit(aBlock->getConfig()->getInt("limit"));
-		
-		if(!GreyBalance(picture,limit))
-		{
-			aBlock->output[0].setErrorCode(2);
-			aBlock->output[0].setErrorDescription("Pusta bitmapa");
-			picture->Free();
-			return 2;
+			return 1;
 		}
 	}
 
-	TypeConfig* copy = IBitmap8bit::getNew();
-
-	IBitmap8bit::setBitmap(copy, *picture);
-
-	aBlock->output[0].setObject(*copy);
-
-	picture->Free();
-	delete copy;
+	aBlock->output[0].setErrorCode(0);
+	aBlock->output[0].setErrorDescription("");
 
 	return 0;
 }
 //---------------------------------------------------------------------------
+int __stdcall run(Block *aBlock)
+{
+	Graphics::TBitmap* picture = new Graphics::TBitmap();
+	AnsiString path(aBlock->getConfig()->getString("path"));
 
+	if(!OpenImage(picture,path))
+	{
+		aBlock->output[0].setErrorCode(2);
+		aBlock->output[0].setErrorDescription("B³¹d wczytywania obrazu");
+		picture->Free();
+		return 2;
+	}
 
+	TypeConfig* copy;
+	AnsiString bitrate(aBlock->getConfig()->getString("bitrate"));
+
+	if(bitrate == "Bitmap1bit")
+	{
+		copy = IBitmap1bit::getNew();
+		IBitmap1bit::setBitmap(copy, *picture);
+	}
+	else if(bitrate == "Bitmap4bit")
+	{
+		copy = IBitmap4bit::getNew();
+		IBitmap4bit::setBitmap(copy, *picture);
+	}
+	else if(bitrate == "Bitmap8bit")
+	{
+		copy = IBitmap8bit::getNew();
+		IBitmap8bit::setBitmap(copy, *picture);
+	}
+	else if(bitrate == "Bitmap16bit")
+	{
+		copy = IBitmap16bit::getNew();
+		IBitmap16bit::setBitmap(copy, *picture);
+	}
+	else	if(bitrate == "Bitmap24bit")
+	{
+		copy = IBitmap24bit::getNew();
+		IBitmap24bit::setBitmap(copy, *picture);
+	}
+	else	if(bitrate == "Bitmap32bit")
+	{
+		copy = IBitmap32bit::getNew();
+		IBitmap32bit::setBitmap(copy, *picture);
+	}
+
+	aBlock->output[0].setObject(*copy);
+	
+	picture->Free();
+	delete copy;
+
+	return 0;	
+}
+//---------------------------------------------------------------------------

@@ -280,7 +280,7 @@ bool RightRotation(Graphics::TBitmap* picture)
 	}
 	
 	picture->Assign(tempPicture);
-	delete tempPicture;
+	tempPicture->Free();
 	
 	return true;
 }
@@ -317,7 +317,7 @@ bool LeftRotation(Graphics::TBitmap* picture)
 	}
 
 	picture->Assign(tempPicture);
-	delete tempPicture;
+	tempPicture->Free();
 
 	return true;
 }
