@@ -1,6 +1,7 @@
 #include <System.hpp>
 #include <vector>
 #include <exception>
+#include <IniFiles.hpp>
 using namespace std;
 
 #ifndef __FunctionDLL_h__
@@ -20,14 +21,17 @@ typedef int ( *FunctionDLL_validate )(Block*);
 class FunctionDLL
 {
 	private:
-		AnsiString name;
 		HANDLE DLLHandle;
 		FunctionDLL_run frun;
 		FunctionDLL_validate fvalidate;
 		FunctionDLL_showConfig fshowConfig;
 	public:
+		AnsiString name;//id of block - name of file if in inifile no info about this
+		AnsiString fullName; //name visible in menu
+		AnsiString description; //hint visible in menu, or abowe block
+		vector<AnsiString> category; //format: Menu Name/Sub Menu/Next Sub Menu
 
-		FunctionDLL(const AnsiString &file, const AnsiString &sname);
+		FunctionDLL(const AnsiString &fileDLL, const AnsiString &fileINI);
 		~FunctionDLL();
 
 		/**
@@ -49,8 +53,6 @@ class FunctionDLL
 		 * @return poprawnosc wykonanej operacji
 		 */
 		int validate(Block *aBlock);
-
-		AnsiString& getName();
 };
 
 #endif

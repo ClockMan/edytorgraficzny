@@ -1,9 +1,8 @@
 #include "FunctionDLL.h"
 
-FunctionDLL::FunctionDLL(const AnsiString &file, const AnsiString &sname)
+FunctionDLL::FunctionDLL(const AnsiString &fileDLL, const AnsiString &fileINI)
 {
-   if (sname.IsEmpty()) throw "Nazwa musi byæ unikalna i nie pusta";
-   DLLHandle=LoadLibrary(file.c_str());
+   DLLHandle=LoadLibrary(fileDLL.c_str());
    if (!DLLHandle) throw "B³¹d podczas za³adowania DLL";
    frun=(FunctionDLL_run)GetProcAddress(DLLHandle, "_run");
    fvalidate=(FunctionDLL_validate)GetProcAddress(DLLHandle, "_validate");
@@ -13,17 +12,27 @@ FunctionDLL::FunctionDLL(const AnsiString &file, const AnsiString &sname)
 	   FreeLibrary(DLLHandle);
 	   throw "To nie jest DLL'ka typu";
    }
-   name=sname;
+   TIniFile *ini=new TIniFile(fileINI);
+   name=ini->ReadString("INFO", "name", ExtractFileName(fileDLL).SetLength(ExtractFileName(fileDLL).Length()-ExtractFileExt(fileDLL).Length()));
+   fullName=ini->ReadString("INFO", "fullname", name);
+   description=ini->ReadString("INFO", "description","");
+   int i=0;
+   AnsiString c;
+   while((c=ini->ReadString("CATEGORY", IntToStr(i),""))!="")
+   {
+	   category.push_back(c);
+	   ++i;
+   }
+   delete ini;
+   if (category.size()==0)
+   {
+	  category.push_back("DEFAULT FUNCTIONS");
+   }
 }
 
 FunctionDLL::~FunctionDLL()
 {
    FreeLibrary(DLLHandle);
-}
-
-AnsiString& FunctionDLL::getName()
-{
-	return name;
 }
 
 int FunctionDLL::run(Block *aBlock) {
