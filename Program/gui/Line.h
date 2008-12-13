@@ -23,6 +23,10 @@ class Line : public TWinControl
 		__property OnMouseMove;
 		__property OnMouseDown;
 		__property OnMouseUp;
+		__property Left;
+		__property Top;
+		__property Width;
+		__property Height;
 
 		void __fastcall LineMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 		void __fastcall LineMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
@@ -47,6 +51,9 @@ class Line : public TWinControl
 		 */
 		 bool CanBeMoved;
 
+		 bool setXY(int x1, int y1, int x2, int y2);
+		 TPoint getPoint1();
+		 TPoint getPoint2();
 		/**
 		 * Konstruktor
 		 * @param Owner kontrolka na której bêdzie rysowana linia
