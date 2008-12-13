@@ -4,8 +4,8 @@
 #include <Classes.hpp>
 #include <Controls.hpp>
 
-typedef bool (__closure *Line_FunctionMove)(TObject*, int);
-typedef bool (__closure *Line_FunctionSelected )(TObject*);
+typedef void (__closure *Line_FunctionMove)(TObject*);
+typedef void (__closure *Line_FunctionSelected )(TObject*);
 
 /**
  * @author Piotr Zegar
@@ -30,6 +30,7 @@ class Line : public TWinControl
 	public:
 		 Line_FunctionMove OnLineMove;
 		 Line_FunctionSelected OnConnectionSelectRequest;
+		 __property Color;
 		 
 		/**
 		 *  W³aœciwoœæ - czy linia by³a przesówana przez u¿ytkownika
