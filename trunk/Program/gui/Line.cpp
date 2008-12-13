@@ -68,3 +68,53 @@ void __fastcall Line::LineMouseMove(TObject *Sender, TShiftState Shift, int X, i
     oldPos=pos;
 }
 
+bool Line::setXY(int x1, int y1, int x2, int y2)
+{
+  if (x1==x2)
+  {
+	//pionowa
+	if (y1-y2==0) { Visible=false; return false;}
+	Left=x1-1;
+	Width=3;
+	Height=abs(y1-y2);
+	Top=(y1<y2)?y1:y2;
+	Visible=true;
+	Vertical=true;
+	return true;
+  }
+  else
+  if (y1==y2) {
+	//pozioma
+	if (x1-x2==0) { Visible=false; return false;}
+	Top=y1-1;
+	Width=abs(x1-x2);
+	Height=3;
+	Left=(x1<x2)?x1:x2;
+	Visible=true;
+	Vertical=false;
+	return true;
+  }
+  else
+  {
+   //skos
+   Visible=false;
+   return false;
+  }
+}
+
+TPoint Line::getPoint1()
+{
+  TPoint tmp;
+  tmp.x=Left+(Vertical)?-1:0;
+  tmp.y=Top+(Vertical)?0:-1;
+  return tmp;
+}
+
+TPoint Line::getPoint2()
+{
+  TPoint tmp;
+  tmp.x=Left+Width+(Vertical)?-1:0;
+  tmp.y=Top+Height+(Vertical)?0:-1;
+  return tmp;
+}
+

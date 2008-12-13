@@ -70,7 +70,6 @@ class VisualBlock : public TPanel
 		bool updateVisualComponents();
 		void setSelected(bool status);
 		bool isSelected();
-		//@TODO przenoszenie, zaznaczanie, usuwanie, odznaczanie, anulowanie zaznaczen - bloczka, bloczków
 };
 
 bool ctrlDown();

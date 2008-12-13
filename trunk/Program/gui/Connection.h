@@ -22,6 +22,9 @@ static const TColor ConnectionWarrningNormalColor=CONNECTION_WARRNING_NORMAL;
 static const TColor ConnectionWarrningSelectedColor=CONNECTION_WARRNING_SELECTED;
 static const TColor ConnectionErrorNormalColor=CONNECTION_ERROR_NORMAL;
 static const TColor ConnectionErrorSelectedColor=CONNECTION_ERROR_SELECTED;
+
+typedef void (__closure *Connection_Function)(void*);
+
 /**
  * @author Piotr Zegar
  * @date 2008.12.03
@@ -40,7 +43,11 @@ class Connection
 		void OnLineMove(TObject* Sender);
 		void OnConnectionSelectedRequest(TObject* Sender);
 		void update(Line* object);
+     	bool connectionOk(Position &in, Position &out);
+		void RightOutputToLeftInput(Position &in, Position &out);
 	 public:
+		Connection_Function OnConnectionSelected;
+
 		BlockInput* input;
 		BlockOutput* output;
 		VisualBlock* inBlock;
@@ -50,7 +57,8 @@ class Connection
 		~Connection();
 
 		bool update();
-		
+		bool connectionOk();
+
 		void BringToFront();
 		void setSelected(bool s);
 };
