@@ -1,25 +1,24 @@
 #include "PluginContener.h"
 
-bool PluginContener::addType(const AnsiString &aPath, const AnsiString &type)
+bool PluginContener::addType(const AnsiString &fileDLL)
 {
-	if (getTypeDLL(type)!=NULL) return false;
 	try
 	{
-	  TypeDLL *tmp=new TypeDLL(aPath, type);
+	  TypeDLL *tmp=new TypeDLL(fileDLL);
 	  listOfType.push_back(tmp);
 	  return true;
-	} catch (char* e)
+	}
+	  catch (char* e)
 	{
 		return false;
 	}
 }
 
-bool PluginContener::addFunction(const AnsiString &aPath, const AnsiString &name)
+bool PluginContener::addFunction(const AnsiString &fileDLL, const AnsiString &fileINI)
 {
-	if (getFunctionDLL(name)!=NULL) return false;
 	try
 	{
-	  FunctionDLL *tmp=new FunctionDLL(aPath, name);
+	  FunctionDLL *tmp=new FunctionDLL(fileDLL, fileINI);
 	  listOfFunction.push_back(tmp);
 	  return true;
 	} catch (char* e)
@@ -45,7 +44,7 @@ PluginContener::~PluginContener()
 	}
 }
 
-TypeDLL* PluginContener::getTypeDLL(const AnsiString &type)
+TypeDLL* PluginContener::getType(const AnsiString &type)
 {
   for(int i=listOfType.size()-1;i>=0;--i)
   {
@@ -54,11 +53,11 @@ TypeDLL* PluginContener::getTypeDLL(const AnsiString &type)
   return NULL;
 }
 
-FunctionDLL* PluginContener::getFunctionDLL(const AnsiString &name)
+FunctionDLL* PluginContener::getFunction(const AnsiString &names)
 {
   for(int i=listOfFunction.size()-1;i>=0;--i)
   {
-	  if (listOfFunction[i]->getName()==name) return listOfFunction[i];
+	  if (listOfFunction[i]->name==names) return listOfFunction[i];
   }
   return NULL;
 }

@@ -11,7 +11,7 @@ using namespace std;
 
 typedef TForm* ( *TypeDLL_show )(TComponent*, TypeConfig*);
 typedef bool ( *TypeDLL_isValid )(TypeConfig*);
-
+typedef AnsiString& ( *TypeDLL_getType )();
 /**
  * Interfejs pozwalajacy na l¹dowanie i uzywanie biblioteki typu
  * @author Piotr
@@ -25,6 +25,7 @@ class TypeDLL
 		HANDLE DLLHandle;
 		TypeDLL_show fshow;
 		TypeDLL_isValid fisValid;
+		TypeDLL_getType fgetType;
 	public:
 
 		/**
@@ -32,7 +33,7 @@ class TypeDLL
 		 * @param file sciezka do pliku
 		 * @param stype
 		 */
-		TypeDLL(const AnsiString &file, const AnsiString &stype);
+		TypeDLL(const AnsiString &fileDLL);
 		/**
 		 * Destruktor
 		 */

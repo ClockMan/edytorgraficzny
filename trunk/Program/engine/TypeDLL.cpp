@@ -1,18 +1,17 @@
 #include "TypeDLL.h"
 
-TypeDLL::TypeDLL(const AnsiString &file, const AnsiString &stype)
+TypeDLL::TypeDLL(const AnsiString &fileDLL)
 {
-   if (stype.IsEmpty()) throw "Nazwa musi byæ unikalna i nie pusta"; 
-   DLLHandle=LoadLibrary(file.c_str());
+   DLLHandle=LoadLibrary(fileDLL.c_str());
    if (!DLLHandle) throw "B³¹d podczas za³adowania DLL";
    fshow=(TypeDLL_show)GetProcAddress(DLLHandle, "_show");
    fisValid=(TypeDLL_isValid)GetProcAddress(DLLHandle, "_isValid");
-   if ((!fshow)||(!fisValid))
+   fgetType=(TypeDLL_getType)GetProcAddress(DLLHandle, "_getType");
+   if ((!fshow)||(!fisValid)||(!fgetType))
    {
 	   FreeLibrary(DLLHandle);
 	   throw "To nie jest DLL'ka typu";
    }
-   type=stype;
 }
 
 TypeDLL::~TypeDLL()
@@ -30,6 +29,6 @@ bool TypeDLL::isValid(TypeConfig *aData) {
 
 AnsiString& TypeDLL::getType()
 {
-  return type;
+  return fgetType();
 }
 
