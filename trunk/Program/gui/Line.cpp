@@ -10,6 +10,7 @@ __fastcall Line::Line(TWinControl* Owner, bool vertical) : TWinControl(Owner)
    Parent=Owner;
    Vertical=vertical;
    ShowHint=true;
+   Visible=false;
    CanBeMoved=true;
    OnLineMove=NULL;
    OnConnectionSelectRequest=NULL;
@@ -49,14 +50,20 @@ void __fastcall Line::LineMouseMove(TObject *Sender, TShiftState Shift, int X, i
 	   Cursor=crSizeWE;
 	   this->Left=this->Left+pos.x-oldPos.x;
 	   if (((pos.x-oldPos.x)!=0)&&(OnLineMove!=NULL))
-			OnLineMove(this,pos.x-oldPos.x);
+	   {
+			Resized=true;
+			OnLineMove(this);
+	   }
 	}
 	else
 	{
 	   Cursor=crSizeNS;
 	   this->Top=this->Top+pos.y-oldPos.y;
 	   if (((pos.y-oldPos.y)!=0)&&(OnLineMove!=NULL))
-			OnLineMove(this,pos.y-oldPos.y);
+	   {
+			Resized=true;
+			OnLineMove(this);
+	   }
 	}
     oldPos=pos;
 }

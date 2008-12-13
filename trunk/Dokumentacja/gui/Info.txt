@@ -1,2 +1,0 @@
-TLine - symbolizuje poszczególn¹ linie,z  5 TLine sk³¹da isê po³¹czenie. Klasa œciœle powi¹zana z TConnection. 0 algorytmów.
-TConnection - symbolizuje graficzne po³¹czenie miedzy wejœciem jednego bloczka i wyjœciem drugiego, bêd¹ tu zawarte wszystkie wymagane operacje aby po³¹czyæ 2 bloczki (naryswaæ po³¹czenie). Algorytm rysowania po³¹czenia aktualnie nie znany.
