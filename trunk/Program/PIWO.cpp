@@ -12,7 +12,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	try
 	{
 		Application->Initialize();
-		Application->Title = "PIWO - Projekt Informatyczny Wilqu & Others";
+		Application->Title = "PIWO - Projekt Informatyczny Wilqu & Others 1.0";
 		Application->CreateForm(__classid(TForm1), &Form1);
 		Application->Run();
 	}

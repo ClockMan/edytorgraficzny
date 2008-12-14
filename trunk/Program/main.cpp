@@ -70,18 +70,66 @@ int TForm1::SearchDirectory(std::vector<AnsiString> &refvecFiles,
   return 0;
 }
 
+void TForm1::AddMenus(FunctionDLL *info)
+{
+	TStringList *tmp=new TStringList();
+	for(unsigned int i=0;i<info->category.size();i++)
+	{
+		tmp->Text=StringReplace(StringReplace(info->category[i],"\\","\n",TReplaceFlags() << rfReplaceAll),"/","\n",TReplaceFlags() << rfReplaceAll);
+		if (tmp->Count==0||tmp->Strings[0].IsEmpty()) continue;
+		//Wyszukiwanie maina, jak niema to dodajemy
+		TMenuItem *x=&MainMenu1->Items[0];
+		TMenuItem *y=NULL;
+		for(int q=0;q<tmp->Count;q++)
+		{
+			for(int j=0;j<x->Count;j++)
+			{
+				if (x->Items[j]->GroupIndex==2&&(x->Items[j]->Caption.AnsiCompare(tmp->Strings[q])==0))
+				{
+					y=x->Items[j];
+					break;
+				}
+			}
+
+			if (y==NULL)
+			{
+				//niema g³ownego menu, tworzymy go
+				y=MainMenu1->CreateMenuItem();
+				y->AutoCheck=false;
+				y->Caption=tmp->Strings[q];
+				y->GroupIndex=2;
+				y->Visible=true;
+				//znajdujemy miejsce gdzie go dodac
+				int pos;
+				for(pos=0;pos<x->Count;pos++)
+					if ((x->Items[pos]->GroupIndex==2&&tmp->Strings[q].AnsiCompare(x->Items[pos]->Caption)==-1)||(x->Items[pos]->GroupIndex==3)) break;
+				x->Insert(pos,y);
+			}
+			x=y;
+			y=NULL;
+		}
+    	//dodawanie koñcowego itemu, on te¿ musi byæ sortowany, niesprawdzamy czy nazwa taka ju¿ jest
+
+
+	}
+
+  //	TMenuItem *x=MainMenu1->CreateMenuItem();
+  //	x->Caption=info->fullName;
+  //	x->Visible=true;
+  //	MainMenu1->Items->Add(x);
+}
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 	Application->CreateForm(__classid(TForm2), &Form2);
 	Form2->ProgressBar1->Visible=false;
-	Form2->Visible=true;
+    Form2->Visible=true;
 	AnsiString dir=ExtractFileDir(Application->ExeName);
 
 	std::vector<AnsiString> types;
 	SearchDirectory(types,dir+"\\types","dll");
 	std::vector<AnsiString> functions;
-	SearchDirectory(types,dir+"\\blocks","dll");
+	SearchDirectory(functions,dir+"\\blocks","dll");
 	Form2->ProgressBar1->Max=types.size()+functions.size()+1;
 	Form2->ProgressBar1->Position=0;
 	Form2->ProgressBar1->Visible=true;
@@ -96,23 +144,27 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	   else
 	   {
 		 Form2->log->Caption="Plik \""+ExtractFileName(types[i])+"\" nie jest DLL typu danych";
+		 ShowMessage(functions[i]+"\n nie jest poprawnym pluginem typu");
 	   }
+
 	   Form2->ProgressBar1->Position++;
 	   Application->ProcessMessages();
 	}
 
 	for(i=0;i<functions.size();i++)
 	{
-	   FunctionDLL *wsk=plugins.getFunction(functions[i]);
+	   FunctionDLL *wsk=plugins.addFunction(functions[i]);
 	   if (wsk!=NULL)
 	   {
-       	
+		 AddMenus(wsk);
 		 Form2->log->Caption="Za³adowano funkcjê: "+wsk->name;
 	   }
 	   else
 	   {
 		 Form2->log->Caption="Plik \""+ExtractFileName(functions[i])+"\" nie jest DLL funkcji";
+		 ShowMessage(functions[i]+"\n nie jest poprawnym pluginem bloczku");
 	   }
+
 	   Form2->ProgressBar1->Position++;
 	   Application->ProcessMessages();
 	}

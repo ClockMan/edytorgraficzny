@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 411
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 454
+  ClientHeight = 474
   ClientWidth = 685
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -491,36 +491,47 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object MainMenu1: TMainMenu
-    Left = 80
-    Top = 216
+    AutoHotkeys = maManual
+    Top = 16
     object Plik1: TMenuItem
       Caption = 'Plik'
+      GroupIndex = 1
       object Nowy1: TMenuItem
-        Caption = 'Nowy'
+        Caption = 'Nowy projekt'
       end
       object Otwrz1: TMenuItem
-        Caption = 'Otw'#243'rz'
+        Caption = 'Otw'#243'rz projekt'
       end
       object Zapisz1: TMenuItem
-        Break = mbBreak
-        Caption = 'Zapisz'
+        Caption = '-'
+        Enabled = False
       end
       object Zapiszjako1: TMenuItem
-        Caption = 'Zapisz jako'
+        Caption = 'Zapisz projekt'
       end
       object Exportujjakoobraz1: TMenuItem
-        Caption = 'Exportuj jako obraz'
+        Caption = 'Zapisz projekt jako'
       end
       object Zamknij1: TMenuItem
-        Caption = 'Zamknij'
+        Caption = 'Exportuj projekt jako'
+        object ObrazBMP1: TMenuItem
+          Caption = 'Obraz BMP'
+        end
       end
       object Zakocz1: TMenuItem
-        Break = mbBreak
+        Caption = 'Zamknij projekt'
+      end
+      object N1: TMenuItem
+        Caption = '-'
+        Enabled = False
+      end
+      object Zakocz2: TMenuItem
         Caption = 'Zako'#324'cz'
       end
     end
     object Edycja1: TMenuItem
       Caption = 'Edycja'
+      GroupIndex = 1
       object Zaznaczwszystkiebloki1: TMenuItem
         Caption = 'Zaznacz wszystkie bloki'
       end
@@ -530,23 +541,67 @@ object Form1: TForm1
       object Odwrzaznaczenieblokw1: TMenuItem
         Caption = 'Odwr'#243#263' zaznaczenie blok'#243'w'
       end
-      object Odznaczpoczenie1: TMenuItem
-        Break = mbBreak
-        Caption = 'Odznacz po'#322#261'czenie'
-      end
       object Duplikujbloki1: TMenuItem
-        Caption = 'Duplikuj bloki'
+        Caption = 'Duplikuj zaznaczone bloki'
       end
       object Usubloki1: TMenuItem
-        Caption = 'Usu'#324' bloki'
+        Caption = 'Usu'#324' wszystkie bloki'
       end
-      object Usupoczenie1: TMenuItem
-        Break = mbBreak
-        Caption = 'Usu'#324' po'#322#261'czenie'
+      object Usuzaznaczonebloki1: TMenuItem
+        Caption = 'Usu'#324' zaznaczone bloki'
+      end
+      object Odznaczzaznaczonepoaczenie1: TMenuItem
+        Break = mbBarBreak
+        Caption = 'Odznacz zaznaczone po'#322#261'czenie'
+      end
+      object Usuwszystkiepoczenia1: TMenuItem
+        Caption = 'Usu'#324' wszystkie po'#322#261'czenia'
+      end
+      object Usuzaznaczonepoczenie1: TMenuItem
+        Caption = 'Usu'#324' zaznaczone po'#322#261'czenie'
       end
     end
     object Uruchom1: TMenuItem
-      Caption = 'Uruchom'
+      Caption = 'Po'#322#261'czenie'
+      GroupIndex = 1
+      object Usu1: TMenuItem
+        Caption = 'Usu'#324
+      end
+    end
+    object Blok1: TMenuItem
+      Caption = 'Blok'
+      GroupIndex = 1
+      object Duplikuj1: TMenuItem
+        Caption = 'Duplikuj'
+      end
+      object Usu2: TMenuItem
+        Caption = 'Usu'#324
+      end
+      object Edytujkonfiguracje1: TMenuItem
+        Caption = 'Konfiguracja'
+      end
+      object Wejcia1: TMenuItem
+        Caption = 'Wej'#347'cia'
+      end
+      object Wyjcia1: TMenuItem
+        Caption = 'Wyj'#347'cia'
+      end
+    end
+    object Pomoc1: TMenuItem
+      Caption = 'Pomoc'
+      GroupIndex = 3
+      object Instrukcjauytkoniwka1: TMenuItem
+        Caption = 'Instrukcja u'#380'ytkownika'
+      end
+      object Dokumentacjatechniczna1: TMenuItem
+        Caption = 'Dokumentacja techniczna'
+      end
+      object Oautorach1: TMenuItem
+        Caption = 'O autorach'
+      end
+      object Oprogramie1: TMenuItem
+        Caption = 'O programie'
+      end
     end
   end
 end
