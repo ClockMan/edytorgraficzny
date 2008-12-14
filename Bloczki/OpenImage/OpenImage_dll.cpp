@@ -7,12 +7,6 @@
 #include "OpenImage.h"
 #include "configWindow.h"
 
-#include "IBitmap1bit.h"
-#include "IBitmap4bit.h"
-#include "IBitmap8bit.h"
-#include "IBitmap16bit.h"
-#include "IBitmap24bit.h"
-#include "IBitmap32bit.h"
 //---------------------------------------------------------------------------
 //   Important note about DLL memory management when your DLL uses the
 //   static version of the RunTime Library:
@@ -44,7 +38,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 }
 //---------------------------------------------------------------------------
 
-bool __stdcall showConfig(TComponent *owner, Block *aBlock)
+bool showConfig(TComponent *owner, Block *aBlock)
 {
 	cfgWindow = new TcfgWindow(owner);
 	cfgWindow->SetConfig(aBlock);
@@ -53,7 +47,7 @@ bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 	return true;
 }
 //---------------------------------------------------------------------------
-int __stdcall validate(Block *aBlock)
+int  validate(Block *aBlock)
 {
   // brak wejscia, jedno wyjscie
 	if(aBlock->output.size() == 0)
@@ -85,7 +79,7 @@ int __stdcall validate(Block *aBlock)
 	return 0;
 }
 //---------------------------------------------------------------------------
-int __stdcall run(Block *aBlock)
+int  run(Block *aBlock)
 {
 	Graphics::TBitmap* picture = new Graphics::TBitmap();
 	AnsiString path(aBlock->getConfig()->getString("path"));
