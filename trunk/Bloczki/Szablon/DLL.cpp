@@ -27,22 +27,22 @@
 
 #pragma argsused
 
-USELIB("..\..\Lib\memmgr.lib");
+#pragma link "MEMMGR.LIB"
 
 extern "C" __declspec(dllexport) int run(Block *aBlock);
 extern "C" __declspec(dllexport) bool showConfig(TComponent *owner, Block *aBlock);
 extern "C" __declspec(dllexport) int validate(Block *aBlock);
 
 bool showConfig(TComponent *owner, Block *aBlock)
-{
-   TForm1 *x=new TForm1(owner);
-   x->block=aBlock;
-   x->ShowModal();
+{ //
+  // TForm1 *x=new TForm1(owner);
+  // x->block=aBlock;
+   //x->ShowModal();
    //odpalamy okienko konfiguracyjne bloczka, konfiguracja powinna byc nieuzale¿niona od wejœæ, mo¿e mieæ wp³yw na wyjœcia, po wykonaniu tej funkcji automatycznie zostanie wywo³ana funkcja validate.
    //wszystkie dane jakie chcemy przechowaæ zapisujemy w aBlock->getConfig().
    //wszystkie funkcje jakie u¿ywamy niepowinny odwo³ywaæ siê do jakichkolwiek danych statycznych w DLL, po prostu dla wszystkich bloczków bêzie za³adowana tylko jedna instancja DLL.
    //jeœli ta funkcja zwróci true, to bêzie to  oznacza³o ¿ê zosta³y wporadzone zmiany, zwróæ false jeœli ¿adne zmiany nie zosta³y wprowadzone, mo¿esz isê pos³u¿yæ aBlock->getConfig()->isChanged()
-   delete x;
+ //  delete x;
    return true;
 }
 
@@ -50,7 +50,7 @@ int validate(Block *aBlock)
 {
    //funkcja sprawdza poprawnoœæ po³¹czeñ z bloczkiem jak i konfiguracji. tzn
    //dodawaæ nowe wejscia, dodawañ nowe wyjœcia, modyfikowaæ ich stany, kody b³êdów, ..
-   if (aBlock.input.size()==0)
+ /*  if (aBlock.input.size()==0)
    {
 	  BlockInput x1("wejscie1");
 	  x1.allowedTypes.push_back("Bitmap16bit");
@@ -88,7 +88,7 @@ int validate(Block *aBlock)
    	  else
    	  aBlock.output[0].setOutputType("Btmap24bit");
 	}
-
+		*/
    
    return 0;
 }
@@ -96,7 +96,7 @@ int validate(Block *aBlock)
 int run(Block *aBlock)
 {
 	//funkcja wykonuje jak¹œ operacjê, najlepiej kod operacji przechowywaæ w zewnêtrznej bibliotece.
-	if (aBlock.input.Size()!=2) return 2;
+   /*	if (aBlock.input.Size()!=2) return 2;
 	if (aBlock.input[0].getConnectedType().isEmpty()) return 3;
 	if (aBlock.input[1].getConnectedType().isEmpty()) return 3;
 	
@@ -105,12 +105,12 @@ int run(Block *aBlock)
 	TBitmap x1=IBitmap16bit::getBitmap(aBlock.input[0]->getObject());
 	TBitmap x2=IBitmap16bit::getBitmap(aBlock.input[1]->getObject());
 	
-	TBitmap x;
+	TBitmap x;*/
 	//dodawnaie bitmapy x1+x2==x
-	
+	 /*
 	TypeConfig *kopia=IBitmap16bit::getNew();
 	IBitmap16bit::setBitmap(kopia, x);
-	aBlock.ouput[0].setOutput(*kopia);
+	aBlock.ouput[0].setOutput(*kopia);    */
 	return 0;
 }
 

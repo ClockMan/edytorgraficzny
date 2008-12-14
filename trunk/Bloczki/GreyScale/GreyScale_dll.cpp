@@ -7,10 +7,10 @@
 #include "GreyScale.h"
 #include "configWindow.h"
 
-#include "IBitmap8bit.h"
-#include "IBitmap16bit.h"
-#include "IBitmap24bit.h"
-#include "IBitmap32bit.h"
+#include "../../TypyDanych/Bitmap8bit/Interface/IBitmap8bit.h"
+#include "../../TypyDanych/Bitmap16bit/Interface/IBitmap16bit.h"
+#include "../../TypyDanych/Bitmap24bit/Interface/IBitmap24bit.h"
+#include "../../TypyDanych/Bitmap32bit/Interface/IBitmap32bit.h"
 //---------------------------------------------------------------------------
 //   Important note about DLL memory management when your DLL uses the
 //   static version of the RunTime Library:
@@ -43,7 +43,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 //---------------------------------------------------------------------------
 
 
-bool __stdcall showConfig(TComponent *owner, Block *aBlock)
+bool  showConfig(TComponent *owner, Block *aBlock)
 {
 	cfgWindow = new TcfgWindow(owner);
 	cfgWindow->SetConfig(aBlock);
@@ -53,7 +53,7 @@ bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 }
 
 //---------------------------------------------------------------------------
-int __stdcall validate(Block *aBlock)
+int validate(Block *aBlock)
 {
 	if((aBlock->input.size() == 0) && (aBlock->output.size() == 0))
 	{
@@ -99,7 +99,7 @@ int __stdcall validate(Block *aBlock)
 	}
 }
 //---------------------------------------------------------------------------
-int __stdcall run(Block *aBlock)
+int  run(Block *aBlock)
 {
 	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
 		return 1;
