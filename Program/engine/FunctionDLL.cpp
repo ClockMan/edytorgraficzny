@@ -69,7 +69,7 @@ FunctionDLL::FunctionDLL(const AnsiString &fileDLL)
 
    if (category.size()==0)
    {
-	  category.push_back("DEFAULT FUNCTIONS");
+	  category.push_back("Funkcje");
    }
 }
 

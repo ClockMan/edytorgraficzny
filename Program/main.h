@@ -30,10 +30,27 @@ __published:	// IDE-managed Components
 	TMenuItem *Zaznaczwszystkiebloki1;
 	TMenuItem *Odznaczwszystkiebloki1;
 	TMenuItem *Odwrzaznaczenieblokw1;
-	TMenuItem *Odznaczpoczenie1;
 	TMenuItem *Duplikujbloki1;
 	TMenuItem *Usubloki1;
-	TMenuItem *Usupoczenie1;
+	TMenuItem *ObrazBMP1;
+	TMenuItem *N1;
+	TMenuItem *Zakocz2;
+	TMenuItem *Usuzaznaczonebloki1;
+	TMenuItem *Odznaczzaznaczonepoaczenie1;
+	TMenuItem *Usuwszystkiepoczenia1;
+	TMenuItem *Usuzaznaczonepoczenie1;
+	TMenuItem *Usu1;
+	TMenuItem *Blok1;
+	TMenuItem *Duplikuj1;
+	TMenuItem *Usu2;
+	TMenuItem *Edytujkonfiguracje1;
+	TMenuItem *Wejcia1;
+	TMenuItem *Wyjcia1;
+	TMenuItem *Pomoc1;
+	TMenuItem *Instrukcjauytkoniwka1;
+	TMenuItem *Dokumentacjatechniczna1;
+	TMenuItem *Oautorach1;
+	TMenuItem *Oprogramie1;
 	void __fastcall FormCreate(TObject *Sender);
 
 private:
@@ -41,9 +58,10 @@ private:
 	int SearchDirectory(std::vector<AnsiString> &refvecFiles,
 					const AnsiString        &refcstrRootDirectory,
 					const AnsiString        &refcstrExtension,
-					bool                     bSearchSubdirectories = true);
+					bool	   bSearchSubdirectories = true);
+	void AddMenus(FunctionDLL *info);
 public:
-    PluginContener plugins;
+	PluginContener plugins;
 	__fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
