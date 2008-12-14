@@ -5,7 +5,7 @@
 
 
 __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
-	: TFrame(Owner)
+	: TScrollBox(Owner)
 {
 }
 

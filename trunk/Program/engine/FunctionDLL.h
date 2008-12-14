@@ -29,9 +29,10 @@ class FunctionDLL
 		AnsiString name;//id of block - name of file if in inifile no info about this
 		AnsiString fullName; //name visible in menu
 		AnsiString description; //hint visible in menu, or abowe block
+		Graphics::TBitmap *picture;
 		vector<AnsiString> category; //format: Menu Name/Sub Menu/Next Sub Menu
 
-		FunctionDLL(const AnsiString &fileDLL, const AnsiString &fileINI);
+		FunctionDLL(const AnsiString &fileDLL);
 		~FunctionDLL();
 
 		/**

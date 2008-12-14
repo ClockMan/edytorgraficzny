@@ -1,5 +1,5 @@
 object Form1: TForm1
-  Left = 0
+  Left = 411
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
   ClientHeight = 454
@@ -483,7 +483,70 @@ object Form1: TForm1
     000003FFFFFFFFFE000003FFFFFFFFFE000003FFFFFFFFFE000007FFFFFFFFFE
     00000FFFFFFFFFFF80001FFFFFFFFFFFF0007FFFFFFFFFFFFF0FFFFFFFFFFFFF
     FFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+  KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object MainMenu1: TMainMenu
+    Left = 80
+    Top = 216
+    object Plik1: TMenuItem
+      Caption = 'Plik'
+      object Nowy1: TMenuItem
+        Caption = 'Nowy'
+      end
+      object Otwrz1: TMenuItem
+        Caption = 'Otw'#243'rz'
+      end
+      object Zapisz1: TMenuItem
+        Break = mbBreak
+        Caption = 'Zapisz'
+      end
+      object Zapiszjako1: TMenuItem
+        Caption = 'Zapisz jako'
+      end
+      object Exportujjakoobraz1: TMenuItem
+        Caption = 'Exportuj jako obraz'
+      end
+      object Zamknij1: TMenuItem
+        Caption = 'Zamknij'
+      end
+      object Zakocz1: TMenuItem
+        Break = mbBreak
+        Caption = 'Zako'#324'cz'
+      end
+    end
+    object Edycja1: TMenuItem
+      Caption = 'Edycja'
+      object Zaznaczwszystkiebloki1: TMenuItem
+        Caption = 'Zaznacz wszystkie bloki'
+      end
+      object Odznaczwszystkiebloki1: TMenuItem
+        Caption = 'Odznacz wszystkie bloki'
+      end
+      object Odwrzaznaczenieblokw1: TMenuItem
+        Caption = 'Odwr'#243#263' zaznaczenie blok'#243'w'
+      end
+      object Odznaczpoczenie1: TMenuItem
+        Break = mbBreak
+        Caption = 'Odznacz po'#322#261'czenie'
+      end
+      object Duplikujbloki1: TMenuItem
+        Caption = 'Duplikuj bloki'
+      end
+      object Usubloki1: TMenuItem
+        Caption = 'Usu'#324' bloki'
+      end
+      object Usupoczenie1: TMenuItem
+        Break = mbBreak
+        Caption = 'Usu'#324' po'#322#261'czenie'
+      end
+    end
+    object Uruchom1: TMenuItem
+      Caption = 'Uruchom'
+    end
+  end
 end

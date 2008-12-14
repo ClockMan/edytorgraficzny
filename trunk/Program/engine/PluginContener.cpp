@@ -1,29 +1,29 @@
 #include "PluginContener.h"
 
-bool PluginContener::addType(const AnsiString &fileDLL)
+TypeDLL* PluginContener::addType(const AnsiString &fileDLL)
 {
 	try
 	{
 	  TypeDLL *tmp=new TypeDLL(fileDLL);
 	  listOfType.push_back(tmp);
-	  return true;
+	  return tmp;
 	}
 	  catch (char* e)
 	{
-		return false;
+		return NULL;
 	}
 }
 
-bool PluginContener::addFunction(const AnsiString &fileDLL, const AnsiString &fileINI)
+FunctionDLL* PluginContener::addFunction(const AnsiString &fileDLL)
 {
 	try
 	{
-	  FunctionDLL *tmp=new FunctionDLL(fileDLL, fileINI);
+	  FunctionDLL *tmp=new FunctionDLL(fileDLL);
 	  listOfFunction.push_back(tmp);
-	  return true;
+	  return tmp;
 	} catch (char* e)
 	{
-		return false;
+		return NULL;
 	}
 }
 

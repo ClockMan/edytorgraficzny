@@ -1,6 +1,6 @@
 #include "FunctionDLL.h"
 
-FunctionDLL::FunctionDLL(const AnsiString &fileDLL, const AnsiString &fileINI)
+FunctionDLL::FunctionDLL(const AnsiString &fileDLL)
 {
    DLLHandle=LoadLibrary(fileDLL.c_str());
    if (!DLLHandle) throw "B³¹d podczas za³adowania DLL";
@@ -12,18 +12,61 @@ FunctionDLL::FunctionDLL(const AnsiString &fileDLL, const AnsiString &fileINI)
 	   FreeLibrary(DLLHandle);
 	   throw "To nie jest DLL'ka typu";
    }
-   TIniFile *ini=new TIniFile(fileINI);
-   name=ini->ReadString("INFO", "name", ExtractFileName(fileDLL).SetLength(ExtractFileName(fileDLL).Length()-ExtractFileExt(fileDLL).Length()));
-   fullName=ini->ReadString("INFO", "fullname", name);
-   description=ini->ReadString("INFO", "description","");
-   int i=0;
-   AnsiString c;
-   while((c=ini->ReadString("CATEGORY", IntToStr(i),""))!="")
-   {
+   AnsiString sname=ExtractFileName(fileDLL).SetLength(ExtractFileName(fileDLL).Length()-ExtractFileExt(fileDLL).Length());
+   picture=NULL;
+
+   if (FileExists(ExtractFileDir(fileDLL)+"\\"+sname+".bmp")) {
+	picture=new Graphics::TBitmap();
+	Graphics::TBitmap *tmp=new Graphics::TBitmap();
+	tmp->LoadFromFile(ExtractFileDir(fileDLL)+"\\"+sname+".bmp");
+	picture->Width=32;
+	picture->Height=32;
+	TRect tmp2;
+	tmp2.Left=0;
+	tmp2.Right=32;
+	tmp2.Top=32;
+	tmp2.Bottom=32;
+	picture->Canvas->StretchDraw(tmp2, tmp);
+	delete tmp;
+   }
+
+   if (FileExists(ExtractFileDir(fileDLL)+"\\"+sname+".ini")) {
+	TIniFile *ini=new TIniFile(ExtractFileDir(fileDLL)+"\\"+sname+".ini");
+	name=ini->ReadString("INFO", "name", sname);
+	fullName=ini->ReadString("INFO", "fullname", name);
+	description=ini->ReadString("INFO", "description","");
+	int i=0;
+	AnsiString c;
+	while((c=ini->ReadString("CATEGORY", IntToStr(i),""))!="")
+	{
 	   category.push_back(c);
 	   ++i;
+	}
+	AnsiString t=ini->ReadString("INFO", "image", "");
+	if (t!=""&&FileExists(ExtractFileDir(fileDLL)+"\\"+t)) {
+	if (picture!=NULL) delete picture;
+	picture=new Graphics::TBitmap();
+	Graphics::TBitmap *tmp=new Graphics::TBitmap();
+	tmp->LoadFromFile(ExtractFileDir(fileDLL)+"\\"+t);
+	picture->Width=32;
+	picture->Height=32;
+	TRect tmp2;
+	tmp2.Left=0;
+	tmp2.Right=32;
+	tmp2.Top=32;
+	tmp2.Bottom=32;
+	picture->Canvas->StretchDraw(tmp2, tmp);
+	delete tmp;
    }
-   delete ini;
+
+	delete ini;
+   }
+   else
+   {
+	 name=ExtractFileName(fileDLL).SetLength(ExtractFileName(fileDLL).Length()-ExtractFileExt(fileDLL).Length());
+	 fullName=name;
+   }
+
    if (category.size()==0)
    {
 	  category.push_back("DEFAULT FUNCTIONS");
@@ -33,6 +76,7 @@ FunctionDLL::FunctionDLL(const AnsiString &fileDLL, const AnsiString &fileINI)
 FunctionDLL::~FunctionDLL()
 {
    FreeLibrary(DLLHandle);
+   if (picture!=NULL) delete picture;
 }
 
 int FunctionDLL::run(Block *aBlock) {

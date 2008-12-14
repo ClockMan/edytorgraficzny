@@ -25,9 +25,9 @@ class PluginContener
 		 */
 		~PluginContener();
 
-		bool addType(const AnsiString &fileDLL);
+		TypeDLL* addType(const AnsiString &fileDLL);
 
-		bool addFunction(const AnsiString &fileDLL, const AnsiString &fileINI);
+		FunctionDLL* addFunction(const AnsiString &fileDLL);
 
 		TypeDLL* getType(const AnsiString &type);
 

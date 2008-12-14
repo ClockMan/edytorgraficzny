@@ -4,12 +4,12 @@
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <ExtCtrls.hpp>
+#include "../engine/PluginContener.h"
 
-class PIWOEngine : public TFrame
+class PIWOEngine : public TScrollBox
 {
-private:
-protected:
 public:
+    PluginContener *plugins;
 	__fastcall PIWOEngine(TComponent* Owner);
 __published:
 };
