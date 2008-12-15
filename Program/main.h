@@ -12,6 +12,7 @@
 #include <ExtCtrls.hpp>
 #include "gui/PIWOEngine.h"
 #include <Menus.hpp>
+#include <ImgList.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -51,17 +52,15 @@ __published:	// IDE-managed Components
 	TMenuItem *Dokumentacjatechniczna1;
 	TMenuItem *Oautorach1;
 	TMenuItem *Oprogramie1;
+	TImageList *ImageList1;
 	void __fastcall FormCreate(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
-	int SearchDirectory(std::vector<AnsiString> &refvecFiles,
-					const AnsiString        &refcstrRootDirectory,
-					const AnsiString        &refcstrExtension,
-					bool	   bSearchSubdirectories = true);
-	void AddMenus(FunctionDLL *info);
+	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
 public:
 	PluginContener plugins;
+
 	__fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

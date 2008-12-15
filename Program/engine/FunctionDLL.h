@@ -12,6 +12,7 @@ using namespace std;
 typedef int ( *FunctionDLL_run )(Block*);
 typedef bool ( *FunctionDLL_showConfig )(TComponent*, Block*);
 typedef int ( *FunctionDLL_validate )(Block*);
+typedef void ( *FunctionDLL_onClick )(void*);
 /**
  * FunctionDLL - Klasa ladujaca DLL bloczka, uruchamiaj¹ca funkcje i zwalniaj¹ca go
  * @author Piotr
@@ -26,6 +27,7 @@ class FunctionDLL
 		FunctionDLL_validate fvalidate;
 		FunctionDLL_showConfig fshowConfig;
 	public:
+		FunctionDLL_onClick FunctionAddRequest;
 		AnsiString name;//id of block - name of file if in inifile no info about this
 		AnsiString fullName; //name visible in menu
 		AnsiString description; //hint visible in menu, or abowe block
@@ -34,6 +36,8 @@ class FunctionDLL
 
 		FunctionDLL(const AnsiString &fileDLL);
 		~FunctionDLL();
+
+		void __fastcall OnClick(TObject *Sender);
 
 		/**
 		 * Uruchamia funkcje bloczka.
