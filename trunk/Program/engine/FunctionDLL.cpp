@@ -2,6 +2,7 @@
 
 FunctionDLL::FunctionDLL(const AnsiString &fileDLL)
 {
+   FunctionAddRequest=NULL;
    DLLHandle=LoadLibrary(fileDLL.c_str());
    if (!DLLHandle) throw "B³¹d podczas za³adowania DLL";
    frun=(FunctionDLL_run)GetProcAddress(DLLHandle, "_run");
@@ -24,7 +25,7 @@ FunctionDLL::FunctionDLL(const AnsiString &fileDLL)
 	TRect tmp2;
 	tmp2.Left=0;
 	tmp2.Right=32;
-	tmp2.Top=32;
+	tmp2.Top=0;
 	tmp2.Bottom=32;
 	picture->Canvas->StretchDraw(tmp2, tmp);
 	delete tmp;
@@ -53,7 +54,7 @@ FunctionDLL::FunctionDLL(const AnsiString &fileDLL)
 	TRect tmp2;
 	tmp2.Left=0;
 	tmp2.Right=32;
-	tmp2.Top=32;
+	tmp2.Top=0;
 	tmp2.Bottom=32;
 	picture->Canvas->StretchDraw(tmp2, tmp);
 	delete tmp;
@@ -91,3 +92,8 @@ int FunctionDLL::validate(Block *aBlock) {
 	return fvalidate(aBlock);
 }
 
+void __fastcall FunctionDLL::OnClick(TObject *Sender)
+{
+  if (FunctionAddRequest!=NULL)
+  		FunctionAddRequest(this);
+}
