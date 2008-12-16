@@ -597,3 +597,384 @@ bool HistogramStretching(Graphics::TBitmap* picture)
 	
 	return true;
 }
+
+// filtry statystycznie - mediana, erozja, ekspansja, otwarcie, zamkniecie 
+// OPIS W function.hpp
+int partition(int *c, int a, int b)
+{
+	int e,tmp;
+	e = c[a]; // elemennt dzielacy
+	
+	while (a < b)
+	{
+		while ((a < b) && (c[b] >= e)) b--;
+	
+		while ((a < b) && (c[a] < e)) a++;
+			
+		if (a < b)
+		{
+			tmp = c[a];
+			c[a] = c[b];
+			c[b] = tmp;
+		}
+	}
+
+	return a;
+}
+//---------------------------------------------------------------------------
+int med(int *c, int w)
+{
+	// algorytm Hoare'a
+	int i = 0;
+	int j = 8;
+	int k;
+	
+	while (i!=j)
+	{
+		k = partition(c,i,j);
+		k += -i+1;
+    
+		if (k >= w) j = i + k - 1;
+
+		if (k < w)
+		{
+			w -= k;
+			i += k;
+		}
+	}
+	
+	return c[i];
+}
+
+bool StatisticsFilter(Graphics::TBitmap* picture, int filter)
+{
+	if(picture->Empty) return false;
+	if(picture->Height < 9 || picture->Width < 9) return false;
+	
+	picture->PixelFormat = pf32bit;
+	
+	RGBQUAD *row1, *row2, *row3, *row4;
+	
+	Graphics::TBitmap* tempPicture = new Graphics::TBitmap();
+	tempPicture->PixelFormat = pf32bit;
+	tempPicture->Assign(picture);
+
+	int mediana_R[9];
+	int mediana_G[9];
+	int mediana_B[9];
+
+	for(int i(1); i < (picture->Height) -1; ++i)
+	{
+		row1 = (RGBQUAD *) picture->ScanLine[i-1];
+		row2 = (RGBQUAD *) picture->ScanLine[i];
+		row3 = (RGBQUAD *) picture->ScanLine[i+1];
+		row4 = (RGBQUAD *) tempPicture->ScanLine[i];
+
+		for (int j(1); j < (picture->Width) -1; ++j)
+		{
+			mediana_R[0] = row1[j-1].rgbRed;
+			mediana_R[1] = row1[j].rgbRed;
+			mediana_R[2] = row1[j+1].rgbRed;
+			mediana_R[3] = row2[j-1].rgbRed;
+			mediana_R[4] = row2[j].rgbRed;
+			mediana_R[5] = row2[j+1].rgbRed;
+			mediana_R[6] = row3[j-1].rgbRed;
+			mediana_R[7] = row3[j].rgbRed;
+			mediana_R[8] = row3[j+1].rgbRed;
+			int R = med(mediana_R, filter);
+
+			mediana_G[0] = row1[j-1].rgbGreen;
+			mediana_G[1] = row1[j].rgbGreen;
+			mediana_G[2] = row1[j+1].rgbGreen;
+			mediana_G[3] = row2[j-1].rgbGreen;
+			mediana_G[4] = row2[j].rgbGreen;
+			mediana_G[5] = row2[j+1].rgbGreen;
+			mediana_G[6] = row3[j-1].rgbGreen;
+			mediana_G[7] = row3[j].rgbGreen;
+			mediana_G[8] = row3[j+1].rgbGreen;
+			int G = med(mediana_G, filter);
+
+			mediana_B[0] = row1[j-1].rgbBlue;
+			mediana_B[1] = row1[j].rgbBlue;
+			mediana_B[2] = row1[j+1].rgbBlue;
+			mediana_B[3] = row2[j-1].rgbBlue;
+			mediana_B[4] = row2[j].rgbBlue;
+			mediana_B[5] = row2[j+1].rgbBlue;
+			mediana_B[6] = row3[j-1].rgbBlue;
+			mediana_B[7] = row3[j].rgbBlue;
+			mediana_B[8] = row3[j+1].rgbBlue;
+			int B = med(mediana_B, filter);
+
+			R = (R > 255) ? 255 : (R < 0) ? 0 : R;
+			G = (G > 255) ? 255 : (G < 0) ? 0 : G;
+			B = (B > 255) ? 255 : (B < 0) ? 0 : B;
+
+			row4[j].rgbRed = static_cast<BYTE>(R);
+			row4[j].rgbGreen = static_cast<BYTE>(G);
+			row4[j].rgbBlue = static_cast<BYTE>(B);
+		}
+	}
+
+	picture->Assign(tempPicture);
+	tempPicture->Free();
+	
+	return true;
+}
+
+// jasnosc(naswietlenie) obrazu
+bool Lightning(Graphics::TBitmap* picture, int limit)
+{
+	if(picture->Empty) return false;
+	
+	picture->PixelFormat = pf32bit;
+	
+	limit = (limit>255) ? 255 : (limit<(-255)) ? -255 : limit;
+	RGBQUAD* row;
+
+	for(int i(0); i < picture->Height; ++i)
+	{
+		row = (RGBQUAD *) picture->ScanLine[i];
+
+		for (int j(0); j < picture->Width; ++j)
+		{
+			int B = row[j].rgbBlue;
+			int G = row[j].rgbGreen;
+			int R = row[j].rgbRed;
+
+			B += limit;
+			B = (B>255) ? 255 : (B<0) ? 0 : B;
+
+			G += limit;
+			G = (G>255) ? 255 : (G<0) ? 0 : G;
+
+			R += limit;
+			R = (R>255) ? 255 : (R<0) ? 0 : R;
+
+			row[j].rgbBlue = static_cast<BYTE>(B);
+			row[j].rgbGreen = static_cast<BYTE>(G);
+			row[j].rgbRed = static_cast<BYTE>(R);
+		}
+	}
+	
+	return true;
+}
+
+// kontrast
+bool Contrast(Graphics::TBitmap* picture, double limit)
+{
+	if(picture->Empty) return false;
+	
+	picture->PixelFormat = pf32bit;
+	
+	limit = (limit>127) ? 127 : (limit<(-127)) ? -127 : limit;	
+	RGBQUAD* row;
+	
+	double x = limit * 1.2725;
+	double v1 = 255/(255 - 2 * x);
+	
+	for(int i(0); i < picture->Height; ++i)
+	{
+		row = (RGBQUAD *) picture->ScanLine[i];
+
+		for (int j(0); j < picture->Width; ++j)
+		{
+			int B = row[j].rgbBlue;
+			int G = row[j].rgbGreen;
+			int R = row[j].rgbRed;
+
+			if(x > 0)
+			{
+				R = (R < x) ? 0 : (R > 255 - x) ? 255 : v1 * (R - x);
+				G = (G < x) ? 0 : (G > 255 - x) ? 255 : v1 * (G - x);
+				B = (B < x) ? 0 : (B > 255 - x) ? 255 : v1 * (B - x);
+			}
+			else if(x < 0)
+			{
+				R = v1 * (R - x);
+				G = v1 * (G - x);
+				B = v1 * (B - x);
+			}
+
+			R = (R > 255) ? 255 : (R < 0) ? 0: R;
+			G = (G > 255) ? 255 : (G < 0) ? 0: G;
+			B = (B > 255) ? 255 : (B < 0) ? 0: B;
+
+			row[j].rgbBlue = static_cast<BYTE>(B);
+			row[j].rgbGreen = static_cast<BYTE>(G);
+			row[j].rgbRed = static_cast<BYTE>(R);
+		}
+	}
+	
+	return true;
+}
+
+// nasycenie kolorow
+bool Saturation(Graphics::TBitmap* picture, int limit)
+{
+	if(picture->Empty) return false;
+	
+	picture->PixelFormat = pf32bit;
+	
+	limit = (limit>255) ? 255 : (limit<(-255)) ? -255 : limit;
+	RGBQUAD* row;
+
+	for(int i(0); i < picture->Height; ++i)
+	{
+		row = (RGBQUAD *) picture->ScanLine[i];
+
+		for (int j(0); j < picture->Width; ++j)
+		{
+			int k = 0.299*row[j].rgbRed + 0.587*row[j].rgbGreen + 0.114*row[j].rgbBlue;
+
+			int B = (k + (((row[j].rgbBlue - k) * (255 + limit)) / 255));
+			int G = (k + (((row[j].rgbGreen - k) * (255 + limit)) / 255));
+			int R = (k + (((row[j].rgbRed - k) * (255 + limit)) / 255));
+
+			R = (R>255) ? 255 : (R<0) ? 0 : R;
+			G = (G>255) ? 255 : (G<0) ? 0 : G;
+			B = (B>255) ? 255 : (B<0) ? 0 : B;
+
+			row[j].rgbBlue = static_cast<BYTE>(B);
+			row[j].rgbGreen = static_cast<BYTE>(G);
+			row[j].rgbRed = static_cast<BYTE>(R);
+		}
+	}
+		
+	return true;
+}
+
+// korekcja gamma
+bool GammaCorrection(Graphics::TBitmap* picture, int limit)
+{
+	if(picture->Empty) return false;
+
+	picture->PixelFormat = pf32bit;
+	
+	limit = (limit>699) ? 699 : (limit<1) ? 1 : limit;
+	RGBQUAD* row;
+	
+	unsigned char lut [256];
+	double gamma = ((double)limit * 6.99) / (double)699;
+
+	// tablica LUT z korekcj¹ gamma
+	for (int i(0); i < 256; ++i)
+	{
+		int lut_idx = 255*pow(i/255.0,1/gamma);
+	
+		if (lut_idx > 255)
+			lut_idx = 255;
+		
+		lut[i] = lut_idx;
+	}
+
+	for(int i(0); i < picture->Height; ++i)
+	{
+		row = (RGBQUAD *) picture->ScanLine[i];
+
+		for (int j(0); j < picture->Width; ++j)
+		{
+			int B = row[j].rgbBlue;
+			int G = row[j].rgbGreen;
+			int R = row[j].rgbRed;
+
+			row[j].rgbBlue = static_cast<BYTE>(lut[B]);
+			row[j].rgbGreen = static_cast<BYTE>(lut[G]);
+			row[j].rgbRed = static_cast<BYTE>(lut[R]);       
+		}	
+	}
+	
+	return true;
+}
+
+// balans skladowych RGB
+bool RGBBalance(Graphics::TBitmap* picture, int limit_r, int limit_g, int limit_b)
+{
+	if(picture->Empty) return false;
+	
+	picture->PixelFormat = pf32bit;
+	
+	limit_r = (limit_r>255) ? 255 : (limit_r<(-255)) ? -255 : limit_r;
+	limit_g = (limit_g>255) ? 255 : (limit_g<(-255)) ? -255 : limit_g;
+	limit_b = (limit_b>255) ? 255 : (limit_b<(-255)) ? -255 : limit_b;
+	RGBQUAD* row;
+
+	for(int i(0); i < picture->Height; ++i)
+	{
+		row = (RGBQUAD *) picture->ScanLine[i];
+
+		for (int j(0); j < picture->Width; ++j)
+		{
+			int B = row[j].rgbBlue;
+			int G = row[j].rgbGreen;
+			int R = row[j].rgbRed;
+
+			B += limit_b;
+			B = (B>255) ? 255 : (B<0) ? 0 : B;
+
+			G += limit_g;
+			G = (G>255) ? 255 : (G<0) ? 0 : G;
+
+			R += limit_r;
+			R = (R>255) ? 255 : (R<0) ? 0 : R;
+
+			row[j].rgbBlue = static_cast<BYTE>(B);
+			row[j].rgbGreen = static_cast<BYTE>(G);
+			row[j].rgbRed = static_cast<BYTE>(R);
+		}
+	}
+	
+	return true;
+}
+
+// filtry z maska 3x3
+bool MaskFilter(Graphics::TBitmap* picture, short* mask)
+{
+	if(picture->Empty) return false;
+	if(picture->Height < 9 || picture->Width < 9) return false;
+    
+	picture->PixelFormat = pf32bit;
+
+	RGBQUAD *row1, *row2, *row3, *row4;
+	Graphics::TBitmap* tempPicture = new Graphics::TBitmap();
+	tempPicture->PixelFormat=pf32bit;
+	tempPicture->Assign(picture);
+	short maskSum(0);
+	
+	for(int i(0); i < 9; ++i) maskSum += mask[i];
+	if(maskSum == 0) maskSum = 1;
+
+	for(int i(1); i < (picture->Height) -1; ++i)
+	{
+		row1 = (RGBQUAD *) picture->ScanLine[i-1];
+		row2 = (RGBQUAD *) picture->ScanLine[i];
+		row3 = (RGBQUAD *) picture->ScanLine[i+1];
+		row4 = (RGBQUAD *) tempPicture->ScanLine[i];
+
+		for (int j(1); j < (picture->Width) -1; ++j)
+		{
+			int R = (row1[j-1].rgbRed*mask[0] + row1[j].rgbRed*mask[1] + row1[j+1].rgbRed*mask[2] +
+					row2[j-1].rgbRed*mask[3] + row2[j].rgbRed*mask[4] + row2[j+1].rgbRed*mask[5] +
+					row3[j-1].rgbRed*mask[6] + row3[j].rgbRed*mask[7] + row3[j+1].rgbRed*mask[8]) / maskSum;
+					
+			int G = (row1[j-1].rgbGreen*mask[0] + row1[j].rgbGreen*mask[1] + row1[j+1].rgbGreen*mask[2] +
+					row2[j-1].rgbGreen*mask[3] + row2[j].rgbGreen*mask[4] + row2[j+1].rgbGreen*mask[5] +
+					row3[j-1].rgbGreen*mask[6] + row3[j].rgbGreen*mask[7] + row3[j+1].rgbGreen*mask[8]) / maskSum;
+					
+			int B = (row1[j-1].rgbBlue*mask[0] + row1[j].rgbBlue*mask[1] + row1[j+1].rgbBlue*mask[2] +
+					row2[j-1].rgbBlue*mask[3] + row2[j].rgbBlue*mask[4] + row2[j+1].rgbBlue*mask[5] +
+					row3[j-1].rgbBlue*mask[6] + row3[j].rgbBlue*mask[7] + row3[j+1].rgbBlue*mask[8]) / maskSum;
+					
+			R = (R > 255) ? 255 : (R < 0) ? 0 : R;
+			G = (G > 255) ? 255 : (G < 0) ? 0 : G;
+			B = (B > 255) ? 255 : (B < 0) ? 0 : B;
+			
+			row4[j].rgbRed = static_cast<BYTE>(R);
+			row4[j].rgbGreen = static_cast<BYTE>(G);
+			row4[j].rgbBlue = static_cast<BYTE>(B);
+		}
+	}		
+		picture->Assign(tempPicture);
+		tempPicture->Free();
+	
+	return true;
+}
