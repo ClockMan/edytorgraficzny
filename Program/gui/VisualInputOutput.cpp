@@ -15,6 +15,7 @@ __fastcall VisualInputOutput::VisualInputOutput(Classes::TComponent* AOwner)
 	BevelWidth = 2;
 	BorderWidth = 0;
 	OnShowHistory=NULL;
+	ParentShowHint=false;
 	OnMouseEnter=MouseEnterF;
 	OnMouseLeave=MouseLeaveF;
 	OnMouseDown=MouseDownF;

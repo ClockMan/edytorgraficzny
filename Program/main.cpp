@@ -35,6 +35,12 @@ void TForm1::OnLoadProgress(void* Sender, int position, int max, AnsiString info
 	Application->ProcessMessages();
 }
 
+void  TForm1::OnFunctionAddClick(void* Sender)
+{
+	FunctionDLL* fs=(FunctionDLL*)Sender;
+	piwo->AddBlock(fs->name);
+}
+
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 	Application->CreateForm(__classid(TForm2), &Form2);
@@ -42,11 +48,18 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     Form2->Visible=true;
 	AnsiString dir=ExtractFileDir(Application->ExeName);
 	Form2->ProgressBar1->Visible=true;
-	plugins.OnLoadingProgress=&OnLoadProgress;
+	plugins.OnLoadingProgress=OnLoadProgress;
+	plugins.OnFunctionAddRequest=OnFunctionAddClick;
 	plugins.LoadData(dir+"\\blocks", dir+"\\types", *MainMenu1, *ImageList1, 3, 2, 0, 1);
 	Form2->log->Caption="Wczytywanie interfejsu";
 	Form2->ProgressBar1->Position=Form2->ProgressBar1->Max;
 	Application->ProcessMessages();
+	//Tworzenie szablonu PIWOEngine;
+	piwo=new PIWOEngine(this);
+	piwo->plugins=&plugins;
+	piwo->Align=alClient;
+	piwo->Parent=this;
+
 	Sleep(500);
 	Form1->Visible=true;
 	Form1->Enabled=false;
@@ -55,8 +68,13 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	Form2->Visible=false;
 	Form1->Enabled=true;
 	delete Form2;
+	Application->ProcessMessages();
 }
 //---------------------------------------------------------------------------
+
+
+
+
 
 
 

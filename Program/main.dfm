@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 411
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 494
+  ClientHeight = 534
   ClientWidth = 685
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -490,6 +490,24 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Memo1: TMemo
+    Left = 0
+    Top = 440
+    Width = 685
+    Height = 75
+    Align = alBottom
+    ReadOnly = True
+    TabOrder = 0
+    ExplicitTop = 420
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 515
+    Width = 685
+    Height = 19
+    Panels = <>
+    ExplicitTop = 495
+  end
   object MainMenu1: TMainMenu
     AutoHotkeys = maManual
     Images = ImageList1

@@ -15,12 +15,14 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	moving=false;
 	BevelOuter=bvRaised;
 	BevelInner=bvNone;
+	ShowHint=true;
 
 	OnClick=BlockClick;
 	OnMouseUp=BlockMouseUp;
 	OnMouseDown=BlockMouseDown;
 	OnMouseMove=BlockMouseMove;
-
+	nameOfBlock="";
+	numberOfBlock=0;
 	configButton=new TSpeedButton(this);
 	configButton->Parent=this;
 	configButton->Height=34;
@@ -49,6 +51,7 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	title->OnMouseUp=BlockMouseUp;
 	title->OnMouseDown=BlockMouseDown;
 	title->OnMouseMove=BlockMouseMove;
+    title->Transparent=true;
 
 	OnVisualInputSelected=NULL;
 	OnVisualOutputSelected=NULL;
@@ -173,19 +176,14 @@ void __fastcall VisualBlock::SpeedButtonClick(TObject *Sender)
    }
 }
 
-bool VisualBlock::setConfigButtonGlyph(AnsiString &file)
+bool VisualBlock::setConfigButtonGlyph(Graphics::TBitmap *bmp)
 {
-   if (!FileExists(file)) return false;
-   Graphics::TBitmap* bmp=new Graphics::TBitmap();
-   bmp->LoadFromFile(file);
-   bmp->Width=32;
-   bmp->Height=32;
+   if (bmp==NULL) return false;
    configButton->Glyph=bmp;
-   delete bmp;
    return true;
 }
 
-void VisualBlock::setTitle(AnsiString &s)
+void VisualBlock::setTitle(const AnsiString &s)
 {
    title->Caption=s;
    title->Hint=s;
@@ -223,6 +221,7 @@ bool VisualBlock::updateVisualComponents()
 	  }
 	  if (tmp==NULL) {
 		 tmp=new VisualInput(this);
+		 tmp->Parent=this;
 		 tmp->input=&(block.input[i]);
 		 tmp->OnClick=InputSelected;
 		 tmp->OnShowHistory=InputShowHistory;
@@ -264,7 +263,8 @@ bool VisualBlock::updateVisualComponents()
 		   txt+=" ("+tmp->input->geErrorDescription()+")";
 		 }
 	 }
-     leftInputTmp.push_back(tmp);
+	 tmp->Hint=txt;
+	 leftInputTmp.push_back(tmp);
    }
 
 
@@ -283,6 +283,7 @@ bool VisualBlock::updateVisualComponents()
 	  }
 	  if (tmp==NULL) {
 		 tmp=new VisualOutput(this);
+		 tmp->Parent=this;
 		 tmp->output=&(block.output[i]);
 		 tmp->OnClick=OutputSelected;
 		 tmp->OnShowHistory=OutputShowHistory;
@@ -320,7 +321,8 @@ bool VisualBlock::updateVisualComponents()
 		   txt+=" ("+tmp->output->geErrorDescription()+")";
 		 }
 	 }
-     rightOutputTmp.push_back(tmp);
+	 tmp->Hint=txt;
+	 rightOutputTmp.push_back(tmp);
    }
 
    while(leftInput.size()>0)
@@ -430,8 +432,8 @@ void VisualBlock::resizeAll()
 		int i=0;
 		for(unsigned int j=0;j<rightOutput.size();j++)
 		{
-		  leftInput[j]->Top=height+i;
-		  leftInput[j]->Left=Width-1-17;
+		  rightOutput[j]->Top=height+i;
+		  rightOutput[j]->Left=Width-1-17;
 		  i+=18;
 		}
 	}
@@ -444,7 +446,7 @@ void VisualBlock::resizeAll()
 
 	//dolny pasek
 	if (bottomOutput.size()>0) {
-		height+=2;
+		height+=3;
 		int w=(bottomOutput.size()*17)+(bottomOutput.size()>0?(bottomOutput.size()-1)*1:0);
 		int i=int((Width-w)/2);
 		for(unsigned int j=0;j<bottomOutput.size();j++)
@@ -454,7 +456,7 @@ void VisualBlock::resizeAll()
 		  i+=18;
 		}
 	}
-	height+=1;
+	height+=2;
 	Height=height;
 }
 
@@ -528,6 +530,8 @@ void __fastcall VisualBlock::BlockClick(TObject *Sender)
 void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
    //przesówanie aktywuje: prawy przycisk myszy, lewy przycisk myszy z shiftem, prawy przycisk myszy pozawala na przesówanie jednego obiektu bez zaznaczania
+   this->BringToFront();
+   
    if ((Button==mbLeft)&&(Shift.Contains(ssShift)))
    {
 		if(!selected)
@@ -545,7 +549,7 @@ void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button
 		}
 		else
 		{
-			if (!(Shift.Contains(ssCtrl)&&!Shift.Contains(ssAlt)))
+			if (!(Shift.Contains(ssCtrl)&&!Shift.Contains(ssAlt))&&OnSelect!=NULL)
 				  OnSelect(this);
 		}
 
@@ -569,7 +573,10 @@ void __fastcall VisualBlock::BlockMouseUp(TObject *Sender, TMouseButton Button, 
 
 void __fastcall VisualBlock::BlockMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 {
+	if (moving&&!((Shift.Contains(ssShift)&&Shift.Contains(ssLeft))||Shift.Contains(ssRight))) moving=false;
 	if (!moving) return;
+
+
 	TPoint cl;
 	GetCursorPos(&cl);
 	this->Left=this->Left+cl.x-oldPoint.x;
