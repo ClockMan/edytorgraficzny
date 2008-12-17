@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">CPlusPlusBuilder.Personality</Option>
-      <Option Name="ProjectType">CppDynamicLibrary</Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{7B0E9DC8-F328-46DA-BC8C-03E53F70EE90}</Option>
-    </Option>
-  </PersonalityInfo>
-  <CPlusPlusBuilder.Personality>
-    <Source>
-      <Source Name="MainSource">Przyklad.bpf</Source>
-    </Source>
-    <BCBPROJECT>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{7B0E9DC8-F328-46DA-BC8C-03E53F70EE90}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<Source>
+			<Source Name="MainSource">Przyklad.bpf</Source>
+		</Source>
+		<BCBPROJECT>
       <project version="10.0">
         <property category="build.config" name="active" value="0"/>
         <property category="build.config" name="count" value="1"/>
@@ -128,7 +128,7 @@
           <property category="win32.*.win32b.idl2cpp" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.-w-.enabled" value="0"/>
-          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="..\..\Pulpit\PIWO\Bloczki\Przykład"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib"/>
@@ -173,8 +173,8 @@
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
-          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
-          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">True</VersionInfo>
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
@@ -219,10 +219,11 @@
           <Parameters Name="LoadAllSymbols">True</Parameters>
           <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
         </Parameters>
-        <Excluded_Packages>
-          <Excluded_Packages Name="D:\System\Components\bsftriald2006\BSFD2006.bpl">(untitled)</Excluded_Packages>
-          <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
-        </Excluded_Packages>
+        <Language>
+          <Language Name="ActiveLang"></Language>
+          <Language Name="ProjectLang">$00000000</Language>
+          <Language Name="RootDir"></Language>
+        </Language>
         <Linker>
           <Linker Name="LibPrefix"></Linker>
           <Linker Name="LibSuffix"></Linker>
@@ -230,8 +231,8 @@
         </Linker>
       </IDEOPTIONS>
     </BCBPROJECT>
-    <buildevents/>
-  </CPlusPlusBuilder.Personality>
-  <StarTeamAssociation></StarTeamAssociation>
-  <StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
+		<buildevents/>
+	</CPlusPlusBuilder.Personality>
+	<StarTeamAssociation></StarTeamAssociation>
+	<StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
 </BorlandProject>

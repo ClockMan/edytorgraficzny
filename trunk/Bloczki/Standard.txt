@@ -4,7 +4,16 @@ Proszê siê dostosowaæ.
 - Niewolno modyfikowaæ wejœæ, nale¿y robiæ kopie
 - Niewolno u¿ywaæ konstruktora kopiuj¹cego do Bitmap, nalezy u¿yæ funkcji Assign
 - W miarê mo¿liwoœæi headery proszê includowaæ z ../.. w nazwie, a nie dodawaæ œcie¿ki do path.
-- showConfig(TComponent *owner, Block *aBlock) <- zwraca TRUE gdy jest okienko konfiguracji zaimplementowane, FALSE gdy niema
-- int validate(Block *aBlock) <- zwraca 0 gdy nie zosta³y wprowadzone ¯ADNE zmiany, 1 - gdy zosta³y wprowadzone, wszelnie kody ró¿ne od 0 i 1 bêd¹ interpretowane jako 1
-- int run(Block *aBlock) <- zwraca 0 - gdy operacja przebieg³a pomyœlnie, 1 - gdy nie wszystko zosta³o wykonane tak jak powinno ale nie przerywa to przetwarzania, 2 - gdy wyst¹pi³ b³¹d, i operacja musi zostaæ przerwana
+- bool _stdcall showConfig(TComponent *owner, Block *aBlock) <- zwraca TRUE gdy jest okienko konfiguracji zaimplementowane, FALSE gdy niema
+- int _stdcall validate(Block *aBlock) <- zwraca 0 gdy nie zosta³y wprowadzone ¯ADNE zmiany, 1 - gdy zosta³y wprowadzone, wszelnie kody ró¿ne od 0 i 1 bêd¹ interpretowane jako 1
+- int _stdcall run(Block *aBlock) <- zwraca 0 - gdy operacja przebieg³a pomyœlnie, 1 - gdy nie wszystko zosta³o wykonane tak jak powinno ale nie przerywa to przetwarzania, 2 - gdy wyst¹pi³ b³¹d, i operacja musi zostaæ przerwana
 - errorCode wejœæ i wyjœc: 0 - brak b³êdu, 1 - warrning, 2 - error, wszelkie inne kody bêd¹ iterpretowane jako 2
+
+Validate jest wykonywane:
+- zaraz po stworzeniu bloczka - wtedy powinne byæ incjowane wejœca, wyjœcia i konfiguracja domyœlna
+- po uruchomieniu konfiguracji
+- po pod³¹czeniu czegoœ do wejœcia
+- po od³¹czeniu czegoœ od wejœcia
+
+Uwaga:
+Wszystkie metody w BlockConfig zaczynaj¹ce siê na isString, isInt orpucz isExist generuj¹ wyj¹tek gdy niema na liscie obiektu o takiej nazwie, uzywaæ isExist

@@ -38,6 +38,10 @@
         <property category="build.platform" name="win32.default" value="win32b"/>
         <property category="build.platform" name="win32.enabled" value="1"/>
         <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
@@ -103,9 +107,8 @@
           <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="0"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="USEPACKAGES"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="NO_STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="USEPACKAGES"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="NO_STRICT"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="0"/>
@@ -206,7 +209,7 @@
           <property category="win32.*.win32b.idl2cpp" name="option.I.arg.9" value="..\..\..\TypyDanych\Bitmap24bit\Interface"/>
           <property category="win32.*.win32b.idl2cpp" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.idl2cpp" name="option.I.enabled" value="1"/>
-          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.10" value="..\..\..\TypyDanych\Bitmap16bit\Interface"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.11" value="..\..\..\TypyDanych\Bitmap8bit\Interface"/>
@@ -232,7 +235,7 @@
           <property category="win32.*.win32b.ilink32" name="option.Tpp.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.ap.enabled" value="0"/>
-          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.1" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.10" value="..\..\..\TypyDanych\Bitmap16bit\Interface"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.11" value="..\..\..\TypyDanych\Bitmap8bit\Interface"/>
@@ -252,8 +255,8 @@
           <property category="win32.*.win32b.ilink32" name="option.j.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
-          <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mti.lib"/>
-          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.3" value="memmgr.lib"/>
@@ -341,6 +344,7 @@
         </Linker>
       </IDEOPTIONS>
     </BCBPROJECT>
-		<buildevents/>  <Folders/>
-  </CPlusPlusBuilder.Personality>
+		<buildevents/>
+		<Folders/>
+	</CPlusPlusBuilder.Personality>
 </BorlandProject>
