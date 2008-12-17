@@ -38,16 +38,15 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 }
 //---------------------------------------------------------------------------
 
-bool showConfig(TComponent *owner, Block *aBlock)
+bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 {
 	cfgWindow = new TcfgWindow(owner);
 	cfgWindow->SetConfig(aBlock);
-
 	cfgWindow->ShowModal();
 	return true;
 }
 //---------------------------------------------------------------------------
-int  validate(Block *aBlock)
+int __stdcall validate(Block *aBlock)
 {
   // brak wejscia, jedno wyjscie
 	if(aBlock->output.size() == 0)
@@ -58,7 +57,9 @@ int  validate(Block *aBlock)
 		output1.setErrorCode(1);
 		output1.setErrorDescription("Brak obiektu na wyjœciu");
 		aBlock->output.push_back(output1);
-
+		
+		aBlock->getConfig()->addString("bitrate","Bitmap24bit");
+		aBlock->getConfig()->addString("path","");
 		return 2;
 	}
 	else
@@ -71,15 +72,16 @@ int  validate(Block *aBlock)
 
 			return 1;
 		}
+		else
+		{
+            aBlock->output[0].setErrorCode(0);
+			aBlock->output[0].setErrorDescription("");
+			return 0;
+        }
 	}
-
-	aBlock->output[0].setErrorCode(0);
-	aBlock->output[0].setErrorDescription("");
-
-	return 0;
 }
 //---------------------------------------------------------------------------
-int  run(Block *aBlock)
+int __stdcall run(Block *aBlock)
 {
 	Graphics::TBitmap* picture = new Graphics::TBitmap();
 	AnsiString path(aBlock->getConfig()->getString("path"));

@@ -12,9 +12,9 @@
 #include "../../TypyDanych/Bitmap24bit/Interface/IBitmap24bit.h"
 #include "../../TypyDanych/Bitmap32bit/Interface/IBitmap32bit.h"
 
-extern "C" __declspec(dllexport) int run(Block *aBlock);
-extern "C" __declspec(dllexport) bool showConfig(TComponent *owner, Block *aBlock);
-extern "C" __declspec(dllexport) int validate(Block *aBlock);
+extern "C" __stdcall __declspec(dllexport) int run(Block *aBlock);
+extern "C" __stdcall __declspec(dllexport) bool showConfig(TComponent *owner, Block *aBlock);
+extern "C" __stdcall __declspec(dllexport) int validate(Block *aBlock);
 
 bool OpenImage(Graphics::TBitmap*, const AnsiString&);
 void LoadImage(FIBITMAP*, Graphics::TBitmap*);

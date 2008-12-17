@@ -29,7 +29,7 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
 	
-	if(!cfg_->isString("bitrate"))
+	if(!cfg_->isExist("bitrate"))
 		cfg_->addString("bitrate","Bitmap24bit");
 	else
 	{
@@ -47,7 +47,7 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 			bit_1->Checked = true;
 	}
 
-	if(!cfg_->isString("path"))
+	if(!cfg_->isExist("path"))
 		cfg_->addString("path","");
 	else
 		EditPath->Text = cfg_->getString("path");
