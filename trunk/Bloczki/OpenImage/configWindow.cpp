@@ -22,6 +22,7 @@ void __fastcall TcfgWindow::CancelClick(TObject *Sender)
 void __fastcall TcfgWindow::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
+	cfg_ = NULL;
 	Action = caFree;	
 }
 //---------------------------------------------------------------------------
@@ -29,29 +30,22 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
 	
-	if(!cfg_->isExist("bitrate"))
-		cfg_->addString("bitrate","Bitmap24bit");
+	if(cfg_->getString("bitrate") == "Bitmap24bit")
+		bit_24->Checked = true;
+	else if(cfg_->getString("bitrate") == "Bitmap32bit")
+		bit_32->Checked = true;
+	else if(cfg_->getString("bitrate") == "Bitmap16bit")
+		bit_16->Checked = true;
+	else if(cfg_->getString("bitrate") == "Bitmap8bit")
+		bit_8->Checked = true;
+	else if(cfg_->getString("bitrate") == "Bitmap4bit")
+		bit_4->Checked = true;
 	else
-	{
-		if(cfg_->getString("bitrate") == "Bitmap24bit")
-			bit_24->Checked = true;
-		else if(cfg_->getString("bitrate") == "Bitmap32bit")
-			bit_32->Checked = true;
-		else if(cfg_->getString("bitrate") == "Bitmap16bit")
-			bit_16->Checked = true;
-		else if(cfg_->getString("bitrate") == "Bitmap8bit")
-			bit_8->Checked = true;
-		else if(cfg_->getString("bitrate") == "Bitmap4bit")
-			bit_4->Checked = true;
-		else
-			bit_1->Checked = true;
-	}
-
-	if(!cfg_->isExist("path"))
-		cfg_->addString("path","");
-	else
-		EditPath->Text = cfg_->getString("path");
+		bit_1->Checked = true;
+	
+	EditPath->Text = cfg_->getString("path");
 }
+//---------------------------------------------------------------------------
 void __fastcall TcfgWindow::OKClick(TObject *Sender)
 {
 	cfg_->setString("path",EditPath->Text);

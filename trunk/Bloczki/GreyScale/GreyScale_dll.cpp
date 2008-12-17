@@ -72,7 +72,8 @@ int __stdcall validate(Block *aBlock)
 		output1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->output.push_back(output1);
-        //sprawdzaj te¿ konfiguracje na pocz¹tku w validate albo ustawiaj j¹, wtedy w config niemusisz siê martwiæ ¿ê zmiennej niema, a dll'a nie wyjebie wyj¹tku gdy ktos sprubuje odpalic odrazu run nie uruchamiaj¹c wczeœniej konfiguracji
+		
+    // wtepna konfiguracja (nastepna modyfikacja mozliwa w oknie konfigu bloczka)
 		aBlock->getConfig()->addInt("limit",2);
 		aBlock->getConfig()->addInt("mode",0);
 

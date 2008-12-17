@@ -60,6 +60,7 @@ int __stdcall validate(Block *aBlock)
 		
 		aBlock->getConfig()->addString("bitrate","Bitmap24bit");
 		aBlock->getConfig()->addString("path","");
+		
 		return 2;
 	}
 	else
@@ -74,10 +75,11 @@ int __stdcall validate(Block *aBlock)
 		}
 		else
 		{
-            aBlock->output[0].setErrorCode(0);
+			aBlock->output[0].setErrorCode(0);
 			aBlock->output[0].setErrorDescription("");
+			
 			return 0;
-        }
+    }
 	}
 }
 //---------------------------------------------------------------------------
