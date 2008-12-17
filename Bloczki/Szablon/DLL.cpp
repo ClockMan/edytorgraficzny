@@ -29,11 +29,11 @@
 
 #pragma link "MEMMGR.LIB"
 
-extern "C" __declspec(dllexport) int run(Block *aBlock);
-extern "C" __declspec(dllexport) bool showConfig(TComponent *owner, Block *aBlock);
-extern "C" __declspec(dllexport) int validate(Block *aBlock);
+extern "C" __stdcall  __declspec(dllexport) int run(Block *aBlock);
+extern "C" __stdcall  __declspec(dllexport) bool showConfig(TComponent *owner, Block *aBlock);
+extern "C" __stdcall  __declspec(dllexport) int validate(Block *aBlock);
 
-bool showConfig(TComponent *owner, Block *aBlock)
+bool __stdcall  showConfig(TComponent *owner, Block *aBlock)
 { //
   // TForm1 *x=new TForm1(owner);
   // x->block=aBlock;
@@ -46,10 +46,11 @@ bool showConfig(TComponent *owner, Block *aBlock)
    return true;
 }
 
-int validate(Block *aBlock)
+int __stdcall  validate(Block *aBlock)
 {
    //funkcja sprawdza poprawnoœæ po³¹czeñ z bloczkiem jak i konfiguracji. tzn
    //dodawaæ nowe wejscia, dodawañ nowe wyjœcia, modyfikowaæ ich stany, kody b³êdów, ..
+   //INICJALIZOWAC TU TEZ KONFIGURACJE
  /*  if (aBlock.input.size()==0)
    {
 	  BlockInput x1("wejscie1");
@@ -93,7 +94,7 @@ int validate(Block *aBlock)
    return 0;
 }
 
-int run(Block *aBlock)
+int __stdcall  run(Block *aBlock)
 {
 	//funkcja wykonuje jak¹œ operacjê, najlepiej kod operacji przechowywaæ w zewnêtrznej bibliotece.
    /*	if (aBlock.input.Size()!=2) return 2;
