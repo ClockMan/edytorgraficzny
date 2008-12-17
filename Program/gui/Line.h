@@ -39,7 +39,7 @@ class Line : public TWinControl
 		/**
 		 *  W³aœciwoœæ - czy linia by³a przesówana przez u¿ytkownika
 		 */
-		 bool Resized;
+		 int Resize;
 
 		 /**
 		 *  W³aœciwoœæ - orientacja - true : pionowa, false : pozioma

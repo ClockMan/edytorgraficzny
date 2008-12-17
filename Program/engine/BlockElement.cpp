@@ -33,7 +33,7 @@ int BlockElement::getErrorCode()
 	return errorCode;
 }
 
-AnsiString& BlockElement::geErrorDescription()
+AnsiString& BlockElement::getErrorDescription()
 {
 	return errorDescription;
 }

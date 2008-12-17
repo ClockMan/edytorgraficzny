@@ -9,15 +9,21 @@
 #include "VisualBlock.h"
 #include "Connection.h"
 
+typedef void (__closure *PIWOEngine_Log )(TObject*,const AnsiString);
+
 class PIWOEngine : public TPanel
 {
 	private:
 		TScrollBox *area;
 
 		vector<VisualBlock*> blocks;
-		vector<Connection*> conections;
-
-        vector<VisualBlock*> selectedBlocks;
+		vector<Connection*> connections;
+        Connection*	selectedConnection;
+		vector<VisualBlock*> selectedBlocks;
+		VisualBlock* selectedOutputBlock;
+		VisualBlock* selectedInputBlock;
+		VisualInput* selectedInput;
+		VisualOutput* selectedOutput;
 
 		void OnVisualBlockConfigClick(TObject* Sender);
 		void OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender);
@@ -29,7 +35,15 @@ class PIWOEngine : public TPanel
 		void OnVisualBlockSelect(TObject* Sender);
 		void OnVisualBlockSelectAdd(TObject* Sender);
 		void __fastcall onThisClick(TObject* Sender);
+		void OnConnectionSelect(TObject* Sender);
+
+		Connection* getConnectionTo(VisualInput* input);
+		bool MakeConnection(VisualBlock* outputBlock, VisualOutput* output, VisualBlock* inputBlock, VisualInput* input);
 	public:
+		PIWOEngine_Log OnInformation;
+		PIWOEngine_Log OnWarrning;
+		PIWOEngine_Log OnError;
+
 		PluginContener *plugins;
 		__fastcall PIWOEngine(TComponent* Owner);
 		__fastcall ~PIWOEngine();

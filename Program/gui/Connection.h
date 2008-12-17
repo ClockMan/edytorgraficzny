@@ -9,12 +9,12 @@
 #include "Line.h"
 #include "VisualBlock.h"
 
-#define CONNECTION_OK_NORMAL   		 0x20FF20
-#define CONNECTION_OK_SELECTED 		 0xDF0038
-#define CONNECTION_WARRNING_NORMAL   0x0BD1EE
-#define CONNECTION_WARRNING_SELECTED 0x00FDFD
-#define CONNECTION_ERROR_NORMAL   	 0xCE0000
-#define CONNECTION_ERROR_SELECTED 	 0xFF0000
+#define CONNECTION_OK_NORMAL   		 0x33CC33
+#define CONNECTION_OK_SELECTED 		 0x20FF20
+#define CONNECTION_WARRNING_NORMAL   61137
+#define CONNECTION_WARRNING_SELECTED 65021
+#define CONNECTION_ERROR_NORMAL   	 206
+#define CONNECTION_ERROR_SELECTED 	 255
 
 static const TColor ConnectionOkNormalColor=CONNECTION_OK_NORMAL;
 static const TColor ConnectionOkSelectedColor=CONNECTION_OK_SELECTED;
@@ -42,9 +42,8 @@ class Connection
 		
 		void OnLineMove(TObject* Sender);
 		void OnConnectionSelectedRequest(TObject* Sender);
-		void update(Line* object);
-     	bool connectionOk(Position &in, Position &out);
-		void RightOutputToLeftInput(Position &in, Position &out);
+		bool connectionOk(Position &in, Position &out);
+		void redraw(Position &in, Position &out);
 	 public:
 		Connection_Function OnConnectionSelected;
 
@@ -56,6 +55,7 @@ class Connection
 		Connection(TWinControl* owner);
 		~Connection();
 
+		bool draw();
 		bool update();
 		bool connectionOk();
 

@@ -62,6 +62,7 @@ private:
 	PIWOEngine *piwo;
 	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
 	void  OnFunctionAddClick(void* Sender);
+	void OnLog(TObject* Sender, const AnsiString message);
 public:
 	PluginContener plugins;
 	__fastcall TForm1(TComponent* Owner);
