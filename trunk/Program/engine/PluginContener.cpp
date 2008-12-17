@@ -30,6 +30,7 @@ FunctionDLL* PluginContener::addFunction(const AnsiString &fileDLL)
 PluginContener::PluginContener()
 {
 	OnLoadingProgress=NULL;
+	OnFunctionAddRequest=NULL;
 }
 
 PluginContener::~PluginContener()
@@ -190,6 +191,11 @@ int PluginContener::SearchDirectory(std::vector<AnsiString> &refvecFiles,
   return 0;
 }
 
+void PluginContener::OnFunctionClick(void* Sender)
+{
+	if (OnFunctionAddRequest!=NULL) 
+			OnFunctionAddRequest(Sender);
+}
 
 bool PluginContener::LoadData(AnsiString blockDir, AnsiString typesDir, TMainMenu &menu, TImageList &images, int upId, int downId, int functionIcon, int folderIcon)
 {
@@ -220,6 +226,7 @@ bool PluginContener::LoadData(AnsiString blockDir, AnsiString typesDir, TMainMen
 	   if (wsk!=NULL)
 	   {
 		 AddMenus(wsk, menu, images, upId, downId, functionIcon, folderIcon);
+		 wsk->FunctionAddRequest=OnFunctionClick;
 		 if (OnLoadingProgress!=NULL)
 		 OnLoadingProgress(this, i+1, max, ExtractFileName(functions[i]), 1);
 	   }

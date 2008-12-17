@@ -4,9 +4,9 @@ TypeDLL::TypeDLL(const AnsiString &fileDLL)
 {
    DLLHandle=LoadLibrary(fileDLL.c_str());
    if (!DLLHandle) throw "B³¹d podczas za³adowania DLL";
-   fshow=(TypeDLL_show)GetProcAddress(DLLHandle, "_show");
-   fisValid=(TypeDLL_isValid)GetProcAddress(DLLHandle, "_isValid");
-   fgetType=(TypeDLL_getType)GetProcAddress(DLLHandle, "_getType");
+   fshow=(TypeDLL_show)GetProcAddress(DLLHandle, "show");
+   fisValid=(TypeDLL_isValid)GetProcAddress(DLLHandle, "isValid");
+   fgetType=(TypeDLL_getType)GetProcAddress(DLLHandle, "getType");
    if ((!fshow)||(!fisValid)||(!fgetType))
    {
 	   FreeLibrary(DLLHandle);

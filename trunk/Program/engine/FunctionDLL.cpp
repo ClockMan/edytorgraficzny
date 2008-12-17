@@ -5,9 +5,9 @@ FunctionDLL::FunctionDLL(const AnsiString &fileDLL)
    FunctionAddRequest=NULL;
    DLLHandle=LoadLibrary(fileDLL.c_str());
    if (!DLLHandle) throw "B³¹d podczas za³adowania DLL";
-   frun=(FunctionDLL_run)GetProcAddress(DLLHandle, "_run");
-   fvalidate=(FunctionDLL_validate)GetProcAddress(DLLHandle, "_validate");
-   fshowConfig=(FunctionDLL_showConfig)GetProcAddress(DLLHandle, "_showConfig");
+   frun=(FunctionDLL_run)GetProcAddress(DLLHandle, "run");
+   fvalidate=(FunctionDLL_validate)GetProcAddress(DLLHandle, "validate");
+   fshowConfig=(FunctionDLL_showConfig)GetProcAddress(DLLHandle, "showConfig");
    if ((!frun)||(!fvalidate)||(!fshowConfig))
    {
 	   FreeLibrary(DLLHandle);

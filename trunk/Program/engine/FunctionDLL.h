@@ -9,10 +9,11 @@ using namespace std;
 
 #include "Block.h"
 
-typedef int ( *FunctionDLL_run )(Block*);
-typedef bool ( *FunctionDLL_showConfig )(TComponent*, Block*);
-typedef int ( *FunctionDLL_validate )(Block*);
-typedef void ( *FunctionDLL_onClick )(void*);
+typedef int (__stdcall *FunctionDLL_run )(Block*);
+typedef bool (__stdcall *FunctionDLL_showConfig )(TComponent*, Block*);
+typedef int (__stdcall *FunctionDLL_validate )(Block*);
+
+typedef void ( __closure *FunctionDLL_onClick )(void*);
 /**
  * FunctionDLL - Klasa ladujaca DLL bloczka, uruchamiaj¹ca funkcje i zwalniaj¹ca go
  * @author Piotr
