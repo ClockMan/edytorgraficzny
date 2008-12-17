@@ -74,9 +74,18 @@
         <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.-w-.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.Gi.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.w.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.merge" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.zi.enabled" value="0"/>
@@ -311,7 +320,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">2</VersionInfo>
+          <VersionInfo Name="Build">3</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -323,7 +332,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.2</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.3</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
@@ -357,10 +366,6 @@
           <Language Name="ProjectLang">$00000000</Language>
           <Language Name="RootDir"></Language>
         </Language>
-        <Excluded_Packages>
-          <Excluded_Packages Name="D:\System\Components\bsftriald2006\BSFD2006.bpl">(untitled)</Excluded_Packages>
-          <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
-        </Excluded_Packages>
         <Linker>
           <Linker Name="LibPrefix"></Linker>
           <Linker Name="LibSuffix"></Linker>
