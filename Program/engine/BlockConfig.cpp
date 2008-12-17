@@ -12,10 +12,13 @@ Item* BlockConfig::getItem(const AnsiString aName)
 BlockConfig::BlockConfig()
 {
 	changed=false;
+    revision=0;
 }
 
 BlockConfig::BlockConfig(TStream &stream)
 {
+   changed=false;
+   revision=0;
    if (!loadFromStream(stream)) throw "B³êdny format";
 }
 
@@ -68,6 +71,8 @@ void BlockConfig::copyFrom(const BlockConfig &kopia)
 
 BlockConfig::BlockConfig(const BlockConfig &kopia)
 {
+   revision=kopia.revision;
+   changed=kopia.changed;
    copyFrom(kopia);
 }
 
@@ -79,7 +84,7 @@ BlockConfig::~BlockConfig()
 void BlockConfig::clear()
 {
 	int i=map.size()-1;
-	for(;i>=0;++i)
+	for(;i>=0;--i)
 	{
 	   if (map[i]->getType()=="TBitmap") {
 		 delete (Graphics::TBitmap*)(map[i]->getObject());
@@ -115,7 +120,7 @@ bool BlockConfig::addString(const AnsiString aName, const AnsiString aValue)
   AnsiString *d=new AnsiString(aValue);
   Item *it=new Item(aName, (void*)d, "AnsiString");
   map.push_back(it);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -126,7 +131,7 @@ bool BlockConfig::addBoolean(const AnsiString aName, bool aValue)
   *d=aValue;
   Item *it=new Item(aName, (void*)d, "Boolean");
   map.push_back(it);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -137,7 +142,7 @@ bool BlockConfig::addInt(const AnsiString aName, int aValue)
   *d=aValue;
   Item *it=new Item(aName, (void*)d, "Integer");
   map.push_back(it);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -148,7 +153,7 @@ bool BlockConfig::addDouble(const AnsiString aName, double aValue)
   *d=aValue;
   Item *it=new Item(aName, (void*)d, "Double");
   map.push_back(it);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -159,7 +164,7 @@ bool BlockConfig::addBitmap(const AnsiString aName, const Graphics::TBitmap &aVa
   d->Assign(const_cast<Graphics::TBitmap*>(&aValue));
   Item *it=new Item(aName, (void*)d, "TBitmap");
   map.push_back(it);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -170,7 +175,7 @@ bool BlockConfig::addStream(const AnsiString aName, TStream &aValue)
   d->CopyFrom(&aValue,0);
   Item *it=new Item(aName, (void*)d, "TStream");
   map.push_back(it);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -181,7 +186,7 @@ bool BlockConfig::setString(const AnsiString aName, const AnsiString aValue)
   AnsiString *d=new AnsiString(aValue);
   delete (AnsiString*)(it->getObject());
   it->setObject((void*)d);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -193,7 +198,7 @@ bool BlockConfig::setBoolean(const AnsiString aName, bool aValue)
   *d=aValue;
   delete (bool*)(it->getObject());
   it->setObject((void*)d);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -205,7 +210,7 @@ bool BlockConfig::setInt(const AnsiString aName, int aValue)
   *d=aValue;
   delete (int*)(it->getObject());
   it->setObject((void*)d);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -217,7 +222,7 @@ bool BlockConfig::setDouble(const AnsiString aName, double aValue)
   *d=aValue;
   delete (double*)(it->getObject());
   it->setObject((void*)d);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -229,7 +234,7 @@ bool BlockConfig::setBitmap(const AnsiString aName, const Graphics::TBitmap &aVa
   d->Assign(const_cast<Graphics::TBitmap*>(&aValue));
   delete (Graphics::TBitmap*)(it->getObject());
   it->setObject((void*)d);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -241,7 +246,7 @@ bool BlockConfig::setStream(const AnsiString aName, TStream &aValue)
   d->CopyFrom(&aValue,0);
   delete (TMemoryStream*)(it->getObject());
   it->setObject((void*)d);
-  changed=true;
+  changed=true;++revision;
   return true;
 }
 
@@ -374,7 +379,7 @@ bool BlockConfig::remove(const AnsiString aName)
 			 }
 			 map.pop_back();
 			 delete it;
-			 changed=true;
+			 changed=true;++revision;
          }
 	   }
 	   return true;
@@ -548,4 +553,14 @@ bool BlockConfig::loadFromStream(TStream &aFrom)
 bool BlockConfig::isChanged()
 {
 	return changed;
+}
+
+void BlockConfig::setChangedFalse()
+{
+	changed=false;
+}
+
+unsigned long BlockConfig::getRevision()
+{
+	return revision;
 }

@@ -8,7 +8,10 @@ BlockElement::BlockElement(const AnsiString aName)
 
 BlockElement::BlockElement(const BlockElement &block)
 {
+   if (block.object!=NULL)
    object=new TypeConfig(*(block.object));
+   else
+   object=block.object;
    name=block.name;
    errorDescription=block.errorDescription;
    description=block.description;

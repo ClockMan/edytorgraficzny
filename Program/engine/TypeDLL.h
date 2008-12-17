@@ -9,9 +9,9 @@ using namespace std;
 
 #include "TypeConfig.h"
 
-typedef TForm* ( *TypeDLL_show )(TComponent*, TypeConfig*);
-typedef bool ( *TypeDLL_isValid )(TypeConfig*);
-typedef AnsiString& ( *TypeDLL_getType )();
+typedef TForm* (__stdcall *TypeDLL_show )(TComponent*, TypeConfig*);
+typedef bool (__stdcall *TypeDLL_isValid )(TypeConfig*);
+typedef AnsiString& (__stdcall *TypeDLL_getType )();
 /**
  * Interfejs pozwalajacy na l¹dowanie i uzywanie biblioteki typu
  * @author Piotr

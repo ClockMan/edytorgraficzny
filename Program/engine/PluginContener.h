@@ -26,8 +26,10 @@ class PluginContener
 					const AnsiString        &refcstrExtension,
 					bool	   bSearchSubdirectories = true);
 		void AddMenus(FunctionDLL *info, TMainMenu &menu, TImageList &images, int upId, int downId, int functionIcon, int folderIcon);
+		void OnFunctionClick(void* Sender);
 	public:
 		PluginContener_OnProgress OnLoadingProgress;
+		FunctionDLL_onClick OnFunctionAddRequest;
 
 		PluginContener();
 		/**

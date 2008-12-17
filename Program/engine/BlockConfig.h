@@ -20,6 +20,7 @@ class BlockConfig
 	protected:
 		vector<Item*> map;
 		bool changed;
+		unsigned long revision;
 		Item* getItem(const AnsiString aName);
 		bool loadFromStream2(TStream &aFrom);
 		bool saveToStream2(TStream &aWhere);
@@ -232,6 +233,14 @@ class BlockConfig
 		 * @return true - jesli zostal zmieniony
 		 */
 		bool isChanged();
+		/**
+		 * zeruje flage changed
+		 */
+		void setChangedFalse();
+		 /**
+		 *  zwraca wersje (jest inkrementowana przy wykonywaniu dowolnych zmian)
+		 */
+		unsigned long getRevision();
 		/**
 		 * czyszczenie listy
 		 */
