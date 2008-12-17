@@ -53,7 +53,7 @@ class BlockElement
 		 * Pobiera Opis bledu
 		 * @return AnsiString - Opis bledu.
 		 */
-		AnsiString& geErrorDescription();
+		AnsiString& getErrorDescription();
 		/*
 		 * Pobiera nazwe obiektu.
 		 * @return AnsiString nazwa obiektu.

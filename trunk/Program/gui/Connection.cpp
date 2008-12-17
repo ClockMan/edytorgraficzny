@@ -20,7 +20,7 @@ Connection::~Connection()
 	while(lines.size()>0)
 	{
 		delete lines[0];
-		lines.erase(lines.begin());
+		lines.erase(lines.begin());   
 	}
 }
 
@@ -76,27 +76,96 @@ bool Connection::connectionOk()
    return connectionOk(in, out);
 }
 
-void Connection::RightOutputToLeftInput(Position &in, Position &out)
+void Connection::redraw(Position &in, Position &out)
 {
-  //TODO
+   //ustawiamy pocz¹tek i koniec, zostn¹ tylko 3 linie do modyfikacji
+   TPoint p1, p2;
+   if (in.direction==0)
+   {
+	  p1.x=in.xy.x-10;
+	  p1.y=in.xy.y;
+   }
+
+   if (in.direction==1)
+   {
+	  p1.x=in.xy.x;
+	  p1.y=in.xy.y-10;
+   }
+
+   if (out.direction==3)
+   {
+	  p2.x=out.xy.x;
+	  p2.y=out.xy.y+10;
+   }
+
+   if (out.direction==2)
+   {
+	  p2.x=out.xy.x+10;
+	  p2.y=out.xy.y;
+   }
+   
+   lines[0]->CanBeMoved=false;
+   lines[4]->CanBeMoved=false;
+   //problem znaleœæ linie poziom¹ która bêdzie w stanie po³¹czyæ wejœcie i wyjœcie., pozycja y niemo¿e przechodziæ ani przez blok A ni przez blok B
+   int y=0;
+   if (in.xy.x>out.xy.x)
+   {
+	  //jest ok nic nie przeszkadza
+	  y=out.xy.y;
+   }
+   else
+   {
+	  //zawadzaj¹ obydwa bloki, y = 20px powyzej bloku A, 20 px ponizej bloku A
+	  if (outBlock->Top-20<inBlock->Top-20 || outBlock->Top-20>inBlock->Top+inBlock->Height+20)
+	  {
+		 y=outBlock->Top-20;
+	  } else
+	  if ((outBlock->Top+outBlock->Height+20<inBlock->Top-20) || (outBlock->Top+outBlock->Height+20>inBlock->Top+inBlock->Height+20))
+	  {
+		 y=outBlock->Top+outBlock->Height+20;
+	  } else
+	  if ((inBlock->Top-20<outBlock->Top-20) || (inBlock->Top-20>outBlock->Top+outBlock->Height+20))
+	  {
+		 y=inBlock->Top-20;
+	  } else
+	  if ((inBlock->Top+inBlock->Height+20<outBlock->Top-20) || (inBlock->Top+inBlock->Height+20>outBlock->Top+outBlock->Height+20))
+	  {
+		 y=inBlock->Top+inBlock->Height+20;
+	  }  else y=outBlock->Top-20;
+   }
+
+   y+=lines[2]->Resize;
+   //znamy wysokoœc lini poziomej, rysujemy pionow¹ lew¹.
+   lines[0]->setXY(out.xy.x, out.xy.y, p2.x+lines[1]->Resize, p2.y);
+   lines[1]->setXY(p2.x+lines[1]->Resize, p2.y, p2.x+lines[1]->Resize, y);
+   lines[3]->setXY(p1.x+lines[3]->Resize, p1.y, p1.x+lines[3]->Resize, y);
+   lines[4]->setXY(in.xy.x, in.xy.y, p1.x+lines[3]->Resize, p1.y);
+   lines[2]->setXY(p2.x+lines[1]->Resize, y, p1.x+lines[3]->Resize, y);
 }
 
-void Connection::update(Line* object)
-{
-   //TODO
-}
-
-bool Connection::update()
+bool Connection::draw()
 {
    if ((input==NULL)||(output==NULL)||(inBlock==NULL)||(outBlock==NULL)) return false;
    //@TODO Obs³uge po³¹czeñ z górnymi wejœciami i dolnymi wyjœciami, narazie wrzucamy ¿e takie po³¹czenie jest b³êdne
    Position in=inBlock->getInputPosition(input);
    if (in.direction!=0&&in.direction!=2) return false;
-   Position out=inBlock->getOutputPosition(output);
+   Position out=outBlock->getOutputPosition(output);
    if (out.direction!=0&&out.direction!=2) return false;
 
-   //inicjujemy linie jeœli ich niemamy, potrzebne jest ich 5
-   if (lines.size()!=5)
+   if (lines.size()==5)
+   {
+	  //update
+	  if (connectionOk(in, out))
+	  {
+		 return true;
+	  }
+	  else
+	  {
+		redraw(in, out);
+		return true;
+	  }
+   }
+   else
    {
       	while(lines.size()>0)
 		{
@@ -104,26 +173,82 @@ bool Connection::update()
 			lines.erase(lines.begin());
 		}
 
-		for(int i=0;i<5;i++)
+        for(int i=0;i<5;i++)
 		{
 			Line *line=new Line(fowner, false);
+			line->Parent=fowner;
+			line->OnConnectionSelectRequest=OnConnectionSelectedRequest;
+			line->OnLineMove=OnLineMove;
 			lines.push_back(line);
 		}
+		redraw(in, out);
+		return true;
    }
+}
 
-   //teraz najgorsze, rzeba rozpatrzyæ który model pod³¹czenia bêdzie najlepiej pasowaæ i go zastosowaæ pamiêtaj¹c o tym ¿e u¿ytkownik mo¿e nam mieszaæ w tym po³¹czeniu przesuwaj¹c linie etc.
-   //ograniczenia:
-   // - d³ugoœæ lini wystaj¹cej z bloczka nie mo¿e byæ mniejsza ni¿ 15px.
-   // - szerokoœæ ka¿dej lini wynosi 3 px.
-   // - jeœli musimy "omin¹æ bloczek" to omijamy go na odleg³oœci 25px. (w naszym pzrypadku dotyczy to g³ownie do³u i góry)
-   // @TODO
+bool Connection::update()
+{
+   //update danych w zale¿noœci od wejœæ - opis, kolor
+   //generujemy nowy status
+   if (input->getErrorCode()>1||output->getErrorCode()>1)
+	status=2;
+	else
+   if (input->getErrorCode()==1||output->getErrorCode()==1)
+	status=1;
+	else
+	status=0;
 
-   if (in.xy.x-out.xy.x>0)
+	AnsiString str;
+	// komentarz:
+	str+=outBlock->getTitle()+" - "+output->getDescription()+": "+output->getOutputType();
+	if (output->getErrorCode()!=0) {
+		if (output->getErrorDescription().IsEmpty())
+		  str+=" (Error:"+IntToStr(output->getErrorCode())+")";
+		else
+		  str+=" ("+output->getErrorDescription()+")";
+	}
+	str+="\n -> \n";
+	str+=inBlock->getTitle()+" - "+input->getDescription()+": [";
+	bool is=false;
+	for(unsigned int i=0;i<input->allowedTypes.size();++i)
+	{
+	  str+=input->allowedTypes[i];
+	  if (i<input->allowedTypes.size()-1) str+=",";
+	  if (input->allowedTypes[i]==output->getOutputType()) is=true;
+	}
+	str+="]";
+	if (!is) status=2;
+
+	if (input->getErrorCode()!=0) {
+		if (input->getErrorDescription()!="")
+		  str+=" (Error:"+IntToStr(input->getErrorCode())+")";
+		else
+		  str+=" ("+input->getErrorDescription()+")";
+	}
+
+    if (selected)
+	  {
+		 for(unsigned int i=0;i<lines.size();i++)
+		 {
+			 if (status==2) lines[i]->Color=ConnectionErrorSelectedColor;else
+			 if (status==1) lines[i]->Color=ConnectionWarrningSelectedColor;else
+			 lines[i]->Color=ConnectionOkSelectedColor;
+		 }
+	  }
+	  else
+	  {
+		 for(unsigned int i=0;i<lines.size();i++)
+		 {
+			 if (status==2) lines[i]->Color=ConnectionErrorNormalColor;else
+			 if (status==1) lines[i]->Color=ConnectionWarrningNormalColor;else
+			 lines[i]->Color=ConnectionOkNormalColor;
+		 }
+	  }
+
+   for(unsigned int i=0;i<lines.size();i++)
    {
-	  //po³¹czenie out -> in, gdzie bloczek docelowy jest na prawo od bloczka Ÿró³owego
-	  RightOutputToLeftInput(in, out);
+    	lines[i]->Hint=str;
    }
-   //@TODO
    return true;
 }
 
@@ -142,7 +267,7 @@ void Connection::setSelected(bool s)
 	  if (s)
 	  {
 		 for(unsigned int i=0;i<lines.size();i++)
-		 {                     
+		 {
 			 if (status==2) lines[i]->Color=ConnectionErrorSelectedColor;else
 			 if (status==1) lines[i]->Color=ConnectionWarrningSelectedColor;else
 			 lines[i]->Color=ConnectionOkSelectedColor;
@@ -163,11 +288,12 @@ void Connection::setSelected(bool s)
 
 void Connection::OnLineMove(TObject* Sender)
 {
-   update((Line*)(Sender));
+   draw();
 }
 
 void Connection::OnConnectionSelectedRequest(TObject* Sender)
 {
+   BringToFront();
    if (!selected)
    {
 	  setSelected(true);

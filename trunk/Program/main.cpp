@@ -59,6 +59,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	piwo->plugins=&plugins;
 	piwo->Align=alClient;
 	piwo->Parent=this;
+	piwo->OnInformation=OnLog;
+	piwo->OnWarrning=OnLog;
+	piwo->OnError=OnLog;
 
 	Sleep(500);
 	Form1->Visible=true;
@@ -69,6 +72,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	Form1->Enabled=true;
 	delete Form2;
 	Application->ProcessMessages();
+}
+
+void TForm1::OnLog(TObject* Sender, const AnsiString message)
+{
+   Form1->Memo1->Lines->Add(message);
 }
 //---------------------------------------------------------------------------
 

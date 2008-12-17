@@ -253,20 +253,19 @@ bool VisualBlock::updateVisualComponents()
 	 } else
 	 if (tmp->input->getErrorCode()==1) {
 		 txt+="Ostrze¿enie";
-		 if (!tmp->input->geErrorDescription().IsEmpty()) {
-		   txt+=" ("+tmp->input->geErrorDescription()+")";
+		 if (!tmp->input->getErrorDescription().IsEmpty()) {
+		   txt+=" ("+tmp->input->getErrorDescription()+")";
 		 }
 	 } else
 	 {
 	   txt+="B³¹d";
-        if (!tmp->input->geErrorDescription().IsEmpty()) {
-		   txt+=" ("+tmp->input->geErrorDescription()+")";
+        if (!tmp->input->getErrorDescription().IsEmpty()) {
+		   txt+=" ("+tmp->input->getErrorDescription()+")";
 		 }
 	 }
 	 tmp->Hint=txt;
 	 leftInputTmp.push_back(tmp);
    }
-
 
    //wyjœcia
    for(i=0;i<block.output.size();i++)
@@ -311,14 +310,14 @@ bool VisualBlock::updateVisualComponents()
 	 } else
 	 if (tmp->output->getErrorCode()==1) {
 		 txt+="Ostrze¿enie";
-		 if (!tmp->output->geErrorDescription().IsEmpty()) {
-		   txt+=" ("+tmp->output->geErrorDescription()+")";
+		 if (!tmp->output->getErrorDescription().IsEmpty()) {
+		   txt+=" ("+tmp->output->getErrorDescription()+")";
 		 }
 	 } else
 	 {
 	   txt+="B³¹d";
-		if (!tmp->output->geErrorDescription().IsEmpty()) {
-		   txt+=" ("+tmp->output->geErrorDescription()+")";
+		if (!tmp->output->getErrorDescription().IsEmpty()) {
+		   txt+=" ("+tmp->output->getErrorDescription()+")";
 		 }
 	 }
 	 tmp->Hint=txt;
