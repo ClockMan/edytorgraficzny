@@ -24,6 +24,7 @@ BlockInput::BlockInput(const AnsiString aName):BlockElement(aName)
 BlockInput::BlockInput(const BlockInput &kopia):BlockElement(kopia)
 {
    inputType=kopia.inputType;
+   allowedTypes=kopia.allowedTypes;
 }
 
 BlockInput::~BlockInput()
