@@ -80,6 +80,7 @@ int __stdcall validate(Block *aBlock)
 		aBlock->output.push_back(output1);
 
 		aBlock->getConfig()->addInt("mode",0);
+
 		return 2;
 	}
 	else

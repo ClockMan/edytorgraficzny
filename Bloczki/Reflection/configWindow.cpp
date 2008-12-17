@@ -17,6 +17,7 @@ __fastcall TcfgWindow::TcfgWindow(TComponent* Owner)
 void __fastcall TcfgWindow::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
+	cfg_ = NULL;
 	Action = caFree;
 }
 //---------------------------------------------------------------------------
@@ -24,13 +25,10 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
 	
-	if(!cfg_->isExist("mode"))
-		cfg_->addInt("mode",0);
+	if(cfg_->getInt("mode") == 0)
+		Vertically->Checked = true;
 	else
-		if(cfg_->getInt("mode") == 0)
-			Vertically->Checked = true;
-		else
-    	Horizontally->Checked = true;
+		Horizontally->Checked = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TcfgWindow::OKClick(TObject *Sender)

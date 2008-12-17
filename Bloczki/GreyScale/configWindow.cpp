@@ -22,7 +22,7 @@ void __fastcall TcfgWindow::CancelClick(TObject *Sender)
 void __fastcall TcfgWindow::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
-	cfg_=NULL;
+	cfg_= NULL;
 	Action = caFree;	
 }
 //---------------------------------------------------------------------------
@@ -30,37 +30,32 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
 	
-	if(!cfg_->isExist("mode"))
-		cfg_->addInt("mode",0);
-	else
-		if(cfg_->getInt("mode") == 0)
-		{
-			GreyScale->Checked = true;
-			TrackLimit->Enabled = false;
-			EditLimit->Enabled = false;
-		}
-		else
-		{
-			GreyBalance->Checked = true;
-			TrackLimit->Enabled = true;
-			EditLimit->Enabled = true;
-		}
-
-	if(!cfg_->isExist("limit"))
-		cfg_->addInt("limit",2);
+	if(cfg_->getInt("mode") == 0)
+	{
+		GreyScale->Checked = true;
+		TrackLimit->Enabled = false;
+		EditLimit->Enabled = false;
+	}
 	else
 	{
-		TrackLimit->Position = cfg_->getInt("limit");
-		EditLimit->Text = IntToStr(cfg_->getInt("limit"));
+		GreyBalance->Checked = true;
+		TrackLimit->Enabled = true;
+		EditLimit->Enabled = true;
 	}
+	
+	TrackLimit->Position = cfg_->getInt("limit");
+	EditLimit->Text = IntToStr(cfg_->getInt("limit"));
 }
+//---------------------------------------------------------------------------
 void __fastcall TcfgWindow::OKClick(TObject *Sender)
 {
 	if(GreyScale->Checked)
 		cfg_->setInt("mode",0);
 	else
+	{
 		cfg_->setInt("mode",1);
     cfg_->setInt("limit",EditLimit->Text.ToIntDef(2));
+	}
 	Close();
 }
 //---------------------------------------------------------------------------
