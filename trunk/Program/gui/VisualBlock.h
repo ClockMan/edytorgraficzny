@@ -27,7 +27,6 @@ typedef void (__closure *VisualBlock_FunctionMove )(TObject*, bool, int, int);
 class VisualBlock : public TPanel
 {
 	private:
-		Block block;
 		TSpeedButton *configButton;
 		TLabel *title;
 		vector<VisualInput*> leftInput;
@@ -50,6 +49,10 @@ class VisualBlock : public TPanel
 		void __fastcall BlockMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 		void resizeAll();
 	public:
+        Block block;
+		AnsiString nameOfBlock;
+		int		   numberOfBlock;
+
 		VisualFunction OnConfigClick;
 		VisualBlock_FunctionI OnVisualInputSelected;
 		VisualBlock_FunctionO OnVisualOutputSelected;
@@ -64,8 +67,8 @@ class VisualBlock : public TPanel
 		__fastcall ~VisualBlock();
 		Position getInputPosition(BlockInput* object);
 		Position getOutputPosition(BlockOutput* object);
-		bool setConfigButtonGlyph(AnsiString &file);
-		void setTitle(AnsiString &s);
+		bool setConfigButtonGlyph(Graphics::TBitmap *bmp);
+		void setTitle(const AnsiString &s);
 		AnsiString getTitle();
 		bool updateVisualComponents();
 		void setSelected(bool status);

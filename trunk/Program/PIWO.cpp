@@ -12,6 +12,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	try
 	{
 		Application->Initialize();
+		Application->HintHidePause=1000000;
 		Application->Title = "PIWO - Projekt Informatyczny Wilqu & Others 1.0";
 		Application->CreateForm(__classid(TForm1), &Form1);
 		Application->Run();

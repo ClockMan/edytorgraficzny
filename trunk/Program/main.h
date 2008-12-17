@@ -13,6 +13,7 @@
 #include "gui/PIWOEngine.h"
 #include <Menus.hpp>
 #include <ImgList.hpp>
+#include <ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -53,14 +54,16 @@ __published:	// IDE-managed Components
 	TMenuItem *Oautorach1;
 	TMenuItem *Oprogramie1;
 	TImageList *ImageList1;
+	TMemo *Memo1;
+	TStatusBar *StatusBar1;
 	void __fastcall FormCreate(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
 	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
+	void  OnFunctionAddClick(void* Sender);
 public:
 	PluginContener plugins;
-
 	__fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
