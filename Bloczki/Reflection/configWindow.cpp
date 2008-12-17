@@ -24,7 +24,7 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
 	
-	if(!cfg_->isInt("mode"))
+	if(!cfg_->isExist("mode"))
 		cfg_->addInt("mode",0);
 	else
 		if(cfg_->getInt("mode") == 0)
