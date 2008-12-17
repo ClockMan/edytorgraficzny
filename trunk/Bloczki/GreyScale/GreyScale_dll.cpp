@@ -43,17 +43,16 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 //---------------------------------------------------------------------------
 
 
-bool  showConfig(TComponent *owner, Block *aBlock)
+bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 {
 	cfgWindow = new TcfgWindow(owner);
-	cfgWindow->SetConfig(aBlock);
-
+    cfgWindow->SetConfig(aBlock);
 	cfgWindow->ShowModal();
 	return true;
 }
 
 //---------------------------------------------------------------------------
-int validate(Block *aBlock)
+int __stdcall validate(Block *aBlock)
 {
 	if((aBlock->input.size() == 0) && (aBlock->output.size() == 0))
 	{
@@ -73,6 +72,9 @@ int validate(Block *aBlock)
 		output1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->output.push_back(output1);
+        //sprawdzaj te¿ konfiguracje na pocz¹tku w validate albo ustawiaj j¹, wtedy w config niemusisz siê martwiæ ¿ê zmiennej niema, a dll'a nie wyjebie wyj¹tku gdy ktos sprubuje odpalic odrazu run nie uruchamiaj¹c wczeœniej konfiguracji
+		aBlock->getConfig()->addInt("limit",2);
+		aBlock->getConfig()->addInt("mode",0);
 
 		return 2;
 	}
@@ -96,10 +98,10 @@ int validate(Block *aBlock)
 
 			return 0;
 		}
-	}
+	}     
 }
 //---------------------------------------------------------------------------
-int  run(Block *aBlock)
+int __stdcall run(Block *aBlock)
 {
 	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
 		return 1;

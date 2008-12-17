@@ -22,6 +22,7 @@ void __fastcall TcfgWindow::CancelClick(TObject *Sender)
 void __fastcall TcfgWindow::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
+	cfg_=NULL;
 	Action = caFree;	
 }
 //---------------------------------------------------------------------------
@@ -29,7 +30,7 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
 	
-	if(!cfg_->isInt("mode"))
+	if(!cfg_->isExist("mode"))
 		cfg_->addInt("mode",0);
 	else
 		if(cfg_->getInt("mode") == 0)
@@ -45,7 +46,7 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 			EditLimit->Enabled = true;
 		}
 
-	if(!cfg_->isInt("limit"))
+	if(!cfg_->isExist("limit"))
 		cfg_->addInt("limit",2);
 	else
 	{
@@ -59,14 +60,13 @@ void __fastcall TcfgWindow::OKClick(TObject *Sender)
 		cfg_->setInt("mode",0);
 	else
 		cfg_->setInt("mode",1);
-
+    cfg_->setInt("limit",EditLimit->Text.ToIntDef(2));
 	Close();
 }
 //---------------------------------------------------------------------------
 void __fastcall TcfgWindow::TrackLimitChange(TObject *Sender)
 {
 	EditLimit->Text = IntToStr(TrackLimit->Position);
-	cfg_->setInt("limit",TrackLimit->Position);
 }
 //---------------------------------------------------------------------------
 void __fastcall TcfgWindow::EditLimitChange(TObject *Sender)
@@ -75,7 +75,6 @@ void __fastcall TcfgWindow::EditLimitChange(TObject *Sender)
 	if(limit < 2 || limit > 50) limit = 2;
 	
 	TrackLimit->Position = limit;
-	cfg_->setInt("limit",EditLimit->Text.ToIntDef(2));
 }
 //---------------------------------------------------------------------------
 void __fastcall TcfgWindow::GreyScaleClick(TObject *Sender)

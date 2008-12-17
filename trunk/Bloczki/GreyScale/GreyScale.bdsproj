@@ -38,6 +38,10 @@
         <property category="build.platform" name="win32.default" value="win32b"/>
         <property category="build.platform" name="win32.enabled" value="1"/>
         <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
@@ -53,25 +57,54 @@
         <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
         <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.Gi.enabled" value="0"/>
         <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
         <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="param.libfiles.merge" value="0"/>
         <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
         <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
         <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.4.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.5.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.6.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.A.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.AK.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.AU.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
         <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
         <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O1.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.Od.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.align-1.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.align-2.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.align-3.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.align-5.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.disablewarns.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.p.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.pm.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.pr.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.ps.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
         <property category="win32.Release_Build.win32b.bcc32" name="option.vi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.w.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.-w-.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.w.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.zi.enabled" value="0"/>
@@ -99,15 +132,19 @@
           <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="0"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="NO_STRICT"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="USEPACKAGES"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="NO_STRICT"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="0"/>
           <property category="win32.*.win32b.bcc32" name="option.tWC.enabled" value="0"/>
           <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$A1.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.$A2.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.$A4.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.$Z2.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.$Z4.enabled" value="0"/>
           <property category="win32.*.win32b.dcc32" name="option.I.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
           <property category="win32.*.win32b.dcc32" name="option.I.arg.10" value="..\..\..\Program\engine"/>
           <property category="win32.*.win32b.dcc32" name="option.I.arg.11" value="D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale"/>
@@ -121,6 +158,10 @@
           <property category="win32.*.win32b.dcc32" name="option.I.arg.9" value="..\..\..\TypyDanych\Bitmap8bit\Interface"/>
           <property category="win32.*.win32b.dcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.dcc32" name="option.I.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.J.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.JP.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.JPH.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.JPHN.enabled" value="0"/>
           <property category="win32.*.win32b.dcc32" name="option.O.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
           <property category="win32.*.win32b.dcc32" name="option.O.arg.10" value="..\..\..\Program\engine"/>
           <property category="win32.*.win32b.dcc32" name="option.O.arg.11" value="D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale"/>
@@ -182,7 +223,7 @@
           <property category="win32.*.win32b.idl2cpp" name="option.I.arg.9" value="..\..\..\TypyDanych\Bitmap8bit\Interface"/>
           <property category="win32.*.win32b.idl2cpp" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.idl2cpp" name="option.I.enabled" value="1"/>
-          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.10" value="..\..\..\Program\engine"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.11" value="D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale"/>
@@ -204,7 +245,7 @@
           <property category="win32.*.win32b.ilink32" name="option.Tpp.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.ap.enabled" value="0"/>
-          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.10" value="..\..\..\Program\engine"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.11" value="D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale"/>
@@ -220,13 +261,41 @@
           <property category="win32.*.win32b.ilink32" name="option.j.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
-          <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mti.lib"/>
-          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.3" value="memmgr.lib"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.4" value="sysinit.obj"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.merge" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.H=.arg.1" value="$(BDS)\lib\vcl100.csm"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.H=.arg.merge" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.H=.enabled" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.Hc.enabled" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.10" value="..\..\..\Program\engine"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.11" value="D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\GreyScale"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.12" value="$(BDS)\include"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.13" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.14" value="$(BDS)\include\vcl"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.2" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.3" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.5" value="..\..\Program\engine"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.6" value="..\..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.7" value="..\..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.8" value="..\..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.9" value="..\..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.b.enabled" value="0"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.tW.enabled" value="0"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.tWC.enabled" value="0"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.tWD.enabled" value="1"/>
+          <property category="win32.Release_Build.win32b.bcc32" name="option.tWM.enabled" value="1"/>
         </optionset>
       </project>
       <FILELIST>
