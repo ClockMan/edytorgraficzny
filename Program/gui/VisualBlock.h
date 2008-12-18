@@ -12,6 +12,8 @@
 #include "VisualOutput.h";
 #include "BlockHistory.h";
 
+#define PIWOMAINCLASSTYPE TScrollBox
+
 struct Position {
    TPoint xy;
    char direction; //0 - Left, 1 - Top, 2 - Right, 3 - Bottom, 4 - nie znaleüiono

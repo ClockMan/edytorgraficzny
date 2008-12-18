@@ -3,7 +3,6 @@
 #include "VisualBlock.h"
 #pragma package(smart_init)
 
-
 __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	: TPanel(Owner)
 {
@@ -52,7 +51,7 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	title->OnMouseUp=BlockMouseUp;
 	title->OnMouseDown=BlockMouseDown;
 	title->OnMouseMove=BlockMouseMove;
-    title->Transparent=true;
+	title->Transparent=true;
 
 	OnVisualInputSelected=NULL;
 	OnVisualOutputSelected=NULL;
@@ -556,6 +555,9 @@ void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button
 	   GetCursorPos(&oldPoint);
 	   Screen->Cursor=crSizeAll;
 	   moving=true;
+
+	   ((PIWOMAINCLASSTYPE*)this->Parent)->OnMouseUp=BlockMouseUp;
+	   ((PIWOMAINCLASSTYPE*)this->Parent)->OnMouseMove=BlockMouseMove;
 	   button=true;
    }
    else
@@ -565,6 +567,9 @@ void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button
 	   Screen->Cursor=crSizeAll;
 	   moving=true;
 	   button=false;
+	   
+	   ((PIWOMAINCLASSTYPE*)this->Parent)->OnMouseUp=BlockMouseUp;
+	   ((PIWOMAINCLASSTYPE*)this->Parent)->OnMouseMove=BlockMouseMove;
    }
 }
 
@@ -572,13 +577,20 @@ void __fastcall VisualBlock::BlockMouseUp(TObject *Sender, TMouseButton Button, 
 {
    moving=false;
    Screen->Cursor=crDefault;
+   ((PIWOMAINCLASSTYPE*)this->Parent)->OnMouseUp=NULL;
+   ((PIWOMAINCLASSTYPE*)this->Parent)->OnMouseMove=NULL;
 }
 
 void __fastcall VisualBlock::BlockMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 {
-	if (moving&&!((Shift.Contains(ssShift)&&Shift.Contains(ssLeft))||Shift.Contains(ssRight))) moving=false;
-	if (!moving) return;
+	if (moving&&!((Shift.Contains(ssShift)&&Shift.Contains(ssLeft))||Shift.Contains(ssRight)))
+	{
+		moving=false;
+		Screen->Cursor=crDefault;
+		return;
+	}
 
+	if (!moving) return;
 
 	TPoint cl;
 	GetCursorPos(&cl);
