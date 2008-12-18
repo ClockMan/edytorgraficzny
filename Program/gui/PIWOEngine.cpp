@@ -91,6 +91,27 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    return true;
 }
 
+void PIWOEngine::validateBlock(VisualBlock *block)
+{
+  FunctionDLL *fun=plugins->getFunction(block->nameOfBlock);
+  //@TODO
+  if (fun->validate(&(block->block))!=-1)        //TODO: powinno byæ !=0 ale dam chwilow na czas testów !=-1 (s¹ b³êdy w DLL)
+	 block->updateVisualComponents();
+  //aktualizujemy po³¹czenia.
+  for(unsigned int i=0;i<connections.size();++i)
+  {
+	  if (connections[i]->outBlock==block) {
+		  //jeœli jest to wyjœcie, to aktualizujemy po³¹czenie i jeœli typy siê niezgadzaj¹ to aktualizujemy te¿ inBlok
+		  connections[i]->update();
+	  }
+	  else
+	  if (connections[i]->inBlock==block) {
+		 //jeœli jest to wejœcie, to wykonujemy requencyjnie, ale tylko wtedy gdy zmieni siê errorCode, errorDescription lub OutputType
+		 connections[i]->update();
+	  }
+  }
+}
+
 void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
 {
    VisualBlock *block=(VisualBlock*)Sender;
@@ -105,8 +126,7 @@ void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
    if (rev!=block->block.getConfig()->getRevision())
    {
 	 if (OnInformation!=NULL) OnInformation(this, "Zmodyfikowanao konfiguracje bloku: "+block->getTitle());
-	 if (fun->validate(&(block->block))!=0)
-	 block->updateVisualComponents();
+	 validateBlock(block);
    }
 }
 
@@ -140,14 +160,12 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 	con->inBlock=inputBlock;
 	con->output=output->output;
 	con->outBlock=outputBlock;
+	con->OnConnectionSelected=OnConnectionSelect;
 	input->input->connect(output->output->getOutputType());
 	//aktualizacja bloku input
-	FunctionDLL *fun=plugins->getFunction(inputBlock->nameOfBlock);
-	fun->validate(&(inputBlock->block));
-	inputBlock->updateVisualComponents();
 	con->draw();
-	con->update();
 	connections.push_back(con);
+	validateBlock(inputBlock);
 	return true;
 }
 
@@ -248,7 +266,6 @@ void PIWOEngine::OnVisualBlockMove(TObject* Sender, bool moveAll, int x, int y)
   }
 }
 
-
 void PIWOEngine::OnVisualBlockUnselect(TObject* Sender)
 {
    //odznaczamy ten blok
@@ -275,6 +292,13 @@ void PIWOEngine::OnVisualBlockSelect(TObject* Sender)
 	  }
 	  selectedBlocks.erase(selectedBlocks.begin());
    }
+
+   for(unsigned int i=0;i<connections.size();++i)
+   {
+	   if (connections[i]->inBlock==Sender||connections[i]->outBlock==Sender)
+			 connections[i]->BringToFront();
+   }
+
    if (OnInformation!=NULL) OnInformation(this, "Zaznaczono blok: "+((VisualBlock*)Sender)->getTitle());
    selectedBlocks.push_back((VisualBlock*)Sender);
 }
@@ -285,6 +309,13 @@ void PIWOEngine::OnVisualBlockSelectAdd(TObject* Sender)
    {
 	  if (selectedBlocks[i]==Sender) return;
    }
+
+   for(unsigned int i=0;i<connections.size();++i)
+   {
+	   if (connections[i]->inBlock==Sender||connections[i]->outBlock==Sender)
+			 connections[i]->BringToFront();
+   }
+
    if (OnInformation!=NULL) OnInformation(this, "Zaznaczono blok: "+((VisualBlock*)Sender)->getTitle());
    selectedBlocks.push_back((VisualBlock*)Sender);
 }
@@ -299,7 +330,7 @@ void __fastcall PIWOEngine::onThisClick(TObject* Sender)
    }
 }
 
-void PIWOEngine::OnConnectionSelect(TObject* Sender)
+void PIWOEngine::OnConnectionSelect(void* Sender)
 {
    if (selectedConnection!=NULL)
    {
@@ -307,6 +338,7 @@ void PIWOEngine::OnConnectionSelect(TObject* Sender)
 	  selectedConnection->setSelected(false);
    }
    selectedConnection=(Connection*)Sender;
+   selectedConnection->BringToFront();
    if (OnInformation!=NULL) OnInformation(this, "Zaznaczono po³¹czenie: "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
 }
 

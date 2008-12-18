@@ -51,6 +51,7 @@ class Connection
 		BlockOutput* output;
 		VisualBlock* inBlock;
 		VisualBlock* outBlock;
+		AnsiString typeOfConnection;
 
 		Connection(TWinControl* owner);
 		~Connection();
