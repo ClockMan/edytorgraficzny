@@ -28,10 +28,10 @@ bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor =
 // rozmycie obrazu
 bool MotionBlur(Graphics::TBitmap* picture);
 
-// obrot w prawo
+// obrot w prawo - zarezerwowane MP
 bool RightRotation(Graphics::TBitmap* picture);
 
-// obrot w lewo
+// obrot w lewo - zarezerwowane MP
 bool LeftRotation(Graphics::TBitmap* picture);
 
 // szum kolorowy

@@ -248,7 +248,7 @@ bool MotionBlur(Graphics::TBitmap* picture)
 	return true;
 }
 
-// obrot w prawo
+// obrot w prawo - zarezerwowane MP
 bool RightRotation(Graphics::TBitmap* picture)
 {
 	if(picture->Empty) return false;
@@ -285,7 +285,7 @@ bool RightRotation(Graphics::TBitmap* picture)
 	return true;
 }
 
-// obrot w lewo
+// obrot w lewo - zarezerwowane MP
 bool LeftRotation(Graphics::TBitmap* picture)
 {
 	if(picture->Empty) return false;
