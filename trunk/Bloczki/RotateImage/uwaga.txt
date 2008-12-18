@@ -1,0 +1,2 @@
+nazwy folderów niecg odpowiadaj¹ nazwie pliku dll (bloczka).
+nie dodajemy plików binarnych powsta³ych w wyniku kompilacji na svn: *.lib,RotateLeft_dll.~cpp RotateLeft_dll.obj, RotateLeft.tds
