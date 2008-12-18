@@ -57,6 +57,7 @@ __published:	// IDE-managed Components
 	TMemo *Memo1;
 	TStatusBar *StatusBar1;
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall Zakocz2Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;

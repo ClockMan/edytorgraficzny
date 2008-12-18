@@ -200,6 +200,7 @@ bool Connection::update()
 
 	AnsiString str;
 	// komentarz:
+	typeOfConnection=output->getOutputType();
 	str+=outBlock->getTitle()+" - "+output->getDescription()+": "+output->getOutputType();
 	if (output->getErrorCode()!=0) {
 		if (output->getErrorDescription().IsEmpty())
