@@ -4,6 +4,8 @@
 #include <windows.h>
 #pragma hdrstop
 
+#include "RotateLeft.h"
+
 #include "../../TypyDanych/Bitmap8bit/Interface/IBitmap8bit.h"
 #include "../../TypyDanych/Bitmap16bit/Interface/IBitmap16bit.h"
 #include "../../TypyDanych/Bitmap24bit/Interface/IBitmap24bit.h"
@@ -38,4 +40,94 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
         return 1;
 }
 //---------------------------------------------------------------------------
- 
+bool __stdcall showConfig(TComponent *owner, Block *aBlock)
+{
+	return true;
+}
+
+//---------------------------------------------------------------------------
+int __stdcall validate(Block *aBlock)
+{
+	if((aBlock->input.size() == 0) && (aBlock->output.size() == 0))
+	{
+		BlockInput input1("input1");
+		input1.allowedTypes.push_back("Bitmap8bit");
+		input1.allowedTypes.push_back("Bitmap16bit");
+		input1.allowedTypes.push_back("Bitmap24bit");
+		input1.allowedTypes.push_back("Bitmap32bit");
+		input1.setDescription("Domyœlne wejœcie");
+		input1.setErrorCode(1);
+		input1.setErrorDescription("Brak obiektu na wejœciu");
+		aBlock->input.push_back(input1);
+
+		BlockOutput output1("output1");
+		output1.setOutputType("Bitmap32bit");//(input1.getConnectedType()); //ustawic takie jak na wejsciu
+		output1.setDescription("Domyœlne wyjœcie");
+		output1.setErrorCode(1);
+		input1.setErrorDescription("Brak obiektu na wejœciu");
+		aBlock->output.push_back(output1);
+
+		return 2;
+	}
+	else
+	{
+		if(aBlock->input[0].getConnectedType().IsEmpty())
+		{
+			aBlock->input[0].setErrorCode(1);
+			aBlock->input[0].setErrorDescription("Brak obiektu na wejœciu");
+			aBlock->output[0].setErrorCode(1);
+			aBlock->output[0].setErrorDescription("Brak obiektu na wejœciu");
+
+			return 1;
+		} 
+		else
+		{
+			aBlock->input[0].setErrorCode(0);
+			aBlock->output[0].setErrorCode(0);
+			aBlock->input[0].setErrorDescription("");
+			aBlock->output[0].setErrorDescription("");
+
+			return 0;
+		}
+	}     
+}
+//---------------------------------------------------------------------------
+int __stdcall run(Block *aBlock)
+{
+	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
+		return 1;
+
+	Graphics::TBitmap* picture = new Graphics::TBitmap();
+	AnsiString connectedType(aBlock->input[0].getConnectedType());
+
+	if(connectedType == "Bitmap8bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else if(connectedType == "Bitmap16bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else if(connectedType == "Bitmap24bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else if(connectedType == "Bitmap32bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
+
+        if(!RotateLeft(picture))
+        {
+                aBlock->output[0].setErrorCode(2);
+                aBlock->output[0].setErrorDescription("Pusta bitmapa");
+                picture->Free();
+                return 2;
+        }
+	TypeConfig* copy = IBitmap8bit::getNew();
+
+	IBitmap8bit::setBitmap(copy, *picture);
+
+	aBlock->output[0].setObject(*copy);
+
+	picture->Free();
+	delete copy;
+
+	return 0;
+}
+//---------------------------------------------------------------------------

@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="RotateLeft.dll"/>
-    <OBJFILES value="RotateLeft_dll.obj"/>
+    <OBJFILES value="RotateLeft_dll.obj RotateLft.obj"/>
     <RESFILES value="RotateLeft.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
@@ -46,6 +46,7 @@
       <FILE FILENAME="RotateLeft.res" FORMNAME="" UNITNAME="RotateLeft.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="RotateLeft.bpf" FORMNAME="" UNITNAME="RotateLeft" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="RotateLeft_dll.cpp" FORMNAME="" UNITNAME="RotateLeft_dll" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RotateLft.cpp" FORMNAME="" UNITNAME="RotateLft" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
