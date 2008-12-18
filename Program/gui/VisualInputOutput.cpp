@@ -14,6 +14,7 @@ __fastcall VisualInputOutput::VisualInputOutput(Classes::TComponent* AOwner)
 	ShowHint = True;
 	BevelWidth = 2;
 	BorderWidth = 0;
+	//DoubleBuffered=true;
 	OnShowHistory=NULL;
 	ParentShowHint=false;
 	OnMouseEnter=MouseEnterF;

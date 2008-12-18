@@ -12,6 +12,7 @@ __fastcall Line::Line(TWinControl* Owner, bool vertical) : TWinControl(Owner)
    ShowHint=true;
    Visible=false;
    CanBeMoved=true;
+   //DoubleBuffered=true;
    OnLineMove=NULL;
    OnConnectionSelectRequest=NULL;
    OnMouseDown=LineMouseDown;
@@ -29,6 +30,10 @@ void __fastcall Line::LineMouseDown(TObject *Sender, TMouseButton Button, TShift
 			OnConnectionSelectRequest(this);
 	 if (CanBeMoved) {
 		moving=true;
+		if (Vertical)
+			Screen->Cursor=crSizeWE;
+		else
+            Screen->Cursor=crSizeNS;
 		GetCursorPos(&oldPos);
 	 }
    }
@@ -37,7 +42,7 @@ void __fastcall Line::LineMouseDown(TObject *Sender, TMouseButton Button, TShift
 void __fastcall Line::LineMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 	moving=false;
-	Cursor=crDefault;
+	Screen->Cursor=crDefault;
 }
 
 void __fastcall Line::LineMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
@@ -47,7 +52,6 @@ void __fastcall Line::LineMouseMove(TObject *Sender, TShiftState Shift, int X, i
 	GetCursorPos(&pos);
 	if (Vertical)
 	{
-	   Cursor=crSizeWE;
 	   this->Left=this->Left+pos.x-oldPos.x;
 	   if (((pos.x-oldPos.x)!=0)&&(OnLineMove!=NULL))
 	   {
@@ -57,7 +61,6 @@ void __fastcall Line::LineMouseMove(TObject *Sender, TShiftState Shift, int X, i
 	}
 	else
 	{
-	   Cursor=crSizeNS;
 	   this->Top=this->Top+pos.y-oldPos.y;
 	   if (((pos.y-oldPos.y)!=0)&&(OnLineMove!=NULL))
 	   {
