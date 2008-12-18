@@ -82,11 +82,6 @@ void TForm1::OnLog(TObject* Sender, const AnsiString message)
 //---------------------------------------------------------------------------
 
 
-
-
-
-
-
 void __fastcall TForm1::Zakocz2Click(TObject *Sender)
 {
  Close();	

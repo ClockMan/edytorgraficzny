@@ -56,6 +56,10 @@ __published:	// IDE-managed Components
 	TImageList *ImageList1;
 	TMemo *Memo1;
 	TStatusBar *StatusBar1;
+	TMenuItem *Uruchom2;
+	TMenuItem *Uruchomwszystko1;
+	TMenuItem *Uruchom3;
+	TMenuItem *Sprawdpoprawno1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 

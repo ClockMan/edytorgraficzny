@@ -7,7 +7,7 @@ __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
 	: TPanel(Owner)
 {
   plugins=NULL;
-  area=new TScrollBox(this);
+  area=new PIWOMAINCLASSTYPE(this);
   area->Parent=this;
   area->Align=alClient;
   area->BorderStyle=bsNone;

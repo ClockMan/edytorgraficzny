@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 411
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 554
+  ClientHeight = 574
   ClientWidth = 685
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -492,19 +492,21 @@ object Form1: TForm1
   TextHeight = 13
   object Memo1: TMemo
     Left = 0
-    Top = 460
+    Top = 480
     Width = 685
     Height = 75
     Align = alBottom
     ReadOnly = True
     TabOrder = 0
+    ExplicitTop = 460
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 535
+    Top = 555
     Width = 685
     Height = 19
     Panels = <>
+    ExplicitTop = 535
   end
   object MainMenu1: TMainMenu
     AutoHotkeys = maManual
@@ -603,6 +605,20 @@ object Form1: TForm1
       end
       object Wyjcia1: TMenuItem
         Caption = 'Wyj'#347'cia'
+      end
+    end
+    object Uruchom2: TMenuItem
+      Caption = 'Uruchom'
+      GroupIndex = 2
+      object Uruchom3: TMenuItem
+        Caption = 'Uruchom'
+        Checked = True
+      end
+      object Uruchomwszystko1: TMenuItem
+        Caption = 'Uruchom wszystko'
+      end
+      object Sprawdpoprawno1: TMenuItem
+        Caption = 'Sprawd'#378' poprawno'#347#263
       end
     end
     object Pomoc1: TMenuItem

@@ -9,12 +9,14 @@
 #include "VisualBlock.h"
 #include "Connection.h"
 
+#define PIWOMAINCLASSTYPE TScrollBox
+
 typedef void (__closure *PIWOEngine_Log )(TObject*,const AnsiString);
 
 class PIWOEngine : public TPanel
 {
 	private:
-		TScrollBox *area;
+		PIWOMAINCLASSTYPE *area;
 
 		vector<VisualBlock*> blocks;
 		vector<Connection*> connections;
