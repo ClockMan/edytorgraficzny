@@ -16,6 +16,7 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	BevelOuter=bvRaised;
 	BevelInner=bvNone;
 	ShowHint=true;
+    //DoubleBuffered=true;
 
 	OnClick=BlockClick;
 	OnMouseUp=BlockMouseUp;
@@ -553,6 +554,7 @@ void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button
 		}
 
 	   GetCursorPos(&oldPoint);
+	   Screen->Cursor=crSizeAll;
 	   moving=true;
 	   button=true;
    }
@@ -560,6 +562,7 @@ void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button
    if (Button==mbRight)
    {
 	   GetCursorPos(&oldPoint);
+	   Screen->Cursor=crSizeAll;
 	   moving=true;
 	   button=false;
    }
@@ -568,6 +571,7 @@ void __fastcall VisualBlock::BlockMouseDown(TObject *Sender, TMouseButton Button
 void __fastcall VisualBlock::BlockMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
    moving=false;
+   Screen->Cursor=crDefault;
 }
 
 void __fastcall VisualBlock::BlockMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)

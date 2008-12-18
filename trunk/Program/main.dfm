@@ -498,7 +498,6 @@ object Form1: TForm1
     Align = alBottom
     ReadOnly = True
     TabOrder = 0
-    ExplicitTop = 440
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -506,7 +505,6 @@ object Form1: TForm1
     Width = 685
     Height = 19
     Panels = <>
-    ExplicitTop = 515
   end
   object MainMenu1: TMainMenu
     AutoHotkeys = maManual

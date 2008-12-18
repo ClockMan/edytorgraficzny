@@ -12,6 +12,8 @@ __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
   area->Align=alClient;
   area->BorderStyle=bsNone;
   area->OnClick=onThisClick;
+  //DoubleBuffered=true;
+  //area->DoubleBuffered=true;
   this->BorderStyle=bsNone;
   this->BevelOuter=bvLowered;
   this->BevelWidth=2;

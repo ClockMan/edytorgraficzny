@@ -44,6 +44,7 @@ void  TForm1::OnFunctionAddClick(void* Sender)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 	Application->CreateForm(__classid(TForm2), &Form2);
+	//Form1->DoubleBuffered=true;
 	Form2->ProgressBar1->Visible=false;
     Form2->Visible=true;
 	AnsiString dir=ExtractFileDir(Application->ExeName);
