@@ -10,6 +10,7 @@ bool ReflectionHorizontally(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		int *line = reinterpret_cast<int*>(picture->ScanLine[i]);
+		if(!line) return false;
 
 		for(int j = 0; j <= ((picture->Width & (-2)) - 1) / 2; ++j)
 		{
@@ -55,6 +56,7 @@ bool GreyScale(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -80,6 +82,7 @@ bool GreyBalance(Graphics::TBitmap* picture, int limit)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -119,6 +122,7 @@ bool InversionColors(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -142,6 +146,7 @@ bool Binarization(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -169,6 +174,7 @@ bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor, 
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -201,8 +207,11 @@ bool MotionBlur(Graphics::TBitmap* picture)
 	for(int i(1); i < (picture->Height) -1; ++i)
 	{
 		row1 = (RGBQUAD *) picture->ScanLine[i-1];
+		if(!row1) return false;
 		row2 = (RGBQUAD *) picture->ScanLine[i];
+		if(!row2) return false;
 		row3 = (RGBQUAD *) picture->ScanLine[i+1];
+		if(!row3) return false;
 
 		for (int j(1); j < (picture->Width) -1; ++j)
 		{
@@ -266,12 +275,15 @@ bool RightRotation(Graphics::TBitmap* picture)
 	for(int i(0); i < tempPicture->Height; ++i)
 	{
 		row2 = (RGBQUAD *) tempPicture->ScanLine[i];
+		if(!row2) return false;
 
 		unsigned int x = tempPicture->Width-1;
 
 		for (int j(0); j < tempPicture->Width; ++j)
 		{
 			row1 = (RGBQUAD *) picture->ScanLine[x];
+			if(!row1) return false;
+			
 			row2[j].rgbRed = (BYTE) row1[i].rgbRed;
 			row2[j].rgbGreen = (BYTE) row1[i].rgbGreen;
 			row2[j].rgbBlue = (BYTE) row1[i].rgbBlue;
@@ -304,12 +316,15 @@ bool LeftRotation(Graphics::TBitmap* picture)
 	for(int i(0); i < tempPicture->Height; ++i)
 	{
 		row2 = (RGBQUAD *) tempPicture->ScanLine[i];
+		if(!row2) return false;
 
 		x -= 1;
 
 		for (int j(0); j < tempPicture->Width; ++j)
 		{
 			row1 = (RGBQUAD *) picture->ScanLine[j];
+			if(!row1) return false;
+			
 			row2[j].rgbRed = (BYTE) row1[x].rgbRed;
 			row2[j].rgbGreen = (BYTE) row1[x].rgbGreen;
 			row2[j].rgbBlue = (BYTE) row1[x].rgbBlue;
@@ -335,6 +350,7 @@ bool ColorNoise(Graphics::TBitmap* picture, int noise)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -368,6 +384,7 @@ bool MonoNoise(Graphics::TBitmap* picture, int noise)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -402,8 +419,11 @@ bool FadedPicture(Graphics::TBitmap* picture)
 	for(int i(1); i < (picture->Height) - 2; ++i)
 	{
 		row1 = (RGBQUAD *) picture->ScanLine[i];
+		if(!row1) return false;
 		row2 = (RGBQUAD *) picture->ScanLine[i+1];
+		if(!row2) return false;
 		row3 = (RGBQUAD *) picture->ScanLine[i+2];
+		if(!row3) return false;
 
 		for (int j(1); j < (picture->Width); ++j)
 		{
@@ -450,6 +470,7 @@ bool HistogramEqualization(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for(int j(0); j < picture->Width; ++j)
 		{
@@ -512,6 +533,7 @@ bool HistogramEqualization(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for(int j(0); j < picture->Width; ++j)
 		{
@@ -550,6 +572,7 @@ bool HistogramStretching(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for(int j(0); j < picture->Width; ++j)
 		{
@@ -583,6 +606,7 @@ bool HistogramStretching(Graphics::TBitmap* picture)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for(int j(0); j < picture->Width; ++j)
 		{
@@ -666,9 +690,13 @@ bool StatisticsFilter(Graphics::TBitmap* picture, int filter)
 	for(int i(1); i < (picture->Height) -1; ++i)
 	{
 		row1 = (RGBQUAD *) picture->ScanLine[i-1];
+		if(!row1) return false;
 		row2 = (RGBQUAD *) picture->ScanLine[i];
+		if(!row2) return false;
 		row3 = (RGBQUAD *) picture->ScanLine[i+1];
+		if(!row3) return false;
 		row4 = (RGBQUAD *) tempPicture->ScanLine[i];
+		if(!row4) return false;
 
 		for (int j(1); j < (picture->Width) -1; ++j)
 		{
@@ -734,6 +762,7 @@ bool Lightning(Graphics::TBitmap* picture, int limit)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -775,6 +804,7 @@ bool Contrast(Graphics::TBitmap* picture, double limit)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -821,6 +851,7 @@ bool Saturation(Graphics::TBitmap* picture, int limit)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -870,6 +901,7 @@ bool GammaCorrection(Graphics::TBitmap* picture, int limit)
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -901,6 +933,7 @@ bool RGBBalance(Graphics::TBitmap* picture, int limit_r, int limit_g, int limit_
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row = (RGBQUAD *) picture->ScanLine[i];
+		if(!row) return false;
 
 		for (int j(0); j < picture->Width; ++j)
 		{
@@ -946,9 +979,13 @@ bool MaskFilter(Graphics::TBitmap* picture, short* mask)
 	for(int i(1); i < (picture->Height) -1; ++i)
 	{
 		row1 = (RGBQUAD *) picture->ScanLine[i-1];
+		if(!row1) return false;
 		row2 = (RGBQUAD *) picture->ScanLine[i];
+		if(!row2) return false;
 		row3 = (RGBQUAD *) picture->ScanLine[i+1];
+		if(!row3) return false;
 		row4 = (RGBQUAD *) tempPicture->ScanLine[i];
+		if(!row4) return false;
 
 		for (int j(1); j < (picture->Width) -1; ++j)
 		{

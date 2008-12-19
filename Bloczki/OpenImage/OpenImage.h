@@ -17,6 +17,6 @@ extern "C" __stdcall __declspec(dllexport) bool showConfig(TComponent *owner, Bl
 extern "C" __stdcall __declspec(dllexport) int validate(Block *aBlock);
 
 bool OpenImage(Graphics::TBitmap*, const AnsiString&);
-void LoadImage(FIBITMAP*, Graphics::TBitmap*);
+bool LoadImage(FIBITMAP*, Graphics::TBitmap*);
 
 #endif // OpenImageH
