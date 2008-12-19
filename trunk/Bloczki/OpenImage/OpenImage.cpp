@@ -14,22 +14,27 @@
 bool OpenImage(Graphics::TBitmap* picture, const AnsiString& path)
 {
 	FREE_IMAGE_FORMAT imgFormat;
-
+	
 	imgFormat = FreeImage_GetFileType(path.c_str(), 0);
-
+	
 	if(imgFormat != FIF_UNKNOWN)
 	{
-		FIBITMAP *image, *tempImage;
-		tempImage = FreeImage_Load(imgFormat, path.c_str(), 0);
-		image = FreeImage_ConvertTo32Bits(tempImage);
-		FreeImage_Unload(tempImage);
-
+		FIBITMAP *image = FreeImage_Load(imgFormat, path.c_str(), 0);
+		
 		if(image)
 		{
-			LoadImage(image, picture);
-			FreeImage_Unload(image);
+			if(LoadImage(FreeImage_ConvertTo32Bits(image), picture))
+			{
+				FreeImage_Unload(image);
+				return true;
+			}
+			else
+			{
+				FreeImage_Unload(image);
+				return false;
+			}
 		}
-		else
+		else 
 		{
 			return false;
 		}
@@ -38,23 +43,23 @@ bool OpenImage(Graphics::TBitmap* picture, const AnsiString& path)
 	{
 		return false;
 	}
-
-	return true;
 }
 
-void LoadImage(FIBITMAP* image, Graphics::TBitmap* picture)
+bool LoadImage(FIBITMAP* image, Graphics::TBitmap* picture)
 {
-	RGBQUAD *row1, *row2;
-	
 	picture->FreeImage();
 	picture->PixelFormat = pf32bit;
 	picture->Width = FreeImage_GetWidth(image);
 	picture->Height = FreeImage_GetHeight(image);
-	
+
+	RGBQUAD *row1, *row2;
+
 	for(int i(0); i < picture->Height; ++i)
 	{
 		row1 = (RGBQUAD *)FreeImage_GetScanLine(image,i);
 		row2 = (RGBQUAD *)picture->ScanLine[picture->Height-1-i];		
+		
+		if(!row1 || !row2) return false;
 		
 		for(int j(0); j < picture->Width; ++j)
 		{
@@ -63,5 +68,7 @@ void LoadImage(FIBITMAP* image, Graphics::TBitmap* picture)
 			row2[j].rgbBlue = row1[j].rgbBlue;
 		}
 	}
+	
+	return true;
 }
 
