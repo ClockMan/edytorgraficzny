@@ -42,7 +42,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 //---------------------------------------------------------------------------
 bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 {
-	return true;
+	return false;
 }
 
 //---------------------------------------------------------------------------
@@ -87,9 +87,9 @@ int __stdcall validate(Block *aBlock)
 			aBlock->input[0].setErrorDescription("");
 			aBlock->output[0].setErrorDescription("");
 
-			return 0;
+			return 1;
 		}
-	}     
+	}
 }
 //---------------------------------------------------------------------------
 int __stdcall run(Block *aBlock)
@@ -119,9 +119,9 @@ int __stdcall run(Block *aBlock)
                 picture->Free();
                 return 2;
         }
-	TypeConfig* copy = IBitmap8bit::getNew();
+	TypeConfig* copy = IBitmap32bit::getNew();
 
-	IBitmap8bit::setBitmap(copy, *picture);
+	IBitmap32bit::setBitmap(copy, *picture);
 
 	aBlock->output[0].setObject(*copy);
 
