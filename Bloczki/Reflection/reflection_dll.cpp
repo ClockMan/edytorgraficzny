@@ -105,14 +105,16 @@ int __stdcall validate(Block *aBlock)
 				aBlock->output[0].setErrorDescription("");
 				return 1;
 			}
-			else
+			else if(aBlock->input[0].getErrorCode() != 0 || aBlock->output[0].getErrorCode() != 0)
 			{
 				aBlock->input[0].setErrorCode(0);
 				aBlock->output[0].setErrorCode(0);
 				aBlock->input[0].setErrorDescription("");
 				aBlock->output[0].setErrorDescription("");
-				return 0;
+				return 1;
 			}
+			else 
+				return 0;
 		}
 	}
 }

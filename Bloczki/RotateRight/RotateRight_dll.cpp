@@ -39,7 +39,7 @@
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 {
-        return 1;
+	return 1;
 }
 //---------------------------------------------------------------------------
 bool __stdcall showConfig(TComponent *owner, Block *aBlock)
@@ -65,12 +65,11 @@ int __stdcall validate(Block *aBlock)
 		aBlock->input.push_back(input1);
 
 		BlockOutput output1("output1");
-		output1.setOutputType("Bitmap32bit");//(input1.getConnectedType()); //ustawic takie jak na wejsciu
+		output1.setOutputType("Bitmap24bit");//(input1.getConnectedType()); //ustawic takie jak na wejsciu
 		output1.setDescription("Domyœlne wyjœcie");
 		output1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->output.push_back(output1);
-
 		return 2;
 	}
 	else
@@ -95,14 +94,16 @@ int __stdcall validate(Block *aBlock)
 				aBlock->output[0].setErrorDescription("");
 				return 1;
 			}
-			else
+			else if(aBlock->input[0].getErrorCode() != 0 || aBlock->output[0].getErrorCode() != 0)
 			{
 				aBlock->input[0].setErrorCode(0);
 				aBlock->output[0].setErrorCode(0);
 				aBlock->input[0].setErrorDescription("");
 				aBlock->output[0].setErrorDescription("");
-				return 0;
+				return 1;
 			}
+			else
+				return 0;
 		}
 	}
 }
@@ -115,26 +116,32 @@ int __stdcall run(Block *aBlock)
 	Graphics::TBitmap* picture = new Graphics::TBitmap();
 	AnsiString connectedType(aBlock->input[0].getConnectedType());
 
-	if(connectedType == "Bitmap8bit")
+	if(connectedType == "Bitmap1bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap1bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else if(connectedType == "Bitmap4bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap4bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else	if(connectedType == "Bitmap8bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[0].getObject()))));
 
 	else if(connectedType == "Bitmap16bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[0].getObject()))));
 
-	else if(connectedType == "Bitmap24bit")
+	else	if(connectedType == "Bitmap24bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[0].getObject()))));
 
-	else if(connectedType == "Bitmap32bit")
+	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-        if(!RotateRight(picture))
-        {
-                aBlock->output[0].setErrorCode(2);
-                aBlock->output[0].setErrorDescription("Pusta bitmapa");
-                picture->Free();
-                return 2;
-        }
-        TypeConfig* copy;
+	if(!RotateRight(picture))
+	{
+		aBlock->output[0].setErrorCode(2);
+		aBlock->output[0].setErrorDescription("Pusta bitmapa");
+		picture->Free();
+		return 2;
+	}
+	TypeConfig* copy;
 
 	if(connectedType == "Bitmap1bit")
 	{
