@@ -53,6 +53,8 @@ int __stdcall validate(Block *aBlock)
 	if((aBlock->input.size() == 0) && (aBlock->output.size() == 0))
 	{
 		BlockInput input1("input1");
+		input1.allowedTypes.push_back("Bitmap1bit");
+		input1.allowedTypes.push_back("Bitmap4bit");
 		input1.allowedTypes.push_back("Bitmap8bit");
 		input1.allowedTypes.push_back("Bitmap16bit");
 		input1.allowedTypes.push_back("Bitmap24bit");
