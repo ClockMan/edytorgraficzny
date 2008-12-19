@@ -76,7 +76,6 @@ int __stdcall validate(Block *aBlock)
     // wtepna konfiguracja (nastepna modyfikacja mozliwa w oknie konfigu bloczka)
 		aBlock->getConfig()->addInt("limit",2);
 		aBlock->getConfig()->addInt("mode",0);
-
 		return 2;
 	}
 	else
@@ -87,19 +86,19 @@ int __stdcall validate(Block *aBlock)
 			aBlock->input[0].setErrorDescription("Brak obiektu na wejœciu");
 			aBlock->output[0].setErrorCode(1);
 			aBlock->output[0].setErrorDescription("Brak obiektu na wejœciu");
-
 			return 1;
 		} 
-		else
+		else if(aBlock->input[0].getErrorCode() != 0 || aBlock->output[0].getErrorCode() != 0)
 		{
 			aBlock->input[0].setErrorCode(0);
 			aBlock->output[0].setErrorCode(0);
 			aBlock->input[0].setErrorDescription("");
 			aBlock->output[0].setErrorDescription("");
-
-			return 0;
+			return 1;
 		}
-	}     
+		else 
+			return 0;
+	} 
 }
 //---------------------------------------------------------------------------
 int __stdcall run(Block *aBlock)
