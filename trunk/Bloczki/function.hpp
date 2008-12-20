@@ -16,7 +16,7 @@ bool GreyScale(Graphics::TBitmap* picture);
 // posteryzacja - zrobione
 bool GreyBalance(Graphics::TBitmap* picture, int limit);
 
-// odrwacanie kolorów (negatyw) - zarezerwowane
+// odrwacanie kolorów (negatyw) - zrobione (zmiana nazwy na Negative)
 bool InversionColors(Graphics::TBitmap* picture);
 
 // binaryzacja (obraz monochromatyczny)
