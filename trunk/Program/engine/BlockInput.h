@@ -14,7 +14,7 @@ using namespace std;
  */
 class BlockInput: public BlockElement
 {
-	public:
+	private:
 		AnsiString inputType;
 	public:
 		/**

@@ -38,7 +38,7 @@ class PIWOEngine : public TPanel
 		void OnVisualBlockSelectAdd(TObject* Sender);
 		void __fastcall onThisClick(TObject* Sender);
 		void OnConnectionSelect(void* Sender);
-		void validateBlock(VisualBlock *block);
+		void validateBlock(VisualBlock *block, bool updateInputConnections=true);
 
 		Connection* getConnectionTo(VisualInput* input);
 		bool MakeConnection(VisualBlock* outputBlock, VisualOutput* output, VisualBlock* inputBlock, VisualInput* input);

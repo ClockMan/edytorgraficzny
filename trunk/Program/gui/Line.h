@@ -4,8 +4,7 @@
 #include <Classes.hpp>
 #include <Controls.hpp>
 
-typedef void (__closure *Line_FunctionMove)(TObject*);
-typedef void (__closure *Line_FunctionSelected )(TObject*);
+typedef void (__closure *Line_Function)(TObject*);
 
 /**
  * @author Piotr Zegar
@@ -32,8 +31,10 @@ class Line : public TWinControl
 		void __fastcall LineMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 		void __fastcall LineMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	public:
-		 Line_FunctionMove OnLineMove;
-		 Line_FunctionSelected OnConnectionSelectRequest;
+		 Line_Function OnLineMove;
+		 Line_Function OnConnectionSelectRequest;
+		 Line_Function OnConnectionResetRequest;
+
 		 __property Color;
 		 
 		/**
