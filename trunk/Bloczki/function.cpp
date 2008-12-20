@@ -111,7 +111,7 @@ bool GreyBalance(Graphics::TBitmap* picture, int limit)
 	return true;
 }
 
-// odrwacanie kolorów (negatyw)
+// odrwacanie kolorów (negatyw) - zarezerwowane
 bool InversionColors(Graphics::TBitmap* picture)
 {
 	if(picture->Empty) return false;
