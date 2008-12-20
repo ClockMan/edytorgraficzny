@@ -18,6 +18,7 @@ __fastcall Line::Line(TWinControl* Owner, bool vertical) : TWinControl(Owner)
    OnMouseDown=LineMouseDown;
    OnMouseUp=LineMouseUp;
    OnMouseMove=LineMouseMove;
+   OnConnectionResetRequest=NULL;
 }
 
 
@@ -36,6 +37,12 @@ void __fastcall Line::LineMouseDown(TObject *Sender, TMouseButton Button, TShift
             Screen->Cursor=crSizeNS;
 		GetCursorPos(&oldPos);
 	 }
+   }
+   else
+   if (Button==mbRight)
+   {
+	  if(OnConnectionResetRequest!=NULL)
+	  			OnConnectionResetRequest(this);  
    }
 }
 

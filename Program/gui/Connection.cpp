@@ -80,9 +80,10 @@ void Connection::redraw(Position &in, Position &out)
 {
    //ustawiamy pocz¹tek i koniec, zostn¹ tylko 3 linie do modyfikacji
    TPoint p1, p2;
+   int move=(abs(in.xy.x-out.xy.x)<20)?int(abs(in.xy.x-out.xy.x)/2):10;
    if (in.direction==0)
    {
-	  p1.x=in.xy.x-10;
+	  p1.x=in.xy.x-move;
 	  p1.y=in.xy.y;
    }
 
@@ -100,7 +101,7 @@ void Connection::redraw(Position &in, Position &out)
 
    if (out.direction==2)
    {
-	  p2.x=out.xy.x+10;
+	  p2.x=out.xy.x+move;
 	  p2.y=out.xy.y;
    }
    
@@ -179,6 +180,7 @@ bool Connection::draw()
 			line->Parent=fowner;
 			line->OnConnectionSelectRequest=OnConnectionSelectedRequest;
 			line->OnLineMove=OnLineMove;
+			line->OnConnectionResetRequest=OnConnectionResetRequest;
 			lines.push_back(line);
 		}
 		redraw(in, out);
@@ -248,7 +250,7 @@ bool Connection::update()
 
    for(unsigned int i=0;i<lines.size();i++)
    {
-    	lines[i]->Hint=str;
+		lines[i]->Hint=str;
    }
    return true;
 }
@@ -300,6 +302,34 @@ void Connection::OnConnectionSelectedRequest(TObject* Sender)
 	  setSelected(true);
 	  if (OnConnectionSelected!=NULL) OnConnectionSelected(this);
    }
+}
+
+void Connection::OnConnectionResetRequest(TObject* Sender)
+{
+   for(unsigned int i=0;i<lines.size();i++)
+   {
+		lines[i]->Resize=0;
+   }
+   draw();
+}
+
+
+bool Connection::getCustomizeState()
+{
+   for(unsigned int i=0;i<lines.size();i++)
+   {
+	   if (lines[i]->Resize!=0) return true;
+   }
+   return false;
+}
+
+void Connection::setCustomizeFalse()
+{
+   for(unsigned int i=0;i<lines.size();i++)
+   {
+		lines[i]->Resize=0;
+   }
+   draw();
 }
 
 

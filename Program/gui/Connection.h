@@ -42,6 +42,8 @@ class Connection
 		
 		void OnLineMove(TObject* Sender);
 		void OnConnectionSelectedRequest(TObject* Sender);
+		void OnConnectionResetRequest(TObject* Sender);
+
 		bool connectionOk(Position &in, Position &out);
 		void redraw(Position &in, Position &out);
 	 public:
@@ -62,5 +64,7 @@ class Connection
 
 		void BringToFront();
 		void setSelected(bool s);
+		bool getCustomizeState();
+		void setCustomizeFalse();
 };
 #endif
