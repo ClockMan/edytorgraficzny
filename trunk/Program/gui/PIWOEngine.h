@@ -52,6 +52,18 @@ class PIWOEngine : public TPanel
 		__fastcall ~PIWOEngine();
 
 		bool AddBlock(const AnsiString &name);
+		bool DeleteBlock(const AnsiString &fullName);
+		bool DeleteSelectedBlocks();
+		bool DeleteAllBlocks();
+		void SelectAllBlocks();
+		void InvertBlockSelection();
+		void UnselectAllBlocks();
+		bool DeleteSelectedConnection();
+		bool DeleteAllConnections();
+		void UnselectSelectedConnection();
+		void CancelCustomizationOnSelectedConnections();
+		void CancelCustomizationOnAllConnections();
+
 	__published:
 };
 #endif

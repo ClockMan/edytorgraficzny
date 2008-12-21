@@ -218,7 +218,6 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
    {
 	  //sprawdzamy czy jest w spisie
 	  BlockOutput* out=NULL;
-
 		  for(unsigned int j=0;j<block->block.output.size();++j)
 		  {
 			  if (&(block->block.output[j])==outputHistory[0]->output)
@@ -230,36 +229,65 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 
 	   if (out!=NULL)
 		 {
-			//sprawdzamy czy dalej jest podpiêty typ pod niego
-			//sprawdziæ czy typy siê zmieni³y
+			//wyjœcie nie zosta³o usuniête...
 			if (out->getOutputType()!=outputHistory[0]->type)
 			{
-			   //zmieni³ siê typ - aktualizujemy bloki na po³¹czeniach i dodajemy je do listy sprawdzenia
-
-
-				for(unsigned int j=0;j<connections.size();++j)
-				{
-					if (connections[j]==inputHistory[0]->connection)
+			   //typ siê zmieni³, pentla po po³¹czeniach
+			   for(unsigned int g=0;g<outputHistory[0]->connections.size();++g)
+			   {
+					//sprawdzamy czy nowey typ jest na liœcie
+					bool isTypeOnList=false;
+					for(unsigned int i=0;i<outputHistory[0]->connections[g]->input->allowedTypes.size();++i)
 					{
-						delete connections[j];
-						connections.erase(connections.begin()+j);
+						if (outputHistory[0]->connections[g]->input->allowedTypes[i]==out->getOutputType()) {
+						   isTypeOnList=true;
+						   break;
+						}
 					}
-				}
+
+
+					if (isTypeOnList)
+					{
+					  //typ jest na liœcie, aktualizujemy typ i dodajemy blok do validacji
+					  outputHistory[0]->connections[g]->input->connect(out->getOutputType());
+					  bool isOnList=false;
+					  for(unsigned int k=0;k<toCheck.size();++k)
+					  {
+						if (toCheck[k]==outputHistory[0]->connections[g]->inBlock) {
+						   isOnList=true;
+						   break;
+						}
+					  }
+					  if (!isOnList) toCheck.push_back(outputHistory[0]->connections[g]->inBlock);
+					  outputHistory[0]->connections[g]->update();
+					}
+					else
+					{
+					   //typ zostaje bez zmian, wiêc przeprowadzamy tylko validacje po³¹czenia
+					   outputHistory[0]->connections[g]->update();
+					}
+			   }
 			}
 			else
 			{
-				//jest coœ pod³¹czonego, jeœli code, i error siê nie zgadzaj¹ to aktualizujemy
-				if (in->getErrorCode()!=inputHistory[0]->input->getErrorCode()||in->getErrorDescription()!=inputHistory[0]->input->getErrorDescription())
+				//typy s¹ takie same, sprawdzamy kody b³êdów tylko
+				if (out->getErrorCode()!=outputHistory[0]->output->getErrorCode()||out->getErrorDescription()!=outputHistory[0]->output->getErrorDescription())
 				{
-				   inputHistory[0]->connection->update();
+				   //zmieni³ siê kod b³êdu, aktualizujemy po³¹czenia
+				   for(unsigned int g=0;g<outputHistory[0]->connections.size();++g)
+				   {
+					  outputHistory[0]->connections[g]->update();
+				   }
 				}
 			}
 		 }
 		 else
 		 {
+			for(unsigned int k=0;k<outputHistory[0]->connections.size();++k)
+			{
 			 for(unsigned int j=0;j<connections.size();++j)
 			 {
-				 if (connections[j]==outputHistory[0]->connection)
+				 if (connections[j]==outputHistory[0]->connections[k])
 				 {
 					connections[j]->input->disconnect();
 					toCheck.push_back(connections[j]->inBlock);
@@ -267,11 +295,17 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 					connections.erase(connections.begin()+j);
 				 }
 			 }
+			}
 		 }
 
-		 delete inputHistory[0];
-		 inputHistory.erase(inputHistory.begin());
+		 delete outputHistory[0];
+		 outputHistory.erase(outputHistory.begin());
    }
+
+  for(unsigned int i=0;i<toCheck.size();++i)
+  {
+	validateBlock(toCheck[i]);
+  }
 }
 
 void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
@@ -364,6 +398,7 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 	con->draw();
 	connections.push_back(con);
 	validateBlock(inputBlock);
+	con->update();
 	return true;
 }
 
@@ -520,12 +555,8 @@ void PIWOEngine::OnVisualBlockSelectAdd(TObject* Sender)
 
 void __fastcall PIWOEngine::onThisClick(TObject* Sender)
 {
-   while(selectedBlocks.size()>0)
-   {
-	  selectedBlocks[0]->setSelected(false);
-	  if (OnInformation!=NULL) OnInformation(this, "Odznaczono blok: "+selectedBlocks[0]->getTitle());
-	  selectedBlocks.erase(selectedBlocks.begin());
-   }
+   UnselectAllBlocks();
+   UnselectSelectedConnection();
 }
 
 void PIWOEngine::OnConnectionSelect(void* Sender)
@@ -547,4 +578,87 @@ Connection* PIWOEngine::getConnectionTo(VisualInput* input)
    return NULL;
 }
 
+bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
+{
 
+}
+
+bool PIWOEngine::DeleteSelectedBlocks()
+{
+
+}
+
+bool PIWOEngine::DeleteAllBlocks()
+{
+
+}
+
+void PIWOEngine::SelectAllBlocks()
+{
+
+}
+
+void PIWOEngine::InvertBlockSelection()
+{
+
+}
+
+void PIWOEngine::UnselectAllBlocks()
+{
+   while(selectedBlocks.size()>0)
+   {
+	  selectedBlocks[0]->setSelected(false);
+	  if (OnInformation!=NULL) OnInformation(this, "Odznaczono blok: "+selectedBlocks[0]->getTitle());
+	  selectedBlocks.erase(selectedBlocks.begin());
+   }
+}
+
+bool PIWOEngine::DeleteSelectedConnection()
+{
+   if (selectedConnection!=NULL)
+   {
+	  for(unsigned int i=0;i<connections.size();++i)
+	  {
+		if (connections[i]==selectedConnection)
+		{
+		   selectedConnection->input->disconnect();
+		   VisualBlock* block=selectedConnection->inBlock;
+		   delete connections[i];
+		   connections.erase(connections.begin()+i);
+		   validateBlock(block);
+		   break;
+		}
+	  }
+	  selectedConnection=NULL;
+   }
+}
+
+bool PIWOEngine::DeleteAllConnections()
+{
+
+}
+
+void PIWOEngine::UnselectSelectedConnection()
+{
+   if (selectedConnection!=NULL)
+   {
+	  selectedConnection->setSelected(false);
+	  selectedConnection=NULL;
+   }
+}
+
+void PIWOEngine::CancelCustomizationOnSelectedConnections()
+{
+   if (selectedConnection!=NULL)
+   {
+	  selectedConnection->setCustomizeFalse();
+   }
+}
+
+void PIWOEngine::CancelCustomizationOnAllConnections()
+{
+	for(unsigned int i=0;i<connections.size();++i)
+	{
+	   connections[i]->setCustomizeFalse();
+    }
+}
