@@ -590,17 +590,48 @@ bool PIWOEngine::DeleteSelectedBlocks()
 
 bool PIWOEngine::DeleteAllBlocks()
 {
-
+   if (blocks.size()==0) return false;
+   while(connections.size()>0)
+   {
+	   delete connections[0];
+	   connections.erase(connections.begin());
+   }
+   while(blocks.size()>0)
+   {
+	   delete blocks[0];
+	   blocks.erase(blocks.begin());
+   }
+   return true;
 }
 
 void PIWOEngine::SelectAllBlocks()
 {
-
+  for(unsigned int i=0;i<blocks.size();++i)
+  {
+	if (!blocks[i]->isSelected())
+	{
+	   selectedBlocks.push_back(blocks[i]);
+	   blocks[i]->setSelected(true);
+	}
+  }
 }
 
 void PIWOEngine::InvertBlockSelection()
 {
-
+  vector<VisualBlock*> newSelections;
+  for(unsigned int i=0;i<blocks.size();++i)
+  {
+	if (!blocks[i]->isSelected())
+	{
+	   newSelections.push_back(blocks[i]);
+	   blocks[i]->setSelected(true);
+	}
+	else
+	{
+	   blocks[i]->setSelected(false);
+    }
+  }
+  selectedBlocks=newSelections;
 }
 
 void PIWOEngine::UnselectAllBlocks()
@@ -630,12 +661,36 @@ bool PIWOEngine::DeleteSelectedConnection()
 		}
 	  }
 	  selectedConnection=NULL;
-   }
+	  return true;
+   } else return false;
 }
 
 bool PIWOEngine::DeleteAllConnections()
 {
+   if (connections.size()==0) return false;
+   vector<VisualBlock*> list;
+   while(connections.size()>0)
+   {
+	   bool isOnListToValidate=false;
+	   for(unsigned int i=0;i<list.size();++i)
+	   {
+		  if (list[i]==connections[0]->inBlock)
+		  {
+			 isOnListToValidate=true;
+			 break;
+		  }
+	   }
 
+	   if (!isOnListToValidate) list.push_back(connections[0]->inBlock);
+	   delete connections[0];
+	   connections.erase(connections.begin());
+   }
+   selectedConnection=NULL;
+   for(unsigned int i=0;i<list.size();++i)
+   {
+	   validateBlock(list[i]);
+   }
+   return true;
 }
 
 void PIWOEngine::UnselectSelectedConnection()
