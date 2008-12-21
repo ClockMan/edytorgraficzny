@@ -19,10 +19,10 @@ bool GreyBalance(Graphics::TBitmap* picture, int limit);
 // odrwacanie kolorów (negatyw) - zrobione (zmiana nazwy na Negative)
 bool InversionColors(Graphics::TBitmap* picture);
 
-// binaryzacja (obraz monochromatyczny)
+// binaryzacja (obraz monochromatyczny) - rezerwacja Kermit
 bool Binarization(Graphics::TBitmap* picture);
 
-// binaryzacja progowa
+// binaryzacja progowa - rezerwacja Kermit
 bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor = clBlack, int secondColor = clWhite);
 
 // rozmycie obrazu - zarezerwowane
