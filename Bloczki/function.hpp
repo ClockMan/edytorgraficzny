@@ -25,7 +25,7 @@ bool Binarization(Graphics::TBitmap* picture);
 // binaryzacja progowa
 bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor = clBlack, int secondColor = clWhite);
 
-// rozmycie obrazu
+// rozmycie obrazu - zarezerwowane
 bool MotionBlur(Graphics::TBitmap* picture);
 
 // obrot w prawo - zarezerwowane MP
