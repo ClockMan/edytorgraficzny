@@ -195,7 +195,7 @@ bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor, 
 	return true;
 }
 
-// rozmycie obrazu
+// rozmycie obrazu - zarezerwowane
 bool MotionBlur(Graphics::TBitmap* picture)
 {
 	if(picture->Empty) return false;
