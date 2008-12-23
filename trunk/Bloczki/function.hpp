@@ -40,7 +40,7 @@ bool ColorNoise(Graphics::TBitmap* picture, int noise);
 // szum bialy (mono)
 bool MonoNoise(Graphics::TBitmap* picture, int noise);
 
-// wyplowienie obrazu
+// wyplowienie obrazu -zarezerwowane
 bool FadedPicture(Graphics::TBitmap* picture);
 
 // wyrownanie histogramu
