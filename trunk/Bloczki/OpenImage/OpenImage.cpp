@@ -19,18 +19,25 @@ bool OpenImage(Graphics::TBitmap* picture, const AnsiString& path)
 	
 	if(imgFormat != FIF_UNKNOWN)
 	{
-		FIBITMAP *image = FreeImage_Load(imgFormat, path.c_str(), 0);
-		
+		FIBITMAP *image = FreeImage_Load(imgFormat, path.c_str(), 0);		
 		if(image)
 		{
-			if(LoadImage(FreeImage_ConvertTo32Bits(image), picture))
+			FIBITMAP* tempImage = FreeImage_ConvertTo32Bits(image);
+			if(!tempImage)
 			{
 				FreeImage_Unload(image);
+				return false;
+			}
+			if(LoadImage(tempImage, picture))
+			{
+				FreeImage_Unload(image);
+				FreeImage_Unload(tempImage);
 				return true;
 			}
 			else
 			{
 				FreeImage_Unload(image);
+				FreeImage_Unload(tempImage);
 				return false;
 			}
 		}
@@ -39,10 +46,8 @@ bool OpenImage(Graphics::TBitmap* picture, const AnsiString& path)
 			return false;
 		}
 	}
-	else
-	{
-		return false;
-	}
+
+	return false;	
 }
 
 bool LoadImage(FIBITMAP* image, Graphics::TBitmap* picture)
