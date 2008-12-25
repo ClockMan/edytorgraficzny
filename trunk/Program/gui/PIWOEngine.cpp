@@ -580,12 +580,149 @@ Connection* PIWOEngine::getConnectionTo(VisualInput* input)
 
 bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
 {
+	VisualBlock* toDelete=NULL;
+	for(unsigned int i=0;i<blocks.size();++i)
+	{
+		if (blocks[i]->getTitle()==fullName) {
+		   toDelete=blocks[i];
+		   blocks.erase(blocks.begin()+i);
+		   break;
+		}
+	}
+	if (toDelete==NULL) return false;
 
+    for(unsigned int j=0;j<connections.size();++j)
+	{
+		   if (connections[j]->inBlock==toDelete)
+		   {
+			  connections[j]->inBlock=NULL;
+		   }
+		   else
+		   if (connections[j]->outBlock==toDelete)
+		   {
+			  connections[j]->outBlock=NULL;
+		   }
+	}
+
+   vector<VisualBlock*> blocksToCheck;
+   for(unsigned int j=0;j<connections.size();++j)
+   {
+	  //sprawdzamy wejœcia
+
+	  if (connections[j]->inBlock!=NULL && connections[j]->outBlock==NULL)
+	  {
+		 connections[j]->input->disconnect();
+		 bool isOnList=false;
+		 for(unsigned int i=0;i<blocksToCheck.size();++i)
+		 {
+			 if (blocksToCheck[i]==connections[j]->inBlock)
+			 {
+				isOnList=true;
+				break;
+			 }
+		 }
+		 if (!isOnList) blocksToCheck.push_back(connections[j]->inBlock);
+	  }
+	  //sprawdzamy wyjœcia
+	  if (connections[j]->outBlock!=NULL && connections[j]->inBlock==NULL)
+	  {
+		 bool isOnList=false;
+		 for(unsigned int i=0;i<blocksToCheck.size();++i)
+		 {
+			 if (blocksToCheck[i]==connections[j]->outBlock)
+			 {
+				isOnList=true;
+				break;
+			 }
+		 }
+		 if (!isOnList) blocksToCheck.push_back(connections[j]->outBlock);
+	  }
+
+	  //usuwamy po³¹czenie
+	  if (selectedConnection==connections[j]) selectedConnection=NULL;
+	  delete connections[j];
+	  connections.erase(connections.begin()+j);
+	  --j;
+   }
+
+   //sprawdzamy co wywalone..
+   for(unsigned int i=0;i<blocksToCheck.size();++i)
+   {
+	   validateBlock(blocksToCheck[i]);
+   }
+   return true;
 }
 
 bool PIWOEngine::DeleteSelectedBlocks()
 {
+   if (selectedBlocks.size()==0) return false;
 
+   for(unsigned int i=0;i<selectedBlocks.size();++i)
+   {
+	   //zaznaczam po³¹czenia do usuniêcia
+	   for(unsigned int j=0;j<connections.size();++j)
+	   {
+		   if (connections[j]->inBlock==selectedBlocks[i])
+		   {
+			  connections[j]->inBlock=NULL;
+		   }
+		   else
+		   if (connections[j]->outBlock==selectedBlocks[i])
+		   {
+			  connections[j]->outBlock=NULL;
+		   }
+	   }
+	   delete selectedBlocks[i];
+   }
+   selectedBlocks.clear();
+
+   vector<VisualBlock*> blocksToCheck;
+   for(unsigned int j=0;j<connections.size();++j)
+   {
+	  //sprawdzamy wejœcia
+
+	  if (connections[j]->inBlock!=NULL && connections[j]->outBlock==NULL)
+	  {
+		 connections[j]->input->disconnect();
+		 bool isOnList=false;
+		 for(unsigned int i=0;i<blocksToCheck.size();++i)
+		 {
+			 if (blocksToCheck[i]==connections[j]->inBlock)
+			 {
+				isOnList=true;
+				break;
+			 }
+		 }
+		 if (!isOnList) blocksToCheck.push_back(connections[j]->inBlock);
+	  }
+	  //sprawdzamy wyjœcia
+	  if (connections[j]->outBlock!=NULL && connections[j]->inBlock==NULL)
+	  {
+		 bool isOnList=false;
+		 for(unsigned int i=0;i<blocksToCheck.size();++i)
+		 {
+			 if (blocksToCheck[i]==connections[j]->outBlock)
+			 {
+				isOnList=true;
+				break;
+			 }
+		 }
+		 if (!isOnList) blocksToCheck.push_back(connections[j]->outBlock);
+	  }
+
+	  //usuwamy po³¹czenie
+	  if (selectedConnection==connections[j]) selectedConnection=NULL;
+	  delete connections[j];
+	  connections.erase(connections.begin()+j);
+	  --j;
+   }
+
+   //sprawdzamy co wywalone..
+   for(unsigned int i=0;i<blocksToCheck.size();++i)
+   {
+	   validateBlock(blocksToCheck[i]);
+   }
+   return true;
 }
 
 bool PIWOEngine::DeleteAllBlocks()
