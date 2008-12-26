@@ -167,7 +167,8 @@ bool Binarization(Graphics::TBitmap* picture)
 bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor, int secondColor)
 {
 	if(picture->Empty) return false;
-  
+	
+	limit = (limit<0) ? 0 : (limit>255)  255 : limit;
 	picture->PixelFormat = pf32bit;
 	RGBQUAD* row;
 
