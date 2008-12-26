@@ -23,6 +23,11 @@ bool InversionColors(Graphics::TBitmap* picture);
 bool Binarization(Graphics::TBitmap* picture);
 
 // binaryzacja progowa - rezerwacja Kermit
+
+/*
+wartosc argumentu limit = od 0 do 255
+wartosc domyslna = 0
+*/
 bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor = clBlack, int secondColor = clWhite);
 
 // rozmycie obrazu - zarezerwowane
@@ -110,7 +115,7 @@ aby zmieniac nasycenie tylko jednej skladowej nalezy pozostale przekazac jako z 
 */
 bool RGBBalance(Graphics::TBitmap* picture, int limit_r, int limit_g, int limit_b);
 
-// filtracje z maska 3/3/3
+// filtracje z maska 3x3
 
 /*
 argument mask jest to tablica 9-u wartosci calkowitoliczbowych. tablica jednowymiarowa wiec jesli mamy maske w postaci
