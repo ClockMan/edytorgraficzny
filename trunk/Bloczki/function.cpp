@@ -1,4 +1,4 @@
-#include <function.hpp>
+#include "function.hpp"
 
 // odbicie poziome - zrobione
 bool ReflectionHorizontally(Graphics::TBitmap* picture)
@@ -19,7 +19,6 @@ bool ReflectionHorizontally(Graphics::TBitmap* picture)
 			line[picture->Width - j - 1] = temp;
 		}
 	}
-	
 	return true;
 }
 
@@ -168,7 +167,7 @@ bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor, 
 {
 	if(picture->Empty) return false;
 	
-	limit = (limit<0) ? 0 : (limit>255)  255 : limit;
+	limit = (limit<0) ? 0 : ((limit>255)?  255 : limit);  
 	picture->PixelFormat = pf32bit;
 	RGBQUAD* row;
 

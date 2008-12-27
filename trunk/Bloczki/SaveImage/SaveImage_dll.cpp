@@ -55,7 +55,7 @@ bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 int __stdcall validate(Block *aBlock)
 {
 	// brak wyjscia, jedno wejscie
-	if(aBlock->output.size() == 0)
+	if(aBlock->input.size() == 0)
 	{
 		BlockInput input1("input1");
 		input1.allowedTypes.push_back("Bitmap1bit");
@@ -68,7 +68,7 @@ int __stdcall validate(Block *aBlock)
 		input1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->input.push_back(input1);
-		
+
 		aBlock->getConfig()->addString("bitrate","Bitmap24bit");
 		aBlock->getConfig()->addString("path","");
 		
@@ -188,7 +188,6 @@ int __stdcall run(Block *aBlock)
 	}
 
 	picture->Free();
-
 	return 0;	
 }
 //---------------------------------------------------------------------------

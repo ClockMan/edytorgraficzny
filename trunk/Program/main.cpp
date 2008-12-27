@@ -88,3 +88,66 @@ void __fastcall TForm1::Zakocz2Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+
+void __fastcall TForm1::Zaznaczwszystkiebloki1Click(TObject *Sender)
+{
+   piwo->SelectAllBlocks();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Odznaczwszystkiebloki1Click(TObject *Sender)
+{
+	piwo->UnselectAllBlocks();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Odwrzaznaczenieblokw1Click(TObject *Sender)
+{
+	piwo->InvertBlockSelection();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Usubloki1Click(TObject *Sender)
+{
+	piwo->DeleteAllBlocks();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Usuzaznaczonebloki1Click(TObject *Sender)
+{
+	piwo->DeleteSelectedBlocks();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Odznaczzaznaczonepoaczenie1Click(TObject *Sender)
+{
+	piwo->UnselectSelectedConnection();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Usuwszystkiepoczenia1Click(TObject *Sender)
+{
+   piwo->DeleteAllConnections();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Usuzaznaczonepoczenie1Click(TObject *Sender)
+{
+	piwo->DeleteSelectedConnection();	
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Zresetujwszystkiepoczenia1Click(TObject *Sender)
+{
+	piwo->CancelCustomizationOnAllConnections();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Zresetujzaznaczonepoczenie1Click(TObject *Sender)
+{
+	piwo->CancelCustomizationOnSelectedConnections();	
+}
+//---------------------------------------------------------------------------
+

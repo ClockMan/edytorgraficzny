@@ -5,7 +5,7 @@
 
 BlockHistory::BlockHistory()
 {
-
+    configRevision=0;
 }
 
 BlockHistory::~BlockHistory()

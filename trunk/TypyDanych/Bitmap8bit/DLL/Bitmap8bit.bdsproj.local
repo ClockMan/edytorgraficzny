@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-11-26 11:49:16.750.cpp,D:\system\ClockMan\Moje dokumenty\Borland Studio Projects\Unit1.cpp=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\DLL.cpp</Transaction>
+    <Transaction>2008-11-26 11:49:30.546.bdsproj,D:\system\ClockMan\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\Bitmap24bit.bdsproj</Transaction>
+    <Transaction>2008-11-26 12:16:29.812.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\Unit1.cpp=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\SHOW.cpp</Transaction>
+    <Transaction>2008-11-26 12:16:29.812.h,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\Unit1.h=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\SHOW.h</Transaction>
+    <Transaction>2008-11-26 12:16:29.812.dfm,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\Unit1.dfm=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\DLL\SHOW.dfm</Transaction>
+    <Transaction>2008-12-27 10:07:36.765.bdsproj,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap32bit\DLL\Bitmap24bit.bdsproj=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap32bit\DLL\Bitmap32bit.bdsproj</Transaction>
+    <Transaction>2008-12-27 10:08:48.125.bdsproj,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap16bit\DLL\Bitmap32bit.bdsproj=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap16bit\DLL\Bitmap16bit.bdsproj</Transaction>
+    <Transaction>2008-12-27 10:11:18.062.bdsproj,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap8bit\DLL\Bitmap16bit.bdsproj=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap8bit\DLL\Bitmap8bit.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

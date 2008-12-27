@@ -21,7 +21,6 @@ __published:	// IDE-managed Components
 	TMainMenu *MainMenu1;
 	TMenuItem *Plik1;
 	TMenuItem *Edycja1;
-	TMenuItem *Uruchom1;
 	TMenuItem *Nowy1;
 	TMenuItem *Otwrz1;
 	TMenuItem *Zapisz1;
@@ -41,13 +40,6 @@ __published:	// IDE-managed Components
 	TMenuItem *Odznaczzaznaczonepoaczenie1;
 	TMenuItem *Usuwszystkiepoczenia1;
 	TMenuItem *Usuzaznaczonepoczenie1;
-	TMenuItem *Usu1;
-	TMenuItem *Blok1;
-	TMenuItem *Duplikuj1;
-	TMenuItem *Usu2;
-	TMenuItem *Edytujkonfiguracje1;
-	TMenuItem *Wejcia1;
-	TMenuItem *Wyjcia1;
 	TMenuItem *Pomoc1;
 	TMenuItem *Instrukcjauytkoniwka1;
 	TMenuItem *Dokumentacjatechniczna1;
@@ -60,8 +52,20 @@ __published:	// IDE-managed Components
 	TMenuItem *Uruchomwszystko1;
 	TMenuItem *Uruchom3;
 	TMenuItem *Sprawdpoprawno1;
+	TMenuItem *Zresetujwszystkiepoczenia1;
+	TMenuItem *Zresetujzaznaczonepoczenie1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
+	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
+	void __fastcall Odznaczwszystkiebloki1Click(TObject *Sender);
+	void __fastcall Odwrzaznaczenieblokw1Click(TObject *Sender);
+	void __fastcall Usubloki1Click(TObject *Sender);
+	void __fastcall Usuzaznaczonebloki1Click(TObject *Sender);
+	void __fastcall Odznaczzaznaczonepoaczenie1Click(TObject *Sender);
+	void __fastcall Usuwszystkiepoczenia1Click(TObject *Sender);
+	void __fastcall Usuzaznaczonepoczenie1Click(TObject *Sender);
+	void __fastcall Zresetujwszystkiepoczenia1Click(TObject *Sender);
+	void __fastcall Zresetujzaznaczonepoczenie1Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;

@@ -11,7 +11,7 @@ using namespace std;
 
 typedef TForm* (__stdcall *TypeDLL_show )(TComponent*, TypeConfig*);
 typedef bool (__stdcall *TypeDLL_isValid )(TypeConfig*);
-typedef AnsiString& (__stdcall *TypeDLL_getType )();
+typedef AnsiString (__stdcall *TypeDLL_getType )();
 /**
  * Interfejs pozwalajacy na l¹dowanie i uzywanie biblioteki typu
  * @author Piotr
@@ -55,7 +55,7 @@ class TypeDLL
 		 * Pobiera typ.
 		 * @return typ.
 		 */
-		AnsiString& getType();
+		AnsiString getType();
 
 };
 
