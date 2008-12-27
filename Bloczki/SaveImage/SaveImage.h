@@ -4,13 +4,13 @@
 #define SaveImageH
 
 #include <Graphics.hpp>
-#include <FreeImage.h>
+#include "FreeImage.h"
 
 #include "../../Program/engine/Block.h"
 
-extern "C" __stdcall __declspec(dllexport) int run(Block *aBlock);
-extern "C" __stdcall __declspec(dllexport) bool showConfig(TComponent *owner, Block *aBlock);
-extern "C" __stdcall __declspec(dllexport) int validate(Block *aBlock);
+extern "C" __declspec(dllexport) int __stdcall run(Block *aBlock);
+extern "C" __declspec(dllexport) bool __stdcall showConfig(TComponent *owner, Block *aBlock);
+extern "C" __declspec(dllexport) int __stdcall validate(Block *aBlock);
 
 
 //---------------------------------------------------------------------------

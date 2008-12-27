@@ -68,7 +68,7 @@ int __stdcall validate(Block *aBlock)
 		output1.setOutputType("Bitmap24bit");
 		output1.setDescription("Domyœlne wyjœcie");
 		output1.setErrorCode(1);
-		input1.setErrorDescription("Brak obiektu na wejœciu");
+		output1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->output.push_back(output1);
 		return 2;
 	}

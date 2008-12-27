@@ -854,3 +854,25 @@ void PIWOEngine::CancelCustomizationOnAllConnections()
 	   connections[i]->setCustomizeFalse();
     }
 }
+
+bool run()
+{
+	//uruchamiamy wszystkie bloki, ale korzystamy z zasady :D
+	// - niema ¿adnego b³êdu
+	// - jeœli jest wpis w histori to go u¿ywamy.
+	// - jeœli niema wpisu w histori to oznacza to i¿ historia zostanie pominiêta w wszystkich kolejnych blokach
+}
+
+bool runAll()
+{
+	//uruchamiamy wszystkie bloki, ale korzystamy z zasady :D
+	// - niema ¿adnego b³êdu
+	// - do histori tylko zapisujemy, usuwaj¹c stare wartoœci.
+	//przetwarzanie requencyjne od koñca (zawsze zaczynamy od bloków nieposiadaj¹cych wyjœcia lub z niedpo³¹czonym wyjœciem)
+	//sprawdzamy poprawnoœc wynikowego typu - dll typów :(
+}
+
+bool compile()
+{
+
+}

@@ -13,6 +13,8 @@ class BlockHistory
 	  vector<BlockHistoryOutputElement*> rightOutput;
 	  vector<BlockHistoryOutputElement*> bottomOutput;
 
+	 unsigned int configRevision;
+
 	BlockHistory();
 	~BlockHistory();
 };

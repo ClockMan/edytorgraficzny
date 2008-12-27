@@ -344,7 +344,7 @@ bool VisualBlock::updateVisualComponents()
 	 if ((history[i]->leftInput.size()!=leftInput.size())||
 		(history[i]->rightOutput.size()!=rightOutput.size())||
 		(history[i]->topInput.size()!=topInput.size())||
-		(history[i]->bottomOutput.size()!=bottomOutput.size()))
+		(history[i]->bottomOutput.size()!=bottomOutput.size())||history[i]->configRevision!=block.getConfig()->getRevision())
 	 {
 	   delete history[i];
 	   history.erase(history.begin()+i);

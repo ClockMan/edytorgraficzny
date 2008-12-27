@@ -63,7 +63,8 @@ class PIWOEngine : public TPanel
 		void UnselectSelectedConnection();
 		void CancelCustomizationOnSelectedConnections();
 		void CancelCustomizationOnAllConnections();
-
-	__published:
+		bool run();
+		bool runAll();
+		bool compile();//taka œciema, sprawdizmy poprawnoœc all bloków :d
 };
 #endif

@@ -76,7 +76,7 @@ int __stdcall validate(Block *aBlock)
 		output1.setOutputType("Bitmap24bit");
 		output1.setDescription("Domyślne wyjście");
 		output1.setErrorCode(1);
-		input1.setErrorDescription("Brak obiektu na wejściu");
+		output1.setErrorDescription("Brak obiektu na wejściu");
 		aBlock->output.push_back(output1);
 
 		aBlock->getConfig()->addInt("mode",0);

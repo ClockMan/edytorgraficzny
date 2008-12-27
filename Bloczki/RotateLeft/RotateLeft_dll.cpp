@@ -68,7 +68,7 @@ int __stdcall validate(Block *aBlock)
 		output1.setOutputType("Bitmap24bit");
 		output1.setDescription("Domyœlne wyjœcie");
 		output1.setErrorCode(1);
-		input1.setErrorDescription("Brak obiektu na wejœciu");
+		output1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->output.push_back(output1);
 		return 2;
 	}
@@ -134,7 +134,7 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-	if(!RotateLeft(picture))
+	if(!LeftRotation(picture))
 	{
 		aBlock->output[0].setErrorCode(2);
 		aBlock->output[0].setErrorDescription("Pusta bitmapa");
@@ -178,7 +178,6 @@ int __stdcall run(Block *aBlock)
 	
 	picture->Free();
 	delete copy;
-
 	return 0;
 }
 //---------------------------------------------------------------------------

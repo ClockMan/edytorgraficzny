@@ -27,7 +27,7 @@ bool TypeDLL::isValid(TypeConfig *aData) {
 	return fisValid(aData);
 }
 
-AnsiString& TypeDLL::getType()
+AnsiString TypeDLL::getType()
 {
   return fgetType();
 }

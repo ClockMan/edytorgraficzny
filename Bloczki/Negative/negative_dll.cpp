@@ -33,8 +33,9 @@
 //   If your DLL uses the dynamic version of the RTL, you do not need to
 //   explicitly add MEMMGR.LIB as this will be done implicitly for you
 //---------------------------------------------------------------------------
-
 #pragma argsused
+#pragma link "MEMMGR.LIB"
+
 int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void* lpReserved)
 {
 	return 1;
@@ -42,7 +43,7 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void* lpReserved
 //---------------------------------------------------------------------------
 bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 {
-	return true;
+	return false;
 }
 //---------------------------------------------------------------------------
 int __stdcall validate(Block *aBlock)
@@ -65,7 +66,7 @@ int __stdcall validate(Block *aBlock)
 		output1.setOutputType("Bitmap24bit");
 		output1.setDescription("Domyœlne wyjœcie");
 		output1.setErrorCode(1);
-		input1.setErrorDescription("Brak obiektu na wejœciu");
+		output1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->output.push_back(output1);
 
 		return 2;
@@ -132,7 +133,7 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-	if(!Negative(picture))
+	if(!InversionColors(picture))
 	{
 		aBlock->output[0].setErrorCode(2);
 		aBlock->output[0].setErrorDescription("Pusta bitmapa");
