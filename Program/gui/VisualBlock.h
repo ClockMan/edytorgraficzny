@@ -32,11 +32,6 @@ class VisualBlock : public TPanel
 		TSpeedButton *configButton;
 		TLabel *title;
 		TPanel *status;
-		vector<VisualInput*> leftInput;
-		vector<VisualInput*> topInput;
-		vector<VisualOutput*> rightOutput;
-		vector<VisualOutput*> bottomOutput;
-		vectorBlockHistory history;
 		bool selected;
 		bool moving;
 		bool button;
@@ -52,10 +47,16 @@ class VisualBlock : public TPanel
 		void __fastcall BlockMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 		void resizeAll();
 	public:
-        Block block;
+		Block block;
 		AnsiString nameOfBlock;
 		int		   numberOfBlock;
 		bool runned;
+		vectorBlockHistory history;
+
+		vector<VisualInput*> leftInput;
+		vector<VisualInput*> topInput;
+		vector<VisualOutput*> rightOutput;
+		vector<VisualOutput*> bottomOutput;
 
 		VisualFunction OnConfigClick;
 		VisualBlock_FunctionI OnVisualInputSelected;

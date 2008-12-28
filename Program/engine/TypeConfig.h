@@ -17,6 +17,7 @@ class TypeConfig: public BlockConfig
 {
 	protected:
 		AnsiString nazwa;
+		unsigned long id;
 	public:
 		/**
 		 * Konstruktor
@@ -54,6 +55,8 @@ class TypeConfig: public BlockConfig
 		 * @return nazwa obiektu.
 		 */
 		const AnsiString& getName();
+
+		unsigned long getId();
 };
 
 #endif

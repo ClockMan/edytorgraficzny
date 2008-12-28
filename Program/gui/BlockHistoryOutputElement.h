@@ -12,6 +12,7 @@ class BlockHistoryOutputElement
 	BlockOutput* output;
 
 	void setData(TypeConfig &d);
+	void setNULL();
 	TypeConfig* getData();
 
 	BlockHistoryOutputElement();
