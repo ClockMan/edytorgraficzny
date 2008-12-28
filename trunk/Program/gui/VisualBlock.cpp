@@ -15,22 +15,38 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	BevelOuter=bvRaised;
 	BevelInner=bvNone;
 	ShowHint=true;
-    //DoubleBuffered=true;
+	//DoubleBuffered=true;
 
 	OnClick=BlockClick;
 	OnMouseUp=BlockMouseUp;
 	OnMouseDown=BlockMouseDown;
 	OnMouseMove=BlockMouseMove;
+
 	nameOfBlock="";
 	numberOfBlock=0;
-	configButton=new TSpeedButton(this);
-	configButton->Parent=this;
+	status=new TPanel(this);
+	status->Parent=this;
+	status->OnClick=BlockClick;
+	status->OnMouseUp=BlockMouseUp;
+	status->OnMouseDown=BlockMouseDown;
+	status->OnMouseMove=BlockMouseMove;
+	status->Height=40;
+	status->Width=42;
+	status->Caption="";
+	status->BevelOuter=bvLowered;
+	status->BevelInner=bvNone;
+	status->Color=clGray;
+
+	configButton=new TSpeedButton(status);
+	configButton->Parent=status;
 	configButton->Height=34;
 	configButton->Width=36;
+	configButton->Left=3;
+	configButton->Top=3;
 	configButton->Caption="";
 	configButton->Transparent=false;
 	configButton->Layout=blGlyphTop;
-	configButton->Flat=true;
+	configButton->Flat=false;
 	configButton->Margin=0;
 	configButton->Spacing=0;
 	configButton->OnClick=SpeedButtonClick;
@@ -61,6 +77,8 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	OnUnselect=NULL;
 	OnSelect=NULL;
 	OnSelectAdd=NULL;
+
+	runned=false;
 }
 
 __fastcall VisualBlock::~VisualBlock()
@@ -96,6 +114,7 @@ __fastcall VisualBlock::~VisualBlock()
    }
 
    delete configButton;
+   delete status;
    delete title;
 }
 
@@ -112,7 +131,7 @@ Position VisualBlock::getInputPosition(BlockInput* object)
 		  //znaleŸiono
 		  tmp.direction=0;
 		  tmp.xy.y=this->Top+leftInput[i]->Top+int(leftInput[i]->Height/2);
-		  tmp.xy.x=this->Left-1;
+		  tmp.xy.x=this->Left;
 		  return tmp;
 	  }
    }
@@ -123,7 +142,7 @@ Position VisualBlock::getInputPosition(BlockInput* object)
 	  {
 		  //znaleŸiono
 		  tmp.direction=1;
-		  tmp.xy.y=this->Top-1;
+		  tmp.xy.y=this->Top;
 		  tmp.xy.x=this->Left+topInput[i]->Left+int(topInput[i]->Width/2);
 		  return tmp;
 	  }
@@ -146,7 +165,7 @@ Position VisualBlock::getOutputPosition(BlockOutput* object)
 		  //znaleŸiono
 		  tmp.direction=2;
 		  tmp.xy.y=this->Top+rightOutput[i]->Top+int(rightOutput[i]->Height/2);
-		  tmp.xy.x=this->Left+this->Width+1;
+		  tmp.xy.x=this->Left+this->Width;
 		  return tmp;
 	  }
    }
@@ -157,7 +176,7 @@ Position VisualBlock::getOutputPosition(BlockOutput* object)
 	  {
 		  //znaleŸiono
 		  tmp.direction=3;
-		  tmp.xy.y=this->Top+this->Height+1;
+		  tmp.xy.y=this->Top+this->Height;
 		  tmp.xy.x=this->Left+bottomOutput[i]->Left+int(bottomOutput[i]->Width/2);
 		  return tmp;
 	  }
@@ -338,8 +357,14 @@ bool VisualBlock::updateVisualComponents()
    leftInput=leftInputTmp;
    rightOutput=rightOutputTmp;
 
-   //historia
-   for(i=0;i<history.size();++i)
+   resizeAll();
+   return ret;
+}
+
+bool VisualBlock::updateHistory()
+{
+   if (history.size()==0) return false;
+   for(unsigned int i=0;i<history.size();++i)
    {
 	 if ((history[i]->leftInput.size()!=leftInput.size())||
 		(history[i]->rightOutput.size()!=rightOutput.size())||
@@ -379,8 +404,7 @@ bool VisualBlock::updateVisualComponents()
 		 }
 	 }
    }
-   resizeAll();
-   return ret;
+   return true;
 }
 
 void VisualBlock::resizeAll()
@@ -388,7 +412,7 @@ void VisualBlock::resizeAll()
 	unsigned top_bottom=topInput.size();
 	if (bottomOutput.size()>top_bottom) top_bottom=bottomOutput.size();
 
-	unsigned width=configButton->Width+10+(2*17)+2;
+	unsigned width=status->Width+10+(2*17)+2;
 	if (((topInput.size()*17)+(topInput.size()>0?(topInput.size()-1)*1:0)+4+(2*17)+2)>width)
 	  width=(topInput.size()*17)+(topInput.size()>0?(topInput.size()-1)*1:0)+4+(2*17)+2;
 	if (((bottomOutput.size()*17)+(bottomOutput.size()>0?(bottomOutput.size()-1)*1:0)+4+(2*17)+2)>width)
@@ -422,7 +446,7 @@ void VisualBlock::resizeAll()
 		for(unsigned int j=0;j<leftInput.size();j++)
 		{
 		  leftInput[j]->Top=height+i;
-		  leftInput[j]->Left=1;
+		  leftInput[j]->Left=2;
 		  i+=18;
 		}
 	}
@@ -432,16 +456,16 @@ void VisualBlock::resizeAll()
 		for(unsigned int j=0;j<rightOutput.size();j++)
 		{
 		  rightOutput[j]->Top=height+i;
-		  rightOutput[j]->Left=Width-1-17;
+		  rightOutput[j]->Left=Width-2-17;
 		  i+=18;
 		}
 	}
 
 	//przycisk
-	if (height2<configButton->Height) height2=configButton->Height;
-	configButton->Top=int(height+(height2-configButton->Height)/2);
-	configButton->Left=int((Width/2)-(configButton->Width/2));
-	height+=height2;
+	if (height2<status->Height) height2=status->Height;
+	status->Top=int(height+(height2-status->Height)/2);
+	status->Left=int((Width/2)-(status->Width/2));
+	height+=height2+2;
 
 	//dolny pasek
 	if (bottomOutput.size()>0) {
@@ -609,6 +633,11 @@ void __fastcall VisualBlock::BlockMouseMove(TObject *Sender, TShiftState Shift, 
 				OnBlockMove(this, (Shift.Contains(ssCtrl)&&!Shift.Contains(ssAlt)) ,cl.x-oldPoint.x,cl.y-oldPoint.y);
 	}
 	oldPoint=cl;
+}
+
+void VisualBlock::setStatusColor(TColor cl)
+{
+	status->Color=cl;
 }
 
 bool ctrlDown()

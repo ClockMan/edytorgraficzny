@@ -63,7 +63,7 @@ void BlockElement::setErrorCode(int aError)
    errorCode=aError;
 }
 
-void BlockElement::setObject(TypeConfig &aData)
+void BlockElement::setObject(const TypeConfig &aData)
 {
    if (object) delete object;
    object=new TypeConfig(aData);

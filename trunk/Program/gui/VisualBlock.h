@@ -31,6 +31,7 @@ class VisualBlock : public TPanel
 	private:
 		TSpeedButton *configButton;
 		TLabel *title;
+		TPanel *status;
 		vector<VisualInput*> leftInput;
 		vector<VisualInput*> topInput;
 		vector<VisualOutput*> rightOutput;
@@ -54,6 +55,7 @@ class VisualBlock : public TPanel
         Block block;
 		AnsiString nameOfBlock;
 		int		   numberOfBlock;
+		bool runned;
 
 		VisualFunction OnConfigClick;
 		VisualBlock_FunctionI OnVisualInputSelected;
@@ -73,8 +75,10 @@ class VisualBlock : public TPanel
 		void setTitle(const AnsiString &s);
 		AnsiString getTitle();
 		bool updateVisualComponents();
+		bool updateHistory();
 		void setSelected(bool status);
 		bool isSelected();
+		void setStatusColor(TColor cl);
 };
 
 bool ctrlDown();

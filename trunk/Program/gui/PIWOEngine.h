@@ -12,6 +12,7 @@
 #define PIWOMAINCLASSTYPE TScrollBox
 
 typedef void (__closure *PIWOEngine_Log )(TObject*,const AnsiString);
+typedef void (__closure *PIWOEngine_RunProgress )(TObject*,const AnsiString, const double);
 
 class PIWOEngine : public TPanel
 {
@@ -42,10 +43,14 @@ class PIWOEngine : public TPanel
 
 		Connection* getConnectionTo(VisualInput* input);
 		bool MakeConnection(VisualBlock* outputBlock, VisualOutput* output, VisualBlock* inputBlock, VisualInput* input);
+		bool runBlock(VisualBlock* block, bool fastRun, bool *useHistory);
 	public:
 		PIWOEngine_Log OnInformation;
 		PIWOEngine_Log OnWarrning;
 		PIWOEngine_Log OnError;
+		PIWOEngine_RunProgress OnRunAllProgress;
+		PIWOEngine_RunProgress OnRunProgress;
+		PIWOEngine_RunProgress OnCompileProgress;
 
 		PluginContener *plugins;
 		__fastcall PIWOEngine(TComponent* Owner);
