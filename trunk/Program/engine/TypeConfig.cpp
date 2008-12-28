@@ -10,16 +10,19 @@ TypeConfig::TypeConfig(const AnsiString aName)
 	if(aName.IsEmpty())
     	throw "Nazwa nie mo¿e byæ pusta";
    nazwa=aName;
+   id=(unsigned long)this;  //dzieci nie róbcie tego bez opieki doros³ych :D
 }
 
 TypeConfig::TypeConfig(TStream &stream)
 {
    if (!loadFromStream(stream)) throw "B³êdny format";
+   id=(unsigned long)this;  //wskaŸnik ejst na tyle unikatow¹ liczb¹ ¿e ...:P
 }
 
 TypeConfig::TypeConfig(const TypeConfig &kopia):BlockConfig(kopia)
 {
    nazwa=kopia.nazwa;
+   id=kopia.id;
 }
 
 TypeConfig::~TypeConfig()
@@ -63,4 +66,9 @@ bool TypeConfig::loadFromStream(TStream &aFrom)
 const AnsiString& TypeConfig::getName()
 {
    return nazwa;
+}
+
+unsigned long TypeConfig::getId()
+{
+  return id;
 }

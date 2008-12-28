@@ -24,3 +24,9 @@ TypeConfig* BlockHistoryInputElement::getData()
 {
 	return data;
 }
+
+void BlockHistoryInputElement::setNULL()
+{
+  if (data!=NULL) delete data;
+  data=NULL;
+}

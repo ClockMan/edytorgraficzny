@@ -894,6 +894,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
     */
 
 	//sprawdzamy dane wejsciowe.
+	//@TODO, powiniœym sprawdzaæ po wejœcia left/top/right/bottom, ale to nie ejst narazie ziamplementowane, dgy bêdzie czêœc tej funkcji bêdzie wymaga³a przeróbki.
 	for(unsigned int i=0;i<block->block.input.size();++i)
 	{
 		if (!block->block.input[i].getConnectedType().IsEmpty())
@@ -979,4 +980,130 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 	//Mamy ju¿ dane wejœciowe (fuxem)
 	//niebêde tu sprawdza³ danych wyjœciowych :d
 	//teraz sprawdzimy historie i uruchomimy bloczek D:
+	BlockHistory *history=NULL;
+	if (*useHistory)
+	{
+	   //u¿ywamy histori, sprawdzamy czy jest taka
+	   //jeœli wskaŸniki wejœciowe siê zgadzaj¹, zgadza siê ich revision, zgadza siê revision bloku konfiguracyjnego to niemusze odpalaæ bloku.
+	   //wyszukujemy historie :D  sprawdzamy tylko right i left, top i bottom nie zaimplementowane
+	   for(unsigned int i=0;i<block->history.size();++i)
+	   {
+		   bool ok=true;
+		   //sprawdzamy wersje konfiguracji
+		   if (block->block.getConfig()->getRevision()!=block->history[i]->configRevision) ok=false;
+		   if (block->history[i]->leftInput.size()!=block->leftInput.size()) ok=false;
+		   if (block->history[i]->rightOutput.size()!=block->rightOutput.size()) ok=false;
+		   if (block->history[i]->topInput.size()!=block->topInput.size()) ok=false;
+		   if (block->history[i]->bottomOutput.size()!=block->bottomOutput.size()) ok=false;
+
+		   for(unsigned int j=0;ok&&j<block->history[i]->leftInput.size();++j)
+		   {
+			  if (block->history[i]->leftInput[j]->input==block->leftInput[i]->input)
+			  {
+				if (block->history[i]->leftInput[j]->getData()!=NULL&&block->leftInput[i]->input->getObject()!=NULL)
+				{
+				   if ((block->history[i]->leftInput[j]->getData()->getName()!=block->leftInput[i]->input->getObject()->getName())||
+					   (block->history[i]->leftInput[j]->getData()->getId()!=block->leftInput[i]->input->getObject()->getId())||
+					   (block->history[i]->leftInput[j]->getData()->getRevision()!=block->leftInput[i]->input->getObject()->getRevision()))
+				   {
+                      ok=false; 
+				   }
+				}
+				else
+				if (!(block->history[i]->leftInput[j]->getData()==NULL&&block->leftInput[i]->input->getObject()==NULL))
+				{
+				  ok=false;
+                }
+			  } else ok=false;
+		   }
+
+		   for(unsigned int j=0;ok&&j<block->history[i]->topInput.size();++j)
+		   {
+			  if (block->history[i]->topInput[j]->input==block->topInput[i]->input)
+			  {
+				if (block->history[i]->topInput[j]->getData()!=NULL&&block->topInput[i]->input->getObject()!=NULL)
+				{
+				   if ((block->history[i]->topInput[j]->getData()->getName()!=block->topInput[i]->input->getObject()->getName())||
+					   (block->history[i]->topInput[j]->getData()->getId()!=block->topInput[i]->input->getObject()->getId())||
+					   (block->history[i]->topInput[j]->getData()->getRevision()!=block->topInput[i]->input->getObject()->getRevision()))
+				   {
+                      ok=false; 
+				   }
+				}
+				else
+				if (!(block->history[i]->topInput[j]->getData()==NULL&&block->topInput[i]->input->getObject()==NULL))
+				{
+					ok=false;
+				}
+			  } else ok=false;
+		   }
+
+		   for(unsigned int j=0;ok&&j<block->history[i]->rightOutput.size();++j)
+		   {
+			  if (block->history[i]->rightOutput[j]->output==block->rightOutput[i]->output)
+			  {
+				if (block->history[i]->rightOutput[j]->getData()!=NULL&&block->rightOutput[i]->output->getObject()!=NULL)
+				{
+				   if ((block->history[i]->rightOutput[j]->getData()->getName()!=block->rightOutput[i]->output->getObject()->getName())||
+					   (block->history[i]->rightOutput[j]->getData()->getId()!=block->rightOutput[i]->output->getObject()->getId())||
+					   (block->history[i]->rightOutput[j]->getData()->getRevision()!=block->rightOutput[i]->output->getObject()->getRevision()))
+				   {
+                      ok=false; 
+				   }
+				}
+				else
+				if (!(block->history[i]->rightOutput[j]->getData()==NULL&&block->rightOutput[i]->output->getObject()==NULL))
+				{
+					ok=false;
+				}
+			  } else ok=false;
+		   }
+
+           for(unsigned int j=0;ok&&j<block->history[i]->bottomOutput.size();++j)
+		   {
+			  if (block->history[i]->bottomOutput[j]->output==block->bottomOutput[i]->output)
+			  {
+				if (block->history[i]->bottomOutput[j]->getData()!=NULL&&block->bottomOutput[i]->output->getObject()!=NULL)
+				{
+				   if ((block->history[i]->bottomOutput[j]->getData()->getName()!=block->bottomOutput[i]->output->getObject()->getName())||
+					   (block->history[i]->bottomOutput[j]->getData()->getId()!=block->bottomOutput[i]->output->getObject()->getId())||
+					   (block->history[i]->bottomOutput[j]->getData()->getRevision()!=block->bottomOutput[i]->output->getObject()->getRevision()))
+				   {
+                      ok=false; 
+				   }
+				}
+				else
+				if (!(block->history[i]->bottomOutput[j]->getData()==NULL&&block->bottomOutput[i]->output->getObject()==NULL))
+				{
+					ok=false;
+				}
+			  } else ok=false;
+		   }
+
+		   if (ok)
+		   {
+			   history=block->history[i];
+			   block->history.erase(block->history.begin()+i); //dodamy potem hitorie na samym pocz¹tku
+			   break;
+		   }
+       }
+	   
+	}
+	else
+	{
+		//czyœcimy historie gdy niewolno nam jej u¿ywaæ.
+		while (block->history.size()>0)
+		{
+		  delete block->history[0];
+		  block->history.erase(block->history.begin());
+		}
+	}
+
+	if (history!=NULL) {
+		//mamy historie, inicjujemy wyjœcia i zwracamy true, i wrzucamy historie z powrotem na stos :d
+
+		return true;
+	}
+
+	//niemamy histori wiêc jeszcze bêdziemy musieli siê sporo pobawiæ.
 }

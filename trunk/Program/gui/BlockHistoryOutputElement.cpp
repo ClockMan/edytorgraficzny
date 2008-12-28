@@ -24,3 +24,9 @@ TypeConfig* BlockHistoryOutputElement::getData()
 {
 	return data;
 }
+
+void BlockHistoryOutputElement::setNULL()
+{
+  if (data!=NULL) delete data;
+  data=NULL;
+}

@@ -12,6 +12,7 @@ class BlockHistoryInputElement
 	BlockInput* input;
 
 	void setData(TypeConfig &d);
+	void setNULL();
 	TypeConfig* getData();
 
 	BlockHistoryInputElement();
