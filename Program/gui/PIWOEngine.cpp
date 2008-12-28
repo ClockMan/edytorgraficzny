@@ -29,6 +29,9 @@ __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
   selectedInput=NULL;
   selectedOutput=NULL;
   Color=clMedGray;
+  OnRunAllProgress=NULL;
+  OnRunProgress=NULL;
+  OnCompileProgress=NULL;
 }
 
 
@@ -106,23 +109,25 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
   if (updateInputConnections)
   {
 	 for(unsigned int i=0;i<block->block.input.size();++i)
-	 if (!block->block.input[i].getConnectedType().IsEmpty())
 	 {
-		BlockValidateInputElement *ih=new BlockValidateInputElement();
-		ih->input=&(block->block.input[i]);
-		ih->errorDescription=block->block.input[i].getErrorDescription();
-		ih->errorCode=block->block.input[i].getErrorCode();
-		ih->connection=NULL;
-		//szukamy po³¹czenia
-		for(unsigned int j=0;j<connections.size();++j)
-		{
-			if (connections[j]->inBlock==block&&connections[j]->input==&(block->block.input[i]))
+			BlockValidateInputElement *ih=new BlockValidateInputElement();
+			ih->connection=NULL;
+			//szukamy po³¹czenia
+			for(unsigned int j=0;j<connections.size();++j)
 			{
-			   ih->connection=connections[j];
-			   break;
+				if (connections[j]->inBlock==block&&connections[j]->input==&(block->block.input[i]))
+				{
+					ih->connection=connections[j];
+					break;
+				}
 			}
-		}
-		inputHistory.push_back(ih);
+			if (ih->connection!=NULL)
+						{
+							ih->input=&(block->block.input[i]);
+							ih->errorDescription=block->block.input[i].getErrorDescription();
+							ih->errorCode=block->block.input[i].getErrorCode();
+							inputHistory.push_back(ih);
+						} else delete ih;
 	 }
   }
 
@@ -165,30 +170,16 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 
 		 if (in!=NULL)
 		 {
-			//sprawdzamy czy dalej jest podpiêty typ pod niego
-			if (in->getConnectedType().IsEmpty())
+			//jest wejœcie
+			//jest coœ pod³¹czonego, jeœli code, i error siê nie zgadzaj¹ to aktualizujemy
+			//if (in->getErrorCode()!=inputHistory[0]->input->getErrorCode()||in->getErrorDescription()!=inputHistory[0]->input->getErrorDescription())
 			{
-			   //nic pod³¹czonego, wywalamy po³¹czenie
-				for(unsigned int j=0;j<connections.size();++j)
-				{
-					if (connections[j]==inputHistory[0]->connection)
-					{
-						delete connections[j];
-						connections.erase(connections.begin()+j);
-					}
-				}
-			}
-			else
-			{
-				//jest coœ pod³¹czonego, jeœli code, i error siê nie zgadzaj¹ to aktualizujemy
-				if (in->getErrorCode()!=inputHistory[0]->input->getErrorCode()||in->getErrorDescription()!=inputHistory[0]->input->getErrorDescription())
-				{
-				   inputHistory[0]->connection->update();
-				}
+				inputHistory[0]->connection->update();
 			}
 		 }
 		 else
 		 {
+			 //niema wejœcia, wywalamy go razem z po³¹czeniami
 			 for(unsigned int j=0;j<connections.size();++j)
 			 {
 				 if (connections[j]==inputHistory[0]->connection)
@@ -204,7 +195,8 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 	  }
    }
 
-   if (ret!=0) block->updateVisualComponents();
+   if (ret!=0) block->updateVisualComponents(); //aktualizujemy wyœwietlanie tylko gdy zmieni³ siê kod.
+   block->updateHistory();
 
    //aktualizacja wyjœæ, tu ju¿ bêdzie przejebane :P
    //sprawdzamy które wyjœcia siê zmieni³y, i wrzucamy na wyjœcie je
@@ -250,22 +242,25 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 					{
 					  //typ jest na liœcie, aktualizujemy typ i dodajemy blok do validacji
 					  outputHistory[0]->connections[g]->input->connect(out->getOutputType());
-					  bool isOnList=false;
-					  for(unsigned int k=0;k<toCheck.size();++k)
-					  {
-						if (toCheck[k]==outputHistory[0]->connections[g]->inBlock) {
-						   isOnList=true;
-						   break;
-						}
-					  }
-					  if (!isOnList) toCheck.push_back(outputHistory[0]->connections[g]->inBlock);
 					  outputHistory[0]->connections[g]->update();
 					}
 					else
 					{
-					   //typ zostaje bez zmian, wiêc przeprowadzamy tylko validacje po³¹czenia
+					   //wiêc od³¹czamy blok i przeprowadzamy validatcje po³¹czenia i bloku
+					   outputHistory[0]->connections[g]->input->disconnect();
+					   outputHistory[0]->connections[g]->inBlock->updateVisualComponents();
 					   outputHistory[0]->connections[g]->update();
 					}
+
+					bool isOnList=false;
+					for(unsigned int k=0;k<toCheck.size();++k)
+					{
+						if (toCheck[k]==outputHistory[0]->connections[g]->inBlock) {
+						   isOnList=true;
+						   break;
+						}
+					}
+					if (!isOnList) toCheck.push_back(outputHistory[0]->connections[g]->inBlock);
 			   }
 			}
 			else
@@ -304,7 +299,7 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 
   for(unsigned int i=0;i<toCheck.size();++i)
   {
-	validateBlock(toCheck[i]);
+	validateBlock(toCheck[i], true);
   }
 }
 
@@ -855,7 +850,7 @@ void PIWOEngine::CancelCustomizationOnAllConnections()
     }
 }
 
-bool run()
+bool PIWOEngine::run()
 {
 	//uruchamiamy wszystkie bloki, ale korzystamy z zasady :D
 	// - niema ¿adnego b³êdu
@@ -863,7 +858,7 @@ bool run()
 	// - jeœli niema wpisu w histori to oznacza to i¿ historia zostanie pominiêta w wszystkich kolejnych blokach
 }
 
-bool runAll()
+bool PIWOEngine::runAll()
 {
 	//uruchamiamy wszystkie bloki, ale korzystamy z zasady :D
 	// - niema ¿adnego b³êdu
@@ -872,7 +867,116 @@ bool runAll()
 	//sprawdzamy poprawnoœc wynikowego typu - dll typów :(
 }
 
-bool compile()
+bool PIWOEngine::compile()
 {
 
+}
+
+bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
+{
+	/*
+		Algorytm:
+		* za³o¿enie: aby bloczek by³ przetworzony musi byæ przynajmniej jedno wejœcie z kodem 0 gdy bloczek posiada wejœcia i przynajmniej jedno wyjœcie z kodem 0 gdy bloczek posiada wyjœcia.
+		* za³o¿enie: wejœcia do których pod³¹czony typ nie spe³nia wymagañ jest uznawane jako wejœcie z kodem 1 i nie pod³¹czonym blokiem. [zaktualizowaæ w wyswietlaniu bloku i po³¹czenia, aby nie widzia³ blok po³¹czenia]
+		* za³o¿enie: uruchamiamy wszystkie bloki jakie siê da.
+		- uruchamiamy bloki od których jesteœmy zale¿ni (requencyjnie) - jeœli nie zosta³y jeszcze uruchomione):
+			- sprawdzamy czy blok by³ ju¿ uruchomiony, jeœli nie to uruchamiamy
+			- pobieramy dane z wyjœæ bloku, jeœli dane s¹ równe NULL to znaczy ¿e blok nie zosta³ uruchomiony - przerywamy
+			- kopiujemy dane na wejœcie
+		- sprawdzamy czy bloczke mo¿e byæ uruchomiony, ma conajmniej jedno poprawne wejœcie i jedno poprawne wyjœcie [o ile ma], jak nie to wywalamy warrning
+		- jeœli fastRun jest ustawione na true i useHistory=true i mamy dane w histori to je uzywamy, jeœli niemamy danych w histori to upewniamy siê ¿e histora niemo¿e zostaæ u¿yta.
+		- uruchamiamy blok
+		- sprawdzamy kod b³êdu
+		- sprawdzamy dane wyjœciowe bloczka
+		- ustawiamy dane na wyjœciach o ile s¹ poprawne, jak nie to nie ustawiamy
+		- przeprowadzamy validacje bloczka
+		- zwracamy true
+    */
+
+	//sprawdzamy dane wejsciowe.
+	for(unsigned int i=0;i<block->block.input.size();++i)
+	{
+		if (!block->block.input[i].getConnectedType().IsEmpty())
+		{
+		   //znajdujemy po³¹czenie odpowiedizalne za to wejœcie
+		   Connection *con=NULL;
+		   for(unsigned int j=0;j<connections.size();++j)
+		   {
+			   if (connections[j]->input==&block->block.input[i])
+			   {
+				  con=connections[j];
+				  break;
+			   }
+		   }
+
+		   if (con!=NULL)
+		   {
+			  //jest po³¹czenie, sprawdzamy czy na danym bloku s¹ dane
+			  TypeConfig *data=con->output->getObject();
+			  if (data!=NULL)
+			  {
+				  //mamy dane wiêc je kopiujemy.
+				  block->block.input[i].setObject(*data);
+			  }
+			  else
+			  {
+				  //niema danych :(
+				  //sprawdzamy czy blok by³ uruchamiany
+				  if (con->outBlock->runned) {
+					  //by³ uruchamiany, trudno, wywalamy warrning i przerywamy wykonywanie
+					  if (OnWarrning!=NULL) {
+						 OnWarrning(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
+					  }
+					  block->setStatusColor(clYellow);
+					  return false;
+				  }
+				  else
+				  {
+					  //uruchamiamy blok :D
+					  if (!runBlock(con->outBlock, fastRun, useHistory))
+					  {
+						  //blok nie zosta³ uruchomiony, ale pech
+						  if (OnWarrning!=NULL) {
+							OnWarrning(this, "Blok nadrzêdny "+con->outBlock->getTitle()+" dla "+block->getTitle()+" nie zosta³ uruchomiony - brak wymaganych danych wejœciowych");
+						  }
+						  block->setStatusColor(clYellow);
+						  return false;
+					  }
+					  else
+					  {
+						  //a jednak siê uruchomi³, ale fux :d, sprawdzamy czy mamy te dane
+                          TypeConfig *data=con->output->getObject();
+						  if (data!=NULL)
+						  {
+								//mamy dane wiêc je kopiujemy.
+								block->block.input[i].setObject(*data);
+						  }
+						  else
+						  {
+							  //by³ uruchamiany, trudno, wywalamy warrning i przerywamy wykonywanie
+							 if (OnWarrning!=NULL) {
+								OnWarrning(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
+							 }
+							 block->setStatusColor(clYellow);
+							 return false;
+						  }
+					  }
+				  }
+              }
+		   }
+		   else
+		   {
+			  //niema po³¹czenia ? jakim cudem
+			  if (OnWarrning!=NULL) {
+				 OnWarrning(this, "Brak wymaganych danych na wejœciu do bloku (nie znale¿iono po³¹czenia): "+block->getTitle());
+			  }
+			  block->setStatusColor(clYellow);
+			  return false;
+           }
+		}
+	}
+
+	//Mamy ju¿ dane wejœciowe (fuxem)
+	//niebêde tu sprawdza³ danych wyjœciowych :d
+	//teraz sprawdzimy historie i uruchomimy bloczek D:
 }

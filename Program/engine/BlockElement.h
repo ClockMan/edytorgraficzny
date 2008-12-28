@@ -83,7 +83,7 @@ class BlockElement
 		 * Ustawia obiekt.
 		 * @param aData - ustawiany obiekt.
 		 */
-		void setObject(TypeConfig &aData);
+		void setObject(const TypeConfig &aData);
 };
 
 
