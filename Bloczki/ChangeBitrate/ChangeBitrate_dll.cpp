@@ -147,16 +147,16 @@ int __stdcall run(Block *aBlock)
 	if(rate == 0)
 		return 2; //nie ustawiono bitrate
 	else    if(rate == pf1bit)
-		{
+			{
                         if(!Monochrome(picture))
                         {
-			        aBlock->output[0].setErrorCode(2);
-			        aBlock->output[0].setErrorDescription("B³¹d przetwarzania obrazu");
-			        picture->Free();
-			        return 2;
+							aBlock->output[0].setErrorCode(2);
+							aBlock->output[0].setErrorDescription("B³¹d przetwarzania obrazu");
+							picture->Free();
+							return 2;
                         }
-		}
-        else
+			}
+			else
                 picture->PixelFormat = (TPixelFormat)rate;
 
 	TypeConfig* copy;

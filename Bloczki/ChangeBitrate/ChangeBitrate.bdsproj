@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+      <Option Name="ProjectType">CppDynamicLibrary</Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{7EA35EAC-1B4A-4AA7-B2D0-F07D9F5C223C}</Option>
+    </Option>
+  </PersonalityInfo>
+  <CPlusPlusBuilder.Personality>
+    <BCBPROJECT>
+      <project version="10.0">
+        <property category="build.config" name="active" value="0"/>
+        <property category="build.config" name="count" value="1"/>
+        <property category="build.config" name="excludedefaultforzero" value="0"/>
+        <property category="build.config.0" name="builddir" value="Debug"/>
+        <property category="build.config.0" name="key" value="Debug_Build"/>
+        <property category="build.config.0" name="name" value="Debug Build"/>
+        <property category="build.config.0" name="settings.win32b" value="default"/>
+        <property category="build.config.0" name="type" value="Toolset"/>
+        <property category="build.config.0" name="win32.win32b.builddir" value="Debug_Build"/>
+        <property category="build.config.1" name="key" value="Release_Build"/>
+        <property category="build.config.1" name="name" value="Release Build"/>
+        <property category="build.config.1" name="settings.win32b" value="default"/>
+        <property category="build.config.1" name="type" value="Toolset"/>
+        <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="libraries" value="rtl.lib vcl.lib"/>
+        <property category="build.node" name="name" value="ChangeBitrate.dll"/>
+        <property category="build.node" name="packages" value="vcl;rtl;vclx;bcbsmp"/>
+        <property category="build.node" name="sparelibs" value="vcl.lib rtl.lib"/>
+        <property category="build.node" name="use_packages" value="0"/>
+        <property category="build.platform" name="active" value="win32"/>
+        <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.Release_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.default" value="win32b"/>
+        <property category="build.platform" name="win32.enabled" value="1"/>
+        <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.r.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$O.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.1" value="DEBUG"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.vi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zi.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zn.enabled" value="1"/>
+        <optionset name="all_configurations">
+          <property category="node" name="displayname" value="All Configurations"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.1" value="$(BDS)\lib\vcl100.csm"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.10" value="C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.11" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.12" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.13" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.7" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.8" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\ChangeBitrate"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.9" value="C:\Program Files\Borland\CBuilder6\Projects"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vx.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.X.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.k.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="NO_STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="_RTLDLL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.v.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.vi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.y.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.arg.1" value="_DEBUG"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.10" value="C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.11" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.12" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.13" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.2" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.3" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.5" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.7" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.8" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\ChangeBitrate"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.9" value="C:\Program Files\Borland\CBuilder6\Projects"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.1" value="YD"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.2" value="W"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.1" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.2" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.3" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.5" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.6" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.7" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.M.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.1" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.2" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.3" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.5" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.6" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.7" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.1" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.2" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.3" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.5" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.6" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.7" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.10" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.3" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.5" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.6" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.7" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.8" value=".\"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.9" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.1" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.2" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.3" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.5" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.6" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.7" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.D.arg" value="&quot;&quot;"/>
+          <property category="win32.*.win32b.ilink32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.D.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.10" value="C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.11" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.12" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.5" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.7" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.8" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\ChangeBitrate"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.9" value="C:\Program Files\Borland\CBuilder6\Projects"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.1" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.2" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.3" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.5" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.6" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.7" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.outputdir.arg.1" value="."/>
+          <property category="win32.*.win32b.ilink32" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.v.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mti.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.3" value="sysinit.obj"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.arg.1" value="_DEBUG"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.10" value="C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.11" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.12" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.13" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.2" value="..\..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.3" value="..\..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.4" value="..\..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.5" value="..\..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.7" value="..\..\Program\engine"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.8" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\ChangeBitrate"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.9" value="C:\Program Files\Borland\CBuilder6\Projects"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.w2.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        </optionset>
+      </project>
+      <FILELIST>
+        <FILE FILENAME="ChangeBitrate.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="ChangeBitrate.res" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="ChangeBitrate.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="ChangeBitrate" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="ChangeBitrate_dll.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="ChangeBitrate_dll" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="ChangeBitrte.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="ChangeBitrte" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="configWindow.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="configWindow" FORMNAME="cfgWin" DESIGNCLASS="" ADDITIONAL="configWindow.h"/>
+        <FILE FILENAME="..\..\Program\engine\BlockConfig.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockConfig" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\Program\engine\BlockInput.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockInput" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\Program\engine\Item.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Item" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\Program\engine\BlockElement.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockElement" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\Program\engine\BlockOutput.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockOutput" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\Program\engine\TypeConfig.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TypeConfig" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\Program\engine\Block.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Block" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\TypyDanych\Bitmap1bit\Interface\IBitmap1bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap1bit" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\TypyDanych\Bitmap4bit\Interface\IBitmap4bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap4bit" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\TypyDanych\Bitmap8bit\Interface\IBitmap8bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap8bit" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\TypyDanych\Bitmap16bit\Interface\IBitmap16bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap16bit" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\TypyDanych\Bitmap24bit\Interface\IBitmap24bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap24bit" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\TypyDanych\Bitmap32bit\Interface\IBitmap32bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap32bit" FORMNAME="" DESIGNCLASS=""/>
+      </FILELIST>
+      <IDEOPTIONS>
+        <VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="MajorVer">1</VersionInfo>
+          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="Release">0</VersionInfo>
+          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Debug">False</VersionInfo>
+          <VersionInfo Name="PreRelease">False</VersionInfo>
+          <VersionInfo Name="Special">False</VersionInfo>
+          <VersionInfo Name="Private">False</VersionInfo>
+          <VersionInfo Name="DLL">False</VersionInfo>
+          <VersionInfo Name="Locale">1045</VersionInfo>
+          <VersionInfo Name="CodePage">1250</VersionInfo>
+        </VersionInfo>
+        <VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+        </VersionInfoKeys>
+        <HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Count">1</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item0">C:\Program Files\Borland\CBuilder6\Projects;C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+        </HistoryLists_hlIncludePath>
+        <HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Count">1</HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Item0">C:\Program Files\Borland\CBuilder6\Projects;C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+        </HistoryLists_hlLibraryPath>
+        <HistoryLists_hlDebugSourcePath>
+          <HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath>
+          <HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath>
+        </HistoryLists_hlDebugSourcePath>
+        <HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Count">1</HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Item0">_DEBUG</HistoryLists_hlConditionals>
+        </HistoryLists_hlConditionals>
+        <Debugging>
+          <Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging>
+        </Debugging>
+        <Parameters>
+          <Parameters Name="RunParams"></Parameters>
+          <Parameters Name="Launcher"></Parameters>
+          <Parameters Name="UseLauncher">False</Parameters>
+          <Parameters Name="DebugCWD"></Parameters>
+          <Parameters Name="HostApplication"></Parameters>
+          <Parameters Name="RemoteHost"></Parameters>
+          <Parameters Name="RemotePath"></Parameters>
+          <Parameters Name="RemoteParams"></Parameters>
+          <Parameters Name="RemoteLauncher"></Parameters>
+          <Parameters Name="UseRemoteLauncher">False</Parameters>
+          <Parameters Name="RemoteCWD"></Parameters>
+          <Parameters Name="RemoteDebug">False</Parameters>
+          <Parameters Name="Debug Symbols Search Path"></Parameters>
+          <Parameters Name="LoadAllSymbols">True</Parameters>
+          <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+        </Parameters>
+        <Excluded_Packages>
+          <Excluded_Packages Name="d:\programy\borland\bds\4.0\Bin\dclib100.bpl">Borland InterBase Express Components</Excluded_Packages>
+          <Excluded_Packages Name="d:\programy\borland\bds\4.0\Bin\dclIntraweb_80_100.bpl">Intraweb 8.0 Design Package for Borland Development Studio 2006</Excluded_Packages>
+          <Excluded_Packages Name="d:\programy\borland\bds\4.0\Bin\dclindy100.bpl">Internet Direct Version 9 (Indy) Property and Component Editors</Excluded_Packages>
+          <Excluded_Packages Name="d:\programy\borland\bds\4.0\Bin\bcbofficexp100.bpl">Borland C++Builder Office XP Servers Package</Excluded_Packages>
+          <Excluded_Packages Name="d:\programy\borland\bds\4.0\Bin\dclbcbsmp100.bpl">Borland Sample Controls Design Time Package</Excluded_Packages>
+          <Excluded_Packages Name="d:\programy\borland\bds\4.0\Bin\bcbie100.bpl">Borland C++Builder Internet Explorer 5 Components Package</Excluded_Packages>
+          <Excluded_Packages Name="d:\programy\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
+        </Excluded_Packages>
+        <Linker>
+          <Linker Name="LibPrefix"></Linker>
+          <Linker Name="LibSuffix"></Linker>
+          <Linker Name="LibVersion"></Linker>
+        </Linker>
+      </IDEOPTIONS>
+    </BCBPROJECT>
+    <Source>
+      <Source Name="MainSource">ChangeBitrate.bpf</Source>
+    </Source>
+  </CPlusPlusBuilder.Personality>
+</BorlandProject>
