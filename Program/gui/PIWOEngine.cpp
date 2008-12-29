@@ -701,6 +701,8 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
 	  --j;
    }
 
+   delete toDelete;
+
    //sprawdzamy co wywalone..
    for(unsigned int i=0;i<blocksToCheck.size();++i)
    {
