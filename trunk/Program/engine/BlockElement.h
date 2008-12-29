@@ -84,6 +84,11 @@ class BlockElement
 		 * @param aData - ustawiany obiekt.
 		 */
 		void setObject(const TypeConfig &aData);
+
+		/*
+		 * Usuwa obiekt.
+		 */
+		void clearObject();
 };
 
 

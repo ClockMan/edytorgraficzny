@@ -151,3 +151,15 @@ void __fastcall TForm1::Zresetujzaznaczonepoczenie1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::Uruchomwszystko1Click(TObject *Sender)
+{
+ piwo->runAll();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Uruchom3Click(TObject *Sender)
+{
+ piwo->run();	
+}
+//---------------------------------------------------------------------------
+

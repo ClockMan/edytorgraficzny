@@ -68,3 +68,9 @@ void BlockElement::setObject(const TypeConfig &aData)
    if (object) delete object;
    object=new TypeConfig(aData);
 }
+
+void BlockElement::clearObject()
+{
+   if (object) delete object;
+   object=NULL;
+}

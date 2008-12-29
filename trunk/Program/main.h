@@ -66,6 +66,8 @@ __published:	// IDE-managed Components
 	void __fastcall Usuzaznaczonepoczenie1Click(TObject *Sender);
 	void __fastcall Zresetujwszystkiepoczenia1Click(TObject *Sender);
 	void __fastcall Zresetujzaznaczonepoczenie1Click(TObject *Sender);
+	void __fastcall Uruchomwszystko1Click(TObject *Sender);
+	void __fastcall Uruchom3Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
