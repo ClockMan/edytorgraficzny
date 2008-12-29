@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-12-26 13:29:53.593.cpp,C:\Documents and Settings\Kermit\Moje dokumenty\Borland Studio Projects\Unit1.cpp=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binaruzation_dll.cpp</Transaction>
+    <Transaction>2008-12-26 13:31:02.875.cpp,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binaruzation_dll.cpp=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binarization_dll.cpp</Transaction>
+    <Transaction>2008-12-26 13:32:14.062.bdsproj,C:\Documents and Settings\Kermit\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binarization.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
