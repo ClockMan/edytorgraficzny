@@ -498,13 +498,13 @@ void __fastcall VisualBlock::OutputSelected(TObject *Sender)
 void VisualBlock::InputShowHistory(TObject *Sender)
 {
 	if (OnVInputHistory==NULL) return;
-	   OnVInputHistory((VisualInput*)Sender, &history);
+	   OnVInputHistory((VisualInput*)Sender, this);
 }
 
 void VisualBlock::OutputShowHistory(TObject *Sender)
 {
 	if (OnVOutputHistory==NULL) return;
-		OnVOutputHistory((VisualOutput*)Sender, &history);
+		OnVOutputHistory((VisualOutput*)Sender, this);
 }
 
 void VisualBlock::setSelected(bool status)

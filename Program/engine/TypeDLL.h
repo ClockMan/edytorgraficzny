@@ -9,7 +9,7 @@ using namespace std;
 
 #include "TypeConfig.h"
 
-typedef TForm* (__stdcall *TypeDLL_show )(TComponent*, TypeConfig*);
+typedef TFrame* (__stdcall *TypeDLL_show )(TWinControl*, TypeConfig*);
 typedef bool (__stdcall *TypeDLL_isValid )(TypeConfig*);
 typedef AnsiString (__stdcall *TypeDLL_getType )();
 /**
@@ -44,7 +44,7 @@ class TypeDLL
 		 * @param aData
 		 * @return
 		 */
-		TForm* show(TComponent* parent, TypeConfig* aData);
+		TFrame* show(TWinControl* parent, TypeConfig* aData);
 		/**
 		 * Sprawdza poprawnosc danych.
 		 * @param aData dane.

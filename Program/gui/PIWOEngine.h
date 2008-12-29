@@ -8,6 +8,7 @@
 #include "../engine/PluginContener.h"
 #include "VisualBlock.h"
 #include "Connection.h"
+#include "history.h"
 
 #define PIWOMAINCLASSTYPE TScrollBox
 
@@ -31,14 +32,15 @@ class PIWOEngine : public TPanel
 		void OnVisualBlockConfigClick(TObject* Sender);
 		void OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender);
 		void OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sender);
-		void OnVisualBlockInputHistoryClick(VisualInput* input, vectorBlockHistory* history);
-		void OnVisualBlockOutputHistoryClick(VisualOutput* output, vectorBlockHistory* history);
+		void OnVisualBlockInputHistoryClick(VisualInput* input, TObject* Sender);
+		void OnVisualBlockOutputHistoryClick(VisualOutput* output, TObject* Sender);
 		void OnVisualBlockMove(TObject* Sender, bool moveAll, int x, int y);
 		void OnVisualBlockUnselect(TObject* Sender);
 		void OnVisualBlockSelect(TObject* Sender);
 		void OnVisualBlockSelectAdd(TObject* Sender);
 		void __fastcall onThisClick(TObject* Sender);
 		void OnConnectionSelect(void* Sender);
+		void __fastcall HistoryFormClose(TObject *Sender, TCloseAction &Action);
 		void validateBlock(VisualBlock *block, bool updateInputConnections=true);
 
 		Connection* getConnectionTo(VisualInput* input);
@@ -53,6 +55,8 @@ class PIWOEngine : public TPanel
 		PIWOEngine_RunProgress OnCompileProgress;
 
 		PluginContener *plugins;
+		vector<THistory*> historyWindows;
+
 		__fastcall PIWOEngine(TComponent* Owner);
 		__fastcall ~PIWOEngine();
 

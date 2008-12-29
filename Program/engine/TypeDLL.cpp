@@ -19,7 +19,7 @@ TypeDLL::~TypeDLL()
    FreeLibrary(DLLHandle);
 }
 
-TForm* TypeDLL::show(TComponent* parent, TypeConfig* aData) {
+TFrame* TypeDLL::show(TWinControl* parent, TypeConfig* aData) {
 	return fshow(parent, aData);
 }
 

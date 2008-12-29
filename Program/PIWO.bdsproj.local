@@ -10,5 +10,8 @@
     <Transaction>2008-12-03 16:13:22.250.h,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.h=D:\System\ClockMan\Pulpit\PIWO\Program\splash.h</Transaction>
     <Transaction>2008-12-03 16:13:22.250.dfm,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.dfm=D:\System\ClockMan\Pulpit\PIWO\Program\splash.dfm</Transaction>
     <Transaction>2008-12-16 17:41:56.937.cpp,D:\System\ClockMan\Pulpit\PIWO\Program\ScrollBox1.cpp=</Transaction>
+    <Transaction>2008-12-29 13:36:30.687.cpp,D:\System\ClockMan\Pulpit\PIWO\Program\Unit3.cpp=D:\System\ClockMan\Pulpit\PIWO\Program\history.cpp</Transaction>
+    <Transaction>2008-12-29 13:36:30.687.h,D:\System\ClockMan\Pulpit\PIWO\Program\Unit3.h=D:\System\ClockMan\Pulpit\PIWO\Program\history.h</Transaction>
+    <Transaction>2008-12-29 13:36:30.687.dfm,D:\System\ClockMan\Pulpit\PIWO\Program\Unit3.dfm=D:\System\ClockMan\Pulpit\PIWO\Program\history.dfm</Transaction>
   </Transactions>
 </BorlandProject>

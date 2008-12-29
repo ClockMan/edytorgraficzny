@@ -4,10 +4,11 @@
 #pragma link "MEMMGR.LIB"
 
 
-TForm* __stdcall show(TComponent* owner, TypeConfig* aData)
+TFrame* __stdcall show(TWinControl* owner, TypeConfig* aData)
 {
    if (!isValid(aData)) return NULL;
    TForm1 *x=new TForm1(owner);
+   x->Parent=owner;
    if (aData->getBoolean("bool"))
    {
 	   x->Panel1->Color=clLime;
