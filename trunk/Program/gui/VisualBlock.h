@@ -19,11 +19,10 @@ struct Position {
    char direction; //0 - Left, 1 - Top, 2 - Right, 3 - Bottom, 4 - nie znaleüiono
 };
 
-typedef vector<BlockHistory*> vectorBlockHistory;
 typedef void (__closure *VisualBlock_FunctionI )(VisualInput*,  TObject*);
 typedef void (__closure *VisualBlock_FunctionO )(VisualOutput*, TObject*);
-typedef void (__closure *VisualBlock_FunctionHI )(VisualInput*, vectorBlockHistory*);
-typedef void (__closure *VisualBlock_FunctionHO )(VisualOutput*, vectorBlockHistory*);
+typedef void (__closure *VisualBlock_FunctionHI )(VisualInput*, TObject*);
+typedef void (__closure *VisualBlock_FunctionHO )(VisualOutput*, TObject*);
 typedef void (__closure *VisualBlock_FunctionMove )(TObject*, bool, int, int);
 
 class VisualBlock : public TPanel

@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 411
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 654
+  ClientHeight = 461
   ClientWidth = 685
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -492,25 +492,24 @@ object Form1: TForm1
   TextHeight = 13
   object Memo1: TMemo
     Left = 0
-    Top = 560
+    Top = 352
     Width = 685
-    Height = 75
+    Height = 90
     Align = alBottom
     ReadOnly = True
     TabOrder = 0
-    ExplicitTop = 540
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 635
+    Top = 442
     Width = 685
     Height = 19
     Panels = <>
-    ExplicitTop = 615
   end
   object MainMenu1: TMainMenu
     AutoHotkeys = maManual
     Images = ImageList1
+    Left = 16
     Top = 16
     object Plik1: TMenuItem
       Caption = 'Plik'
@@ -597,9 +596,13 @@ object Form1: TForm1
         OnClick = Zresetujzaznaczonepoczenie1Click
       end
     end
+    object Widok1: TMenuItem
+      Caption = 'Widok'
+      GroupIndex = 1
+    end
     object Uruchom2: TMenuItem
       Caption = 'Uruchom'
-      GroupIndex = 2
+      GroupIndex = 1
       object Uruchom3: TMenuItem
         Caption = 'Uruchom'
         Checked = True
@@ -631,7 +634,7 @@ object Form1: TForm1
     end
   end
   object ImageList1: TImageList
-    Left = 32
+    Left = 48
     Top = 16
     Bitmap = {
       494C010103000400040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600

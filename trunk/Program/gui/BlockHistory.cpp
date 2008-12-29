@@ -5,7 +5,18 @@
 
 BlockHistory::BlockHistory()
 {
-    configRevision=0;
+	configRevision=0;
+	date=date.CurrentDateTime();
+}
+
+BlockHistory::BlockHistory(BlockHistory &b)
+{
+	configRevision=b.configRevision;
+	date=b.date;
+	leftInput=b.leftInput;
+	topInput=b.topInput;
+	rightOutput=b.rightOutput;
+	bottomOutput=b.bottomOutput;
 }
 
 BlockHistory::~BlockHistory()

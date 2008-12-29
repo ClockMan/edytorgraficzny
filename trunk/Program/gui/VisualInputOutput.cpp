@@ -36,5 +36,9 @@ void __fastcall VisualInputOutput::MouseDownF(TObject *Sender, TMouseButton Butt
 	  TShiftState Shift, int X, int Y)
 {
    if ((this->OnShowHistory!=NULL)&&(Button==mbRight))
-        this->OnShowHistory(Sender);
+   {
+		this->Enabled=false;
+		this->OnShowHistory(Sender);
+		this->Enabled=true;
+   }
 }

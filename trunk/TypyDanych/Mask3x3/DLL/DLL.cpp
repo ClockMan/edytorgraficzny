@@ -4,10 +4,11 @@
 #pragma link "MEMMGR.LIB"
 
 
-TForm* __stdcall show(TComponent* owner, TypeConfig* aData)
+TFrame* __stdcall show(TWinControl* owner, TypeConfig* aData)
 {
    if (!isValid(aData)) return NULL;
    TForm1 *x=new TForm1(owner);
+   x->Parent=owner;
    for(int i=1;i<10;i++)
    {
 		TPanel *pn=(TPanel*)(x->FindComponent("Panel"+IntToStr(i)));

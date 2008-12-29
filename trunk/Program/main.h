@@ -54,6 +54,7 @@ __published:	// IDE-managed Components
 	TMenuItem *Sprawdpoprawno1;
 	TMenuItem *Zresetujwszystkiepoczenia1;
 	TMenuItem *Zresetujzaznaczonepoczenie1;
+	TMenuItem *Widok1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);

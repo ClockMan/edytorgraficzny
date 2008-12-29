@@ -13,10 +13,13 @@ class BlockHistory
 	  vector<BlockHistoryOutputElement*> rightOutput;
 	  vector<BlockHistoryOutputElement*> bottomOutput;
 
-	 unsigned int configRevision;
+	  unsigned int configRevision;
+	  TDateTime date;
 
-	BlockHistory();
-	~BlockHistory();
+	  BlockHistory();
+	  BlockHistory(BlockHistory &b);
+	  ~BlockHistory();
 };
 
+typedef vector<BlockHistory*> vectorBlockHistory;
 #endif

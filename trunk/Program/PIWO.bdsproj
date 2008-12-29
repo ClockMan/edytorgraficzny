@@ -246,6 +246,7 @@
         <FILE FILENAME="gui\BlockHistoryOutputElement.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockHistoryOutputElement" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\BlockHistoryOutputElement.h"/>
         <FILE FILENAME="gui\BlockHistory.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockHistory" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\BlockHistory.h"/>
         <FILE FILENAME="gui\BlockHistoryInputElement.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockHistoryInputElement" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\BlockHistoryInputElement.h"/>
+        <FILE FILENAME="gui\history.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="history" FORMNAME="Form3" DESIGNCLASS="" ADDITIONAL="gui\history.h"/>
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
@@ -254,7 +255,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">225</VersionInfo>
+          <VersionInfo Name="Build">257</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -266,7 +267,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.225</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.257</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
@@ -300,10 +301,6 @@
           <Language Name="ProjectLang">$00000000</Language>
           <Language Name="RootDir"></Language>
         </Language>
-        <Excluded_Packages>
-          <Excluded_Packages Name="D:\System\Components\bsftriald2006\BSFD2006.bpl">(untitled)</Excluded_Packages>
-          <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
-        </Excluded_Packages>
         <Linker>
           <Linker Name="LibPrefix"></Linker>
           <Linker Name="LibSuffix"></Linker>

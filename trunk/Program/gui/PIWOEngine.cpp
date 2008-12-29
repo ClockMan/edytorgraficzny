@@ -439,14 +439,75 @@ void PIWOEngine::OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sen
    }
 }
 
-void PIWOEngine::OnVisualBlockInputHistoryClick(VisualInput* input, vectorBlockHistory* history)
+void __fastcall PIWOEngine::HistoryFormClose(TObject *Sender, TCloseAction &Action)
 {
-
+	Action=caFree;
+	for(unsigned int i=0;i<historyWindows.size();++i)
+	{
+		if (historyWindows[i]==Sender)
+		{
+		   historyWindows.erase(historyWindows.begin()+i);
+		   break;
+		}
+	}
 }
 
-void PIWOEngine::OnVisualBlockOutputHistoryClick(VisualOutput* output, vectorBlockHistory* history)
+void PIWOEngine::OnVisualBlockInputHistoryClick(VisualInput* input, TObject* Sender)
 {
+   VisualBlock* block=(VisualBlock*)Sender;
+   //sprawdzamy czy przypadkiem takie okienko ju¿ nie jest otwarte
+   for(unsigned int i=0;i<historyWindows.size();++i)
+   {
+	  if (historyWindows[i]->block==block) {
+		 historyWindows[i]->refresh(input->input);
+		 historyWindows[i]->Show();
+		 return;
+	  }
+   }
 
+   //niema :P
+   if (block->history.size()==0)
+   {
+	  Application->MessageBoxA("Brak historii",block->getTitle().c_str(), MB_ICONINFORMATION | MB_OK);
+	  return;
+   }
+
+   THistory *his=new THistory(NULL);
+   his->block=block;
+   his->plugins=plugins;
+   his->OnClose=HistoryFormClose;
+   his->Show();
+   his->refresh(input->input);
+   historyWindows.push_back(his);
+}
+
+void PIWOEngine::OnVisualBlockOutputHistoryClick(VisualOutput* output, TObject* Sender)
+{
+   VisualBlock* block=(VisualBlock*)Sender;
+   //sprawdzamy czy przypadkiem takie okienko ju¿ nie jest otwarte
+   for(unsigned int i=0;i<historyWindows.size();++i)
+   {
+	  if (historyWindows[i]->block==block) {
+		 historyWindows[i]->refresh(output->output);
+		 historyWindows[i]->Show();
+		 return;
+	  }
+   }
+
+   //niema :P
+   if (block->history.size()==0)
+   {
+	  Application->MessageBoxA("Brak historii",block->getTitle().c_str(), MB_ICONINFORMATION | MB_OK);
+	  return;
+   }
+
+   THistory *his=new THistory(NULL);
+   his->block=block;
+   his->plugins=plugins;
+   his->OnClose=HistoryFormClose;
+   his->Show();
+   his->refresh(output->output);
+   historyWindows.push_back(his);
 }
 
 void PIWOEngine::OnVisualBlockMove(TObject* Sender, bool moveAll, int x, int y)
@@ -667,7 +728,15 @@ bool PIWOEngine::DeleteSelectedBlocks()
 			  connections[j]->outBlock=NULL;
 		   }
 	   }
-	   delete selectedBlocks[i];
+   }
+
+   for(unsigned int j=0;j<blocks.size();++j)
+   {
+	   if (blocks[j]->isSelected()) {
+		  delete blocks[j];
+		  blocks.erase(blocks.begin()+j);
+		  ++j;
+	   }
    }
    selectedBlocks.clear();
 
@@ -675,10 +744,12 @@ bool PIWOEngine::DeleteSelectedBlocks()
    for(unsigned int j=0;j<connections.size();++j)
    {
 	  //sprawdzamy wejœcia
+	  bool toDelete=false;
 
 	  if (connections[j]->inBlock!=NULL && connections[j]->outBlock==NULL)
 	  {
 		 connections[j]->input->disconnect();
+		 toDelete=true;
 		 bool isOnList=false;
 		 for(unsigned int i=0;i<blocksToCheck.size();++i)
 		 {
@@ -693,6 +764,7 @@ bool PIWOEngine::DeleteSelectedBlocks()
 	  //sprawdzamy wyjœcia
 	  if (connections[j]->outBlock!=NULL && connections[j]->inBlock==NULL)
 	  {
+		 toDelete=true;
 		 bool isOnList=false;
 		 for(unsigned int i=0;i<blocksToCheck.size();++i)
 		 {
@@ -706,10 +778,13 @@ bool PIWOEngine::DeleteSelectedBlocks()
 	  }
 
 	  //usuwamy po³¹czenie
+	  if (toDelete)
+	  {
 	  if (selectedConnection==connections[j]) selectedConnection=NULL;
 	  delete connections[j];
 	  connections.erase(connections.begin()+j);
 	  --j;
+	  }
    }
 
    //sprawdzamy co wywalone..
@@ -1240,6 +1315,9 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 	//niemamy histori wiêc jeszcze bêdziemy musieli siê sporo pobawiæ.
 	//zak³adamy ¿e wejscia mamy ju¿ wype³nione wykonujemy nastêpuj¹ce ruchy:
 	FunctionDLL *fn=plugins->getFunction(block->nameOfBlock);
+	if (OnInformation!=NULL) {
+			 OnInformation(this, "Uruchamiam blok: "+block->getTitle());
+	}
 	int ret=fn->run(&(block->block));
 	block->runned=true;
 	block->updateVisualComponents();

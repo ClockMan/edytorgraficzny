@@ -4,10 +4,11 @@
 #pragma link "MEMMGR.LIB"
 
 
-TForm* __stdcall show(TComponent* owner, TypeConfig* aData)
+TFrame* __stdcall show(TWinControl* owner, TypeConfig* aData)
 {
    if (!isValid(aData)) return NULL;
    TForm1 *x=new TForm1(owner);
+   x->Parent=owner;
    x->Panel1->Caption=FormatFloat("0.000000000",aData->getDouble("float"));
    return x;
 }
