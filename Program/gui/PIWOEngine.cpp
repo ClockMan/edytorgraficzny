@@ -852,24 +852,104 @@ void PIWOEngine::CancelCustomizationOnAllConnections()
 
 bool PIWOEngine::run()
 {
-	//uruchamiamy wszystkie bloki, ale korzystamy z zasady :D
-	// - niema ¿adnego b³êdu
-	// - jeœli jest wpis w histori to go u¿ywamy.
-	// - jeœli niema wpisu w histori to oznacza to i¿ historia zostanie pominiêta w wszystkich kolejnych blokach
+  bool status=true;
+	//usuwamy status runned, przetwa¿amy zaczynaj¹c od najstarszego bloku, czyœcimy dane, w sumie mo¿emy zostawiæ dane które widnia³y po ostatniej operacji
+	for(unsigned int i=0;i<blocks.size();++i)
+	{
+		blocks[i]->runned=false;
+		for(unsigned int j=0;j<blocks[i]->leftInput.size();++j)
+		{
+		   blocks[i]->leftInput[j]->input->clearObject();
+		}
+
+		for(unsigned int j=0;j<blocks[i]->topInput.size();++j)
+		{
+		   blocks[i]->topInput[j]->input->clearObject();
+		}
+
+		for(unsigned int j=0;j<blocks[i]->rightOutput.size();++j)
+		{
+		   blocks[i]->rightOutput[j]->output->clearObject();
+		}
+
+		for(unsigned int j=0;j<blocks[i]->bottomOutput.size();++j)
+		{
+		   blocks[i]->bottomOutput[j]->output->clearObject();
+		}
+	}
+
+	for(unsigned int i=0;i<blocks.size();++i)
+	{
+		bool toRun=true;
+		for(unsigned int j=0;j<connections.size();++j)
+		{
+			if (connections[j]->outBlock==blocks[i]&&!connections[j]->input->getConnectedType().IsEmpty()) {
+				toRun=false;
+				break;
+			}
+		}
+
+		if (toRun)
+		{
+		   bool useHistory=true;
+		   if (!runBlock(blocks[i], false, &useHistory)) status=false;
+		}
+	}
+	return status;
 }
 
 bool PIWOEngine::runAll()
 {
-	//uruchamiamy wszystkie bloki, ale korzystamy z zasady :D
-	// - niema ¿adnego b³êdu
-	// - do histori tylko zapisujemy, usuwaj¹c stare wartoœci.
-	//przetwarzanie requencyjne od koñca (zawsze zaczynamy od bloków nieposiadaj¹cych wyjœcia lub z niedpo³¹czonym wyjœciem)
-	//sprawdzamy poprawnoœc wynikowego typu - dll typów :(
+  bool status=true;
+	//usuwamy status runned, przetwa¿amy zaczynaj¹c od najstarszego bloku, czyœcimy dane, w sumie mo¿emy zostawiæ dane które widnia³y po ostatniej operacji
+	for(unsigned int i=0;i<blocks.size();++i)
+	{
+		blocks[i]->runned=false;
+		for(unsigned int j=0;j<blocks[i]->leftInput.size();++j)
+		{
+		   blocks[i]->leftInput[j]->input->clearObject();
+		}
+
+		for(unsigned int j=0;j<blocks[i]->topInput.size();++j)
+		{
+		   blocks[i]->topInput[j]->input->clearObject();
+		}
+
+		for(unsigned int j=0;j<blocks[i]->rightOutput.size();++j)
+		{
+		   blocks[i]->rightOutput[j]->output->clearObject();
+		}
+
+		for(unsigned int j=0;j<blocks[i]->bottomOutput.size();++j)
+		{
+		   blocks[i]->bottomOutput[j]->output->clearObject();
+		}
+	}
+
+	for(unsigned int i=0;i<blocks.size();++i)
+	{
+		bool toRun=true;
+		for(unsigned int j=0;j<connections.size();++j)
+		{
+			if (connections[j]->outBlock==blocks[i]&&!connections[j]->input->getConnectedType().IsEmpty()) {
+				toRun=false;
+				break;
+			}
+		}
+
+		if (toRun)
+		{
+		   bool useHistory=false;
+		   if (!runBlock(blocks[i], false, &useHistory)) status=false;
+		}
+	}
+	return status;
 }
 
 bool PIWOEngine::compile()
 {
-
+	//do napisania potem - nazwa siê zmieni
+	return false;
 }
 
 bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
@@ -890,8 +970,9 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		- sprawdzamy dane wyjœciowe bloczka
 		- ustawiamy dane na wyjœciach o ile s¹ poprawne, jak nie to nie ustawiamy
 		- przeprowadzamy validacje bloczka
+		- ustawiamy historie
 		- zwracamy true
-    */
+	*/
 
 	//sprawdzamy dane wejsciowe.
 	//@TODO, powiniœym sprawdzaæ po wejœcia left/top/right/bottom, ale to nie ejst narazie ziamplementowane, dgy bêdzie czêœc tej funkcji bêdzie wymaga³a przeróbki.
@@ -913,11 +994,23 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		   if (con!=NULL)
 		   {
 			  //jest po³¹czenie, sprawdzamy czy na danym bloku s¹ dane
+			  con->update();
 			  TypeConfig *data=con->output->getObject();
 			  if (data!=NULL)
 			  {
 				  //mamy dane wiêc je kopiujemy.
-				  block->block.input[i].setObject(*data);
+				  //sprawdzamy czy dane s¹ odpowiedniego typu
+				  if (data->getName()==block->block.input[i].getConnectedType()) {
+					 block->block.input[i].setObject(*data);
+				  }
+				  else
+				  {
+					  if (OnError!=NULL) {
+						 OnError(this, "Otrzymano b³êdne dane na wejœciu "+block->block.input[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano: "+block->block.input[i].getConnectedType()+", otrzymano: "+data->getName());
+					  }
+					  block->setStatusColor(clYellow);
+					  return false;
+				  }
 			  }
 			  else
 			  {
@@ -925,8 +1018,8 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 				  //sprawdzamy czy blok by³ uruchamiany
 				  if (con->outBlock->runned) {
 					  //by³ uruchamiany, trudno, wywalamy warrning i przerywamy wykonywanie
-					  if (OnWarrning!=NULL) {
-						 OnWarrning(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
+					  if (OnError!=NULL) {
+						 OnError(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
 					  }
 					  block->setStatusColor(clYellow);
 					  return false;
@@ -937,8 +1030,8 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 					  if (!runBlock(con->outBlock, fastRun, useHistory))
 					  {
 						  //blok nie zosta³ uruchomiony, ale pech
-						  if (OnWarrning!=NULL) {
-							OnWarrning(this, "Blok nadrzêdny "+con->outBlock->getTitle()+" dla "+block->getTitle()+" nie zosta³ uruchomiony - brak wymaganych danych wejœciowych");
+						  if (OnError!=NULL) {
+							OnError(this, "Blok nadrzêdny "+con->outBlock->getTitle()+" dla "+block->getTitle()+" nie zosta³ uruchomiony - brak wymaganych danych wejœciowych");
 						  }
 						  block->setStatusColor(clYellow);
 						  return false;
@@ -949,14 +1042,25 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
                           TypeConfig *data=con->output->getObject();
 						  if (data!=NULL)
 						  {
-								//mamy dane wiêc je kopiujemy.
-								block->block.input[i].setObject(*data);
+							//mamy dane wiêc je kopiujemy.
+							//sprawdzamy czy dane s¹ odpowiedniego typu
+							if (data->getName()==block->block.input[i].getConnectedType()) {
+								 block->block.input[i].setObject(*data);
+							}
+							else
+							{
+								  if (OnError!=NULL) {
+									 OnError(this, "Otrzymano b³êdne dane na wejœciu "+block->block.input[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano: "+block->block.input[i].getConnectedType()+", otrzymano: "+data->getName());
+								  }
+								  block->setStatusColor(clYellow);
+								  return false;
+							}
 						  }
 						  else
 						  {
 							  //by³ uruchamiany, trudno, wywalamy warrning i przerywamy wykonywanie
-							 if (OnWarrning!=NULL) {
-								OnWarrning(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
+							 if (OnError!=NULL) {
+								OnError(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
 							 }
 							 block->setStatusColor(clYellow);
 							 return false;
@@ -968,8 +1072,8 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		   else
 		   {
 			  //niema po³¹czenia ? jakim cudem
-			  if (OnWarrning!=NULL) {
-				 OnWarrning(this, "Brak wymaganych danych na wejœciu do bloku (nie znale¿iono po³¹czenia): "+block->getTitle());
+			  if (OnError!=NULL) {
+				 OnError(this, "Brak wymaganych danych na wejœciu do bloku (nie znale¿iono po³¹czenia): "+block->getTitle());
 			  }
 			  block->setStatusColor(clYellow);
 			  return false;
@@ -998,19 +1102,19 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 
 		   for(unsigned int j=0;ok&&j<block->history[i]->leftInput.size();++j)
 		   {
-			  if (block->history[i]->leftInput[j]->input==block->leftInput[i]->input)
+			  if (block->history[i]->leftInput[j]->input==block->leftInput[j]->input)
 			  {
-				if (block->history[i]->leftInput[j]->getData()!=NULL&&block->leftInput[i]->input->getObject()!=NULL)
+				if (block->history[i]->leftInput[j]->getData()!=NULL&&block->leftInput[j]->input->getObject()!=NULL)
 				{
-				   if ((block->history[i]->leftInput[j]->getData()->getName()!=block->leftInput[i]->input->getObject()->getName())||
-					   (block->history[i]->leftInput[j]->getData()->getId()!=block->leftInput[i]->input->getObject()->getId())||
-					   (block->history[i]->leftInput[j]->getData()->getRevision()!=block->leftInput[i]->input->getObject()->getRevision()))
+				   if ((block->history[i]->leftInput[j]->getData()->getName()!=block->leftInput[j]->input->getObject()->getName())||
+					   (block->history[i]->leftInput[j]->getData()->getId()!=block->leftInput[j]->input->getObject()->getId())||
+					   (block->history[i]->leftInput[j]->getData()->getRevision()!=block->leftInput[j]->input->getObject()->getRevision()))
 				   {
                       ok=false; 
 				   }
 				}
 				else
-				if (!(block->history[i]->leftInput[j]->getData()==NULL&&block->leftInput[i]->input->getObject()==NULL))
+				if (!(block->history[i]->leftInput[j]->getData()==NULL&&block->leftInput[j]->input->getObject()==NULL))
 				{
 				  ok=false;
                 }
@@ -1019,19 +1123,19 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 
 		   for(unsigned int j=0;ok&&j<block->history[i]->topInput.size();++j)
 		   {
-			  if (block->history[i]->topInput[j]->input==block->topInput[i]->input)
+			  if (block->history[i]->topInput[j]->input==block->topInput[j]->input)
 			  {
-				if (block->history[i]->topInput[j]->getData()!=NULL&&block->topInput[i]->input->getObject()!=NULL)
+				if (block->history[i]->topInput[j]->getData()!=NULL&&block->topInput[j]->input->getObject()!=NULL)
 				{
-				   if ((block->history[i]->topInput[j]->getData()->getName()!=block->topInput[i]->input->getObject()->getName())||
-					   (block->history[i]->topInput[j]->getData()->getId()!=block->topInput[i]->input->getObject()->getId())||
-					   (block->history[i]->topInput[j]->getData()->getRevision()!=block->topInput[i]->input->getObject()->getRevision()))
+				   if ((block->history[i]->topInput[j]->getData()->getName()!=block->topInput[j]->input->getObject()->getName())||
+					   (block->history[i]->topInput[j]->getData()->getId()!=block->topInput[j]->input->getObject()->getId())||
+					   (block->history[i]->topInput[j]->getData()->getRevision()!=block->topInput[j]->input->getObject()->getRevision()))
 				   {
                       ok=false; 
 				   }
 				}
 				else
-				if (!(block->history[i]->topInput[j]->getData()==NULL&&block->topInput[i]->input->getObject()==NULL))
+				if (!(block->history[i]->topInput[j]->getData()==NULL&&block->topInput[j]->input->getObject()==NULL))
 				{
 					ok=false;
 				}
@@ -1040,19 +1144,19 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 
 		   for(unsigned int j=0;ok&&j<block->history[i]->rightOutput.size();++j)
 		   {
-			  if (block->history[i]->rightOutput[j]->output==block->rightOutput[i]->output)
+			  if (block->history[i]->rightOutput[j]->output==block->rightOutput[j]->output)
 			  {
-				if (block->history[i]->rightOutput[j]->getData()!=NULL&&block->rightOutput[i]->output->getObject()!=NULL)
+				if (block->history[i]->rightOutput[j]->getData()!=NULL&&block->rightOutput[j]->output->getObject()!=NULL)
 				{
-				   if ((block->history[i]->rightOutput[j]->getData()->getName()!=block->rightOutput[i]->output->getObject()->getName())||
-					   (block->history[i]->rightOutput[j]->getData()->getId()!=block->rightOutput[i]->output->getObject()->getId())||
-					   (block->history[i]->rightOutput[j]->getData()->getRevision()!=block->rightOutput[i]->output->getObject()->getRevision()))
+				   if ((block->history[i]->rightOutput[j]->getData()->getName()!=block->rightOutput[j]->output->getObject()->getName())||
+					   (block->history[i]->rightOutput[j]->getData()->getId()!=block->rightOutput[j]->output->getObject()->getId())||
+					   (block->history[i]->rightOutput[j]->getData()->getRevision()!=block->rightOutput[j]->output->getObject()->getRevision()))
 				   {
                       ok=false; 
 				   }
 				}
 				else
-				if (!(block->history[i]->rightOutput[j]->getData()==NULL&&block->rightOutput[i]->output->getObject()==NULL))
+				if (!(block->history[i]->rightOutput[j]->getData()==NULL&&block->rightOutput[j]->output->getObject()==NULL))
 				{
 					ok=false;
 				}
@@ -1061,19 +1165,19 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 
            for(unsigned int j=0;ok&&j<block->history[i]->bottomOutput.size();++j)
 		   {
-			  if (block->history[i]->bottomOutput[j]->output==block->bottomOutput[i]->output)
+			  if (block->history[i]->bottomOutput[j]->output==block->bottomOutput[j]->output)
 			  {
-				if (block->history[i]->bottomOutput[j]->getData()!=NULL&&block->bottomOutput[i]->output->getObject()!=NULL)
+				if (block->history[i]->bottomOutput[j]->getData()!=NULL&&block->bottomOutput[j]->output->getObject()!=NULL)
 				{
-				   if ((block->history[i]->bottomOutput[j]->getData()->getName()!=block->bottomOutput[i]->output->getObject()->getName())||
-					   (block->history[i]->bottomOutput[j]->getData()->getId()!=block->bottomOutput[i]->output->getObject()->getId())||
-					   (block->history[i]->bottomOutput[j]->getData()->getRevision()!=block->bottomOutput[i]->output->getObject()->getRevision()))
+				   if ((block->history[i]->bottomOutput[j]->getData()->getName()!=block->bottomOutput[j]->output->getObject()->getName())||
+					   (block->history[i]->bottomOutput[j]->getData()->getId()!=block->bottomOutput[j]->output->getObject()->getId())||
+					   (block->history[i]->bottomOutput[j]->getData()->getRevision()!=block->bottomOutput[j]->output->getObject()->getRevision()))
 				   {
                       ok=false; 
 				   }
 				}
 				else
-				if (!(block->history[i]->bottomOutput[j]->getData()==NULL&&block->bottomOutput[i]->output->getObject()==NULL))
+				if (!(block->history[i]->bottomOutput[j]->getData()==NULL&&block->bottomOutput[j]->output->getObject()==NULL))
 				{
 					ok=false;
 				}
@@ -1099,11 +1203,188 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		}
 	}
 
+	//@TODO rozwa¿yæ u¿ycie histori dla bloków nie posiadaj¹cych wyjœcia, czyli np dla bloczków z³u¿¹cych do zapisu obrazu do pliku [mo¿liwe ¿e te bloki zostan¹ w przysz³oœci usuniête]
 	if (history!=NULL) {
 		//mamy historie, inicjujemy wyjœcia i zwracamy true, i wrzucamy historie z powrotem na stos :d
+		for(unsigned int i=0;i<history->rightOutput.size();++i)
+		{
+		  if (history->rightOutput[i]->getData()==NULL) {
+			history->rightOutput[i]->output->clearObject();
+		  }
+		  else
+		  {
+			history->rightOutput[i]->output->setObject(*history->rightOutput[i]->getData());
+		  }
+		}
 
+		for(unsigned int i=0;i<history->bottomOutput.size();++i)
+		{
+		  if (history->bottomOutput[i]->getData()==NULL) {
+			history->bottomOutput[i]->output->clearObject();
+		  }
+		  else
+		  {
+			history->bottomOutput[i]->output->setObject(*history->bottomOutput[i]->getData());
+		  }
+		}
+
+		block->history.insert(block->history.begin(),history);
+		//u¿yliœmy histori, powiadamiamy o tym
+		if (OnInformation!=NULL) {
+			 OnInformation(this, "Blok "+block->getTitle()+" zosta³ przetworzony w oparciu o dane historyczne");
+		}
+		block->setStatusColor(clGreen);
 		return true;
 	}
 
 	//niemamy histori wiêc jeszcze bêdziemy musieli siê sporo pobawiæ.
+	//zak³adamy ¿e wejscia mamy ju¿ wype³nione wykonujemy nastêpuj¹ce ruchy:
+	FunctionDLL *fn=plugins->getFunction(block->nameOfBlock);
+	int ret=fn->run(&(block->block));
+	block->runned=true;
+	block->updateVisualComponents();
+	if (ret!=0&&ret!=1) {
+		//wystapi³ b³¹d, usuwamy dane
+		for(unsigned int i=0;i<block->block.output.size();++i)
+		{
+		   block->block.output[i].clearObject();
+		}
+		if (OnError!=NULL)
+				OnError(this, "Blok "+block->getTitle()+" nie zosta³ przetwo¿ony - b³¹d wewnêtrzny");
+		block->setStatusColor(clRed);
+		return false;
+	}
+
+	//kod b³êdu 1 lub 0, spradziæ wyjœæia, skopiowaæ do histori, etc
+	history=new BlockHistory();
+	history->configRevision=block->block.getConfig()->getRevision();
+	//kopiujemy wejœcia do histori:
+	for(unsigned int i=0;i<block->leftInput.size();++i)
+	{
+		BlockHistoryInputElement *hi=new BlockHistoryInputElement();
+		hi->input=block->leftInput[i]->input;
+		TypeConfig *tp=block->leftInput[i]->input->getObject();
+		if (tp!=NULL)
+		{
+		   hi->setData(*tp);
+		}
+		else
+		{
+		   hi->setNULL();
+		}
+		history->leftInput.push_back(hi);
+	}
+
+	for(unsigned int i=0;i<block->topInput.size();++i)
+	{
+		BlockHistoryInputElement *hi=new BlockHistoryInputElement();
+		hi->input=block->topInput[i]->input;
+		TypeConfig *tp=block->topInput[i]->input->getObject();
+		if (tp!=NULL)
+		{
+		   hi->setData(*tp);
+		}
+		else
+		{
+		   hi->setNULL();
+		}
+		history->topInput.push_back(hi);
+	}
+
+	//sprawdziæ poprawnoœæ danych na wyjœciu:
+	TypeDLL *tdll=NULL;
+	for(unsigned int i=0;i<block->block.output.size();++i)
+	{
+		TypeConfig *tc=block->block.output[i].getObject();
+		if (tc==NULL && !block->block.output[i].getOutputType().IsEmpty())
+		{
+			//niema danych, a powinny jakieœ byæ. - tylko warrning
+			if (OnWarrning!=NULL)
+				OnWarrning(this, "Brak danych na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano "+block->block.output[i].getOutputType());
+		} else
+		if(tc!=NULL&&block->block.output[i].getOutputType().IsEmpty())
+		{
+		  //niechiceliœmy danych, a dostaliœmy.
+		  if (OnWarrning!=NULL)
+				OnWarrning(this, "Otrzymano nieoczekiwane dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+" typu "+tc->getName()+", dane zosta³y pominiête");
+		  block->block.output[i].clearObject();
+		  tc=NULL;
+		} else
+		if (tc!=NULL)
+		{
+		   //mamy dane, sprawdzamy czy s¹ tego typu jakiego oczekiwaliœmy.
+		   if (tc->getName()!=block->block.output[i].getOutputType())
+		   {
+			  //otrzyma³em b³êdne dane, warrning
+			  if (OnWarrning!=NULL)
+				OnWarrning(this, "Otrzymano b³êdne dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", otrzymano: "+tc->getName()+", oczekiwano: "+block->block.output[i].getOutputType()+", dane zosta³y pominiête");
+			  block->block.output[i].clearObject();
+			  tc=NULL;
+		   }
+		   else
+		   {
+			   //validacja typu :d, a nó¿ ktoœ siê bawi³ :P
+			   if (tdll==NULL||(tdll!=NULL&&tdll->getType()!=tc->getName()))
+			   {
+				  tdll=plugins->getType(tc->getName());
+			   }
+
+			   if (tdll==NULL)
+			   {
+				  //niema DLL typu, pomijamy sprawdzenie, wywalamy warrning
+				  if (OnWarrning!=NULL)
+					OnWarrning(this, "Otrzymano niewzpierany typ danych na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", typu: "+tc->getName());
+			   }
+			   else
+			   {
+				  if (!tdll->isValid(tc))
+				  {
+					 //dane nie s¹ poprawne, wywalamy
+					if (OnWarrning!=NULL)
+						OnWarrning(this, "Otrzymano b³êdne dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", typu: "+tc->getName()+", dane s¹ niepoprawne i zosta³y pominiête");
+					block->block.output[i].clearObject();
+					tc=NULL;
+				  }
+			   }
+		   }
+		}
+	}
+
+	//update histori wyjœcia.
+	for(unsigned int i=0;i<block->rightOutput.size();++i)
+	{
+		BlockHistoryOutputElement *hi=new BlockHistoryOutputElement();
+		hi->output=block->rightOutput[i]->output;
+		TypeConfig *tp=block->rightOutput[i]->output->getObject();
+		if (tp!=NULL)
+		{
+		   hi->setData(*tp);
+		}
+		else
+		{
+		   hi->setNULL();
+		}
+		history->rightOutput.push_back(hi);
+	}
+
+	for(unsigned int i=0;i<block->bottomOutput.size();++i)
+	{
+		BlockHistoryOutputElement *hi=new BlockHistoryOutputElement();
+		hi->output=block->bottomOutput[i]->output;
+		TypeConfig *tp=block->bottomOutput[i]->output->getObject();
+		if (tp!=NULL)
+		{
+		   hi->setData(*tp);
+		}
+		else
+		{
+		   hi->setNULL();
+		}
+		history->bottomOutput.push_back(hi);
+	}
+
+	//dodajemy historie :D
+	block->history.push_back(history);
+	block->setStatusColor(clGreen);
+	return true;
 }
