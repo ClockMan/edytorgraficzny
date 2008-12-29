@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="ChangeBitrate.dll"/>
+    <OBJFILES value="ChangeBitrate_dll.obj ChangeBitrte.obj configWindow.obj 
+      ..\..\Program\engine\BlockConfig.obj ..\..\Program\engine\BlockInput.obj 
+      ..\..\Program\engine\Item.obj ..\..\Program\engine\BlockElement.obj 
+      ..\..\Program\engine\BlockOutput.obj ..\..\Program\engine\TypeConfig.obj 
+      ..\..\Program\engine\Block.obj 
+      ..\..\TypyDanych\Bitmap1bit\Interface\IBitmap1bit.obj 
+      ..\..\TypyDanych\Bitmap4bit\Interface\IBitmap4bit.obj 
+      ..\..\TypyDanych\Bitmap8bit\Interface\IBitmap8bit.obj 
+      ..\..\TypyDanych\Bitmap16bit\Interface\IBitmap16bit.obj 
+      ..\..\TypyDanych\Bitmap24bit\Interface\IBitmap24bit.obj 
+      ..\..\TypyDanych\Bitmap32bit\Interface\IBitmap32bit.obj"/>
+    <RESFILES value="ChangeBitrate.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) configWindow.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="vcl.lib rtl.lib"/>
+    <PACKAGES value="vcl.bpi rtl.bpi vclx.bpi bcbsmp.bpi dclocx.bpi"/>
+    <PATHCPP value=".;..\..\Program\engine;..\..\Program\engine;..\..\Program\engine;..\..\Program\engine;..\..\Program\engine;..\..\Program\engine;..\..\Program\engine;..\..\TypyDanych\Bitmap1bit\Interface;..\..\TypyDanych\Bitmap4bit\Interface;..\..\TypyDanych\Bitmap8bit\Interface;..\..\TypyDanych\Bitmap16bit\Interface;..\..\TypyDanych\Bitmap24bit\Interface;..\..\TypyDanych\Bitmap32bit\Interface"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT;_RTLDLL;USEPACKAGES"/>
+    <MAINSOURCE value="ChangeBitrate.bpf"/>
+    <INCLUDEPATH value="..\..\TypyDanych\Bitmap32bit\Interface;..\..\TypyDanych\Bitmap24bit\Interface;..\..\TypyDanych\Bitmap16bit\Interface;..\..\TypyDanych\Bitmap8bit\Interface;..\..\TypyDanych\Bitmap4bit\Interface;..\..\TypyDanych\Bitmap1bit\Interface;..\..\Program\engine;&quot;C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\ChangeBitrate&quot;;&quot;C:\Program Files\Borland\CBuilder6\Projects&quot;;&quot;C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3&quot;;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="..\..\TypyDanych\Bitmap32bit\Interface;..\..\TypyDanych\Bitmap24bit\Interface;..\..\TypyDanych\Bitmap16bit\Interface;..\..\TypyDanych\Bitmap8bit\Interface;..\..\TypyDanych\Bitmap4bit\Interface;..\..\TypyDanych\Bitmap1bit\Interface;..\..\Program\engine;&quot;C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\ChangeBitrate&quot;;&quot;C:\Program Files\Borland\CBuilder6\Projects&quot;;&quot;C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-tWD -tWM -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v 
+      -vi- -c"/>
+    <PFLAGS value="-$YD -$W -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-Tpd -aa -Gi -D&quot;&quot; -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0d32.obj $(PACKAGES) sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="ChangeBitrate.res" FORMNAME="" UNITNAME="ChangeBitrate.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ChangeBitrate.bpf" FORMNAME="" UNITNAME="ChangeBitrate" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ChangeBitrate_dll.cpp" FORMNAME="" UNITNAME="ChangeBitrate_dll" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ChangeBitrte.cpp" FORMNAME="" UNITNAME="ChangeBitrte" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="configWindow.cpp" FORMNAME="cfgWin" UNITNAME="configWindow" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\Program\engine\BlockConfig.cpp" FORMNAME="" UNITNAME="BlockConfig" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\Program\engine\BlockInput.cpp" FORMNAME="" UNITNAME="BlockInput" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\Program\engine\Item.cpp" FORMNAME="" UNITNAME="Item" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\Program\engine\BlockElement.cpp" FORMNAME="" UNITNAME="BlockElement" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\Program\engine\BlockOutput.cpp" FORMNAME="" UNITNAME="BlockOutput" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\Program\engine\TypeConfig.cpp" FORMNAME="" UNITNAME="TypeConfig" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\Program\engine\Block.cpp" FORMNAME="" UNITNAME="Block" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\TypyDanych\Bitmap1bit\Interface\IBitmap1bit.cpp" FORMNAME="" UNITNAME="IBitmap1bit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\TypyDanych\Bitmap4bit\Interface\IBitmap4bit.cpp" FORMNAME="" UNITNAME="IBitmap4bit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\TypyDanych\Bitmap8bit\Interface\IBitmap8bit.cpp" FORMNAME="" UNITNAME="IBitmap8bit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\TypyDanych\Bitmap16bit\Interface\IBitmap16bit.cpp" FORMNAME="" UNITNAME="IBitmap16bit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\TypyDanych\Bitmap24bit\Interface\IBitmap24bit.cpp" FORMNAME="" UNITNAME="IBitmap24bit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\TypyDanych\Bitmap32bit\Interface\IBitmap32bit.cpp" FORMNAME="" UNITNAME="IBitmap32bit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1045
+CodePage=1250
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=C:\Program Files\Borland\CBuilder6\Projects;C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=C:\Program Files\Borland\CBuilder6\Projects;C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+  </IDEOPTIONS>
+</PROJECT>
