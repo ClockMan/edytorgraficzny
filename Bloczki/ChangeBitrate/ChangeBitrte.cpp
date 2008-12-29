@@ -3,11 +3,11 @@
 bool Monochrome(Graphics::TBitmap* image)
 {
 	if(image->Empty) return false;
-        image->PixelFormat=pf32bit;
-        Graphics::TBitmap* picture = new Graphics::TBitmap();
-        picture->Height=image->Height;
-        picture->Width=image->Width;
-        picture->PixelFormat=pf8bit;
+    image->PixelFormat=pf32bit;
+    Graphics::TBitmap* picture = new Graphics::TBitmap();
+    picture->Height=image->Height;
+    picture->Width=image->Width;
+    picture->PixelFormat=pf8bit;
         
 	for(int i=0; i < image->Height; i++)
 	{
@@ -26,6 +26,8 @@ bool Monochrome(Graphics::TBitmap* image)
     image->Assign(picture);
     image->Monochrome=true;
     image->PixelFormat=pf1bit;
+
+	delete picture;
 
 	return true;
 }
