@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 411
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 475
+  ClientHeight = 515
   ClientWidth = 676
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -492,22 +492,20 @@ object Form1: TForm1
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 456
+    Top = 496
     Width = 676
     Height = 19
     Panels = <>
-    ExplicitTop = 442
-    ExplicitWidth = 685
+    ExplicitTop = 476
   end
   object Panel1: TPanel
     Left = 0
-    Top = 350
+    Top = 390
     Width = 676
     Height = 106
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 336
-    ExplicitWidth = 685
+    ExplicitTop = 370
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -520,12 +518,8 @@ object Form1: TForm1
       TabOrder = 0
       TabWidth = 200
       OnResize = PageControl1Resize
-      ExplicitWidth = 683
       object TabSheet1: TTabSheet
         Caption = 'G'#322#243'wny log'
-        ExplicitTop = 27
-        ExplicitWidth = 675
-        ExplicitHeight = 73
         object ListView1: TListView
           Left = 0
           Top = 0
@@ -558,15 +552,11 @@ object Form1: TForm1
           SmallImages = ImageList2
           TabOrder = 0
           ViewStyle = vsReport
-          ExplicitTop = -1
-          ExplicitWidth = 675
-          ExplicitHeight = 73
         end
       end
       object TabSheet2: TTabSheet
         Caption = 'Run log'
         ImageIndex = 1
-        ExplicitWidth = 675
         object ListView2: TListView
           Left = 0
           Top = 0
@@ -599,13 +589,11 @@ object Form1: TForm1
           SmallImages = ImageList2
           TabOrder = 0
           ViewStyle = vsReport
-          ExplicitWidth = 675
         end
       end
       object TabSheet3: TTabSheet
         Caption = 'Debug log'
         ImageIndex = 2
-        ExplicitWidth = 675
         object ListView3: TListView
           Left = 0
           Top = 0
@@ -638,8 +626,6 @@ object Form1: TForm1
           SmallImages = ImageList2
           TabOrder = 0
           ViewStyle = vsReport
-          ExplicitTop = -1
-          ExplicitWidth = 675
         end
       end
     end
@@ -651,15 +637,11 @@ object Form1: TForm1
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 2
-    ExplicitLeft = 328
-    ExplicitTop = 168
-    ExplicitWidth = 150
   end
   object MainMenu1: TMainMenu
     AutoHotkeys = maManual
     Images = ImageList1
-    Left = 16
-    Top = 16
+    Top = 32
     object Plik1: TMenuItem
       Caption = 'Plik'
       GroupIndex = 1
@@ -754,15 +736,11 @@ object Form1: TForm1
       GroupIndex = 1
       object Uruchom3: TMenuItem
         Caption = 'Uruchom'
-        Checked = True
         OnClick = Uruchom3Click
       end
       object Uruchomwszystko1: TMenuItem
         Caption = 'Uruchom wszystko'
         OnClick = Uruchomwszystko1Click
-      end
-      object Sprawdpoprawno1: TMenuItem
-        Caption = 'Sprawd'#378' poprawno'#347#263
       end
     end
     object Pomoc1: TMenuItem
@@ -783,8 +761,7 @@ object Form1: TForm1
     end
   end
   object ImageList1: TImageList
-    Left = 48
-    Top = 16
+    Top = 64
     Bitmap = {
       494C010103000400040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
@@ -931,7 +908,7 @@ object Form1: TForm1
     Left = 8
     Top = 360
     Bitmap = {
-      494C01010500090004000A000A00FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C01010500090004000A000A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000280000001E0000000100200000000000C012
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1092,7 +1069,8 @@ object Form1: TForm1
       0000000000000000000000000000000000000000000000008040000000000000
       C040000000000000FFC0000000000000F3FCFF3FCF0000008060180601000000
       0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000008020080200000000C0701C0701000000FFFFFFFFFF000000}
+      00000000000000008020080200000000C0701C0701000000FFFFFFFFFF000000
+      00000000000000000000000000000000000000000000}
   end
   object PopupMenu1: TPopupMenu
     Left = 72
