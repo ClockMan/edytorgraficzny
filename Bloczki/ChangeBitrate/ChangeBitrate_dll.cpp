@@ -73,7 +73,7 @@ int __stdcall validate(Block *aBlock)
 		output1.setOutputType("Bitmap24bit");
 		output1.setDescription("Domslne wyjscie");
 		output1.setErrorCode(1);
-		output1.setErrorDescription("Brak obiektu na wejsciu");
+		output1.setErrorDescription("Brak obiektu na wyjsciu");
 		aBlock->output.push_back(output1);
 
 		aBlock->getConfig()->addInt("rate",pf24bit); //24bit-domyslne
