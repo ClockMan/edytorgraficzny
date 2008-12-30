@@ -14,6 +14,8 @@
 #include <Menus.hpp>
 #include <ImgList.hpp>
 #include <ComCtrls.hpp>
+#include <Dialogs.hpp>
+#include <ToolWin.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -46,7 +48,6 @@ __published:	// IDE-managed Components
 	TMenuItem *Oautorach1;
 	TMenuItem *Oprogramie1;
 	TImageList *ImageList1;
-	TMemo *Memo1;
 	TStatusBar *StatusBar1;
 	TMenuItem *Uruchom2;
 	TMenuItem *Uruchomwszystko1;
@@ -55,6 +56,26 @@ __published:	// IDE-managed Components
 	TMenuItem *Zresetujwszystkiepoczenia1;
 	TMenuItem *Zresetujzaznaczonepoczenie1;
 	TMenuItem *Widok1;
+	TPanel *Panel1;
+	TPageControl *PageControl1;
+	TTabSheet *TabSheet1;
+	TListView *ListView1;
+	TTabSheet *TabSheet2;
+	TTabSheet *TabSheet3;
+	TImageList *ImageList2;
+	TPopupMenu *PopupMenu1;
+	TMenuItem *Wyczylogi1;
+	TMenuItem *Zapiszdopliku1;
+	TListView *ListView2;
+	TListView *ListView3;
+	TSaveDialog *SaveDialog1;
+	TPopupMenu *PopupMenu2;
+	TMenuItem *MenuItem1;
+	TMenuItem *MenuItem2;
+	TPopupMenu *PopupMenu3;
+	TMenuItem *MenuItem3;
+	TMenuItem *MenuItem4;
+	TToolBar *ToolBar1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
@@ -69,6 +90,13 @@ __published:	// IDE-managed Components
 	void __fastcall Zresetujzaznaczonepoczenie1Click(TObject *Sender);
 	void __fastcall Uruchomwszystko1Click(TObject *Sender);
 	void __fastcall Uruchom3Click(TObject *Sender);
+	void __fastcall PageControl1Resize(TObject *Sender);
+	void __fastcall Wyczylogi1Click(TObject *Sender);
+	void __fastcall MenuItem1Click(TObject *Sender);
+	void __fastcall MenuItem3Click(TObject *Sender);
+	void __fastcall Zapiszdopliku1Click(TObject *Sender);
+	void __fastcall MenuItem2Click(TObject *Sender);
+	void __fastcall MenuItem4Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;

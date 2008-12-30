@@ -63,7 +63,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	piwo->OnInformation=OnLog;
 	piwo->OnWarrning=OnLog;
 	piwo->OnError=OnLog;
-
+    PageControl1Resize(NULL);
 	Sleep(500);
 	Form1->Visible=true;
 	Form1->Enabled=false;
@@ -77,7 +77,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
 void TForm1::OnLog(TObject* Sender, const AnsiString message)
 {
-   Form1->Memo1->Lines->Add(message);
+  TListItem *item=ListView1->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=0;
 }
 //---------------------------------------------------------------------------
 
@@ -160,6 +164,109 @@ void __fastcall TForm1::Uruchomwszystko1Click(TObject *Sender)
 void __fastcall TForm1::Uruchom3Click(TObject *Sender)
 {
  piwo->run();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::PageControl1Resize(TObject *Sender)
+{
+   PageControl1->TabWidth=int((PageControl1->Width-30)/3);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Wyczylogi1Click(TObject *Sender)
+{
+	ListView1->Items->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::MenuItem1Click(TObject *Sender)
+{
+	ListView2->Items->Clear();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::MenuItem3Click(TObject *Sender)
+{
+	ListView3->Items->Clear();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Zapiszdopliku1Click(TObject *Sender)
+{
+	SaveDialog1->FileName="Main Log.log";
+	if (SaveDialog1->Execute()) {
+	   TStringList *x=new TStringList();
+	   AnsiString tmp;
+	   for(int i=0;i<ListView1->Items->Count;++i)
+	   {
+		  tmp=ListView1->Items->Item[i]->Caption+" - ";
+		  switch (ListView1->Items->Item[i]->ImageIndex==0)
+		  {
+			case 0 : tmp+="INFO: ";break;
+			case 1 : tmp+="DEBUG: ";break;
+			case 2 : tmp+="SUCCESS: ";break;
+			case 3 : tmp+="WARRNING: ";break;
+			case 4 : tmp+="ERROR: ";break;
+		  }
+		 tmp+=ListView1->Items->Item[i]->SubItems->Strings[0];
+		 x->Add(tmp);
+	   }
+	   x->SaveToFile(SaveDialog1->FileName);
+	   delete x;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::MenuItem2Click(TObject *Sender)
+{
+	SaveDialog1->FileName="Run Log.log";
+	if (SaveDialog1->Execute()) {
+	   TStringList *x=new TStringList();
+	   AnsiString tmp;
+	   for(int i=0;i<ListView1->Items->Count;++i)
+	   {
+		  tmp=ListView1->Items->Item[i]->Caption+" - ";
+		  switch (ListView1->Items->Item[i]->ImageIndex==0)
+		  {
+			case 0 : tmp+="INFO: ";break;
+			case 1 : tmp+="DEBUG: ";break;
+			case 2 : tmp+="SUCCESS: ";break;
+			case 3 : tmp+="WARRNING: ";break;
+			case 4 : tmp+="ERROR: ";break;
+		  }
+		 tmp+=ListView1->Items->Item[i]->SubItems->Strings[0];
+		 x->Add(tmp);
+	   }
+	   x->SaveToFile(SaveDialog1->FileName);
+	   delete x;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::MenuItem4Click(TObject *Sender)
+{
+	SaveDialog1->FileName="Debug Log.log";
+	if (SaveDialog1->Execute()) {
+	   TStringList *x=new TStringList();
+	   AnsiString tmp;
+	   for(int i=0;i<ListView1->Items->Count;++i)
+	   {
+		  tmp=ListView1->Items->Item[i]->Caption+" - ";
+		  switch (ListView1->Items->Item[i]->ImageIndex==0)
+		  {
+			case 0 : tmp+="INFO: ";break;
+			case 1 : tmp+="DEBUG: ";break;
+			case 2 : tmp+="SUCCESS: ";break;
+			case 3 : tmp+="WARRNING: ";break;
+			case 4 : tmp+="ERROR: ";break;
+		  }
+		 tmp+=ListView1->Items->Item[i]->SubItems->Strings[0];
+		 x->Add(tmp);
+	   }
+	   x->SaveToFile(SaveDialog1->FileName);
+	   delete x;
+	}
 }
 //---------------------------------------------------------------------------
 
