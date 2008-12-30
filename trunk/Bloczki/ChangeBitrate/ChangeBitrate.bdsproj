@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">CPlusPlusBuilder.Personality</Option>
-      <Option Name="ProjectType">CppDynamicLibrary</Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{7EA35EAC-1B4A-4AA7-B2D0-F07D9F5C223C}</Option>
-    </Option>
-  </PersonalityInfo>
-  <CPlusPlusBuilder.Personality>
-    <BCBPROJECT>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{7EA35EAC-1B4A-4AA7-B2D0-F07D9F5C223C}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<BCBPROJECT>
       <project version="10.0">
         <property category="build.config" name="active" value="0"/>
         <property category="build.config" name="count" value="1"/>
@@ -25,6 +25,7 @@
         <property category="build.config.1" name="settings.win32b" value="default"/>
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="lastconfig" value="Release_Build"/>
         <property category="build.node" name="libraries" value="rtl.lib vcl.lib"/>
         <property category="build.node" name="name" value="ChangeBitrate.dll"/>
         <property category="build.node" name="packages" value="vcl;rtl;vclx;bcbsmp"/>
@@ -272,8 +273,8 @@
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
-          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
-          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">True</VersionInfo>
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
@@ -350,8 +351,8 @@
         </Linker>
       </IDEOPTIONS>
     </BCBPROJECT>
-    <Source>
-      <Source Name="MainSource">ChangeBitrate.bpf</Source>
-    </Source>
+		<Source>
+			<Source Name="MainSource">ChangeBitrate.bpf</Source>
+		</Source>  <buildevents/>
   </CPlusPlusBuilder.Personality>
 </BorlandProject>
