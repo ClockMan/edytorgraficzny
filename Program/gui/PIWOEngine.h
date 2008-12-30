@@ -13,7 +13,8 @@
 #define PIWOMAINCLASSTYPE TScrollBox
 
 typedef void (__closure *PIWOEngine_Log )(TObject*,const AnsiString);
-typedef void (__closure *PIWOEngine_RunProgress )(TObject*,const AnsiString, const double);
+typedef void (__closure *PIWOEngine_RunProgress)(TObject*,const AnsiString, const double);
+typedef void (__closure *PIWOEngine_Event) (TObject*);
 
 class PIWOEngine : public TPanel
 {
@@ -46,16 +47,31 @@ class PIWOEngine : public TPanel
 		Connection* getConnectionTo(VisualInput* input);
 		bool MakeConnection(VisualBlock* outputBlock, VisualOutput* output, VisualBlock* inputBlock, VisualInput* input);
 		bool runBlock(VisualBlock* block, bool fastRun, bool *useHistory);
+
+		bool runUsingHistory();
+		bool runNotUsingHistory();
+
+		bool isRunning;
+		bool stopRunning;
 	public:
 		PIWOEngine_Log OnInformation;
+		PIWOEngine_Log OnDebug;
+		PIWOEngine_Log OnSuccess;
 		PIWOEngine_Log OnWarrning;
 		PIWOEngine_Log OnError;
-		PIWOEngine_RunProgress OnRunAllProgress;
+
+		PIWOEngine_Log OnRunInformation;
+		PIWOEngine_Log OnRunSuccess;
+		PIWOEngine_Log OnRunWarrning;
+		PIWOEngine_Log OnRunError;
+
 		PIWOEngine_RunProgress OnRunProgress;
-		PIWOEngine_RunProgress OnCompileProgress;
+		PIWOEngine_Event	OnRunStart;
+		PIWOEngine_Event	OnRunEnd;
 
 		PluginContener *plugins;
 		vector<THistory*> historyWindows;
+		bool alwaysRun;
 
 		__fastcall PIWOEngine(TComponent* Owner);
 		__fastcall ~PIWOEngine();
@@ -72,8 +88,10 @@ class PIWOEngine : public TPanel
 		void UnselectSelectedConnection();
 		void CancelCustomizationOnSelectedConnections();
 		void CancelCustomizationOnAllConnections();
-		bool run();
-		bool runAll();
-		bool compile();//taka œciema, sprawdizmy poprawnoœc all bloków :d
+
+		bool run(bool useHistory=true);
+		bool isRuned();
+		void abort();
+		bool isAborted();
 };
 #endif

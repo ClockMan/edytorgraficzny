@@ -52,7 +52,6 @@ __published:	// IDE-managed Components
 	TMenuItem *Uruchom2;
 	TMenuItem *Uruchomwszystko1;
 	TMenuItem *Uruchom3;
-	TMenuItem *Sprawdpoprawno1;
 	TMenuItem *Zresetujwszystkiepoczenia1;
 	TMenuItem *Zresetujzaznaczonepoczenie1;
 	TMenuItem *Widok1;
