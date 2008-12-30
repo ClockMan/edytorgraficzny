@@ -204,19 +204,19 @@ bool PluginContener::LoadData(AnsiString blockDir, AnsiString typesDir, TMainMen
 	std::vector<AnsiString> functions;
 	SearchDirectory(functions,blockDir,"dll");
 	int max=types.size()+functions.size();
-	unsigned int i;
+	unsigned int i,u=0;
 	for(i=0;i<types.size();i++)
 	{
 	   TypeDLL *wsk=addType(types[i]);
 	   if (wsk!=NULL)
 	   {
 		 if (OnLoadingProgress!=NULL)
-				OnLoadingProgress(this, i+1, max, wsk->getType(),0);
+				OnLoadingProgress(this, ++u, max, wsk->getType(),0);
 	   }
 	   else
 	   {
 		 if (OnLoadingProgress!=NULL)
-		 OnLoadingProgress(this, i+1, max, ExtractFileName(types[i]), 2);
+		 OnLoadingProgress(this, ++u, max, ExtractFileName(types[i]), 2);
 	   }
 	}
 
@@ -228,12 +228,12 @@ bool PluginContener::LoadData(AnsiString blockDir, AnsiString typesDir, TMainMen
 		 AddMenus(wsk, menu, images, upId, downId, functionIcon, folderIcon);
 		 wsk->FunctionAddRequest=OnFunctionClick;
 		 if (OnLoadingProgress!=NULL)
-		 OnLoadingProgress(this, i+1, max, ExtractFileName(functions[i]), 1);
+		 OnLoadingProgress(this, ++u, max, ExtractFileName(functions[i]), 1);
 	   }
 	   else
 	   {
 		 if (OnLoadingProgress!=NULL)
-		 OnLoadingProgress(this, i+1, max, ExtractFileName(functions[i]), 3);
+		 OnLoadingProgress(this, ++u, max, ExtractFileName(functions[i]), 3);
 	   }
 	}
    return true;	
