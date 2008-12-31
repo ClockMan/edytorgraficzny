@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 411
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 515
+  ClientHeight = 535
   ClientWidth = 676
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -493,18 +493,21 @@ object Form1: TForm1
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 496
+    Top = 516
     Width = 676
     Height = 19
     Panels = <>
+    SimplePanel = True
+    ExplicitTop = 496
   end
   object Panel1: TPanel
     Left = 0
-    Top = 390
+    Top = 410
     Width = 676
     Height = 106
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 390
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -546,6 +549,7 @@ object Form1: TForm1
           Font.Name = 'Small Fonts'
           Font.Style = []
           FlatScrollBars = True
+          ReadOnly = True
           RowSelect = True
           ParentFont = False
           PopupMenu = PopupMenu1
@@ -583,6 +587,7 @@ object Form1: TForm1
           Font.Name = 'Small Fonts'
           Font.Style = []
           FlatScrollBars = True
+          ReadOnly = True
           RowSelect = True
           ParentFont = False
           PopupMenu = PopupMenu2
@@ -620,6 +625,7 @@ object Form1: TForm1
           Font.Name = 'Small Fonts'
           Font.Style = []
           FlatScrollBars = True
+          ReadOnly = True
           RowSelect = True
           ParentFont = False
           PopupMenu = PopupMenu3
@@ -640,6 +646,103 @@ object Form1: TForm1
     Caption = 'ToolBar1'
     TabOrder = 2
   end
+  object Panel2: TPanel
+    Left = 0
+    Top = 388
+    Width = 676
+    Height = 22
+    Align = alBottom
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    TabOrder = 3
+    Visible = False
+    ExplicitTop = 368
+    object CGauge1: TCGauge
+      Left = 209
+      Top = 0
+      Width = 445
+      Height = 18
+      Align = alClient
+      Color = clBlack
+      ForeColor = clNavy
+      ParentColor = False
+      ExplicitLeft = 240
+      ExplicitWidth = 432
+    end
+    object Label1: TLabel
+      Left = 0
+      Top = 0
+      Width = 209
+      Height = 18
+      Margins.Left = 10
+      Margins.Right = 10
+      Align = alLeft
+      Alignment = taCenter
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = True
+      Layout = tlCenter
+    end
+    object SpeedButton1: TSpeedButton
+      Left = 654
+      Top = 0
+      Width = 18
+      Height = 18
+      Cursor = crHandPoint
+      Hint = 'Anuluj uruchamianie'
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Align = alRight
+      Flat = True
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        20000000000000040000C40E0000C40E00000000000000000000000000000000
+        00000000000000000000000000FF000000FF000008FF000017FF000016FF0000
+        08FF000000FF000000FF00000000000000000000000000000000000000000000
+        000000000000000000FF00002BFF000065FF00008FFF0000A0FF00009EFF0000
+        8AFF000060FF000028FF000000FF000000000000000000000000000000000000
+        0000000006FF000055FF0000AEFF0000D3FF0000D3FF0000D0FF0000D0FF0000
+        D0FF0000CAFF0000A3FF00004EFF000005FF0000000000000000000000000000
+        00FF000059FF0000C8FF0000D8FF0909CFFF0D0DCFFF0000CCFF0000CCFF0D0D
+        CFFF0909CEFF0000D0FF0000B8FF000050FF000000FF00000000000000FF0000
+        34FF0000BAFF0000DBFF0B0BD2FF8888E9FFA4A4EEFF1616D4FF1616D4FFA4A4
+        EEFF8888E9FF0B0BD2FF0000D2FF0000A8FF00002EFF000000FF000000FF0000
+        76FF0000E1FF0000D5FF5454E2FFF5F5FDFFFFFFFFFFAEAEF1FFAEAEF1FFFFFF
+        FFFFF5F5FDFF5454E2FF0000D4FF0000CFFF000069FF000000FF00000DFF0000
+        A3FF0000E4FF0000D8FF1414DCFF9D9DF1FFFCFCFEFFFFFFFFFFFFFFFFFFFCFC
+        FEFF9D9DF1FF1414DCFF0000D8FF0000D7FF000091FF00000BFF00001BFF0000
+        B4FF0000E5FF0000DCFF0000DCFF2B2BE2FFDFDFFAFFFFFFFFFFFFFFFFFFDFDF
+        FAFF2B2BE2FF0000DCFF0000DDFF0000DBFF0000A0FF000018FF000119FF0001
+        B3FF0000E9FF0000E0FF1919E3FFA9A9F4FFFDFDFFFFFEFEFFFFFEFEFFFFFDFD
+        FFFFA9A9F4FF1919E3FF0000E1FF0000DDFF0001A0FF000117FF000108FF0003
+        9DFF0000EEFF0000E4FF5252EDFFF4F4FEFFFDFDFFFFA3A3F6FFA3A3F6FFFDFD
+        FFFFF4F4FEFF5252EDFF0000E3FF0000DDFF00038FFF000108FF000000FF0004
+        69FF0002E9FF0000EBFF0808E9FF7C7CF4FF9898F6FF1111EAFF1111EAFF9898
+        F6FF7C7CF4FF0808E9FF0000E2FF0002D6FF000464FF000000FF000000FF0002
+        27FF0006B2FF0001F1FF0000ECFF0606EDFF0909EDFF0000ECFF0000ECFF0909
+        EDFF0606ECFF0000E6FF0001E1FF0006AAFF000228FF000000FF000000000000
+        00FF00034AFF0007C7FF0003F1FF0000EEFF0000EDFF0000EEFF0000EDFF0000
+        EBFF0000E6FF0003E4FF0007C0FF00034BFF000000FF00000000000000000000
+        0000000003FF00024AFF0007ADFF0008E6FF0005F0FF0004EFFF0004EEFF0005
+        ECFF0008E1FF0008ACFF00034BFF000003FF0000000000000000000000000000
+        000000000000000000FF000027FF000367FF00069CFF0007B9FF0007BAFF0006
+        9DFF000368FF000029FF000000FF000000000000000000000000000000000000
+        00000000000000000000000000FF000000FF000009FF00001AFF00001BFF0000
+        09FF000000FF000000FF00000000000000000000000000000000}
+      ParentShowHint = False
+      ShowHint = True
+      Spacing = 0
+      OnClick = SpeedButton1Click
+      ExplicitLeft = 653
+    end
+  end
   object MainMenu1: TMainMenu
     AutoHotkeys = maManual
     Images = ImageList1
@@ -649,6 +752,7 @@ object Form1: TForm1
       GroupIndex = 1
       object Nowy1: TMenuItem
         Caption = 'Nowy projekt'
+        OnClick = Nowy1Click
       end
       object Otwrz1: TMenuItem
         Caption = 'Otw'#243'rz projekt'
@@ -662,12 +766,6 @@ object Form1: TForm1
       end
       object Exportujjakoobraz1: TMenuItem
         Caption = 'Zapisz projekt jako'
-      end
-      object Zamknij1: TMenuItem
-        Caption = 'Exportuj projekt jako'
-        object ObrazBMP1: TMenuItem
-          Caption = 'Obraz BMP'
-        end
       end
       object Zakocz1: TMenuItem
         Caption = 'Zamknij projekt'
@@ -730,19 +828,22 @@ object Form1: TForm1
       end
     end
     object Widok1: TMenuItem
-      Caption = 'Widok'
+      Caption = 'Historia'
       GroupIndex = 1
     end
     object Uruchom2: TMenuItem
       Caption = 'Uruchom'
       GroupIndex = 1
       object Uruchom3: TMenuItem
-        Caption = 'Uruchom'
+        Caption = 'Auto uruchomianie'
         OnClick = Uruchom3Click
       end
       object Uruchomwszystko1: TMenuItem
         Caption = 'Uruchom wszystko'
         OnClick = Uruchomwszystko1Click
+      end
+      object Anuluj1: TMenuItem
+        Caption = 'Anuluj'
       end
     end
     object Pomoc1: TMenuItem
@@ -907,10 +1008,10 @@ object Form1: TForm1
   object ImageList2: TImageList
     Height = 10
     Width = 10
-    Left = 8
-    Top = 360
+    Left = 48
+    Top = 448
     Bitmap = {
-      494C01010800090004000A000A00FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C01010800090004000A000A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000280000001E0000000100200000000000C012
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1071,11 +1172,12 @@ object Form1: TForm1
       00000C0C0000000000000C0C0000000000200C1C0000000080601C3C00000000
       C0701C7C00000000FFFC7CFC00000000F3FCFF3FCF0000008060180601000000
       0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000008020080200000000C0701C0701000000FFFFFFFFFF000000}
+      00000000000000008020080200000000C0701C0701000000FFFFFFFFFF000000
+      00000000000000000000000000000000000000000000}
   end
   object PopupMenu1: TPopupMenu
-    Left = 72
-    Top = 360
+    Left = 104
+    Top = 448
     object Wyczylogi1: TMenuItem
       Caption = 'Wyczy'#347#263' logi'
       OnClick = Wyczylogi1Click
@@ -1090,12 +1192,12 @@ object Form1: TForm1
     Filter = 'Pliki Log|*.log'
     Options = [ofOverwritePrompt, ofHideReadOnly, ofPathMustExist, ofEnableSizing, ofDontAddToRecent]
     Title = 'Zapisywanie log'#243'w'
-    Left = 40
-    Top = 360
+    Left = 72
+    Top = 448
   end
   object PopupMenu2: TPopupMenu
-    Left = 104
-    Top = 360
+    Left = 136
+    Top = 448
     object MenuItem1: TMenuItem
       Caption = 'Wyczy'#347#263' logi'
       OnClick = MenuItem1Click
@@ -1106,8 +1208,8 @@ object Form1: TForm1
     end
   end
   object PopupMenu3: TPopupMenu
-    Left = 136
-    Top = 360
+    Left = 168
+    Top = 448
     object MenuItem3: TMenuItem
       Caption = 'Wyczy'#347#263' logi'
       OnClick = MenuItem3Click
@@ -1116,5 +1218,12 @@ object Form1: TForm1
       Caption = 'Zapisz do pliku'
       OnClick = MenuItem4Click
     end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 300
+    OnTimer = Timer1Timer
+    Left = 640
+    Top = 416
   end
 end

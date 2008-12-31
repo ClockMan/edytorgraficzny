@@ -5,7 +5,7 @@
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <Forms.hpp>
-#include "../engine/PluginContener.h"
+#include "../brige/PluginContener.h"
 #include "VisualBlock.h"
 #include "Connection.h"
 #include "history.h"
@@ -94,7 +94,7 @@ class PIWOEngine : public TPanel
 
 		bool run(bool useHistory=true);
 		bool isRuned();
-		void abort();
+		void abort(bool wait=false);
 		bool isAborted();
 };
 #endif

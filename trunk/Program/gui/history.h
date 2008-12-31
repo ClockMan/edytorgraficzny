@@ -13,7 +13,7 @@
 #include <StdActns.hpp>
 #include <ToolWin.hpp>
 #include "VisualBlock.h"
-#include "../engine/PluginContener.h"
+#include "../brige/PluginContener.h"
 #include <ImgList.hpp>
 #include <Buttons.hpp>
 #include <ExtCtrls.hpp>

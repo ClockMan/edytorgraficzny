@@ -7,7 +7,7 @@ using namespace std;
 #ifndef __FunctionDLL_h__
 #define __FunctionDLL_h__
 
-#include "Block.h"
+#include "../engine/Block.h"
 
 typedef int (__stdcall *FunctionDLL_run )(Block*);
 typedef bool (__stdcall *FunctionDLL_showConfig )(TComponent*, Block*);

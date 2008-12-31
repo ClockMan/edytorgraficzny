@@ -16,6 +16,9 @@
 #include <ComCtrls.hpp>
 #include <Dialogs.hpp>
 #include <ToolWin.hpp>
+#include <cgauges.h>
+
+#define CAPTION "PIWO - Projekt Informatyczny Wilqu & Others 1.0"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -28,14 +31,12 @@ __published:	// IDE-managed Components
 	TMenuItem *Zapisz1;
 	TMenuItem *Zapiszjako1;
 	TMenuItem *Exportujjakoobraz1;
-	TMenuItem *Zamknij1;
 	TMenuItem *Zakocz1;
 	TMenuItem *Zaznaczwszystkiebloki1;
 	TMenuItem *Odznaczwszystkiebloki1;
 	TMenuItem *Odwrzaznaczenieblokw1;
 	TMenuItem *Duplikujbloki1;
 	TMenuItem *Usubloki1;
-	TMenuItem *ObrazBMP1;
 	TMenuItem *N1;
 	TMenuItem *Zakocz2;
 	TMenuItem *Usuzaznaczonebloki1;
@@ -75,6 +76,12 @@ __published:	// IDE-managed Components
 	TMenuItem *MenuItem3;
 	TMenuItem *MenuItem4;
 	TToolBar *ToolBar1;
+	TPanel *Panel2;
+	TCGauge *CGauge1;
+	TLabel *Label1;
+	TSpeedButton *SpeedButton1;
+	TTimer *Timer1;
+	TMenuItem *Anuluj1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
@@ -98,9 +105,13 @@ __published:	// IDE-managed Components
 	void __fastcall MenuItem4Click(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall PageControl1Change(TObject *Sender);
+	void __fastcall SpeedButton1Click(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall Nowy1Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
+	AnsiString fileName;
 	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
 	void  OnFunctionAddClick(void* Sender);
 
@@ -115,6 +126,14 @@ private:
 	void OnLogRunWarrning(TObject* Sender, const AnsiString message);
 	void OnLogRunSuccess(TObject* Sender, const AnsiString message);
 	void OnLogRunError(TObject* Sender, const AnsiString message);
+
+	void OnRunStart(TObject* Sender);
+	void OnRunEnd(TObject* Sender);
+	void OnRunProgress(TObject* Sender,const AnsiString message, const double precent);
+
+	void blockMenu(bool blocked);
+	void newProject();
+	bool closeProject();
 public:
 	PluginContener plugins;
 	__fastcall TForm1(TComponent* Owner);

@@ -16,7 +16,7 @@ bool GreyScale(Graphics::TBitmap* picture);
 // posteryzacja - zrobione
 bool GreyBalance(Graphics::TBitmap* picture, int limit);
 
-// odrwacanie kolorów (negatyw) - zrobione 
+// odrwacanie kolorów (negatyw) - zrobione - Bug w Funkcji : cannot assign TBitmap To TBitmap
 bool InversionColors(Graphics::TBitmap* picture);
 
 // binaryzacja (obraz monochromatyczny) - rezerwacja Kermit

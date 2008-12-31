@@ -7,11 +7,12 @@ using namespace std;
 #define __PluginContener_h__
 										//Sender, progress, max, info, code 0-ok typ danych, 1- ok funkcja, 2- nie typdanych, 3- nie funkcja
 typedef void (__closure *PluginContener_OnProgress)(void*, int, int, AnsiString, int);
+typedef void (__closure *PluginContener_Log )(TObject*,const AnsiString);
 
 #include "TypeDLL.h"
 #include "FunctionDLL.h"
 /**
- * Item - Klasa pojemnik przechowujaca pluginy
+ * Klasa pojemnik przechowujaca pluginy
  * @author Piotr
  * @date 2008.11.25
  * @version 0.1
@@ -27,6 +28,7 @@ class PluginContener
 					bool	   bSearchSubdirectories = true);
 		void AddMenus(FunctionDLL *info, TMainMenu &menu, TImageList &images, int upId, int downId, int functionIcon, int folderIcon);
 		void OnFunctionClick(void* Sender);
+		vector<TMenuItem*> menuItems; //wszystkie itemy z menu
 	public:
 		PluginContener_OnProgress OnLoadingProgress;
 		FunctionDLL_onClick OnFunctionAddRequest;
@@ -46,6 +48,8 @@ class PluginContener
 		TypeDLL* getType(const AnsiString &type);
 
 		FunctionDLL* getFunction(const AnsiString &name);
+
+		void setMenuItemsStatus(bool enabled);
 };
 
 #endif

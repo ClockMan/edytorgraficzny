@@ -380,8 +380,8 @@ object History: THistory
     object Label1: TLabel
       Left = 161
       Top = 1
-      Width = 430
-      Height = 20
+      Width = 4
+      Height = 14
       Align = alClient
       Alignment = taCenter
       Font.Charset = DEFAULT_CHARSET
@@ -392,8 +392,6 @@ object History: THistory
       ParentFont = False
       Transparent = True
       Layout = tlCenter
-      ExplicitWidth = 4
-      ExplicitHeight = 14
     end
     object BitBtn2: TBitBtn
       Left = 1
