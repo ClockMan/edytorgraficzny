@@ -96,12 +96,25 @@ __published:	// IDE-managed Components
 	void __fastcall Zapiszdopliku1Click(TObject *Sender);
 	void __fastcall MenuItem2Click(TObject *Sender);
 	void __fastcall MenuItem4Click(TObject *Sender);
+	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall PageControl1Change(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
 	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
 	void  OnFunctionAddClick(void* Sender);
-	void OnLog(TObject* Sender, const AnsiString message);
+
+	void OnLogInformation(TObject* Sender, const AnsiString message);
+	void OnLogDebug(TObject* Sender, const AnsiString message);
+	void OnLogWarrning(TObject* Sender, const AnsiString message);
+	void OnLogSuccess(TObject* Sender, const AnsiString message);
+	void OnLogError(TObject* Sender, const AnsiString message);
+
+	void OnLogRunInformation(TObject* Sender, const AnsiString message);
+	void OnLogRunDebug(TObject* Sender, const AnsiString message);
+	void OnLogRunWarrning(TObject* Sender, const AnsiString message);
+	void OnLogRunSuccess(TObject* Sender, const AnsiString message);
+	void OnLogRunError(TObject* Sender, const AnsiString message);
 public:
 	PluginContener plugins;
 	__fastcall TForm1(TComponent* Owner);

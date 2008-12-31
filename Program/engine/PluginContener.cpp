@@ -83,7 +83,7 @@ void PluginContener::AddMenus(FunctionDLL *info, TMainMenu &menu, TImageList &im
 	   tmp2.Top=0;
 	   tmp2.Bottom=16;
 	   bmp->Canvas->StretchDraw(tmp2, info->picture);
-	   index=images.AddMasked(bmp, clBlack);
+	   index=images.AddMasked(bmp, clFuchsia);
 	   delete bmp;
 	}
 	for(unsigned int i=0;i<info->category.size();i++)
