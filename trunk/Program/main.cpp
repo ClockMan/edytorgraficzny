@@ -583,7 +583,7 @@ void TForm1::blockMenu(bool blocked)
 
 void TForm1::newProject()
 {
-    if (!closeProject()) return;
+	if (!closeProject()) return;
 	fileName="";
 	piwo=new PIWOEngine(this);
 	piwo->plugins=&plugins;
@@ -610,12 +610,77 @@ void TForm1::newProject()
 
 bool TForm1::closeProject()
 {
+   if (piwo==NULL) return true;
+   if ((piwo->isChanged()&&!fileName.IsEmpty())||(fileName.IsEmpty()&&piwo->getBlockCount()>0))
+   {
+	  //pytanie o zapis
+	 int ret=Application->MessageBox("W projekcie wprowadzono zmiany, czy chcesz je zapisaæ ?", "Zamykanie projektu", MB_YESNOCANCEL | MB_ICONWARNING);
+	 if (ret==IDYES)
+	 {
+		if (fileName.IsEmpty())
+		{
+		   if (SaveDialog2->Execute())
+			   fileName=SaveDialog2->FileName;
+			   else return false;
+		}
+		if (!piwo->saveToFile(fileName))
+		{
+		   Application->MessageBox("Niemo¿na zapisaæ projektu", "Zapisywanie projektu", MB_OK | MB_ICONERROR);
+		   return false;
+		}
+	 } else
+	 if (ret==IDCANCEL) return false;
+   }
+   delete piwo;
+   piwo=NULL;
+   blockMenu(true);
+   Caption=CAPTION;
+   StatusBar1->SimpleText="";
    return true;
+}
+
+void TForm1::openProject()
+{
+   if (!closeProject()) return;
+   if (OpenDialog1->Execute())
+   {
+		if (!piwo->loadFromFile(fileName))
+		{
+		   Application->MessageBox(("Niemo¿na odczytaæ projektu z pliku: "+OpenDialog1->FileName).c_str(), "Otwieranie projektu", MB_OK | MB_ICONERROR);
+		   return;
+		}
+		else
+		{
+		   fileName=OpenDialog1->FileName;
+		   blockMenu(false);
+		   Caption=CAPTION;
+		   Caption+=" - "+ExtractFileName(OpenDialog1->FileName);
+		   StatusBar1->SimpleText=OpenDialog1->FileName;
+        }
+   }
 }
 
 void __fastcall TForm1::Nowy1Click(TObject *Sender)
 {
 	newProject();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Zakocz1Click(TObject *Sender)
+{
+  closeProject();
+}
+
+
+void __fastcall TForm1::Otwrz1Click(TObject *Sender)
+{
+  openProject();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Duplikujbloki1Click(TObject *Sender)
+{
+   piwo->DuplcateSelectedBlocks();	
 }
 //---------------------------------------------------------------------------
 

@@ -55,6 +55,7 @@ class PIWOEngine : public TPanel
 		bool stopRunning;
 
 		unsigned int runProgress;
+		bool changed;
 	public:
 		PIWOEngine_Log OnInformation;
 		PIWOEngine_Log OnDebug;
@@ -67,6 +68,7 @@ class PIWOEngine : public TPanel
 		PIWOEngine_Log OnRunSuccess;
 		PIWOEngine_Log OnRunWarrning;
 		PIWOEngine_Log OnRunError;
+		PIWOEngine_Event OnChanged;
 
 		PIWOEngine_RunProgress OnRunProgress;
 		PIWOEngine_Event	OnRunStart;
@@ -91,10 +93,17 @@ class PIWOEngine : public TPanel
 		void UnselectSelectedConnection();
 		void CancelCustomizationOnSelectedConnections();
 		void CancelCustomizationOnAllConnections();
+		void DuplcateSelectedBlocks();
 
 		bool run(bool useHistory=true);
 		bool isRuned();
 		void abort(bool wait=false);
 		bool isAborted();
+
+		bool saveToFile(const AnsiString &filename);
+		bool loadFromFile(const AnsiString &filename);
+		bool isChanged();
+		int getBlockCount();
+
 };
 #endif
