@@ -35,7 +35,6 @@ typedef void (__closure *Connection_Function)(void*);
 class Connection
 {
 	 private:
-		vector<Line*> lines;
 		TWinControl* fowner;
 		int status;
 		bool selected;
@@ -54,6 +53,7 @@ class Connection
 		VisualBlock* inBlock;
 		VisualBlock* outBlock;
 		AnsiString typeOfConnection;
+		vector<Line*> lines;
 
 		Connection(TWinControl* owner);
 		~Connection();

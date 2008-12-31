@@ -47,6 +47,7 @@ __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
   OnRunProgress=NULL;
   OnRunStart=NULL;
   OnRunEnd=NULL;
+  changed=false;
 }
 
 
@@ -116,6 +117,7 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->setSelected(true);
    if (OnInformation!=NULL) OnInformation(this, "Dodano blok: "+name+" #"+IntToStr(number));
    OnVisualBlockSelect(newBlock);
+   changed=true;if (OnChanged!=NULL) OnChanged(this);
    if (alwaysRun) run();
    return true;
 }
@@ -245,6 +247,7 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 
    if (ret!=0)
    {
+	 changed=true;if (OnChanged!=NULL) OnChanged(this);
 	 block->updateVisualComponents(); //aktualizujemy wyœwietlanie tylko gdy zmieni³ siê kod.
 		if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Zaktualizowano wygl¹d bloku");
    }
@@ -403,6 +406,7 @@ void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
 
    if (rev!=block->block.getConfig()->getRevision())
    {
+	 changed=true;if (OnChanged!=NULL) OnChanged(this);
 	 if (OnDebug!=NULL) OnDebug(this,"Konfiguracja bloku "+block->getTitle()+" - Zmodyfikowano konfiguracje bloku");
 	 if (OnDebug!=NULL) OnDebug(this,"Konfiguracja bloku "+block->getTitle()+" - Rozpoczynam wymagan¹ validacje bloku");
 	 validateBlock(block);
@@ -487,6 +491,7 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 	validateBlock(inputBlock);
 	con->update();
 	con->setSelected(true);
+	changed=true;if (OnChanged!=NULL) OnChanged(this);
 	if (OnInformation!=NULL) OnInformation(this, "Dodano po³¹czenie "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+")");
 	OnConnectionSelect(con);
 	if (OnDebug!=NULL) OnDebug(this, "Tworzenie po³¹czenia "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") - Zakoñczono");
@@ -531,6 +536,7 @@ void PIWOEngine::OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender
 			delete con;
 			con=NULL;
 			validateBlock((VisualBlock*)Sender);
+			changed=true;if (OnChanged!=NULL) OnChanged(this);
 			runs=true;
 		}
 		else
@@ -602,6 +608,7 @@ void PIWOEngine::OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sen
 			delete con;
 			con=NULL;
 			validateBlock((VisualBlock*)Sender);
+			changed=true;if (OnChanged!=NULL) OnChanged(this);
 		}
 		else
 		{
@@ -752,6 +759,7 @@ void PIWOEngine::OnVisualBlockMove(TObject* Sender, bool moveAll, int x, int y)
 			}
 	  }
   }
+  changed=true;if (OnChanged!=NULL) OnChanged(this);
 }
 
 void PIWOEngine::OnVisualBlockUnselect(TObject* Sender)
@@ -920,6 +928,7 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
    if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Zakoñczono wymagan¹ validacje bloków");
    if (OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Zakoñczono");
    if (alwaysRun) run();
+   changed=true;if (OnChanged!=NULL) OnChanged(this);
    return true;
 }
 
@@ -1014,6 +1023,7 @@ bool PIWOEngine::DeleteSelectedBlocks()
    }
    if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonych bloków - Zakoñczono wymagan¹ validacje bloków");
    if (alwaysRun) run();
+   changed=true;if (OnChanged!=NULL) OnChanged(this);
    return true;
 }
 
@@ -1035,6 +1045,7 @@ bool PIWOEngine::DeleteAllBlocks()
    }
    if (OnInformation!=NULL) OnInformation(this, "Usuniêto wszystkie bloki i po³¹czenia");
    if (OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich bloków - Zakoñczono");
+   changed=true;if (OnChanged!=NULL) OnChanged(this);
    return true;
 }
 
@@ -1106,6 +1117,7 @@ bool PIWOEngine::DeleteSelectedConnection()
 		}
 	  }
 	  selectedConnection=NULL;
+	  changed=true;if (OnChanged!=NULL) OnChanged(this);
 	  if (alwaysRun) run();
 	  return true;
    } else return false;
@@ -1141,6 +1153,7 @@ bool PIWOEngine::DeleteAllConnections()
    }
    if (list.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich po³¹czeñ - Zakoñczono wymagan¹ validacje bloków");
    if (OnInformation!=NULL) OnInformation(this, "Usuniêto wszystkie po³¹czenia");
+   changed=true;if (OnChanged!=NULL) OnChanged(this);
    if (alwaysRun) run();
    return true;
 }
@@ -1160,6 +1173,7 @@ void PIWOEngine::CancelCustomizationOnSelectedConnections()
    if (selectedConnection!=NULL)
    {
 	  selectedConnection->setCustomizeFalse();
+	  changed=true;if (OnChanged!=NULL) OnChanged(this);
 	  if (OnDebug!=NULL) OnDebug(this, "Anulowanie ustawieñ u¿ytkownika dla po³¹czenia - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
    }
 }
@@ -1169,6 +1183,7 @@ void PIWOEngine::CancelCustomizationOnAllConnections()
 	for(unsigned int i=0;i<connections.size();++i)
 	{
 	   connections[i]->setCustomizeFalse();
+	   changed=true;if (OnChanged!=NULL) OnChanged(this);
 	   if (OnDebug!=NULL) OnDebug(this, "Anulowanie ustawieñ u¿ytkownika dla po³¹czenia - "+connections[i]->outBlock->getTitle()+"("+connections[i]->output->getDescription()+") -> "+connections[i]->inBlock->getTitle()+"("+connections[i]->input->getDescription()+")");
     }
 }
@@ -1891,4 +1906,150 @@ void PIWOEngine::abort(bool wait)
 bool PIWOEngine::isAborted()
 {
    return stopRunning;
+}
+
+void PIWOEngine::DuplcateSelectedBlocks()
+{
+	if (selectedBlocks.size()==0) return;
+	abort(true);
+	vector<VisualBlock*> newBlocks;
+
+	for(unsigned int i=0;i<selectedBlocks.size();++i)
+	{
+		//tworzymy nowe bloki
+		FunctionDLL *fun=plugins->getFunction(selectedBlocks[i]->nameOfBlock);
+		if (fun==NULL) {
+				if (OnDebug!=NULL) OnDebug(this,"Duplikowanie bloków: Nieznaleziono pluginu o nazwie: "+selectedBlocks[i]->nameOfBlock);
+				return;
+		}
+		int number=0;
+		bool busy;
+		do{
+			++number;
+			busy=false;
+			for(unsigned int j=0;j<blocks.size();++j)
+			{
+				if (blocks[j]->nameOfBlock==selectedBlocks[i]->nameOfBlock && blocks[j]->numberOfBlock==number) {
+					break;
+				}
+			}
+		} while (busy);
+
+		VisualBlock *newBlock=new VisualBlock(this->area);
+		newBlock->Parent=this->area;
+		newBlock->nameOfBlock=selectedBlocks[i]->nameOfBlock;
+		newBlock->numberOfBlock=number;
+		newBlock->setTitle(selectedBlocks[i]->nameOfBlock+" #"+IntToStr(number));
+		newBlock->setConfigButtonGlyph(fun->picture);
+		newBlock->Hint=fun->fullName;
+		 if (fun->description!="") newBlock->Hint+="\n"+fun->description;
+		newBlock->Left=selectedBlocks[i]->Left+100;
+		newBlock->Top=selectedBlocks[i]->Top+100;
+		newBlock->Visible=true;
+		newBlock->OnConfigClick=OnVisualBlockConfigClick;
+		newBlock->OnVisualInputSelected=OnVisualBlockInputSelected;
+		newBlock->OnVisualOutputSelected=OnVisualBlockOutputSelected;
+		newBlock->OnVInputHistory=OnVisualBlockInputHistoryClick;
+		newBlock->OnVOutputHistory=OnVisualBlockOutputHistoryClick;
+		newBlock->OnBlockMove=OnVisualBlockMove;
+		newBlock->OnUnselect=OnVisualBlockUnselect;
+		newBlock->OnSelect=OnVisualBlockSelect;
+		newBlock->OnSelectAdd=OnVisualBlockSelectAdd;
+		//modyfikujemy konfiguracje i wejœcia / wyjœcia
+		//TODO: w przydadku kopiowanie wyjœc i wejœc top/bootom wymaga aktualizacji
+		newBlock->block.setConfig(*(selectedBlocks[i]->block.getConfig()));
+		newBlock->block.input=selectedBlocks[i]->block.input;
+		newBlock->block.output=selectedBlocks[i]->block.output;
+		newBlock->updateVisualComponents();//niech narysuje conieco
+		newBlocks.push_back(newBlock);
+		blocks.push_back(newBlock);
+		if (OnInformation!=NULL) OnInformation(this,"Zduplikowano blok - "+selectedBlocks[i]->nameOfBlock);
+	}
+	//odnawiamy po³¹czenia: right i left
+	
+	for(unsigned int i=0;i<connections.size();++i)
+	{
+		//szukamy po³¹czeñ których pocz¹tek i konieæ jest w selected list
+		int beginId=-1;
+		int endId=-1;
+		for(unsigned int j=0;j<selectedBlocks.size()&&(beginId==-1||endId==-1);++j)
+		{
+            selectedBlocks[j]->setSelected(false);
+			if (selectedBlocks[j]==connections[i]->inBlock) {
+			   beginId=j;
+			   continue;
+			}
+			if (selectedBlocks[j]==connections[i]->outBlock) {
+			   endId=j;
+			   continue;
+			}
+		}
+		if (beginId==-1||endId==-1) continue;
+
+		int inputId=-1;
+		int outputId=-1;
+		for(unsigned int j=0;j<selectedBlocks[beginId]->block.input.size();++j)
+		{
+			if (&selectedBlocks[beginId]->block.input[j]==connections[i]->input) {
+			   inputId=j;
+			   break;
+			}
+		}
+		for(unsigned int j=0;j<selectedBlocks[endId]->block.output.size();++j)
+		{
+			if (&selectedBlocks[endId]->block.output[j]==connections[i]->output) {
+			   outputId=j;
+			   break;
+			}
+		}
+		if (inputId==-1||outputId==-1) continue;
+
+		//tworzymy to po³¹czenie
+		Connection* con=new Connection(this->area);
+		con->input=&(newBlocks[beginId]->block.input[inputId]);
+		con->inBlock=newBlocks[beginId];
+		con->output=&(newBlocks[endId]->block.output[outputId]);
+		con->outBlock=newBlocks[endId];
+		con->OnConnectionSelected=OnConnectionSelect;
+		con->input->connect(con->output->getOutputType());
+		con->draw();
+		//aktualizacja bloku input
+		//kopiuje
+		for(unsigned j=0;j<connections[i]->lines.size();++j)
+		{
+		  con->lines[j]->Resize=connections[i]->lines[j]->Resize;
+		}
+		connections.push_back(con);
+		con->update();
+	}
+
+	for(unsigned int j=0;j<newBlocks.size();++j)
+	{
+	   validateBlock(newBlocks[j]);
+	   newBlocks[j]->setSelected(true);
+	}
+	selectedBlocks=newBlocks;
+	changed=true;if (OnChanged!=NULL) OnChanged(this);
+	if (alwaysRun) run();
+}
+
+bool PIWOEngine::saveToFile(const AnsiString &filename)
+{
+	//zapisujemy pozycje bloków, konfiguracje bloków, po³¹czenia, potem wykonujemy validacje ka¿dego bloku i ka¿dego po³¹czenia
+	return false;
+}
+
+bool PIWOEngine::loadFromFile(const AnsiString &filename)
+{
+    return false;
+}
+
+bool PIWOEngine::isChanged()
+{
+	return changed;
+}
+
+int PIWOEngine::getBlockCount()
+{
+   return blocks.size();
 }

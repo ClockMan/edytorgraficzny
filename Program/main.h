@@ -82,6 +82,8 @@ __published:	// IDE-managed Components
 	TSpeedButton *SpeedButton1;
 	TTimer *Timer1;
 	TMenuItem *Anuluj1;
+	TSaveDialog *SaveDialog2;
+	TOpenDialog *OpenDialog1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
@@ -108,6 +110,9 @@ __published:	// IDE-managed Components
 	void __fastcall SpeedButton1Click(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall Nowy1Click(TObject *Sender);
+	void __fastcall Zakocz1Click(TObject *Sender);
+	void __fastcall Otwrz1Click(TObject *Sender);
+	void __fastcall Duplikujbloki1Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
@@ -134,6 +139,7 @@ private:
 	void blockMenu(bool blocked);
 	void newProject();
 	bool closeProject();
+	void openProject();
 public:
 	PluginContener plugins;
 	__fastcall TForm1(TComponent* Owner);

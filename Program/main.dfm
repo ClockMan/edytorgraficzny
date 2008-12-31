@@ -1,10 +1,11 @@
 object Form1: TForm1
-  Left = 411
+  Left = 0
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 535
-  ClientWidth = 676
+  ClientHeight = 546
+  ClientWidth = 642
   Color = clBtnFace
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -493,25 +494,27 @@ object Form1: TForm1
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 516
-    Width = 676
+    Top = 527
+    Width = 642
     Height = 19
     Panels = <>
     SimplePanel = True
-    ExplicitTop = 496
+    ExplicitTop = 516
+    ExplicitWidth = 676
   end
   object Panel1: TPanel
     Left = 0
-    Top = 410
-    Width = 676
+    Top = 421
+    Width = 642
     Height = 106
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 390
+    ExplicitTop = 410
+    ExplicitWidth = 676
     object PageControl1: TPageControl
       Left = 1
       Top = 1
-      Width = 674
+      Width = 640
       Height = 104
       ActivePage = TabSheet1
       Align = alClient
@@ -522,9 +525,11 @@ object Form1: TForm1
       TabWidth = 200
       OnChange = PageControl1Change
       OnResize = PageControl1Resize
+      ExplicitWidth = 674
       object TabSheet1: TTabSheet
         Caption = 'G'#322#243'wny log'
         ImageIndex = 7
+        ExplicitWidth = 666
         object ListView1: TListView
           Left = 0
           Top = 0
@@ -641,26 +646,28 @@ object Form1: TForm1
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 676
+    Width = 642
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 2
+    ExplicitWidth = 676
   end
   object Panel2: TPanel
     Left = 0
-    Top = 388
-    Width = 676
+    Top = 399
+    Width = 642
     Height = 22
     Align = alBottom
     BevelOuter = bvNone
     BorderStyle = bsSingle
     TabOrder = 3
     Visible = False
-    ExplicitTop = 368
+    ExplicitTop = 388
+    ExplicitWidth = 676
     object CGauge1: TCGauge
       Left = 209
       Top = 0
-      Width = 445
+      Width = 411
       Height = 18
       Align = alClient
       Color = clBlack
@@ -689,7 +696,7 @@ object Form1: TForm1
       Layout = tlCenter
     end
     object SpeedButton1: TSpeedButton
-      Left = 654
+      Left = 620
       Top = 0
       Width = 18
       Height = 18
@@ -756,6 +763,7 @@ object Form1: TForm1
       end
       object Otwrz1: TMenuItem
         Caption = 'Otw'#243'rz projekt'
+        OnClick = Otwrz1Click
       end
       object Zapisz1: TMenuItem
         Caption = '-'
@@ -769,6 +777,7 @@ object Form1: TForm1
       end
       object Zakocz1: TMenuItem
         Caption = 'Zamknij projekt'
+        OnClick = Zakocz1Click
       end
       object N1: TMenuItem
         Caption = '-'
@@ -796,6 +805,7 @@ object Form1: TForm1
       end
       object Duplikujbloki1: TMenuItem
         Caption = 'Duplikuj zaznaczone bloki'
+        OnClick = Duplikujbloki1Click
       end
       object Usubloki1: TMenuItem
         Caption = 'Usu'#324' wszystkie bloki'
@@ -1225,5 +1235,19 @@ object Form1: TForm1
     OnTimer = Timer1Timer
     Left = 640
     Top = 416
+  end
+  object SaveDialog2: TSaveDialog
+    DefaultExt = '.piwo'
+    Filter = 'PIWO Projekt 1.0|*.piwo'
+    Title = 'Zapisywanie projektu'
+    Left = 8
+    Top = 360
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = '.piwo'
+    Filter = 'PIWO Projekt 1.0|*.piwo'
+    Title = 'Otwieranie projektu'
+    Left = 40
+    Top = 360
   end
 end
