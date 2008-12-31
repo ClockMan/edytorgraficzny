@@ -28,9 +28,10 @@
         <property category="build.config.1" name="settings.win32b" value="default"/>
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="."/>
+        <property category="build.node" name="libraries" value="bcbsmp.lib"/>
         <property category="build.node" name="name" value="PIWO.exe"/>
         <property category="build.node" name="packages" value="vcl;vclx;dbrtl;bdertl;rtl"/>
-        <property category="build.node" name="sparelibs" value="rtl.lib vcl.lib"/>
+        <property category="build.node" name="sparelibs" value="rtl.lib vcl.lib bcbsmp.lib vclx.lib"/>
         <property category="build.node" name="use_packages" value="1"/>
         <property category="build.platform" name="active" value="win32"/>
         <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
@@ -86,18 +87,19 @@
           <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="1"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.10" value="$(BDS)\include"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.11" value="$(BDS)\include\dinkumware"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.12" value="$(BDS)\include\vcl"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.7" value="gui"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.8" value="engine"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.9" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="brige"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.10" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.11" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.12" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.13" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.8" value="gui"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.9" value="engine"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="0"/>
@@ -110,81 +112,87 @@
           <property category="win32.*.win32b.bcc32" name="option.tWC.enabled" value="0"/>
           <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="0"/>
           <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.7" value="gui"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.8" value="engine"/>
-          <property category="win32.*.win32b.dcc32" name="option.I.arg.9" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.1" value="brige"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.10" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.8" value="gui"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.9" value="engine"/>
           <property category="win32.*.win32b.dcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.dcc32" name="option.I.enabled" value="0"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.7" value="gui"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.8" value="engine"/>
-          <property category="win32.*.win32b.dcc32" name="option.O.arg.9" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.1" value="brige"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.10" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.8" value="gui"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.9" value="engine"/>
           <property category="win32.*.win32b.dcc32" name="option.O.arg.merge" value="1"/>
           <property category="win32.*.win32b.dcc32" name="option.O.enabled" value="0"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.7" value="gui"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.8" value="engine"/>
-          <property category="win32.*.win32b.dcc32" name="option.R.arg.9" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.1" value="brige"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.10" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.8" value="gui"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.9" value="engine"/>
           <property category="win32.*.win32b.dcc32" name="option.R.arg.merge" value="1"/>
           <property category="win32.*.win32b.dcc32" name="option.R.enabled" value="0"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.10" value="..\..\..\Moje dokumenty\Borland Studio Projects"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.11" value="$(BDS)\lib"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.12" value="$(BDS)\lib\obj"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.7" value="gui"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.8" value="engine"/>
-          <property category="win32.*.win32b.dcc32" name="option.U.arg.9" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="brige"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.10" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.11" value="..\..\..\Moje dokumenty\Borland Studio Projects"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.12" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.13" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.8" value="gui"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.9" value="engine"/>
           <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
           <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
           <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.10" value="-"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.11" value="Piwo\Program"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.12" value="C:"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.7" value="gui"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.8" value="engine"/>
-          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.9" value="..\..\Pulpit\Projekt"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.1" value="brige"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.10" value="..\..\Pulpit\Projekt"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.11" value="-"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.12" value="Piwo\Program"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.13" value="C:"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.8" value="gui"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.9" value="engine"/>
           <property category="win32.*.win32b.idl2cpp" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.idl2cpp" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="0"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.10" value="$(BDS)\lib"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.11" value="$(BDS)\lib\obj"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.12" value="$(BDS)\lib\psdk"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.7" value="gui"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.8" value="engine"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.9" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="brige"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.10" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.11" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.12" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.13" value="$(BDS)\lib\psdk"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.8" value="gui"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.9" value="engine"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="0"/>
@@ -193,15 +201,16 @@
           <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.ap.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.1" value="..\TypyDanych\Bitmap32bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.2" value="..\TypyDanych\Bitmap24bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.3" value="..\TypyDanych\Bitmap16bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.4" value="..\TypyDanych\Bitmap8bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.5" value="..\TypyDanych\Bitmap4bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.6" value="..\TypyDanych\Bitmap1bit\Interface"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.7" value="gui"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.8" value="engine"/>
-          <property category="win32.*.win32b.ilink32" name="option.j.arg.9" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.1" value="brige"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.10" value="..\..\Pulpit\Projekt - Piwo\Program"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.2" value="..\TypyDanych\Bitmap32bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.3" value="..\TypyDanych\Bitmap24bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.4" value="..\TypyDanych\Bitmap16bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.5" value="..\TypyDanych\Bitmap8bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.6" value="..\TypyDanych\Bitmap4bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.7" value="..\TypyDanych\Bitmap1bit\Interface"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.8" value="gui"/>
+          <property category="win32.*.win32b.ilink32" name="option.j.arg.9" value="engine"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.merge" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.j.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
@@ -225,11 +234,8 @@
         <FILE FILENAME="engine\BlockElement.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockElement" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="engine\BlockInput.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockInput" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="engine\BlockOutput.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockOutput" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="engine\FunctionDLL.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="FunctionDLL" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="engine\Item.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Item" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="engine\PluginContener.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PluginContener" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="engine\TypeConfig.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TypeConfig" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="engine\TypeDLL.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TypeDLL" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="gui\VisualBlock.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="VisualBlock" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\VisualBlock.h"/>
         <FILE FILENAME="gui\Connection.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Connection" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\Connection.h"/>
         <FILE FILENAME="gui\Line.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Line" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\Line.h"/>
@@ -247,6 +253,9 @@
         <FILE FILENAME="gui\BlockHistory.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockHistory" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\BlockHistory.h"/>
         <FILE FILENAME="gui\BlockHistoryInputElement.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockHistoryInputElement" FORMNAME="" DESIGNCLASS="" ADDITIONAL="gui\BlockHistoryInputElement.h"/>
         <FILE FILENAME="gui\history.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="history" FORMNAME="Form3" DESIGNCLASS="" ADDITIONAL="gui\history.h"/>
+        <FILE FILENAME="brige\FunctionDLL.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="FunctionDLL" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="brige\PluginContener.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PluginContener" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="brige\TypeDLL.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TypeDLL" FORMNAME="" DESIGNCLASS=""/>
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
@@ -255,7 +264,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">319</VersionInfo>
+          <VersionInfo Name="Build">346</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -267,7 +276,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.319</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.346</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>

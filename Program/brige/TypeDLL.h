@@ -7,7 +7,7 @@ using namespace std;
 #ifndef __TypeDLL_h__
 #define __TypeDLL_h__
 
-#include "TypeConfig.h"
+#include "../engine/TypeConfig.h"
 
 typedef TFrame* (__stdcall *TypeDLL_show )(TWinControl*, TypeConfig*);
 typedef bool (__stdcall *TypeDLL_isValid )(TypeConfig*);

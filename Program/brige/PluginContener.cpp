@@ -136,6 +136,7 @@ void PluginContener::AddMenus(FunctionDLL *info, TMainMenu &menu, TImageList &im
 		y->Hint=info->description;
 		y->OnClick=info->OnClick;
 		x->Insert(pos,y);
+		menuItems.push_back(y);
 	}
 }
 
@@ -237,5 +238,13 @@ bool PluginContener::LoadData(AnsiString blockDir, AnsiString typesDir, TMainMen
 	   }
 	}
    return true;	
+}
+
+void PluginContener::setMenuItemsStatus(bool enabled)
+{
+   for(unsigned int i=0;i<menuItems.size();++i)
+   {
+       menuItems[i]->Enabled=enabled;
+   }
 }
 

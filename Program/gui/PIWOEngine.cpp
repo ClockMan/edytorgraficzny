@@ -89,7 +89,7 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
 		}
 	}
    } while (busy);
-   abort();
+   abort(true);
    VisualBlock *newBlock=new VisualBlock(this->area);
    newBlock->Parent=this->area;
    newBlock->nameOfBlock=name;
@@ -378,12 +378,12 @@ void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
    FunctionDLL *fun=plugins->getFunction(block->nameOfBlock);
    try
    {
-   if (!fun->showConfig(Application,&(block->block)))
-   {
+	if (!fun->showConfig(Application,&(block->block)))
+	{
 	  if (OnWarrning!=NULL) OnWarrning(this, "Konfiguracja bloku "+block->getTitle()+" - nieposiada okna konfiguracji");
 	  MessageBox(0,"Ten bloczek niema konfiguracji",("Konfiguracja bloczka: "+block->getTitle()).c_str(),MB_OK);
 	  return;
-   }
+	}
    }
 	catch (Exception &exception)
 	{
@@ -496,7 +496,7 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 void PIWOEngine::OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender)
 {
    //connection selecting
-   abort();
+   bool runs=false;
    Connection* con=getConnectionTo(input);
    if (selectedOutput!=NULL&&con!=NULL)
    {
@@ -519,6 +519,7 @@ void PIWOEngine::OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender
 	 //pytanie, i ewentualnie wyjebujemy to po³¹czenie D:
 	 if (Application->MessageBoxA(("Czy chcesz aby istniej¹ce po³¹czenie: \n"+con->outBlock->getTitle()+"("+con->output->getDescription()+") -> "+con->inBlock->getTitle()+"("+con->input->getDescription()+")\n zosta³o zastapione przez:\n"+selectedOutputBlock->getTitle()+"("+selectedOutput->output->getDescription()+") -> "+con->inBlock->getTitle()+"("+con->input->getDescription()+")\n o ile jest to mo¿liwe wykonanie takiego po³¹czenia ?").c_str(),"Po³¹czenie ju¿ istnieje",MB_YESNO | MB_ICONQUESTION | MB_DEFBUTTON2)==IDYES) {
 			//odczepiamy
+			abort(true);
 			con->input->disconnect();
 			for(unsigned int i=0;i<connections.size();++i)
 			{
@@ -530,6 +531,7 @@ void PIWOEngine::OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender
 			delete con;
 			con=NULL;
 			validateBlock((VisualBlock*)Sender);
+			runs=true;
 		}
 		else
 		{
@@ -546,20 +548,23 @@ void PIWOEngine::OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender
 
    if (selectedOutputBlock!=NULL && selectedOutput!=NULL)
    {
+	 abort(true);
+	 runs=true;
 	 if (MakeConnection(selectedOutputBlock,selectedOutput,selectedInputBlock,selectedInput))
 	 {
 		selectedOutputBlock=NULL;
 		selectedInputBlock=NULL;
 		selectedInput=NULL;
 		selectedOutput=NULL;
+
 	 }
    }
-   if (alwaysRun) run();
+   if (alwaysRun&&runs) run();
 }
 
 void PIWOEngine::OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sender)
 {
-	abort();
+	bool runs=false;
 	selectedOutputBlock=(VisualBlock*)Sender;
 	selectedOutput=output;
 
@@ -584,6 +589,8 @@ void PIWOEngine::OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sen
 			//pytanie, i ewentualnie wyjebujemy to po³¹czenie D:
 		if (Application->MessageBoxA(("Czy chcesz aby istniej¹ce po³¹czenie: \n"+con->outBlock->getTitle()+"("+con->output->getDescription()+") -> "+con->inBlock->getTitle()+"("+con->input->getDescription()+")\n zosta³o zastapione przez:\n"+selectedOutputBlock->getTitle()+"("+selectedOutput->output->getDescription()+") -> "+con->inBlock->getTitle()+"("+con->input->getDescription()+")\n o ile jest to mo¿liwe wykonanie takiego po³¹czenia ?").c_str(),"Po³¹czenie ju¿ istnieje",MB_YESNO | MB_ICONQUESTION | MB_DEFBUTTON2)==IDYES) {
 			//odczepiamy
+			abort(true);
+			runs=true;
 			con->input->disconnect();
 			for(unsigned int i=0;i<connections.size();++i)
 			{
@@ -609,6 +616,7 @@ void PIWOEngine::OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sen
 
    if (selectedInputBlock!=NULL && selectedInput!=NULL)
    {
+	 abort(true);
 	 if (MakeConnection(selectedOutputBlock,selectedOutput,selectedInputBlock,selectedInput))
 	 {
 		selectedOutputBlock=NULL;
@@ -616,8 +624,9 @@ void PIWOEngine::OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sen
 		selectedInput=NULL;
 		selectedOutput=NULL;
 	 }
+	 runs=true;
    }
-   if (alwaysRun) run();
+   if (alwaysRun&&runs) run();
 }
 
 void __fastcall PIWOEngine::HistoryFormClose(TObject *Sender, TCloseAction &Action)
@@ -803,7 +812,6 @@ void PIWOEngine::OnVisualBlockSelectAdd(TObject* Sender)
 
 void __fastcall PIWOEngine::onThisClick(TObject* Sender)
 {
-   if (OnDebug!=NULL) OnDebug(this, "PIWO - Klikniêto na g³ówne p³otno projektu");
    UnselectAllBlocks();
    UnselectSelectedConnection();
 }
@@ -846,7 +854,7 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
 	  return false;
 	}
 	if (OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Znaleziono blok");
-	abort();
+	abort(true);
 	for(unsigned int j=0;j<connections.size();++j)
 	{
 		   if (connections[j]->inBlock==toDelete)
@@ -919,7 +927,7 @@ bool PIWOEngine::DeleteSelectedBlocks()
 {
    if (selectedBlocks.size()==0) return false;
    if (OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonych bloków - Rozpoczeto");
-   abort();
+   abort(true);
    for(unsigned int i=0;i<selectedBlocks.size();++i)
    {
 	   //zaznaczam po³¹czenia do usuniêcia
@@ -1012,7 +1020,7 @@ bool PIWOEngine::DeleteSelectedBlocks()
 bool PIWOEngine::DeleteAllBlocks()
 {
    if (blocks.size()==0) return false;
-   abort();
+   abort(true);
    while(connections.size()>0)
    {
 	   if (OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich bloków - Usuwanie po³¹czenia: "+connections[0]->outBlock->getTitle()+"("+connections[0]->output->getDescription()+") -> "+connections[0]->inBlock->getTitle()+"("+connections[0]->input->getDescription()+")");
@@ -1081,7 +1089,7 @@ bool PIWOEngine::DeleteSelectedConnection()
 {
    if (selectedConnection!=NULL)
    {
-	  abort();
+	  abort(true);
 	  for(unsigned int i=0;i<connections.size();++i)
 	  {
 		if (connections[i]==selectedConnection)
@@ -1106,7 +1114,7 @@ bool PIWOEngine::DeleteSelectedConnection()
 bool PIWOEngine::DeleteAllConnections()
 {
    if (connections.size()==0) return false;
-   abort();
+   abort(true);
    vector<VisualBlock*> list;
    while(connections.size()>0)
    {
@@ -1174,7 +1182,6 @@ bool PIWOEngine::runUsingHistory()
 	  Application->ProcessMessages();
 	  Sleep(1);
   }
-  this->Enabled=false;
   stopRunning=false;
   isRunning=true;
   if (OnRunStart!=NULL) OnRunStart(this);
@@ -1252,7 +1259,6 @@ bool PIWOEngine::runUsingHistory()
 	if (OnRunEnd!=NULL) OnRunEnd(this);
 	stopRunning=false;
 	isRunning=false;
-	this->Enabled=true;
 	return status;
 }
 
@@ -1265,7 +1271,6 @@ bool PIWOEngine::runNotUsingHistory()
 	  Application->ProcessMessages();
 	  Sleep(1);
   }
-  this->Enabled=false;
   stopRunning=false;
   isRunning=true;
   if (OnRunStart!=NULL) OnRunStart(this);
@@ -1343,7 +1348,6 @@ bool PIWOEngine::runNotUsingHistory()
 	if (OnRunEnd!=NULL) OnRunEnd(this);
 	stopRunning=false;
 	isRunning=false;
-	this->Enabled=true;
 	return status;
 }
 
@@ -1866,13 +1870,21 @@ bool PIWOEngine::isRuned()
    return isRunning;
 }
 
-void PIWOEngine::abort()
+void PIWOEngine::abort(bool wait)
 {
    if (isRunning&&!stopRunning)
    {
 	  stopRunning=true;
 	  if (OnRunInformation!=NULL)
-         	OnRunInformation(this, "Przerwano uruchamianie");
+			OnRunInformation(this, "Przerwano uruchamianie");
+	  if (wait)
+	  {
+			 while(isRunning)
+			 {
+				Application->ProcessMessages();
+				Sleep(1);
+			 }
+	  }
    }
 }
 
