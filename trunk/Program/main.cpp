@@ -60,9 +60,16 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	piwo->plugins=&plugins;
 	piwo->Align=alClient;
 	piwo->Parent=this;
-	piwo->OnInformation=OnLog;
-	piwo->OnWarrning=OnLog;
-	piwo->OnError=OnLog;
+	piwo->OnInformation=OnLogInformation;
+	piwo->OnWarrning=OnLogWarrning;
+	piwo->OnError=OnLogError;
+	piwo->OnDebug=OnLogDebug;
+	piwo->OnSuccess=OnLogSuccess;
+	piwo->OnRunInformation=OnLogRunInformation;
+	piwo->OnRunWarrning=OnLogRunWarrning;
+	piwo->OnRunError=OnLogRunError;
+	piwo->OnRunDebug=OnLogRunDebug;
+	piwo->OnRunSuccess=OnLogRunSuccess;
     PageControl1Resize(NULL);
 	Sleep(500);
 	Form1->Visible=true;
@@ -75,24 +82,213 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	Application->ProcessMessages();
 }
 
-void TForm1::OnLog(TObject* Sender, const AnsiString message)
+void TForm1::OnLogInformation(TObject* Sender, const AnsiString message)
 {
   TListItem *item=ListView1->Items->Add();
   item->SubItems->Add(message);
   TTime tmp;
   item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
   item->ImageIndex=0;
-}
-//---------------------------------------------------------------------------
+  ListView1->Width=ListView1->Width-1;
+  PageControl1Resize(NULL);
+  ListView1->Scroll(0,99999999);
+  Application->ProcessMessages();
 
+  item=ListView3->Items->Add();
+  item->SubItems->Add(message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=0;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogDebug(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView3->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=1;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogSuccess(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView1->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=2;
+  ListView1->Width=ListView1->Width-1;
+  PageControl1Resize(NULL);
+  ListView1->Scroll(0,99999999);
+  Application->ProcessMessages();
+
+  item=ListView3->Items->Add();
+  item->SubItems->Add(message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=2;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogWarrning(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView1->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=3;
+  ListView1->Width=ListView1->Width-1;
+  PageControl1Resize(NULL);
+  ListView1->Scroll(0,99999999);
+  Application->ProcessMessages();
+
+  item=ListView3->Items->Add();
+  item->SubItems->Add(message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=3;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogError(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView1->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=4;
+  ListView1->Width=ListView1->Width-1;
+  PageControl1Resize(NULL);
+  ListView1->Scroll(0,99999999);
+  Application->ProcessMessages();
+
+  item=ListView3->Items->Add();
+  item->SubItems->Add(message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=4;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogRunInformation(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView2->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=0;
+  ListView2->Width=ListView2->Width-1;
+  PageControl1Resize(NULL);
+  ListView2->Scroll(0,99999999);
+  Application->ProcessMessages();
+
+  item=ListView3->Items->Add();
+  item->SubItems->Add("RUN: "+message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=0;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogRunDebug(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView3->Items->Add();
+  item->SubItems->Add("RUN: "+message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=1;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogRunSuccess(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView2->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=2;
+  ListView2->Width=ListView2->Width-1;
+  PageControl1Resize(NULL);
+  ListView2->Scroll(0,99999999);
+  Application->ProcessMessages();
+
+  item=ListView3->Items->Add();
+  item->SubItems->Add("RUN: "+message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=2;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogRunWarrning(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView2->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=3;
+  ListView2->Width=ListView2->Width-1;
+  PageControl1Resize(NULL);
+  ListView2->Scroll(0,99999999);
+  Application->ProcessMessages();
+
+  item=ListView3->Items->Add();
+  item->SubItems->Add("RUN: "+message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=3;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
+
+void TForm1::OnLogRunError(TObject* Sender, const AnsiString message)
+{
+  TListItem *item=ListView2->Items->Add();
+  item->SubItems->Add(message);
+  TTime tmp;
+  item->Caption=FormatDateTime("hh:mm:ss", tmp.CurrentTime());
+  item->ImageIndex=4;
+  ListView2->Width=ListView2->Width-1;
+  PageControl1Resize(NULL);
+  ListView2->Scroll(0,99999999);
+  Application->ProcessMessages();
+
+  item=ListView3->Items->Add();
+  item->SubItems->Add("RUN: "+message);
+  item->Caption=FormatDateTime("hh:mm:ss-zzz", tmp.CurrentTime());
+  item->ImageIndex=4;
+  ListView3->Width=ListView3->Width-1;
+  PageControl1Resize(NULL);
+  ListView3->Scroll(0,99999999);
+  Application->ProcessMessages();
+}
 
 void __fastcall TForm1::Zakocz2Click(TObject *Sender)
 {
  Close();	
 }
 //---------------------------------------------------------------------------
-
-
 
 void __fastcall TForm1::Zaznaczwszystkiebloki1Click(TObject *Sender)
 {
@@ -172,6 +368,9 @@ void __fastcall TForm1::Uruchom3Click(TObject *Sender)
 void __fastcall TForm1::PageControl1Resize(TObject *Sender)
 {
    PageControl1->TabWidth=int((PageControl1->Width-30)/3);
+   ListView1->Width=TabSheet1->Width;
+   ListView2->Width=TabSheet2->Width;
+   ListView3->Width=TabSheet3->Width;
 }
 //---------------------------------------------------------------------------
 
@@ -226,10 +425,10 @@ void __fastcall TForm1::MenuItem2Click(TObject *Sender)
 	if (SaveDialog1->Execute()) {
 	   TStringList *x=new TStringList();
 	   AnsiString tmp;
-	   for(int i=0;i<ListView1->Items->Count;++i)
+	   for(int i=0;i<ListView2->Items->Count;++i)
 	   {
-		  tmp=ListView1->Items->Item[i]->Caption+" - ";
-		  switch (ListView1->Items->Item[i]->ImageIndex==0)
+		  tmp=ListView2->Items->Item[i]->Caption+" - ";
+		  switch (ListView2->Items->Item[i]->ImageIndex==0)
 		  {
 			case 0 : tmp+="INFO: ";break;
 			case 1 : tmp+="DEBUG: ";break;
@@ -237,7 +436,7 @@ void __fastcall TForm1::MenuItem2Click(TObject *Sender)
 			case 3 : tmp+="WARRNING: ";break;
 			case 4 : tmp+="ERROR: ";break;
 		  }
-		 tmp+=ListView1->Items->Item[i]->SubItems->Strings[0];
+		 tmp+=ListView2->Items->Item[i]->SubItems->Strings[0];
 		 x->Add(tmp);
 	   }
 	   x->SaveToFile(SaveDialog1->FileName);
@@ -252,10 +451,10 @@ void __fastcall TForm1::MenuItem4Click(TObject *Sender)
 	if (SaveDialog1->Execute()) {
 	   TStringList *x=new TStringList();
 	   AnsiString tmp;
-	   for(int i=0;i<ListView1->Items->Count;++i)
+	   for(int i=0;i<ListView3->Items->Count;++i)
 	   {
-		  tmp=ListView1->Items->Item[i]->Caption+" - ";
-		  switch (ListView1->Items->Item[i]->ImageIndex==0)
+		  tmp=ListView3->Items->Item[i]->Caption+" - ";
+		  switch (ListView3->Items->Item[i]->ImageIndex==0)
 		  {
 			case 0 : tmp+="INFO: ";break;
 			case 1 : tmp+="DEBUG: ";break;
@@ -263,12 +462,34 @@ void __fastcall TForm1::MenuItem4Click(TObject *Sender)
 			case 3 : tmp+="WARRNING: ";break;
 			case 4 : tmp+="ERROR: ";break;
 		  }
-		 tmp+=ListView1->Items->Item[i]->SubItems->Strings[0];
+		 tmp+=ListView3->Items->Item[i]->SubItems->Strings[0];
 		 x->Add(tmp);
 	   }
 	   x->SaveToFile(SaveDialog1->FileName);
 	   delete x;
 	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
+	  TShiftState Shift)
+{
+	if (Key==VK_DELETE) {
+	   piwo->DeleteSelectedConnection();
+	   piwo->DeleteSelectedBlocks(); 
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::PageControl1Change(TObject *Sender)
+{
+  ListView3->Width=ListView3->Width-1;
+  ListView2->Width=ListView2->Width-1;
+  ListView1->Width=ListView1->Width-1;
+  ListView3->Scroll(0,99999999);
+  ListView2->Scroll(0,99999999);
+  ListView1->Scroll(0,99999999);
+  PageControl1Resize(NULL);
 }
 //---------------------------------------------------------------------------
 

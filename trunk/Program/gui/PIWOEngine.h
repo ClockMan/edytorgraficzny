@@ -53,6 +53,8 @@ class PIWOEngine : public TPanel
 
 		bool isRunning;
 		bool stopRunning;
+
+		unsigned int runProgress;
 	public:
 		PIWOEngine_Log OnInformation;
 		PIWOEngine_Log OnDebug;
@@ -61,6 +63,7 @@ class PIWOEngine : public TPanel
 		PIWOEngine_Log OnError;
 
 		PIWOEngine_Log OnRunInformation;
+		PIWOEngine_Log OnRunDebug;
 		PIWOEngine_Log OnRunSuccess;
 		PIWOEngine_Log OnRunWarrning;
 		PIWOEngine_Log OnRunError;

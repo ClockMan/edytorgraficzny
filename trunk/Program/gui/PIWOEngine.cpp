@@ -30,6 +30,7 @@ __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
   isRunning=false;
   stopRunning=false;
   alwaysRun=false;
+  runProgress=0;
 
   OnInformation=NULL;
   OnDebug=NULL;
@@ -41,6 +42,7 @@ __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
   OnRunSuccess=NULL;
   OnRunWarrning=NULL;
   OnRunError=NULL;
+  OnRunDebug=NULL;
 
   OnRunProgress=NULL;
   OnRunStart=NULL;
@@ -68,7 +70,11 @@ __fastcall PIWOEngine::~PIWOEngine()
 bool PIWOEngine::AddBlock(const AnsiString &name)
 {
    FunctionDLL *fun=plugins->getFunction(name);
-   if (fun==NULL) return false;
+   if (fun==NULL)
+   {
+	  if (OnDebug!=NULL) OnDebug(this,"Dodawanie bloku: Nieznaleziono pluginu o nazwie: "+name);
+	  return false;
+   }
    //szukamy numerku.
    int number=0;
    bool busy;
@@ -107,15 +113,17 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->OnSelect=OnVisualBlockSelect;
    newBlock->OnSelectAdd=OnVisualBlockSelectAdd;
    blocks.push_back(newBlock);
+   newBlock->setSelected(true);
    if (OnInformation!=NULL) OnInformation(this, "Dodano blok: "+name+" #"+IntToStr(number));
+   OnVisualBlockSelect(newBlock);
    if (alwaysRun) run();
    return true;
 }
 
 void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 {
+  if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Rozpoczeto");
   FunctionDLL *fun=plugins->getFunction(block->nameOfBlock);
-
   //zapamiêtaæ po³¹czenia przychodz¹ce, wychodz¹ce, kod b³êdu, opis, typ danych, wskaŸnik wejœcia, wyjœcia
   vector<BlockValidateInputElement*> inputHistory;
   vector<BlockValidateOutputElement*> outputHistory;
@@ -137,6 +145,7 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 			}
 			if (ih->connection!=NULL)
 						{
+							if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Zapamiêtuje ustawienia wejœcia: "+block->block.input[i].getName()+" ("+block->block.input[i].getDescription()+") - "+IntToStr(i));
 							ih->input=&(block->block.input[i]);
 							ih->errorDescription=block->block.input[i].getErrorDescription();
 							ih->errorCode=block->block.input[i].getErrorCode();
@@ -160,14 +169,37 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 			}
 		}
 		outputHistory.push_back(oh);
+		if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Zapamiêtuje ustawienia wyjœcia: "+block->block.output[i].getName()+" ("+block->block.output[i].getDescription()+") - "+IntToStr(i));
 	 }
 
-   int ret=fun->validate(&(block->block));
+
+	int ret=2;
+	try {
+	ret=fun->validate(&(block->block));
+	}
+	catch (Exception &exception)
+	{
+		if (OnError!=NULL) OnError(this,"Validacja bloku "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+	}
+	catch (...)
+	{
+		try
+		{
+			throw Exception("");
+		}
+		catch (Exception &exception)
+		{
+			if (OnError!=NULL) OnError(this,"Validacja bloku "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+		}
+	}
+
+   if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Validator zwróci³ kod "+IntToStr(ret)+(ret==0?" (OK)":" (CHANGED)"));
    //sprawdziæ czy jakieœ po³¹czenia nie zosta³y "wyjebane"
    //i potem zaktualizowac je...
    
    if (updateInputConnections)
    {
+	  int g=0;
 	  while(inputHistory.size()>0)
 	  {
 		  //sprawdzic czy jest na nowej liscie
@@ -202,15 +234,22 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 					connections.erase(connections.begin()+j);
 				 }
 			 }
+			 if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Usuwam po³¹czenia z by³ego wejœcia o id: "+IntToStr(g));
 		 }
 
 		 delete inputHistory[0];
 		 inputHistory.erase(inputHistory.begin());
+		 ++g;
 	  }
    }
 
-   if (ret!=0) block->updateVisualComponents(); //aktualizujemy wyœwietlanie tylko gdy zmieni³ siê kod.
+   if (ret!=0)
+   {
+	 block->updateVisualComponents(); //aktualizujemy wyœwietlanie tylko gdy zmieni³ siê kod.
+		if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Zaktualizowano wygl¹d bloku");
+   }
    block->updateHistory();
+   if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Sprawdzono historie");
 
    //aktualizacja wyjœæ, tu ju¿ bêdzie przejebane :P
    //sprawdzamy które wyjœcia siê zmieni³y, i wrzucamy na wyjœcie je
@@ -220,6 +259,7 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
    //4 - zaktualizowac ponownie po³¹czenia
    //lecimy tylko do tych bloczków w których zmieni³ siê typ
    vector<VisualBlock*> toCheck;
+   int g=0;
    while(outputHistory.size()>0)
    {
 	  //sprawdzamy czy jest w spisie
@@ -274,7 +314,11 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 						   break;
 						}
 					}
-					if (!isOnList) toCheck.push_back(outputHistory[0]->connections[g]->inBlock);
+					if (!isOnList)
+					{
+					  if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Blok : "+outputHistory[0]->connections[g]->inBlock->getTitle()+" wymaga validacji, dodaje go do listy.");
+					  toCheck.push_back(outputHistory[0]->connections[g]->inBlock);
+					}
 			   }
 			}
 			else
@@ -305,16 +349,25 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 				 }
 			 }
 			}
+			if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Usuwam po³¹czenia z by³ego wyjœcia o id: "+IntToStr(g));
 		 }
 
 		 delete outputHistory[0];
 		 outputHistory.erase(outputHistory.begin());
    }
 
+  if (toCheck.size()>0) {
+	  if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Rozpoczynam validacje bloków pochodnych");
+  }
   for(unsigned int i=0;i<toCheck.size();++i)
   {
 	validateBlock(toCheck[i], true);
   }
+  if (toCheck.size()>0) {
+	  if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Zakoñczono validacje bloków pochodnych");
+  }
+
+  if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Zakoñczono");
 }
 
 void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
@@ -323,16 +376,37 @@ void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
    abort();
    unsigned int rev=block->block.getConfig()->getRevision();
    FunctionDLL *fun=plugins->getFunction(block->nameOfBlock);
+   try
+   {
    if (!fun->showConfig(Application,&(block->block)))
    {
-	  if (OnWarrning!=NULL) OnWarrning(this, "Blok: "+block->getTitle()+" nieposiada okna konfiguracji");
+	  if (OnWarrning!=NULL) OnWarrning(this, "Konfiguracja bloku "+block->getTitle()+" - nieposiada okna konfiguracji");
 	  MessageBox(0,"Ten bloczek niema konfiguracji",("Konfiguracja bloczka: "+block->getTitle()).c_str(),MB_OK);
 	  return;
    }
+   }
+	catch (Exception &exception)
+	{
+		if (OnError!=NULL) OnError(this,"Konfiguracja bloku "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+	}
+	catch (...)
+	{
+		try
+		{
+			throw Exception("");
+		}
+		catch (Exception &exception)
+		{
+			if (OnError!=NULL) OnError(this,"Konfiguracja bloku "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+		}
+	}
+
    if (rev!=block->block.getConfig()->getRevision())
    {
-	 if (OnInformation!=NULL) OnInformation(this, "Zmodyfikowanao konfiguracje bloku: "+block->getTitle());
+	 if (OnDebug!=NULL) OnDebug(this,"Konfiguracja bloku "+block->getTitle()+" - Zmodyfikowano konfiguracje bloku");
+	 if (OnDebug!=NULL) OnDebug(this,"Konfiguracja bloku "+block->getTitle()+" - Rozpoczynam wymagan¹ validacje bloku");
 	 validateBlock(block);
+	 if (OnDebug!=NULL) OnDebug(this,"Konfiguracja bloku "+block->getTitle()+" - Zakoñczono wymagan¹ validacje bloku");
 	 if (alwaysRun) run();
    }
 }
@@ -340,7 +414,7 @@ void PIWOEngine::OnVisualBlockConfigClick(TObject* Sender)
 bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, VisualBlock* inputBlock, VisualInput* input)
 {
 	//sprawdzamy czy mo¿na pod³¹czyæ.
-
+	if (OnDebug!=NULL) OnDebug(this, "Tworzenie po³¹czenia "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") - Rozpoczeto");
 	bool canBe=false;
 	for(unsigned int i=0;i<input->input->allowedTypes.size();++i)
 	{
@@ -353,7 +427,7 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 
 	//zablokowanie cyklicznych po³¹czeñ
 	if (outputBlock==inputBlock) {
-	   if (OnError!=NULL) OnError(this, "Po³¹czenia cyklycznie s¹ zabronione");
+		if (OnError!=NULL) OnError(this, "Tworzenie po³¹czenia "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") - Po³¹czenia cykliczne s¹ zabronione");
 		return false;
 	}
 
@@ -369,7 +443,7 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 			{
 				if (connections[i]->inBlock==outputBlock) {
 				  //cykliczne
-				  if (OnError!=NULL) OnError(this, "Po³¹czenia cyklycznie s¹ zabronione");
+				  if (OnError!=NULL) OnError(this, "Tworzenie po³¹czenia "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") - Po³¹czenia cykliczne s¹ zabronione");
 				  return false;
 				}
 
@@ -383,17 +457,19 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 				   if (iwasThere[j]==connections[i]->inBlock) isOnList=true;
 				}
 
-				if (!isOnList) toCheck.push_back(connections[i]->inBlock);
+				if (!isOnList)
+				{
+				  toCheck.push_back(connections[i]->inBlock);
+				}
 			}
 		}
-
 		iwasThere.push_back(toCheck[0]);
 		toCheck.erase(toCheck.begin());
 	}
 
 	if (!canBe)
 	{
-		if (OnError!=NULL) OnError(this, "Po³¹czenie: "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") niemo¿e zostaæ zrealizowane, pruba pod³¹czenia nieobs³ugiwanego typu danych");
+		if (OnError!=NULL) OnError(this, "Tworzenie po³¹czenia "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") - Próba pod³¹czenia nieobs³ugiwanego typu danych, przerwano");
 		return false;
 	}
 
@@ -410,6 +486,10 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 	connections.push_back(con);
 	validateBlock(inputBlock);
 	con->update();
+	con->setSelected(true);
+	if (OnInformation!=NULL) OnInformation(this, "Dodano po³¹czenie "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+")");
+	OnConnectionSelect(con);
+	if (OnDebug!=NULL) OnDebug(this, "Tworzenie po³¹czenia "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") - Zakoñczono");
 	return true;
 }
 
@@ -547,6 +627,7 @@ void __fastcall PIWOEngine::HistoryFormClose(TObject *Sender, TCloseAction &Acti
 	{
 		if (historyWindows[i]==Sender)
 		{
+		   if (OnDebug!=NULL) OnDebug(this, "Historia "+historyWindows[i]->block->getTitle()+" - Zamkniêto okno");
 		   historyWindows.erase(historyWindows.begin()+i);
 		   break;
 		}
@@ -556,12 +637,14 @@ void __fastcall PIWOEngine::HistoryFormClose(TObject *Sender, TCloseAction &Acti
 void PIWOEngine::OnVisualBlockInputHistoryClick(VisualInput* input, TObject* Sender)
 {
    VisualBlock* block=(VisualBlock*)Sender;
+   if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Otrzymano rz¹danie histori dla wejœcia "+input->input->getName()+" ("+input->input->getDescription()+")");
    //sprawdzamy czy przypadkiem takie okienko ju¿ nie jest otwarte
    for(unsigned int i=0;i<historyWindows.size();++i)
    {
 	  if (historyWindows[i]->block==block) {
 		 historyWindows[i]->refresh(input->input);
 		 historyWindows[i]->Show();
+		 if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Pokazuje istniej¹ce okno histori");
 		 return;
 	  }
    }
@@ -569,6 +652,7 @@ void PIWOEngine::OnVisualBlockInputHistoryClick(VisualInput* input, TObject* Sen
    //niema :P
    if (block->history.size()==0)
    {
+	  if (OnWarrning!=NULL) OnWarrning(this, "Historia "+block->getTitle()+" - Blok nie posiada histori, prosze go wpierw uruchomiæ");
 	  Application->MessageBoxA("Brak historii",block->getTitle().c_str(), MB_ICONINFORMATION | MB_OK);
 	  return;
    }
@@ -580,17 +664,20 @@ void PIWOEngine::OnVisualBlockInputHistoryClick(VisualInput* input, TObject* Sen
    his->Show();
    his->refresh(input->input);
    historyWindows.push_back(his);
+   if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Tworze i pokazuje nowe okno histori");
 }
 
 void PIWOEngine::OnVisualBlockOutputHistoryClick(VisualOutput* output, TObject* Sender)
 {
    VisualBlock* block=(VisualBlock*)Sender;
    //sprawdzamy czy przypadkiem takie okienko ju¿ nie jest otwarte
+   if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Otrzymano rz¹danie histori dla wyjœcia "+output->output->getName()+" ("+output->output->getDescription()+")");
    for(unsigned int i=0;i<historyWindows.size();++i)
    {
 	  if (historyWindows[i]->block==block) {
 		 historyWindows[i]->refresh(output->output);
 		 historyWindows[i]->Show();
+		 if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Pokazuje istniej¹ce okno histori");
 		 return;
 	  }
    }
@@ -598,6 +685,7 @@ void PIWOEngine::OnVisualBlockOutputHistoryClick(VisualOutput* output, TObject* 
    //niema :P
    if (block->history.size()==0)
    {
+	  if (OnWarrning!=NULL) OnWarrning(this, "Historia "+block->getTitle()+" - Blok nie posiada histori, prosze go wpierw uruchomiæ");
 	  Application->MessageBoxA("Brak historii",block->getTitle().c_str(), MB_ICONINFORMATION | MB_OK);
 	  return;
    }
@@ -609,6 +697,7 @@ void PIWOEngine::OnVisualBlockOutputHistoryClick(VisualOutput* output, TObject* 
    his->Show();
    his->refresh(output->output);
    historyWindows.push_back(his);
+   if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Tworze i pokazuje nowe okno histori");
 }
 
 void PIWOEngine::OnVisualBlockMove(TObject* Sender, bool moveAll, int x, int y)
@@ -668,7 +757,7 @@ void PIWOEngine::OnVisualBlockUnselect(TObject* Sender)
 		  break;
 	   }
    }
-   if (OnInformation!=NULL) OnInformation(this, "Odznaczono blok: "+block->getTitle());
+   if (OnDebug!=NULL) OnDebug(this, "Odznaczono blok - "+block->getTitle());
    block->setSelected(false);
 }
 
@@ -677,7 +766,7 @@ void PIWOEngine::OnVisualBlockSelect(TObject* Sender)
    while(selectedBlocks.size()>0)
    {
 	  if (selectedBlocks[0]!=Sender) {
-	   if (OnInformation!=NULL) OnInformation(this, "Odznaczono blok: "+selectedBlocks[0]->getTitle());
+	   if (OnDebug!=NULL) OnDebug(this, "Odznaczono blok - "+selectedBlocks[0]->getTitle());
 	   selectedBlocks[0]->setSelected(false);
 	  }
 	  selectedBlocks.erase(selectedBlocks.begin());
@@ -689,7 +778,7 @@ void PIWOEngine::OnVisualBlockSelect(TObject* Sender)
 			 connections[i]->BringToFront();
    }
 
-   if (OnInformation!=NULL) OnInformation(this, "Zaznaczono blok: "+((VisualBlock*)Sender)->getTitle());
+   if (OnDebug!=NULL) OnDebug(this, "Zaznaczono blok - "+((VisualBlock*)Sender)->getTitle());
    selectedBlocks.push_back((VisualBlock*)Sender);
    this->UnselectSelectedConnection();
 }
@@ -707,13 +796,14 @@ void PIWOEngine::OnVisualBlockSelectAdd(TObject* Sender)
 			 connections[i]->BringToFront();
    }
 
-   if (OnInformation!=NULL) OnInformation(this, "Zaznaczono blok: "+((VisualBlock*)Sender)->getTitle());
+   if (OnDebug!=NULL) OnDebug(this, "Zaznaczono blok - "+((VisualBlock*)Sender)->getTitle());
    selectedBlocks.push_back((VisualBlock*)Sender);
    this->UnselectSelectedConnection();
 }
 
 void __fastcall PIWOEngine::onThisClick(TObject* Sender)
 {
+   if (OnDebug!=NULL) OnDebug(this, "PIWO - Klikniêto na g³ówne p³otno projektu");
    UnselectAllBlocks();
    UnselectSelectedConnection();
 }
@@ -722,12 +812,12 @@ void PIWOEngine::OnConnectionSelect(void* Sender)
 {
    if (selectedConnection!=NULL)
    {
-	  if (OnInformation!=NULL) OnInformation(this, "Odznaczono po³¹czenie: "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
+	  if (OnDebug!=NULL) OnDebug(this, "Odznaczono po³¹czenie - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
 	  selectedConnection->setSelected(false);
    }
    selectedConnection=(Connection*)Sender;
    selectedConnection->BringToFront();
-   if (OnInformation!=NULL) OnInformation(this, "Zaznaczono po³¹czenie: "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
+   if (OnDebug!=NULL) OnDebug(this, "Zaznaczono po³¹czenie - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
    this->UnselectAllBlocks();
 }
 
@@ -741,6 +831,7 @@ Connection* PIWOEngine::getConnectionTo(VisualInput* input)
 bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
 {
 	VisualBlock* toDelete=NULL;
+	if (OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Rozpoczeto");
 	for(unsigned int i=0;i<blocks.size();++i)
 	{
 		if (blocks[i]->getTitle()==fullName) {
@@ -749,9 +840,14 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
 		   break;
 		}
 	}
-	if (toDelete==NULL) return false;
+	if (toDelete==NULL)
+	{
+	  if (OnError!=NULL) OnError(this, "Usuwanie bloku "+fullName+" - Nie istnieje blok o takiej nazwie");
+	  return false;
+	}
+	if (OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Znaleziono blok");
 	abort();
-    for(unsigned int j=0;j<connections.size();++j)
+	for(unsigned int j=0;j<connections.size();++j)
 	{
 		   if (connections[j]->inBlock==toDelete)
 		   {
@@ -806,12 +902,15 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
    }
 
    delete toDelete;
-
+	if (OnInformation!=NULL) OnInformation(this, "Usuniêto blok "+fullName+" wraz z po³¹czeniami");
    //sprawdzamy co wywalone..
+   if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Rozpoczynam wymagan¹ validacje bloków");
    for(unsigned int i=0;i<blocksToCheck.size();++i)
    {
 	   validateBlock(blocksToCheck[i]);
    }
+   if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Zakoñczono wymagan¹ validacje bloków");
+   if (OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Zakoñczono");
    if (alwaysRun) run();
    return true;
 }
@@ -819,6 +918,7 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
 bool PIWOEngine::DeleteSelectedBlocks()
 {
    if (selectedBlocks.size()==0) return false;
+   if (OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonych bloków - Rozpoczeto");
    abort();
    for(unsigned int i=0;i<selectedBlocks.size();++i)
    {
@@ -840,6 +940,7 @@ bool PIWOEngine::DeleteSelectedBlocks()
    for(unsigned int j=0;j<blocks.size();++j)
    {
 	   if (blocks[j]->isSelected()) {
+		  if (OnInformation!=NULL) OnInformation(this, "Usuniêto blok "+blocks[j]->getTitle()+" wraz z po³¹czeniami");
 		  delete blocks[j];
 		  blocks.erase(blocks.begin()+j);
 		  --j;
@@ -884,21 +985,26 @@ bool PIWOEngine::DeleteSelectedBlocks()
 		 if (!isOnList) blocksToCheck.push_back(connections[j]->outBlock);
 	  }
 
+	   if (connections[j]->outBlock==NULL && connections[j]->inBlock==NULL)
+       	toDelete=true;
+
 	  //usuwamy po³¹czenie
 	  if (toDelete)
 	  {
-	  if (selectedConnection==connections[j]) selectedConnection=NULL;
-	  delete connections[j];
-	  connections.erase(connections.begin()+j);
-	  --j;
+		if (selectedConnection==connections[j]) selectedConnection=NULL;
+		delete connections[j];
+		connections.erase(connections.begin()+j);
+		--j;
 	  }
    }
 
    //sprawdzamy co wywalone..
+   if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonych bloków - Rozpoczeto wymagan¹ validacje bloków");
    for(unsigned int i=0;i<blocksToCheck.size();++i)
    {
 	   validateBlock(blocksToCheck[i]);
    }
+   if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonych bloków - Zakoñczono wymagan¹ validacje bloków");
    if (alwaysRun) run();
    return true;
 }
@@ -909,14 +1015,18 @@ bool PIWOEngine::DeleteAllBlocks()
    abort();
    while(connections.size()>0)
    {
+	   if (OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich bloków - Usuwanie po³¹czenia: "+connections[0]->outBlock->getTitle()+"("+connections[0]->output->getDescription()+") -> "+connections[0]->inBlock->getTitle()+"("+connections[0]->input->getDescription()+")");
 	   delete connections[0];
 	   connections.erase(connections.begin());
    }
    while(blocks.size()>0)
    {
+	   if (OnInformation!=NULL) OnInformation(this, "Usuwanie wszystkich bloków - Usuniêto blok: "+blocks[0]->getTitle());
 	   delete blocks[0];
 	   blocks.erase(blocks.begin());
    }
+   if (OnInformation!=NULL) OnInformation(this, "Usuniêto wszystkie bloki i po³¹czenia");
+   if (OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich bloków - Zakoñczono");
    return true;
 }
 
@@ -928,8 +1038,10 @@ void PIWOEngine::SelectAllBlocks()
 	{
 	   selectedBlocks.push_back(blocks[i]);
 	   blocks[i]->setSelected(true);
+	   if (OnDebug!=NULL) OnDebug(this, "Zaznaczanie wszystkich bloków - Zaznaczono blok: "+blocks[i]->getTitle());
 	}
   }
+  if (OnDebug!=NULL) OnDebug(this, "Zaznaczanie wszystkich bloków - Zakoñczono");
 }
 
 void PIWOEngine::InvertBlockSelection()
@@ -941,23 +1053,28 @@ void PIWOEngine::InvertBlockSelection()
 	{
 	   newSelections.push_back(blocks[i]);
 	   blocks[i]->setSelected(true);
+	   if (OnDebug!=NULL) OnDebug(this, "Odwracanie zaznaczenia wszystkich bloków - Zaznaczono blok: "+blocks[i]->getTitle());
 	}
 	else
 	{
 	   blocks[i]->setSelected(false);
+	   if (OnDebug!=NULL) OnDebug(this, "Odwracanie zaznaczenia wszystkich bloków - Odznaczono blok: "+blocks[i]->getTitle());
     }
   }
   selectedBlocks=newSelections;
+  if (OnDebug!=NULL) OnDebug(this, "Odwracanie zaznaczenia wszystkich bloków - Zakoñczono");
 }
 
 void PIWOEngine::UnselectAllBlocks()
 {
+   if (selectedBlocks.size()==0) return;
    while(selectedBlocks.size()>0)
    {
 	  selectedBlocks[0]->setSelected(false);
-	  if (OnInformation!=NULL) OnInformation(this, "Odznaczono blok: "+selectedBlocks[0]->getTitle());
+	  if (OnDebug!=NULL) OnDebug(this, "Odznaczanie wszystkich bloków - Odznaczono block:"+selectedBlocks[0]->getTitle());
 	  selectedBlocks.erase(selectedBlocks.begin());
    }
+   if (OnDebug!=NULL) OnDebug(this, "Odznaczanie wszystkich bloków - Zakoñczono");
 }
 
 bool PIWOEngine::DeleteSelectedConnection()
@@ -971,9 +1088,12 @@ bool PIWOEngine::DeleteSelectedConnection()
 		{
 		   selectedConnection->input->disconnect();
 		   VisualBlock* block=selectedConnection->inBlock;
+		   if (OnInformation!=NULL) OnInformation(this, "Usuniêto po³¹czenie - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
 		   delete connections[i];
 		   connections.erase(connections.begin()+i);
+		   if (OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonego po³¹czenia - Rozpoczynam wymagan¹ validacje bloku");
 		   validateBlock(block);
+		   if (OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonego po³¹czenia - Zakoñczono wymagan¹ validacje bloku");
 		   break;
 		}
 	  }
@@ -1001,14 +1121,18 @@ bool PIWOEngine::DeleteAllConnections()
 	   }
 
 	   if (!isOnListToValidate) list.push_back(connections[0]->inBlock);
+	   if (OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich po³¹czeñ - Usuniêto: "+connections[0]->outBlock->getTitle()+"("+connections[0]->output->getDescription()+") -> "+connections[0]->inBlock->getTitle()+"("+connections[0]->input->getDescription()+")");
 	   delete connections[0];
 	   connections.erase(connections.begin());
    }
    selectedConnection=NULL;
+   if (list.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich po³¹czeñ - Rozpoczeto wymagan¹ validacje bloków");
    for(unsigned int i=0;i<list.size();++i)
    {
 	   validateBlock(list[i]);
    }
+   if (list.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich po³¹czeñ - Zakoñczono wymagan¹ validacje bloków");
+   if (OnInformation!=NULL) OnInformation(this, "Usuniêto wszystkie po³¹czenia");
    if (alwaysRun) run();
    return true;
 }
@@ -1018,6 +1142,7 @@ void PIWOEngine::UnselectSelectedConnection()
    if (selectedConnection!=NULL)
    {
 	  selectedConnection->setSelected(false);
+	  if (OnDebug!=NULL) OnDebug(this, "Odznaczono po³¹czenie - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
 	  selectedConnection=NULL;
    }
 }
@@ -1027,6 +1152,7 @@ void PIWOEngine::CancelCustomizationOnSelectedConnections()
    if (selectedConnection!=NULL)
    {
 	  selectedConnection->setCustomizeFalse();
+	  if (OnDebug!=NULL) OnDebug(this, "Anulowanie ustawieñ u¿ytkownika dla po³¹czenia - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
    }
 }
 
@@ -1035,6 +1161,7 @@ void PIWOEngine::CancelCustomizationOnAllConnections()
 	for(unsigned int i=0;i<connections.size();++i)
 	{
 	   connections[i]->setCustomizeFalse();
+	   if (OnDebug!=NULL) OnDebug(this, "Anulowanie ustawieñ u¿ytkownika dla po³¹czenia - "+connections[i]->outBlock->getTitle()+"("+connections[i]->output->getDescription()+") -> "+connections[i]->inBlock->getTitle()+"("+connections[i]->input->getDescription()+")");
     }
 }
 
@@ -1050,8 +1177,15 @@ bool PIWOEngine::runUsingHistory()
   this->Enabled=false;
   stopRunning=false;
   isRunning=true;
-
+  if (OnRunStart!=NULL) OnRunStart(this);
+  runProgress=0;
   bool status=true;
+  if (OnRunInformation!=NULL)
+	   OnRunInformation(this, "Rozpoczêto uruchamianie z u¿yciem historii");
+  if (OnInformation!=NULL)
+	   OnInformation(this, "Rozpoczêto uruchamianie z u¿yciem historii");
+
+
 	//usuwamy status runned, przetwa¿amy zaczynaj¹c od najstarszego bloku, czyœcimy dane, w sumie mo¿emy zostawiæ dane które widnia³y po ostatniej operacji
 	for(unsigned int i=0;i<blocks.size();++i)
 	{
@@ -1095,6 +1229,27 @@ bool PIWOEngine::runUsingHistory()
 		   if (!runBlock(blocks[i], false, &useHistory)) status=false;
 		}
 	}
+	if (OnRunProgress!=NULL) OnRunProgress(this, (stopRunning?"Anulowano":"Zakoñczono"),100.0);
+	if (stopRunning&&OnRunError) {
+		  OnRunError(this, "Uruchamianie zosta³o przerwane");
+	}
+	if (!stopRunning&&status&&OnRunSuccess!=NULL) {
+		  OnRunSuccess(this, "Zakoñczono uruchamianie");
+	}
+	if (!stopRunning&&!status&&OnRunWarrning!=NULL) {
+		  OnRunWarrning(this, "Zakoñczono uruchamianie");
+	}
+
+	if (stopRunning&&OnError) {
+		  OnError(this, "Uruchamianie zosta³o przerwane");
+	}
+	if (!stopRunning&&status&&OnSuccess!=NULL) {
+		  OnSuccess(this, "Zakoñczono uruchamianie");
+	}
+	if (!stopRunning&&!status&&OnWarrning!=NULL) {
+		  OnWarrning(this, "Zakoñczono uruchamianie");
+	}
+	if (OnRunEnd!=NULL) OnRunEnd(this);
 	stopRunning=false;
 	isRunning=false;
 	this->Enabled=true;
@@ -1113,8 +1268,15 @@ bool PIWOEngine::runNotUsingHistory()
   this->Enabled=false;
   stopRunning=false;
   isRunning=true;
-
+  if (OnRunStart!=NULL) OnRunStart(this);
+  runProgress=0;
   bool status=true;
+  if (OnRunInformation!=NULL)
+	   OnRunInformation(this, "Rozpoczêto uruchamianie z u¿yciem historii");
+  if (OnInformation!=NULL)
+	   OnInformation(this, "Rozpoczêto uruchamianie z u¿yciem historii");
+
+
 	//usuwamy status runned, przetwa¿amy zaczynaj¹c od najstarszego bloku, czyœcimy dane, w sumie mo¿emy zostawiæ dane które widnia³y po ostatniej operacji
 	for(unsigned int i=0;i<blocks.size();++i)
 	{
@@ -1158,7 +1320,27 @@ bool PIWOEngine::runNotUsingHistory()
 		   if (!runBlock(blocks[i], false, &useHistory)) status=false;
 		}
 	}
-	
+	if (OnRunProgress!=NULL) OnRunProgress(this, (stopRunning?"Anulowano":"Zakoñczono"),100.0);
+	if (stopRunning&&OnRunError) {
+		  OnRunError(this, "Uruchamianie zosta³o przerwane");
+	}
+	if (!stopRunning&&status&&OnRunSuccess!=NULL) {
+		  OnRunSuccess(this, "Zakoñczono uruchamianie");
+	}
+	if (!stopRunning&&!status&&OnRunWarrning!=NULL) {
+		  OnRunWarrning(this, "Zakoñczono uruchamianie");
+	}
+
+	if (stopRunning&&OnError) {
+		  OnError(this, "Uruchamianie zosta³o przerwane");
+	}
+	if (!stopRunning&&status&&OnSuccess!=NULL) {
+		  OnSuccess(this, "Zakoñczono uruchamianie");
+	}
+	if (!stopRunning&&!status&&OnWarrning!=NULL) {
+		  OnWarrning(this, "Zakoñczono uruchamianie");
+	}
+	if (OnRunEnd!=NULL) OnRunEnd(this);
 	stopRunning=false;
 	isRunning=false;
 	this->Enabled=true;
@@ -1168,6 +1350,7 @@ bool PIWOEngine::runNotUsingHistory()
 bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 {
 	if (stopRunning) return false;
+	if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),(++runProgress/(blocks.size()+1)*100));
 	/*
 		Algorytm:
 		* za³o¿enie: aby bloczek by³ przetworzony musi byæ przynajmniej jedno wejœcie z kodem 0 gdy bloczek posiada wejœcia i przynajmniej jedno wyjœcie z kodem 0 gdy bloczek posiada wyjœcia.
@@ -1220,10 +1403,12 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 				  }
 				  else
 				  {
-					  if (OnError!=NULL) {
-						 OnError(this, "Otrzymano b³êdne dane na wejœciu "+block->block.input[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano: "+block->block.input[i].getConnectedType()+", otrzymano: "+data->getName());
+					  if (OnRunError!=NULL) {
+						 OnRunError(this, "Otrzymano b³êdne dane na wejœciu "+block->block.input[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano: "+block->block.input[i].getConnectedType()+", otrzymano: "+data->getName());
 					  }
+					  block->block.input[i].setErrorCode(1);
 					  block->setStatusColor(clYellow);
+					  block->updateVisualComponents();
 					  return false;
 				  }
 			  }
@@ -1234,10 +1419,12 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 				  
 				  if (con->outBlock->runned) {
 					  //by³ uruchamiany, trudno, wywalamy warrning i przerywamy wykonywanie
-					  if (OnError!=NULL) {
-						 OnError(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
+					  if (OnRunError!=NULL) {
+						 OnRunError(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
 					  }
+					  block->block.input[i].setErrorCode(1);
 					  block->setStatusColor(clYellow);
+					  block->updateVisualComponents();
 					  return false;
 				  }
 				  else
@@ -1247,16 +1434,20 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 					  if (!runBlock(con->outBlock, fastRun, useHistory))
 					  {
 						  if (stopRunning) return false;
+						  con->update();
 						  //blok nie zosta³ uruchomiony, ale pech
-						  if (OnError!=NULL) {
-							OnError(this, "Blok nadrzêdny "+con->outBlock->getTitle()+" dla "+block->getTitle()+" nie zosta³ uruchomiony - brak wymaganych danych wejœciowych");
+						  if (OnRunError!=NULL) {
+							OnRunError(this, "Blok nadrzêdny "+con->outBlock->getTitle()+" dla "+block->getTitle()+" nie zosta³ uruchomiony - brak wymaganych danych wejœciowych");
 						  }
+						  block->block.input[i].setErrorCode(1);
 						  block->setStatusColor(clYellow);
+						  block->updateVisualComponents();
 						  return false;
 					  }
 					  else
 					  {
 						  if (stopRunning) return false;
+						  con->update();
 						  //a jednak siê uruchomi³, ale fux :d, sprawdzamy czy mamy te dane
                           TypeConfig *data=con->output->getObject();
 						  if (data!=NULL)
@@ -1268,9 +1459,10 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 							}
 							else
 							{
-								  if (OnError!=NULL) {
-									 OnError(this, "Otrzymano b³êdne dane na wejœciu "+block->block.input[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano: "+block->block.input[i].getConnectedType()+", otrzymano: "+data->getName());
+								  if (OnRunError!=NULL) {
+									 OnRunError(this, "Otrzymano b³êdne dane na wejœciu "+block->block.input[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano: "+block->block.input[i].getConnectedType()+", otrzymano: "+data->getName());
 								  }
+								  block->block.input[i].setErrorCode(1);
 								  block->setStatusColor(clYellow);
 								  return false;
 							}
@@ -1278,10 +1470,12 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 						  else
 						  {
 							  //by³ uruchamiany, trudno, wywalamy warrning i przerywamy wykonywanie
-							 if (OnError!=NULL) {
-								OnError(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
+							 if (OnRunError!=NULL) {
+								OnRunError(this, "Brak wymaganych danych na wejœciu do bloku: "+block->getTitle());
 							 }
+							 block->block.input[i].setErrorCode(1);
 							 block->setStatusColor(clYellow);
+							 block->updateVisualComponents();
 							 return false;
 						  }
 					  }
@@ -1291,10 +1485,12 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		   else
 		   {
 			  //niema po³¹czenia ? jakim cudem
-			  if (OnError!=NULL) {
-				 OnError(this, "Brak wymaganych danych na wejœciu do bloku (nie znale¿iono po³¹czenia): "+block->getTitle());
+			  if (OnRunError!=NULL) {
+				 OnRunError(this, "Brak wymaganych danych na wejœciu do bloku (nie znale¿iono po³¹czenia): "+block->getTitle());
 			  }
+			  block->block.input[i].setErrorCode(2);
 			  block->setStatusColor(clYellow);
+			  block->updateVisualComponents();
 			  return false;
            }
 		}
@@ -1404,6 +1600,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		   {
 			   history=block->history[i];
 			   block->history.erase(block->history.begin()+i); //dodamy potem hitorie na samym pocz¹tku
+			   if (OnRunDebug!=NULL) OnRunDebug(this, "ZnaleŸiono pasuj¹c¹ historie - ID:"+IntToStr(i));
 			   break;
 		   }
        }
@@ -1446,8 +1643,8 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 
 		block->history.insert(block->history.begin(),history);
 		//u¿yliœmy histori, powiadamiamy o tym
-		if (OnInformation!=NULL) {
-			 OnInformation(this, "Blok "+block->getTitle()+" zosta³ przetworzony w oparciu o dane historyczne");
+		if (OnRunSuccess!=NULL) {
+			 OnRunSuccess(this, "Blok "+block->getTitle()+" zosta³ przetworzony w oparciu o dane historyczne");
 		}
 		block->setStatusColor(clGreen);
 		return true;
@@ -1455,12 +1652,33 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 	//niemamy histori wiêc jeszcze bêdziemy musieli siê sporo pobawiæ.
 	//zak³adamy ¿e wejscia mamy ju¿ wype³nione wykonujemy nastêpuj¹ce ruchy:
 	FunctionDLL *fn=plugins->getFunction(block->nameOfBlock);
-	if (OnInformation!=NULL) {
-			 OnInformation(this, "Uruchamiam blok: "+block->getTitle());
+	if (OnRunInformation!=NULL) {
+			 OnRunInformation(this, "Uruchamiam blok "+block->getTitle());
 	}
-	
-	int ret=fn->run(&(block->block));
+	int ret=2;
+	try{
+	ret=fn->run(&(block->block));
+	}
+	catch (Exception &exception)
+	{
+		if (OnError!=NULL) OnError(this,"Uruchomienie bloku - "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+		if (OnRunError!=NULL) OnRunError(this,"Uruchomienie bloku - "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+	}
+	catch (...)
+	{
+		try
+		{
+			throw Exception("");
+		}
+		catch (Exception &exception)
+		{
+			if (OnError!=NULL) OnError(this,"Uruchomienie bloku - "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+			if (OnRunError!=NULL) OnRunError(this,"Uruchomienie bloku - "+block->getTitle()+" - B³¹d wewnêtrzny: "+StringReplace(exception.Message, "\n", " ", TReplaceFlags() << rfReplaceAll));
+		}
+	}
+
 	block->runned=true;
+	if (OnRunDebug!=NULL) OnRunDebug(this, "Aktualizuje wygl¹d dla bloku "+block->getTitle());
 	block->updateVisualComponents();
 	if (ret!=0&&ret!=1) {
 		//wystapi³ b³¹d, usuwamy dane
@@ -1468,15 +1686,29 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		{
 		   block->block.output[i].clearObject();
 		}
-		if (OnError!=NULL)
-				OnError(this, "Blok "+block->getTitle()+" nie zosta³ przetwo¿ony - b³¹d wewnêtrzny");
+		if (OnRunError!=NULL)
+				OnRunError(this, "Blok "+block->getTitle()+" nie zosta³ przetwo¿ony");
 		block->setStatusColor(clRed);
 		return false;
+	} else
+	if (ret==1) {
+		if (OnRunWarrning!=NULL)
+				OnRunWarrning(this, "Blok "+block->getTitle()+" zosta³ przetwo¿ony ale zwróc³ warrning");
+		block->setStatusColor(clYellow);
 	}
+	else
+	{
+	   if (OnRunSuccess!=NULL)
+				OnRunSuccess(this, "Blok "+block->getTitle()+" zosta³ przetwo¿ony");
+	   block->setStatusColor(clGreen);
+	}
+
+
 	//kod b³êdu 1 lub 0, spradziæ wyjœæia, skopiowaæ do histori, etc
 	history=new BlockHistory();
 	history->configRevision=block->block.getConfig()->getRevision();
 	//kopiujemy wejœcia do histori:
+	bool historyWillBeAdded=false;
 	for(unsigned int i=0;i<block->leftInput.size();++i)
 	{
 		BlockHistoryInputElement *hi=new BlockHistoryInputElement();
@@ -1485,10 +1717,12 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		if (tp!=NULL)
 		{
 		   hi->setData(*tp);
+		   historyWillBeAdded=true;
 		}
 		else
 		{
 		   hi->setNULL();
+		   block->leftInput[i]->input->setErrorCode(1);
 		}
 		history->leftInput.push_back(hi);
 	}
@@ -1501,10 +1735,12 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		if (tp!=NULL)
 		{
 		   hi->setData(*tp);
+		   historyWillBeAdded=true;
 		}
 		else
 		{
 		   hi->setNULL();
+		   block->topInput[i]->input->setErrorCode(1);
 		}
 		history->topInput.push_back(hi);
 	}
@@ -1517,15 +1753,15 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		if (tc==NULL && !block->block.output[i].getOutputType().IsEmpty())
 		{
 			//niema danych, a powinny jakieœ byæ. - tylko warrning
-			if (OnWarrning!=NULL)
-				OnWarrning(this, "Brak danych na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano "+block->block.output[i].getOutputType());
+			if (OnRunWarrning!=NULL)
+				OnRunWarrning(this, "Brak danych na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", oczekiwano "+block->block.output[i].getOutputType());
 		  block->setStatusColor(clYellow);
 		} else
 		if(tc!=NULL&&block->block.output[i].getOutputType().IsEmpty())
 		{
 		  //niechiceliœmy danych, a dostaliœmy.
-		  if (OnWarrning!=NULL)
-				OnWarrning(this, "Otrzymano nieoczekiwane dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+" typu "+tc->getName()+", dane zosta³y pominiête");
+		  if (OnRunWarrning!=NULL)
+				OnRunWarrning(this, "Otrzymano nieoczekiwane dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+" typu "+tc->getName()+", dane zosta³y pominiête");
 		  block->block.output[i].clearObject();
 		  tc=NULL;
 		} else
@@ -1535,9 +1771,10 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		   if (tc->getName()!=block->block.output[i].getOutputType())
 		   {
 			  //otrzyma³em b³êdne dane, warrning
-			  if (OnWarrning!=NULL)
-				OnWarrning(this, "Otrzymano b³êdne dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", otrzymano: "+tc->getName()+", oczekiwano: "+block->block.output[i].getOutputType()+", dane zosta³y pominiête");
+			  if (OnRunWarrning!=NULL)
+				OnRunWarrning(this, "Otrzymano b³êdne dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", otrzymano: "+tc->getName()+", oczekiwano: "+block->block.output[i].getOutputType()+", dane zosta³y pominiête");
 			  block->block.output[i].clearObject();
+			  block->setStatusColor(clYellow);
 			  tc=NULL;
 		   }
 		   else
@@ -1551,17 +1788,18 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 			   if (tdll==NULL)
 			   {
 				  //niema DLL typu, pomijamy sprawdzenie, wywalamy warrning
-				  if (OnWarrning!=NULL)
-					OnWarrning(this, "Otrzymano niewzpierany typ danych na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", typu: "+tc->getName());
+				  if (OnRunWarrning!=NULL)
+					OnRunWarrning(this, "Otrzymano niewspierany typ danych na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", typu: "+tc->getName());
 			   }
 			   else
 			   {
 				  if (!tdll->isValid(tc))
 				  {
 					 //dane nie s¹ poprawne, wywalamy
-					if (OnWarrning!=NULL)
-						OnWarrning(this, "Otrzymano b³êdne dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", typu: "+tc->getName()+", dane s¹ niepoprawne i zosta³y pominiête");
+					if (OnRunWarrning!=NULL)
+						OnRunWarrning(this, "Otrzymano b³êdne dane na wyjœciu "+block->block.output[i].getDescription()+" bloku "+block->getTitle()+", typu: "+tc->getName()+", dane s¹ niepoprawne i zosta³y pominiête");
 					block->block.output[i].clearObject();
+					block->setStatusColor(clYellow);
 					tc=NULL;
 				  }
 			   }
@@ -1578,6 +1816,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		if (tp!=NULL)
 		{
 		   hi->setData(*tp);
+		   historyWillBeAdded=true;
 		}
 		else
 		{
@@ -1594,6 +1833,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		if (tp!=NULL)
 		{
 		   hi->setData(*tp);
+		   historyWillBeAdded=true;
 		}
 		else
 		{
@@ -1603,8 +1843,16 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 	}
 
 	//dodajemy historie :D
-	block->history.insert(block->history.begin(),history);
-	block->setStatusColor(clGreen);
+	if (historyWillBeAdded)
+	{
+		block->history.insert(block->history.begin(),history);
+	}
+	else
+	{
+        if (OnRunDebug!=NULL)
+				OnRunDebug(this, "Blok nie zwróci³ ¿adnych danych, niedodano do histori");
+		delete history;
+	}
 	return true;
 }
 
@@ -1620,8 +1868,12 @@ bool PIWOEngine::isRuned()
 
 void PIWOEngine::abort()
 {
-   if (isRunning)
+   if (isRunning&&!stopRunning)
+   {
 	  stopRunning=true;
+	  if (OnRunInformation!=NULL)
+         	OnRunInformation(this, "Przerwano uruchamianie");
+   }
 }
 
 bool PIWOEngine::isAborted()
