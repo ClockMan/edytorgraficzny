@@ -94,6 +94,7 @@ class PIWOEngine : public TPanel
 		void CancelCustomizationOnSelectedConnections();
 		void CancelCustomizationOnAllConnections();
 		void DuplcateSelectedBlocks();
+		void validateAll();
 
 		bool run(bool useHistory=true);
 		bool isRuned();
@@ -104,6 +105,10 @@ class PIWOEngine : public TPanel
 		bool loadFromFile(const AnsiString &filename);
 		bool isChanged();
 		int getBlockCount();
-
 };
+
+void putString(const AnsiString &str,TStream &stream);
+void putInt(const int i,TStream &stream);
+AnsiString getString(TStream &stream);
+int getInt(TStream &stream);
 #endif

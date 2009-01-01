@@ -38,7 +38,7 @@ void TForm1::OnLoadProgress(void* Sender, int position, int max, AnsiString info
 				 OnLogWarrning(NULL,"B³¹d podczas wczytywania funkcji, b³êdna DLL: "+info);
 			   }
 	Form2->ProgressBar1->Position=position;
-	Form2->ProgressBar1->Max=max+1;
+	Form2->ProgressBar1->Max=max+2;
 	Application->ProcessMessages();
 }
 
@@ -62,14 +62,61 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	plugins.OnFunctionAddRequest=OnFunctionAddClick;
 	plugins.LoadData(dir+"\\blocks", dir+"\\types", *MainMenu1, *ImageList1, 3, 2, 0, 1);
 	OnLogInformation(NULL,"Zakoñczono wczytywanie pluginów");
+	AnsiString file;
+	if (ParamCount()>0)
+		  file=ParamStr(1);
+
+	blockMenu(true);
+	Form2->ProgressBar1->Position=Form2->ProgressBar1->Max-1;
+	if (!file.IsEmpty()&&file!=""&&FileExists(file)) {
+		 Form2->log->Caption="Otwieranie projektu: "+ExtractFileName(file);
+		 piwo=new PIWOEngine(this);
+		 piwo->Visible=false;
+		 piwo->plugins=&plugins;
+		 piwo->Align=alClient;
+		 piwo->Parent=this;
+		 piwo->OnInformation=OnLogInformation;
+		 piwo->OnWarrning=OnLogWarrning;
+		 piwo->OnError=OnLogError;
+		 piwo->OnDebug=OnLogDebug;
+		 piwo->OnSuccess=OnLogSuccess;
+		 piwo->OnRunInformation=OnLogRunInformation;
+		 piwo->OnRunWarrning=OnLogRunWarrning;
+		 piwo->OnRunError=OnLogRunError;
+		 piwo->OnRunDebug=OnLogRunDebug;
+		 piwo->OnRunSuccess=OnLogRunSuccess;
+		 piwo->OnRunStart=OnRunStart;
+		 piwo->OnRunEnd=OnRunEnd;
+		 piwo->OnRunProgress=OnRunProgress;
+		 piwo->OnChanged=OnChanged;
+		if (!piwo->loadFromFile(file))
+		{
+		   Application->MessageBox(("Niemo¿na odczytaæ projektu z pliku: "+file).c_str(), "Otwieranie projektu", MB_OK | MB_ICONERROR);
+		   delete piwo;
+		   piwo=NULL;
+		   newProject();
+		}
+		else
+		{
+		   fileName=file;
+		   blockMenu(false);
+		   piwo->Visible=true;
+		   Form1->Caption=CAPTION;
+		   Form1->Caption=Form1->Caption+" - "+ExtractFileName(file);
+		   StatusBar1->SimpleText=OpenDialog1->FileName;
+		}
+	}
+	else
+	{
+       Form2->log->Caption="Tworzenie nowego projektu";
+	   newProject();
+    }
 
 	Form2->log->Caption="Wczytywanie interfejsu";
 	Form2->ProgressBar1->Position=Form2->ProgressBar1->Max;
 	Application->ProcessMessages();
-	blockMenu(true);
 	//Tworzenie szablonu PIWOEngine;
-	newProject();
-
+    addExt("piwo");
 	Sleep(500);
 	Form1->Visible=true;
 	Form1->Enabled=false;
@@ -497,6 +544,7 @@ void __fastcall TForm1::PageControl1Change(TObject *Sender)
 //---------------------------------------------------------------------------
 void TForm1::OnRunStart(TObject* Sender)
 {
+	ListView2->Items->Clear();
 	Timer1->Enabled=true;
 	Label1->Caption="";
 	CGauge1->Progress=0;
@@ -557,6 +605,7 @@ void TForm1::blockMenu(bool blocked)
 	  Exportujjakoobraz1->Enabled=!blocked;
 	  Zakocz1->Enabled=!blocked;
 	  piwo->Enabled=!blocked;
+	  Sprawdprojekt1->Enabled=!blocked;
   }
   else
   {
@@ -578,6 +627,7 @@ void TForm1::blockMenu(bool blocked)
 	  Zapiszjako1->Enabled=false;
 	  Exportujjakoobraz1->Enabled=false;
 	  Zakocz1->Enabled=false;
+	  Sprawdprojekt1->Enabled=false;
   }
 }
 
@@ -602,9 +652,10 @@ void TForm1::newProject()
 	piwo->OnRunStart=OnRunStart;
 	piwo->OnRunEnd=OnRunEnd;
 	piwo->OnRunProgress=OnRunProgress;
+	piwo->OnChanged=OnChanged;
 	blockMenu(false);
-	Caption=CAPTION;
-	Caption+=" - Nowy projekt";
+	Form1->Caption=CAPTION;
+	Form1->Caption=Form1->Caption+" - Nowy projekt";
 	StatusBar1->SimpleText="Nowy projekt";
 }
 
@@ -634,7 +685,7 @@ bool TForm1::closeProject()
    delete piwo;
    piwo=NULL;
    blockMenu(true);
-   Caption=CAPTION;
+   Form1->Caption=CAPTION;
    StatusBar1->SimpleText="";
    return true;
 }
@@ -644,20 +695,51 @@ void TForm1::openProject()
    if (!closeProject()) return;
    if (OpenDialog1->Execute())
    {
-		if (!piwo->loadFromFile(fileName))
+		 piwo=new PIWOEngine(this);
+		 piwo->Visible=false;
+		 piwo->plugins=&plugins;
+		 piwo->Align=alClient;
+		 piwo->Parent=this;
+		 piwo->OnInformation=OnLogInformation;
+		 piwo->OnWarrning=OnLogWarrning;
+		 piwo->OnError=OnLogError;
+		 piwo->OnDebug=OnLogDebug;
+		 piwo->OnSuccess=OnLogSuccess;
+		 piwo->OnRunInformation=OnLogRunInformation;
+		 piwo->OnRunWarrning=OnLogRunWarrning;
+		 piwo->OnRunError=OnLogRunError;
+		 piwo->OnRunDebug=OnLogRunDebug;
+		 piwo->OnRunSuccess=OnLogRunSuccess;
+		 piwo->OnRunStart=OnRunStart;
+		 piwo->OnRunEnd=OnRunEnd;
+		 piwo->OnRunProgress=OnRunProgress;
+		 piwo->OnChanged=OnChanged;
+		if (!piwo->loadFromFile(OpenDialog1->FileName))
 		{
 		   Application->MessageBox(("Niemo¿na odczytaæ projektu z pliku: "+OpenDialog1->FileName).c_str(), "Otwieranie projektu", MB_OK | MB_ICONERROR);
+		   delete piwo;
+		   piwo=NULL;
 		   return;
 		}
 		else
 		{
 		   fileName=OpenDialog1->FileName;
 		   blockMenu(false);
-		   Caption=CAPTION;
-		   Caption+=" - "+ExtractFileName(OpenDialog1->FileName);
+		   piwo->Visible=true;
+		   Form1->Caption=CAPTION;
+		   Form1->Caption=Form1->Caption+" - "+ExtractFileName(OpenDialog1->FileName);
 		   StatusBar1->SimpleText=OpenDialog1->FileName;
-        }
+		}
    }
+}
+
+void TForm1::OnChanged(TObject* Sender)
+{
+	Form1->Caption=CAPTION;
+	if (!fileName.IsEmpty())
+		Form1->Caption=Form1->Caption+" - "+ExtractFileName(fileName)+"*";
+		else
+        Form1->Caption=Form1->Caption+" - Nowy projekt*";
 }
 
 void __fastcall TForm1::Nowy1Click(TObject *Sender)
@@ -681,6 +763,112 @@ void __fastcall TForm1::Otwrz1Click(TObject *Sender)
 void __fastcall TForm1::Duplikujbloki1Click(TObject *Sender)
 {
    piwo->DuplcateSelectedBlocks();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Exportujjakoobraz1Click(TObject *Sender)
+{
+	if (SaveDialog2->Execute())
+	{
+		 if (!piwo->saveToFile(SaveDialog2->FileName))
+		 {
+			Application->MessageBox("Niemo¿na zapisaæ projektu", "Zapisywanie projektu", MB_OK | MB_ICONERROR);
+		 }
+		 else
+		 {
+			fileName=SaveDialog2->FileName;
+			Form1->Caption=CAPTION;
+			Form1->Caption=Form1->Caption+" - "+ExtractFileName(SaveDialog2->FileName);
+			StatusBar1->SimpleText=SaveDialog2->FileName;
+		 }
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Zapiszjako1Click(TObject *Sender)
+{
+  if (fileName.IsEmpty())
+  {
+	  Exportujjakoobraz1Click(Sender);
+	  return;
+  }
+  if (!piwo->saveToFile(fileName))
+  {
+	  Application->MessageBox("Niemo¿na zapisaæ projektu", "Zapisywanie projektu", MB_OK | MB_ICONERROR);
+  }
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::FormCloseQuery(TObject *Sender, bool &CanClose)
+{
+  CanClose=closeProject();
+}
+//---------------------------------------------------------------------------
+
+void TForm1::addExt(const AnsiString &ExtMyFile)
+{
+  TRegistry *Reg=new TRegistry();
+  try{
+  Reg->RootKey= HKEY_CLASSES_ROOT;
+  Reg->OpenKey("." + ExtMyFile, True);
+  Reg->WriteString("", AnsiUpperCase(ExtMyFile) + "file"); //tworzy wartoœæ zawierajaca
+                                                   //nazwe klucza w rejestrze gdzie bed¹ 
+                                                   //znajdowa³y siê dane na
+                                                   //temat naszego pliku dla nas "XYZfile"
+  Reg->CloseKey();  //zamykamy ten klucz i idziemy dalej
+
+
+  Reg->OpenKey(AnsiUpperCase(ExtMyFile) + "file", true); //tworze powy¿szy klucz
+
+  //teraz podaje opis naszego pliku
+  Reg->WriteString("","PIWO Project file 1.0"); //w miejsce kropek podajesz nazwê swojego programu
+  Reg->CloseKey();  //zamykamy ten klucz i idziemy dalej
+
+  //teraz przypisujemy plikowi ikonê
+  Reg->OpenKey(AnsiUpperCase(ExtMyFile) + "file\\DefaultIcon", true);
+  Reg->WriteString("",Application->ExeName + ",2"); //gdzie Application.ExeName to scie¿ka
+                                                 //do pliku zawieraj¹cego ikonê w tym
+                                                 //przypadku w tym przypadku jest to
+                                                 //nazwa i œcie¿ka do Twojego
+                                                 //programu ale mo¿e byæ to równie
+                                                 //dobrze œcie¿ka do innego programu,
+                                                 //œcie¿ka do ikony czy œcie¿ka
+                                                 //do jakiejœ biblioteki zarówno DLLki
+                                                 //jak i ICLki a 0 to nr ikony, je¿eli
+                                                 //plik ma wiêcej ikon nr mo¿e byæ inny
+  Reg->CloseKey();  //zamykamy ten klucz i idziemy dalej
+
+  Reg->OpenKey(AnsiUpperCase(ExtMyFile) + "file\\shell", true);
+  Reg->WriteString("","open"); //etykieta pozycji w menu kontekstowym
+  Reg->CloseKey();
+  Reg->OpenKey(AnsiUpperCase(ExtMyFile) + "file\\shell\\open", true);
+  Reg->WriteString("","&Otwórz"); //etykieta pozycji w menu kontekstowym
+  Reg->CloseKey();
+  Reg->OpenKey(AnsiUpperCase(ExtMyFile) + "file\\shell\\open\\command", true);
+  Reg->WriteString("",Application->ExeName + " \"%1\"");
+  Reg->CloseKey();
+  } catch(...)
+  {
+  }
+  delete Reg;
+}
+void __fastcall TForm1::Sprawdprojekt1Click(TObject *Sender)
+{
+	piwo->validateAll();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Anuluj1Click(TObject *Sender)
+{
+	piwo->abort();	
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ToolButton11Click(TObject *Sender)
+{
+	piwo->DeleteSelectedBlocks();
+	piwo->DeleteSelectedConnection();	
 }
 //---------------------------------------------------------------------------
 

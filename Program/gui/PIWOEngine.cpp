@@ -102,8 +102,6 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->Left=10;
    newBlock->Top=10;
    fun->validate(&(newBlock->block));
-   newBlock->updateVisualComponents();
-   newBlock->Visible=true;
    newBlock->OnConfigClick=OnVisualBlockConfigClick;
    newBlock->OnVisualInputSelected=OnVisualBlockInputSelected;
    newBlock->OnVisualOutputSelected=OnVisualBlockOutputSelected;
@@ -115,6 +113,8 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->OnSelectAdd=OnVisualBlockSelectAdd;
    blocks.push_back(newBlock);
    newBlock->setSelected(true);
+   validateBlock(newBlock);
+   newBlock->Visible=true;
    if (OnInformation!=NULL) OnInformation(this, "Dodano blok: "+name+" #"+IntToStr(number));
    OnVisualBlockSelect(newBlock);
    changed=true;if (OnChanged!=NULL) OnChanged(this);
@@ -2035,13 +2035,248 @@ void PIWOEngine::DuplcateSelectedBlocks()
 
 bool PIWOEngine::saveToFile(const AnsiString &filename)
 {
+	abort(true);
 	//zapisujemy pozycje bloków, konfiguracje bloków, po³¹czenia, potem wykonujemy validacje ka¿dego bloku i ka¿dego po³¹czenia
-	return false;
+	TFileStream *file=new TFileStream(filename, fmCreate);
+	if (file==NULL)
+		{
+			if (OnError!=NULL) OnError(this, "Niemo¿na zapisac projektu do : "+filename);
+			return false;
+		}
+	this->Enabled=false;
+	file->Write("PIWO 1.0",8);
+	putInt(blocks.size(), *file);
+	putInt(connections.size(), *file);
+	for(unsigned int j=0;j<blocks.size();++j)
+	{
+	   putString(blocks[j]->nameOfBlock, *file);
+	   putInt(blocks[j]->numberOfBlock, *file);
+	   blocks[j]->block.getConfig()->saveToStream(*file);
+	   putInt(blocks[j]->Left, *file);
+	   putInt(blocks[j]->Top, *file);
+	   putInt(blocks[j]->block.input.size(), *file);
+	   for(unsigned int k=0;k<blocks[j]->block.input.size();++k)
+	   {
+		   putString(blocks[j]->block.input[k].getName(), *file);
+		   putString(blocks[j]->block.input[k].getDescription(), *file);
+		   putString(blocks[j]->block.input[k].getErrorDescription(), *file);
+		   putInt(blocks[j]->block.input[k].getErrorCode(), *file);
+		   putInt(blocks[j]->block.input[k].allowedTypes.size(), *file);
+		   for(unsigned int o=0;o<blocks[j]->block.input[k].allowedTypes.size();++o)
+			   putString(blocks[j]->block.input[k].allowedTypes[o], *file);
+	   }
+	   putInt(blocks[j]->block.output.size(), *file);
+	   for(unsigned int k=0;k<blocks[j]->block.output.size();++k)
+	   {
+		   putString(blocks[j]->block.output[k].getName(), *file);
+		   putString(blocks[j]->block.output[k].getDescription(), *file);
+		   putString(blocks[j]->block.output[k].getErrorDescription(), *file);
+		   putInt(blocks[j]->block.output[k].getErrorCode(), *file);
+		   putString(blocks[j]->block.output[k].getOutputType(), *file);
+	   }
+	   if (OnDebug!=NULL) OnDebug(this, "Zapisuje blok "+blocks[j]->getTitle()+" do pliku");
+	}
+	//zapisujemy po³¹czenia
+	for(unsigned int j=0;j<connections.size();++j)
+	{
+		int inBlock=-1;
+		int outBlock=-1;
+		int input=-1;
+		int output=-1;
+		//bloki
+		for(unsigned int k=0;((k<blocks.size())&&(inBlock==-1||outBlock==-1));++k)
+		{
+			if (connections[j]->inBlock==blocks[k]) inBlock=k;
+			if (connections[j]->outBlock==blocks[k]) outBlock=k;
+		}
+		//teraz wejœcia, wyjœcia
+		if (inBlock!=-1&&outBlock!=-1)
+		for(unsigned int k=0;k<blocks[outBlock]->block.output.size();++k)
+		{
+		   if (&blocks[outBlock]->block.output[k]==connections[j]->output)
+		   {
+			   output=k;
+			   break;
+		   }
+		}
+		if (inBlock!=-1&&outBlock!=-1)
+		for(unsigned int k=0;k<blocks[inBlock]->block.input.size();++k)
+		{
+		   if (&blocks[inBlock]->block.input[k]==connections[j]->input)
+		   {
+			   input=k;
+			   break;
+		   }
+		}
+		putInt(inBlock, *file);
+		putInt(outBlock, *file);
+		putInt(input, *file);
+		putInt(output, *file);
+		putInt(connections[j]->lines.size(),*file);
+		for(unsigned int k=0;k<connections[j]->lines.size();++k)
+		{
+		   putInt(connections[j]->lines[k]->Resize, *file);
+		}
+	}
+	delete file;
+	changed=false;
+	if (OnSuccess!=NULL) OnSuccess(this, "Zapisano projekt do : "+filename);
+	this->Enabled=true;
+	return true;
 }
 
 bool PIWOEngine::loadFromFile(const AnsiString &filename)
 {
-    return false;
+	//wszystko œmiga tylko trzeba dodaæ logi
+	if (blocks.size()>0) return false;
+	abort(true);
+	TFileStream *file=new TFileStream(filename, fmOpenRead);
+	if (file==NULL)
+		{
+        	if (OnError!=NULL) OnError(this, "Niemo¿na wczytaæ projektu z : "+filename);
+			return false;
+		}
+	char *id=new char[9];
+	file->Read(id, 8);
+	id[8]='\0';
+	AnsiString c=id;
+	delete id;
+	if (c!="PIWO 1.0") {
+		delete file;
+		return false;
+	}
+
+	int blocksCount=getInt(*file);
+	int connectionsCount=getInt(*file);
+	vector<VisualBlock*> newBlocks;
+	for(int i=0;i<blocksCount;++i)
+	{
+		AnsiString name=getString(*file);
+		FunctionDLL *fun=plugins->getFunction(name);
+		if (fun==NULL)
+		{
+			if (OnError!=NULL) OnError(this,"Wczytywanie projektu - Nieznaleziono pluginu o nazwie: "+name);
+			getInt(*file);
+			BlockConfig conf;
+			conf.loadFromStream(*file);
+			getInt(*file);
+			getInt(*file);
+			int z=getInt(*file);
+			for(int k=0;k<z;++k)
+			{
+			  getString(*file);
+			  getString(*file);
+			  getString(*file);
+			  getInt(*file);
+			  int g=getInt(*file);
+			  for(int l=0;l<g;++l)
+				 getString(*file);
+			}
+			z=getInt(*file);
+			for(int k=0;k<z;++k)
+			{
+			  getString(*file);
+			  getString(*file);
+			  getString(*file);
+			  getInt(*file);
+			  getString(*file);
+			}
+            newBlocks.push_back(NULL);
+			continue;
+		}
+
+		VisualBlock *newBlock=new VisualBlock(this->area);
+		newBlock->Parent=this->area;
+		newBlock->nameOfBlock=name;
+		newBlock->numberOfBlock=getInt(*file);
+		if (!newBlock->block.getConfig()->loadFromStream(*file))
+				if (OnWarrning!=NULL) OnWarrning(this,"Wczytywanie projektu - Niewczytano konfiguracji bloku "+name+" #"+IntToStr(newBlock->numberOfBlock));
+		newBlock->setTitle(name+" #"+IntToStr(newBlock->numberOfBlock));
+		newBlock->setConfigButtonGlyph(fun->picture);
+		newBlock->Hint=fun->fullName;
+		if (fun->description!="") newBlock->Hint+="\n"+fun->description;
+		newBlock->Left=getInt(*file);
+		newBlock->Top=getInt(*file);
+		int z=getInt(*file);
+		for(int k=0;k<z;++k)
+		{
+			BlockInput input(getString(*file));
+			input.setDescription(getString(*file));
+			input.setErrorDescription(getString(*file));
+			input.setErrorCode(getInt(*file));
+			int u=getInt(*file);
+			for(int f=0;f<u;++f)
+				input.allowedTypes.push_back(getString(*file));
+			newBlock->block.input.push_back(input);
+		}
+		z=getInt(*file);
+		for(int k=0;k<z;++k)
+		{
+			BlockOutput output(getString(*file));
+			output.setDescription(getString(*file));
+			output.setErrorDescription(getString(*file));
+			output.setErrorCode(getInt(*file));
+			output.setOutputType(getString(*file));
+			newBlock->block.output.push_back(output);
+		}
+		newBlock->Visible=true;
+		newBlock->OnConfigClick=OnVisualBlockConfigClick;
+		newBlock->OnVisualInputSelected=OnVisualBlockInputSelected;
+		newBlock->OnVisualOutputSelected=OnVisualBlockOutputSelected;
+		newBlock->OnVInputHistory=OnVisualBlockInputHistoryClick;
+		newBlock->OnVOutputHistory=OnVisualBlockOutputHistoryClick;
+		newBlock->OnBlockMove=OnVisualBlockMove;
+		newBlock->OnUnselect=OnVisualBlockUnselect;
+		newBlock->OnSelect=OnVisualBlockSelect;
+		newBlock->OnSelectAdd=OnVisualBlockSelectAdd;
+		newBlock->updateVisualComponents();
+		newBlocks.push_back(newBlock);
+		blocks.push_back(newBlock);
+		if (OnDebug!=NULL) OnDebug(this, "Wczytano blok "+newBlock->getTitle()+" z pliku");
+	}
+
+	for(int i=0;i<connectionsCount;++i)
+	{
+		int inBlock=getInt(*file);
+		int outBlock=getInt(*file);
+		int input=getInt(*file);
+		int output=getInt(*file);
+		int z=getInt(*file);
+		if (inBlock==-1||outBlock==-1||input==-1||output==-1||newBlocks[inBlock]==NULL||newBlocks[outBlock]==NULL)
+		{
+		   for(int d=0;d<z;++d) getInt(*file);
+		   continue;
+		}
+
+		//robimy po³¹czenie
+		Connection* con=new Connection(this->area);
+		con->input=&(newBlocks[inBlock]->block.input[input]);
+		con->inBlock=newBlocks[inBlock];
+		con->output=&(newBlocks[outBlock]->block.output[output]);
+		con->outBlock=newBlocks[outBlock];
+		con->OnConnectionSelected=OnConnectionSelect;
+		con->input->connect(con->output->getOutputType());
+		con->draw();
+		if ((unsigned int)z==con->lines.size()) {
+			for(int j=0;j<z;++j)
+			{
+				con->lines[j]->Resize=getInt(*file);
+			}
+		}
+		else
+		for(int d=0;d<z;++d) getInt(*file);
+
+		connections.push_back(con);
+		con->update();
+	}
+
+	for(unsigned int i=0;i<newBlocks.size();++i)
+	{
+		if (newBlocks[i]!=NULL) validateBlock(newBlocks[i]);
+	}
+	delete file;
+	if (OnSuccess!=NULL) OnSuccess(this, "Wczytano projekt z : "+filename);
+	return true;
 }
 
 bool PIWOEngine::isChanged()
@@ -2052,4 +2287,49 @@ bool PIWOEngine::isChanged()
 int PIWOEngine::getBlockCount()
 {
    return blocks.size();
+}
+
+void PIWOEngine::validateAll()
+{
+   if (blocks.size()==0) return;
+   abort(true);
+   for(unsigned int i=0;i<blocks.size();++i)
+   {
+	   validateBlock(blocks[i]);
+   }
+   if (OnInformation!=NULL) OnInformation(this, "Przeprowadzono sprawdzenie wszystkich bloków");
+   if (alwaysRun) run();
+}
+
+void putString(const AnsiString &str, TStream &stream)
+{
+	unsigned int i=str.Length();
+	stream.Write(&i,sizeof(i));
+	if (i==0) return;
+	stream.Write(str.c_str(),i);
+}
+
+void putInt(const int i, TStream &stream)
+{
+   stream.Write(&i,sizeof(i));
+}
+
+AnsiString getString(TStream &stream)
+{
+   unsigned int i=0;
+   stream.Read(&i,sizeof(i));
+   if (i==0) return "";
+   char *s=new char[i+1];
+   stream.Read(s,i);
+   s[i]='\0';
+   AnsiString c=s;
+   delete s;
+   return c;
+}
+
+int getInt(TStream &stream)
+{
+   int i=0;
+   stream.Read(&i,sizeof(i));
+   return i;
 }

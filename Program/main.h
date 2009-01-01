@@ -16,6 +16,7 @@
 #include <ComCtrls.hpp>
 #include <Dialogs.hpp>
 #include <ToolWin.hpp>
+#include <Registry.hpp>
 #include <cgauges.h>
 
 #define CAPTION "PIWO - Projekt Informatyczny Wilqu & Others 1.0"
@@ -84,6 +85,35 @@ __published:	// IDE-managed Components
 	TMenuItem *Anuluj1;
 	TSaveDialog *SaveDialog2;
 	TOpenDialog *OpenDialog1;
+	TToolButton *ToolButton1;
+	TToolButton *ToolButton2;
+	TToolButton *ToolButton3;
+	TToolButton *ToolButton4;
+	TToolButton *ToolButton5;
+	TToolButton *ToolButton6;
+	TToolButton *ToolButton7;
+	TToolButton *ToolButton8;
+	TToolButton *ToolButton9;
+	TToolButton *ToolButton10;
+	TToolButton *ToolButton11;
+	TToolButton *ToolButton12;
+	TToolButton *ToolButton13;
+	TToolButton *ToolButton14;
+	TToolButton *ToolButton15;
+	TToolButton *ToolButton16;
+	TToolButton *ToolButton17;
+	TToolButton *ToolButton18;
+	TToolButton *ToolButton19;
+	TToolButton *ToolButton20;
+	TToolButton *ToolButton21;
+	TToolButton *ToolButton22;
+	TToolButton *ToolButton23;
+	TToolButton *ToolButton24;
+	TToolButton *ToolButton25;
+	TToolButton *ToolButton26;
+	TImageList *ImageList3;
+	TToolButton *ToolButton27;
+	TMenuItem *Sprawdprojekt1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
@@ -113,6 +143,12 @@ __published:	// IDE-managed Components
 	void __fastcall Zakocz1Click(TObject *Sender);
 	void __fastcall Otwrz1Click(TObject *Sender);
 	void __fastcall Duplikujbloki1Click(TObject *Sender);
+	void __fastcall Exportujjakoobraz1Click(TObject *Sender);
+	void __fastcall Zapiszjako1Click(TObject *Sender);
+	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
+	void __fastcall Sprawdprojekt1Click(TObject *Sender);
+	void __fastcall Anuluj1Click(TObject *Sender);
+	void __fastcall ToolButton11Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
@@ -136,12 +172,15 @@ private:
 	void OnRunEnd(TObject* Sender);
 	void OnRunProgress(TObject* Sender,const AnsiString message, const double precent);
 
+	void OnChanged(TObject* Sender);
+
 	void blockMenu(bool blocked);
 	void newProject();
 	bool closeProject();
 	void openProject();
 public:
 	PluginContener plugins;
+	void addExt(const AnsiString &ExtMyFile);
 	__fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
