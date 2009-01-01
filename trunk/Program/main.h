@@ -114,6 +114,7 @@ __published:	// IDE-managed Components
 	TImageList *ImageList3;
 	TToolButton *ToolButton27;
 	TMenuItem *Sprawdprojekt1;
+	TBevel *Bevel1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
@@ -132,7 +133,7 @@ __published:	// IDE-managed Components
 	void __fastcall Wyczylogi1Click(TObject *Sender);
 	void __fastcall MenuItem1Click(TObject *Sender);
 	void __fastcall MenuItem3Click(TObject *Sender);
-	void __fastcall Zapiszdopliku1Click(TObject *Sender);
+	void __fastcall Zapiszdopliku1Zapiszjako1ClickClick(TObject *Sender);
 	void __fastcall MenuItem2Click(TObject *Sender);
 	void __fastcall MenuItem4Click(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -149,10 +150,20 @@ __published:	// IDE-managed Components
 	void __fastcall Sprawdprojekt1Click(TObject *Sender);
 	void __fastcall Anuluj1Click(TObject *Sender);
 	void __fastcall ToolButton11Click(TObject *Sender);
+	void __fastcall ToolButton18Click(TObject *Sender);
+	void __fastcall ToolButton19Click(TObject *Sender);
+	void __fastcall ToolButton20Click(TObject *Sender);
+	void __fastcall ToolButton21Click(TObject *Sender);
+	void __fastcall ToolButton22Click(TObject *Sender);
+	void __fastcall FormDestroy(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
 	AnsiString fileName;
+	bool isBlocked;
+	Graphics::TBitmap *defaultBlockImage;
+	vector<FunctionDLL*> top5Added;
+
 	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
 	void  OnFunctionAddClick(void* Sender);
 
@@ -173,6 +184,10 @@ private:
 	void OnRunProgress(TObject* Sender,const AnsiString message, const double precent);
 
 	void OnChanged(TObject* Sender);
+
+	void OnBlockSelected(TObject* Sender);
+	void OnConnectionSelected(TObject* Sender);
+	void OnNothingSelected(TObject* Sender);
 
 	void blockMenu(bool blocked);
 	void newProject();

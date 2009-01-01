@@ -46,12 +46,71 @@ void  TForm1::OnFunctionAddClick(void* Sender)
 {
 	FunctionDLL* fs=(FunctionDLL*)Sender;
 	piwo->AddBlock(fs->name);
+	for(unsigned int i=0;i<top5Added.size();++i)
+	{
+		if (top5Added[i]==fs)
+		{
+		   top5Added.erase(top5Added.begin()+i);
+		}
+	}
+	top5Added.insert(top5Added.begin(), fs);
+	//teraz czas nadpisaæ :D
+	while(top5Added.size()>5)
+		   top5Added.erase(top5Added.begin()+5);
+	while (ImageList3->Count>15)
+	{
+	   ImageList3->Delete(15);
+	}
+	//reinicjujemy przyciski D:
+	for(unsigned int i=0;i<top5Added.size();++i)
+	{
+		int imageId=14;
+		if (top5Added[i]->picture!=NULL) {
+			Graphics::TBitmap *bmp=new Graphics::TBitmap();
+			bmp->Width=22;
+			bmp->Height=22;
+			TRect tmp2;
+			tmp2.Left=0;
+			tmp2.Right=22;
+			tmp2.Top=0;
+			tmp2.Bottom=22;
+			bmp->Canvas->StretchDraw(tmp2, top5Added[i]->picture);
+			imageId=ImageList3->AddMasked(bmp, clFuchsia);
+			delete bmp;
+		}
+
+		TToolButton *bt=(TToolButton*)(Form1->FindComponent("ToolButton"+IntToStr(18+i)));
+		if (bt!=NULL)
+		{
+		   bt->Caption=top5Added[i]->fullName;
+		   bt->Hint=top5Added[i]->fullName;
+		   if (!top5Added[i]->description.IsEmpty()) bt->Hint=bt->Hint+" : "+top5Added[i]->description;
+		   bt->Enabled=true;
+		   bt->ImageIndex=imageId;
+		}
+	}
+	for(unsigned int i=top5Added.size();i<5;++i)
+	{
+		TToolButton *bt=(TToolButton*)(Form1->FindComponent("ToolButton"+IntToStr(18+i)));
+		if (bt!=NULL)
+		{
+		   bt->Caption="";
+		   bt->Hint="";
+		   bt->Enabled=false;
+		   bt->ImageIndex=-1;
+		}
+	}
 }
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 	Application->CreateForm(__classid(TForm2), &Form2);
 	//Form1->DoubleBuffered=true;
+	defaultBlockImage=new Graphics::TBitmap();
+	defaultBlockImage->LoadFromResourceID((int)HInstance, 155);
+	defaultBlockImage->TransparentColor=clBlack;
+	defaultBlockImage->Transparent=true;
+
 	Form2->ProgressBar1->Visible=false;
 	Form2->Visible=true;
 	piwo=NULL;
@@ -89,6 +148,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 		 piwo->OnRunEnd=OnRunEnd;
 		 piwo->OnRunProgress=OnRunProgress;
 		 piwo->OnChanged=OnChanged;
+		 piwo->OnBlockSelected=OnBlockSelected;
+		 piwo->OnConnectionSelected=OnConnectionSelected;
+		 piwo->OnNothingSelected=OnNothingSelected;
+		 piwo->defaultBlockImage=defaultBlockImage;
 		if (!piwo->loadFromFile(file))
 		{
 		   Application->MessageBox(("Niemo¿na odczytaæ projektu z pliku: "+file).c_str(), "Otwieranie projektu", MB_OK | MB_ICONERROR);
@@ -409,9 +472,11 @@ void __fastcall TForm1::Uruchomwszystko1Click(TObject *Sender)
 
 void __fastcall TForm1::Uruchom3Click(TObject *Sender)
 {
-  Uruchom3->Checked=!Uruchom3->Checked;
-  piwo->alwaysRun=Uruchom3->Checked;
-  piwo->run();
+  piwo->alwaysRun=!piwo->alwaysRun;
+  Uruchom3->ImageIndex=piwo->alwaysRun?22:21;
+  ToolButton14->ImageIndex=piwo->alwaysRun?12:13;
+  ToolButton14->Down=piwo->alwaysRun;
+  if (piwo->alwaysRun) piwo->run();
 }
 //---------------------------------------------------------------------------
 
@@ -443,7 +508,7 @@ void __fastcall TForm1::MenuItem3Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Zapiszdopliku1Click(TObject *Sender)
+void __fastcall TForm1::Zapiszdopliku1Zapiszjako1ClickClick(TObject *Sender)
 {
 	SaveDialog1->FileName="Main Log.log";
 	if (SaveDialog1->Execute()) {
@@ -549,15 +614,14 @@ void TForm1::OnRunStart(TObject* Sender)
 	Label1->Caption="";
 	CGauge1->Progress=0;
 	Application->ProcessMessages();
+	blockMenu(isBlocked);
 }
 
 void TForm1::OnRunEnd(TObject* Sender)
 {
 	Panel2->Visible=false;
 	Timer1->Enabled=false;
-	Uruchom3->Enabled=true;
-	Uruchomwszystko1->Enabled=true;
-	Anuluj1->Enabled=false;
+	blockMenu(isBlocked);
 }
 
 void TForm1::OnRunProgress(TObject* Sender,const AnsiString message, const double precent)
@@ -584,28 +648,61 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 
 void TForm1::blockMenu(bool blocked)
 {
+  isBlocked=blocked;
   if (piwo!=NULL)
   {
 	  plugins.setMenuItemsStatus(!blocked);
-	  Uruchom3->Enabled=!blocked;
-	  Uruchomwszystko1->Enabled=!blocked;
-	  Anuluj1->Enabled=blocked;
-	  Zaznaczwszystkiebloki1->Enabled=!blocked;
-	  Odznaczwszystkiebloki1->Enabled=!blocked;
-	  Odwrzaznaczenieblokw1->Enabled=!blocked;
-	  Duplikujbloki1->Enabled=!blocked;
-	  Usubloki1->Enabled=!blocked;
-	  Usuzaznaczonebloki1->Enabled=!blocked;
-	  Odznaczzaznaczonepoaczenie1->Enabled=!blocked;
-	  Usuwszystkiepoczenia1->Enabled=!blocked;
-	  Usuzaznaczonepoczenie1->Enabled=!blocked;
-	  Zresetujwszystkiepoczenia1->Enabled=!blocked;
-	  Zresetujzaznaczonepoczenie1->Enabled=!blocked;
+	  Uruchom3->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  Uruchomwszystko1->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  Anuluj1->Enabled=(!blocked)&&(piwo->isRuned());
+
+	  Zaznaczwszystkiebloki1->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  Odznaczwszystkiebloki1->Enabled=(!blocked)&&(piwo->isBlockSelected());
+	  Odwrzaznaczenieblokw1->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  Duplikujbloki1->Enabled=(!blocked)&&(piwo->isBlockSelected());;
+	  Usubloki1->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  Usuzaznaczonebloki1->Enabled=(!blocked)&&(piwo->isBlockSelected());;
+	  Odznaczzaznaczonepoaczenie1->Enabled=(!blocked&&piwo->isConnectionSelected());
+	  Usuwszystkiepoczenia1->Enabled=(!blocked)&&(piwo->getConnectionsCount()!=0);
+	  Usuzaznaczonepoczenie1->Enabled=(!blocked&&piwo->isConnectionSelected());
+	  Zresetujwszystkiepoczenia1->Enabled=(!blocked)&&(piwo->getConnectionsCount()!=0);
+	  Zresetujzaznaczonepoczenie1->Enabled=(!blocked)&&(piwo->isConnectionSelected());
+
 	  Zapiszjako1->Enabled=!blocked;
 	  Exportujjakoobraz1->Enabled=!blocked;
 	  Zakocz1->Enabled=!blocked;
 	  piwo->Enabled=!blocked;
-	  Sprawdprojekt1->Enabled=!blocked;
+
+	  Sprawdprojekt1->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+
+	  Uruchom3->ImageIndex=piwo->alwaysRun?22:21;
+	  ToolButton14->ImageIndex=piwo->alwaysRun?12:13;
+	  ToolButton14->Down=piwo->alwaysRun;
+	  
+	  ToolButton3->Enabled=!blocked;
+	  ToolButton5->Enabled=!blocked;
+	  ToolButton7->Enabled=!blocked;
+	  ToolButton9->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  ToolButton10->Enabled=(!blocked)&&(piwo->isBlockSelected());
+	  ToolButton11->Enabled=(!blocked)&&(piwo->isBlockSelected()||piwo->isConnectionSelected());
+	  ToolButton12->Enabled=!blocked&&piwo->isConnectionSelected();
+	  ToolButton14->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  ToolButton15->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  ToolButton16->Enabled=(!blocked)&&(piwo->isRuned());
+	  ToolButton27->Enabled=(!blocked)&&(piwo->getBlockCount()!=0);
+	  ToolButton18->Enabled=!blocked;
+	  ToolButton19->Enabled=!blocked;
+	  ToolButton20->Enabled=!blocked;
+	  ToolButton21->Enabled=!blocked;
+	  ToolButton22->Enabled=!blocked;
+	  for(unsigned int i=0;i<5;++i)
+	  {
+		TToolButton *bt=(TToolButton*)(Form1->FindComponent("ToolButton"+IntToStr(18+i)));
+		if (bt!=NULL)
+		{
+		   bt->Enabled=(i<top5Added.size())&&(!blocked);
+		}
+	  }
   }
   else
   {
@@ -628,6 +725,26 @@ void TForm1::blockMenu(bool blocked)
 	  Exportujjakoobraz1->Enabled=false;
 	  Zakocz1->Enabled=false;
 	  Sprawdprojekt1->Enabled=false;
+	  Uruchom3->ImageIndex=21;
+	  ToolButton14->ImageIndex=13;
+	  ToolButton14->Down=false;
+
+	  ToolButton3->Enabled=false;
+	  ToolButton5->Enabled=false;
+	  ToolButton7->Enabled=false;
+	  ToolButton9->Enabled=false;
+	  ToolButton10->Enabled=false;
+	  ToolButton11->Enabled=false;
+	  ToolButton12->Enabled=false;
+	  ToolButton14->Enabled=false;
+	  ToolButton15->Enabled=false;
+	  ToolButton16->Enabled=false;
+	  ToolButton27->Enabled=false;
+	  ToolButton18->Enabled=false;
+	  ToolButton19->Enabled=false;
+	  ToolButton20->Enabled=false;
+	  ToolButton21->Enabled=false;
+	  ToolButton22->Enabled=false;
   }
 }
 
@@ -653,10 +770,15 @@ void TForm1::newProject()
 	piwo->OnRunEnd=OnRunEnd;
 	piwo->OnRunProgress=OnRunProgress;
 	piwo->OnChanged=OnChanged;
+	piwo->OnBlockSelected=OnBlockSelected;
+	piwo->OnConnectionSelected=OnConnectionSelected;
+	piwo->OnNothingSelected=OnNothingSelected;
+	piwo->defaultBlockImage=defaultBlockImage;
 	blockMenu(false);
 	Form1->Caption=CAPTION;
 	Form1->Caption=Form1->Caption+" - Nowy projekt";
 	StatusBar1->SimpleText="Nowy projekt";
+	Application->Title=Form1->Caption;
 }
 
 bool TForm1::closeProject()
@@ -686,6 +808,7 @@ bool TForm1::closeProject()
    piwo=NULL;
    blockMenu(true);
    Form1->Caption=CAPTION;
+   Application->Title=Form1->Caption;
    StatusBar1->SimpleText="";
    return true;
 }
@@ -714,6 +837,10 @@ void TForm1::openProject()
 		 piwo->OnRunEnd=OnRunEnd;
 		 piwo->OnRunProgress=OnRunProgress;
 		 piwo->OnChanged=OnChanged;
+		 piwo->OnBlockSelected=OnBlockSelected;
+		 piwo->OnConnectionSelected=OnConnectionSelected;
+		 piwo->OnNothingSelected=OnNothingSelected;
+		 piwo->defaultBlockImage=defaultBlockImage;
 		if (!piwo->loadFromFile(OpenDialog1->FileName))
 		{
 		   Application->MessageBox(("Niemo¿na odczytaæ projektu z pliku: "+OpenDialog1->FileName).c_str(), "Otwieranie projektu", MB_OK | MB_ICONERROR);
@@ -728,6 +855,7 @@ void TForm1::openProject()
 		   piwo->Visible=true;
 		   Form1->Caption=CAPTION;
 		   Form1->Caption=Form1->Caption+" - "+ExtractFileName(OpenDialog1->FileName);
+		   Application->Title=Form1->Caption;
 		   StatusBar1->SimpleText=OpenDialog1->FileName;
 		}
    }
@@ -738,8 +866,9 @@ void TForm1::OnChanged(TObject* Sender)
 	Form1->Caption=CAPTION;
 	if (!fileName.IsEmpty())
 		Form1->Caption=Form1->Caption+" - "+ExtractFileName(fileName)+"*";
-		else
-        Form1->Caption=Form1->Caption+" - Nowy projekt*";
+	else
+		Form1->Caption=Form1->Caption+" - Nowy projekt*";
+	Application->Title=Form1->Caption;
 }
 
 void __fastcall TForm1::Nowy1Click(TObject *Sender)
@@ -779,6 +908,7 @@ void __fastcall TForm1::Exportujjakoobraz1Click(TObject *Sender)
 			fileName=SaveDialog2->FileName;
 			Form1->Caption=CAPTION;
 			Form1->Caption=Form1->Caption+" - "+ExtractFileName(SaveDialog2->FileName);
+			Application->Title=Form1->Caption;
 			StatusBar1->SimpleText=SaveDialog2->FileName;
 		 }
 	}
@@ -869,6 +999,66 @@ void __fastcall TForm1::ToolButton11Click(TObject *Sender)
 {
 	piwo->DeleteSelectedBlocks();
 	piwo->DeleteSelectedConnection();	
+}
+//---------------------------------------------------------------------------
+
+void TForm1::OnBlockSelected(TObject* Sender)
+{
+   blockMenu(isBlocked);
+}
+
+void TForm1::OnConnectionSelected(TObject* Sender)
+{
+   blockMenu(isBlocked);
+}
+
+void TForm1::OnNothingSelected(TObject* Sender)
+{
+   blockMenu(isBlocked);
+}
+void __fastcall TForm1::ToolButton18Click(TObject *Sender)
+{
+	if (top5Added.size()>0) {
+	 OnFunctionAddClick(top5Added[0]);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ToolButton19Click(TObject *Sender)
+{
+	if (top5Added.size()>1) {
+	 OnFunctionAddClick(top5Added[1]);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ToolButton20Click(TObject *Sender)
+{
+	if (top5Added.size()>2) {
+	 OnFunctionAddClick(top5Added[2]);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ToolButton21Click(TObject *Sender)
+{
+	if (top5Added.size()>3) {
+	 OnFunctionAddClick(top5Added[3]);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ToolButton22Click(TObject *Sender)
+{
+	if (top5Added.size()>4) {
+	 OnFunctionAddClick(top5Added[4]);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormDestroy(TObject *Sender)
+{
+	delete defaultBlockImage;
 }
 //---------------------------------------------------------------------------
 
