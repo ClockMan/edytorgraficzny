@@ -250,6 +250,7 @@
         <FILE FILENAME="brige\FunctionDLL.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="FunctionDLL" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="brige\PluginContener.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PluginContener" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="brige\TypeDLL.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TypeDLL" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="fileicon.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="fileicon" FORMNAME="" DESIGNCLASS=""/>
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
@@ -258,7 +259,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">362</VersionInfo>
+          <VersionInfo Name="Build">412</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -270,7 +271,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.362</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.412</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
