@@ -259,7 +259,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">412</VersionInfo>
+          <VersionInfo Name="Build">434</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -269,16 +269,16 @@
           <VersionInfo Name="CodePage">1250</VersionInfo>
         </VersionInfo>
         <VersionInfoKeys>
-          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.412</VersionInfoKeys>
-          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
-          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
-          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
-          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
-          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName">PWSZ Tarnów</VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription">PIWO: Projekt Informatyczny Wilqu &amp; Others</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.434</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName">P.I.W.O.</VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright">PWSZ Tarnów</VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks">PWSZ Tarnów</VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename">PIWO.exe</VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName">PIWO: Projekt Informatyczny Wilqu &amp; Others</VersionInfoKeys>
           <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
-          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+          <VersionInfoKeys Name="Comments">https://edytorgraficzny.googlecode.com/</VersionInfoKeys>
         </VersionInfoKeys>
         <Debugging>
           <Debugging Name="DebugSourceDirs"></Debugging>

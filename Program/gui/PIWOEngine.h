@@ -20,7 +20,6 @@ class PIWOEngine : public TPanel
 {
 	private:
 		PIWOMAINCLASSTYPE *area;
-
 		vector<VisualBlock*> blocks;
 		vector<Connection*> connections;
         Connection*	selectedConnection;
@@ -57,6 +56,8 @@ class PIWOEngine : public TPanel
 		unsigned int runProgress;
 		bool changed;
 	public:
+		Graphics::TBitmap *defaultBlockImage;
+		
 		PIWOEngine_Log OnInformation;
 		PIWOEngine_Log OnDebug;
 		PIWOEngine_Log OnSuccess;
@@ -68,6 +69,11 @@ class PIWOEngine : public TPanel
 		PIWOEngine_Log OnRunSuccess;
 		PIWOEngine_Log OnRunWarrning;
 		PIWOEngine_Log OnRunError;
+
+		PIWOEngine_Event OnBlockSelected;
+		PIWOEngine_Event OnConnectionSelected;
+		PIWOEngine_Event OnNothingSelected;
+
 		PIWOEngine_Event OnChanged;
 
 		PIWOEngine_RunProgress OnRunProgress;
@@ -105,6 +111,9 @@ class PIWOEngine : public TPanel
 		bool loadFromFile(const AnsiString &filename);
 		bool isChanged();
 		int getBlockCount();
+		int getConnectionsCount();
+		bool isBlockSelected();
+		bool isConnectionSelected();
 };
 
 void putString(const AnsiString &str,TStream &stream);

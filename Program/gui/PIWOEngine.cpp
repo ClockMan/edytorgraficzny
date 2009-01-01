@@ -47,6 +47,13 @@ __fastcall PIWOEngine::PIWOEngine(TComponent* Owner)
   OnRunProgress=NULL;
   OnRunStart=NULL;
   OnRunEnd=NULL;
+
+  OnBlockSelected=NULL;
+  OnConnectionSelected=NULL;
+  OnNothingSelected=NULL;
+
+  defaultBlockImage=NULL;
+  
   changed=false;
 }
 
@@ -96,7 +103,7 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->nameOfBlock=name;
    newBlock->numberOfBlock=number;
    newBlock->setTitle(name+" #"+IntToStr(number));
-   newBlock->setConfigButtonGlyph(fun->picture);
+   if (!newBlock->setConfigButtonGlyph(fun->picture)) newBlock->setConfigButtonGlyph(defaultBlockImage);
    newBlock->Hint=fun->fullName;
    if (fun->description!="") newBlock->Hint+="\n"+fun->description;
    newBlock->Left=10;
@@ -117,7 +124,14 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->Visible=true;
    if (OnInformation!=NULL) OnInformation(this, "Dodano blok: "+name+" #"+IntToStr(number));
    OnVisualBlockSelect(newBlock);
-   changed=true;if (OnChanged!=NULL) OnChanged(this);
+   changed=true;
+   if (OnChanged!=NULL) OnChanged(this);
+      if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
    if (alwaysRun) run();
    return true;
 }
@@ -494,7 +508,14 @@ bool PIWOEngine::MakeConnection(VisualBlock* outputBlock, VisualOutput* output, 
 	changed=true;if (OnChanged!=NULL) OnChanged(this);
 	if (OnInformation!=NULL) OnInformation(this, "Dodano po³¹czenie "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+")");
 	OnConnectionSelect(con);
+	if (OnConnectionSelected!=NULL) OnConnectionSelected(this);
 	if (OnDebug!=NULL) OnDebug(this, "Tworzenie po³¹czenia "+outputBlock->getTitle()+"("+output->output->getDescription()+") -> "+inputBlock->getTitle()+"("+input->input->getDescription()+") - Zakoñczono");
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 	return true;
 }
 
@@ -776,6 +797,12 @@ void PIWOEngine::OnVisualBlockUnselect(TObject* Sender)
    }
    if (OnDebug!=NULL) OnDebug(this, "Odznaczono blok - "+block->getTitle());
    block->setSelected(false);
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 }
 
 void PIWOEngine::OnVisualBlockSelect(TObject* Sender)
@@ -798,6 +825,13 @@ void PIWOEngine::OnVisualBlockSelect(TObject* Sender)
    if (OnDebug!=NULL) OnDebug(this, "Zaznaczono blok - "+((VisualBlock*)Sender)->getTitle());
    selectedBlocks.push_back((VisualBlock*)Sender);
    this->UnselectSelectedConnection();
+
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 }
 
 void PIWOEngine::OnVisualBlockSelectAdd(TObject* Sender)
@@ -816,6 +850,13 @@ void PIWOEngine::OnVisualBlockSelectAdd(TObject* Sender)
    if (OnDebug!=NULL) OnDebug(this, "Zaznaczono blok - "+((VisualBlock*)Sender)->getTitle());
    selectedBlocks.push_back((VisualBlock*)Sender);
    this->UnselectSelectedConnection();
+
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 }
 
 void __fastcall PIWOEngine::onThisClick(TObject* Sender)
@@ -835,6 +876,13 @@ void PIWOEngine::OnConnectionSelect(void* Sender)
    selectedConnection->BringToFront();
    if (OnDebug!=NULL) OnDebug(this, "Zaznaczono po³¹czenie - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
    this->UnselectAllBlocks();
+
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 }
 
 Connection* PIWOEngine::getConnectionTo(VisualInput* input)
@@ -927,6 +975,12 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
    }
    if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Zakoñczono wymagan¹ validacje bloków");
    if (OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Zakoñczono");
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
    if (alwaysRun) run();
    changed=true;if (OnChanged!=NULL) OnChanged(this);
    return true;
@@ -1022,6 +1076,12 @@ bool PIWOEngine::DeleteSelectedBlocks()
 	   validateBlock(blocksToCheck[i]);
    }
    if (blocksToCheck.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie zaznaczonych bloków - Zakoñczono wymagan¹ validacje bloków");
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
    if (alwaysRun) run();
    changed=true;if (OnChanged!=NULL) OnChanged(this);
    return true;
@@ -1046,6 +1106,12 @@ bool PIWOEngine::DeleteAllBlocks()
    if (OnInformation!=NULL) OnInformation(this, "Usuniêto wszystkie bloki i po³¹czenia");
    if (OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich bloków - Zakoñczono");
    changed=true;if (OnChanged!=NULL) OnChanged(this);
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
    return true;
 }
 
@@ -1061,6 +1127,12 @@ void PIWOEngine::SelectAllBlocks()
 	}
   }
   if (OnDebug!=NULL) OnDebug(this, "Zaznaczanie wszystkich bloków - Zakoñczono");
+  if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 }
 
 void PIWOEngine::InvertBlockSelection()
@@ -1081,6 +1153,12 @@ void PIWOEngine::InvertBlockSelection()
     }
   }
   selectedBlocks=newSelections;
+  if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+  else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+  else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
   if (OnDebug!=NULL) OnDebug(this, "Odwracanie zaznaczenia wszystkich bloków - Zakoñczono");
 }
 
@@ -1093,6 +1171,12 @@ void PIWOEngine::UnselectAllBlocks()
 	  if (OnDebug!=NULL) OnDebug(this, "Odznaczanie wszystkich bloków - Odznaczono block:"+selectedBlocks[0]->getTitle());
 	  selectedBlocks.erase(selectedBlocks.begin());
    }
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
    if (OnDebug!=NULL) OnDebug(this, "Odznaczanie wszystkich bloków - Zakoñczono");
 }
 
@@ -1118,6 +1202,12 @@ bool PIWOEngine::DeleteSelectedConnection()
 	  }
 	  selectedConnection=NULL;
 	  changed=true;if (OnChanged!=NULL) OnChanged(this);
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 	  if (alwaysRun) run();
 	  return true;
    } else return false;
@@ -1154,6 +1244,12 @@ bool PIWOEngine::DeleteAllConnections()
    if (list.size()>0&&OnDebug!=NULL) OnDebug(this, "Usuwanie wszystkich po³¹czeñ - Zakoñczono wymagan¹ validacje bloków");
    if (OnInformation!=NULL) OnInformation(this, "Usuniêto wszystkie po³¹czenia");
    changed=true;if (OnChanged!=NULL) OnChanged(this);
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
    if (alwaysRun) run();
    return true;
 }
@@ -1166,6 +1262,12 @@ void PIWOEngine::UnselectSelectedConnection()
 	  if (OnDebug!=NULL) OnDebug(this, "Odznaczono po³¹czenie - "+selectedConnection->outBlock->getTitle()+"("+selectedConnection->output->getDescription()+") -> "+selectedConnection->inBlock->getTitle()+"("+selectedConnection->input->getDescription()+")");
 	  selectedConnection=NULL;
    }
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 }
 
 void PIWOEngine::CancelCustomizationOnSelectedConnections()
@@ -1271,9 +1373,9 @@ bool PIWOEngine::runUsingHistory()
 	if (!stopRunning&&!status&&OnWarrning!=NULL) {
 		  OnWarrning(this, "Zakoñczono uruchamianie");
 	}
-	if (OnRunEnd!=NULL) OnRunEnd(this);
 	stopRunning=false;
 	isRunning=false;
+	if (OnRunEnd!=NULL) OnRunEnd(this);
 	return status;
 }
 
@@ -1360,9 +1462,9 @@ bool PIWOEngine::runNotUsingHistory()
 	if (!stopRunning&&!status&&OnWarrning!=NULL) {
 		  OnWarrning(this, "Zakoñczono uruchamianie");
 	}
-	if (OnRunEnd!=NULL) OnRunEnd(this);
-	stopRunning=false;
 	isRunning=false;
+	stopRunning=false;
+	if (OnRunEnd!=NULL) OnRunEnd(this);
 	return status;
 }
 
@@ -1499,7 +1601,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 						  }
 					  }
 				  }
-              }
+			  }
 		   }
 		   else
 		   {
@@ -1634,7 +1736,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		  block->history.erase(block->history.begin()+10);
 		}
 	}
-	
+
 	//@TODO rozwa¿yæ u¿ycie histori dla bloków nie posiadaj¹cych wyjœcia, czyli np dla bloczków z³u¿¹cych do zapisu obrazu do pliku [mo¿liwe ¿e te bloki zostan¹ w przysz³oœci usuniête]
 	if (history!=NULL) {
 		//mamy historie, inicjujemy wyjœcia i zwracamy true, i wrzucamy historie z powrotem na stos :d
@@ -1917,6 +2019,7 @@ void PIWOEngine::DuplcateSelectedBlocks()
 	for(unsigned int i=0;i<selectedBlocks.size();++i)
 	{
 		//tworzymy nowe bloki
+		selectedBlocks[i]->setSelected(false);
 		FunctionDLL *fun=plugins->getFunction(selectedBlocks[i]->nameOfBlock);
 		if (fun==NULL) {
 				if (OnDebug!=NULL) OnDebug(this,"Duplikowanie bloków: Nieznaleziono pluginu o nazwie: "+selectedBlocks[i]->nameOfBlock);
@@ -1930,6 +2033,7 @@ void PIWOEngine::DuplcateSelectedBlocks()
 			for(unsigned int j=0;j<blocks.size();++j)
 			{
 				if (blocks[j]->nameOfBlock==selectedBlocks[i]->nameOfBlock && blocks[j]->numberOfBlock==number) {
+				    busy=true;
 					break;
 				}
 			}
@@ -1940,7 +2044,7 @@ void PIWOEngine::DuplcateSelectedBlocks()
 		newBlock->nameOfBlock=selectedBlocks[i]->nameOfBlock;
 		newBlock->numberOfBlock=number;
 		newBlock->setTitle(selectedBlocks[i]->nameOfBlock+" #"+IntToStr(number));
-		newBlock->setConfigButtonGlyph(fun->picture);
+		if (!newBlock->setConfigButtonGlyph(fun->picture)) newBlock->setConfigButtonGlyph(defaultBlockImage);
 		newBlock->Hint=fun->fullName;
 		 if (fun->description!="") newBlock->Hint+="\n"+fun->description;
 		newBlock->Left=selectedBlocks[i]->Left+100;
@@ -1974,7 +2078,6 @@ void PIWOEngine::DuplcateSelectedBlocks()
 		int endId=-1;
 		for(unsigned int j=0;j<selectedBlocks.size()&&(beginId==-1||endId==-1);++j)
 		{
-            selectedBlocks[j]->setSelected(false);
 			if (selectedBlocks[j]==connections[i]->inBlock) {
 			   beginId=j;
 			   continue;
@@ -2030,6 +2133,12 @@ void PIWOEngine::DuplcateSelectedBlocks()
 	}
 	selectedBlocks=newBlocks;
 	changed=true;if (OnChanged!=NULL) OnChanged(this);
+   if (selectedBlocks.size()!=0&&OnBlockSelected!=NULL)
+		OnBlockSelected(this);
+   else if (selectedConnection!=NULL&&OnConnectionSelected!=NULL)
+		OnConnectionSelected(this);
+   else if (selectedConnection==NULL&&selectedBlocks.size()==0&&OnNothingSelected!=NULL)
+		OnNothingSelected(this);
 	if (alwaysRun) run();
 }
 
@@ -2192,7 +2301,7 @@ bool PIWOEngine::loadFromFile(const AnsiString &filename)
 		if (!newBlock->block.getConfig()->loadFromStream(*file))
 				if (OnWarrning!=NULL) OnWarrning(this,"Wczytywanie projektu - Niewczytano konfiguracji bloku "+name+" #"+IntToStr(newBlock->numberOfBlock));
 		newBlock->setTitle(name+" #"+IntToStr(newBlock->numberOfBlock));
-		newBlock->setConfigButtonGlyph(fun->picture);
+		if (!newBlock->setConfigButtonGlyph(fun->picture)) newBlock->setConfigButtonGlyph(defaultBlockImage);
 		newBlock->Hint=fun->fullName;
 		if (fun->description!="") newBlock->Hint+="\n"+fun->description;
 		newBlock->Left=getInt(*file);
@@ -2299,6 +2408,21 @@ void PIWOEngine::validateAll()
    }
    if (OnInformation!=NULL) OnInformation(this, "Przeprowadzono sprawdzenie wszystkich bloków");
    if (alwaysRun) run();
+}
+
+bool PIWOEngine::isBlockSelected()
+{
+   return selectedBlocks.size()!=0;
+}
+
+int PIWOEngine::getConnectionsCount()
+{
+	return connections.size();
+}
+
+bool PIWOEngine::isConnectionSelected()
+{
+   return selectedConnection!=NULL;
 }
 
 void putString(const AnsiString &str, TStream &stream)
