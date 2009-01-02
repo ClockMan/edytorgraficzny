@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-12-31 13:03:09.287.cpp,C:\Users\Sławek\Documents\Borland Studio Projects\Unit1.cpp=F:\PI\testy\Bloczki\Subtraction\subtraction_dll.cpp</Transaction>
+    <Transaction>2008-12-31 13:03:29.117.bdsproj,C:\Users\Sławek\Documents\Borland Studio Projects\Project1.bdsproj=F:\PI\testy\Bloczki\Subtraction\subtraction.bdsproj</Transaction>
+    <Transaction>2008-12-31 13:19:41.841.cpp,F:\PI\testy\Bloczki\Subtraction\Unit1.cpp=F:\PI\testy\Bloczki\Subtraction\subtraction.cpp</Transaction>
+    <Transaction>2008-12-31 13:19:41.841.h,F:\PI\testy\Bloczki\Subtraction\Unit1.h=F:\PI\testy\Bloczki\Subtraction\subtraction.h</Transaction>
+  </Transactions>
+</BorlandProject>
