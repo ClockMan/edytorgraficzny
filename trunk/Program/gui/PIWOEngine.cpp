@@ -561,7 +561,6 @@ void PIWOEngine::OnVisualBlockInputSelected(VisualInput* input,  TObject* Sender
 				}
 			}
 			delete con;
-			con=NULL;
 			validateBlock((VisualBlock*)Sender);
 			changed=true;if (OnChanged!=NULL) OnChanged(this);
 			runs=true;
@@ -633,7 +632,6 @@ void PIWOEngine::OnVisualBlockOutputSelected(VisualOutput* output,  TObject* Sen
 				}
 			}
 			delete con;
-			con=NULL;
 			validateBlock((VisualBlock*)Sender);
 			changed=true;if (OnChanged!=NULL) OnChanged(this);
 		}

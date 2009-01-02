@@ -71,7 +71,7 @@ int __stdcall validate(Block *aBlock)
 
 		BlockOutput output1("output1");
 		output1.setOutputType("Bitmap24bit");
-		output1.setDescription("Domslne wyjscie");
+		output1.setDescription("Domyslne wyjscie");
 		output1.setErrorCode(1);
 		output1.setErrorDescription("Brak obiektu na wyjsciu");
 		aBlock->output.push_back(output1);
@@ -81,37 +81,35 @@ int __stdcall validate(Block *aBlock)
 	}
 	else
 	{
+			int rate = aBlock->getConfig()->getInt("rate");
+			if(rate == pf1bit)
+				aBlock->output[0].setOutputType("Bitmap1bit");
+			else if(rate == pf4bit)
+				aBlock->output[0].setOutputType("Bitmap4bit");
+			else if(rate == pf8bit)
+				aBlock->output[0].setOutputType("Bitmap8bit");
+			else if(rate == pf15bit)
+				aBlock->output[0].setOutputType("Bitmap16bit");
+			else if(rate == pf24bit)
+				aBlock->output[0].setOutputType("Bitmap24bit");
+			else if(rate == pf32bit)
+				aBlock->output[0].setOutputType("Bitmap32bit");
+
 		if(aBlock->input[0].getConnectedType().IsEmpty())
 		{
 			aBlock->input[0].setErrorCode(1);
 			aBlock->input[0].setErrorDescription("Brak obiektu na wejsciu");
 			aBlock->output[0].setErrorCode(1);
 			aBlock->output[0].setErrorDescription("Brak obiektu na wejsciu");
-			aBlock->output[0].setOutputType("Bitmap24bit");
-			return 1;
-		} 
+		}
 		else
 		{
-			if (aBlock->output[0].getOutputType()!= aBlock->input[0].getConnectedType())
-			{
-				aBlock->output[0].setOutputType(aBlock->input[0].getConnectedType());
-				aBlock->input[0].setErrorCode(0);
-				aBlock->output[0].setErrorCode(0);
-				aBlock->input[0].setErrorDescription("");
-				aBlock->output[0].setErrorDescription("");
-				return 1;
-			}
-			else if(aBlock->input[0].getErrorCode() != 0 || aBlock->output[0].getErrorCode() != 0)
-			{
-				aBlock->input[0].setErrorCode(0);
-				aBlock->output[0].setErrorCode(0);
-				aBlock->input[0].setErrorDescription("");
-				aBlock->output[0].setErrorDescription("");
-				return 1;
-			}
-			else 
-				return 0;
+			aBlock->input[0].setErrorCode(0);
+			aBlock->input[0].setErrorDescription("");
+			aBlock->output[0].setErrorCode(0);
+			aBlock->output[0].setErrorDescription("");
 		}
+		return 1;
 	}
 }
 //---------------------------------------------------------------------------
@@ -177,7 +175,7 @@ int __stdcall run(Block *aBlock)
 		IBitmap8bit::setBitmap(copy, *picture);
 	}
 	else if(rate == pf15bit) //ma byc pf15bit!! nie zmieniac
-	{
+	{						 //a miej se swój 15 lol'u, IBitmap16bit::setBitmap i tak ustawi go na pf16bit
 		copy = IBitmap16bit::getNew();
 		IBitmap16bit::setBitmap(copy, *picture);
 	}
