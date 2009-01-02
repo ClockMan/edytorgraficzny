@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 533
+  ClientHeight = 553
   ClientWidth = 660
   Color = clBtnFace
   Constraints.MinHeight = 300
@@ -506,19 +506,21 @@ object Form1: TForm1
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 514
+    Top = 534
     Width = 660
     Height = 19
     Panels = <>
     SimplePanel = True
+    ExplicitTop = 514
   end
   object Panel1: TPanel
     Left = 0
-    Top = 408
+    Top = 428
     Width = 660
     Height = 106
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 408
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -947,7 +949,7 @@ object Form1: TForm1
   end
   object Panel2: TPanel
     Left = 0
-    Top = 386
+    Top = 406
     Width = 660
     Height = 22
     Align = alBottom
@@ -955,6 +957,7 @@ object Form1: TForm1
     BorderStyle = bsSingle
     TabOrder = 3
     Visible = False
+    ExplicitTop = 386
     object CGauge1: TCGauge
       Left = 209
       Top = 0
@@ -1130,7 +1133,7 @@ object Form1: TForm1
       object Usuzaznaczonebloki1: TMenuItem
         Caption = 'Usu'#324' zaznaczone bloki'
         ImageIndex = 9
-        ShortCut = 46
+        ShortCut = 32836
         OnClick = Usuzaznaczonebloki1Click
       end
       object Odznaczzaznaczonepoaczenie1: TMenuItem
@@ -1149,7 +1152,7 @@ object Form1: TForm1
       object Usuzaznaczonepoczenie1: TMenuItem
         Caption = 'Usu'#324' zaznaczone po'#322#261'czenie'
         ImageIndex = 9
-        ShortCut = 46
+        ShortCut = 8260
         OnClick = Usuzaznaczonepoczenie1Click
       end
       object Zresetujwszystkiepoczenia1: TMenuItem

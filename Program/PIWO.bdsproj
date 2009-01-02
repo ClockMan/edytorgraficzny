@@ -268,7 +268,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">1</VersionInfo>
-          <VersionInfo Name="Build">451</VersionInfo>
+          <VersionInfo Name="Build">453</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">True</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -280,7 +280,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName">PWSZ Tarnów</VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription">PIWO: Projekt Informatyczny Wilqu &amp; Others</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.1.451</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.1.453</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName">P.I.W.O.</VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright">PWSZ Tarnów</VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks">PWSZ Tarnów</VersionInfoKeys>
