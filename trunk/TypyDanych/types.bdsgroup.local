@@ -4,6 +4,6 @@
     <Transaction>2008-12-29 19:15:03.671.bdsgroup,D:\system\ClockMan\Moje dokumenty\Borland Studio Projects\ProjectGroup1.bdsgroup=D:\System\ClockMan\Pulpit\PIWO\TypyDanych\types.bdsgroup</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="Bitmap1bit.dll"/>
+		<Projects ActiveProject="Bitmap32bit.dll"/>
 	</Default.Personality>
 </BorlandProject>
