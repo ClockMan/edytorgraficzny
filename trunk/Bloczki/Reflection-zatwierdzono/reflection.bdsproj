@@ -29,7 +29,7 @@
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
         <property category="build.node" name="name" value="reflection.dll"/>
-        <property category="build.node" name="packages" value="vclx;vcl;rtl;dbrtl;vcldb;adortl;dbxcds;dbexpress;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;soaprtl;dsnap;bdertl;vcldbx;vclib;ibxpress;vclactnband;IntrawebDB_80_100;Intraweb_80_100;indy;bcbofficexp;bcbsmp;bcbie;teeui;teedb;tee"/>
+        <property category="build.node" name="packages" value="vclx;vcl;rtl"/>
         <property category="build.node" name="sparelibs" value="rtl.lib vcl.lib"/>
         <property category="build.node" name="use_packages" value="1"/>
         <property category="build.platform" name="active" value="win32"/>
@@ -294,12 +294,12 @@
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
-          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
-          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">True</VersionInfo>
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Build">2</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -310,8 +310,8 @@
         </VersionInfo>
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription">Reflection</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.2</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>

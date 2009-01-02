@@ -149,6 +149,7 @@ int __stdcall run(Block *aBlock)
 	int mode(aBlock->getConfig()->getInt("mode"));
 
 	if(mode == 0)
+	{
 		if(!ReflectionVertically(picture))
 		{
 			aBlock->output[0].setErrorCode(2);
@@ -156,7 +157,9 @@ int __stdcall run(Block *aBlock)
 			picture->Free();
 			return 2;
 		}
+	}
 	else
+	{
 		if(!ReflectionHorizontally(picture))
 		{
 			aBlock->output[0].setErrorCode(2);
@@ -164,7 +167,7 @@ int __stdcall run(Block *aBlock)
 			picture->Free();
 			return 2;
 		}
-
+    }
 	TypeConfig* copy;
 
 	if(connectedType == "Bitmap1bit")
