@@ -1,10 +1,10 @@
 object cfgWindow: TcfgWindow
   Left = 0
   Top = 0
-  BorderStyle = bsSizeToolWin
+  BorderStyle = bsToolWindow
   Caption = 'Config'
-  ClientHeight = 183
-  ClientWidth = 329
+  ClientHeight = 185
+  ClientWidth = 331
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,7 @@ object cfgWindow: TcfgWindow
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poMainFormCenter
+  Position = poOwnerFormCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
@@ -151,8 +151,11 @@ object cfgWindow: TcfgWindow
     ReadOnly = True
     TabOrder = 4
   end
-  object SaveDialog1: TSaveDialog
-    Left = 272
+  object SaveDialog1: TSavePictureDialog
+    DefaultExt = '.bmp'
+    Filter = 'Plik BMP|*.bmp|Plik JPG|*.jpg|plik TIFF|*.tiff'
+    Title = 'Zapisywanie obrazu'
+    Left = 152
     Top = 144
   end
 end

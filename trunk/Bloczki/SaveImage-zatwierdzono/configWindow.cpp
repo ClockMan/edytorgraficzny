@@ -39,6 +39,7 @@ void __fastcall TcfgWindow::SetConfig(Block* block)
 		bit_1->Checked = true;
 	
 	EditPath->Text = cfg_->getString("path");
+	OK->Enabled=!EditPath->Text.IsEmpty();
 }
 //---------------------------------------------------------------------------
 void __fastcall TcfgWindow::CancelClick(TObject *Sender)
@@ -50,7 +51,10 @@ void __fastcall TcfgWindow::CancelClick(TObject *Sender)
 void __fastcall TcfgWindow::Button1Click(TObject *Sender)
 {
 	if(SaveDialog1->Execute())
+	{
 		EditPath->Text = SaveDialog1->FileName;
+		OK->Enabled=true;
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -67,4 +71,5 @@ void __fastcall TcfgWindow::OKClick(TObject *Sender)
 	Close();	
 }
 //---------------------------------------------------------------------------
+
 
