@@ -251,6 +251,7 @@
         <FILE FILENAME="brige\PluginContener.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PluginContener" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="brige\TypeDLL.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TypeDLL" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="fileicon.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="fileicon" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="Unit4.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Unit4" FORMNAME="Form4" DESIGNCLASS="" ADDITIONAL="Unit4.h"/>
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
@@ -259,7 +260,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">434</VersionInfo>
+          <VersionInfo Name="Build">443</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -271,7 +272,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName">PWSZ Tarnów</VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription">PIWO: Projekt Informatyczny Wilqu &amp; Others</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.434</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.443</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName">P.I.W.O.</VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright">PWSZ Tarnów</VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks">PWSZ Tarnów</VersionInfoKeys>

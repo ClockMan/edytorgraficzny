@@ -33,6 +33,7 @@ __published:	// IDE-managed Components
 	void __fastcall TreeView1Deletion(TObject *Sender, TTreeNode *Node);
 	void __fastcall BitBtn2Click(TObject *Sender);
 	void __fastcall TreeView1Click(TObject *Sender);
+	void __fastcall CreateParams(Controls::TCreateParams &Params);
 private:
 	vector<TForm*> windows;
 	TFrame *showFrame;
