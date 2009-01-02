@@ -14,9 +14,12 @@ TFrame* __stdcall show(TWinControl* owner, TypeConfig* aData)
 		TPanel *pn=(TPanel*)(x->FindComponent("Panel"+IntToStr(i)));
 		pn->Height=(int)(x->Height/5);
 		pn->Width=(int)(x->Width/5);
-		pn->Top=(((int)(i/5))*((int)(x->Height/5)));
-		pn->Left=(((int)((i%5)-1))*((int)(x->Width/5)));
-		pn->Caption=FloatToStr(aData->getDouble("d"+IntToStr((int)(i/5)+1)+"_"+IntToStr((i%5))));
+		int x1=((i-1)%5)+1;
+		int y1=(int)(((i-1)/5)+1);
+		pn->Top=(((int)(x1-1))*((int)(x->Height/5)));
+		pn->Left=((int)(y1-1)*((int)(x->Width/5)));
+
+		pn->Caption=IntToStr(aData->getInt("d"+IntToStr(y1)+"_"+IntToStr(x1)));
 		// 1  2  3  4  5
 		// 6  7  8  9  10
 		// 11 12 13 14 15
@@ -28,12 +31,12 @@ TFrame* __stdcall show(TWinControl* owner, TypeConfig* aData)
 
 bool __stdcall isValid(TypeConfig* aData)
 {
-  if (aData->getName()!="Mask3x3") return false;
+  if (aData->getName()!="Mask5x5") return false;
   for(int i2=1;i2<6;++i2)
   for(int i=1;i<6;++i)
   {
 	if (!aData->isExist("d"+IntToStr(i)+"_"+IntToStr(i2))) return false;
-	if (!aData->isDouble("d"+IntToStr(i)+"_"+IntToStr(i2))) return false;
+	if (!aData->isInt("d"+IntToStr(i)+"_"+IntToStr(i2))) return false;
   }
   return true;
 }

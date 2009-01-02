@@ -22,8 +22,10 @@ void __fastcall TForm1::FormResize(TObject *Sender)
 		TPanel *pn=(TPanel*)(this->FindComponent("Panel"+IntToStr(i)));
 		pn->Height=(int)(this->Height/5);
 		pn->Width=(int)(this->Width/5);
-		pn->Top=(((int)(i/5))*((int)(this->Height/5)));
-		pn->Left=(((int)((i%5)-1))*((int)(this->Width/5)));
+		int x1=((i-1)%5)+1;
+		int y1=(int)(((i-1)/5)+1);
+		pn->Top=(((int)(x1-1))*((int)(this->Height/5)));
+		pn->Left=((int)(y1-1)*((int)(this->Width/5)));
 		// 1  2  3  4  5
 		// 6  7  8  9  10
 		// 11 12 13 14 15

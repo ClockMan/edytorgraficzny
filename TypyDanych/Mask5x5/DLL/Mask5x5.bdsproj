@@ -14,7 +14,7 @@
 		</Source>
 		<BCBPROJECT>
       <project version="10.0">
-        <property category="build.config" name="active" value="0"/>
+        <property category="build.config" name="active" value="1"/>
         <property category="build.config" name="count" value="1"/>
         <property category="build.config" name="excludedefaultforzero" value="0"/>
         <property category="build.config.0" name="builddir" value="Debug"/>
@@ -75,6 +75,7 @@
         <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.Gi.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
