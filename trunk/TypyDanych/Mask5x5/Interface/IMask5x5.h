@@ -11,8 +11,8 @@ using namespace std;
 class IMask5x5
 {
 	public:
-			static bool setValue(TypeConfig *type, int x, int y, double value);
-			static double getValue(TypeConfig *type, int x, int y);
+			static bool setValue(TypeConfig *type, int x, int y, int value);
+			static int getValue(TypeConfig *type, int x, int y);
 			static TypeConfig* getNew();
 };
 
