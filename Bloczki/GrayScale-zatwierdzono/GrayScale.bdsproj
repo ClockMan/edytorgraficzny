@@ -10,7 +10,7 @@
 	</PersonalityInfo>
 	<CPlusPlusBuilder.Personality>
 		<Source>
-			<Source Name="MainSource">GreyScale.bpf</Source>
+			<Source Name="MainSource">GrayScale.bpf</Source>
 		</Source>
 		<BCBPROJECT>
       <project version="10.0">
@@ -28,8 +28,8 @@
         <property category="build.config.1" name="settings.win32b" value="default"/>
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
-        <property category="build.node" name="name" value="GreyScale.dll"/>
-        <property category="build.node" name="packages" value="vclx;vcl;rtl;dbrtl;vcldb;adortl;dbxcds;dbexpress;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;soaprtl;dsnap;bdertl;vcldbx;vclib;ibxpress;vclactnband;IntrawebDB_80_100;Intraweb_80_100;indy;bcbofficexp;bcbsmp;bcbie;teeui;teedb;tee"/>
+        <property category="build.node" name="name" value="GrayScale.dll"/>
+        <property category="build.node" name="packages" value="vclx;vcl;rtl"/>
         <property category="build.node" name="sparelibs" value="rtl.lib vcl.lib"/>
         <property category="build.node" name="use_packages" value="1"/>
         <property category="build.platform" name="active" value="win32"/>
@@ -267,6 +267,9 @@
           <property category="win32.*.win32b.ilink32" name="option.j.arg.9" value="..\..\..\TypyDanych\Bitmap16bit\Interface"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.merge" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.j.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.m.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.s.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.x.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
@@ -307,9 +310,9 @@
         </optionset>
       </project>
       <FILELIST>
-        <FILE FILENAME="GreyScale.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="GreyScale" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="GreyScale.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="GreyScale.res" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="GreyScale_dll.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="GreyScale_dll" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="GrayScale.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="GrayScale" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="GrayScale.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="GrayScale.res" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="GrayScale_dll.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="GrayScale_dll" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="configWindow.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="configWindow" FORMNAME="cfgWindow" DESIGNCLASS="" ADDITIONAL="configWindow.h"/>
         <FILE FILENAME="..\..\Program\engine\TypeConfig.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TypeConfig" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="..\..\Program\engine\Block.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Block" FORMNAME="" DESIGNCLASS=""/>
@@ -326,12 +329,12 @@
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
-          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
-          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">True</VersionInfo>
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Build">2</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -342,8 +345,8 @@
         </VersionInfo>
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription">GrayScale</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.2</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
@@ -385,5 +388,6 @@
       </IDEOPTIONS>
     </BCBPROJECT>
 		<buildevents/>
-	</CPlusPlusBuilder.Personality>
+	</CPlusPlusBuilder.Personality>  <StarTeamAssociation></StarTeamAssociation>
+  <StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
 </BorlandProject>

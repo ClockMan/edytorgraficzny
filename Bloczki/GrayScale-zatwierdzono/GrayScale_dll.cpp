@@ -4,7 +4,7 @@
 #include <windows.h>
 #pragma hdrstop
 
-#include "GreyScale.h"
+#include "GrayScale.h"
 #include "configWindow.h"
 
 #include "../../TypyDanych/Bitmap8bit/Interface/IBitmap8bit.h"
@@ -125,6 +125,7 @@ int __stdcall run(Block *aBlock)
 	int mode(aBlock->getConfig()->getInt("mode"));
 
 	if(mode == 0)
+	{
 		if(!GreyScale(picture))
 		{
 			aBlock->output[0].setErrorCode(2);
@@ -132,6 +133,7 @@ int __stdcall run(Block *aBlock)
 			picture->Free();
 			return 2;
 		}
+	}
 	else
 	{
 		int limit(aBlock->getConfig()->getInt("limit"));
@@ -148,12 +150,9 @@ int __stdcall run(Block *aBlock)
 	TypeConfig* copy = IBitmap8bit::getNew();
 
 	IBitmap8bit::setBitmap(copy, *picture);
-
 	aBlock->output[0].setObject(*copy);
-
 	picture->Free();
 	delete copy;
-
 	return 0;
 }
 //---------------------------------------------------------------------------
