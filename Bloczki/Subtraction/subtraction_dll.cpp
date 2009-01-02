@@ -59,7 +59,7 @@ int __stdcall validate(Block *aBlock)
 		input1.allowedTypes.push_back("Bitmap16bit");
 		input1.allowedTypes.push_back("Bitmap24bit");
 		input1.allowedTypes.push_back("Bitmap32bit");
-		input1.setDescription("Domyœlne wejœcie");
+		input1.setDescription("Domyœlne wejœcie 1");
 		input1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->input.push_back(input1);
@@ -71,7 +71,7 @@ int __stdcall validate(Block *aBlock)
 		input2.allowedTypes.push_back("Bitmap16bit");
 		input2.allowedTypes.push_back("Bitmap24bit");
 		input2.allowedTypes.push_back("Bitmap32bit");
-		input2.setDescription("Domyœlne wejœcie");
+		input2.setDescription("Domyœlne wejœcie 2");
 		input2.setErrorCode(1);
 		input2.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->input.push_back(input2);
