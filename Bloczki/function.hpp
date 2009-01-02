@@ -39,10 +39,10 @@ bool RightRotation(Graphics::TBitmap* picture);
 // obrot w lewo - zarezerwowane MP
 bool LeftRotation(Graphics::TBitmap* picture);
 
-// szum kolorowy
+// szum kolorowy - rezerwacja
 bool ColorNoise(Graphics::TBitmap* picture, int noise);
 
-// szum bialy (mono)
+// szum bialy (mono) - rezerwacja
 bool MonoNoise(Graphics::TBitmap* picture, int noise);
 
 // wyplowienie obrazu -zarezerwowane
