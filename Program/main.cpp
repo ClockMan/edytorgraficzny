@@ -58,9 +58,9 @@ void  TForm1::OnFunctionAddClick(void* Sender)
 	//teraz czas nadpisaæ :D
 	while(top5Added.size()>5)
 		   top5Added.erase(top5Added.begin()+5);
-	while (ImageList3->Count>15)
+	while (ImageList3->Count>19)
 	{
-	   ImageList3->Delete(15);
+	   ImageList3->Delete(19);
 	}
 	//reinicjujemy przyciski D:
 	for(unsigned int i=0;i<top5Added.size();++i)

@@ -30,7 +30,7 @@
         <property category="build.config.1" name="win32.win32b.builddir" value="..\..\program\blocks"/>
         <property category="build.node" name="lastconfig" value="Release_Build"/>
         <property category="build.node" name="name" value="OpenImage.dll"/>
-        <property category="build.node" name="packages" value="vclx;vcl;rtl;dbrtl;vcldb;adortl;dbxcds;dbexpress;xmlrtl;vclie"/>
+        <property category="build.node" name="packages" value="vcl;vclx;rtl"/>
         <property category="build.node" name="sparelibs" value="rtl.lib vcl.lib"/>
         <property category="build.node" name="use_packages" value="1"/>
         <property category="build.platform" name="active" value="win32"/>
@@ -81,7 +81,10 @@
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.m.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.s.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.w.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.x.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
         <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
         <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
@@ -135,8 +138,8 @@
           <property category="win32.*.win32b.bcc32" name="option.pr.enabled" value="0"/>
           <property category="win32.*.win32b.bcc32" name="option.ps.enabled" value="0"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="USEPACKAGES"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="NO_STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="NO_STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="USEPACKAGES"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="0"/>
@@ -320,7 +323,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">3</VersionInfo>
+          <VersionInfo Name="Build">6</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -331,8 +334,8 @@
         </VersionInfo>
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.3</VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription">OpenImage</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.6</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>

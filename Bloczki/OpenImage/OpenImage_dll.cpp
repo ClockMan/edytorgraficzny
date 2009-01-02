@@ -60,28 +60,25 @@ int __stdcall validate(Block *aBlock)
 		
 		aBlock->getConfig()->addString("bitrate","Bitmap24bit");
 		aBlock->getConfig()->addString("path","");
-		
 		return 2;
 	}
 	else
 	{
-		if(aBlock->output[0].getOutputType()!= aBlock->getConfig()->getString("bitrate"))
-		{
 			aBlock->output[0].setOutputType(aBlock->getConfig()->getString("bitrate"));
-			aBlock->output[0].setErrorCode(0);
-			aBlock->output[0].setErrorDescription("");
-
+			if (aBlock->getConfig()->getString("path").IsEmpty()) {
+			   aBlock->output[0].setErrorCode(1);
+			   aBlock->output[0].setErrorDescription("Niewybrano pliku");
+			} else
+			if (!FileExists(aBlock->getConfig()->getString("path"))) {
+			   aBlock->output[0].setErrorCode(1);
+			   aBlock->output[0].setErrorDescription("Wybrany plik nie istnieje");
+			}
+			else
+			{
+              aBlock->output[0].setErrorCode(0);
+			  aBlock->output[0].setErrorDescription("");
+            }
 			return 1;
-		}
-		else if(aBlock->output[0].getErrorCode() != 0) 
-		{
-			aBlock->output[0].setErrorCode(0);
-			aBlock->output[0].setErrorDescription("");
-			
-			return 1;
-    }
-		else	
-			return 0;
 	}
 }
 //---------------------------------------------------------------------------

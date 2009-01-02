@@ -53,6 +53,7 @@ object cfgWindow: TcfgWindow
     Width = 75
     Height = 25
     Caption = 'OK'
+    Enabled = False
     TabOrder = 3
     OnClick = OKClick
   end
@@ -116,6 +117,12 @@ object cfgWindow: TcfgWindow
     TabOrder = 10
   end
   object OpenDialog1: TOpenDialog
+    Filter = 
+      'Wszystkie obs'#322'ugiwane pliki|*.bmp;*.ico;*.jpeg;*.jpg;*.jng;*.koa' +
+      'la;*.lbm;*.iff;*.mgn;*.pbm;*.pbmraw;*.pcd;*.pcx;*.pgm;*.pgmraw;*' +
+      '.ras;*.targa;*.tiff;*.wbmp;*.psd;*.cut;*.xbm;*.xpm;*.dss;*.gif;*' +
+      '.hdr'
+    Title = 'Wybieranie obrazu wej'#347'ciowego'
     Left = 96
     Top = 16
   end

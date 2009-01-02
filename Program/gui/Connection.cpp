@@ -108,7 +108,7 @@ void Connection::redraw(Position &in, Position &out)
    lines[0]->CanBeMoved=false;
    lines[4]->CanBeMoved=false;
    //problem znaleœæ linie poziom¹ która bêdzie w stanie po³¹czyæ wejœcie i wyjœcie., pozycja y niemo¿e przechodziæ ani przez blok A ni przez blok B
-   int y=0;
+   int y;
    if (in.xy.x>out.xy.x)
    {
 	  //jest ok nic nie przeszkadza

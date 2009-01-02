@@ -16,13 +16,14 @@ __fastcall TcfgWin::TcfgWin(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TcfgWin::OKClick(TObject *Sender)
 {
-	if(bit24->Checked) cfg_->setInt("rate",pf24bit);
-	else if(bit32->Checked) cfg_->setInt("rate",pf32bit);
-	else if(bit16->Checked) cfg_->setInt("rate",pf15bit);
-	else if(bit8->Checked) cfg_->setInt("rate",pf8bit);
-	else if(bit4->Checked) cfg_->setInt("rate",pf4bit);
-	else cfg_->setString("rate",pf1bit);
-
+	int rate;
+	if(bit24->Checked) rate=pf24bit;
+	else if(bit32->Checked) rate=pf32bit;
+	else if(bit16->Checked) rate=pf15bit;
+	else if(bit8->Checked) rate=pf8bit;
+	else if(bit4->Checked) rate=pf4bit;
+	else rate=pf1bit;
+	if (cfg_->getInt("rate")!=rate) cfg_->setInt("rate",rate);
 	Close();
 }
 //---------------------------------------------------------------------------

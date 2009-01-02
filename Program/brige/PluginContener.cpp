@@ -130,6 +130,7 @@ void PluginContener::AddMenus(FunctionDLL *info, TMainMenu &menu, TImageList &im
 		y=menu.CreateMenuItem();
 		y->AutoCheck=false;
 		y->Caption=info->fullName;
+		if (info->fullName!=info->name) y->Caption=info->fullName+" ["+info->name+"]";
 		y->GroupIndex=upId;
 		y->Visible=true;
 		y->ImageIndex=index;
