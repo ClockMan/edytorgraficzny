@@ -115,6 +115,9 @@ __published:	// IDE-managed Components
 	TToolButton *ToolButton27;
 	TMenuItem *Sprawdprojekt1;
 	TBevel *Bevel1;
+	TMenuItem *Zamknijwszystkieokna1;
+	TMenuItem *Pokawszystkieokna1;
+	TMenuItem *N2;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
@@ -136,7 +139,6 @@ __published:	// IDE-managed Components
 	void __fastcall Zapiszdopliku1Zapiszjako1ClickClick(TObject *Sender);
 	void __fastcall MenuItem2Click(TObject *Sender);
 	void __fastcall MenuItem4Click(TObject *Sender);
-	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall PageControl1Change(TObject *Sender);
 	void __fastcall SpeedButton1Click(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
@@ -156,6 +158,11 @@ __published:	// IDE-managed Components
 	void __fastcall ToolButton21Click(TObject *Sender);
 	void __fastcall ToolButton22Click(TObject *Sender);
 	void __fastcall FormDestroy(TObject *Sender);
+	void __fastcall Widok1Click(TObject *Sender);
+	void __fastcall Zamknijwszystkieokna1Click(TObject *Sender);
+	void __fastcall Pokawszystkieokna1Click(TObject *Sender);
+	void __fastcall Oprogramie1Click(TObject *Sender);
+	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 
 private:
 	PIWOEngine *piwo;
@@ -163,6 +170,7 @@ private:
 	bool isBlocked;
 	Graphics::TBitmap *defaultBlockImage;
 	vector<FunctionDLL*> top5Added;
+	vector<TMenuItem*> historyItems;
 
 	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
 	void  OnFunctionAddClick(void* Sender);
@@ -188,6 +196,7 @@ private:
 	void OnBlockSelected(TObject* Sender);
 	void OnConnectionSelected(TObject* Sender);
 	void OnNothingSelected(TObject* Sender);
+	void __fastcall HistoryMenuClick(TObject *Sender);
 
 	void blockMenu(bool blocked);
 	void newProject();

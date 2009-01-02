@@ -71,6 +71,12 @@ __fastcall PIWOEngine::~PIWOEngine()
 	  delete blocks[0];
 	  blocks.erase(blocks.begin());
   }
+
+  while(historyWindows.size()>0)
+  {
+	 delete historyWindows[0];
+	 historyWindows.erase(historyWindows.begin());
+  }
   delete area;
 }
 
@@ -680,6 +686,7 @@ void PIWOEngine::OnVisualBlockInputHistoryClick(VisualInput* input, TObject* Sen
    {
 	  if (historyWindows[i]->block==block) {
 		 historyWindows[i]->refresh(input->input);
+		 historyWindows[i]->WindowState=wsNormal;
 		 historyWindows[i]->Show();
 		 if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Pokazuje istniej¹ce okno histori");
 		 return;
@@ -713,6 +720,7 @@ void PIWOEngine::OnVisualBlockOutputHistoryClick(VisualOutput* output, TObject* 
    {
 	  if (historyWindows[i]->block==block) {
 		 historyWindows[i]->refresh(output->output);
+		 historyWindows[i]->WindowState=wsNormal;
 		 historyWindows[i]->Show();
 		 if (OnDebug!=NULL) OnDebug(this, "Historia "+block->getTitle()+" - Pokazuje istniej¹ce okno histori");
 		 return;
@@ -909,6 +917,15 @@ bool PIWOEngine::DeleteBlock(const AnsiString &fullName)
 	  if (OnError!=NULL) OnError(this, "Usuwanie bloku "+fullName+" - Nie istnieje blok o takiej nazwie");
 	  return false;
 	}
+
+	for(unsigned int a=0;a<historyWindows.size();++a)
+	{
+			if (historyWindows[a]->block==toDelete)
+			{
+			  historyWindows[a]->Close();
+			  break;
+			}
+	}
 	if (OnDebug!=NULL) OnDebug(this, "Usuwanie bloku "+fullName+" - Znaleziono blok");
 	abort(true);
 	for(unsigned int j=0;j<connections.size();++j)
@@ -1006,6 +1023,14 @@ bool PIWOEngine::DeleteSelectedBlocks()
 			  connections[j]->outBlock=NULL;
 		   }
 	   }
+	for(unsigned int a=0;a<historyWindows.size();++a)
+	{
+			if (historyWindows[a]->block==selectedBlocks[i])
+			{
+			  historyWindows[a]->Close();
+			  break;
+			}
+	}
    }
 
    for(unsigned int j=0;j<blocks.size();++j)
@@ -1097,6 +1122,11 @@ bool PIWOEngine::DeleteAllBlocks()
 	   delete connections[0];
 	   connections.erase(connections.begin());
    }
+  while(historyWindows.size()>0)
+  {
+	 delete historyWindows[0];
+	 historyWindows.erase(historyWindows.begin());
+  }
    while(blocks.size()>0)
    {
 	   if (OnInformation!=NULL) OnInformation(this, "Usuwanie wszystkich bloków - Usuniêto blok: "+blocks[0]->getTitle());
@@ -1763,6 +1793,16 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		}
 
 		block->history.insert(block->history.begin(),history);
+		//odœwie¿amy okno
+		for(unsigned int a=0;a<historyWindows.size();++a)
+		{
+			if (historyWindows[a]->block==block)
+			{
+			  historyWindows[a]->refresh(NULL);
+			  break;
+			}
+		}
+
 		//u¿yliœmy histori, powiadamiamy o tym
 		if (OnRunSuccess!=NULL) {
 			 OnRunSuccess(this, "Blok "+block->getTitle()+" zosta³ przetworzony w oparciu o dane historyczne");
@@ -1967,6 +2007,14 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 	if (historyWillBeAdded)
 	{
 		block->history.insert(block->history.begin(),history);
+		for(unsigned int a=0;a<historyWindows.size();++a)
+		{
+			if (historyWindows[a]->block==block)
+			{
+			  historyWindows[a]->refresh(NULL);
+			  break;
+			}
+		}
 	}
 	else
 	{

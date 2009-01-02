@@ -57,7 +57,7 @@ void THistory::refresh(BlockElement *toShow)
 			it->Data=fm;
 			if (toShow==block->history[i]->leftInput[j]->input&&i==0)
 			{
-               if (showFrame!=NULL) showFrame->Visible=false;
+			   if (showFrame!=NULL) showFrame->Visible=false;
 			   fm->Show();
 			   Label1->Caption=fm->Hint;
 			   showFrame=fm;
@@ -185,12 +185,22 @@ void __fastcall THistory::TreeView1Click(TObject *Sender)
 			 Application->MessageBoxA("Brak podgl¹du, typ nie wspierany",TreeView1->Selected->Text.c_str(), MB_ICONWARNING | MB_OK);
 		else
 			{
+				try{
 				if (showFrame!=NULL) showFrame->Visible=false;
 				((TFrame*)(TreeView1->Selected->Data))->Visible=true;
 				showFrame=((TFrame*)(TreeView1->Selected->Data));
+				}catch(...)
+				{
+				   refresh(NULL);
+                }
 			}
 	}
   }
 }
 //---------------------------------------------------------------------------
-
+void __fastcall THistory::CreateParams(Controls::TCreateParams &Params)
+{
+   TCustomForm::CreateParams(Params);
+   Params.ExStyle=Params.ExStyle | WS_EX_APPWINDOW;
+   Params.WndParent = GetDesktopWindow();
+}

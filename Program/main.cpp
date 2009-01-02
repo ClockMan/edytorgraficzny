@@ -6,6 +6,7 @@
 #pragma hdrstop
 
 #include "main.h"
+#include "Unit4.h"
 #include "gui/Line.h"
 #include "splash.h"
 //---------------------------------------------------------------------------
@@ -427,6 +428,7 @@ void __fastcall TForm1::Usubloki1Click(TObject *Sender)
 
 void __fastcall TForm1::Usuzaznaczonebloki1Click(TObject *Sender)
 {
+	piwo->DeleteSelectedConnection();
 	piwo->DeleteSelectedBlocks();	
 }
 //---------------------------------------------------------------------------
@@ -439,13 +441,14 @@ void __fastcall TForm1::Odznaczzaznaczonepoaczenie1Click(TObject *Sender)
 
 void __fastcall TForm1::Usuwszystkiepoczenia1Click(TObject *Sender)
 {
-   piwo->DeleteAllConnections();	
+   piwo->DeleteAllConnections();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Usuzaznaczonepoczenie1Click(TObject *Sender)
 {
-	piwo->DeleteSelectedConnection();	
+	piwo->DeleteSelectedConnection();
+	piwo->DeleteSelectedBlocks();
 }
 //---------------------------------------------------------------------------
 
@@ -586,15 +589,6 @@ void __fastcall TForm1::MenuItem4Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
-	  TShiftState Shift)
-{
-	if (Key==VK_DELETE&&piwo!=NULL&&piwo->Enabled) {
-	   piwo->DeleteSelectedConnection();
-	   piwo->DeleteSelectedBlocks(); 
-	}
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForm1::PageControl1Change(TObject *Sender)
 {
@@ -695,6 +689,8 @@ void TForm1::blockMenu(bool blocked)
 	  ToolButton20->Enabled=!blocked;
 	  ToolButton21->Enabled=!blocked;
 	  ToolButton22->Enabled=!blocked;
+	  Zamknijwszystkieokna1->Enabled=piwo->historyWindows.size()!=0;
+	  Pokawszystkieokna1->Enabled=piwo->historyWindows.size()!=0;
 	  for(unsigned int i=0;i<5;++i)
 	  {
 		TToolButton *bt=(TToolButton*)(Form1->FindComponent("ToolButton"+IntToStr(18+i)));
@@ -745,6 +741,8 @@ void TForm1::blockMenu(bool blocked)
 	  ToolButton20->Enabled=false;
 	  ToolButton21->Enabled=false;
 	  ToolButton22->Enabled=false;
+	  Zamknijwszystkieokna1->Enabled=false;
+	  Pokawszystkieokna1->Enabled=false;
   }
 }
 
@@ -1059,6 +1057,92 @@ void __fastcall TForm1::ToolButton22Click(TObject *Sender)
 void __fastcall TForm1::FormDestroy(TObject *Sender)
 {
 	delete defaultBlockImage;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Widok1Click(TObject *Sender)
+{
+	for(int j=3;j<Widok1->Count;++j)
+	{
+		  Widok1->Delete(j);
+		  --j;
+	}
+	historyItems.clear();
+	blockMenu(isBlocked);
+	if (piwo)
+	{
+	   //aktualizacja
+	   for(unsigned int i=0;i<piwo->historyWindows.size();++i)
+	   {
+		  TMenuItem	*y=MainMenu1->CreateMenuItem();
+		  y->AutoCheck=false;
+		  y->Caption=piwo->historyWindows[i]->Caption;
+		  y->GroupIndex=1;
+		  y->Visible=true;
+		  y->ImageIndex=25;
+		  y->Hint=piwo->historyWindows[i]->block->getTitle();
+		  y->OnClick=HistoryMenuClick;
+		  Widok1->Add(y);
+		  historyItems.push_back(y);
+       }
+    }
+}
+
+void __fastcall TForm1::HistoryMenuClick(TObject *Sender)
+{
+   //znaleœæ id
+   int id=-1;
+   for(unsigned int i=0;i<historyItems.size();++i)
+   {
+	   if (historyItems[i]==Sender)
+	   {
+		   id=i;
+		   break;
+	   }
+   }
+   if (id==-1) return;
+   if (piwo==NULL) return;
+   if (piwo->historyWindows.size()<(unsigned int)(id+1)) return;
+   piwo->historyWindows[id]->Show();
+}
+void __fastcall TForm1::Zamknijwszystkieokna1Click(TObject *Sender)
+{
+ if (!piwo) return;
+ for(unsigned int i=0;i<piwo->historyWindows.size();++i)
+ {
+	delete piwo->historyWindows[i];
+ }
+ piwo->historyWindows.clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Pokawszystkieokna1Click(TObject *Sender)
+{
+ if (!piwo) return;
+ for(unsigned int i=0;i<piwo->historyWindows.size();++i)
+ {
+ 	piwo->historyWindows[i]->WindowState=wsNormal;
+	piwo->historyWindows[i]->Show();
+ }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Oprogramie1Click(TObject *Sender)
+{
+	Application->CreateForm(__classid(TForm4), &Form4);
+	Form4->ShowModal();
+	delete Form4;
+	Form4=NULL;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
+      TShiftState Shift)
+{
+	if (Key==VK_DELETE&&piwo!=NULL&&piwo->Enabled) {
+	   piwo->DeleteSelectedConnection();
+	   piwo->DeleteSelectedBlocks(); 
+	}	
 }
 //---------------------------------------------------------------------------
 
