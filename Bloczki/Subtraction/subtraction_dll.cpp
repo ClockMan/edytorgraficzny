@@ -87,17 +87,17 @@ int __stdcall validate(Block *aBlock)
 	}
 	else
 	{
-		bool flaga = false;
+		bool flag = false;
 		for(unsigned int i(0); i < aBlock->input.size(); i++)
 		{
 			if(aBlock->input[i].getConnectedType().IsEmpty())
 			{
 				aBlock->input[i].setErrorCode(1);
 				aBlock->input[i].setErrorDescription("Brak obiektu na wejœciu");
-				flaga = true;
+				flag = true;
 			}
 		}
-		if(flaga)
+		if(flag)
 		{
 			aBlock->output[0].setErrorCode(1);
 			aBlock->output[0].setErrorDescription("Brak obiektu na wejœciu");
@@ -106,7 +106,7 @@ int __stdcall validate(Block *aBlock)
 		}
 		else
 		{
-			flaga = false;
+			flag = false;
 			if (aBlock->output[0].getOutputType()!= aBlock->input[0].getConnectedType())
 			{
 				aBlock->output[0].setOutputType(aBlock->input[0].getConnectedType());
@@ -124,16 +124,16 @@ int __stdcall validate(Block *aBlock)
 					{
 						aBlock->input[i].setErrorCode(0);
 						aBlock->input[i].setErrorDescription("");
-						flaga = true;
+						flag = true;
 					}
 				}
 				if(aBlock->output[0].getErrorCode() != 0)
 				{
 					aBlock->output[0].setErrorCode(0);
 					aBlock->output[0].setErrorDescription("");
-					flaga = true;
+					flag = true;
 				}
-				if(flaga)
+				if(flag)
 				{
 					return 1;
 				}
@@ -142,7 +142,7 @@ int __stdcall validate(Block *aBlock)
 					return 0;
 				}
 			}
-				
+
 		}
 	}
 }
@@ -166,22 +166,22 @@ int __stdcall run(Block *aBlock)
 		connectedType = aBlock->input[i].getConnectedType();
 		picture[i] = new Graphics::TBitmap();
 		if(connectedType == "Bitmap1bit")
-			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap1bit::getBitmap(aBlock->input[0].getObject()))));
+			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap1bit::getBitmap(aBlock->input[i].getObject()))));
 
 		else if(connectedType == "Bitmap4bit")
-			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap4bit::getBitmap(aBlock->input[0].getObject()))));
+			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap4bit::getBitmap(aBlock->input[i].getObject()))));
 
 		else	if(connectedType == "Bitmap8bit")
-			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[0].getObject()))));
+			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[i].getObject()))));
 
 		else if(connectedType == "Bitmap16bit")
-			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[0].getObject()))));
+			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[i].getObject()))));
 
 		else	if(connectedType == "Bitmap24bit")
-			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[0].getObject()))));
+			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[i].getObject()))));
 
 		else	if(connectedType == "Bitmap32bit")
-			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
+			picture[i]->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[i].getObject()))));
 	}
 
 	if(!Subtraction(picture[0], picture[1]))
@@ -195,35 +195,36 @@ int __stdcall run(Block *aBlock)
 		return 2;
 	}
     
-	TypeConfig* copy;
+	TypeConfig* copy;     
+	AnsiString outputType;
 
-	connectedType = aBlock->input[0].getConnectedType();
-	if(connectedType == "Bitmap1bit")
+	outputType = aBlock->input[0].getConnectedType();
+	if(outputType == "Bitmap1bit")
 	{
 		copy = IBitmap1bit::getNew();
 		IBitmap1bit::setBitmap(copy, *(picture[0]));
 	}
-	else if(connectedType == "Bitmap4bit")
+	else if(outputType == "Bitmap4bit")
 	{
 		copy = IBitmap4bit::getNew();
 		IBitmap4bit::setBitmap(copy, *(picture[0]));
 	}
-	else if(connectedType == "Bitmap8bit")
+	else if(outputType == "Bitmap8bit")
 	{
 		copy = IBitmap8bit::getNew();
 		IBitmap8bit::setBitmap(copy, *(picture[0]));
 	}
-	else if(connectedType == "Bitmap16bit")
+	else if(outputType == "Bitmap16bit")
 	{
 		copy = IBitmap16bit::getNew();
 		IBitmap16bit::setBitmap(copy, *(picture[0]));
 	}
-	else if(connectedType == "Bitmap24bit")
+	else if(outputType == "Bitmap24bit")
 	{
 		copy = IBitmap24bit::getNew();
 		IBitmap24bit::setBitmap(copy, *(picture[0]));
 	}
-	else if(connectedType == "Bitmap32bit")
+	else if(outputType == "Bitmap32bit")
 	{
 		copy = IBitmap32bit::getNew();
 		IBitmap32bit::setBitmap(copy, *(picture[0]));
