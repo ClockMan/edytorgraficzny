@@ -10,6 +10,7 @@
 
 #include "../../Program/engine/Block.h"
 #include <Dialogs.hpp>
+#include <ExtDlgs.hpp>
 //---------------------------------------------------------------------------
 class TcfgWindow : public TForm
 {
@@ -25,7 +26,7 @@ __published:	// IDE-managed Components
 	TRadioButton *bit_32;
 	TButton *Button1;
 	TEdit *EditPath;
-	TSaveDialog *SaveDialog1;
+	TSavePictureDialog *SaveDialog1;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall CancelClick(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);

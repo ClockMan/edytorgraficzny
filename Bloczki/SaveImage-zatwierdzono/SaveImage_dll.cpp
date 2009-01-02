@@ -71,7 +71,6 @@ int __stdcall validate(Block *aBlock)
 
 		aBlock->getConfig()->addString("bitrate","Bitmap24bit");
 		aBlock->getConfig()->addString("path","");
-		
 		return 2;
 	}
 	else
@@ -80,24 +79,22 @@ int __stdcall validate(Block *aBlock)
 		{
 			aBlock->input[0].setErrorCode(1);
 			aBlock->input[0].setErrorDescription("Brak obiektu na wejœciu");
-
 			return 1;
 		}
 		else if(aBlock->input[0].getErrorCode() != 0)
 		{
 			aBlock->input[0].setErrorCode(0);
 			aBlock->input[0].setErrorDescription("");
-			
 			return 1;
-    }
-		else	
+		}
+		else
 			return 0;
 	}
 }
 //---------------------------------------------------------------------------
 int __stdcall run(Block *aBlock)
 {
-	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
+	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty()||aBlock->getConfig()->getString("path").IsEmpty())
 		return 1;
 
 	Graphics::TBitmap* picture = new Graphics::TBitmap();
@@ -120,7 +117,6 @@ int __stdcall run(Block *aBlock)
 
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
-
 
 
 	AnsiString path(aBlock->getConfig()->getString("path"));
