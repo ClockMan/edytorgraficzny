@@ -6,7 +6,7 @@ bool IBoolean::getValue(TypeConfig *type)
    return type->getBoolean("bool");
 }
 
-bool IBoolean::setValue(TypeConfig *type, bool value);
+bool IBoolean::setValue(TypeConfig *type, bool value)
 {
    if (type->getName()!="Boolean") return false;
    type->setBoolean("bool", value);

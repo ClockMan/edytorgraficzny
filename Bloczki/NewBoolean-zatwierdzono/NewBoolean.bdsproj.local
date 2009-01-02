@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-12-12 18:29:54.433.cpp,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\OpenImage_dll.cpp</Transaction>
+    <Transaction>2008-12-12 18:30:00.592.bdsproj,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\OpenImage.bdsproj</Transaction>
+    <Transaction>2008-12-12 18:31:51.742.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\OpenImage.cpp</Transaction>
+    <Transaction>2008-12-12 18:31:51.742.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\OpenImage.h</Transaction>
+    <Transaction>2008-12-12 19:04:30.969.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\configWindow.cpp</Transaction>
+    <Transaction>2008-12-12 19:04:30.969.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\configWindow.h</Transaction>
+    <Transaction>2008-12-12 19:04:30.969.dfm,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\Unit1.dfm=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\Pluginy\OpenImage\configWindow.dfm</Transaction>
+    <Transaction>2009-01-02 17:18:04.062.bdsproj,D:\System\ClockMan\Pulpit\PIWO\Bloczki\Kopia OpenImage-zatwierdzono\OpenImage.bdsproj=D:\System\ClockMan\Pulpit\PIWO\Bloczki\Kopia OpenImage-zatwierdzono\NewInteger.bdsproj</Transaction>
+    <Transaction>2009-01-02 17:18:16.187.cpp,D:\System\ClockMan\Pulpit\PIWO\Bloczki\Kopia OpenImage-zatwierdzono\OpenImage_dll.cpp=D:\System\ClockMan\Pulpit\PIWO\Bloczki\Kopia OpenImage-zatwierdzono\DLL.cpp</Transaction>
+    <Transaction>2009-01-02 17:18:42.968.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap1bit\Interface\IBitmap1bit.cpp=</Transaction>
+    <Transaction>2009-01-02 17:18:45.156.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap4bit\Interface\IBitmap4bit.cpp=</Transaction>
+    <Transaction>2009-01-02 17:18:47.484.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap8bit\Interface\IBitmap8bit.cpp=</Transaction>
+    <Transaction>2009-01-02 17:18:50.031.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap16bit\Interface\IBitmap16bit.cpp=</Transaction>
+    <Transaction>2009-01-02 17:18:52.390.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\Interface\IBitmap24bit.cpp=</Transaction>
+    <Transaction>2009-01-02 17:18:55.156.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap32bit\Interface\IBitmap32bit.cpp=</Transaction>
+    <Transaction>2009-01-02 18:27:20.109.bdsproj,D:\System\ClockMan\Pulpit\PIWO\Bloczki\NewBoolean-zatwierdzono\NewInteger.bdsproj=D:\System\ClockMan\Pulpit\PIWO\Bloczki\NewBoolean-zatwierdzono\NewBoolean.bdsproj</Transaction>
+    <Transaction>2009-01-02 18:28:50.984.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Integer\Interface\IInteger.cpp=</Transaction>
+  </Transactions>
+</BorlandProject>

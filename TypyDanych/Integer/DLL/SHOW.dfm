@@ -14,13 +14,13 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 330
-    Height = 128
+    Width = 320
+    Height = 240
     Align = alClient
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -48
+    Font.Height = -27
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False

@@ -115,6 +115,7 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->Left=10;
    newBlock->Top=10;
    fun->validate(&(newBlock->block));
+   newBlock->updateVisualComponents();
    newBlock->OnConfigClick=OnVisualBlockConfigClick;
    newBlock->OnVisualInputSelected=OnVisualBlockInputSelected;
    newBlock->OnVisualOutputSelected=OnVisualBlockOutputSelected;
@@ -347,7 +348,7 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 			else
 			{
 				//typy s¹ takie same, sprawdzamy kody b³êdów tylko
-				if (out->getErrorCode()!=outputHistory[0]->output->getErrorCode()||out->getErrorDescription()!=outputHistory[0]->output->getErrorDescription())
+				if (out->getErrorCode()!=outputHistory[0]->errorCode||out->getErrorDescription()!=outputHistory[0]->errorDescription)
 				{
 				   //zmieni³ siê kod b³êdu, aktualizujemy po³¹czenia
 				   for(unsigned int g=0;g<outputHistory[0]->connections.size();++g)

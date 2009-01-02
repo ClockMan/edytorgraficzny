@@ -36,6 +36,7 @@ __fastcall VisualBlock::VisualBlock(TComponent* Owner)
 	status->BevelOuter=bvLowered;
 	status->BevelInner=bvNone;
 	status->Color=clGray;
+	status->Visible=false;
 
 	configButton=new TSpeedButton(status);
 	configButton->Parent=status;
@@ -220,6 +221,7 @@ bool VisualBlock::updateVisualComponents()
    Caption="";
    title->Visible=true;
    configButton->Visible=true;
+   status->Visible=true;
    //pomijamy wejœcia u góry i u do³u, to s¹ wejœcia wirtualne
    //aktualizacja obiektów
    vector<VisualInput*> leftInputTmp;

@@ -6,7 +6,7 @@ double IDouble::getValue(TypeConfig *type)
    return type->getDouble("float");
 }
 
-bool IDouble::setValue(TypeConfig *type, double value);
+bool IDouble::setValue(TypeConfig *type, double value)
 {
    if (type->getName()!="Double") return false;
    type->setDouble("float", value);
