@@ -96,53 +96,38 @@ int __stdcall validate(Block *aBlock)
 				aBlock->input[i].setErrorDescription("Brak obiektu na wejœciu");
 				flag = true;
 			}
+			else if(aBlock->input[i].getErrorCode() != 0)
+			{
+				aBlock->input[i].setErrorCode(0);
+				aBlock->input[i].setErrorDescription("");
+			}
 		}
 		if(flag)
 		{
 			aBlock->output[0].setErrorCode(1);
-			aBlock->output[0].setErrorDescription("Brak obiektu na wejœciu");
+			aBlock->output[0].setErrorDescription("Brak obiektu na wejœciu"); 
 			aBlock->output[0].setOutputType("Bitmap24bit");
 			return 1;
 		}
 		else
 		{
-			flag = false;
 			if (aBlock->output[0].getOutputType()!= aBlock->input[0].getConnectedType())
 			{
 				aBlock->output[0].setOutputType(aBlock->input[0].getConnectedType());
-				aBlock->input[0].setErrorCode(0);
 				aBlock->output[0].setErrorCode(0);
-				aBlock->input[0].setErrorDescription("");
+				aBlock->output[0].setErrorDescription("");
+				return 1;
+			}
+			else if(aBlock->output[0].getErrorCode() != 0)
+			{
+				aBlock->output[0].setErrorCode(0);
 				aBlock->output[0].setErrorDescription("");
 				return 1;
 			}
 			else
 			{
-				for(unsigned int i(0); i < aBlock->input.size(); i++)
-				{
-					if(aBlock->input[i].getErrorCode() != 0)
-					{
-						aBlock->input[i].setErrorCode(0);
-						aBlock->input[i].setErrorDescription("");
-						flag = true;
-					}
-				}
-				if(aBlock->output[0].getErrorCode() != 0)
-				{
-					aBlock->output[0].setErrorCode(0);
-					aBlock->output[0].setErrorDescription("");
-					flag = true;
-				}
-				if(flag)
-				{
-					return 1;
-				}
-				else
-				{
-					return 0;
-				}
+				return 0;
 			}
-
 		}
 	}
 }
