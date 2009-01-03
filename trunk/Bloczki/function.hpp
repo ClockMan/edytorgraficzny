@@ -30,22 +30,22 @@ wartosc domyslna = 0
 */
 bool BinarizationBalance(Graphics::TBitmap* picture, int limit, int firstColor = clBlack, int secondColor = clWhite);
 
-// rozmycie obrazu - zarezerwowane
+// rozmycie obrazu - zrobione
 bool MotionBlur(Graphics::TBitmap* picture);
 
-// obrot w prawo - zarezerwowane MP
+// obrot w prawo - zrobione
 bool RightRotation(Graphics::TBitmap* picture);
 
-// obrot w lewo - zarezerwowane MP
+// obrot w lewo - zrobione
 bool LeftRotation(Graphics::TBitmap* picture);
 
-// szum kolorowy - rezerwacja
+// szum kolorowy - zrobione
 bool ColorNoise(Graphics::TBitmap* picture, int noise);
 
-// szum bialy (mono) - rezerwacja
+// szum bialy (mono) - zrobione
 bool MonoNoise(Graphics::TBitmap* picture, int noise);
 
-// wyplowienie obrazu -zarezerwowane
+// wyplowienie obrazu - zrobione
 bool FadedPicture(Graphics::TBitmap* picture);
 
 // wyrownanie histogramu
@@ -80,7 +80,7 @@ bool StatisticsFilter(Graphics::TBitmap* picture, int filter);
 wartosc argumentu limit = od -255 do 255
 wartosc domyslna = 0
 */
-bool Lightning(Graphics::TBitmap* picture, int limit);
+bool Lightning(Graphics::TBitmap* picture, int limit); //rezerwacja
 
 // kontrast
 
@@ -88,7 +88,7 @@ bool Lightning(Graphics::TBitmap* picture, int limit);
 wartosc argumentu limit = od -127 do 127
 wartosc domyslna = 0
 */
-bool Contrast(Graphics::TBitmap* picture, double limit);
+bool Contrast(Graphics::TBitmap* picture, double limit); //rezerwacja
 
 // nasycenie kolorow
 
@@ -96,7 +96,7 @@ bool Contrast(Graphics::TBitmap* picture, double limit);
 wartosc argumentu limit = od -255 do 255
 wartosc domyslna = 0
 */
-bool Saturation(Graphics::TBitmap* picture, int limit);
+bool Saturation(Graphics::TBitmap* picture, int limit); //rezerwacja
 
 // korekcja gamma
 
@@ -104,7 +104,7 @@ bool Saturation(Graphics::TBitmap* picture, int limit);
 wartosc argumentu limit = od 1 do 699
 wartosc domyslna = 1;
 */
-bool GammaCorrection(Graphics::TBitmap* picture, int limit);
+bool GammaCorrection(Graphics::TBitmap* picture, int limit); //rezerwacja
 
 // balans skladowych RGB
 
@@ -113,7 +113,7 @@ wartosc argumentu limit_r, limit_g, limit_b = od -255 do 255
 wartosci domyslne = 0
 aby zmieniac nasycenie tylko jednej skladowej nalezy pozostale przekazac jako z wartoscia = 0
 */
-bool RGBBalance(Graphics::TBitmap* picture, int limit_r, int limit_g, int limit_b);
+bool RGBBalance(Graphics::TBitmap* picture, int limit_r, int limit_g, int limit_b); //rezerwacja
 
 // filtracje z maska 3x3
 
