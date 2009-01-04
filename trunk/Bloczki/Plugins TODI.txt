@@ -1,10 +1,4 @@
-Tworzenie nowego typu Boolean - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(true/false)
-Tworzenie nowego typu Integer - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(int)
-Tworzenie nowego typu Double - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(double)
-Tworzenie nowego typu Mask3x3 - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(macie¿ 3x3)
-Tworzenie nowego typu Mask5x5 - 0 wejœæ, 1 wyjœcie - konfiguracja: ustawienie wartoœci(macie¿ 5x5)
 Dodawanie obrazów - 2 lub wiêcej wejœæ, 1 wyjœcie - konfiguracja: ewentualnie ile % z ka¿dego obraz ma byæ w obrazie wynikowym (domyœlnie 100%) [konfiguracja nie ejst konieczna], czy normalizowaæ
-Odejmowanie obrazów - 2 wejœæ, 1 wyjœcie - konfiguracja: brak
 Wyrównanie histogramu - 1 wejœc, 1 wyjœæ - konfiguracja: brak
 
 Kto ma pomys³y to prosze uzupe³niæ proponowan¹ listê operacji

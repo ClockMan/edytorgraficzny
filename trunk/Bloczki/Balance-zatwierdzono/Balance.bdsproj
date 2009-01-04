@@ -5,7 +5,7 @@
 			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
 			<Option Name="ProjectType">CppDynamicLibrary</Option>
 			<Option Name="Version">1.0</Option>
-			<Option Name="GUID">{FD2B890D-FEE2-48FA-B61A-BDFEA46AA791}</Option>
+			<Option Name="GUID">{BCF275DB-3D27-4E21-B73E-D1802783A75C}</Option>
 		</Option>
 	</PersonalityInfo>
 	<CPlusPlusBuilder.Personality>
@@ -25,8 +25,9 @@
         <property category="build.config.1" name="settings.win32b" value="default"/>
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
-        <property category="build.node" name="name" value="Contrast.dll"/>
-        <property category="build.node" name="packages" value="vcl;rtl;vclx;bcbsmp"/>
+        <property category="build.node" name="lastconfig" value="Release_Build"/>
+        <property category="build.node" name="name" value="Balance.dll"/>
+        <property category="build.node" name="packages" value="vcl;rtl;vclx"/>
         <property category="build.node" name="sparelibs" value="vcl.lib rtl.lib"/>
         <property category="build.node" name="use_packages" value="1"/>
         <property category="build.platform" name="active" value="win32"/>
@@ -67,9 +68,16 @@
         <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
         <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.Gi.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
         <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.v.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="param.libfiles.merge" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
         <property category="win32.Release_Build.win32b.tasm32" name="option.zi.enabled" value="0"/>
@@ -93,7 +101,7 @@
           <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.7" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.8" value="..\"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\Contrast"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\balance"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="1"/>
@@ -129,7 +137,7 @@
           <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
           <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.7" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.8" value="..\"/>
-          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\Contrast"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\balance"/>
           <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
           <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="1"/>
           <property category="win32.*.win32b.dcc32" name="option.$.arg.1" value="YD"/>
@@ -207,7 +215,7 @@
           <property category="win32.*.win32b.ilink32" name="option.L.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.7" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.8" value="..\"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\Contrast"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\balance"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
@@ -251,7 +259,7 @@
           <property category="win32.*.win32b.tasm32" name="option.i.arg.6" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
           <property category="win32.*.win32b.tasm32" name="option.i.arg.7" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.tasm32" name="option.i.arg.8" value="..\"/>
-          <property category="win32.*.win32b.tasm32" name="option.i.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\Contrast"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.9" value="C:\Documents and Settings\Marek\Moje dokumenty\SVN\Bloczki\balance"/>
           <property category="win32.*.win32b.tasm32" name="option.i.arg.merge" value="1"/>
           <property category="win32.*.win32b.tasm32" name="option.i.enabled" value="1"/>
           <property category="win32.*.win32b.tasm32" name="option.w2.enabled" value="1"/>
@@ -261,9 +269,9 @@
         </optionset>
       </project>
       <FILELIST>
-        <FILE FILENAME="Contrast.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="Contrast.res" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="Contrast.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="Contrast" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="contrast_dll.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="contrast_dll" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="Balance.res" CONTAINERID="ResTool" LOCALCOMMAND="" UNITNAME="Balance.res" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="Balance.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="Balance" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="balance_dll.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="balance_dll" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="configWindow.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="configWindow" FORMNAME="cfgWin" DESIGNCLASS="" ADDITIONAL="configWindow.h"/>
         <FILE FILENAME="..\function.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="function" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="..\..\Program\engine\Block.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Block" FORMNAME="" DESIGNCLASS=""/>
@@ -287,7 +295,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Build">1</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -298,8 +306,8 @@
         </VersionInfo>
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
-          <VersionInfoKeys Name="FileDescription">Contrast</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription">Balance</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.1</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
@@ -344,6 +352,11 @@
           <Parameters Name="LoadAllSymbols">True</Parameters>
           <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
         </Parameters>
+        <Language>
+          <Language Name="ActiveLang"></Language>
+          <Language Name="ProjectLang">$00000000</Language>
+          <Language Name="RootDir"></Language>
+        </Language>
         <Linker>
           <Linker Name="LibPrefix"></Linker>
           <Linker Name="LibSuffix"></Linker>
@@ -352,7 +365,8 @@
       </IDEOPTIONS>
     </BCBPROJECT>
 		<Source>
-			<Source Name="MainSource">Contrast.bpf</Source>
+			<Source Name="MainSource">Balance.bpf</Source>
 		</Source>
+		<buildevents/>
 	</CPlusPlusBuilder.Personality>
 </BorlandProject>
