@@ -190,9 +190,7 @@ Position VisualBlock::getOutputPosition(BlockOutput* object)
 void __fastcall VisualBlock::SpeedButtonClick(TObject *Sender)
 {
    if (OnConfigClick!=NULL) {
-	  configButton->Enabled=false;
 	  OnConfigClick(this);
-	  configButton->Enabled=true;
    }
 }
 
