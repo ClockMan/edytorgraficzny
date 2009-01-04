@@ -2021,6 +2021,11 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 				OnRunDebug(this, "Blok nie zwróci³ ¿adnych danych, niedodano do histori");
 		delete history;
 	}
+	//aktualizyjuemy wejœæia do bloku
+	for(unsigned int i=0;i<connections.size();++i)
+	{
+		if (connections[i]->inBlock==block) connections[i]->update();
+    }
 	return true;
 }
 

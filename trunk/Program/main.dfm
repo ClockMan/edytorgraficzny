@@ -511,7 +511,6 @@ object Form1: TForm1
     Height = 19
     Panels = <>
     SimplePanel = True
-    ExplicitTop = 514
   end
   object Panel1: TPanel
     Left = 0
@@ -520,7 +519,6 @@ object Form1: TForm1
     Height = 106
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 408
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -957,7 +955,6 @@ object Form1: TForm1
     BorderStyle = bsSingle
     TabOrder = 3
     Visible = False
-    ExplicitTop = 386
     object CGauge1: TCGauge
       Left = 209
       Top = 0
