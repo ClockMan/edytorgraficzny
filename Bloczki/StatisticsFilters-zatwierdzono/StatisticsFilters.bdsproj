@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">CPlusPlusBuilder.Personality</Option>
-      <Option Name="ProjectType">CppDynamicLibrary</Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{AB3C9620-F93B-4507-A91B-F32720D74EAE}</Option>
-    </Option>
-  </PersonalityInfo>
-  <CPlusPlusBuilder.Personality>
-    <BCBPROJECT>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{AB3C9620-F93B-4507-A91B-F32720D74EAE}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<BCBPROJECT>
       <project version="10.0">
         <property category="build.config" name="active" value="1"/>
         <property category="build.config" name="count" value="1"/>
@@ -26,7 +26,7 @@
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
         <property category="build.node" name="name" value="StatisticsFilters.dll"/>
-        <property category="build.node" name="packages" value="vcl;rtl;vclx;bcbsmp"/>
+        <property category="build.node" name="packages" value="vcl;rtl;vclx"/>
         <property category="build.node" name="sparelibs" value="vcl.lib rtl.lib"/>
         <property category="build.node" name="use_packages" value="1"/>
         <property category="build.platform" name="active" value="win32"/>
@@ -104,8 +104,7 @@
           <property category="win32.*.win32b.bcc32" name="option.k.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="NO_STRICT"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="_RTLDLL"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="USEPACKAGES"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="USEPACKAGES"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="1"/>
@@ -194,7 +193,7 @@
           <property category="win32.*.win32b.ilink32" name="option.D.arg" value="&quot;&quot;"/>
           <property category="win32.*.win32b.ilink32" name="option.D.arg.merge" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.D.enabled" value="1"/>
-          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="..\..\TypyDanych\Bitmap32bit\Interface"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.10" value="C:\Program Files\Borland\CBuilder6\Projects"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.11" value="C:\Documents and Settings\Marek\Moje dokumenty\Borland Builder projekty\Simplay3"/>
@@ -212,7 +211,7 @@
           <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="1"/>
-          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.1" value="..\"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.2" value="..\..\Program\engine"/>
           <property category="win32.*.win32b.ilink32" name="option.j.arg.3" value="..\..\TypyDanych\Bitmap1bit\Interface"/>
@@ -226,11 +225,11 @@
           <property category="win32.*.win32b.ilink32" name="option.outputdir.arg.1" value="."/>
           <property category="win32.*.win32b.ilink32" name="option.outputdir.arg.merge" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
-          <property category="win32.*.win32b.ilink32" name="option.v.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.v.enabled" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="$(LIBRARIES)"/>
           <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="import32.lib"/>
-          <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mti.lib"/>
-          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.3" value="cp32mt.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="0"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
           <property category="win32.*.win32b.ilink32" name="param.objfiles.3" value="sysinit.obj"/>
@@ -287,7 +286,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Build">1</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -299,7 +298,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription">StatisticsFilter</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.1</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
@@ -344,6 +343,11 @@
           <Parameters Name="LoadAllSymbols">True</Parameters>
           <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
         </Parameters>
+        <Language>
+          <Language Name="ActiveLang"></Language>
+          <Language Name="ProjectLang">$00000000</Language>
+          <Language Name="RootDir"></Language>
+        </Language>
         <Linker>
           <Linker Name="LibPrefix"></Linker>
           <Linker Name="LibSuffix"></Linker>
@@ -351,8 +355,8 @@
         </Linker>
       </IDEOPTIONS>
     </BCBPROJECT>
-    <Source>
-      <Source Name="MainSource">StatisticsFilters.bpf</Source>
-    </Source>
+		<Source>
+			<Source Name="MainSource">StatisticsFilters.bpf</Source>
+		</Source>  <buildevents/>
   </CPlusPlusBuilder.Personality>
 </BorlandProject>
