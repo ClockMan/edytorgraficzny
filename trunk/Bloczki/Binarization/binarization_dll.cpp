@@ -40,5 +40,154 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void* lpReserved
 {
 	return 1;
 }
+
 //---------------------------------------------------------------------------
-//TOFIX
+bool __stdcall showConfig(TComponent *owner, Block *aBlock)
+{
+		cfgWin = new TcfgWin(owner);
+		cfgWin->SetConfig(aBlock);
+		cfgWin->ShowModal();
+		return true;
+}
+
+//---------------------------------------------------------------------------
+
+
+int __stdcall validate(Block *aBlock)
+{
+	if((aBlock->input.size() == 0) && (aBlock->output.size() == 0))
+	{
+		BlockInput input1("input1");
+		input1.allowedTypes.push_back("Bitmap1bit");
+		input1.allowedTypes.push_back("Bitmap4bit");
+		input1.allowedTypes.push_back("Bitmap8bit");
+		input1.allowedTypes.push_back("Bitmap16bit");
+		input1.allowedTypes.push_back("Bitmap24bit");
+		input1.allowedTypes.push_back("Bitmap32bit");
+		input1.setDescription("Domyslne wejscie");
+		input1.setErrorCode(1);
+		input1.setErrorDescription("Brak obiektu na wejsciu");
+		aBlock->input.push_back(input1);
+
+		BlockOutput output1("output1");
+		output1.setOutputType("Bitmap24bit");
+		output1.setDescription("Domyslne wyjscie");
+		output1.setErrorCode(1);
+		output1.setErrorDescription("Brak obiektu na wejsciu");
+		aBlock->output.push_back(output1);
+
+		//tu trzeba coœ wpisaæ.
+	}
+		else
+	{
+		if(aBlock->input[0].getConnectedType().IsEmpty())
+		{
+			aBlock->input[0].setErrorCode(1);
+			aBlock->input[0].setErrorDescription("Brak obiektu na wejsciu");
+			aBlock->output[0].setErrorCode(1);
+			aBlock->output[0].setErrorDescription("Brak obiektu na wejsciu");
+			aBlock->output[0].setOutputType("Bitmap24bit");
+			return 1;
+		} 
+		else
+		{
+			if (aBlock->output[0].getOutputType()!= aBlock->input[0].getConnectedType())
+			{
+				aBlock->output[0].setOutputType(aBlock->input[0].getConnectedType());
+				aBlock->input[0].setErrorCode(0);
+				aBlock->output[0].setErrorCode(0);
+				aBlock->input[0].setErrorDescription("");
+				aBlock->output[0].setErrorDescription("");
+				return 1;
+			}
+			else if(aBlock->input[0].getErrorCode() != 0 || aBlock->output[0].getErrorCode() != 0)
+			{
+				aBlock->input[0].setErrorCode(0);
+				aBlock->output[0].setErrorCode(0);
+				aBlock->input[0].setErrorDescription("");
+				aBlock->output[0].setErrorDescription("");
+				return 1;
+			}
+			else 
+				return 0;
+		}
+	}
+}
+//---------------------------------------------------------------------------
+int __stdcall run(Block *aBlock)
+{
+	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
+		return 1;
+
+	Graphics::TBitmap* picture = new Graphics::TBitmap();
+	AnsiString connectedType(aBlock->input[0].getConnectedType());
+	
+	if(connectedType == "Bitmap1bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap1bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else	if(connectedType == "Bitmap4bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap4bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else	if(connectedType == "Bitmap8bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else	if(connectedType == "Bitmap16bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else	if(connectedType == "Bitmap24bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[0].getObject()))));
+
+	else	if(connectedType == "Bitmap32bit")
+		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
+
+///         dsdsadasdaskkjadsk
+		if(!BinarizationBalance(picture, limitB, firstColorB, secondColorB))
+	{
+		aBlock->output[0].setErrorCode(2);
+		aBlock->output[0].setErrorDescription("Pusta bitmapa");
+		picture->Free();
+		return 2;
+	}
+    
+	TypeConfig* copy;
+
+	if(connectedType == "Bitmap1bit")
+	{
+		copy = IBitmap1bit::getNew();
+		IBitmap1bit::setBitmap(copy, *picture);
+	}
+	else if(connectedType == "Bitmap4bit")
+	{
+		copy = IBitmap4bit::getNew();
+		IBitmap4bit::setBitmap(copy, *picture);
+	}
+	else if(connectedType == "Bitmap8bit")
+	{
+		copy = IBitmap8bit::getNew();
+		IBitmap8bit::setBitmap(copy, *picture);
+	}
+	else if(connectedType == "Bitmap16bit")
+	{
+		copy = IBitmap16bit::getNew();
+		IBitmap16bit::setBitmap(copy, *picture);
+	}
+	else if(connectedType == "Bitmap24bit")
+	{
+		copy = IBitmap24bit::getNew();
+		IBitmap24bit::setBitmap(copy, *picture);
+	}
+	else if(connectedType == "Bitmap32bit")
+	{
+		copy = IBitmap32bit::getNew();
+		IBitmap32bit::setBitmap(copy, *picture);
+	}
+
+	aBlock->output[0].setObject(*copy);
+	
+	picture->Free();
+	delete copy;
+
+	return 0;
+}
+//---------------------------------------------------------------------------
+//TOFIX     rotring
