@@ -3,6 +3,7 @@
 Block::Block()
 {
 	config=new BlockConfig();
+	blockWindow=NULL;
 }
 
 Block::Block(const Block &copy)
@@ -10,10 +11,17 @@ Block::Block(const Block &copy)
 	config=new BlockConfig(*copy.config);
 	input=copy.input;
 	output=copy.output;
+	blockWindow=NULL;
 }
 
 Block::~Block()
 {
+    try{
+    if (blockWindow!=NULL) delete blockWindow;
+    } catch(...)
+    {
+      //nic tu :d
+    }
     delete config;
 }
 
