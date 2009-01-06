@@ -5,6 +5,10 @@ using namespace std;
 
 #ifndef __Block_h__
 #define __Block_h__
+#include <SysUtils.hpp>
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <Forms.hpp>
 #include "BlockConfig.h"
 #include "BlockInput.h"
 #include "BlockOutput.h"
@@ -19,6 +23,7 @@ class Block
 	private:
 		BlockConfig *config;
 	public:
+		TForm *blockWindow;
 		/*
 		 * Lista wejsc bloku.
 		 */
