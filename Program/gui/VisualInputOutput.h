@@ -8,6 +8,9 @@
 
 typedef void ( __closure *VisualFunction )(TObject*);
 
+/**
+ * Klasa symbolizujaca wizualnie wejscia i wyjscia do bloku
+ */
 class PACKAGE VisualInputOutput : public TPanel
 {
 private:
@@ -16,7 +19,14 @@ private:
 	void __fastcall MouseDownF(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 	protected:
 public:
+	/**
+	 * Event
+	 */
 	VisualFunction OnShowHistory;
+	/**
+	 * Konstruktor
+	 * @param AOwner wskaznik do klasy bedacej wlascicielem dla tej
+	 */
 	__fastcall VisualInputOutput(Classes::TComponent* AOwner);
 };
 
