@@ -205,6 +205,7 @@ void VisualBlock::setTitle(const AnsiString &s)
 {
    title->Caption=s;
    title->Hint=s;
+   block.title=s;
 }
 
 AnsiString VisualBlock::getTitle()
