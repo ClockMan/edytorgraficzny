@@ -35,13 +35,15 @@ class BlockConfig
 		 * @param aCopy obiekt ktory zostanie skopiowany
 		 */
 		BlockConfig(const BlockConfig &aCopy);
-
+		/**
+		 * Konstruktor kopiuj±cy z TStream
+		 * @param stream Stream z ktorego ma zostac wczytany.
+		 */			
 		BlockConfig(TStream &stream);
 		/**
 		 * Destruktor
 		 */
 		~BlockConfig();
-
 		/**
 		 * Dodaje obiekt typu string (aTyp) na listê pod nazwa aName.
 		 * @param aName nazwa pod jaka obiekt ma widniesc na liœcie

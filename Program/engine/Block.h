@@ -23,34 +23,37 @@ class Block
 	private:
 		BlockConfig *config;
 	public:
+		/**
+		 * Wskaznik do okna, mozliwy do uzycia w przypadku tworzenia bloczkow potrzebujacych zostawic okno po wykonaniu akcji run.
+		 */
 		TForm *blockWindow;
-		/*
+		/**
 		 * Lista wejsc bloku.
 		 */
 		vector<BlockInput> input;
-		/*
+		/**
 		 * Lista wyjsc bloku.
 		 */
 		vector<BlockOutput> output;
-		/*
+		/**
 		 * Konstruktor domyslny.
 		 */
 		Block();
-		/*
+		/**
 		 * Konstruktor kopiujacy
 		 * @param copy obiekt ktory zostanie skopiowany
 		 */
 		Block(const Block &copy);
-		/*
+		/**
 		 * Destruktor
 		 */
 		~Block();
-		/*
+		/**
 		 * Zwraca wskaznik do uwstawien bloku.
 		 * @return ustawienia bloku.
 		 */
 		BlockConfig* getConfig();
-		/*
+		/**
 		 * Ustawia wlasciwosci obiektu.
 		 * @param ob wlasciowsci obiektu.
 		 */

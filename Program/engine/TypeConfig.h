@@ -55,7 +55,9 @@ class TypeConfig: public BlockConfig
 		 * @return nazwa obiektu.
 		 */
 		const AnsiString& getName();
-
+		/**
+		 * Zwraca unikalny id dla tej klasy, jest nim adres w pamieci pod ktorym zostala stworzona
+		 */
 		unsigned long getId();
 };
 

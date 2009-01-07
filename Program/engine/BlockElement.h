@@ -25,71 +25,69 @@ class BlockElement
 		AnsiString name;
 
 	public:
-		/*
+		/**
 		 * Konstruktor
 		 * @param aName nazwa tworzonego wejscia/wyjœcia
 		 */
 		BlockElement(const AnsiString aName);
-		/*
+		/**
 		 * Konstruktor
 		 * @param aName nazwa tworzonego wejscia/wyjœcia
 		 */
 		BlockElement(const BlockElement &block);
-		/*
+		/**
 		 * Destruktor
 		 */
 		~BlockElement();
-		/*
+		/**
 		 * Pobiera opis.
 		 * @return AnsiString opis wejscia/wyjœcia.
 		 */
 		AnsiString& getDescription();
-		/*
+		/**
 		 * Pobiera kod bledu.
 		 * @reurn int kod bledu.
 		 */
 		int getErrorCode();
-		/*
+		/**
 		 * Pobiera Opis bledu
 		 * @return AnsiString - Opis bledu.
 		 */
 		AnsiString& getErrorDescription();
-		/*
+		/**
 		 * Pobiera nazwe obiektu.
 		 * @return AnsiString nazwa obiektu.
 		 */
 		AnsiString& getName();
-		/*
+		/**
 		 * Pobiera Konfiguracje bloku.
 		 * @return TypeConfig konfiguracja bloku.
 		 */
 		TypeConfig* getObject();
-		/*
+		/**
 		 * Ustawia opis.
 		 * @param aDescription - ustawiany opis.
 		 */
 		void setDescription(const AnsiString aDescription);
-		/*
+		/**
 		 * Ustawia opis bledu.
 		 * @param aErrorDescription - ustawiany opis bledu.
 		 */
 		void setErrorDescription(const AnsiString aErrorDescription);
-		/*
+		/**
 		 * Ustawia kod blad.
-		 * @param aError - ustawiany opis.
+		 * @param aError - ustawiany kod,0-ok, 1-warrning, 2-error.
 		 */
 		void setErrorCode(int aError);
-		/*
+		/**
 		 * Ustawia obiekt.
 		 * @param aData - ustawiany obiekt.
 		 */
 		void setObject(const TypeConfig &aData);
-
-		/*
+		/**
 		 * Usuwa obiekt.
 		 */
 		void clearObject();
 };
-
 
 #endif
