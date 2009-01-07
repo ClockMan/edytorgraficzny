@@ -36,6 +36,7 @@ object imgWindow: TimgWindow
         Top = 0
         Width = 105
         Height = 105
+        OnMouseDown = ImagePictureMouseDown
         OnMouseMove = ImagePictureMouseMove
       end
     end

@@ -35,9 +35,12 @@ __published:	// IDE-managed Components
 	void __fastcall EditYKeyPress(TObject *Sender, char &Key);
 	void __fastcall EditYChange(TObject *Sender);
 	void __fastcall FormResize(TObject *Sender);
+	void __fastcall ImagePictureMouseDown(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
 private:	// User declarations
 	TPoint *CursorPosition; 
-	TPoint *CDown;
+	TPoint *CDown;       
+	TPoint *PictureCDown;
 	void ChangeColor();
 public:		// User declarations
 	void PaintImage(Graphics::TBitmap* picture);
