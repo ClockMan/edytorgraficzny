@@ -8,6 +8,7 @@ USEFORM("main.cpp", Form1);
 USEFORM("splash.cpp", Form2);
 USEFORM("gui\history.cpp", Form3);
 USEFORM("Unit4.cpp", Form4);
+USEFORM("Unit5.cpp", Form5);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

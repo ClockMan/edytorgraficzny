@@ -1,4 +1,4 @@
-#ifndef PIWOEngineH
+﻿#ifndef PIWOEngineH
 #define PIWOEngineH
 
 #include <SysUtils.hpp>

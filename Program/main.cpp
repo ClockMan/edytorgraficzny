@@ -7,6 +7,7 @@
 
 #include "main.h"
 #include "Unit4.h"
+#include "Unit5.h"
 #include "gui/Line.h"
 #include "splash.h"
 //---------------------------------------------------------------------------
@@ -621,7 +622,7 @@ void TForm1::OnRunEnd(TObject* Sender)
 void TForm1::OnRunProgress(TObject* Sender,const AnsiString message, const double precent)
 {
 	Label1->Caption=message;
-	CGauge1->Progress=int(precent);
+	CGauge1->Progress=(int)(precent);
 	Application->ProcessMessages();
 }
 
@@ -1143,6 +1144,43 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
 	   piwo->DeleteSelectedConnection();
 	   piwo->DeleteSelectedBlocks(); 
 	}	
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::ApplicationEvents1Message(tagMSG &Msg, bool &Handled)
+{
+   if (Msg.message==WM_MOUSEMOVE) {
+	   if ((Msg.pt.x==mousePos.x)&&(Msg.pt.y==mousePos.y))
+		  Handled=true;
+		  else
+		  mousePos=Msg.pt;
+   }
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Instrukcjauytkoniwka1Click(TObject *Sender)
+{
+   if (int(ShellExecute(0,"open","Instrukcja Uzytkownika.pdf","",(ExtractFileDir(Application->ExeName)+"\\doc").c_str(),SW_SHOWNORMAL))==ERROR_FILE_NOT_FOUND)
+   ShowMessage("Brak pliku "+(ExtractFileDir(Application->ExeName))+"\\doc\\Instrukcja Uzytkownika.pdf");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Dokumentacjatechniczna1Click(TObject *Sender)
+{
+   if (int(ShellExecute(0,"open","Dokumentacja Techniczna.pdf","",(ExtractFileDir(Application->ExeName)+"\\doc").c_str(),SW_SHOWNORMAL))==ERROR_FILE_NOT_FOUND)
+   ShowMessage("Brak pliku "+(ExtractFileDir(Application->ExeName))+"\\doc\\Dokumentacja Techniczna.pdf");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Oautorach1Click(TObject *Sender)
+{
+	Application->CreateForm(__classid(TForm5), &Form5);
+	Form5->ShowModal();
+	delete Form5;
+	Form5=NULL;
 }
 //---------------------------------------------------------------------------
 

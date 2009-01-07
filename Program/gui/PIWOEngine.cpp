@@ -114,8 +114,6 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    if (fun->description!="") newBlock->Hint+="\n"+fun->description;
    newBlock->Left=10;
    newBlock->Top=10;
-   fun->validate(&(newBlock->block));
-   newBlock->updateVisualComponents();
    newBlock->OnConfigClick=OnVisualBlockConfigClick;
    newBlock->OnVisualInputSelected=OnVisualBlockInputSelected;
    newBlock->OnVisualOutputSelected=OnVisualBlockOutputSelected;
@@ -125,6 +123,8 @@ bool PIWOEngine::AddBlock(const AnsiString &name)
    newBlock->OnUnselect=OnVisualBlockUnselect;
    newBlock->OnSelect=OnVisualBlockSelect;
    newBlock->OnSelectAdd=OnVisualBlockSelectAdd;
+   fun->validate(&(newBlock->block));
+   newBlock->updateVisualComponents();
    blocks.push_back(newBlock);
    newBlock->setSelected(true);
    validateBlock(newBlock);
@@ -1500,7 +1500,6 @@ bool PIWOEngine::runNotUsingHistory()
 bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 {
 	if (stopRunning) return false;
-	if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),(++runProgress/(blocks.size()+1)*100));
 	/*
 		Algorytm:
 		* za³o¿enie: aby bloczek by³ przetworzony musi byæ przynajmniej jedno wejœcie z kodem 0 gdy bloczek posiada wejœcia i przynajmniej jedno wyjœcie z kodem 0 gdy bloczek posiada wyjœcia.
@@ -1559,6 +1558,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 					  block->block.input[i].setErrorCode(1);
 					  block->setStatusColor(clYellow);
 					  block->updateVisualComponents();
+					  if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 					  return false;
 				  }
 			  }
@@ -1575,6 +1575,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 					  block->block.input[i].setErrorCode(1);
 					  block->setStatusColor(clYellow);
 					  block->updateVisualComponents();
+					  if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 					  return false;
 				  }
 				  else
@@ -1592,6 +1593,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 						  block->block.input[i].setErrorCode(1);
 						  block->setStatusColor(clYellow);
 						  block->updateVisualComponents();
+						  if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 						  return false;
 					  }
 					  else
@@ -1614,6 +1616,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 								  }
 								  block->block.input[i].setErrorCode(1);
 								  block->setStatusColor(clYellow);
+								  if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 								  return false;
 							}
 						  }
@@ -1626,6 +1629,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 							 block->block.input[i].setErrorCode(1);
 							 block->setStatusColor(clYellow);
 							 block->updateVisualComponents();
+							 if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 							 return false;
 						  }
 					  }
@@ -1641,6 +1645,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 			  block->block.input[i].setErrorCode(2);
 			  block->setStatusColor(clYellow);
 			  block->updateVisualComponents();
+			  if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 			  return false;
            }
 		}
@@ -1807,6 +1812,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 			 OnRunSuccess(this, "Blok "+block->getTitle()+" zosta³ przetworzony w oparciu o dane historyczne");
 		}
 		block->setStatusColor(clGreen);
+		if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 		return true;
 	}
 	//niemamy histori wiêc jeszcze bêdziemy musieli siê sporo pobawiæ.
@@ -1849,6 +1855,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 		if (OnRunError!=NULL)
 				OnRunError(this, "Blok "+block->getTitle()+" nie zosta³ przetwo¿ony");
 		block->setStatusColor(clRed);
+		if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 		return false;
 	} else
 	if (ret==1) {
@@ -2025,7 +2032,9 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 	for(unsigned int i=0;i<connections.size();++i)
 	{
 		if (connections[i]->inBlock==block) connections[i]->update();
-    }
+	  }
+
+	if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 	return true;
 }
 
@@ -2092,6 +2101,7 @@ void PIWOEngine::DuplcateSelectedBlocks()
 		} while (busy);
 
 		VisualBlock *newBlock=new VisualBlock(this->area);
+		newBlock->Visible=false;
 		newBlock->Parent=this->area;
 		newBlock->nameOfBlock=selectedBlocks[i]->nameOfBlock;
 		newBlock->numberOfBlock=number;
@@ -2101,7 +2111,6 @@ void PIWOEngine::DuplcateSelectedBlocks()
 		 if (fun->description!="") newBlock->Hint+="\n"+fun->description;
 		newBlock->Left=selectedBlocks[i]->Left+100;
 		newBlock->Top=selectedBlocks[i]->Top+100;
-		newBlock->Visible=true;
 		newBlock->OnConfigClick=OnVisualBlockConfigClick;
 		newBlock->OnVisualInputSelected=OnVisualBlockInputSelected;
 		newBlock->OnVisualOutputSelected=OnVisualBlockOutputSelected;
@@ -2115,10 +2124,16 @@ void PIWOEngine::DuplcateSelectedBlocks()
 		//TODO: w przydadku kopiowanie wyjœc i wejœc top/bootom wymaga aktualizacji
 		newBlock->block.setConfig(*(selectedBlocks[i]->block.getConfig()));
 		newBlock->block.input=selectedBlocks[i]->block.input;
+		//usuwamy pod³aczenia
+		for(unsigned int x=0;x<newBlock->block.input.size();++x)
+		{
+           newBlock->block.input[x].disconnect();
+		}
 		newBlock->block.output=selectedBlocks[i]->block.output;
-		newBlock->updateVisualComponents();//niech narysuje conieco
+		//newBlock->updateVisualComponents();//niech narysuje conieco
 		newBlocks.push_back(newBlock);
 		blocks.push_back(newBlock);
+		newBlock->updateVisualComponents();
 		if (OnInformation!=NULL) OnInformation(this,"Zduplikowano blok - "+selectedBlocks[i]->nameOfBlock);
 	}
 	//odnawiamy po³¹czenia: right i left
@@ -2170,10 +2185,15 @@ void PIWOEngine::DuplcateSelectedBlocks()
 		con->draw();
 		//aktualizacja bloku input
 		//kopiuje
+		try{
 		for(unsigned j=0;j<connections[i]->lines.size();++j)
 		{
 		  con->lines[j]->Resize=connections[i]->lines[j]->Resize;
 		}
+		}catch(...)
+		{
+            //nic tu
+        }
 		connections.push_back(con);
 		con->update();
 	}
@@ -2181,7 +2201,9 @@ void PIWOEngine::DuplcateSelectedBlocks()
 	for(unsigned int j=0;j<newBlocks.size();++j)
 	{
 	   validateBlock(newBlocks[j]);
+	   newBlocks[j]->updateVisualComponents();
 	   newBlocks[j]->setSelected(true);
+	   newBlocks[j]->Visible=true;
 	}
 	selectedBlocks=newBlocks;
 	changed=true;if (OnChanged!=NULL) OnChanged(this);
