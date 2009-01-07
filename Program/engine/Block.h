@@ -28,6 +28,14 @@ class Block
 		 */
 		TForm *blockWindow;
 		/**
+		 * Nazwa bloczka
+		 */
+		AnsiString name;
+		/**
+		 * Numer bloczka w projekcie
+		 */
+		unsigned int number;
+		/**
 		 * Lista wejsc bloku.
 		 */
 		vector<BlockInput> input;
