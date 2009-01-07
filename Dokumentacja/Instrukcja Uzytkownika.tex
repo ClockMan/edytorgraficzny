@@ -30,8 +30,30 @@
 \section{Wstęp}
 P.I.W.O 1.0 jest silnikiem napisanym z myślą o cyfrowym przetważaniu obrazów aczkolwiek dzięki dośc rozbudowanej obsłudze pluginów można nim przetważać dowolne dane. W programie cykl operacji jakie mają zostać wykonane na obiekcie definiujemy w postaci bloczków które można ze sobą łączyć.
 \section{Wymagania sprzętowe}
-Program nie był jeszcze testowany pod względem wymagań sprzętowych aczkolwiek prawdopodbnie będzie działał na każdej maszynie z
-zainstalowanym systemem operacyjnym Widnows 2000,XP,Vista.
+\subsection{Minimalnia wymagana sprzętowe}
+\begin{itemize}
+ \item procesor 300Mhz lub nowszy
+ \item 64 MB RAM lub więcej
+ \item 50 MB przestrzeni dyskowej
+ \item dowolna karta graficzna
+ \item Windows 98 lub nowszy 
+\end{itemize}
+\subsection{Standardowe wymagana sprzętowe}
+\begin{itemize}
+ \item procesor 800Mhz lub nowszy
+ \item 256 MB RAM lub więcej
+ \item 100 MB przestrzeni dyskowej
+ \item dowolna karta graficzna z min 64 MB pamięci
+ \item Windows 2000 lub nowszy 
+\end{itemize}
+\subsection{Zalecane wymagana sprzętowe}
+\begin{itemize}
+ \item procesor klasy Intel Xeon 7400 series
+ \item 8 GB RAM
+ \item 1 GB wolnej przestrzeni dyskowej
+ \item NVIDIA GeForce 9800 GX2 lub nowsza
+ \item Windows XP Professional SP 3 (pirat)
+\end{itemize}
 \section{Interfejs użytkownika}
 \begin{figure}[h]
  \centering
@@ -277,6 +299,12 @@ Stan w jakim znajduje sie bloczek jest w tym samym czasie symbolizowany na kilka
  \end{description}
 \subsection{Połączenia}
 Połączenia między blokami definiują sposob przepływu danych miedzy blokami.
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{polaczenie.png}
+ \caption{Przykładowe połączenie}
+ \label{fig:polaczenie}
+\end{figure} 
 \begin{itemize}
  \item System zezwala tylko na podłączenie jednego połaczenia do pojedyńczego wejścia.
  \item System nie zezwala na połączenia cykliczne.
@@ -284,11 +312,52 @@ Połączenia między blokami definiują sposob przepływu danych miedzy blokami.
  \item Kliknięcie lewym przyciskiem na połączeniu zaznacza go.
  \item Przytrzymanie lewego klawisza myszy na połączeniu pozwala na dostosowanie wymiarów i kształtu połączenia do własnych potrzeb.
 \end{itemize}
-
+Aby stworzyć połączenie wystarczy kliknąc na wejściu/wyjściu bloku 1 a potem na wyjściu/wejściu bloku 2 do ktorego chce sie wykonać połączenie.
 \subsection{Historia}
-Po każdym poprawnym uruchomieniu dla każdego bloczka jest zapamiętywana historia. W historii może być zapsianych maksymalnie 10 ostatnich uruchomień 
-\subsection{Eksport/Import}
-\subsection{Uruchamianie}
-\section{Podsumowane}
+Po każdym poprawnym uruchomieniu dla każdego bloczka jest zapamiętywana historia. W historii może być zapsianych maksymalnie 10 ostatnich uruchomień. Po lewej stronie okna mamy do dyspozycji listę uruchomień wraz z wykazem wejśc i wyjśc do bloczka, po prawej stronie widnieje wizulaizacja danych dla ostatnio wybranego wejścia/wyjścia połączenia.
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.2]{history1.png}
+ \caption{Przykładowa historia 1}
+ \label{fig:his1}
+\end{figure} 
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.2]{history2.png}
+ \caption{Przykładowa historia 2}
+ \label{fig:his2}
+\end{figure} 
 
+\subsection{Eksport/Import}
+\subsubsection{Eksport}
+Projekt może w każdej chwili zostac zapisany do pliku o rozszerzeniu *.piwo. W przypadku wykonania takiej operacji zapisane zostaną:
+\begin{itemize}
+ \item Bloki (typ i pozycja)
+ \item Połączenia między blokami (pozycja)
+ \item Konfiguracja bloków 
+\end{itemize}
+\subsubsection{Import}
+W każdej chwili po wyexportowaniu projekt może zostać wczytany w stanie nie zmienionym, może to nastąpić poprzez wybranie pliku lub podwójne kliknięcie na pliku.
+\begin{figure}[ht]
+ \centering
+ \includegraphics[scale=1.0]{plik.png}
+ \caption{Przykładowy plik projektu}
+ \label{fig:plik}
+\end{figure} 
+
+\subsection{Uruchamianie}
+\begin{figure}[ht]
+ \centering
+ \includegraphics[scale=0.5]{pasek.png}
+ \caption{Pasek postępu}
+ \label{fig:pasek}
+\end{figure} 
+\subsubsection{Auto uruchamianie}
+Włączenie tej opcji powoduje automatyczne uruchamianie projektu po wykonaniu dowolnych zmian w projekcie. Projekt jest przetważany w opraciu o histori co pozwala na dużoszybsze przetważanie i pomijanie bloczków w których nie wprowadzono zmian lub na które zmiany nie wpłyneły.
+\subsubsection{Uruchom wszystko}
+Uruchamia projekt pomijając dane historyczne, użtykownik jest informowany o przebiogu przetwrazania projektu w oknie logów.
+\subsubsection{Sprawdź wszystko}
+Opcja przeprowadza sprawdzenie wszystkich bloków i połączeń, jesli widzisz jakieś anomalie lub połączenie/blok wyświetlany jest w sposób nie porządany, ta opcja powinna to naprawić.
+\section{Podsumowane}
+Dziękujemy za zapoznanie się z tą bezwartościową instrukcją obsługi, mamy nadzieję że czas który spędzili państwo czytając ten dokument uważacie za stracony. Jednocześnie zachęcamy do używania naszego programu o tak ślicznie brzmiącej nazwie P.I.W.O. (potocznie: browar, zdrobniale: piwko). Program jest dużo łatwiejszy w obsłudze niż sie to wydaje. Dołożyliśmy wszelkich starań aby program działał stabilnie, spędziliśmy dużo czasu naprawiając różne błędy powstałe z naszej przyczyny czy tez zabespieczjąc sie przed błędami które stworzył Microsoft min. w Windows XP. Osobom ktore chcą na poważnie używac naszego cudownego tworu chcemy przypomnieć tylko jedno:\\\textit{Cierpliwość jest cnotą bogów.}
 \end{document}
