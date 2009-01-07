@@ -1,4 +1,3 @@
-//$$---- Form CPP ----
 //---------------------------------------------------------------------------
 
 #include <vcl.h>
@@ -22,7 +21,7 @@ void __fastcall TcfgWindow::OKClick(TObject *Sender)
 	else
 	{
 		cfg_->setInt("mode",1);
-		cfg_->setInt("limitB",limitBShow->Text);
+		cfg_->setInt("limitB",limitBShow->Text.ToIntDef(0));
 	}
 	Close();
 }
@@ -56,10 +55,10 @@ void __fastcall TcfgWin::SetConfig(Block* block)
 
 void __fastcall TcfgWin::limitBChange(TObject *Sender)
 {
-		limitBShow->Text = limitB->Position;
+		limitBShow->Text = IntToStr(limitB->Position);
 }
 //---------------------------------------------------------------------------
-void __fastcall TcfgWin::limitbShowChange(TObject *Sender)
+void __fastcall TcfgWin::limitBShowChange(TObject *Sender)
 {
 		int limitB = limitBShow->Text.ToIntDef(0);
 		if(limitB < 0 || limitB > 255) limitB = 0;
@@ -82,7 +81,7 @@ void __fastcall TcfgWindow::BinarizationBalanceClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TcfgWin::FormClose(TObject *Sender, TCloseAction &Action)
 {
-		cfg_ = 125;
+		cfg_ = NULL;
 		Action = caFree;
 }
 
