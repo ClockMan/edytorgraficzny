@@ -353,6 +353,22 @@ void PIWOEngine::validateBlock(VisualBlock *block, bool updateInputConnections)
 				   //zmieni³ siê kod b³êdu, aktualizujemy po³¹czenia
 				   for(unsigned int g=0;g<outputHistory[0]->connections.size();++g)
 				   {
+					  if (outputHistory[0]->connections[g]->input->getErrorCode()!=outputHistory[0]->connections[g]->output->getErrorCode()) {
+						bool isOnList=false;
+						for(unsigned int k=0;k<toCheck.size();++k)
+						{
+							if (toCheck[k]==outputHistory[0]->connections[g]->inBlock) {
+								isOnList=true;
+								break;
+							}
+						}
+						if (!isOnList)
+						{
+						 if (OnDebug!=NULL) OnDebug(this,"Validacja bloku "+block->getTitle()+" - Blok : "+outputHistory[0]->connections[g]->inBlock->getTitle()+" wymaga validacji, dodaje go do listy.");
+						toCheck.push_back(outputHistory[0]->connections[g]->inBlock);
+						}
+					  }
+					  else
 					  outputHistory[0]->connections[g]->update();
 				   }
 				}
@@ -1650,7 +1666,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
            }
 		}
 	}
-	
+
 	//Mamy ju¿ dane wejœciowe (fuxem)
 	//niebêde tu sprawdza³ danych wyjœciowych :d
 	//teraz sprawdzimy historie i uruchomimy bloczek D:
@@ -2032,7 +2048,7 @@ bool PIWOEngine::runBlock(VisualBlock* block, bool fastRun, bool *useHistory)
 	for(unsigned int i=0;i<connections.size();++i)
 	{
 		if (connections[i]->inBlock==block) connections[i]->update();
-	  }
+	}
 
 	if (OnRunProgress!=NULL) OnRunProgress(this, block->getTitle(),((++runProgress)/((double)(blocks.size()+1))*100.0));
 	return true;
