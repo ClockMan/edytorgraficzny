@@ -4,5 +4,19 @@
     <Transaction>2008-12-26 13:29:53.593.cpp,C:\Documents and Settings\Kermit\Moje dokumenty\Borland Studio Projects\Unit1.cpp=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binaruzation_dll.cpp</Transaction>
     <Transaction>2008-12-26 13:31:02.875.cpp,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binaruzation_dll.cpp=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binarization_dll.cpp</Transaction>
     <Transaction>2008-12-26 13:32:14.062.bdsproj,C:\Documents and Settings\Kermit\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\binarization.bdsproj</Transaction>
+    <Transaction>2009-01-06 12:28:57.703.cpp,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\Unit1.cpp=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.cpp</Transaction>
+    <Transaction>2009-01-06 12:28:57.703.h,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\Unit1.h=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.h</Transaction>
+    <Transaction>2009-01-06 12:28:57.703.dfm,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\Unit1.dfm=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.dfm</Transaction>
+    <Transaction>2009-01-06 12:29:22.156.h,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.h=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.h</Transaction>
+    <Transaction>2009-01-06 12:29:22.156.h,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.h=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.h</Transaction>
+    <Transaction>2009-01-06 12:29:22.156.dfm,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.dfm=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.dfm</Transaction>
+    <Transaction>2009-01-06 12:31:00.015.cpp,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.cpp=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow3.cpp</Transaction>
+    <Transaction>2009-01-06 12:31:00.015.h,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.h=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow3.h</Transaction>
+    <Transaction>2009-01-06 12:31:00.015.dfm,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.dfm=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow3.dfm</Transaction>
+    <Transaction>2009-01-06 13:32:07.515.cpp,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\Unit2.cpp=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.cpp</Transaction>
+    <Transaction>2009-01-06 13:32:07.515.h,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\Unit2.h=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.h</Transaction>
+    <Transaction>2009-01-06 13:32:07.515.dfm,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\Unit2.dfm=C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow.dfm</Transaction>
+    <Transaction>2009-01-06 13:35:11.093.cpp,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow3.cpp=</Transaction>
+    <Transaction>2009-01-06 13:35:11.093.dfm,C:\Documents and Settings\Kermit\Pulpit\gps\Bloczki\Binarization\configWindow3.dfm=</Transaction>
   </Transactions>
 </BorlandProject>

@@ -3,7 +3,7 @@ object cfgWin: TcfgWin
   Top = 0
   BorderStyle = bsToolWindow
   Caption = 'Binarization'
-  ClientHeight = 169
+  ClientHeight = 194
   ClientWidth = 316
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,53 +16,62 @@ object cfgWin: TcfgWin
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
-    Left = 6
+    Left = 8
     Top = 8
     Width = 306
-    Height = 153
+    Height = 178
     Caption = 'Binarization'
     TabOrder = 0
-    object Button1: TButton
-      Left = 56
-      Top = 111
+    object OK: TButton
+      Left = 132
+      Top = 143
       Width = 75
       Height = 25
       Caption = 'OK'
       TabOrder = 0
     end
-    object Button2: TButton
-      Left = 185
-      Top = 111
+    object Anuluj: TButton
+      Left = 213
+      Top = 143
       Width = 75
       Height = 25
       Caption = 'Anuluj'
       TabOrder = 1
-    end
-    object CheckBox1: TCheckBox
-      Left = 16
-      Top = 23
-      Width = 129
-      Height = 17
-      Caption = 'Poziom binaryzacji'
-      TabOrder = 2
+      OnClick = AnulujClick
     end
     object limitB: TTrackBar
       Left = 16
-      Top = 55
+      Top = 87
       Width = 225
       Height = 50
       Ctl3D = True
       Constraints.MaxWidth = 255
       Max = 255
       ParentCtl3D = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object limitBShow: TEdit
       Left = 247
-      Top = 55
+      Top = 87
       Width = 41
       Height = 21
+      TabOrder = 3
+    end
+    object FreeBinarization: TRadioButton
+      Left = 24
+      Top = 56
+      Width = 201
+      Height = 17
+      Caption = 'Binaryzacja u'#380'ytkownika (0-255)'
       TabOrder = 4
+    end
+    object StandardBinarization: TRadioButton
+      Left = 24
+      Top = 33
+      Width = 217
+      Height = 17
+      Caption = 'Binaryzacja standartowa (pr'#243'g =125)'
+      TabOrder = 5
     end
   end
 end
