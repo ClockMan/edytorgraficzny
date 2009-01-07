@@ -112,26 +112,7 @@ Menu pozwalające wykonać operacje dostarczone przez pluginy. Menu aktywne tylk
 
 \subsubsection{Menu dynamicznych bloczków}
 W tym miejscu znajdują się menu ładowane z plików koniguracyjnych, każda opcja pozwala na dodanie ściśle powiązanego z nia bloczka, ilośc tych menu i struktura nie jest ściśle określona.
-\begin{figure}[ht]
- \centering
- \includegraphics[scale=0.5]{blokwejscia}
- \caption{Bloki Wejscia}
- \label{fig:inputblock}
-\end{figure}
-\begin{figure}[ht]
- \centering
- \includegraphics[scale=0.5]{blokwyjscia}
- \caption{Bloki Wyjscia}
- \label{fig:outputblock}
-\end{figure}
-\begin{figure}[ht]
- \centering
- \includegraphics[scale=0.5]{blokfunkcji}
- \caption{Bloki funkcji}
- \label{fig:outputblock}
-\end{figure}
 
-\newpage
 \subsubsection{Pomoc}
 \begin{description}
 \item [Instrukcja użytkownika] Wyświetla ten plik.
@@ -148,6 +129,7 @@ Toolbar jest to szereg przyciskow widocznych zaraz pod menu. Ich funkcje są tak
  \caption{Toolbar}
  \label{fig:Toolbar}
 \end{figure}
+
 \begin{itemize}
  \item Nowy projekt
  \item Otwórz projekt
@@ -246,10 +228,18 @@ Aktualnie jedyną funkcja paska statusu jest wyświetlanie aktualnie otwartego p
  \end{description}
 \section{Zarządzanie projektem}
 \subsection{Bloczki}
-Pojedynczy blok reprezentuję operację na obrazie (np. Binaryzacja,Wczytywanie,Zapisywanie).
-\subsubsection{Wejścia}
-Z lewej strony bloczku znajdują się wejścia, które są tworzone dynamicznie. Bloczek taki jak wczytywanie obrazu nie posiada żadnego wejścia gdyż nie przetwarza on żadnych danych, plik do wczytania zostaje podany w konfiguracji. Większość bloczków posiada tylko jedno wejście. Jednakże mogą istnieć bloczki które będą wymagały podania więcej niż jednego wejścia (na przykład dodawanie obrazów). Jest także możliwość że e bloczku może się pojawić nie tylko wiele wejśc ale również i całkowicie innych typów.
+Pojedynczy blok reprezentuję operację na obrazie (np. Binaryzacja,Wczytywanie,Zapisywanie). Na każdym bloku widnieje jego nazwa i numer.
+\begin{enumerate}
+ \item Kliknięcie lewym przyciskiem myszy na bloku zaznacza go ale odznacza inne bloki
+ \item Klikniecie lewym przyciskiem myszy na bloku trzymając wcisniety klawisz Ctrl zaznacza blok, ale nie odznacza innych bloków
+ \item Nacisniecie prawego przycisku myszy zezwala na przenoszenie bloczka.
+ \item Nacisnięcie prawego przycisku myszy tzrymając wciśnięty klawisz Ctrl zezwala na przenoszenie wszystkich zaznacoznych bloków + blok na którym sie klikneło.
+ \item Nacisniecie lewego przycisku myszy na bloku trzymając wciśniety klawisz Shift zaznacza blok i zezwala na jego przenoszenie.
+ \item Nacisniecie lewego przycisku myszy na bloku trzymając wciśniety klawisz Shift+Ctrl zaznacza blok i zezwala na przenoszenie wszystkich zaznaczonych bloków.
+\end{enumerate}
 
+\subsubsection{Wejścia}
+Z lewej strony bloczku znajdują się wejścia, które są tworzone dynamicznie. Bloczek taki jak wczytywanie obrazu nie posiada żadnego wejścia gdyż nie przetwarza on żadnych danych, plik do wczytania zostaje podany w konfiguracji. Większość bloczków posiada tylko jedno wejście. Jednakże mogą istnieć bloczki które będą wymagały podania więcej niż jednego wejścia (na przykład dodawanie obrazów). Jest także możliwość że w bloczku może się pojawić nie tylko wiele wejśc ale również i całkowicie innych typów.
 Stan wejścia jest opisywany poprzez kolor połączenia a także poprzez opis (który jest wyświetlany po najechaniu na wejście).
 \begin{figure}[h]
  \centering
@@ -257,16 +247,20 @@ Stan wejścia jest opisywany poprzez kolor połączenia a także poprzez opis (k
  \caption{Wejscia}
  \label{fig:Input}
 \end{figure}
+Kliknięcie lewym przyciskiem myszy na wejściu ``wybiera'' wejście.
+Kliknięcie prawym przyciskiem myszy na wejściu otwiera okno histori dla danego bloku z zaznaczeniem wejścia.
 \subsubsection{Wyjścia}
-Wynik przetwarzania jest symbolizowany z prawej strony bloczka jako wyjscie. Wyjścia są tworzone dynamicznie na podstawie Wejść.
+Wynik przetwarzania jest symbolizowany z prawej strony bloczka jako wyjscie. Ilośc wyjśc jak i ich typ zależy od bloczka.
 \begin{figure}[h]
  \centering
  \includegraphics[scale=0.5]{wyjscia}
  \caption{Wyjscia}
  \label{fig:Output}
 \end{figure}
+Kliknięcie lewym przyciskiem myszy na wyjściu ``wybiera'' wyjściu.
+Kliknięcie prawym przyciskiem myszy na wyjściu otwiera okno histori dla danego bloku z zaznaczeniem wyjścia.
 \subsubsection{Przycisk konfiguracyjny}
-Po kliknięciu na przycisk konfiguracji pojawia się okno opcji dotyczących przeprowadzenia danej operacji, lecz nie danych które powinny zostać przesłane do bloku poprzez wejście..
+Po kliknięciu na przycisk konfiguracji pojawia się okno opcji dotyczących przeprowadzenia danej operacji, lecz nie danych które powinny zostać przesłane do bloku poprzez wejście. Nie każdy bloczek musi posiadac konfiguracje.
 \begin{figure}[h]
  \centering
  \includegraphics[scale=0.5]{config}
@@ -274,9 +268,25 @@ Po kliknięciu na przycisk konfiguracji pojawia się okno opcji dotyczących prz
  \label{fig:config}
 \end{figure} 
 \subsubsection{Status}
-
+Stan w jakim znajduje sie bloczek jest w tym samym czasie symbolizowany na kilka sposobów. Kolor obramowania wokół przycisku konfiguracyjnego symbolizuje stan bloczka.
+\begin{description}
+ \item[Szary] Bloczek nie był jeszcze uruchamiany
+ \item[Zielony] Bloczek został uruchamiany poprawnie
+ \item[Zółty] Bloczek nie został uruchomiony ze względu na brak wymaganych danych.
+ \item[Czerwony] Wystapił błąd podczas uruchamiania bloczka
+ \end{description}
 \subsection{Połączenia}
+Połączenia między blokami definiują sposob przepływu danych miedzy blokami.
+\begin{itemize}
+ \item System zezwala tylko na podłączenie jednego połaczenia do pojedyńczego wejścia.
+ \item System nie zezwala na połączenia cykliczne.
+ \item Kliknięcie prawym przyciskiem na połączeniu resetuje jego modyfikacje pozycji i rozmiaru.
+ \item Kliknięcie lewym przyciskiem na połączeniu zaznacza go.
+ \item Przytrzymanie lewego klawisza myszy na połączeniu pozwala na dostosowanie wymiarów i kształtu połączenia do własnych potrzeb.
+\end{itemize}
+
 \subsection{Historia}
+Po każdym poprawnym uruchomieniu dla każdego bloczka jest zapamiętywana historia. W historii może być zapsianych maksymalnie 10 ostatnich uruchomień 
 \subsection{Eksport/Import}
 \subsection{Uruchamianie}
 \section{Podsumowane}
