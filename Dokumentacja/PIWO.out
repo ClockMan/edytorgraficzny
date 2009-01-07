@@ -1,18 +1,26 @@
-\BOOKMARK [1][-]{section.1}{Etap wstepny}{}
-\BOOKMARK [2][-]{subsection.1.1}{Opis dziedziny przedmiotowej}{section.1}
-\BOOKMARK [2][-]{subsection.1.2}{Cel projektu \205 po co?}{section.1}
-\BOOKMARK [2][-]{subsection.1.3}{Zakres projektu \205 co i jak?}{section.1}
-\BOOKMARK [2][-]{subsection.1.4}{Opracowanie wymagan wstepnych}{section.1}
-\BOOKMARK [3][-]{subsubsection.1.4.1}{Oczekiwana funkcjonalnosc systemu}{subsection.1.4}
-\BOOKMARK [3][-]{subsubsection.1.4.2}{Opis rzeczywistych obiekt\363w i zaleznosci miedzy nimi}{subsection.1.4}
-\BOOKMARK [3][-]{subsubsection.1.4.3}{Ograniczenia \(system, srodowisko, specyficzne wymagania\)}{subsection.1.4}
-\BOOKMARK [2][-]{subsection.1.5}{Harmonogram prac}{section.1}
-\BOOKMARK [1][-]{section.2}{Etap projektowania}{}
-\BOOKMARK [2][-]{subsection.2.1}{Wymagania funkcjonalne}{section.2}
-\BOOKMARK [2][-]{subsection.2.2}{Struktura}{section.2}
-\BOOKMARK [3][-]{subsubsection.2.2.1}{Silnik aplikacji}{subsection.2.2}
-\BOOKMARK [3][-]{subsubsection.2.2.2}{GUI}{subsection.2.2}
-\BOOKMARK [2][-]{subsection.2.3}{Slownik systemu}{section.2}
-\BOOKMARK [1][-]{section.3}{Etap implementacji}{}
-\BOOKMARK [2][-]{subsection.3.1}{Formatowanie Kodu}{section.3}
-\BOOKMARK [1][-]{section.4}{Etap \215wdrozenia\216}{}
+\BOOKMARK [1][-]{section.1}{Wstep}{}
+\BOOKMARK [1][-]{section.2}{Wymagania sprzetowe}{}
+\BOOKMARK [1][-]{section.3}{Interfejs uzytkownika}{}
+\BOOKMARK [2][-]{subsection.3.1}{Menu gl\363wne}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Plik}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Edycja}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Historia}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Uruchom}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.5}{Menu dynamicznych bloczk\363w}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.6}{Pomoc}{subsection.3.1}
+\BOOKMARK [2][-]{subsection.3.2}{Toolbar}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Strefa projektu}{section.3}
+\BOOKMARK [2][-]{subsection.3.4}{System log\363w}{section.3}
+\BOOKMARK [2][-]{subsection.3.5}{Pasek status}{section.3}
+\BOOKMARK [1][-]{section.4}{Skr\363ty klawiatury}{}
+\BOOKMARK [1][-]{section.5}{Zarzadzanie projektem}{}
+\BOOKMARK [2][-]{subsection.5.1}{Bloczki}{section.5}
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Wejscia}{subsection.5.1}
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Wyjscia}{subsection.5.1}
+\BOOKMARK [3][-]{subsubsection.5.1.3}{Przycisk konfiguracyjny}{subsection.5.1}
+\BOOKMARK [3][-]{subsubsection.5.1.4}{Status}{subsection.5.1}
+\BOOKMARK [2][-]{subsection.5.2}{Polaczenia}{section.5}
+\BOOKMARK [2][-]{subsection.5.3}{Historia}{section.5}
+\BOOKMARK [2][-]{subsection.5.4}{Eksport/Import}{section.5}
+\BOOKMARK [2][-]{subsection.5.5}{Uruchamianie}{section.5}
+\BOOKMARK [1][-]{section.6}{Podsumowane}{}
