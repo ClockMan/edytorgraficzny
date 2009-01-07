@@ -18,8 +18,9 @@
 #include <Buttons.hpp>
 #include <ExtCtrls.hpp>
 #include <vector>
-
-//---------------------------------------------------------------------------
+/**
+ * Klasa jest oknem histori
+ */
 class THistory : public TForm
 {
 __published:	// IDE-managed Components
@@ -39,13 +40,28 @@ private:
 	TFrame *showFrame;
 	unsigned int count;
 public:		// User declarations
+	/**
+	 * Konstruktor
+	 * @param Owner wskaznik do klasy bedacej wlascicielem dla tej
+	 */
 	__fastcall THistory(TComponent* Owner);
+	/**
+	 * Destruktor
+	 */
 	__fastcall ~THistory();
-
+	/**
+	 * Wskaznik do wizualnego bloku, musi byc ustawiony przed refresh
+	 */
 	VisualBlock *block;
+	/**
+	 * Wskaznik do kontenera pluginow, musi byc ustawione przed refresh
+	 */
 	PluginContener *plugins;
-
+	/**
+	 * Metoda wyswietla liste historii, i pokazuje ostatnia historie dla parametru toShow
+	 * @param toShow wskaznik do niskopoziomowego wejscia/wyjscia bloku, jesli NULL to przy wywolaniu zadne "okno" nie zostanie pokazane
+	 */
 	void refresh(BlockElement *toShow);
 };
-//---------------------------------------------------------------------------
+
 #endif

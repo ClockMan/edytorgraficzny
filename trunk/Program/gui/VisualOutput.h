@@ -8,10 +8,20 @@
 #include "VisualInputOutput.h"
 #include "../engine/BlockOutput.h"
 
+/**
+ * Klasa symbolizujaca wizualne wyjscia z bloku
+ */
 class PACKAGE VisualOutput : public VisualInputOutput
 {
      public:
+    /**
+     * Wskaznik do wyjscia
+     */ 
 	BlockOutput* output;
+	/**
+	 * Konstruktor
+	 * @param AOwner wskaznik do klasy bedacej wlascicielem dla tej
+	 */
 	__fastcall VisualOutput(Classes::TComponent* AOwner);
 };
 
