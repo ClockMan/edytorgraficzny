@@ -1,0 +1,283 @@
+\hypertarget{classFunctionDLL}{
+\section{FunctionDLL Class Reference}
+\label{classFunctionDLL}\index{FunctionDLL@{FunctionDLL}}
+}
+{\tt \#include $<$FunctionDLL.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classFunctionDLL_75491d7f5318f4a3fa36d4e64932ee36}{FunctionDLL} (const AnsiString \&fileDLL)
+\item 
+\hyperlink{classFunctionDLL_a756a1c0fa897a1577c4d3401ba2668d}{$\sim$FunctionDLL} ()
+\item 
+void \_\-\_\-fastcall \hyperlink{classFunctionDLL_322295c20f80c1e050d33b706f99f583}{OnClick} (TObject $\ast$Sender)
+\item 
+int \hyperlink{classFunctionDLL_a07371b317ee80a24aa43b5fdf467cd7}{run} (\hyperlink{classBlock}{Block} $\ast$aBlock)
+\item 
+bool \hyperlink{classFunctionDLL_107dd4ebe049bdfd55c7f0719008f170}{showConfig} (TComponent $\ast$owner, \hyperlink{classBlock}{Block} $\ast$aBlock)
+\item 
+int \hyperlink{classFunctionDLL_b48bfbd591047806dc5c546e5bec1ea0}{validate} (\hyperlink{classBlock}{Block} $\ast$aBlock)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+FunctionDLL\_\-onClick \hyperlink{classFunctionDLL_56030de2f3d06fc08006011d5449e11f}{FunctionAddRequest}
+\item 
+AnsiString \hyperlink{classFunctionDLL_7221a1013f54078dae4d3b3ff5f4bb65}{name}
+\item 
+AnsiString \hyperlink{classFunctionDLL_485d16d276958ae8742c0f4f10bf7d56}{fullName}
+\item 
+AnsiString \hyperlink{classFunctionDLL_2b31078dab160faddd111f8304ff9b62}{description}
+\item 
+Graphics::TBitmap $\ast$ \hyperlink{classFunctionDLL_905c9ae9bb44577a18c51d98f204289d}{picture}
+\item 
+vector$<$ AnsiString $>$ \hyperlink{classFunctionDLL_23f9be31a8f682cd303d542c733b1bb9}{category}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+HANDLE \hyperlink{classFunctionDLL_136a169dcd32293b0b4f1c0a9c5468fc}{DLLHandle}
+\item 
+FunctionDLL\_\-run \hyperlink{classFunctionDLL_569d58acd2256945ead5fa90d3effe62}{frun}
+\item 
+FunctionDLL\_\-validate \hyperlink{classFunctionDLL_689deacde4d515a8a8edab53c2de51c1}{fvalidate}
+\item 
+FunctionDLL\_\-showConfig \hyperlink{classFunctionDLL_747f51c2de5293af76fffbd1dd78ee28}{fshowConfig}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classFunctionDLL}{FunctionDLL} - Klasa ladujaca DLL bloczka, uruchamiaj¹ca funkcje i zwalniaj¹ca go \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.26 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 23 of file FunctionDLL.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFunctionDLL_75491d7f5318f4a3fa36d4e64932ee36}{
+\index{FunctionDLL@{FunctionDLL}!FunctionDLL@{FunctionDLL}}
+\index{FunctionDLL@{FunctionDLL}!FunctionDLL@{FunctionDLL}}
+\subsubsection[FunctionDLL]{\setlength{\rightskip}{0pt plus 5cm}FunctionDLL::FunctionDLL (const AnsiString \& {\em fileDLL})}}
+\label{classFunctionDLL_75491d7f5318f4a3fa36d4e64932ee36}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fileDLL}]sciezka do pliku, program automatycznie bedzie szual pliku ini i pliku bmp. \end{description}
+\end{Desc}
+
+
+Definition at line 3 of file FunctionDLL.cpp.
+
+References category, description, DLLHandle, frun, fshowConfig, fullName, FunctionAddRequest, fvalidate, name, and picture.\hypertarget{classFunctionDLL_a756a1c0fa897a1577c4d3401ba2668d}{
+\index{FunctionDLL@{FunctionDLL}!$\sim$FunctionDLL@{$\sim$FunctionDLL}}
+\index{$\sim$FunctionDLL@{$\sim$FunctionDLL}!FunctionDLL@{FunctionDLL}}
+\subsubsection[$\sim$FunctionDLL]{\setlength{\rightskip}{0pt plus 5cm}FunctionDLL::$\sim$FunctionDLL ()}}
+\label{classFunctionDLL_a756a1c0fa897a1577c4d3401ba2668d}
+
+
+Destruktor, zwalnia DLL z pamieci 
+
+Definition at line 77 of file FunctionDLL.cpp.
+
+References DLLHandle, and picture.
+
+\subsection{Member Function Documentation}
+\hypertarget{classFunctionDLL_322295c20f80c1e050d33b706f99f583}{
+\index{FunctionDLL@{FunctionDLL}!OnClick@{OnClick}}
+\index{OnClick@{OnClick}!FunctionDLL@{FunctionDLL}}
+\subsubsection[OnClick]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall FunctionDLL::OnClick (TObject $\ast$ {\em Sender})}}
+\label{classFunctionDLL_322295c20f80c1e050d33b706f99f583}
+
+
+Metoda wywolujaca FunctionAddRequest podajac juz w parametrze obiekt \hyperlink{classFunctionDLL}{FunctionDLL} 
+
+Definition at line 95 of file FunctionDLL.cpp.
+
+References FunctionAddRequest.
+
+Referenced by PluginContener::AddMenus().\hypertarget{classFunctionDLL_a07371b317ee80a24aa43b5fdf467cd7}{
+\index{FunctionDLL@{FunctionDLL}!run@{run}}
+\index{run@{run}!FunctionDLL@{FunctionDLL}}
+\subsubsection[run]{\setlength{\rightskip}{0pt plus 5cm}int FunctionDLL::run ({\bf Block} $\ast$ {\em aBlock})}}
+\label{classFunctionDLL_a07371b317ee80a24aa43b5fdf467cd7}
+
+
+Uruchamia funkcje bloczka. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aBlock}]wskaznik do bloczka reprezentujacego funkjce. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]poprawnosc wykonanej operacji \end{Desc}
+
+
+Definition at line 83 of file FunctionDLL.cpp.
+
+References frun.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classFunctionDLL_107dd4ebe049bdfd55c7f0719008f170}{
+\index{FunctionDLL@{FunctionDLL}!showConfig@{showConfig}}
+\index{showConfig@{showConfig}!FunctionDLL@{FunctionDLL}}
+\subsubsection[showConfig]{\setlength{\rightskip}{0pt plus 5cm}bool FunctionDLL::showConfig (TComponent $\ast$ {\em owner}, \/  {\bf Block} $\ast$ {\em aBlock})}}
+\label{classFunctionDLL_107dd4ebe049bdfd55c7f0719008f170}
+
+
+Wyswietla w oknie parametry przesylane do bloku \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em owner}]wskaznik do okienka \item[{\em aBlock}]wskaznik do bloczka reprezentujacego funkjce. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]poprawnosc wykonanej operacji \end{Desc}
+
+
+Definition at line 87 of file FunctionDLL.cpp.
+
+References fshowConfig.
+
+Referenced by PIWOEngine::OnVisualBlockConfigClick().\hypertarget{classFunctionDLL_b48bfbd591047806dc5c546e5bec1ea0}{
+\index{FunctionDLL@{FunctionDLL}!validate@{validate}}
+\index{validate@{validate}!FunctionDLL@{FunctionDLL}}
+\subsubsection[validate]{\setlength{\rightskip}{0pt plus 5cm}int FunctionDLL::validate ({\bf Block} $\ast$ {\em aBlock})}}
+\label{classFunctionDLL_b48bfbd591047806dc5c546e5bec1ea0}
+
+
+Sprawdza poprawnosc konfiguracji bloczku \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aBlock}]wskaznik do bloczka reprezentujacego funkjce. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]poprawnosc wykonanej operacji \end{Desc}
+
+
+Definition at line 91 of file FunctionDLL.cpp.
+
+References fvalidate.
+
+Referenced by PIWOEngine::AddBlock().
+
+\subsection{Member Data Documentation}
+\hypertarget{classFunctionDLL_136a169dcd32293b0b4f1c0a9c5468fc}{
+\index{FunctionDLL@{FunctionDLL}!DLLHandle@{DLLHandle}}
+\index{DLLHandle@{DLLHandle}!FunctionDLL@{FunctionDLL}}
+\subsubsection[DLLHandle]{\setlength{\rightskip}{0pt plus 5cm}HANDLE {\bf FunctionDLL::DLLHandle}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classFunctionDLL_136a169dcd32293b0b4f1c0a9c5468fc}
+
+
+
+
+Definition at line 26 of file FunctionDLL.h.
+
+Referenced by FunctionDLL(), and $\sim$FunctionDLL().\hypertarget{classFunctionDLL_569d58acd2256945ead5fa90d3effe62}{
+\index{FunctionDLL@{FunctionDLL}!frun@{frun}}
+\index{frun@{frun}!FunctionDLL@{FunctionDLL}}
+\subsubsection[frun]{\setlength{\rightskip}{0pt plus 5cm}FunctionDLL\_\-run {\bf FunctionDLL::frun}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classFunctionDLL_569d58acd2256945ead5fa90d3effe62}
+
+
+
+
+Definition at line 27 of file FunctionDLL.h.
+
+Referenced by FunctionDLL(), and run().\hypertarget{classFunctionDLL_689deacde4d515a8a8edab53c2de51c1}{
+\index{FunctionDLL@{FunctionDLL}!fvalidate@{fvalidate}}
+\index{fvalidate@{fvalidate}!FunctionDLL@{FunctionDLL}}
+\subsubsection[fvalidate]{\setlength{\rightskip}{0pt plus 5cm}FunctionDLL\_\-validate {\bf FunctionDLL::fvalidate}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classFunctionDLL_689deacde4d515a8a8edab53c2de51c1}
+
+
+
+
+Definition at line 28 of file FunctionDLL.h.
+
+Referenced by FunctionDLL(), and validate().\hypertarget{classFunctionDLL_747f51c2de5293af76fffbd1dd78ee28}{
+\index{FunctionDLL@{FunctionDLL}!fshowConfig@{fshowConfig}}
+\index{fshowConfig@{fshowConfig}!FunctionDLL@{FunctionDLL}}
+\subsubsection[fshowConfig]{\setlength{\rightskip}{0pt plus 5cm}FunctionDLL\_\-showConfig {\bf FunctionDLL::fshowConfig}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classFunctionDLL_747f51c2de5293af76fffbd1dd78ee28}
+
+
+
+
+Definition at line 29 of file FunctionDLL.h.
+
+Referenced by FunctionDLL(), and showConfig().\hypertarget{classFunctionDLL_56030de2f3d06fc08006011d5449e11f}{
+\index{FunctionDLL@{FunctionDLL}!FunctionAddRequest@{FunctionAddRequest}}
+\index{FunctionAddRequest@{FunctionAddRequest}!FunctionDLL@{FunctionDLL}}
+\subsubsection[FunctionAddRequest]{\setlength{\rightskip}{0pt plus 5cm}FunctionDLL\_\-onClick {\bf FunctionDLL::FunctionAddRequest}}}
+\label{classFunctionDLL_56030de2f3d06fc08006011d5449e11f}
+
+
+Event 
+
+Definition at line 34 of file FunctionDLL.h.
+
+Referenced by FunctionDLL(), PluginContener::LoadData(), and OnClick().\hypertarget{classFunctionDLL_7221a1013f54078dae4d3b3ff5f4bb65}{
+\index{FunctionDLL@{FunctionDLL}!name@{name}}
+\index{name@{name}!FunctionDLL@{FunctionDLL}}
+\subsubsection[name]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf FunctionDLL::name}}}
+\label{classFunctionDLL_7221a1013f54078dae4d3b3ff5f4bb65}
+
+
+Nazwa, domyslnie parsowana z nazwy pliku chyba ze w pliku ini jest ustawione inaczej 
+
+Definition at line 38 of file FunctionDLL.h.
+
+Referenced by PluginContener::AddMenus(), FunctionDLL(), and TForm1::OnFunctionAddClick().\hypertarget{classFunctionDLL_485d16d276958ae8742c0f4f10bf7d56}{
+\index{FunctionDLL@{FunctionDLL}!fullName@{fullName}}
+\index{fullName@{fullName}!FunctionDLL@{FunctionDLL}}
+\subsubsection[fullName]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf FunctionDLL::fullName}}}
+\label{classFunctionDLL_485d16d276958ae8742c0f4f10bf7d56}
+
+
+Pelna nazwa 
+
+Definition at line 42 of file FunctionDLL.h.
+
+Referenced by PIWOEngine::AddBlock(), PluginContener::AddMenus(), PIWOEngine::DuplcateSelectedBlocks(), FunctionDLL(), and PIWOEngine::loadFromFile().\hypertarget{classFunctionDLL_2b31078dab160faddd111f8304ff9b62}{
+\index{FunctionDLL@{FunctionDLL}!description@{description}}
+\index{description@{description}!FunctionDLL@{FunctionDLL}}
+\subsubsection[description]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf FunctionDLL::description}}}
+\label{classFunctionDLL_2b31078dab160faddd111f8304ff9b62}
+
+
+Opis 
+
+Definition at line 46 of file FunctionDLL.h.
+
+Referenced by PIWOEngine::AddBlock(), PluginContener::AddMenus(), PIWOEngine::DuplcateSelectedBlocks(), FunctionDLL(), and PIWOEngine::loadFromFile().\hypertarget{classFunctionDLL_905c9ae9bb44577a18c51d98f204289d}{
+\index{FunctionDLL@{FunctionDLL}!picture@{picture}}
+\index{picture@{picture}!FunctionDLL@{FunctionDLL}}
+\subsubsection[picture]{\setlength{\rightskip}{0pt plus 5cm}Graphics::TBitmap$\ast$ {\bf FunctionDLL::picture}}}
+\label{classFunctionDLL_905c9ae9bb44577a18c51d98f204289d}
+
+
+Bitmapa 32x32 przedstawiajaca obrazek powiazany z pluginem, jesli niema to NULL 
+
+Definition at line 50 of file FunctionDLL.h.
+
+Referenced by PIWOEngine::AddBlock(), PluginContener::AddMenus(), PIWOEngine::DuplcateSelectedBlocks(), FunctionDLL(), PIWOEngine::loadFromFile(), and $\sim$FunctionDLL().\hypertarget{classFunctionDLL_23f9be31a8f682cd303d542c733b1bb9}{
+\index{FunctionDLL@{FunctionDLL}!category@{category}}
+\index{category@{category}!FunctionDLL@{FunctionDLL}}
+\subsubsection[category]{\setlength{\rightskip}{0pt plus 5cm}vector$<$AnsiString$>$ {\bf FunctionDLL::category}}}
+\label{classFunctionDLL_23f9be31a8f682cd303d542c733b1bb9}
+
+
+Kategorie zaladowane z pliku ini Format: Kat1$|$Kat2$|$Kat3, Kat1$|$Kat4$|$Kat5, etc 
+
+Definition at line 55 of file FunctionDLL.h.
+
+Referenced by PluginContener::AddMenus(), and FunctionDLL().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/brige/\hyperlink{FunctionDLL_8h}{FunctionDLL.h}\item 
+/PIWO/Program/brige/\hyperlink{FunctionDLL_8cpp}{FunctionDLL.cpp}\end{CompactItemize}

@@ -1,0 +1,151 @@
+\hypertarget{classBlockHistory}{
+\section{BlockHistory Class Reference}
+\label{classBlockHistory}\index{BlockHistory@{BlockHistory}}
+}
+{\tt \#include $<$BlockHistory.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockHistory_c489ea0976659cf022e67ef750162313}{BlockHistory} ()
+\item 
+\hyperlink{classBlockHistory_26fc96f5239718c5866d2682161c1800}{BlockHistory} (\hyperlink{classBlockHistory}{BlockHistory} \&b)
+\item 
+\hyperlink{classBlockHistory_0647b0c5491b4755250ee1e0d5cb9a8f}{$\sim$BlockHistory} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+vector$<$ \hyperlink{classBlockHistoryInputElement}{BlockHistoryInputElement} $\ast$ $>$ \hyperlink{classBlockHistory_aabd8ceb5c5cf94ca36778ad9a703c79}{leftInput}
+\item 
+vector$<$ \hyperlink{classBlockHistoryInputElement}{BlockHistoryInputElement} $\ast$ $>$ \hyperlink{classBlockHistory_206bee2db6d12c0d406d90d3dc4b54ac}{topInput}
+\item 
+vector$<$ \hyperlink{classBlockHistoryOutputElement}{BlockHistoryOutputElement} $\ast$ $>$ \hyperlink{classBlockHistory_e7d44768a04aeb3d73444ec684486f08}{rightOutput}
+\item 
+vector$<$ \hyperlink{classBlockHistoryOutputElement}{BlockHistoryOutputElement} $\ast$ $>$ \hyperlink{classBlockHistory_d6bac65bd73326840162bbb9cd8d14c1}{bottomOutput}
+\item 
+unsigned int \hyperlink{classBlockHistory_a491be49ba9d081df6d1213481346ea9}{configRevision}
+\item 
+TDateTime \hyperlink{classBlockHistory_0b1d6f43a3ba643ad8f387f7c9f2abc7}{date}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa zawiera historie dla calego bloku po jego jednokrotnym uruchomieniu. 
+
+Definition at line 10 of file BlockHistory.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlockHistory_c489ea0976659cf022e67ef750162313}{
+\index{BlockHistory@{BlockHistory}!BlockHistory@{BlockHistory}}
+\index{BlockHistory@{BlockHistory}!BlockHistory@{BlockHistory}}
+\subsubsection[BlockHistory]{\setlength{\rightskip}{0pt plus 5cm}BlockHistory::BlockHistory ()}}
+\label{classBlockHistory_c489ea0976659cf022e67ef750162313}
+
+
+Konstruktor domyslny 
+
+Definition at line 6 of file BlockHistory.cpp.
+
+References configRevision, and date.\hypertarget{classBlockHistory_26fc96f5239718c5866d2682161c1800}{
+\index{BlockHistory@{BlockHistory}!BlockHistory@{BlockHistory}}
+\index{BlockHistory@{BlockHistory}!BlockHistory@{BlockHistory}}
+\subsubsection[BlockHistory]{\setlength{\rightskip}{0pt plus 5cm}BlockHistory::BlockHistory ({\bf BlockHistory} \& {\em b})}}
+\label{classBlockHistory_26fc96f5239718c5866d2682161c1800}
+
+
+Konstruktor kopiujacy \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ob}]obiekt z ktorego mamy skopiowac \end{description}
+\end{Desc}
+
+
+Definition at line 12 of file BlockHistory.cpp.
+
+References bottomOutput, configRevision, date, leftInput, rightOutput, and topInput.\hypertarget{classBlockHistory_0647b0c5491b4755250ee1e0d5cb9a8f}{
+\index{BlockHistory@{BlockHistory}!$\sim$BlockHistory@{$\sim$BlockHistory}}
+\index{$\sim$BlockHistory@{$\sim$BlockHistory}!BlockHistory@{BlockHistory}}
+\subsubsection[$\sim$BlockHistory]{\setlength{\rightskip}{0pt plus 5cm}BlockHistory::$\sim$BlockHistory ()}}
+\label{classBlockHistory_0647b0c5491b4755250ee1e0d5cb9a8f}
+
+
+Destruktor 
+
+Definition at line 22 of file BlockHistory.cpp.
+
+References bottomOutput, leftInput, rightOutput, and topInput.
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlockHistory_aabd8ceb5c5cf94ca36778ad9a703c79}{
+\index{BlockHistory@{BlockHistory}!leftInput@{leftInput}}
+\index{leftInput@{leftInput}!BlockHistory@{BlockHistory}}
+\subsubsection[leftInput]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf BlockHistoryInputElement}$\ast$$>$ {\bf BlockHistory::leftInput}}}
+\label{classBlockHistory_aabd8ceb5c5cf94ca36778ad9a703c79}
+
+
+Lista histori dla wejsc z lewej strony bloczka 
+
+Definition at line 16 of file BlockHistory.h.
+
+Referenced by BlockHistory(), PIWOEngine::runBlock(), and $\sim$BlockHistory().\hypertarget{classBlockHistory_206bee2db6d12c0d406d90d3dc4b54ac}{
+\index{BlockHistory@{BlockHistory}!topInput@{topInput}}
+\index{topInput@{topInput}!BlockHistory@{BlockHistory}}
+\subsubsection[topInput]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf BlockHistoryInputElement}$\ast$$>$ {\bf BlockHistory::topInput}}}
+\label{classBlockHistory_206bee2db6d12c0d406d90d3dc4b54ac}
+
+
+Lista histori dla wejsc z gornej strony bloczka 
+
+Definition at line 20 of file BlockHistory.h.
+
+Referenced by BlockHistory(), PIWOEngine::runBlock(), and $\sim$BlockHistory().\hypertarget{classBlockHistory_e7d44768a04aeb3d73444ec684486f08}{
+\index{BlockHistory@{BlockHistory}!rightOutput@{rightOutput}}
+\index{rightOutput@{rightOutput}!BlockHistory@{BlockHistory}}
+\subsubsection[rightOutput]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf BlockHistoryOutputElement}$\ast$$>$ {\bf BlockHistory::rightOutput}}}
+\label{classBlockHistory_e7d44768a04aeb3d73444ec684486f08}
+
+
+Lista histori dla wyjsc z prawej strony bloczka 
+
+Definition at line 24 of file BlockHistory.h.
+
+Referenced by BlockHistory(), PIWOEngine::runBlock(), and $\sim$BlockHistory().\hypertarget{classBlockHistory_d6bac65bd73326840162bbb9cd8d14c1}{
+\index{BlockHistory@{BlockHistory}!bottomOutput@{bottomOutput}}
+\index{bottomOutput@{bottomOutput}!BlockHistory@{BlockHistory}}
+\subsubsection[bottomOutput]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf BlockHistoryOutputElement}$\ast$$>$ {\bf BlockHistory::bottomOutput}}}
+\label{classBlockHistory_d6bac65bd73326840162bbb9cd8d14c1}
+
+
+Lista histori dla wyjsc z dolnej strony bloczka 
+
+Definition at line 28 of file BlockHistory.h.
+
+Referenced by BlockHistory(), PIWOEngine::runBlock(), and $\sim$BlockHistory().\hypertarget{classBlockHistory_a491be49ba9d081df6d1213481346ea9}{
+\index{BlockHistory@{BlockHistory}!configRevision@{configRevision}}
+\index{configRevision@{configRevision}!BlockHistory@{BlockHistory}}
+\subsubsection[configRevision]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf BlockHistory::configRevision}}}
+\label{classBlockHistory_a491be49ba9d081df6d1213481346ea9}
+
+
+Wersja konfiguracji 
+
+Definition at line 32 of file BlockHistory.h.
+
+Referenced by BlockHistory(), and PIWOEngine::runBlock().\hypertarget{classBlockHistory_0b1d6f43a3ba643ad8f387f7c9f2abc7}{
+\index{BlockHistory@{BlockHistory}!date@{date}}
+\index{date@{date}!BlockHistory@{BlockHistory}}
+\subsubsection[date]{\setlength{\rightskip}{0pt plus 5cm}TDateTime {\bf BlockHistory::date}}}
+\label{classBlockHistory_0b1d6f43a3ba643ad8f387f7c9f2abc7}
+
+
+Data i godzina dodania histori 
+
+Definition at line 36 of file BlockHistory.h.
+
+Referenced by BlockHistory().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/gui/\hyperlink{BlockHistory_8h}{BlockHistory.h}\item 
+/PIWO/Program/gui/\hyperlink{BlockHistory_8cpp}{BlockHistory.cpp}\end{CompactItemize}

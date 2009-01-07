@@ -1,0 +1,100 @@
+\hypertarget{PIWOEngine_8cpp}{
+\section{/PIWO/Program/gui/PIWOEngine.cpp File Reference}
+\label{PIWOEngine_8cpp}\index{/PIWO/Program/gui/PIWOEngine.cpp@{/PIWO/Program/gui/PIWOEngine.cpp}}
+}
+{\tt \#include $<$vcl.h$>$}\par
+{\tt \#include \char`\"{}PIWOEngine.h\char`\"{}}\par
+{\tt \#include \char`\"{}BlockValidateInputElement.h\char`\"{}}\par
+{\tt \#include \char`\"{}BlockValidateOutputElement.h\char`\"{}}\par
+
+
+Include dependency graph for PIWOEngine.cpp:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{PIWOEngine_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{PIWOEngine_8cpp_7c7d32818ebae2fe8c04f6a654168292}{putString} (const AnsiString \&str, TStream \&stream)
+\item 
+void \hyperlink{PIWOEngine_8cpp_b52bb01401fbc44c520cbc48a7949b36}{putInt} (const int i, TStream \&stream)
+\item 
+AnsiString \hyperlink{PIWOEngine_8cpp_de6df329afe49e49a29cc8242f1c2473}{getString} (TStream \&stream)
+\item 
+int \hyperlink{PIWOEngine_8cpp_5f408adb07e4c71f31021eebf607161d}{getInt} (TStream \&stream)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{PIWOEngine_8cpp_5f408adb07e4c71f31021eebf607161d}{
+\index{PIWOEngine.cpp@{PIWOEngine.cpp}!getInt@{getInt}}
+\index{getInt@{getInt}!PIWOEngine.cpp@{PIWOEngine.cpp}}
+\subsubsection[getInt]{\setlength{\rightskip}{0pt plus 5cm}int getInt (TStream \& {\em stream})}}
+\label{PIWOEngine_8cpp_5f408adb07e4c71f31021eebf607161d}
+
+
+Pobiera integer z stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]stream \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]integer \end{Desc}
+
+
+Definition at line 2528 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::loadFromFile().\hypertarget{PIWOEngine_8cpp_de6df329afe49e49a29cc8242f1c2473}{
+\index{PIWOEngine.cpp@{PIWOEngine.cpp}!getString@{getString}}
+\index{getString@{getString}!PIWOEngine.cpp@{PIWOEngine.cpp}}
+\subsubsection[getString]{\setlength{\rightskip}{0pt plus 5cm}AnsiString getString (TStream \& {\em stream})}}
+\label{PIWOEngine_8cpp_de6df329afe49e49a29cc8242f1c2473}
+
+
+Pobiera string z stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]stream \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string \end{Desc}
+
+
+Definition at line 2515 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::loadFromFile().\hypertarget{PIWOEngine_8cpp_b52bb01401fbc44c520cbc48a7949b36}{
+\index{PIWOEngine.cpp@{PIWOEngine.cpp}!putInt@{putInt}}
+\index{putInt@{putInt}!PIWOEngine.cpp@{PIWOEngine.cpp}}
+\subsubsection[putInt]{\setlength{\rightskip}{0pt plus 5cm}void putInt (const int {\em i}, \/  TStream \& {\em stream})}}
+\label{PIWOEngine_8cpp_b52bb01401fbc44c520cbc48a7949b36}
+
+
+Zapisuje integer do stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em i}]integer \item[{\em stream}]stream \end{description}
+\end{Desc}
+
+
+Definition at line 2510 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::saveToFile().\hypertarget{PIWOEngine_8cpp_7c7d32818ebae2fe8c04f6a654168292}{
+\index{PIWOEngine.cpp@{PIWOEngine.cpp}!putString@{putString}}
+\index{putString@{putString}!PIWOEngine.cpp@{PIWOEngine.cpp}}
+\subsubsection[putString]{\setlength{\rightskip}{0pt plus 5cm}void putString (const AnsiString \& {\em str}, \/  TStream \& {\em stream})}}
+\label{PIWOEngine_8cpp_7c7d32818ebae2fe8c04f6a654168292}
+
+
+Zapisuje string do stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em str}]string \item[{\em stream}]stream \end{description}
+\end{Desc}
+
+
+Definition at line 2502 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::saveToFile().

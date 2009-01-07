@@ -1,0 +1,291 @@
+This is makeindex, version 2.14 [02-Oct-2002] (kpathsea + Thai support).
+Scanning input file Dokumentacja Techniczna.tex...
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 1):
+   -- Unknown index keyword \documentclass[a4paper].
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 2):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 3):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 4):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 5):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 6):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 7):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 8):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 9):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 10):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 11):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 12):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 13):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 14):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 15):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 16):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 17):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 18):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 19):
+   -- Unknown index keyword ].
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 20):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 21):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 22):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 23):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 24):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 25):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 26):
+   -- Unknown index keyword ].
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 27):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 28):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 29):
+   -- Unknown index keyword \usepackage[utf8].
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 30):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 31):
+   -- Unknown index keyword \setcounter.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 32):
+   -- Unknown index keyword \renewcommand.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 33):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 34):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 35):
+   -- Unknown index keyword \title.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 36):
+   -- Unknown index keyword \author.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 37):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 38):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 39):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 40):
+   -- Unknown index keyword \includegraphics[scale=0.5].
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 41):
+   -- Unknown index keyword \begin.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 42):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 43):
+   -- Unknown index keyword \end.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 44):
+   -- Unknown index keyword \end.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 45):
+   -- Unknown index keyword \end.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 46):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 47):
+   -- Unknown index keyword \pagenumbering.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 48):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 49):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 50):
+   -- Unknown index keyword \pagenumbering.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 51):
+   -- Unknown index keyword \chapter.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 52):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 53):
+   -- Unknown index keyword \chapter.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 54):
+   -- Unknown index keyword \input.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 55):
+   -- Unknown index keyword \chapter.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 56):
+   -- Unknown index keyword \input.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 57):
+   -- Unknown index keyword \chapter.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 58):
+   -- Unknown index keyword \input.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 59):
+   -- Unknown index keyword \chapter.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 60):
+   -- Unknown index keyword \input.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 61):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 62):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 63):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 64):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 65):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 66):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 67):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 68):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 69):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 70):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 71):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 72):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 73):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 74):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 75):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 76):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 77):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 78):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 79):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 80):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 81):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 82):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 83):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 84):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 85):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 86):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 87):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 88):
+   -- Unknown index keyword \chapter.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 89):
+   -- Unknown index keyword \input.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 90):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 91):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 92):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 93):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 94):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 95):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 96):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 97):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 98):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 99):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 100):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 101):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 102):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 103):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 104):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 105):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 106):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 107):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 108):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 109):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 110):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 111):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 112):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 113):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 114):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 115):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 116):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 117):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 118):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 119):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 120):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 121):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 122):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 123):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 124):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 125):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 126):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 127):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 128):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 129):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 130):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 131):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 132):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 133):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 134):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 135):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 136):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 137):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 138):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 139):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 140):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 141):
+   -- Unknown index keyword \include.
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 142):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = Dokumentacja Techniczna.tex, line = 143):
+   -- Unknown index keyword \end.
+done (0 entries accepted, 143 rejected).
+Nothing written in Dokumentacja Techniczna.ind.
+Transcript written in Dokumentacja Techniczna.ilg.

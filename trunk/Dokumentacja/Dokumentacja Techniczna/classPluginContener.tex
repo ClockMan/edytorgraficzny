@@ -1,0 +1,308 @@
+\hypertarget{classPluginContener}{
+\section{PluginContener Class Reference}
+\label{classPluginContener}\index{PluginContener@{PluginContener}}
+}
+{\tt \#include $<$PluginContener.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classPluginContener_add74dce0031e59011ff0e147eb3be98}{PluginContener} ()
+\item 
+\hyperlink{classPluginContener_5be9154e3104ea30ebc2abe27ed740a3}{$\sim$PluginContener} ()
+\item 
+bool \hyperlink{classPluginContener_21655d404d32e8a2f2c8918d2751ea16}{LoadData} (AnsiString blockDir, AnsiString typesDir, TMainMenu \&menu, TImageList \&images, int upId, int downId, int functionIcon, int folderIcon)
+\item 
+\hyperlink{classTypeDLL}{TypeDLL} $\ast$ \hyperlink{classPluginContener_8cb31600aba8d95004d182187a2ed42b}{addType} (const AnsiString \&fileDLL)
+\item 
+\hyperlink{classFunctionDLL}{FunctionDLL} $\ast$ \hyperlink{classPluginContener_4ecede9ea722920d63fed61089084b52}{addFunction} (const AnsiString \&fileDLL)
+\item 
+\hyperlink{classTypeDLL}{TypeDLL} $\ast$ \hyperlink{classPluginContener_647864e7e0602077aad6a56155f4978a}{getType} (const AnsiString \&type)
+\item 
+\hyperlink{classFunctionDLL}{FunctionDLL} $\ast$ \hyperlink{classPluginContener_8a9049d660fbd61f00913c580df3b314}{getFunction} (const AnsiString \&name)
+\item 
+void \hyperlink{classPluginContener_e8efe6e2f12f6b67bd651c712aaf3b47}{setMenuItemsStatus} (bool enabled)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{PluginContener_8h_6050db466be0b09e7cdf5c163966f217}{PluginContener\_\-OnProgress} \hyperlink{classPluginContener_b43b8d2068dc7e853cd25fac856496d0}{OnLoadingProgress}
+\item 
+FunctionDLL\_\-onClick \hyperlink{classPluginContener_a02d916f81857542ff8c77aa0c8b4dd6}{OnFunctionAddRequest}
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{classPluginContener_0ee8809bd8743d5eb0c233185bee1c6b}{SearchDirectory} (std::vector$<$ AnsiString $>$ \&refvecFiles, const AnsiString \&refcstrRootDirectory, const AnsiString \&refcstrExtension, bool bSearchSubdirectories=true)
+\item 
+void \hyperlink{classPluginContener_715587c2fae1c1bc6d3b6ea6d601b2bb}{AddMenus} (\hyperlink{classFunctionDLL}{FunctionDLL} $\ast$info, TMainMenu \&menu, TImageList \&images, int upId, int downId, int functionIcon, int folderIcon)
+\item 
+void \hyperlink{classPluginContener_cd1a48f16b62158ba9fef9b9796eafdf}{OnFunctionClick} (void $\ast$Sender)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+vector$<$ \hyperlink{classTypeDLL}{TypeDLL} $\ast$ $>$ \hyperlink{classPluginContener_a075645708492a1517095a6906321ee6}{listOfType}
+\item 
+vector$<$ \hyperlink{classFunctionDLL}{FunctionDLL} $\ast$ $>$ \hyperlink{classPluginContener_6e6397c16d1ec7bb6beff37edebb5a8f}{listOfFunction}
+\item 
+vector$<$ TMenuItem $\ast$ $>$ \hyperlink{classPluginContener_98824bc6704781e23fa586436e51a5bb}{menuItems}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa pojemnik przechowujaca pluginy \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 20 of file PluginContener.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPluginContener_add74dce0031e59011ff0e147eb3be98}{
+\index{PluginContener@{PluginContener}!PluginContener@{PluginContener}}
+\index{PluginContener@{PluginContener}!PluginContener@{PluginContener}}
+\subsubsection[PluginContener]{\setlength{\rightskip}{0pt plus 5cm}PluginContener::PluginContener ()}}
+\label{classPluginContener_add74dce0031e59011ff0e147eb3be98}
+
+
+Konstuktor domyslny 
+
+Definition at line 30 of file PluginContener.cpp.
+
+References OnFunctionAddRequest, and OnLoadingProgress.\hypertarget{classPluginContener_5be9154e3104ea30ebc2abe27ed740a3}{
+\index{PluginContener@{PluginContener}!$\sim$PluginContener@{$\sim$PluginContener}}
+\index{$\sim$PluginContener@{$\sim$PluginContener}!PluginContener@{PluginContener}}
+\subsubsection[$\sim$PluginContener]{\setlength{\rightskip}{0pt plus 5cm}PluginContener::$\sim$PluginContener ()}}
+\label{classPluginContener_5be9154e3104ea30ebc2abe27ed740a3}
+
+
+Destruktor 
+
+Definition at line 36 of file PluginContener.cpp.
+
+References listOfFunction, and listOfType.
+
+\subsection{Member Function Documentation}
+\hypertarget{classPluginContener_0ee8809bd8743d5eb0c233185bee1c6b}{
+\index{PluginContener@{PluginContener}!SearchDirectory@{SearchDirectory}}
+\index{SearchDirectory@{SearchDirectory}!PluginContener@{PluginContener}}
+\subsubsection[SearchDirectory]{\setlength{\rightskip}{0pt plus 5cm}int PluginContener::SearchDirectory (std::vector$<$ AnsiString $>$ \& {\em refvecFiles}, \/  const AnsiString \& {\em refcstrRootDirectory}, \/  const AnsiString \& {\em refcstrExtension}, \/  bool {\em bSearchSubdirectories} = {\tt true})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPluginContener_0ee8809bd8743d5eb0c233185bee1c6b}
+
+
+
+
+Definition at line 144 of file PluginContener.cpp.
+
+Referenced by LoadData().\hypertarget{classPluginContener_715587c2fae1c1bc6d3b6ea6d601b2bb}{
+\index{PluginContener@{PluginContener}!AddMenus@{AddMenus}}
+\index{AddMenus@{AddMenus}!PluginContener@{PluginContener}}
+\subsubsection[AddMenus]{\setlength{\rightskip}{0pt plus 5cm}void PluginContener::AddMenus ({\bf FunctionDLL} $\ast$ {\em info}, \/  TMainMenu \& {\em menu}, \/  TImageList \& {\em images}, \/  int {\em upId}, \/  int {\em downId}, \/  int {\em functionIcon}, \/  int {\em folderIcon})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPluginContener_715587c2fae1c1bc6d3b6ea6d601b2bb}
+
+
+
+
+Definition at line 71 of file PluginContener.cpp.
+
+References FunctionDLL::category, FunctionDLL::description, FunctionDLL::fullName, menuItems, FunctionDLL::name, FunctionDLL::OnClick(), and FunctionDLL::picture.
+
+Referenced by LoadData().\hypertarget{classPluginContener_cd1a48f16b62158ba9fef9b9796eafdf}{
+\index{PluginContener@{PluginContener}!OnFunctionClick@{OnFunctionClick}}
+\index{OnFunctionClick@{OnFunctionClick}!PluginContener@{PluginContener}}
+\subsubsection[OnFunctionClick]{\setlength{\rightskip}{0pt plus 5cm}void PluginContener::OnFunctionClick (void $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPluginContener_cd1a48f16b62158ba9fef9b9796eafdf}
+
+
+
+
+Definition at line 196 of file PluginContener.cpp.
+
+References OnFunctionAddRequest.
+
+Referenced by LoadData().\hypertarget{classPluginContener_21655d404d32e8a2f2c8918d2751ea16}{
+\index{PluginContener@{PluginContener}!LoadData@{LoadData}}
+\index{LoadData@{LoadData}!PluginContener@{PluginContener}}
+\subsubsection[LoadData]{\setlength{\rightskip}{0pt plus 5cm}bool PluginContener::LoadData (AnsiString {\em blockDir}, \/  AnsiString {\em typesDir}, \/  TMainMenu \& {\em menu}, \/  TImageList \& {\em images}, \/  int {\em upId}, \/  int {\em downId}, \/  int {\em functionIcon}, \/  int {\em folderIcon})}}
+\label{classPluginContener_21655d404d32e8a2f2c8918d2751ea16}
+
+
+Metoda przeszukuje podfoldery w poszukiwaniu plikow typow ii plikow funkcji, laduje je i tworzy dla nich menu \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em blockDir}]folder zawierajacy dll funkcji \item[{\em typesDir}]folder zawierajacy dll typu \item[{\em menu}]referencja do obiektu menu do ktorego maja zostac dodane nowe mena \item[{\em images}]lista obrazkow (kontener) powiazany z tym menu \item[{\em upId}]identyfikator ustawiony w popredzajacych menach - GroupId \item[{\em downId}]identyfikator ustawiony w nastepnych menach - GroupId \item[{\em functionIcon}]domyslny nr ikony dla funkcji \item[{\em folderIcon}]domyslny nr ikony dla kategori \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true gdy zaladowano chodz jeden plugin \end{Desc}
+
+
+Definition at line 202 of file PluginContener.cpp.
+
+References addFunction(), AddMenus(), addType(), FunctionDLL::FunctionAddRequest, TypeDLL::getType(), OnFunctionClick(), OnLoadingProgress, and SearchDirectory().
+
+Referenced by TForm1::FormCreate().\hypertarget{classPluginContener_8cb31600aba8d95004d182187a2ed42b}{
+\index{PluginContener@{PluginContener}!addType@{addType}}
+\index{addType@{addType}!PluginContener@{PluginContener}}
+\subsubsection[addType]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeDLL} $\ast$ PluginContener::addType (const AnsiString \& {\em fileDLL})}}
+\label{classPluginContener_8cb31600aba8d95004d182187a2ed42b}
+
+
+Laduje i dodaje dll typu do kontenera. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fileDLL}]sciezka do pliku \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]NULL lub wskaznik do klsy \hyperlink{classTypeDLL}{TypeDLL} \end{Desc}
+
+
+Definition at line 3 of file PluginContener.cpp.
+
+References listOfType.
+
+Referenced by LoadData().\hypertarget{classPluginContener_4ecede9ea722920d63fed61089084b52}{
+\index{PluginContener@{PluginContener}!addFunction@{addFunction}}
+\index{addFunction@{addFunction}!PluginContener@{PluginContener}}
+\subsubsection[addFunction]{\setlength{\rightskip}{0pt plus 5cm}{\bf FunctionDLL} $\ast$ PluginContener::addFunction (const AnsiString \& {\em fileDLL})}}
+\label{classPluginContener_4ecede9ea722920d63fed61089084b52}
+
+
+Laduje i dodaje dll funkcji do kontenera. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fileDLL}]sciezka do pliku \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]NULL lub wskaznik do klasy \hyperlink{classFunctionDLL}{FunctionDLL} \end{Desc}
+
+
+Definition at line 17 of file PluginContener.cpp.
+
+References listOfFunction.
+
+Referenced by LoadData().\hypertarget{classPluginContener_647864e7e0602077aad6a56155f4978a}{
+\index{PluginContener@{PluginContener}!getType@{getType}}
+\index{getType@{getType}!PluginContener@{PluginContener}}
+\subsubsection[getType]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeDLL} $\ast$ PluginContener::getType (const AnsiString \& {\em type})}}
+\label{classPluginContener_647864e7e0602077aad6a56155f4978a}
+
+
+Zwraca klase ktora zaladowala odpowiedni typ \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em type}]nazwa typu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]klasa \hyperlink{classTypeDLL}{TypeDLL} \end{Desc}
+
+
+Definition at line 53 of file PluginContener.cpp.
+
+References listOfType.
+
+Referenced by THistory::refresh(), and PIWOEngine::runBlock().\hypertarget{classPluginContener_8a9049d660fbd61f00913c580df3b314}{
+\index{PluginContener@{PluginContener}!getFunction@{getFunction}}
+\index{getFunction@{getFunction}!PluginContener@{PluginContener}}
+\subsubsection[getFunction]{\setlength{\rightskip}{0pt plus 5cm}{\bf FunctionDLL} $\ast$ PluginContener::getFunction (const AnsiString \& {\em name})}}
+\label{classPluginContener_8a9049d660fbd61f00913c580df3b314}
+
+
+Zwraca klase ktora zaladowala odpowiednia funkcje \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]nazwa funkcji \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]klasa \hyperlink{classFunctionDLL}{FunctionDLL} \end{Desc}
+
+
+Definition at line 62 of file PluginContener.cpp.
+
+References listOfFunction.
+
+Referenced by PIWOEngine::AddBlock(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::OnVisualBlockConfigClick(), PIWOEngine::runBlock(), and PIWOEngine::validateBlock().\hypertarget{classPluginContener_e8efe6e2f12f6b67bd651c712aaf3b47}{
+\index{PluginContener@{PluginContener}!setMenuItemsStatus@{setMenuItemsStatus}}
+\index{setMenuItemsStatus@{setMenuItemsStatus}!PluginContener@{PluginContener}}
+\subsubsection[setMenuItemsStatus]{\setlength{\rightskip}{0pt plus 5cm}void PluginContener::setMenuItemsStatus (bool {\em enabled})}}
+\label{classPluginContener_e8efe6e2f12f6b67bd651c712aaf3b47}
+
+
+Blokuje lub odblokowuje wszystkie pozycje w menu ladowanym dynamicznie \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em enabled}]true-odblokowane, false-zablokowane \end{description}
+\end{Desc}
+
+
+Definition at line 245 of file PluginContener.cpp.
+
+References menuItems.
+
+Referenced by TForm1::blockMenu().
+
+\subsection{Member Data Documentation}
+\hypertarget{classPluginContener_a075645708492a1517095a6906321ee6}{
+\index{PluginContener@{PluginContener}!listOfType@{listOfType}}
+\index{listOfType@{listOfType}!PluginContener@{PluginContener}}
+\subsubsection[listOfType]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf TypeDLL}$\ast$$>$ {\bf PluginContener::listOfType}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPluginContener_a075645708492a1517095a6906321ee6}
+
+
+
+
+Definition at line 23 of file PluginContener.h.
+
+Referenced by addType(), getType(), and $\sim$PluginContener().\hypertarget{classPluginContener_6e6397c16d1ec7bb6beff37edebb5a8f}{
+\index{PluginContener@{PluginContener}!listOfFunction@{listOfFunction}}
+\index{listOfFunction@{listOfFunction}!PluginContener@{PluginContener}}
+\subsubsection[listOfFunction]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf FunctionDLL}$\ast$$>$ {\bf PluginContener::listOfFunction}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPluginContener_6e6397c16d1ec7bb6beff37edebb5a8f}
+
+
+
+
+Definition at line 24 of file PluginContener.h.
+
+Referenced by addFunction(), getFunction(), and $\sim$PluginContener().\hypertarget{classPluginContener_98824bc6704781e23fa586436e51a5bb}{
+\index{PluginContener@{PluginContener}!menuItems@{menuItems}}
+\index{menuItems@{menuItems}!PluginContener@{PluginContener}}
+\subsubsection[menuItems]{\setlength{\rightskip}{0pt plus 5cm}vector$<$TMenuItem$\ast$$>$ {\bf PluginContener::menuItems}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPluginContener_98824bc6704781e23fa586436e51a5bb}
+
+
+
+
+Definition at line 31 of file PluginContener.h.
+
+Referenced by AddMenus(), and setMenuItemsStatus().\hypertarget{classPluginContener_b43b8d2068dc7e853cd25fac856496d0}{
+\index{PluginContener@{PluginContener}!OnLoadingProgress@{OnLoadingProgress}}
+\index{OnLoadingProgress@{OnLoadingProgress}!PluginContener@{PluginContener}}
+\subsubsection[OnLoadingProgress]{\setlength{\rightskip}{0pt plus 5cm}{\bf PluginContener\_\-OnProgress} {\bf PluginContener::OnLoadingProgress}}}
+\label{classPluginContener_b43b8d2068dc7e853cd25fac856496d0}
+
+
+Event 
+
+Definition at line 36 of file PluginContener.h.
+
+Referenced by TForm1::FormCreate(), LoadData(), and PluginContener().\hypertarget{classPluginContener_a02d916f81857542ff8c77aa0c8b4dd6}{
+\index{PluginContener@{PluginContener}!OnFunctionAddRequest@{OnFunctionAddRequest}}
+\index{OnFunctionAddRequest@{OnFunctionAddRequest}!PluginContener@{PluginContener}}
+\subsubsection[OnFunctionAddRequest]{\setlength{\rightskip}{0pt plus 5cm}FunctionDLL\_\-onClick {\bf PluginContener::OnFunctionAddRequest}}}
+\label{classPluginContener_a02d916f81857542ff8c77aa0c8b4dd6}
+
+
+Event 
+
+Definition at line 40 of file PluginContener.h.
+
+Referenced by TForm1::FormCreate(), OnFunctionClick(), and PluginContener().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/brige/\hyperlink{PluginContener_8h}{PluginContener.h}\item 
+/PIWO/Program/brige/\hyperlink{PluginContener_8cpp}{PluginContener.cpp}\end{CompactItemize}

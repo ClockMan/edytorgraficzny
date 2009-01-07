@@ -1,0 +1,194 @@
+\hypertarget{classBlock}{
+\section{Block Class Reference}
+\label{classBlock}\index{Block@{Block}}
+}
+{\tt \#include $<$Block.h$>$}
+
+Collaboration diagram for Block:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=56pt]{classBlock__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlock_37658a946bf5067ad01d68d9ff086adc}{Block} ()
+\item 
+\hyperlink{classBlock_eaf94aa618003b452d8b6f32d1e23766}{Block} (const \hyperlink{classBlock}{Block} \&copy)
+\item 
+\hyperlink{classBlock_19d1bd0e1cef6a865ed2745a2e648405}{$\sim$Block} ()
+\item 
+\hyperlink{classBlockConfig}{BlockConfig} $\ast$ \hyperlink{classBlock_17985f527bea557c7da9279424d96ccc}{getConfig} ()
+\item 
+void \hyperlink{classBlock_703019dc511468104b327bff7dd779d2}{setConfig} (const \hyperlink{classBlockConfig}{BlockConfig} \&ob)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+TForm $\ast$ \hyperlink{classBlock_64bbe660cd95004706c7f5158d8e270b}{blockWindow}
+\item 
+AnsiString \hyperlink{classBlock_9c89fafbe64236bc46ade38d458712b1}{title}
+\item 
+vector$<$ \hyperlink{classBlockInput}{BlockInput} $>$ \hyperlink{classBlock_6a6c2c1e8c3fd4219d8cc7e9f099205b}{input}
+\item 
+vector$<$ \hyperlink{classBlockOutput}{BlockOutput} $>$ \hyperlink{classBlock_7afddb4a8f6063e0b05dbdd1f17cf07f}{output}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockConfig}{BlockConfig} $\ast$ \hyperlink{classBlock_0f49dcd75a7694f73558ac602b2b3d1f}{config}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBlock}{Block} - Klasa pojemnik przechowujaca wejscia i wyjscia bloku \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 21 of file Block.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlock_37658a946bf5067ad01d68d9ff086adc}{
+\index{Block@{Block}!Block@{Block}}
+\index{Block@{Block}!Block@{Block}}
+\subsubsection[Block]{\setlength{\rightskip}{0pt plus 5cm}Block::Block ()}}
+\label{classBlock_37658a946bf5067ad01d68d9ff086adc}
+
+
+Konstruktor domyslny. 
+
+Definition at line 3 of file Block.cpp.
+
+References blockWindow, config, and title.\hypertarget{classBlock_eaf94aa618003b452d8b6f32d1e23766}{
+\index{Block@{Block}!Block@{Block}}
+\index{Block@{Block}!Block@{Block}}
+\subsubsection[Block]{\setlength{\rightskip}{0pt plus 5cm}Block::Block (const {\bf Block} \& {\em copy})}}
+\label{classBlock_eaf94aa618003b452d8b6f32d1e23766}
+
+
+Konstruktor kopiujacy \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em copy}]obiekt ktory zostanie skopiowany \end{description}
+\end{Desc}
+
+
+Definition at line 10 of file Block.cpp.
+
+References blockWindow, config, input, output, and title.\hypertarget{classBlock_19d1bd0e1cef6a865ed2745a2e648405}{
+\index{Block@{Block}!$\sim$Block@{$\sim$Block}}
+\index{$\sim$Block@{$\sim$Block}!Block@{Block}}
+\subsubsection[$\sim$Block]{\setlength{\rightskip}{0pt plus 5cm}Block::$\sim$Block ()}}
+\label{classBlock_19d1bd0e1cef6a865ed2745a2e648405}
+
+
+Destruktor 
+
+Definition at line 19 of file Block.cpp.
+
+References blockWindow, and config.
+
+\subsection{Member Function Documentation}
+\hypertarget{classBlock_17985f527bea557c7da9279424d96ccc}{
+\index{Block@{Block}!getConfig@{getConfig}}
+\index{getConfig@{getConfig}!Block@{Block}}
+\subsubsection[getConfig]{\setlength{\rightskip}{0pt plus 5cm}{\bf BlockConfig} $\ast$ Block::getConfig ()}}
+\label{classBlock_17985f527bea557c7da9279424d96ccc}
+
+
+Zwraca wskaznik do uwstawien bloku. \begin{Desc}
+\item[Returns:]ustawienia bloku. \end{Desc}
+
+
+Definition at line 30 of file Block.cpp.
+
+References config.
+
+Referenced by PIWOEngine::loadFromFile(), PIWOEngine::OnVisualBlockConfigClick(), PIWOEngine::runBlock(), and VisualBlock::updateHistory().\hypertarget{classBlock_703019dc511468104b327bff7dd779d2}{
+\index{Block@{Block}!setConfig@{setConfig}}
+\index{setConfig@{setConfig}!Block@{Block}}
+\subsubsection[setConfig]{\setlength{\rightskip}{0pt plus 5cm}void Block::setConfig (const {\bf BlockConfig} \& {\em ob})}}
+\label{classBlock_703019dc511468104b327bff7dd779d2}
+
+
+Ustawia wlasciwosci obiektu. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ob}]wlasciowsci obiektu. \end{description}
+\end{Desc}
+
+
+Definition at line 35 of file Block.cpp.
+
+References config.
+
+Referenced by PIWOEngine::DuplcateSelectedBlocks().
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlock_0f49dcd75a7694f73558ac602b2b3d1f}{
+\index{Block@{Block}!config@{config}}
+\index{config@{config}!Block@{Block}}
+\subsubsection[config]{\setlength{\rightskip}{0pt plus 5cm}{\bf BlockConfig}$\ast$ {\bf Block::config}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classBlock_0f49dcd75a7694f73558ac602b2b3d1f}
+
+
+
+
+Definition at line 24 of file Block.h.
+
+Referenced by Block(), getConfig(), setConfig(), and $\sim$Block().\hypertarget{classBlock_64bbe660cd95004706c7f5158d8e270b}{
+\index{Block@{Block}!blockWindow@{blockWindow}}
+\index{blockWindow@{blockWindow}!Block@{Block}}
+\subsubsection[blockWindow]{\setlength{\rightskip}{0pt plus 5cm}TForm$\ast$ {\bf Block::blockWindow}}}
+\label{classBlock_64bbe660cd95004706c7f5158d8e270b}
+
+
+Wskaznik do okna, mozliwy do uzycia w przypadku tworzenia bloczkow potrzebujacych zostawic okno po wykonaniu akcji run. 
+
+Definition at line 29 of file Block.h.
+
+Referenced by Block(), and $\sim$Block().\hypertarget{classBlock_9c89fafbe64236bc46ade38d458712b1}{
+\index{Block@{Block}!title@{title}}
+\index{title@{title}!Block@{Block}}
+\subsubsection[title]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf Block::title}}}
+\label{classBlock_9c89fafbe64236bc46ade38d458712b1}
+
+
+Tytul bloczka 
+
+Definition at line 33 of file Block.h.
+
+Referenced by Block(), and VisualBlock::setTitle().\hypertarget{classBlock_6a6c2c1e8c3fd4219d8cc7e9f099205b}{
+\index{Block@{Block}!input@{input}}
+\index{input@{input}!Block@{Block}}
+\subsubsection[input]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf BlockInput}$>$ {\bf Block::input}}}
+\label{classBlock_6a6c2c1e8c3fd4219d8cc7e9f099205b}
+
+
+Lista wejsc bloku. 
+
+Definition at line 37 of file Block.h.
+
+Referenced by Block(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::runBlock(), VisualBlock::updateVisualComponents(), and PIWOEngine::validateBlock().\hypertarget{classBlock_7afddb4a8f6063e0b05dbdd1f17cf07f}{
+\index{Block@{Block}!output@{output}}
+\index{output@{output}!Block@{Block}}
+\subsubsection[output]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf BlockOutput}$>$ {\bf Block::output}}}
+\label{classBlock_7afddb4a8f6063e0b05dbdd1f17cf07f}
+
+
+Lista wyjsc bloku. 
+
+Definition at line 41 of file Block.h.
+
+Referenced by Block(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::runBlock(), VisualBlock::updateVisualComponents(), and PIWOEngine::validateBlock().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/engine/\hyperlink{Block_8h}{Block.h}\item 
+/PIWO/Program/engine/\hyperlink{Block_8cpp}{Block.cpp}\end{CompactItemize}

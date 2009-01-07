@@ -1,0 +1,285 @@
+\hypertarget{classTHistory}{
+\section{THistory Class Reference}
+\label{classTHistory}\index{THistory@{THistory}}
+}
+{\tt \#include $<$history.h$>$}
+
+Collaboration diagram for THistory:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=106pt]{classTHistory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \_\-\_\-fastcall \hyperlink{classTHistory_a54230b362227ac394e19e47471c6ae4}{TreeView1Deletion} (TObject $\ast$Sender, TTreeNode $\ast$Node)
+\item 
+void \_\-\_\-fastcall \hyperlink{classTHistory_8f2cc8301b158c9845720077b2992b93}{BitBtn2Click} (TObject $\ast$Sender)
+\item 
+void \_\-\_\-fastcall \hyperlink{classTHistory_4abbf05ae8c7d566b30a7ed0f87fefdf}{TreeView1Click} (TObject $\ast$Sender)
+\item 
+void \_\-\_\-fastcall \hyperlink{classTHistory_80ff4787a2ecce89533f1fb22cb3c9b6}{CreateParams} (Controls::TCreateParams \&Params)
+\item 
+\_\-\_\-fastcall \hyperlink{classTHistory_a63049b9a1cc855fc3398c8471e1ca6e}{THistory} (TComponent $\ast$Owner)
+\item 
+\_\-\_\-fastcall \hyperlink{classTHistory_1aea950a4179841c02848a2f578b6545}{$\sim$THistory} ()
+\item 
+void \hyperlink{classTHistory_a4c0599263631652e37b50d557269974}{refresh} (\hyperlink{classBlockElement}{BlockElement} $\ast$toShow)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+TStatusBar $\ast$ \hyperlink{classTHistory_a3f5f2b91a14af33829123e0aaca3928}{StatusBar1}
+\item 
+TImageList $\ast$ \hyperlink{classTHistory_d1855973aa68d9e9cca14f5632ddfae8}{ImageList1}
+\item 
+TPanel $\ast$ \hyperlink{classTHistory_4b99f5e227a8e165e6d64be62227c458}{Panel1}
+\item 
+TTreeView $\ast$ \hyperlink{classTHistory_ce7f826948e9130c7c20d879e7b8d80c}{TreeView1}
+\item 
+TPanel $\ast$ \hyperlink{classTHistory_628b8da1ed6bee8471e6baa1d8d9911a}{Panel2}
+\item 
+TBitBtn $\ast$ \hyperlink{classTHistory_58430353f17dbe5b387caabeb221f65b}{BitBtn2}
+\item 
+TLabel $\ast$ \hyperlink{classTHistory_b308f0efb659683a8d9c7881ca03f2c7}{Label1}
+\item 
+\hyperlink{classVisualBlock}{VisualBlock} $\ast$ \hyperlink{classTHistory_f4c969766311242d1c6d66cd9b126356}{block}
+\item 
+\hyperlink{classPluginContener}{PluginContener} $\ast$ \hyperlink{classTHistory_c2d0ea83df40a55b1c899bd87af9652f}{plugins}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+vector$<$ TForm $\ast$ $>$ \hyperlink{classTHistory_46b9676e3638c8006171026e66f96306}{windows}
+\item 
+TFrame $\ast$ \hyperlink{classTHistory_bd6410d2b6668ee021fe128e6b7cc874}{showFrame}
+\item 
+unsigned int \hyperlink{classTHistory_716bcd58a7ba40e8003454d811a64cd0}{count}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa jest oknem histori 
+
+Definition at line 24 of file history.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTHistory_a63049b9a1cc855fc3398c8471e1ca6e}{
+\index{THistory@{THistory}!THistory@{THistory}}
+\index{THistory@{THistory}!THistory@{THistory}}
+\subsubsection[THistory]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-fastcall THistory::THistory (TComponent $\ast$ {\em Owner})}}
+\label{classTHistory_a63049b9a1cc855fc3398c8471e1ca6e}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Owner}]wskaznik do klasy bedacej wlascicielem dla tej \end{description}
+\end{Desc}
+
+
+Definition at line 8 of file history.cpp.
+
+References count, and showFrame.\hypertarget{classTHistory_1aea950a4179841c02848a2f578b6545}{
+\index{THistory@{THistory}!$\sim$THistory@{$\sim$THistory}}
+\index{$\sim$THistory@{$\sim$THistory}!THistory@{THistory}}
+\subsubsection[$\sim$THistory]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-fastcall THistory::$\sim$THistory ()}}
+\label{classTHistory_1aea950a4179841c02848a2f578b6545}
+
+
+Destruktor 
+
+Definition at line 15 of file history.cpp.
+
+References TreeView1.
+
+\subsection{Member Function Documentation}
+\hypertarget{classTHistory_a54230b362227ac394e19e47471c6ae4}{
+\index{THistory@{THistory}!TreeView1Deletion@{TreeView1Deletion}}
+\index{TreeView1Deletion@{TreeView1Deletion}!THistory@{THistory}}
+\subsubsection[TreeView1Deletion]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall THistory::TreeView1Deletion (TObject $\ast$ {\em Sender}, \/  TTreeNode $\ast$ {\em Node})}}
+\label{classTHistory_a54230b362227ac394e19e47471c6ae4}
+
+
+
+
+Definition at line 161 of file history.cpp.\hypertarget{classTHistory_8f2cc8301b158c9845720077b2992b93}{
+\index{THistory@{THistory}!BitBtn2Click@{BitBtn2Click}}
+\index{BitBtn2Click@{BitBtn2Click}!THistory@{THistory}}
+\subsubsection[BitBtn2Click]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall THistory::BitBtn2Click (TObject $\ast$ {\em Sender})}}
+\label{classTHistory_8f2cc8301b158c9845720077b2992b93}
+
+
+
+
+Definition at line 171 of file history.cpp.
+
+References refresh().\hypertarget{classTHistory_4abbf05ae8c7d566b30a7ed0f87fefdf}{
+\index{THistory@{THistory}!TreeView1Click@{TreeView1Click}}
+\index{TreeView1Click@{TreeView1Click}!THistory@{THistory}}
+\subsubsection[TreeView1Click]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall THistory::TreeView1Click (TObject $\ast$ {\em Sender})}}
+\label{classTHistory_4abbf05ae8c7d566b30a7ed0f87fefdf}
+
+
+
+
+Definition at line 178 of file history.cpp.
+
+References refresh(), showFrame, and TreeView1.\hypertarget{classTHistory_80ff4787a2ecce89533f1fb22cb3c9b6}{
+\index{THistory@{THistory}!CreateParams@{CreateParams}}
+\index{CreateParams@{CreateParams}!THistory@{THistory}}
+\subsubsection[CreateParams]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall THistory::CreateParams (Controls::TCreateParams \& {\em Params})}}
+\label{classTHistory_80ff4787a2ecce89533f1fb22cb3c9b6}
+
+
+
+
+Definition at line 201 of file history.cpp.\hypertarget{classTHistory_a4c0599263631652e37b50d557269974}{
+\index{THistory@{THistory}!refresh@{refresh}}
+\index{refresh@{refresh}!THistory@{THistory}}
+\subsubsection[refresh]{\setlength{\rightskip}{0pt plus 5cm}void THistory::refresh ({\bf BlockElement} $\ast$ {\em toShow})}}
+\label{classTHistory_a4c0599263631652e37b50d557269974}
+
+
+Metoda wyswietla liste historii, i pokazuje ostatnia historie dla parametru toShow \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em toShow}]wskaznik do niskopoziomowego wejscia/wyjscia bloku, jesli NULL to przy wywolaniu zadne \char`\"{}okno\char`\"{} nie zostanie pokazane \end{description}
+\end{Desc}
+
+
+Definition at line 20 of file history.cpp.
+
+References block, count, VisualBlock::getTitle(), PluginContener::getType(), TypeDLL::getType(), VisualBlock::history, Label1, plugins, TypeDLL::show(), showFrame, and TreeView1.
+
+Referenced by BitBtn2Click(), PIWOEngine::OnVisualBlockInputHistoryClick(), PIWOEngine::OnVisualBlockOutputHistoryClick(), and TreeView1Click().
+
+\subsection{Member Data Documentation}
+\hypertarget{classTHistory_a3f5f2b91a14af33829123e0aaca3928}{
+\index{THistory@{THistory}!StatusBar1@{StatusBar1}}
+\index{StatusBar1@{StatusBar1}!THistory@{THistory}}
+\subsubsection[StatusBar1]{\setlength{\rightskip}{0pt plus 5cm}TStatusBar$\ast$ {\bf THistory::StatusBar1}}}
+\label{classTHistory_a3f5f2b91a14af33829123e0aaca3928}
+
+
+
+
+Definition at line 27 of file history.h.\hypertarget{classTHistory_d1855973aa68d9e9cca14f5632ddfae8}{
+\index{THistory@{THistory}!ImageList1@{ImageList1}}
+\index{ImageList1@{ImageList1}!THistory@{THistory}}
+\subsubsection[ImageList1]{\setlength{\rightskip}{0pt plus 5cm}TImageList$\ast$ {\bf THistory::ImageList1}}}
+\label{classTHistory_d1855973aa68d9e9cca14f5632ddfae8}
+
+
+
+
+Definition at line 28 of file history.h.\hypertarget{classTHistory_4b99f5e227a8e165e6d64be62227c458}{
+\index{THistory@{THistory}!Panel1@{Panel1}}
+\index{Panel1@{Panel1}!THistory@{THistory}}
+\subsubsection[Panel1]{\setlength{\rightskip}{0pt plus 5cm}TPanel$\ast$ {\bf THistory::Panel1}}}
+\label{classTHistory_4b99f5e227a8e165e6d64be62227c458}
+
+
+
+
+Definition at line 29 of file history.h.\hypertarget{classTHistory_ce7f826948e9130c7c20d879e7b8d80c}{
+\index{THistory@{THistory}!TreeView1@{TreeView1}}
+\index{TreeView1@{TreeView1}!THistory@{THistory}}
+\subsubsection[TreeView1]{\setlength{\rightskip}{0pt plus 5cm}TTreeView$\ast$ {\bf THistory::TreeView1}}}
+\label{classTHistory_ce7f826948e9130c7c20d879e7b8d80c}
+
+
+
+
+Definition at line 30 of file history.h.
+
+Referenced by refresh(), TreeView1Click(), and $\sim$THistory().\hypertarget{classTHistory_628b8da1ed6bee8471e6baa1d8d9911a}{
+\index{THistory@{THistory}!Panel2@{Panel2}}
+\index{Panel2@{Panel2}!THistory@{THistory}}
+\subsubsection[Panel2]{\setlength{\rightskip}{0pt plus 5cm}TPanel$\ast$ {\bf THistory::Panel2}}}
+\label{classTHistory_628b8da1ed6bee8471e6baa1d8d9911a}
+
+
+
+
+Definition at line 31 of file history.h.\hypertarget{classTHistory_58430353f17dbe5b387caabeb221f65b}{
+\index{THistory@{THistory}!BitBtn2@{BitBtn2}}
+\index{BitBtn2@{BitBtn2}!THistory@{THistory}}
+\subsubsection[BitBtn2]{\setlength{\rightskip}{0pt plus 5cm}TBitBtn$\ast$ {\bf THistory::BitBtn2}}}
+\label{classTHistory_58430353f17dbe5b387caabeb221f65b}
+
+
+
+
+Definition at line 32 of file history.h.\hypertarget{classTHistory_b308f0efb659683a8d9c7881ca03f2c7}{
+\index{THistory@{THistory}!Label1@{Label1}}
+\index{Label1@{Label1}!THistory@{THistory}}
+\subsubsection[Label1]{\setlength{\rightskip}{0pt plus 5cm}TLabel$\ast$ {\bf THistory::Label1}}}
+\label{classTHistory_b308f0efb659683a8d9c7881ca03f2c7}
+
+
+
+
+Definition at line 33 of file history.h.
+
+Referenced by refresh().\hypertarget{classTHistory_46b9676e3638c8006171026e66f96306}{
+\index{THistory@{THistory}!windows@{windows}}
+\index{windows@{windows}!THistory@{THistory}}
+\subsubsection[windows]{\setlength{\rightskip}{0pt plus 5cm}vector$<$TForm$\ast$$>$ {\bf THistory::windows}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTHistory_46b9676e3638c8006171026e66f96306}
+
+
+
+
+Definition at line 39 of file history.h.\hypertarget{classTHistory_bd6410d2b6668ee021fe128e6b7cc874}{
+\index{THistory@{THistory}!showFrame@{showFrame}}
+\index{showFrame@{showFrame}!THistory@{THistory}}
+\subsubsection[showFrame]{\setlength{\rightskip}{0pt plus 5cm}TFrame$\ast$ {\bf THistory::showFrame}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTHistory_bd6410d2b6668ee021fe128e6b7cc874}
+
+
+
+
+Definition at line 40 of file history.h.
+
+Referenced by refresh(), THistory(), and TreeView1Click().\hypertarget{classTHistory_716bcd58a7ba40e8003454d811a64cd0}{
+\index{THistory@{THistory}!count@{count}}
+\index{count@{count}!THistory@{THistory}}
+\subsubsection[count]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf THistory::count}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTHistory_716bcd58a7ba40e8003454d811a64cd0}
+
+
+
+
+Definition at line 41 of file history.h.
+
+Referenced by refresh(), and THistory().\hypertarget{classTHistory_f4c969766311242d1c6d66cd9b126356}{
+\index{THistory@{THistory}!block@{block}}
+\index{block@{block}!THistory@{THistory}}
+\subsubsection[block]{\setlength{\rightskip}{0pt plus 5cm}{\bf VisualBlock}$\ast$ {\bf THistory::block}}}
+\label{classTHistory_f4c969766311242d1c6d66cd9b126356}
+
+
+Wskaznik do wizualnego bloku, musi byc ustawiony przed refresh 
+
+Definition at line 55 of file history.h.
+
+Referenced by PIWOEngine::OnVisualBlockInputHistoryClick(), PIWOEngine::OnVisualBlockOutputHistoryClick(), and refresh().\hypertarget{classTHistory_c2d0ea83df40a55b1c899bd87af9652f}{
+\index{THistory@{THistory}!plugins@{plugins}}
+\index{plugins@{plugins}!THistory@{THistory}}
+\subsubsection[plugins]{\setlength{\rightskip}{0pt plus 5cm}{\bf PluginContener}$\ast$ {\bf THistory::plugins}}}
+\label{classTHistory_c2d0ea83df40a55b1c899bd87af9652f}
+
+
+Wskaznik do kontenera pluginow, musi byc ustawione przed refresh 
+
+Definition at line 59 of file history.h.
+
+Referenced by PIWOEngine::OnVisualBlockInputHistoryClick(), PIWOEngine::OnVisualBlockOutputHistoryClick(), and refresh().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/gui/\hyperlink{history_8h}{history.h}\item 
+/PIWO/Program/gui/\hyperlink{history_8cpp}{history.cpp}\end{CompactItemize}

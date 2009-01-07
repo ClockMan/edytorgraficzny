@@ -1,0 +1,149 @@
+\hypertarget{classBlockOutput}{
+\section{BlockOutput Class Reference}
+\label{classBlockOutput}\index{BlockOutput@{BlockOutput}}
+}
+{\tt \#include $<$BlockOutput.h$>$}
+
+Inheritance diagram for BlockOutput:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=60pt]{classBlockOutput__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for BlockOutput:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=60pt]{classBlockOutput__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockOutput_889e288fd7f8f4739b81681cd8975f63}{BlockOutput} (const AnsiString aName)
+\item 
+\hyperlink{classBlockOutput_d880f19249a89fd90bd08ec822aa6fd1}{BlockOutput} (const \hyperlink{classBlockOutput}{BlockOutput} \&copy)
+\item 
+\hyperlink{classBlockOutput_320d49ca840bb36f3f324730fc7af36a}{$\sim$BlockOutput} ()
+\item 
+AnsiString \& \hyperlink{classBlockOutput_da94ac502aea6bf1f1786e248a9d1d99}{getOutputType} ()
+\item 
+bool \hyperlink{classBlockOutput_9cc345b9f987e8d17bf8df7a334de8cd}{setOutputType} (AnsiString aName)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+AnsiString \hyperlink{classBlockOutput_80c32707c6e84083f5e69cf6170a3f26}{outputType}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBlockInput}{BlockInput} - Klasa pojemnik przechowujaca wejscia i wyjscia bloku \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 15 of file BlockOutput.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlockOutput_889e288fd7f8f4739b81681cd8975f63}{
+\index{BlockOutput@{BlockOutput}!BlockOutput@{BlockOutput}}
+\index{BlockOutput@{BlockOutput}!BlockOutput@{BlockOutput}}
+\subsubsection[BlockOutput]{\setlength{\rightskip}{0pt plus 5cm}BlockOutput::BlockOutput (const AnsiString {\em aName})}}
+\label{classBlockOutput_889e288fd7f8f4739b81681cd8975f63}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa wyjscia. \end{description}
+\end{Desc}
+
+
+Definition at line 3 of file BlockOutput.cpp.\hypertarget{classBlockOutput_d880f19249a89fd90bd08ec822aa6fd1}{
+\index{BlockOutput@{BlockOutput}!BlockOutput@{BlockOutput}}
+\index{BlockOutput@{BlockOutput}!BlockOutput@{BlockOutput}}
+\subsubsection[BlockOutput]{\setlength{\rightskip}{0pt plus 5cm}BlockOutput::BlockOutput (const {\bf BlockOutput} \& {\em copy})}}
+\label{classBlockOutput_d880f19249a89fd90bd08ec822aa6fd1}
+
+
+Konstruktor kopiujacy. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em copy}]obiekt ktory zostanie skopiowany \end{description}
+\end{Desc}
+
+
+Definition at line 7 of file BlockOutput.cpp.
+
+References outputType.\hypertarget{classBlockOutput_320d49ca840bb36f3f324730fc7af36a}{
+\index{BlockOutput@{BlockOutput}!$\sim$BlockOutput@{$\sim$BlockOutput}}
+\index{$\sim$BlockOutput@{$\sim$BlockOutput}!BlockOutput@{BlockOutput}}
+\subsubsection[$\sim$BlockOutput]{\setlength{\rightskip}{0pt plus 5cm}BlockOutput::$\sim$BlockOutput ()}}
+\label{classBlockOutput_320d49ca840bb36f3f324730fc7af36a}
+
+
+Destruktor 
+
+Definition at line 12 of file BlockOutput.cpp.
+
+\subsection{Member Function Documentation}
+\hypertarget{classBlockOutput_da94ac502aea6bf1f1786e248a9d1d99}{
+\index{BlockOutput@{BlockOutput}!getOutputType@{getOutputType}}
+\index{getOutputType@{getOutputType}!BlockOutput@{BlockOutput}}
+\subsubsection[getOutputType]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& BlockOutput::getOutputType ()}}
+\label{classBlockOutput_da94ac502aea6bf1f1786e248a9d1d99}
+
+
+Zwraca typ wyjscia. \begin{Desc}
+\item[Returns:]AnsiString typ wyjscia \end{Desc}
+
+
+Definition at line 16 of file BlockOutput.cpp.
+
+References outputType.
+
+Referenced by PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), Connection::update(), VisualBlock::updateVisualComponents(), and PIWOEngine::validateBlock().\hypertarget{classBlockOutput_9cc345b9f987e8d17bf8df7a334de8cd}{
+\index{BlockOutput@{BlockOutput}!setOutputType@{setOutputType}}
+\index{setOutputType@{setOutputType}!BlockOutput@{BlockOutput}}
+\subsubsection[setOutputType]{\setlength{\rightskip}{0pt plus 5cm}bool BlockOutput::setOutputType (AnsiString {\em aName})}}
+\label{classBlockOutput_9cc345b9f987e8d17bf8df7a334de8cd}
+
+
+Ustawia typ wyjscia. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]typ wyjscia. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]poprawnosc wykonanej operacji \end{Desc}
+
+
+Definition at line 21 of file BlockOutput.cpp.
+
+References outputType.
+
+Referenced by PIWOEngine::loadFromFile().
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlockOutput_80c32707c6e84083f5e69cf6170a3f26}{
+\index{BlockOutput@{BlockOutput}!outputType@{outputType}}
+\index{outputType@{outputType}!BlockOutput@{BlockOutput}}
+\subsubsection[outputType]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf BlockOutput::outputType}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classBlockOutput_80c32707c6e84083f5e69cf6170a3f26}
+
+
+
+
+Definition at line 18 of file BlockOutput.h.
+
+Referenced by BlockOutput(), getOutputType(), and setOutputType().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/engine/\hyperlink{BlockOutput_8h}{BlockOutput.h}\item 
+/PIWO/Program/engine/\hyperlink{BlockOutput_8cpp}{BlockOutput.cpp}\end{CompactItemize}

@@ -1,0 +1,340 @@
+\hypertarget{classBlockElement}{
+\section{BlockElement Class Reference}
+\label{classBlockElement}\index{BlockElement@{BlockElement}}
+}
+{\tt \#include $<$BlockElement.h$>$}
+
+Inheritance diagram for BlockElement:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=97pt]{classBlockElement__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for BlockElement:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=60pt]{classBlockElement__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockElement_afefe31b25f85f8c35f5bbbcb525837a}{BlockElement} (const AnsiString aName)
+\item 
+\hyperlink{classBlockElement_e84bbdd297e6879e3650ce1117710ddf}{BlockElement} (const \hyperlink{classBlockElement}{BlockElement} \&block)
+\item 
+\hyperlink{classBlockElement_7cf305fa37661a18f4c1d4a37a58c365}{$\sim$BlockElement} ()
+\item 
+AnsiString \& \hyperlink{classBlockElement_2dd0f76d122144d9d6818ca0aad2b101}{getDescription} ()
+\item 
+int \hyperlink{classBlockElement_2dbc6e7c6ea9e27b11dcc3577880908f}{getErrorCode} ()
+\item 
+AnsiString \& \hyperlink{classBlockElement_a5956f89da9a3af217345cea3b9729d7}{getErrorDescription} ()
+\item 
+AnsiString \& \hyperlink{classBlockElement_353b53f27a0f60f380c557ceeef4aa31}{getName} ()
+\item 
+\hyperlink{classTypeConfig}{TypeConfig} $\ast$ \hyperlink{classBlockElement_6005a28d6f0ae61ce77c525b14b205c6}{getObject} ()
+\item 
+void \hyperlink{classBlockElement_2b9bb37f281555564978caf4b8658260}{setDescription} (const AnsiString aDescription)
+\item 
+void \hyperlink{classBlockElement_25fbc384ce7dae655edd1287d1d2a131}{setErrorDescription} (const AnsiString aErrorDescription)
+\item 
+void \hyperlink{classBlockElement_de2e8c4d1e423c27f833ef1b20752dc1}{setErrorCode} (int aError)
+\item 
+void \hyperlink{classBlockElement_0cf385c13d9044a097b1c7a2535b25b2}{setObject} (const \hyperlink{classTypeConfig}{TypeConfig} \&aData)
+\item 
+void \hyperlink{classBlockElement_6353263666225e0ed7a7e8942437234e}{clearObject} ()
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+AnsiString \hyperlink{classBlockElement_d0f7082fdc235d8aae07097dcdf64a2f}{description}
+\item 
+int \hyperlink{classBlockElement_bb7484a85df75f3dfe7e0646dc479c25}{errorCode}
+\item 
+AnsiString \hyperlink{classBlockElement_6d4cdaead6f246b33cab34eea19b339a}{errorDescription}
+\item 
+\hyperlink{classTypeConfig}{TypeConfig} $\ast$ \hyperlink{classBlockElement_20da3a345ba221325b61fd21f0f366b1}{object}
+\item 
+AnsiString \hyperlink{classBlockElement_dabe69719de30f09c4ffce479139c254}{name}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBlockElement}{BlockElement} - Klasa reprezentujaca wejscia/wyjscia miedzy blokami, zawiera - nazwe, opis, stan - czy jest poprawnie podlaczony (errorCode) \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 18 of file BlockElement.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlockElement_afefe31b25f85f8c35f5bbbcb525837a}{
+\index{BlockElement@{BlockElement}!BlockElement@{BlockElement}}
+\index{BlockElement@{BlockElement}!BlockElement@{BlockElement}}
+\subsubsection[BlockElement]{\setlength{\rightskip}{0pt plus 5cm}BlockElement::BlockElement (const AnsiString {\em aName})}}
+\label{classBlockElement_afefe31b25f85f8c35f5bbbcb525837a}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa tworzonego wejscia/wyjœcia \end{description}
+\end{Desc}
+
+
+Definition at line 3 of file BlockElement.cpp.
+
+References name.\hypertarget{classBlockElement_e84bbdd297e6879e3650ce1117710ddf}{
+\index{BlockElement@{BlockElement}!BlockElement@{BlockElement}}
+\index{BlockElement@{BlockElement}!BlockElement@{BlockElement}}
+\subsubsection[BlockElement]{\setlength{\rightskip}{0pt plus 5cm}BlockElement::BlockElement (const {\bf BlockElement} \& {\em block})}}
+\label{classBlockElement_e84bbdd297e6879e3650ce1117710ddf}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa tworzonego wejscia/wyjœcia \end{description}
+\end{Desc}
+
+
+Definition at line 9 of file BlockElement.cpp.
+
+References description, errorCode, errorDescription, name, and object.\hypertarget{classBlockElement_7cf305fa37661a18f4c1d4a37a58c365}{
+\index{BlockElement@{BlockElement}!$\sim$BlockElement@{$\sim$BlockElement}}
+\index{$\sim$BlockElement@{$\sim$BlockElement}!BlockElement@{BlockElement}}
+\subsubsection[$\sim$BlockElement]{\setlength{\rightskip}{0pt plus 5cm}BlockElement::$\sim$BlockElement ()}}
+\label{classBlockElement_7cf305fa37661a18f4c1d4a37a58c365}
+
+
+Destruktor 
+
+Definition at line 21 of file BlockElement.cpp.
+
+References object.
+
+\subsection{Member Function Documentation}
+\hypertarget{classBlockElement_2dd0f76d122144d9d6818ca0aad2b101}{
+\index{BlockElement@{BlockElement}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!BlockElement@{BlockElement}}
+\subsubsection[getDescription]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& BlockElement::getDescription ()}}
+\label{classBlockElement_2dd0f76d122144d9d6818ca0aad2b101}
+
+
+Pobiera opis. \begin{Desc}
+\item[Returns:]AnsiString opis wejscia/wyjœcia. \end{Desc}
+
+
+Definition at line 26 of file BlockElement.cpp.
+
+References description.
+
+Referenced by PIWOEngine::CancelCustomizationOnSelectedConnections(), PIWOEngine::DeleteSelectedConnection(), PIWOEngine::MakeConnection(), PIWOEngine::OnConnectionSelect(), PIWOEngine::OnVisualBlockInputHistoryClick(), PIWOEngine::OnVisualBlockInputSelected(), PIWOEngine::OnVisualBlockOutputHistoryClick(), PIWOEngine::OnVisualBlockOutputSelected(), PIWOEngine::UnselectSelectedConnection(), Connection::update(), and VisualBlock::updateVisualComponents().\hypertarget{classBlockElement_2dbc6e7c6ea9e27b11dcc3577880908f}{
+\index{BlockElement@{BlockElement}!getErrorCode@{getErrorCode}}
+\index{getErrorCode@{getErrorCode}!BlockElement@{BlockElement}}
+\subsubsection[getErrorCode]{\setlength{\rightskip}{0pt plus 5cm}int BlockElement::getErrorCode ()}}
+\label{classBlockElement_2dbc6e7c6ea9e27b11dcc3577880908f}
+
+
+Pobiera kod bledu.  int kod bledu. 
+
+Definition at line 31 of file BlockElement.cpp.
+
+References errorCode.
+
+Referenced by Connection::update(), VisualBlock::updateVisualComponents(), and PIWOEngine::validateBlock().\hypertarget{classBlockElement_a5956f89da9a3af217345cea3b9729d7}{
+\index{BlockElement@{BlockElement}!getErrorDescription@{getErrorDescription}}
+\index{getErrorDescription@{getErrorDescription}!BlockElement@{BlockElement}}
+\subsubsection[getErrorDescription]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& BlockElement::getErrorDescription ()}}
+\label{classBlockElement_a5956f89da9a3af217345cea3b9729d7}
+
+
+Pobiera Opis bledu \begin{Desc}
+\item[Returns:]AnsiString - Opis bledu. \end{Desc}
+
+
+Definition at line 36 of file BlockElement.cpp.
+
+References errorDescription.
+
+Referenced by Connection::update(), VisualBlock::updateVisualComponents(), and PIWOEngine::validateBlock().\hypertarget{classBlockElement_353b53f27a0f60f380c557ceeef4aa31}{
+\index{BlockElement@{BlockElement}!getName@{getName}}
+\index{getName@{getName}!BlockElement@{BlockElement}}
+\subsubsection[getName]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& BlockElement::getName ()}}
+\label{classBlockElement_353b53f27a0f60f380c557ceeef4aa31}
+
+
+Pobiera nazwe obiektu. \begin{Desc}
+\item[Returns:]AnsiString nazwa obiektu. \end{Desc}
+
+
+Definition at line 41 of file BlockElement.cpp.
+
+References name.
+
+Referenced by PIWOEngine::OnVisualBlockInputHistoryClick(), and PIWOEngine::OnVisualBlockOutputHistoryClick().\hypertarget{classBlockElement_6005a28d6f0ae61ce77c525b14b205c6}{
+\index{BlockElement@{BlockElement}!getObject@{getObject}}
+\index{getObject@{getObject}!BlockElement@{BlockElement}}
+\subsubsection[getObject]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeConfig} $\ast$ BlockElement::getObject ()}}
+\label{classBlockElement_6005a28d6f0ae61ce77c525b14b205c6}
+
+
+Pobiera Konfiguracje bloku. \begin{Desc}
+\item[Returns:]\hyperlink{classTypeConfig}{TypeConfig} konfiguracja bloku. \end{Desc}
+
+
+Definition at line 46 of file BlockElement.cpp.
+
+References object.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classBlockElement_2b9bb37f281555564978caf4b8658260}{
+\index{BlockElement@{BlockElement}!setDescription@{setDescription}}
+\index{setDescription@{setDescription}!BlockElement@{BlockElement}}
+\subsubsection[setDescription]{\setlength{\rightskip}{0pt plus 5cm}void BlockElement::setDescription (const AnsiString {\em aDescription})}}
+\label{classBlockElement_2b9bb37f281555564978caf4b8658260}
+
+
+Ustawia opis. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aDescription}]- ustawiany opis. \end{description}
+\end{Desc}
+
+
+Definition at line 51 of file BlockElement.cpp.
+
+References description.
+
+Referenced by PIWOEngine::loadFromFile().\hypertarget{classBlockElement_25fbc384ce7dae655edd1287d1d2a131}{
+\index{BlockElement@{BlockElement}!setErrorDescription@{setErrorDescription}}
+\index{setErrorDescription@{setErrorDescription}!BlockElement@{BlockElement}}
+\subsubsection[setErrorDescription]{\setlength{\rightskip}{0pt plus 5cm}void BlockElement::setErrorDescription (const AnsiString {\em aErrorDescription})}}
+\label{classBlockElement_25fbc384ce7dae655edd1287d1d2a131}
+
+
+Ustawia opis bledu. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aErrorDescription}]- ustawiany opis bledu. \end{description}
+\end{Desc}
+
+
+Definition at line 56 of file BlockElement.cpp.
+
+References errorDescription.
+
+Referenced by PIWOEngine::loadFromFile().\hypertarget{classBlockElement_de2e8c4d1e423c27f833ef1b20752dc1}{
+\index{BlockElement@{BlockElement}!setErrorCode@{setErrorCode}}
+\index{setErrorCode@{setErrorCode}!BlockElement@{BlockElement}}
+\subsubsection[setErrorCode]{\setlength{\rightskip}{0pt plus 5cm}void BlockElement::setErrorCode (int {\em aError})}}
+\label{classBlockElement_de2e8c4d1e423c27f833ef1b20752dc1}
+
+
+Ustawia kod blad. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aError}]- ustawiany kod,0-ok, 1-warrning, 2-error. \end{description}
+\end{Desc}
+
+
+Definition at line 61 of file BlockElement.cpp.
+
+References errorCode.
+
+Referenced by PIWOEngine::loadFromFile().\hypertarget{classBlockElement_0cf385c13d9044a097b1c7a2535b25b2}{
+\index{BlockElement@{BlockElement}!setObject@{setObject}}
+\index{setObject@{setObject}!BlockElement@{BlockElement}}
+\subsubsection[setObject]{\setlength{\rightskip}{0pt plus 5cm}void BlockElement::setObject (const {\bf TypeConfig} \& {\em aData})}}
+\label{classBlockElement_0cf385c13d9044a097b1c7a2535b25b2}
+
+
+Ustawia obiekt. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aData}]- ustawiany obiekt. \end{description}
+\end{Desc}
+
+
+Definition at line 66 of file BlockElement.cpp.
+
+References object.\hypertarget{classBlockElement_6353263666225e0ed7a7e8942437234e}{
+\index{BlockElement@{BlockElement}!clearObject@{clearObject}}
+\index{clearObject@{clearObject}!BlockElement@{BlockElement}}
+\subsubsection[clearObject]{\setlength{\rightskip}{0pt plus 5cm}void BlockElement::clearObject ()}}
+\label{classBlockElement_6353263666225e0ed7a7e8942437234e}
+
+
+Usuwa obiekt. 
+
+Definition at line 72 of file BlockElement.cpp.
+
+References object.
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlockElement_d0f7082fdc235d8aae07097dcdf64a2f}{
+\index{BlockElement@{BlockElement}!description@{description}}
+\index{description@{description}!BlockElement@{BlockElement}}
+\subsubsection[description]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf BlockElement::description}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockElement_d0f7082fdc235d8aae07097dcdf64a2f}
+
+
+
+
+Definition at line 21 of file BlockElement.h.
+
+Referenced by BlockElement(), getDescription(), and setDescription().\hypertarget{classBlockElement_bb7484a85df75f3dfe7e0646dc479c25}{
+\index{BlockElement@{BlockElement}!errorCode@{errorCode}}
+\index{errorCode@{errorCode}!BlockElement@{BlockElement}}
+\subsubsection[errorCode]{\setlength{\rightskip}{0pt plus 5cm}int {\bf BlockElement::errorCode}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockElement_bb7484a85df75f3dfe7e0646dc479c25}
+
+
+
+
+Definition at line 22 of file BlockElement.h.
+
+Referenced by BlockElement(), getErrorCode(), and setErrorCode().\hypertarget{classBlockElement_6d4cdaead6f246b33cab34eea19b339a}{
+\index{BlockElement@{BlockElement}!errorDescription@{errorDescription}}
+\index{errorDescription@{errorDescription}!BlockElement@{BlockElement}}
+\subsubsection[errorDescription]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf BlockElement::errorDescription}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockElement_6d4cdaead6f246b33cab34eea19b339a}
+
+
+
+
+Definition at line 23 of file BlockElement.h.
+
+Referenced by BlockElement(), getErrorDescription(), and setErrorDescription().\hypertarget{classBlockElement_20da3a345ba221325b61fd21f0f366b1}{
+\index{BlockElement@{BlockElement}!object@{object}}
+\index{object@{object}!BlockElement@{BlockElement}}
+\subsubsection[object]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeConfig}$\ast$ {\bf BlockElement::object}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockElement_20da3a345ba221325b61fd21f0f366b1}
+
+
+
+
+Definition at line 24 of file BlockElement.h.
+
+Referenced by BlockElement(), clearObject(), getObject(), setObject(), and $\sim$BlockElement().\hypertarget{classBlockElement_dabe69719de30f09c4ffce479139c254}{
+\index{BlockElement@{BlockElement}!name@{name}}
+\index{name@{name}!BlockElement@{BlockElement}}
+\subsubsection[name]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf BlockElement::name}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockElement_dabe69719de30f09c4ffce479139c254}
+
+
+
+
+Definition at line 25 of file BlockElement.h.
+
+Referenced by BlockElement(), and getName().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/engine/\hyperlink{BlockElement_8h}{BlockElement.h}\item 
+/PIWO/Program/engine/\hyperlink{BlockElement_8cpp}{BlockElement.cpp}\end{CompactItemize}
