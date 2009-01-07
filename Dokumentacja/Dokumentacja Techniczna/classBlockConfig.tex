@@ -1,0 +1,855 @@
+\hypertarget{classBlockConfig}{
+\section{BlockConfig Class Reference}
+\label{classBlockConfig}\index{BlockConfig@{BlockConfig}}
+}
+{\tt \#include $<$BlockConfig.h$>$}
+
+Inheritance diagram for BlockConfig:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=56pt]{classBlockConfig__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockConfig_e855f45589e5590e9484a7988e87a1bb}{BlockConfig} ()
+\item 
+\hyperlink{classBlockConfig_a6855fad58eca1c75a8b5e42d02d8efd}{BlockConfig} (const \hyperlink{classBlockConfig}{BlockConfig} \&aCopy)
+\item 
+\hyperlink{classBlockConfig_c531399ee1d684fe222697bb5a92d81a}{BlockConfig} (TStream \&stream)
+\item 
+\hyperlink{classBlockConfig_61fe01105c9f6a0c2de8506ed61f1be7}{$\sim$BlockConfig} ()
+\item 
+bool \hyperlink{classBlockConfig_626645a51f39e02fca6e80a10011c655}{addString} (const AnsiString aName, const AnsiString aValue)
+\item 
+bool \hyperlink{classBlockConfig_239f38f9b8d09bf6bfa6c0d8c4a27c9d}{addBoolean} (const AnsiString aName, bool aValue)
+\item 
+bool \hyperlink{classBlockConfig_e0085dac56c5c698621d36dfa7c29095}{addInt} (const AnsiString aName, int aValue)
+\item 
+bool \hyperlink{classBlockConfig_f53a54f10e34c12c1365a7e695f05f97}{addDouble} (const AnsiString aName, double aValue)
+\item 
+bool \hyperlink{classBlockConfig_bcb71b475846ba2466568fa010220b80}{addBitmap} (const AnsiString aName, const Graphics::TBitmap \&aValue)
+\item 
+bool \hyperlink{classBlockConfig_7fb67f78387dbb117ce9ed4bca9edd61}{addStream} (const AnsiString aName, TStream \&aValue)
+\item 
+bool \hyperlink{classBlockConfig_145d262224797241d4d591675f5dd29c}{setString} (const AnsiString aName, const AnsiString aValue)
+\item 
+bool \hyperlink{classBlockConfig_4a33af6cdc4c46f5acb0ba5f4a2f29de}{setBoolean} (const AnsiString aName, bool aValue)
+\item 
+bool \hyperlink{classBlockConfig_e5f32cb1b0194b8570b2eadac34d93fb}{setInt} (const AnsiString aName, int aValue)
+\item 
+bool \hyperlink{classBlockConfig_093960e3e529de1bbae973d73bb04cf5}{setDouble} (const AnsiString aName, double aValue)
+\item 
+bool \hyperlink{classBlockConfig_11fee46a607ecdc6fdba8f019229dba5}{setBitmap} (const AnsiString aName, const Graphics::TBitmap \&aValue)
+\item 
+bool \hyperlink{classBlockConfig_3a2d0d102a3d0a872c407dcea3740bd6}{setStream} (const AnsiString aName, TStream \&aValue)
+\item 
+const AnsiString \& \hyperlink{classBlockConfig_f5253e606d920aa0861f84e19ccef333}{getString} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_72c6ea45171e485c8d7e38ccceab7b29}{getBoolean} (const AnsiString aName)
+\item 
+int \hyperlink{classBlockConfig_3786dd56a15961cdf65fe17e37adc61e}{getInt} (const AnsiString aName)
+\item 
+double \hyperlink{classBlockConfig_a62e41b6cc5c2e4cc509e6e9dded417b}{getDouble} (const AnsiString aName)
+\item 
+const Graphics::TBitmap \& \hyperlink{classBlockConfig_909bbcbc744629ba3daa077045ab2851}{getBitmap} (const AnsiString aName)
+\item 
+const TStream \& \hyperlink{classBlockConfig_67172ee311ec7eff44c98196b86f2829}{getStream} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_c48527d78ed04ffd5edf96f1af99b8b7}{isString} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_86efbfd1e6dc6f23c5d32e42b9540312}{isBoolean} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_49b75dae37b27599f6b84d63f035982f}{isInt} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_576829b403b8517acae631f42164ac13}{isDouble} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_5392efa0fafadb9a370ca5ed490cb24b}{isBitmap} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_b04e677cba8faed129580420a753aa5c}{isStream} (const AnsiString aName)
+\item 
+const AnsiString \& \hyperlink{classBlockConfig_2381d25316f5bf1871be5ca46863faeb}{getType} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_58e96fffee65148b2e677cf47eed99cc}{isExist} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_9dd225e95c257e846d5b69895d1d3a8f}{remove} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_78a3531c448dca0bd61f57fc2034a5c0}{saveToStream} (TStream \&aWhere)
+\item 
+bool \hyperlink{classBlockConfig_fa1e7a52f16ebcb1ceed3b33c5a9734e}{loadFromStream} (TStream \&aFrom)
+\item 
+bool \hyperlink{classBlockConfig_05bbaa65581a1dba90bc150996853021}{isChanged} ()
+\item 
+void \hyperlink{classBlockConfig_80a6e2d02e14963611879c358a98d9d8}{setChangedFalse} ()
+\item 
+unsigned long \hyperlink{classBlockConfig_f1f86e2aa5af725d35937c7ece21bde2}{getRevision} ()
+\item 
+void \hyperlink{classBlockConfig_647807f37169f2c56725f108b74107a9}{clear} ()
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classItem}{Item} $\ast$ \hyperlink{classBlockConfig_78c8ed7db78cf6f69c9207561625b68a}{getItem} (const AnsiString aName)
+\item 
+bool \hyperlink{classBlockConfig_3a00682ebfa83a94d5635a540af1953d}{loadFromStream2} (TStream \&aFrom)
+\item 
+bool \hyperlink{classBlockConfig_758e1f4956f2fd1876d265e575b15ca0}{saveToStream2} (TStream \&aWhere)
+\item 
+void \hyperlink{classBlockConfig_7cb9cff9a1a083ab10679596c92a4768}{copyFrom} (const \hyperlink{classBlockConfig}{BlockConfig} \&aCopy)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+vector$<$ \hyperlink{classItem}{Item} $\ast$ $>$ \hyperlink{classBlockConfig_f3e401bacd44bfde53cab858338139cc}{map}
+\item 
+bool \hyperlink{classBlockConfig_e74bb189560537e6d27ef9afb32eeebd}{changed}
+\item 
+unsigned long \hyperlink{classBlockConfig_ec7bcae7a28de71175989dd7742cd83f}{revision}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBlockConfig}{BlockConfig} - Klasa przechowujaca dane w postaci hashmapy, uzywana jako miejsce do przechowywania konfiguracji dowolnego bloczka. \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 18 of file BlockConfig.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlockConfig_e855f45589e5590e9484a7988e87a1bb}{
+\index{BlockConfig@{BlockConfig}!BlockConfig@{BlockConfig}}
+\index{BlockConfig@{BlockConfig}!BlockConfig@{BlockConfig}}
+\subsubsection[BlockConfig]{\setlength{\rightskip}{0pt plus 5cm}BlockConfig::BlockConfig ()}}
+\label{classBlockConfig_e855f45589e5590e9484a7988e87a1bb}
+
+
+Konstruktor. 
+
+Definition at line 12 of file BlockConfig.cpp.
+
+References changed, and revision.\hypertarget{classBlockConfig_a6855fad58eca1c75a8b5e42d02d8efd}{
+\index{BlockConfig@{BlockConfig}!BlockConfig@{BlockConfig}}
+\index{BlockConfig@{BlockConfig}!BlockConfig@{BlockConfig}}
+\subsubsection[BlockConfig]{\setlength{\rightskip}{0pt plus 5cm}BlockConfig::BlockConfig (const {\bf BlockConfig} \& {\em aCopy})}}
+\label{classBlockConfig_a6855fad58eca1c75a8b5e42d02d8efd}
+
+
+Konsrutkor Kopiujacy \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aCopy}]obiekt ktory zostanie skopiowany \end{description}
+\end{Desc}
+
+
+Definition at line 72 of file BlockConfig.cpp.
+
+References changed, copyFrom(), and revision.\hypertarget{classBlockConfig_c531399ee1d684fe222697bb5a92d81a}{
+\index{BlockConfig@{BlockConfig}!BlockConfig@{BlockConfig}}
+\index{BlockConfig@{BlockConfig}!BlockConfig@{BlockConfig}}
+\subsubsection[BlockConfig]{\setlength{\rightskip}{0pt plus 5cm}BlockConfig::BlockConfig (TStream \& {\em stream})}}
+\label{classBlockConfig_c531399ee1d684fe222697bb5a92d81a}
+
+
+Konstruktor kopiuj±cy z TStream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]Stream z ktorego ma zostac wczytany. \end{description}
+\end{Desc}
+
+
+Definition at line 18 of file BlockConfig.cpp.
+
+References changed, loadFromStream(), and revision.\hypertarget{classBlockConfig_61fe01105c9f6a0c2de8506ed61f1be7}{
+\index{BlockConfig@{BlockConfig}!$\sim$BlockConfig@{$\sim$BlockConfig}}
+\index{$\sim$BlockConfig@{$\sim$BlockConfig}!BlockConfig@{BlockConfig}}
+\subsubsection[$\sim$BlockConfig]{\setlength{\rightskip}{0pt plus 5cm}BlockConfig::$\sim$BlockConfig ()}}
+\label{classBlockConfig_61fe01105c9f6a0c2de8506ed61f1be7}
+
+
+Destruktor 
+
+Definition at line 79 of file BlockConfig.cpp.
+
+References clear().
+
+\subsection{Member Function Documentation}
+\hypertarget{classBlockConfig_78c8ed7db78cf6f69c9207561625b68a}{
+\index{BlockConfig@{BlockConfig}!getItem@{getItem}}
+\index{getItem@{getItem}!BlockConfig@{BlockConfig}}
+\subsubsection[getItem]{\setlength{\rightskip}{0pt plus 5cm}{\bf Item} $\ast$ BlockConfig::getItem (const AnsiString {\em aName})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockConfig_78c8ed7db78cf6f69c9207561625b68a}
+
+
+
+
+Definition at line 3 of file BlockConfig.cpp.
+
+References map.
+
+Referenced by getBitmap(), getBoolean(), getDouble(), getInt(), getStream(), getString(), getType(), isBitmap(), isBoolean(), isDouble(), isExist(), isInt(), isStream(), isString(), remove(), setBitmap(), setBoolean(), setDouble(), setInt(), setStream(), and setString().\hypertarget{classBlockConfig_3a00682ebfa83a94d5635a540af1953d}{
+\index{BlockConfig@{BlockConfig}!loadFromStream2@{loadFromStream2}}
+\index{loadFromStream2@{loadFromStream2}!BlockConfig@{BlockConfig}}
+\subsubsection[loadFromStream2]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::loadFromStream2 (TStream \& {\em aFrom})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockConfig_3a00682ebfa83a94d5635a540af1953d}
+
+
+
+
+Definition at line 454 of file BlockConfig.cpp.
+
+References map.
+
+Referenced by TypeConfig::loadFromStream(), and loadFromStream().\hypertarget{classBlockConfig_758e1f4956f2fd1876d265e575b15ca0}{
+\index{BlockConfig@{BlockConfig}!saveToStream2@{saveToStream2}}
+\index{saveToStream2@{saveToStream2}!BlockConfig@{BlockConfig}}
+\subsubsection[saveToStream2]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::saveToStream2 (TStream \& {\em aWhere})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockConfig_758e1f4956f2fd1876d265e575b15ca0}
+
+
+
+
+Definition at line 392 of file BlockConfig.cpp.
+
+References getType(), and map.
+
+Referenced by TypeConfig::saveToStream(), and saveToStream().\hypertarget{classBlockConfig_7cb9cff9a1a083ab10679596c92a4768}{
+\index{BlockConfig@{BlockConfig}!copyFrom@{copyFrom}}
+\index{copyFrom@{copyFrom}!BlockConfig@{BlockConfig}}
+\subsubsection[copyFrom]{\setlength{\rightskip}{0pt plus 5cm}void BlockConfig::copyFrom (const {\bf BlockConfig} \& {\em aCopy})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockConfig_7cb9cff9a1a083ab10679596c92a4768}
+
+
+
+
+Definition at line 25 of file BlockConfig.cpp.
+
+References map.
+
+Referenced by BlockConfig().\hypertarget{classBlockConfig_626645a51f39e02fca6e80a10011c655}{
+\index{BlockConfig@{BlockConfig}!addString@{addString}}
+\index{addString@{addString}!BlockConfig@{BlockConfig}}
+\subsubsection[addString]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::addString (const AnsiString {\em aName}, \/  const AnsiString {\em aValue})}}
+\label{classBlockConfig_626645a51f39e02fca6e80a10011c655}
+
+
+Dodaje obiekt typu string (aTyp) na listê pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 117 of file BlockConfig.cpp.
+
+References changed, isExist(), map, and revision.\hypertarget{classBlockConfig_239f38f9b8d09bf6bfa6c0d8c4a27c9d}{
+\index{BlockConfig@{BlockConfig}!addBoolean@{addBoolean}}
+\index{addBoolean@{addBoolean}!BlockConfig@{BlockConfig}}
+\subsubsection[addBoolean]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::addBoolean (const AnsiString {\em aName}, \/  bool {\em aValue})}}
+\label{classBlockConfig_239f38f9b8d09bf6bfa6c0d8c4a27c9d}
+
+
+Dodaje obiekt typu Boolean (aTyp) na listê pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 127 of file BlockConfig.cpp.
+
+References changed, isExist(), map, and revision.\hypertarget{classBlockConfig_e0085dac56c5c698621d36dfa7c29095}{
+\index{BlockConfig@{BlockConfig}!addInt@{addInt}}
+\index{addInt@{addInt}!BlockConfig@{BlockConfig}}
+\subsubsection[addInt]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::addInt (const AnsiString {\em aName}, \/  int {\em aValue})}}
+\label{classBlockConfig_e0085dac56c5c698621d36dfa7c29095}
+
+
+Dodaje obiekt typu int (aTyp) na listê pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 138 of file BlockConfig.cpp.
+
+References changed, isExist(), map, and revision.\hypertarget{classBlockConfig_f53a54f10e34c12c1365a7e695f05f97}{
+\index{BlockConfig@{BlockConfig}!addDouble@{addDouble}}
+\index{addDouble@{addDouble}!BlockConfig@{BlockConfig}}
+\subsubsection[addDouble]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::addDouble (const AnsiString {\em aName}, \/  double {\em aValue})}}
+\label{classBlockConfig_f53a54f10e34c12c1365a7e695f05f97}
+
+
+Dodaje obiekt typu double (aTyp) na listê pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 149 of file BlockConfig.cpp.
+
+References changed, isExist(), map, and revision.\hypertarget{classBlockConfig_bcb71b475846ba2466568fa010220b80}{
+\index{BlockConfig@{BlockConfig}!addBitmap@{addBitmap}}
+\index{addBitmap@{addBitmap}!BlockConfig@{BlockConfig}}
+\subsubsection[addBitmap]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::addBitmap (const AnsiString {\em aName}, \/  const Graphics::TBitmap \& {\em aValue})}}
+\label{classBlockConfig_bcb71b475846ba2466568fa010220b80}
+
+
+Dodaje obiekt typu TBitmap (aTyp) na listê pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 160 of file BlockConfig.cpp.
+
+References changed, isExist(), map, and revision.\hypertarget{classBlockConfig_7fb67f78387dbb117ce9ed4bca9edd61}{
+\index{BlockConfig@{BlockConfig}!addStream@{addStream}}
+\index{addStream@{addStream}!BlockConfig@{BlockConfig}}
+\subsubsection[addStream]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::addStream (const AnsiString {\em aName}, \/  TStream \& {\em aValue})}}
+\label{classBlockConfig_7fb67f78387dbb117ce9ed4bca9edd61}
+
+
+Dodaje obiekt typu TStream (aTyp) na listê pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 171 of file BlockConfig.cpp.
+
+References changed, isExist(), map, and revision.\hypertarget{classBlockConfig_145d262224797241d4d591675f5dd29c}{
+\index{BlockConfig@{BlockConfig}!setString@{setString}}
+\index{setString@{setString}!BlockConfig@{BlockConfig}}
+\subsubsection[setString]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::setString (const AnsiString {\em aName}, \/  const AnsiString {\em aValue})}}
+\label{classBlockConfig_145d262224797241d4d591675f5dd29c}
+
+
+Zmienia obiekt typu string (aTyp) na liscie pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 182 of file BlockConfig.cpp.
+
+References changed, getItem(), Item::getObject(), Item::getType(), revision, and Item::setObject().\hypertarget{classBlockConfig_4a33af6cdc4c46f5acb0ba5f4a2f29de}{
+\index{BlockConfig@{BlockConfig}!setBoolean@{setBoolean}}
+\index{setBoolean@{setBoolean}!BlockConfig@{BlockConfig}}
+\subsubsection[setBoolean]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::setBoolean (const AnsiString {\em aName}, \/  bool {\em aValue})}}
+\label{classBlockConfig_4a33af6cdc4c46f5acb0ba5f4a2f29de}
+
+
+Zmienia obiekt typu boolean (aTyp) na liscie pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 193 of file BlockConfig.cpp.
+
+References changed, getItem(), Item::getObject(), Item::getType(), revision, and Item::setObject().\hypertarget{classBlockConfig_e5f32cb1b0194b8570b2eadac34d93fb}{
+\index{BlockConfig@{BlockConfig}!setInt@{setInt}}
+\index{setInt@{setInt}!BlockConfig@{BlockConfig}}
+\subsubsection[setInt]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::setInt (const AnsiString {\em aName}, \/  int {\em aValue})}}
+\label{classBlockConfig_e5f32cb1b0194b8570b2eadac34d93fb}
+
+
+Zmienia obiekt typu int (aTyp) na liscie pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 205 of file BlockConfig.cpp.
+
+References changed, getItem(), Item::getObject(), Item::getType(), revision, and Item::setObject().\hypertarget{classBlockConfig_093960e3e529de1bbae973d73bb04cf5}{
+\index{BlockConfig@{BlockConfig}!setDouble@{setDouble}}
+\index{setDouble@{setDouble}!BlockConfig@{BlockConfig}}
+\subsubsection[setDouble]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::setDouble (const AnsiString {\em aName}, \/  double {\em aValue})}}
+\label{classBlockConfig_093960e3e529de1bbae973d73bb04cf5}
+
+
+Zmienia obiekt typu double (aTyp) na liscie pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 217 of file BlockConfig.cpp.
+
+References changed, getItem(), Item::getObject(), Item::getType(), revision, and Item::setObject().\hypertarget{classBlockConfig_11fee46a607ecdc6fdba8f019229dba5}{
+\index{BlockConfig@{BlockConfig}!setBitmap@{setBitmap}}
+\index{setBitmap@{setBitmap}!BlockConfig@{BlockConfig}}
+\subsubsection[setBitmap]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::setBitmap (const AnsiString {\em aName}, \/  const Graphics::TBitmap \& {\em aValue})}}
+\label{classBlockConfig_11fee46a607ecdc6fdba8f019229dba5}
+
+
+Zmienia obiekt typu TBitmap (aTyp) na liscie pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 229 of file BlockConfig.cpp.
+
+References changed, getItem(), Item::getObject(), Item::getType(), revision, and Item::setObject().\hypertarget{classBlockConfig_3a2d0d102a3d0a872c407dcea3740bd6}{
+\index{BlockConfig@{BlockConfig}!setStream@{setStream}}
+\index{setStream@{setStream}!BlockConfig@{BlockConfig}}
+\subsubsection[setStream]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::setStream (const AnsiString {\em aName}, \/  TStream \& {\em aValue})}}
+\label{classBlockConfig_3a2d0d102a3d0a872c407dcea3740bd6}
+
+
+Zmienia obiekt typu TStream (aTyp) na liscie pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa pod jaka obiekt ma widniesc na liœcie \item[{\em aValue}]dane jakie maja zostac wrzucone na liste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca true jesli obiekt zostal dodany \end{Desc}
+
+
+Definition at line 241 of file BlockConfig.cpp.
+
+References changed, getItem(), Item::getObject(), Item::getType(), revision, and Item::setObject().\hypertarget{classBlockConfig_f5253e606d920aa0861f84e19ccef333}{
+\index{BlockConfig@{BlockConfig}!getString@{getString}}
+\index{getString@{getString}!BlockConfig@{BlockConfig}}
+\subsubsection[getString]{\setlength{\rightskip}{0pt plus 5cm}const AnsiString \& BlockConfig::getString (const AnsiString {\em aName})}}
+\label{classBlockConfig_f5253e606d920aa0861f84e19ccef333}
+
+
+Pobiera obiekt typu string z listy pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]wartosc danego obiektu \end{Desc}
+
+
+Definition at line 253 of file BlockConfig.cpp.
+
+References getItem(), Item::getObject(), and Item::getType().\hypertarget{classBlockConfig_72c6ea45171e485c8d7e38ccceab7b29}{
+\index{BlockConfig@{BlockConfig}!getBoolean@{getBoolean}}
+\index{getBoolean@{getBoolean}!BlockConfig@{BlockConfig}}
+\subsubsection[getBoolean]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::getBoolean (const AnsiString {\em aName})}}
+\label{classBlockConfig_72c6ea45171e485c8d7e38ccceab7b29}
+
+
+Pobiera obiekt typu boolean (aTyp) z listy pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]wartosc danego obiektu \end{Desc}
+
+
+Definition at line 260 of file BlockConfig.cpp.
+
+References getItem(), Item::getObject(), and Item::getType().\hypertarget{classBlockConfig_3786dd56a15961cdf65fe17e37adc61e}{
+\index{BlockConfig@{BlockConfig}!getInt@{getInt}}
+\index{getInt@{getInt}!BlockConfig@{BlockConfig}}
+\subsubsection[getInt]{\setlength{\rightskip}{0pt plus 5cm}int BlockConfig::getInt (const AnsiString {\em aName})}}
+\label{classBlockConfig_3786dd56a15961cdf65fe17e37adc61e}
+
+
+Pobiera obiekt typu int (aTyp) z listy pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]wartosc danego obiektu \end{Desc}
+
+
+Definition at line 267 of file BlockConfig.cpp.
+
+References getItem(), Item::getObject(), and Item::getType().\hypertarget{classBlockConfig_a62e41b6cc5c2e4cc509e6e9dded417b}{
+\index{BlockConfig@{BlockConfig}!getDouble@{getDouble}}
+\index{getDouble@{getDouble}!BlockConfig@{BlockConfig}}
+\subsubsection[getDouble]{\setlength{\rightskip}{0pt plus 5cm}double BlockConfig::getDouble (const AnsiString {\em aName})}}
+\label{classBlockConfig_a62e41b6cc5c2e4cc509e6e9dded417b}
+
+
+Pobiera obiekt typu double (aTyp) z listy pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]wartosc danego obiektu \end{Desc}
+
+
+Definition at line 274 of file BlockConfig.cpp.
+
+References getItem(), Item::getObject(), and Item::getType().\hypertarget{classBlockConfig_909bbcbc744629ba3daa077045ab2851}{
+\index{BlockConfig@{BlockConfig}!getBitmap@{getBitmap}}
+\index{getBitmap@{getBitmap}!BlockConfig@{BlockConfig}}
+\subsubsection[getBitmap]{\setlength{\rightskip}{0pt plus 5cm}const Graphics::TBitmap \& BlockConfig::getBitmap (const AnsiString {\em aName})}}
+\label{classBlockConfig_909bbcbc744629ba3daa077045ab2851}
+
+
+Pobiera obiekt typu TBitmap (aTyp) z listy pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]wartosc danego obiektu \end{Desc}
+
+
+Definition at line 281 of file BlockConfig.cpp.
+
+References getItem(), Item::getObject(), and Item::getType().\hypertarget{classBlockConfig_67172ee311ec7eff44c98196b86f2829}{
+\index{BlockConfig@{BlockConfig}!getStream@{getStream}}
+\index{getStream@{getStream}!BlockConfig@{BlockConfig}}
+\subsubsection[getStream]{\setlength{\rightskip}{0pt plus 5cm}const TStream \& BlockConfig::getStream (const AnsiString {\em aName})}}
+\label{classBlockConfig_67172ee311ec7eff44c98196b86f2829}
+
+
+Pobiera obiekt typu Stream (aTyp) z listy pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]wartosc danego obiektu \end{Desc}
+
+
+Definition at line 288 of file BlockConfig.cpp.
+
+References getItem(), Item::getObject(), and Item::getType().\hypertarget{classBlockConfig_c48527d78ed04ffd5edf96f1af99b8b7}{
+\index{BlockConfig@{BlockConfig}!isString@{isString}}
+\index{isString@{isString}!BlockConfig@{BlockConfig}}
+\subsubsection[isString]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isString (const AnsiString {\em aName})}}
+\label{classBlockConfig_c48527d78ed04ffd5edf96f1af99b8b7}
+
+
+Sprawdza czy obiekt pod nazwa aName jest typu String. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ture - jezeli jest to ten sam typ false - jezeli nie. \end{Desc}
+
+
+Definition at line 295 of file BlockConfig.cpp.
+
+References getItem(), and Item::getType().\hypertarget{classBlockConfig_86efbfd1e6dc6f23c5d32e42b9540312}{
+\index{BlockConfig@{BlockConfig}!isBoolean@{isBoolean}}
+\index{isBoolean@{isBoolean}!BlockConfig@{BlockConfig}}
+\subsubsection[isBoolean]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isBoolean (const AnsiString {\em aName})}}
+\label{classBlockConfig_86efbfd1e6dc6f23c5d32e42b9540312}
+
+
+Sprawdza czy obiekt pod nazwa aName jest typu booleand. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ture - jezeli jest to ten sam typ false - jezeli nie. \end{Desc}
+
+
+Definition at line 300 of file BlockConfig.cpp.
+
+References getItem(), and Item::getType().\hypertarget{classBlockConfig_49b75dae37b27599f6b84d63f035982f}{
+\index{BlockConfig@{BlockConfig}!isInt@{isInt}}
+\index{isInt@{isInt}!BlockConfig@{BlockConfig}}
+\subsubsection[isInt]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isInt (const AnsiString {\em aName})}}
+\label{classBlockConfig_49b75dae37b27599f6b84d63f035982f}
+
+
+Sprawdza czy obiekt pod nazwa aName jest typu int. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]trure - jezeli jest to ten sam typ false - jezeli nie. \end{Desc}
+
+
+Definition at line 305 of file BlockConfig.cpp.
+
+References getItem(), and Item::getType().\hypertarget{classBlockConfig_576829b403b8517acae631f42164ac13}{
+\index{BlockConfig@{BlockConfig}!isDouble@{isDouble}}
+\index{isDouble@{isDouble}!BlockConfig@{BlockConfig}}
+\subsubsection[isDouble]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isDouble (const AnsiString {\em aName})}}
+\label{classBlockConfig_576829b403b8517acae631f42164ac13}
+
+
+Sprawdza czy obiekt pod nazwa aName jest typu Double. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli jest to ten sam typ false - jezeli nie. \end{Desc}
+
+
+Definition at line 310 of file BlockConfig.cpp.
+
+References getItem(), and Item::getType().\hypertarget{classBlockConfig_5392efa0fafadb9a370ca5ed490cb24b}{
+\index{BlockConfig@{BlockConfig}!isBitmap@{isBitmap}}
+\index{isBitmap@{isBitmap}!BlockConfig@{BlockConfig}}
+\subsubsection[isBitmap]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isBitmap (const AnsiString {\em aName})}}
+\label{classBlockConfig_5392efa0fafadb9a370ca5ed490cb24b}
+
+
+Sprawdza czy obiekt pod nazwa aName jest typu TBitmap. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli jest to ten sam typ false - jezeli nie. \end{Desc}
+
+
+Definition at line 315 of file BlockConfig.cpp.
+
+References getItem(), and Item::getType().\hypertarget{classBlockConfig_b04e677cba8faed129580420a753aa5c}{
+\index{BlockConfig@{BlockConfig}!isStream@{isStream}}
+\index{isStream@{isStream}!BlockConfig@{BlockConfig}}
+\subsubsection[isStream]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isStream (const AnsiString {\em aName})}}
+\label{classBlockConfig_b04e677cba8faed129580420a753aa5c}
+
+
+Sprawdza czy obiekt pod nazwa aName jest typu TStream. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli jest to ten sam typ false - jezeli nie. \end{Desc}
+
+
+Definition at line 320 of file BlockConfig.cpp.
+
+References getItem(), and Item::getType().\hypertarget{classBlockConfig_2381d25316f5bf1871be5ca46863faeb}{
+\index{BlockConfig@{BlockConfig}!getType@{getType}}
+\index{getType@{getType}!BlockConfig@{BlockConfig}}
+\subsubsection[getType]{\setlength{\rightskip}{0pt plus 5cm}const AnsiString \& BlockConfig::getType (const AnsiString {\em aName})}}
+\label{classBlockConfig_2381d25316f5bf1871be5ca46863faeb}
+
+
+Zwraca typ danego obiekut. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string okreslajacy typ. \end{Desc}
+
+
+Definition at line 325 of file BlockConfig.cpp.
+
+References getItem(), and Item::getType().
+
+Referenced by clear(), and saveToStream2().\hypertarget{classBlockConfig_58e96fffee65148b2e677cf47eed99cc}{
+\index{BlockConfig@{BlockConfig}!isExist@{isExist}}
+\index{isExist@{isExist}!BlockConfig@{BlockConfig}}
+\subsubsection[isExist]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isExist (const AnsiString {\em aName})}}
+\label{classBlockConfig_58e96fffee65148b2e677cf47eed99cc}
+
+
+Sprawdza czy obiekt pod nazwa aName istnieje. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli isntieje false - jezeli nie. \end{Desc}
+
+
+Definition at line 330 of file BlockConfig.cpp.
+
+References getItem().
+
+Referenced by addBitmap(), addBoolean(), addDouble(), addInt(), addStream(), and addString().\hypertarget{classBlockConfig_9dd225e95c257e846d5b69895d1d3a8f}{
+\index{BlockConfig@{BlockConfig}!remove@{remove}}
+\index{remove@{remove}!BlockConfig@{BlockConfig}}
+\subsubsection[remove]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::remove (const AnsiString {\em aName})}}
+\label{classBlockConfig_9dd225e95c257e846d5b69895d1d3a8f}
+
+
+Usuwa obiekt pod nazwa aName. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli zostal usuniety false - jezeli nie. \end{Desc}
+
+
+Definition at line 342 of file BlockConfig.cpp.
+
+References changed, getItem(), Item::getObject(), Item::getType(), map, and revision.\hypertarget{classBlockConfig_78a3531c448dca0bd61f57fc2034a5c0}{
+\index{BlockConfig@{BlockConfig}!saveToStream@{saveToStream}}
+\index{saveToStream@{saveToStream}!BlockConfig@{BlockConfig}}
+\subsubsection[saveToStream]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::saveToStream (TStream \& {\em aWhere})}}
+\label{classBlockConfig_78a3531c448dca0bd61f57fc2034a5c0}
+
+
+Zapisuje listê obiektow do strumienia. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aWhere}]strumien w ktorym zostana zapisane informacje. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli operacja sie powiodla false - jezeli nie. \end{Desc}
+
+
+Reimplemented in \hyperlink{classTypeConfig_6d8e08fc2726691b9fd49753504125b2}{TypeConfig}.
+
+Definition at line 444 of file BlockConfig.cpp.
+
+References saveToStream2().\hypertarget{classBlockConfig_fa1e7a52f16ebcb1ceed3b33c5a9734e}{
+\index{BlockConfig@{BlockConfig}!loadFromStream@{loadFromStream}}
+\index{loadFromStream@{loadFromStream}!BlockConfig@{BlockConfig}}
+\subsubsection[loadFromStream]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::loadFromStream (TStream \& {\em aFrom})}}
+\label{classBlockConfig_fa1e7a52f16ebcb1ceed3b33c5a9734e}
+
+
+Odczytuje infomracjê o obiektach na liscie z strumienia \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli operacja sie powiodla false - jezeli nie. \end{Desc}
+
+
+Reimplemented in \hyperlink{classTypeConfig_3ea873062f9be5fbc1001503684f532d}{TypeConfig}.
+
+Definition at line 543 of file BlockConfig.cpp.
+
+References clear(), and loadFromStream2().
+
+Referenced by BlockConfig(), and PIWOEngine::loadFromFile().\hypertarget{classBlockConfig_05bbaa65581a1dba90bc150996853021}{
+\index{BlockConfig@{BlockConfig}!isChanged@{isChanged}}
+\index{isChanged@{isChanged}!BlockConfig@{BlockConfig}}
+\subsubsection[isChanged]{\setlength{\rightskip}{0pt plus 5cm}bool BlockConfig::isChanged ()}}
+\label{classBlockConfig_05bbaa65581a1dba90bc150996853021}
+
+
+
+
+Definition at line 553 of file BlockConfig.cpp.
+
+References changed.\hypertarget{classBlockConfig_80a6e2d02e14963611879c358a98d9d8}{
+\index{BlockConfig@{BlockConfig}!setChangedFalse@{setChangedFalse}}
+\index{setChangedFalse@{setChangedFalse}!BlockConfig@{BlockConfig}}
+\subsubsection[setChangedFalse]{\setlength{\rightskip}{0pt plus 5cm}void BlockConfig::setChangedFalse ()}}
+\label{classBlockConfig_80a6e2d02e14963611879c358a98d9d8}
+
+
+zeruje flage changed 
+
+Definition at line 558 of file BlockConfig.cpp.
+
+References changed.\hypertarget{classBlockConfig_f1f86e2aa5af725d35937c7ece21bde2}{
+\index{BlockConfig@{BlockConfig}!getRevision@{getRevision}}
+\index{getRevision@{getRevision}!BlockConfig@{BlockConfig}}
+\subsubsection[getRevision]{\setlength{\rightskip}{0pt plus 5cm}unsigned long BlockConfig::getRevision ()}}
+\label{classBlockConfig_f1f86e2aa5af725d35937c7ece21bde2}
+
+
+zwraca wersje (jest inkrementowana przy wykonywaniu dowolnych zmian) 
+
+Definition at line 563 of file BlockConfig.cpp.
+
+References revision.
+
+Referenced by PIWOEngine::OnVisualBlockConfigClick(), PIWOEngine::runBlock(), and VisualBlock::updateHistory().\hypertarget{classBlockConfig_647807f37169f2c56725f108b74107a9}{
+\index{BlockConfig@{BlockConfig}!clear@{clear}}
+\index{clear@{clear}!BlockConfig@{BlockConfig}}
+\subsubsection[clear]{\setlength{\rightskip}{0pt plus 5cm}void BlockConfig::clear ()}}
+\label{classBlockConfig_647807f37169f2c56725f108b74107a9}
+
+
+czyszczenie listy 
+
+Definition at line 84 of file BlockConfig.cpp.
+
+References getType(), and map.
+
+Referenced by TypeConfig::loadFromStream(), loadFromStream(), and $\sim$BlockConfig().
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlockConfig_f3e401bacd44bfde53cab858338139cc}{
+\index{BlockConfig@{BlockConfig}!map@{map}}
+\index{map@{map}!BlockConfig@{BlockConfig}}
+\subsubsection[map]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Item}$\ast$$>$ {\bf BlockConfig::map}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockConfig_f3e401bacd44bfde53cab858338139cc}
+
+
+
+
+Definition at line 21 of file BlockConfig.h.
+
+Referenced by addBitmap(), addBoolean(), addDouble(), addInt(), addStream(), addString(), clear(), copyFrom(), getItem(), loadFromStream2(), remove(), and saveToStream2().\hypertarget{classBlockConfig_e74bb189560537e6d27ef9afb32eeebd}{
+\index{BlockConfig@{BlockConfig}!changed@{changed}}
+\index{changed@{changed}!BlockConfig@{BlockConfig}}
+\subsubsection[changed]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf BlockConfig::changed}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockConfig_e74bb189560537e6d27ef9afb32eeebd}
+
+
+
+
+Definition at line 22 of file BlockConfig.h.
+
+Referenced by addBitmap(), addBoolean(), addDouble(), addInt(), addStream(), addString(), BlockConfig(), isChanged(), remove(), setBitmap(), setBoolean(), setChangedFalse(), setDouble(), setInt(), setStream(), and setString().\hypertarget{classBlockConfig_ec7bcae7a28de71175989dd7742cd83f}{
+\index{BlockConfig@{BlockConfig}!revision@{revision}}
+\index{revision@{revision}!BlockConfig@{BlockConfig}}
+\subsubsection[revision]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf BlockConfig::revision}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classBlockConfig_ec7bcae7a28de71175989dd7742cd83f}
+
+
+
+
+Definition at line 23 of file BlockConfig.h.
+
+Referenced by addBitmap(), addBoolean(), addDouble(), addInt(), addStream(), addString(), BlockConfig(), getRevision(), remove(), setBitmap(), setBoolean(), setDouble(), setInt(), setStream(), and setString().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/engine/\hyperlink{BlockConfig_8h}{BlockConfig.h}\item 
+/PIWO/Program/engine/\hyperlink{BlockConfig_8cpp}{BlockConfig.cpp}\end{CompactItemize}

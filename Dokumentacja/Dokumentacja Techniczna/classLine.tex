@@ -1,0 +1,363 @@
+\hypertarget{classLine}{
+\section{Line Class Reference}
+\label{classLine}\index{Line@{Line}}
+}
+{\tt \#include $<$Line.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classLine_76113fc8e56a6fa1ae2a513c03f01fbb}{setXY} (int x1, int y1, int x2, int y2)
+\item 
+TPoint \hyperlink{classLine_3d078e633ea22e0e690b7295c7e9462a}{getPoint1} ()
+\item 
+TPoint \hyperlink{classLine_b36912eb4fcf6ae53ffb8b4cfeb58e1c}{getPoint2} ()
+\item 
+\_\-\_\-fastcall \hyperlink{classLine_34d9d1cf65e8ab4cd799188f19b0884c}{Line} (TWinControl $\ast$Owner, bool vertical)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{Line_8h_9dd4ddd90e5216119027c0f379889e85}{Line\_\-Function} \hyperlink{classLine_7974c2a36144b62a4368393c5d6f7deb}{OnLineMove}
+\item 
+\hyperlink{Line_8h_9dd4ddd90e5216119027c0f379889e85}{Line\_\-Function} \hyperlink{classLine_bdaa5c3c9adcdfab2606f8dc36fcacbc}{OnConnectionSelectRequest}
+\item 
+\hyperlink{Line_8h_9dd4ddd90e5216119027c0f379889e85}{Line\_\-Function} \hyperlink{classLine_3573536ab9d4d85815ca8efbce92d68c}{OnConnectionResetRequest}
+\item 
+\_\-\_\-property \hyperlink{classLine_6384237fdc75852d07773dc974eb8fb6}{Color}
+\item 
+int \hyperlink{classLine_a0453c5f00b99f6467b63165adc2be11}{Resize}
+\item 
+bool \hyperlink{classLine_d15f8e1c7d8b6904c68b6ce35160feb3}{Vertical}
+\item 
+bool \hyperlink{classLine_ce0bdced2eacc4693f5e9c0578cc7302}{CanBeMoved}
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+void \_\-\_\-fastcall \hyperlink{classLine_5939762594b7817b612f403094cf1c22}{LineMouseDown} (TObject $\ast$Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
+\item 
+void \_\-\_\-fastcall \hyperlink{classLine_6052bf0f6f29eaa4099b15ff4ba795a4}{LineMouseUp} (TObject $\ast$Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
+\item 
+void \_\-\_\-fastcall \hyperlink{classLine_4062953b713039464ae9d510052bc436}{LineMouseMove} (TObject $\ast$Sender, TShiftState Shift, int X, int Y)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classLine_f59b5e14ffbed84e1510e83f365221c4}{moving}
+\item 
+TPoint \hyperlink{classLine_8c47aa7d3991115578064ccfd28a1b45}{oldPos}
+\item 
+\_\-\_\-property \hyperlink{classLine_71cd693a5687011a5f5ec71d393a8e2b}{OnMouseMove}
+\item 
+\_\-\_\-property \hyperlink{classLine_0f122cc3b9ffffa97006f25d7346530d}{OnMouseDown}
+\item 
+\_\-\_\-property \hyperlink{classLine_8cc7f3f4f072514d1f6fc9c408bb2999}{OnMouseUp}
+\item 
+\_\-\_\-property \hyperlink{classLine_902dbe90289e1553e9a88466d593e816}{Left}
+\item 
+\_\-\_\-property \hyperlink{classLine_7fb4a6d862a5d508c1bb84fbc62d1076}{Top}
+\item 
+\_\-\_\-property \hyperlink{classLine_04fe581a65f815705b21f73a6cc82c8a}{Width}
+\item 
+\_\-\_\-property \hyperlink{classLine_d815f76b6d4e2937b04b1b3330e17cfc}{Height}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Author:]Piotr Zegar \end{Desc}
+\begin{Desc}
+\item[Date:]2008.12.03 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1\end{Desc}
+Klasa symbolizuje poszczególn¹ liniê u¿ywan¹ do tworzenia po³¹czeñ miedzy bloczkami. 
+
+Definition at line 16 of file Line.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLine_34d9d1cf65e8ab4cd799188f19b0884c}{
+\index{Line@{Line}!Line@{Line}}
+\index{Line@{Line}!Line@{Line}}
+\subsubsection[Line]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-fastcall Line::Line (TWinControl $\ast$ {\em Owner}, \/  bool {\em vertical})}}
+\label{classLine_34d9d1cf65e8ab4cd799188f19b0884c}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Owner}]kontrolka na której bêdzie rysowana linia \item[{\em vertical}]true - linia pionowa, false - linia pozioma \end{description}
+\end{Desc}
+
+
+Definition at line 6 of file Line.cpp.
+
+References CanBeMoved, LineMouseDown(), LineMouseMove(), LineMouseUp(), moving, OnConnectionResetRequest, OnConnectionSelectRequest, OnLineMove, OnMouseDown, OnMouseMove, OnMouseUp, Resize, and Vertical.
+
+\subsection{Member Function Documentation}
+\hypertarget{classLine_5939762594b7817b612f403094cf1c22}{
+\index{Line@{Line}!LineMouseDown@{LineMouseDown}}
+\index{LineMouseDown@{LineMouseDown}!Line@{Line}}
+\subsubsection[LineMouseDown]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall Line::LineMouseDown (TObject $\ast$ {\em Sender}, \/  TMouseButton {\em Button}, \/  TShiftState {\em Shift}, \/  int {\em X}, \/  int {\em Y})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_5939762594b7817b612f403094cf1c22}
+
+
+
+
+Definition at line 25 of file Line.cpp.
+
+References CanBeMoved, moving, oldPos, OnConnectionResetRequest, OnConnectionSelectRequest, and Vertical.
+
+Referenced by Line().\hypertarget{classLine_6052bf0f6f29eaa4099b15ff4ba795a4}{
+\index{Line@{Line}!LineMouseUp@{LineMouseUp}}
+\index{LineMouseUp@{LineMouseUp}!Line@{Line}}
+\subsubsection[LineMouseUp]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall Line::LineMouseUp (TObject $\ast$ {\em Sender}, \/  TMouseButton {\em Button}, \/  TShiftState {\em Shift}, \/  int {\em X}, \/  int {\em Y})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_6052bf0f6f29eaa4099b15ff4ba795a4}
+
+
+
+
+Definition at line 49 of file Line.cpp.
+
+References moving.
+
+Referenced by Line().\hypertarget{classLine_4062953b713039464ae9d510052bc436}{
+\index{Line@{Line}!LineMouseMove@{LineMouseMove}}
+\index{LineMouseMove@{LineMouseMove}!Line@{Line}}
+\subsubsection[LineMouseMove]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall Line::LineMouseMove (TObject $\ast$ {\em Sender}, \/  TShiftState {\em Shift}, \/  int {\em X}, \/  int {\em Y})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_4062953b713039464ae9d510052bc436}
+
+
+
+
+Definition at line 55 of file Line.cpp.
+
+References Left, moving, oldPos, OnLineMove, Resize, Top, and Vertical.
+
+Referenced by Line().\hypertarget{classLine_76113fc8e56a6fa1ae2a513c03f01fbb}{
+\index{Line@{Line}!setXY@{setXY}}
+\index{setXY@{setXY}!Line@{Line}}
+\subsubsection[setXY]{\setlength{\rightskip}{0pt plus 5cm}bool Line::setXY (int {\em x1}, \/  int {\em y1}, \/  int {\em x2}, \/  int {\em y2})}}
+\label{classLine_76113fc8e56a6fa1ae2a513c03f01fbb}
+
+
+Ustawia wymiary lini \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x1}]wspozedne punktu A1-x \item[{\em y1}]wspozedne punktu A1-y \item[{\em x2}]wspozedne punktu A2-x \item[{\em y2}]wspozedne punktu A2-y \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true jesli da sie narysoac taka linie, false ejsli jest po skosie albo punkty sie pokrywaja \end{Desc}
+
+
+Definition at line 81 of file Line.cpp.
+
+References Height, Left, Top, Vertical, and Width.\hypertarget{classLine_3d078e633ea22e0e690b7295c7e9462a}{
+\index{Line@{Line}!getPoint1@{getPoint1}}
+\index{getPoint1@{getPoint1}!Line@{Line}}
+\subsubsection[getPoint1]{\setlength{\rightskip}{0pt plus 5cm}TPoint Line::getPoint1 ()}}
+\label{classLine_3d078e633ea22e0e690b7295c7e9462a}
+
+
+Wspozedne punktu 1 \begin{Desc}
+\item[Returns:]TPoint \end{Desc}
+
+
+Definition at line 115 of file Line.cpp.
+
+References Left, Top, and Vertical.\hypertarget{classLine_b36912eb4fcf6ae53ffb8b4cfeb58e1c}{
+\index{Line@{Line}!getPoint2@{getPoint2}}
+\index{getPoint2@{getPoint2}!Line@{Line}}
+\subsubsection[getPoint2]{\setlength{\rightskip}{0pt plus 5cm}TPoint Line::getPoint2 ()}}
+\label{classLine_b36912eb4fcf6ae53ffb8b4cfeb58e1c}
+
+
+Wspozedne punktu 2 \begin{Desc}
+\item[Returns:]TPoint \end{Desc}
+
+
+Definition at line 123 of file Line.cpp.
+
+References Height, Left, Top, Vertical, and Width.
+
+\subsection{Member Data Documentation}
+\hypertarget{classLine_f59b5e14ffbed84e1510e83f365221c4}{
+\index{Line@{Line}!moving@{moving}}
+\index{moving@{moving}!Line@{Line}}
+\subsubsection[moving]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Line::moving}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_f59b5e14ffbed84e1510e83f365221c4}
+
+
+
+
+Definition at line 19 of file Line.h.
+
+Referenced by Line(), LineMouseDown(), LineMouseMove(), and LineMouseUp().\hypertarget{classLine_8c47aa7d3991115578064ccfd28a1b45}{
+\index{Line@{Line}!oldPos@{oldPos}}
+\index{oldPos@{oldPos}!Line@{Line}}
+\subsubsection[oldPos]{\setlength{\rightskip}{0pt plus 5cm}TPoint {\bf Line::oldPos}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_8c47aa7d3991115578064ccfd28a1b45}
+
+
+
+
+Definition at line 20 of file Line.h.
+
+Referenced by LineMouseDown(), and LineMouseMove().\hypertarget{classLine_71cd693a5687011a5f5ec71d393a8e2b}{
+\index{Line@{Line}!OnMouseMove@{OnMouseMove}}
+\index{OnMouseMove@{OnMouseMove}!Line@{Line}}
+\subsubsection[OnMouseMove]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::OnMouseMove}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_71cd693a5687011a5f5ec71d393a8e2b}
+
+
+
+
+Definition at line 22 of file Line.h.
+
+Referenced by Line().\hypertarget{classLine_0f122cc3b9ffffa97006f25d7346530d}{
+\index{Line@{Line}!OnMouseDown@{OnMouseDown}}
+\index{OnMouseDown@{OnMouseDown}!Line@{Line}}
+\subsubsection[OnMouseDown]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::OnMouseDown}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_0f122cc3b9ffffa97006f25d7346530d}
+
+
+
+
+Definition at line 23 of file Line.h.
+
+Referenced by Line().\hypertarget{classLine_8cc7f3f4f072514d1f6fc9c408bb2999}{
+\index{Line@{Line}!OnMouseUp@{OnMouseUp}}
+\index{OnMouseUp@{OnMouseUp}!Line@{Line}}
+\subsubsection[OnMouseUp]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::OnMouseUp}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_8cc7f3f4f072514d1f6fc9c408bb2999}
+
+
+
+
+Definition at line 24 of file Line.h.
+
+Referenced by Line().\hypertarget{classLine_902dbe90289e1553e9a88466d593e816}{
+\index{Line@{Line}!Left@{Left}}
+\index{Left@{Left}!Line@{Line}}
+\subsubsection[Left]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::Left}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_902dbe90289e1553e9a88466d593e816}
+
+
+
+
+Definition at line 25 of file Line.h.
+
+Referenced by getPoint1(), getPoint2(), LineMouseMove(), and setXY().\hypertarget{classLine_7fb4a6d862a5d508c1bb84fbc62d1076}{
+\index{Line@{Line}!Top@{Top}}
+\index{Top@{Top}!Line@{Line}}
+\subsubsection[Top]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::Top}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_7fb4a6d862a5d508c1bb84fbc62d1076}
+
+
+
+
+Definition at line 26 of file Line.h.
+
+Referenced by getPoint1(), getPoint2(), LineMouseMove(), and setXY().\hypertarget{classLine_04fe581a65f815705b21f73a6cc82c8a}{
+\index{Line@{Line}!Width@{Width}}
+\index{Width@{Width}!Line@{Line}}
+\subsubsection[Width]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::Width}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_04fe581a65f815705b21f73a6cc82c8a}
+
+
+
+
+Definition at line 27 of file Line.h.
+
+Referenced by getPoint2(), and setXY().\hypertarget{classLine_d815f76b6d4e2937b04b1b3330e17cfc}{
+\index{Line@{Line}!Height@{Height}}
+\index{Height@{Height}!Line@{Line}}
+\subsubsection[Height]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::Height}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classLine_d815f76b6d4e2937b04b1b3330e17cfc}
+
+
+
+
+Definition at line 28 of file Line.h.
+
+Referenced by getPoint2(), and setXY().\hypertarget{classLine_7974c2a36144b62a4368393c5d6f7deb}{
+\index{Line@{Line}!OnLineMove@{OnLineMove}}
+\index{OnLineMove@{OnLineMove}!Line@{Line}}
+\subsubsection[OnLineMove]{\setlength{\rightskip}{0pt plus 5cm}{\bf Line\_\-Function} {\bf Line::OnLineMove}}}
+\label{classLine_7974c2a36144b62a4368393c5d6f7deb}
+
+
+Event 
+
+Definition at line 37 of file Line.h.
+
+Referenced by Connection::draw(), Line(), and LineMouseMove().\hypertarget{classLine_bdaa5c3c9adcdfab2606f8dc36fcacbc}{
+\index{Line@{Line}!OnConnectionSelectRequest@{OnConnectionSelectRequest}}
+\index{OnConnectionSelectRequest@{OnConnectionSelectRequest}!Line@{Line}}
+\subsubsection[OnConnectionSelectRequest]{\setlength{\rightskip}{0pt plus 5cm}{\bf Line\_\-Function} {\bf Line::OnConnectionSelectRequest}}}
+\label{classLine_bdaa5c3c9adcdfab2606f8dc36fcacbc}
+
+
+Event 
+
+Definition at line 41 of file Line.h.
+
+Referenced by Connection::draw(), Line(), and LineMouseDown().\hypertarget{classLine_3573536ab9d4d85815ca8efbce92d68c}{
+\index{Line@{Line}!OnConnectionResetRequest@{OnConnectionResetRequest}}
+\index{OnConnectionResetRequest@{OnConnectionResetRequest}!Line@{Line}}
+\subsubsection[OnConnectionResetRequest]{\setlength{\rightskip}{0pt plus 5cm}{\bf Line\_\-Function} {\bf Line::OnConnectionResetRequest}}}
+\label{classLine_3573536ab9d4d85815ca8efbce92d68c}
+
+
+Event 
+
+Definition at line 45 of file Line.h.
+
+Referenced by Connection::draw(), Line(), and LineMouseDown().\hypertarget{classLine_6384237fdc75852d07773dc974eb8fb6}{
+\index{Line@{Line}!Color@{Color}}
+\index{Color@{Color}!Line@{Line}}
+\subsubsection[Color]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-property {\bf Line::Color}}}
+\label{classLine_6384237fdc75852d07773dc974eb8fb6}
+
+
+Kolor linii 
+
+Definition at line 49 of file Line.h.\hypertarget{classLine_a0453c5f00b99f6467b63165adc2be11}{
+\index{Line@{Line}!Resize@{Resize}}
+\index{Resize@{Resize}!Line@{Line}}
+\subsubsection[Resize]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Line::Resize}}}
+\label{classLine_a0453c5f00b99f6467b63165adc2be11}
+
+
+W³aœciwoœæ - czy linia by³a przesówana przez u¿ytkownika 
+
+Definition at line 54 of file Line.h.
+
+Referenced by Line(), and LineMouseMove().\hypertarget{classLine_d15f8e1c7d8b6904c68b6ce35160feb3}{
+\index{Line@{Line}!Vertical@{Vertical}}
+\index{Vertical@{Vertical}!Line@{Line}}
+\subsubsection[Vertical]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Line::Vertical}}}
+\label{classLine_d15f8e1c7d8b6904c68b6ce35160feb3}
+
+
+W³aœciwoœæ - orientacja - true : pionowa, false : pozioma 
+
+Definition at line 59 of file Line.h.
+
+Referenced by getPoint1(), getPoint2(), Line(), LineMouseDown(), LineMouseMove(), and setXY().\hypertarget{classLine_ce0bdced2eacc4693f5e9c0578cc7302}{
+\index{Line@{Line}!CanBeMoved@{CanBeMoved}}
+\index{CanBeMoved@{CanBeMoved}!Line@{Line}}
+\subsubsection[CanBeMoved]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Line::CanBeMoved}}}
+\label{classLine_ce0bdced2eacc4693f5e9c0578cc7302}
+
+
+W³aœciwoœæ - czy linia mo¿e byæ przenoszona 
+
+Definition at line 64 of file Line.h.
+
+Referenced by Line(), and LineMouseDown().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/gui/\hyperlink{Line_8h}{Line.h}\item 
+/PIWO/Program/gui/\hyperlink{Line_8cpp}{Line.cpp}\end{CompactItemize}

@@ -1,0 +1,144 @@
+\hypertarget{classBlockHistoryInputElement}{
+\section{BlockHistoryInputElement Class Reference}
+\label{classBlockHistoryInputElement}\index{BlockHistoryInputElement@{BlockHistoryInputElement}}
+}
+{\tt \#include $<$BlockHistoryInputElement.h$>$}
+
+Collaboration diagram for BlockHistoryInputElement:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=94pt]{classBlockHistoryInputElement__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classBlockHistoryInputElement_4a8ebf161f64bbb97cf8b694cd6a72bf}{setData} (\hyperlink{classTypeConfig}{TypeConfig} \&d)
+\item 
+void \hyperlink{classBlockHistoryInputElement_a3c4c677fcb9c0dbb8f3e31314627ca1}{setNULL} ()
+\item 
+\hyperlink{classTypeConfig}{TypeConfig} $\ast$ \hyperlink{classBlockHistoryInputElement_d980299844b1b410df13ef28502c73fd}{getData} ()
+\item 
+\hyperlink{classBlockHistoryInputElement_40ce1d8e1e4f6e7654e31e7dff51bb42}{BlockHistoryInputElement} ()
+\item 
+\hyperlink{classBlockHistoryInputElement_122c02aac40c5b3e7ff7935e68f36469}{$\sim$BlockHistoryInputElement} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockInput}{BlockInput} $\ast$ \hyperlink{classBlockHistoryInputElement_5a307d34d5e47b9baf161c7069415c93}{input}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classTypeConfig}{TypeConfig} $\ast$ \hyperlink{classBlockHistoryInputElement_e8c6facba5335a07f2452279191cd6e8}{data}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa zawiera historie dla pojedynczego wejscia bloku 
+
+Definition at line 9 of file BlockHistoryInputElement.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlockHistoryInputElement_40ce1d8e1e4f6e7654e31e7dff51bb42}{
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\subsubsection[BlockHistoryInputElement]{\setlength{\rightskip}{0pt plus 5cm}BlockHistoryInputElement::BlockHistoryInputElement ()}}
+\label{classBlockHistoryInputElement_40ce1d8e1e4f6e7654e31e7dff51bb42}
+
+
+Konstruktor 
+
+Definition at line 6 of file BlockHistoryInputElement.cpp.
+
+References data, and input.\hypertarget{classBlockHistoryInputElement_122c02aac40c5b3e7ff7935e68f36469}{
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!$\sim$BlockHistoryInputElement@{$\sim$BlockHistoryInputElement}}
+\index{$\sim$BlockHistoryInputElement@{$\sim$BlockHistoryInputElement}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\subsubsection[$\sim$BlockHistoryInputElement]{\setlength{\rightskip}{0pt plus 5cm}BlockHistoryInputElement::$\sim$BlockHistoryInputElement ()}}
+\label{classBlockHistoryInputElement_122c02aac40c5b3e7ff7935e68f36469}
+
+
+Destruktor 
+
+Definition at line 12 of file BlockHistoryInputElement.cpp.
+
+References data.
+
+\subsection{Member Function Documentation}
+\hypertarget{classBlockHistoryInputElement_4a8ebf161f64bbb97cf8b694cd6a72bf}{
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!setData@{setData}}
+\index{setData@{setData}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\subsubsection[setData]{\setlength{\rightskip}{0pt plus 5cm}void BlockHistoryInputElement::setData ({\bf TypeConfig} \& {\em d})}}
+\label{classBlockHistoryInputElement_4a8ebf161f64bbb97cf8b694cd6a72bf}
+
+
+Ustawia obiekt \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em d}]dane \end{description}
+\end{Desc}
+
+
+Definition at line 17 of file BlockHistoryInputElement.cpp.
+
+References data.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classBlockHistoryInputElement_a3c4c677fcb9c0dbb8f3e31314627ca1}{
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!setNULL@{setNULL}}
+\index{setNULL@{setNULL}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\subsubsection[setNULL]{\setlength{\rightskip}{0pt plus 5cm}void BlockHistoryInputElement::setNULL ()}}
+\label{classBlockHistoryInputElement_a3c4c677fcb9c0dbb8f3e31314627ca1}
+
+
+Czysci obiekt 
+
+Definition at line 28 of file BlockHistoryInputElement.cpp.
+
+References data.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classBlockHistoryInputElement_d980299844b1b410df13ef28502c73fd}{
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!getData@{getData}}
+\index{getData@{getData}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\subsubsection[getData]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeConfig} $\ast$ BlockHistoryInputElement::getData ()}}
+\label{classBlockHistoryInputElement_d980299844b1b410df13ef28502c73fd}
+
+
+Zwraca obiekt \begin{Desc}
+\item[Returns:]NULL lub TypeConfig$\ast$ \end{Desc}
+
+
+Definition at line 23 of file BlockHistoryInputElement.cpp.
+
+References data.
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlockHistoryInputElement_e8c6facba5335a07f2452279191cd6e8}{
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!data@{data}}
+\index{data@{data}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\subsubsection[data]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeConfig}$\ast$ {\bf BlockHistoryInputElement::data}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classBlockHistoryInputElement_e8c6facba5335a07f2452279191cd6e8}
+
+
+
+
+Definition at line 12 of file BlockHistoryInputElement.h.
+
+Referenced by BlockHistoryInputElement(), getData(), setData(), setNULL(), and $\sim$BlockHistoryInputElement().\hypertarget{classBlockHistoryInputElement_5a307d34d5e47b9baf161c7069415c93}{
+\index{BlockHistoryInputElement@{BlockHistoryInputElement}!input@{input}}
+\index{input@{input}!BlockHistoryInputElement@{BlockHistoryInputElement}}
+\subsubsection[input]{\setlength{\rightskip}{0pt plus 5cm}{\bf BlockInput}$\ast$ {\bf BlockHistoryInputElement::input}}}
+\label{classBlockHistoryInputElement_5a307d34d5e47b9baf161c7069415c93}
+
+
+Wejscie bloku 
+
+Definition at line 17 of file BlockHistoryInputElement.h.
+
+Referenced by BlockHistoryInputElement(), and PIWOEngine::runBlock().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/gui/\hyperlink{BlockHistoryInputElement_8h}{BlockHistoryInputElement.h}\item 
+/PIWO/Program/gui/\hyperlink{BlockHistoryInputElement_8cpp}{BlockHistoryInputElement.cpp}\end{CompactItemize}

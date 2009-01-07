@@ -1,0 +1,136 @@
+\documentclass[a4paper]{book}
+\usepackage{a4wide}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{times}
+\usepackage{ifpdf}
+\usepackage{doxygen}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+\begin{titlepage}
+\title{\textbf{\begin{LARGE}P.I.W.O. 1.0\end{LARGE}}\\\underline{Projekt Informatyczny} \\ Wilqu \& Others \\\textbf{Dokumentacja Techniczna}}
+\author{Piotr Wilk \and Piotr Zegar \and Mateusz Tylek \and Mateusz Kocąb \and Wojciech Zbiegieł \and Sławomir Librant \and  Marek Prząda}
+\maketitle
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\chapter{Wstęp}
+\include{wstep}
+\chapter{Class Index}
+\input{hierarchy}
+\chapter{Class Index}
+\input{annotated}
+\chapter{File Index}
+\input{files}
+\chapter{Class Documentation}
+\input{classBlock}
+\include{classBlockConfig}
+\include{classBlockElement}
+\include{classBlockHistory}
+\include{classBlockHistoryInputElement}
+\include{classBlockHistoryOutputElement}
+\include{classBlockInput}
+\include{classBlockOutput}
+\include{classBlockValidateInputElement}
+\include{classBlockValidateOutputElement}
+\include{classConnection}
+\include{classFunctionDLL}
+\include{classItem}
+\include{classLine}
+\include{classPIWOEngine}
+\include{classPluginContener}
+\include{structPosition}
+\include{classTForm1}
+\include{classTForm2}
+\include{classTForm4}
+\include{classTForm5}
+\include{classTHistory}
+\include{classTypeConfig}
+\include{classTypeDLL}
+\include{classVisualBlock}
+\include{classVisualInput}
+\include{classVisualInputOutput}
+\include{classVisualOutput}
+\chapter{File Documentation}
+\input{FunctionDLL_8cpp}
+\include{FunctionDLL_8h}
+\include{PluginContener_8cpp}
+\include{PluginContener_8h}
+\include{TypeDLL_8cpp}
+\include{TypeDLL_8h}
+\include{Block_8cpp}
+\include{Block_8h}
+\include{BlockConfig_8cpp}
+\include{BlockConfig_8h}
+\include{BlockElement_8cpp}
+\include{BlockElement_8h}
+\include{BlockInput_8cpp}
+\include{BlockInput_8h}
+\include{BlockOutput_8cpp}
+\include{BlockOutput_8h}
+\include{Item_8cpp}
+\include{Item_8h}
+\include{TypeConfig_8cpp}
+\include{TypeConfig_8h}
+\include{BlockHistory_8cpp}
+\include{BlockHistory_8h}
+\include{BlockHistoryInputElement_8cpp}
+\include{BlockHistoryInputElement_8h}
+\include{BlockHistoryOutputElement_8cpp}
+\include{BlockHistoryOutputElement_8h}
+\include{BlockValidateInputElement_8h}
+\include{BlockValidateOutputElement_8h}
+\include{Connection_8cpp}
+\include{Connection_8h}
+\include{history_8cpp}
+\include{history_8h}
+\include{Line_8cpp}
+\include{Line_8h}
+\include{PIWOEngine_8cpp}
+\include{PIWOEngine_8h}
+\include{VisualBlock_8cpp}
+\include{VisualBlock_8h}
+\include{VisualInput_8cpp}
+\include{VisualInput_8h}
+\include{VisualInputOutput_8cpp}
+\include{VisualInputOutput_8h}
+\include{VisualOutput_8cpp}
+\include{VisualOutput_8h}
+\include{main_8cpp}
+\include{main_8h}
+\include{PIWO_8cpp}
+\include{splash_8cpp}
+\include{splash_8h}
+\include{Unit4_8cpp}
+\include{Unit4_8h}
+\include{Unit5_8cpp}
+\include{Unit5_8h}
+\printindex
+\end{document}

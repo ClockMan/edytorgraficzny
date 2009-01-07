@@ -1,0 +1,383 @@
+\hypertarget{classConnection}{
+\section{Connection Class Reference}
+\label{classConnection}\index{Connection@{Connection}}
+}
+{\tt \#include $<$Connection.h$>$}
+
+Collaboration diagram for Connection:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=131pt]{classConnection__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classConnection_f539a9534b63a1b29fe5d8c3585bb9a1}{Connection} (TWinControl $\ast$owner)
+\item 
+\hyperlink{classConnection_2e4352edf667bea83001569e9da8a24d}{$\sim$Connection} ()
+\item 
+bool \hyperlink{classConnection_93953f74f832db3d351edc954a2caf1c}{draw} ()
+\item 
+bool \hyperlink{classConnection_2eae8606b02009ec2bbcd435541f702e}{update} ()
+\item 
+bool \hyperlink{classConnection_12c8e762f57cc902423543962e1dacd0}{connectionOk} ()
+\item 
+void \hyperlink{classConnection_cd027c03a7866907cf8a3c6fc3e9a104}{BringToFront} ()
+\item 
+void \hyperlink{classConnection_353faa06aa0d38ac5603cfca5744ac23}{setSelected} (bool s)
+\item 
+bool \hyperlink{classConnection_17fddf4c4d8c3d504d03f4914bdc2ebd}{getCustomizeState} ()
+\item 
+void \hyperlink{classConnection_c54097aa023bb0324ad932e3404b4cae}{setCustomizeFalse} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{Connection_8h_e18f1161e76df22142d73ed0734bd10c}{Connection\_\-Function} \hyperlink{classConnection_d54a43c2dfb48de0b3737b1e02c0d422}{OnConnectionSelected}
+\item 
+\hyperlink{classBlockInput}{BlockInput} $\ast$ \hyperlink{classConnection_6c6649d08576878386a080c20131f6b9}{input}
+\item 
+\hyperlink{classBlockOutput}{BlockOutput} $\ast$ \hyperlink{classConnection_06a1d6005517d331a09c55a509f071cd}{output}
+\item 
+\hyperlink{classVisualBlock}{VisualBlock} $\ast$ \hyperlink{classConnection_75bfbbbce4d25e8c73560d560713c5a0}{inBlock}
+\item 
+\hyperlink{classVisualBlock}{VisualBlock} $\ast$ \hyperlink{classConnection_761e174ff27ed9e8935fb205453c6230}{outBlock}
+\item 
+AnsiString \hyperlink{classConnection_18e3620174b2a581799aa71c693f49d5}{typeOfConnection}
+\item 
+vector$<$ \hyperlink{classLine}{Line} $\ast$ $>$ \hyperlink{classConnection_fe8a072c88f8bc1b89a6c5986b7eca63}{lines}
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classConnection_851fc1d97dad630deb54fa45693db7d0}{OnLineMove} (TObject $\ast$Sender)
+\item 
+void \hyperlink{classConnection_589c37b123edcf5fb159412366a5161b}{OnConnectionSelectedRequest} (TObject $\ast$Sender)
+\item 
+void \hyperlink{classConnection_469d5cb7dd9e48de17b532904522ecc2}{OnConnectionResetRequest} (TObject $\ast$Sender)
+\item 
+bool \hyperlink{classConnection_1f81b625a7de854874247655b05de071}{connectionOk} (\hyperlink{structPosition}{Position} \&in, \hyperlink{structPosition}{Position} \&out)
+\item 
+void \hyperlink{classConnection_d684c2b14e0b4f92537c39d0ec30b5f4}{redraw} (\hyperlink{structPosition}{Position} \&in, \hyperlink{structPosition}{Position} \&out)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+TWinControl $\ast$ \hyperlink{classConnection_2730afc4e0362071f2c8f1187899047b}{fowner}
+\item 
+int \hyperlink{classConnection_97d0ff34458fe4977e63e1a0e68b7278}{status}
+\item 
+bool \hyperlink{classConnection_24814ac50137c5bbd5ad387deeceaead}{selected}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Author:]Piotr Zegar \end{Desc}
+\begin{Desc}
+\item[Date:]2008.12.03 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1\end{Desc}
+Klasa zajmuje siê generowaniem po³¹czeñ miedzy 2 blokami. 
+
+Definition at line 35 of file Connection.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classConnection_f539a9534b63a1b29fe5d8c3585bb9a1}{
+\index{Connection@{Connection}!Connection@{Connection}}
+\index{Connection@{Connection}!Connection@{Connection}}
+\subsubsection[Connection]{\setlength{\rightskip}{0pt plus 5cm}Connection::Connection (TWinControl $\ast$ {\em owner})}}
+\label{classConnection_f539a9534b63a1b29fe5d8c3585bb9a1}
+
+
+
+
+Definition at line 6 of file Connection.cpp.
+
+References fowner, inBlock, input, OnConnectionSelected, outBlock, output, selected, and status.\hypertarget{classConnection_2e4352edf667bea83001569e9da8a24d}{
+\index{Connection@{Connection}!$\sim$Connection@{$\sim$Connection}}
+\index{$\sim$Connection@{$\sim$Connection}!Connection@{Connection}}
+\subsubsection[$\sim$Connection]{\setlength{\rightskip}{0pt plus 5cm}Connection::$\sim$Connection ()}}
+\label{classConnection_2e4352edf667bea83001569e9da8a24d}
+
+
+
+
+Definition at line 18 of file Connection.cpp.
+
+References lines.
+
+\subsection{Member Function Documentation}
+\hypertarget{classConnection_851fc1d97dad630deb54fa45693db7d0}{
+\index{Connection@{Connection}!OnLineMove@{OnLineMove}}
+\index{OnLineMove@{OnLineMove}!Connection@{Connection}}
+\subsubsection[OnLineMove]{\setlength{\rightskip}{0pt plus 5cm}void Connection::OnLineMove (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_851fc1d97dad630deb54fa45693db7d0}
+
+
+
+
+Definition at line 292 of file Connection.cpp.
+
+References draw().
+
+Referenced by draw().\hypertarget{classConnection_589c37b123edcf5fb159412366a5161b}{
+\index{Connection@{Connection}!OnConnectionSelectedRequest@{OnConnectionSelectedRequest}}
+\index{OnConnectionSelectedRequest@{OnConnectionSelectedRequest}!Connection@{Connection}}
+\subsubsection[OnConnectionSelectedRequest]{\setlength{\rightskip}{0pt plus 5cm}void Connection::OnConnectionSelectedRequest (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_589c37b123edcf5fb159412366a5161b}
+
+
+
+
+Definition at line 297 of file Connection.cpp.
+
+References BringToFront(), OnConnectionSelected, selected, and setSelected().
+
+Referenced by draw().\hypertarget{classConnection_469d5cb7dd9e48de17b532904522ecc2}{
+\index{Connection@{Connection}!OnConnectionResetRequest@{OnConnectionResetRequest}}
+\index{OnConnectionResetRequest@{OnConnectionResetRequest}!Connection@{Connection}}
+\subsubsection[OnConnectionResetRequest]{\setlength{\rightskip}{0pt plus 5cm}void Connection::OnConnectionResetRequest (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_469d5cb7dd9e48de17b532904522ecc2}
+
+
+
+
+Definition at line 307 of file Connection.cpp.
+
+References draw(), and lines.
+
+Referenced by draw().\hypertarget{classConnection_1f81b625a7de854874247655b05de071}{
+\index{Connection@{Connection}!connectionOk@{connectionOk}}
+\index{connectionOk@{connectionOk}!Connection@{Connection}}
+\subsubsection[connectionOk]{\setlength{\rightskip}{0pt plus 5cm}bool Connection::connectionOk ({\bf Position} \& {\em in}, \/  {\bf Position} \& {\em out})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_1f81b625a7de854874247655b05de071}
+
+
+
+
+Definition at line 27 of file Connection.cpp.
+
+References Position::direction, lines, and Position::xy.\hypertarget{classConnection_d684c2b14e0b4f92537c39d0ec30b5f4}{
+\index{Connection@{Connection}!redraw@{redraw}}
+\index{redraw@{redraw}!Connection@{Connection}}
+\subsubsection[redraw]{\setlength{\rightskip}{0pt plus 5cm}void Connection::redraw ({\bf Position} \& {\em in}, \/  {\bf Position} \& {\em out})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_d684c2b14e0b4f92537c39d0ec30b5f4}
+
+
+
+
+Definition at line 79 of file Connection.cpp.
+
+References Position::direction, inBlock, lines, outBlock, and Position::xy.
+
+Referenced by draw().\hypertarget{classConnection_93953f74f832db3d351edc954a2caf1c}{
+\index{Connection@{Connection}!draw@{draw}}
+\index{draw@{draw}!Connection@{Connection}}
+\subsubsection[draw]{\setlength{\rightskip}{0pt plus 5cm}bool Connection::draw ()}}
+\label{classConnection_93953f74f832db3d351edc954a2caf1c}
+
+
+
+
+Definition at line 147 of file Connection.cpp.
+
+References connectionOk(), Position::direction, fowner, VisualBlock::getInputPosition(), VisualBlock::getOutputPosition(), inBlock, input, lines, OnConnectionResetRequest(), Line::OnConnectionResetRequest, OnConnectionSelectedRequest(), Line::OnConnectionSelectRequest, OnLineMove(), Line::OnLineMove, outBlock, output, and redraw().
+
+Referenced by PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), OnConnectionResetRequest(), OnLineMove(), and setCustomizeFalse().\hypertarget{classConnection_2eae8606b02009ec2bbcd435541f702e}{
+\index{Connection@{Connection}!update@{update}}
+\index{update@{update}!Connection@{Connection}}
+\subsubsection[update]{\setlength{\rightskip}{0pt plus 5cm}bool Connection::update ()}}
+\label{classConnection_2eae8606b02009ec2bbcd435541f702e}
+
+
+
+
+Definition at line 191 of file Connection.cpp.
+
+References BlockInput::allowedTypes, ConnectionErrorNormalColor, ConnectionErrorSelectedColor, ConnectionOkNormalColor, ConnectionOkSelectedColor, ConnectionWarrningNormalColor, ConnectionWarrningSelectedColor, BlockElement::getDescription(), BlockElement::getErrorCode(), BlockElement::getErrorDescription(), BlockOutput::getOutputType(), VisualBlock::getTitle(), inBlock, input, lines, outBlock, output, selected, status, and typeOfConnection.
+
+Referenced by PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), and PIWOEngine::runBlock().\hypertarget{classConnection_12c8e762f57cc902423543962e1dacd0}{
+\index{Connection@{Connection}!connectionOk@{connectionOk}}
+\index{connectionOk@{connectionOk}!Connection@{Connection}}
+\subsubsection[connectionOk]{\setlength{\rightskip}{0pt plus 5cm}bool Connection::connectionOk ()}}
+\label{classConnection_12c8e762f57cc902423543962e1dacd0}
+
+
+
+
+Definition at line 70 of file Connection.cpp.
+
+References VisualBlock::getInputPosition(), VisualBlock::getOutputPosition(), inBlock, input, lines, outBlock, and output.
+
+Referenced by draw().\hypertarget{classConnection_cd027c03a7866907cf8a3c6fc3e9a104}{
+\index{Connection@{Connection}!BringToFront@{BringToFront}}
+\index{BringToFront@{BringToFront}!Connection@{Connection}}
+\subsubsection[BringToFront]{\setlength{\rightskip}{0pt plus 5cm}void Connection::BringToFront ()}}
+\label{classConnection_cd027c03a7866907cf8a3c6fc3e9a104}
+
+
+
+
+Definition at line 258 of file Connection.cpp.
+
+References lines.
+
+Referenced by PIWOEngine::OnConnectionSelect(), and OnConnectionSelectedRequest().\hypertarget{classConnection_353faa06aa0d38ac5603cfca5744ac23}{
+\index{Connection@{Connection}!setSelected@{setSelected}}
+\index{setSelected@{setSelected}!Connection@{Connection}}
+\subsubsection[setSelected]{\setlength{\rightskip}{0pt plus 5cm}void Connection::setSelected (bool {\em s})}}
+\label{classConnection_353faa06aa0d38ac5603cfca5744ac23}
+
+
+
+
+Definition at line 266 of file Connection.cpp.
+
+References ConnectionErrorNormalColor, ConnectionErrorSelectedColor, ConnectionOkNormalColor, ConnectionOkSelectedColor, ConnectionWarrningNormalColor, ConnectionWarrningSelectedColor, lines, selected, and status.
+
+Referenced by PIWOEngine::MakeConnection(), PIWOEngine::OnConnectionSelect(), OnConnectionSelectedRequest(), and PIWOEngine::UnselectSelectedConnection().\hypertarget{classConnection_17fddf4c4d8c3d504d03f4914bdc2ebd}{
+\index{Connection@{Connection}!getCustomizeState@{getCustomizeState}}
+\index{getCustomizeState@{getCustomizeState}!Connection@{Connection}}
+\subsubsection[getCustomizeState]{\setlength{\rightskip}{0pt plus 5cm}bool Connection::getCustomizeState ()}}
+\label{classConnection_17fddf4c4d8c3d504d03f4914bdc2ebd}
+
+
+
+
+Definition at line 317 of file Connection.cpp.
+
+References lines.\hypertarget{classConnection_c54097aa023bb0324ad932e3404b4cae}{
+\index{Connection@{Connection}!setCustomizeFalse@{setCustomizeFalse}}
+\index{setCustomizeFalse@{setCustomizeFalse}!Connection@{Connection}}
+\subsubsection[setCustomizeFalse]{\setlength{\rightskip}{0pt plus 5cm}void Connection::setCustomizeFalse ()}}
+\label{classConnection_c54097aa023bb0324ad932e3404b4cae}
+
+
+
+
+Definition at line 326 of file Connection.cpp.
+
+References draw(), and lines.
+
+Referenced by PIWOEngine::CancelCustomizationOnSelectedConnections().
+
+\subsection{Member Data Documentation}
+\hypertarget{classConnection_2730afc4e0362071f2c8f1187899047b}{
+\index{Connection@{Connection}!fowner@{fowner}}
+\index{fowner@{fowner}!Connection@{Connection}}
+\subsubsection[fowner]{\setlength{\rightskip}{0pt plus 5cm}TWinControl$\ast$ {\bf Connection::fowner}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_2730afc4e0362071f2c8f1187899047b}
+
+
+
+
+Definition at line 38 of file Connection.h.
+
+Referenced by Connection(), and draw().\hypertarget{classConnection_97d0ff34458fe4977e63e1a0e68b7278}{
+\index{Connection@{Connection}!status@{status}}
+\index{status@{status}!Connection@{Connection}}
+\subsubsection[status]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Connection::status}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_97d0ff34458fe4977e63e1a0e68b7278}
+
+
+
+
+Definition at line 39 of file Connection.h.
+
+Referenced by Connection(), setSelected(), and update().\hypertarget{classConnection_24814ac50137c5bbd5ad387deeceaead}{
+\index{Connection@{Connection}!selected@{selected}}
+\index{selected@{selected}!Connection@{Connection}}
+\subsubsection[selected]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Connection::selected}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classConnection_24814ac50137c5bbd5ad387deeceaead}
+
+
+
+
+Definition at line 40 of file Connection.h.
+
+Referenced by Connection(), OnConnectionSelectedRequest(), setSelected(), and update().\hypertarget{classConnection_d54a43c2dfb48de0b3737b1e02c0d422}{
+\index{Connection@{Connection}!OnConnectionSelected@{OnConnectionSelected}}
+\index{OnConnectionSelected@{OnConnectionSelected}!Connection@{Connection}}
+\subsubsection[OnConnectionSelected]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection\_\-Function} {\bf Connection::OnConnectionSelected}}}
+\label{classConnection_d54a43c2dfb48de0b3737b1e02c0d422}
+
+
+
+
+Definition at line 49 of file Connection.h.
+
+Referenced by Connection(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), and OnConnectionSelectedRequest().\hypertarget{classConnection_6c6649d08576878386a080c20131f6b9}{
+\index{Connection@{Connection}!input@{input}}
+\index{input@{input}!Connection@{Connection}}
+\subsubsection[input]{\setlength{\rightskip}{0pt plus 5cm}{\bf BlockInput}$\ast$ {\bf Connection::input}}}
+\label{classConnection_6c6649d08576878386a080c20131f6b9}
+
+
+
+
+Definition at line 51 of file Connection.h.
+
+Referenced by PIWOEngine::CancelCustomizationOnSelectedConnections(), Connection(), connectionOk(), PIWOEngine::DeleteSelectedConnection(), draw(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), PIWOEngine::OnConnectionSelect(), PIWOEngine::OnVisualBlockInputSelected(), PIWOEngine::OnVisualBlockOutputSelected(), PIWOEngine::UnselectSelectedConnection(), and update().\hypertarget{classConnection_06a1d6005517d331a09c55a509f071cd}{
+\index{Connection@{Connection}!output@{output}}
+\index{output@{output}!Connection@{Connection}}
+\subsubsection[output]{\setlength{\rightskip}{0pt plus 5cm}{\bf BlockOutput}$\ast$ {\bf Connection::output}}}
+\label{classConnection_06a1d6005517d331a09c55a509f071cd}
+
+
+
+
+Definition at line 52 of file Connection.h.
+
+Referenced by PIWOEngine::CancelCustomizationOnSelectedConnections(), Connection(), connectionOk(), PIWOEngine::DeleteSelectedConnection(), draw(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), PIWOEngine::OnConnectionSelect(), PIWOEngine::OnVisualBlockInputSelected(), PIWOEngine::OnVisualBlockOutputSelected(), PIWOEngine::runBlock(), PIWOEngine::UnselectSelectedConnection(), and update().\hypertarget{classConnection_75bfbbbce4d25e8c73560d560713c5a0}{
+\index{Connection@{Connection}!inBlock@{inBlock}}
+\index{inBlock@{inBlock}!Connection@{Connection}}
+\subsubsection[inBlock]{\setlength{\rightskip}{0pt plus 5cm}{\bf VisualBlock}$\ast$ {\bf Connection::inBlock}}}
+\label{classConnection_75bfbbbce4d25e8c73560d560713c5a0}
+
+
+
+
+Definition at line 53 of file Connection.h.
+
+Referenced by PIWOEngine::CancelCustomizationOnSelectedConnections(), Connection(), connectionOk(), PIWOEngine::DeleteSelectedConnection(), draw(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), PIWOEngine::OnConnectionSelect(), PIWOEngine::OnVisualBlockInputSelected(), PIWOEngine::OnVisualBlockOutputSelected(), redraw(), PIWOEngine::UnselectSelectedConnection(), and update().\hypertarget{classConnection_761e174ff27ed9e8935fb205453c6230}{
+\index{Connection@{Connection}!outBlock@{outBlock}}
+\index{outBlock@{outBlock}!Connection@{Connection}}
+\subsubsection[outBlock]{\setlength{\rightskip}{0pt plus 5cm}{\bf VisualBlock}$\ast$ {\bf Connection::outBlock}}}
+\label{classConnection_761e174ff27ed9e8935fb205453c6230}
+
+
+
+
+Definition at line 54 of file Connection.h.
+
+Referenced by PIWOEngine::CancelCustomizationOnSelectedConnections(), Connection(), connectionOk(), PIWOEngine::DeleteSelectedConnection(), draw(), PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), PIWOEngine::OnConnectionSelect(), PIWOEngine::OnVisualBlockInputSelected(), PIWOEngine::OnVisualBlockOutputSelected(), redraw(), PIWOEngine::runBlock(), PIWOEngine::UnselectSelectedConnection(), and update().\hypertarget{classConnection_18e3620174b2a581799aa71c693f49d5}{
+\index{Connection@{Connection}!typeOfConnection@{typeOfConnection}}
+\index{typeOfConnection@{typeOfConnection}!Connection@{Connection}}
+\subsubsection[typeOfConnection]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf Connection::typeOfConnection}}}
+\label{classConnection_18e3620174b2a581799aa71c693f49d5}
+
+
+
+
+Definition at line 55 of file Connection.h.
+
+Referenced by update().\hypertarget{classConnection_fe8a072c88f8bc1b89a6c5986b7eca63}{
+\index{Connection@{Connection}!lines@{lines}}
+\index{lines@{lines}!Connection@{Connection}}
+\subsubsection[lines]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Line}$\ast$$>$ {\bf Connection::lines}}}
+\label{classConnection_fe8a072c88f8bc1b89a6c5986b7eca63}
+
+
+
+
+Definition at line 56 of file Connection.h.
+
+Referenced by BringToFront(), connectionOk(), draw(), PIWOEngine::DuplcateSelectedBlocks(), getCustomizeState(), PIWOEngine::loadFromFile(), OnConnectionResetRequest(), redraw(), setCustomizeFalse(), setSelected(), update(), and $\sim$Connection().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/gui/\hyperlink{Connection_8h}{Connection.h}\item 
+/PIWO/Program/gui/\hyperlink{Connection_8cpp}{Connection.cpp}\end{CompactItemize}
