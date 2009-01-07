@@ -70,4 +70,3 @@ void __fastcall TcfgWindow::OpenClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
