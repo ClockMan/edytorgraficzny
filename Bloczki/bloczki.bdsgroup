@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">Default.Personality</Option>
-      <Option Name="ProjectType"></Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{2952ECBA-3DA5-4DAE-BF88-5C149D36130E}</Option>
-    </Option>
-  </PersonalityInfo>
-  <Default.Personality>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{2952ECBA-3DA5-4DAE-BF88-5C149D36130E}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  
     
     <Projects>
       <Projects Name="Balance.dll">Balance-zatwierdzono\Balance.bdsproj</Projects>
@@ -32,10 +32,11 @@
       <Projects Name="RotateRight.dll">RotateRight-zatwierdzono\RotateRight.bdsproj</Projects>
       <Projects Name="Saturation.dll">Saturation-zatwierdzono\Saturation.bdsproj</Projects>
       <Projects Name="SaveImage.dll">SaveImage-zatwierdzono\SaveImage.bdsproj</Projects>
-      <Projects Name="showImage.dll">ShowImage-niezatwierdzono\showImage.bdsproj</Projects>
       <Projects Name="StatisticsFilters.dll">StatisticsFilters-zatwierdzono\StatisticsFilters.bdsproj</Projects>
       <Projects Name="subtraction.dll">Subtraction-zatwierdzono\subtraction.bdsproj</Projects>
-      <Projects Name="Targets">Balance.dll ChangeBitrate.dll Contrast.dll FadedPicture.dll GammaCorrection.dll GrayScale.dll Lightning.dll motionblur.dll negative.dll NewBoolean.dll NewDouble.dll NewInteger.dll NewMask3x3.dll NewMask5x5.dll Noise.dll OpenImage.dll reflection.dll RotateLeft.dll RotateRight.dll Saturation.dll SaveImage.dll showImage.dll StatisticsFilters.dll subtraction.dll</Projects>
+      <Projects Name="Mask3x3Filter.dll">Mask3x3Filter-zatwierdzono\Mask3x3Filter.bdsproj</Projects>
+      <Projects Name="PIWO.exe">..\Program\PIWO.bdsproj</Projects>
+      <Projects Name="Targets">Balance.dll ChangeBitrate.dll Contrast.dll FadedPicture.dll GammaCorrection.dll GrayScale.dll Lightning.dll motionblur.dll negative.dll NewBoolean.dll NewDouble.dll NewInteger.dll NewMask3x3.dll NewMask5x5.dll Noise.dll OpenImage.dll reflection.dll RotateLeft.dll RotateRight.dll Saturation.dll SaveImage.dll StatisticsFilters.dll subtraction.dll Mask3x3Filter.dll PIWO.exe</Projects>
     </Projects>
     <Dependencies/>
   </Default.Personality>
