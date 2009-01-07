@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">CPlusPlusBuilder.Personality</Option>
-      <Option Name="ProjectType">CppDynamicLibrary</Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{A8862DE3-D459-41A7-9E84-8D13F3D4E7E2}</Option>
-    </Option>
-  </PersonalityInfo>
-  <CPlusPlusBuilder.Personality>
-    <BCBPROJECT>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{A8862DE3-D459-41A7-9E84-8D13F3D4E7E2}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<BCBPROJECT>
       <project version="10.0">
         <property category="build.config" name="active" value="1"/>
         <property category="build.config" name="count" value="1"/>
@@ -296,7 +296,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Build">3</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -308,7 +308,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription">Mask3x3Filter</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.3</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
@@ -353,6 +353,11 @@
           <Parameters Name="LoadAllSymbols">True</Parameters>
           <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
         </Parameters>
+        <Language>
+          <Language Name="ActiveLang"></Language>
+          <Language Name="ProjectLang">$00000000</Language>
+          <Language Name="RootDir"></Language>
+        </Language>
         <Linker>
           <Linker Name="LibPrefix"></Linker>
           <Linker Name="LibSuffix"></Linker>
@@ -360,8 +365,8 @@
         </Linker>
       </IDEOPTIONS>
     </BCBPROJECT>
-    <Source>
-      <Source Name="MainSource">Mask3x3Filter.bpf</Source>
-    </Source>
+		<Source>
+			<Source Name="MainSource">Mask3x3Filter.bpf</Source>
+		</Source>  <buildevents/>
   </CPlusPlusBuilder.Personality>
 </BorlandProject>

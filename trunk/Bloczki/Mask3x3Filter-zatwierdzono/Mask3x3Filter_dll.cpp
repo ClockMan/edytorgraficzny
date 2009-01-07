@@ -130,7 +130,7 @@ int __stdcall validate(Block *aBlock)
 //---------------------------------------------------------------------------
 int __stdcall run(Block *aBlock)
 {
-	if(aBlock->input.size() != 1 || aBlock->input[0].getConnectedType().IsEmpty())
+	if(aBlock->input.size() != 2 || aBlock->input[0].getConnectedType().IsEmpty()|| aBlock->input[1].getConnectedType().IsEmpty())
 		return 1;
 
 	Graphics::TBitmap* picture = new Graphics::TBitmap();
@@ -154,18 +154,16 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-		
-	TypeConfig* tmp=IMask3x3::getNew();
-	tmp = aBlock->input[1].getObject();
+	TypeConfig* tmp = aBlock->input[1].getObject();
 	short *mask = new short[9];
 	mask[0]=IMask3x3::getValue(tmp,1,1);
-	mask[1]=IMask3x3::getValue(tmp,1,2);
-	mask[2]=IMask3x3::getValue(tmp,1,3);
-	mask[3]=IMask3x3::getValue(tmp,2,1);
+	mask[1]=IMask3x3::getValue(tmp,2,1);
+	mask[2]=IMask3x3::getValue(tmp,3,1);
+	mask[3]=IMask3x3::getValue(tmp,1,2);
 	mask[4]=IMask3x3::getValue(tmp,2,2);
-	mask[5]=IMask3x3::getValue(tmp,2,3);
-	mask[6]=IMask3x3::getValue(tmp,3,1);
-	mask[7]=IMask3x3::getValue(tmp,3,2);
+	mask[5]=IMask3x3::getValue(tmp,3,2);
+	mask[6]=IMask3x3::getValue(tmp,1,3);
+	mask[7]=IMask3x3::getValue(tmp,2,3);
 	mask[8]=IMask3x3::getValue(tmp,3,3);
 
 	if(!MaskFilter(picture, mask))
@@ -209,12 +207,11 @@ int __stdcall run(Block *aBlock)
 	}
 
 	aBlock->output[0].setObject(*copy);
-	
+	aBlock->output[0].setErrorCode(0);
+	aBlock->output[0].setErrorDescription("");
 	picture->Free();
 	delete copy;
     delete mask;
-	delete tmp;
-
 	return 0;
 }
 //---------------------------------------------------------------------------
