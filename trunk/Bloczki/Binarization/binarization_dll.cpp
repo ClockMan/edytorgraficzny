@@ -5,7 +5,7 @@
 #pragma hdrstop
 
 #include "binarization.h"
-//#include "configWindow.h"
+#include "configWindow.h"
 
 #include "../../TypyDanych/Bitmap1bit/Interface/IBitmap1bit.h"
 #include "../../TypyDanych/Bitmap4bit/Interface/IBitmap4bit.h"
