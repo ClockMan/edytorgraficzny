@@ -30,8 +30,16 @@
 \section{Wstęp}
 P.I.W.O 1.0 jest silnikiem napisanym z myślą o cyfrowym przetważaniu obrazów aczkolwiek dzięki dośc rozbudowanej obsłudze pluginów można nim przetważać dowolne dane. W programie cykl operacji jakie mają zostać wykonane na obiekcie definiujemy w postaci bloczków które można ze sobą łączyć.
 \section{Wymagania sprzętowe}
-
+Program nie był jeszcze testowany pod względem wymagań sprzętowych aczkolwiek prawdopodbnie będzie działał na każdej maszynie z
+zainstalowanym systemem operacyjnym Widnows 2000,XP,Vista.
 \section{Interfejs użytkownika}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{main}
+ \caption{Interfejs użytkownika}
+ \label{fig:Interface}
+\end{figure}
+\newpage
 Główne okno programu jest podzielone na 4 stefy:
 \begin{enumerate}
  \item Menu główne
@@ -42,6 +50,12 @@ Główne okno programu jest podzielone na 4 stefy:
 \end{enumerate}
 W tytule okna zawsze zawarta jest nazwa projektu/plik projektu. Gwiazdka na końcu sugeruje iż w projekcie zostały wprowadzone zmiany.
 \subsection{Menu główne}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{menuglowne}
+ \caption{Menu Glowne}
+ \label{fig:Interface}
+\end{figure}
 \subsubsection{Plik}
 Menu zawierające opcje pozwalające na zarządzanie projektem.
 \begin{description}
@@ -53,6 +67,12 @@ Menu zawierające opcje pozwalające na zarządzanie projektem.
 \item[Zakończ] Zamyka program, jeśli mamy otwarty projekt i przypadku gdy zostały w nim wprowadzone zmiany od czasu ostatniego zapisu lub niebył on zapisywany wcześniej użytkownik zostanie zapytany o zapis projektu lub porzucenie zmian. 
 \end{description}
 \subsubsection{Edycja}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{edycja}
+ \caption{Edycja}
+ \label{fig:edition}
+\end{figure}
 Wszystkie opcje z tego menu są dostepne tylko i wyłącznie gdy mamy otwarty projekt. Niektóre z nich wymagają aby w projekcie było conajmniej jedno połączenie, blok, lub aby conajmniej jeden blok był zaznaczony lub połączenie.
 \begin{description}
 \item[Zaznacz wszystkie bloki] Polecenie zaznacza wszystkie bloki. Odznacza aktualnie zaznaczone połączenie jeśli jakieś jest. Jeśli już wszystkie bloki są zaznaczone przez wywołaniem polecenia to niema ono efektu. 
@@ -77,6 +97,12 @@ Poniżej tych 2 pozycji w zależności od ilości otwartych okien będą widnia�
 
 \subsubsection{Uruchom}
 Menu pozwalające wykonać operacje dostarczone przez pluginy. Menu aktywne tylko w przypadku posiadania otwartego projektu z conajmniej jednym bloczkiem.
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{uruchom}
+ \caption{Uruchom}
+ \label{fig:Run}
+\end{figure}
 \begin{description}
 \item [Auto uruchamianie] Opcja typu ``toogle'', pozwala na włączanie trybu auto-uruchamiania projektu.
 \item [Uruchom wszystko] Opcja uruchamia projekt, przetważane są wszystkie mozliwe bloczki nie uwzględniając ostatnie uruchomienia.
@@ -86,7 +112,26 @@ Menu pozwalające wykonać operacje dostarczone przez pluginy. Menu aktywne tylk
 
 \subsubsection{Menu dynamicznych bloczków}
 W tym miejscu znajdują się menu ładowane z plików koniguracyjnych, każda opcja pozwala na dodanie ściśle powiązanego z nia bloczka, ilośc tych menu i struktura nie jest ściśle określona.
+\begin{figure}[ht]
+ \centering
+ \includegraphics[scale=0.5]{blokwejscia}
+ \caption{Bloki Wejscia}
+ \label{fig:inputblock}
+\end{figure}
+\begin{figure}[ht]
+ \centering
+ \includegraphics[scale=0.5]{blokwyjscia}
+ \caption{Bloki Wyjscia}
+ \label{fig:outputblock}
+\end{figure}
+\begin{figure}[ht]
+ \centering
+ \includegraphics[scale=0.5]{blokfunkcji}
+ \caption{Bloki funkcji}
+ \label{fig:outputblock}
+\end{figure}
 
+\newpage
 \subsubsection{Pomoc}
 \begin{description}
 \item [Instrukcja użytkownika] Wyświetla ten plik.
@@ -96,7 +141,13 @@ W tym miejscu znajdują się menu ładowane z plików koniguracyjnych, każda op
 \end{description}
 
 \subsection{Toolbar}
-Toolbar jest to szereg przyciskow diocznych zaraz pod menu. Ich funkcje są takie same jak ich odpowiednikom w menu a kolejść jest nastepująca:
+Toolbar jest to szereg przyciskow widocznych zaraz pod menu. Ich funkcje są takie same jak ich odpowiednikom w menu a kolejść jest nastepująca:
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{toolbar}
+ \caption{Toolbar}
+ \label{fig:Toolbar}
+\end{figure}
 \begin{itemize}
  \item Nowy projekt
  \item Otwórz projekt
@@ -128,10 +179,28 @@ Toolbar jest to szereg przyciskow diocznych zaraz pod menu. Ich funkcje są taki
 \end{itemize}
 
 \subsection{Strefa projektu}
-Przestrzeń w której zarządzamy bloczkami/połaczeniami. Omówimy ją dokładniej później.
+Przestrzeń w której zarządzamy bloczkami/połaczeniami. Tutaj możemy zmieniać położenie bloczków oraz ich połączenia. Dokładny opis bloczków znajduję sie w sekcji Zarządzanie projektem.
+Podstawowe operacje wykonywane na bloczkach to:
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{strefaprojektu}
+ \caption{Strefa Projektu}
+ \label{fig:Interface}
+\end{figure}
+\begin{itemize}
+ \item Przesuwanie
+ \item Usuwanie
+ \item blabla
+\end{itemize}
 
 \subsection{System logów}
 System wyświetlania logów jest podzielony na 3 strefy:
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{systemlogow}
+ \caption{System Logów} 
+ \label{fig:systemlogow}
+\end{figure}
 \begin{description}
  \item[Główny log] Wyświetlane są tu wszystkie logi oprócz Debug, Run log
  \item[Run log] Wyświetlane są tu informacje natemat przetważanych bloczków, Logi te są usuwane przed każdym uruchomieniem projektu.
@@ -148,6 +217,12 @@ Kolory komunikatów:
 Klikając prawym przyciskiem na liście logów pokaże się menu pozwalające na wyczyszczenia aktualnych logów lub zapisanie ich do pliku.
 \subsection{Pasek status}
 Aktualnie jedyną funkcja paska statusu jest wyświetlanie aktualnie otwartego projektu.
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{status}
+ \caption{Status}
+ \label{fig:Status}
+\end{figure}
 \section{Skróty klawiatury}
 \begin{description}
  \item[Ctrl+N] - Nowy projeky
@@ -171,10 +246,35 @@ Aktualnie jedyną funkcja paska statusu jest wyświetlanie aktualnie otwartego p
  \end{description}
 \section{Zarządzanie projektem}
 \subsection{Bloczki}
+Pojedynczy blok reprezentuję operację na obrazie (np. Binaryzacja,Wczytywanie,Zapisywanie).
 \subsubsection{Wejścia}
+Z lewej strony bloczku znajdują się wejścia, które są tworzone dynamicznie. Bloczek taki jak wczytywanie obrazu nie posiada żadnego wejścia gdyż nie przetwarza on żadnych danych, plik do wczytania zostaje podany w konfiguracji. Większość bloczków posiada tylko jedno wejście. Jednakże mogą istnieć bloczki które będą wymagały podania więcej niż jednego wejścia (na przykład dodawanie obrazów). Jest także możliwość że e bloczku może się pojawić nie tylko wiele wejśc ale również i całkowicie innych typów.
+
+Stan wejścia jest opisywany poprzez kolor połączenia a także poprzez opis (który jest wyświetlany po najechaniu na wejście).
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{wejscia}
+ \caption{Wejscia}
+ \label{fig:Input}
+\end{figure}
 \subsubsection{Wyjścia}
+Wynik przetwarzania jest symbolizowany z prawej strony bloczka jako wyjscie. Wyjścia są tworzone dynamicznie na podstawie Wejść.
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{wyjscia}
+ \caption{Wyjscia}
+ \label{fig:Output}
+\end{figure}
 \subsubsection{Przycisk konfiguracyjny}
+Po kliknięciu na przycisk konfiguracji pojawia się okno opcji dotyczących przeprowadzenia danej operacji, lecz nie danych które powinny zostać przesłane do bloku poprzez wejście..
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{config}
+ \caption{Konfiguracja}
+ \label{fig:config}
+\end{figure} 
 \subsubsection{Status}
+
 \subsection{Połączenia}
 \subsection{Historia}
 \subsection{Eksport/Import}
