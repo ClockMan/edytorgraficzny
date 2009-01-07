@@ -31,13 +31,24 @@ class Line : public TWinControl
 		void __fastcall LineMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 		void __fastcall LineMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	public:
+		 /**
+		  * Event
+		  */
 		 Line_Function OnLineMove;
+		 /**
+		  * Event
+		  */
 		 Line_Function OnConnectionSelectRequest;
+		 /**
+		  * Event
+		  */
 		 Line_Function OnConnectionResetRequest;
-
+		 /**
+		  * Kolor linii
+		  */
 		 __property Color;
 		 
-		/**
+		 /**
 		 *  W³aœciwoœæ - czy linia by³a przesówana przez u¿ytkownika
 		 */
 		 int Resize;
@@ -51,9 +62,24 @@ class Line : public TWinControl
 		 *  W³aœciwoœæ - czy linia mo¿e byæ przenoszona
 		 */
 		 bool CanBeMoved;
-
+		 /**
+		  * Ustawia wymiary lini
+		  * @param x1 wspozedne punktu A1-x
+		  * @param y1 wspozedne punktu A1-y
+		  * @param x2 wspozedne punktu A2-x
+		  * @param y2 wspozedne punktu A2-y
+		  * @return true jesli da sie narysoac taka linie, false ejsli jest po skosie albo punkty sie pokrywaja
+		  */
 		 bool setXY(int x1, int y1, int x2, int y2);
+		 /**
+		  * Wspozedne punktu 1
+		  * @return TPoint
+		  */
 		 TPoint getPoint1();
+		 /**
+		  * Wspozedne punktu 2
+		  * @return TPoint
+		  */
 		 TPoint getPoint2();
 		/**
 		 * Konstruktor
