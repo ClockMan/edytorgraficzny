@@ -28,13 +28,9 @@ class Block
 		 */
 		TForm *blockWindow;
 		/**
-		 * Nazwa bloczka
+		 * Tytul bloczka
 		 */
-		AnsiString name;
-		/**
-		 * Numer bloczka w projekcie
-		 */
-		unsigned int number;
+		AnsiString title;
 		/**
 		 * Lista wejsc bloku.
 		 */
