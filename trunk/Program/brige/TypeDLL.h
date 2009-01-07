@@ -39,10 +39,10 @@ class TypeDLL
 		 */
 		~TypeDLL();
 		/**
-		 *
-		 * @param parent
-		 * @param aData
-		 * @return
+		 * Wykonuje funkcje show w zaladowanej DLL typu
+		 * @param parent wskaznik na obiekt wizualny ktory ma zostac uznany za parent - powinno to byc okno
+		 * @param aData dane
+		 * @return zwraca wskaznik na obiekt TFrame, naszym obowiaskiem jest prawidlowo zwolnic go.
 		 */
 		TFrame* show(TWinControl* parent, TypeConfig* aData);
 		/**

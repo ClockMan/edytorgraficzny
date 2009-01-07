@@ -28,16 +28,43 @@ class FunctionDLL
 		FunctionDLL_validate fvalidate;
 		FunctionDLL_showConfig fshowConfig;
 	public:
+		/**
+		 * Event
+		 */
 		FunctionDLL_onClick FunctionAddRequest;
+		/**
+		 * Nazwa, domyslnie parsowana z nazwy pliku chyba ze w pliku ini jest ustawione inaczej
+		 */
 		AnsiString name;//id of block - name of file if in inifile no info about this
+		/**
+		 * Pelna nazwa
+		 */
 		AnsiString fullName; //name visible in menu
+		/**
+		 * Opis 
+		 */
 		AnsiString description; //hint visible in menu, or abowe block
+		/**
+		 * Bitmapa 32x32 przedstawiajaca obrazek powiazany z pluginem, jesli niema to NULL
+		 */
 		Graphics::TBitmap *picture;
+		/**
+		 * Kategorie zaladowane z pliku ini
+		 * Format: Kat1|Kat2|Kat3, Kat1|Kat4|Kat5, etc
+		 */
 		vector<AnsiString> category; //format: Menu Name/Sub Menu/Next Sub Menu
-
+		/**
+		 * Konstruktor
+		 * @param fileDLL sciezka do pliku, program automatycznie bedzie szual pliku ini i pliku bmp.
+		 */
 		FunctionDLL(const AnsiString &fileDLL);
+		/**
+		 * Destruktor, zwalnia DLL z pamieci
+		 */
 		~FunctionDLL();
-
+		/**
+		 * Metoda wywolujaca FunctionAddRequest podajac juz w parametrze obiekt FunctionDLL
+		 */
 		void __fastcall OnClick(TObject *Sender);
 
 		/**
