@@ -76,7 +76,7 @@ int __stdcall validate(Block *aBlock)
 		output1.setErrorDescription("Brak obiektu na wejsciu");
 		aBlock->output.push_back(output1);
 
-		aBlock->getConfig()->addInt("limitB",125);
+		aBlock->getConfig()->addInt("limitB",0);
 		aBlock->getConfig()->addInt("mode",0);
 		return 2;
 	}
@@ -158,7 +158,7 @@ int __stdcall run(Block *aBlock)
 	{
 		int limitB(aBlock->getConfig()->getInt("limitB"));
 
-		if(!BinarizationBalance(picture,limitB))
+		if(!BinarizationBalance(picture,limit,clWhite,clBlack))
 		{
 			aBlock->output[0].setErrorCode(2);
 			aBlock->output[0].setErrorDescription("Pusta bitmapa");
@@ -167,41 +167,11 @@ int __stdcall run(Block *aBlock)
 		}
 	}
     
-	TypeConfig* copy;
+	TypeConfig* copy = IBitmap1bit::getNew();
 
-	if(connectedType == "Bitmap1bit")
-	{
-		copy = IBitmap1bit::getNew();
-		IBitmap1bit::setBitmap(copy, *picture);
-	}
-	else if(connectedType == "Bitmap4bit")
-	{
-		copy = IBitmap4bit::getNew();
-		IBitmap4bit::setBitmap(copy, *picture);
-	}
-	else if(connectedType == "Bitmap8bit")
-	{
-		copy = IBitmap8bit::getNew();
-		IBitmap8bit::setBitmap(copy, *picture);
-	}
-	else if(connectedType == "Bitmap16bit")
-	{
-		copy = IBitmap16bit::getNew();
-		IBitmap16bit::setBitmap(copy, *picture);
-	}
-	else if(connectedType == "Bitmap24bit")
-	{
-		copy = IBitmap24bit::getNew();
-		IBitmap24bit::setBitmap(copy, *picture);
-	}
-	else if(connectedType == "Bitmap32bit")
-	{
-		copy = IBitmap32bit::getNew();
-		IBitmap32bit::setBitmap(copy, *picture);
-	}
-
+	IBitmap1bit::setBitmap(copy, *picture);
 	aBlock->output[0].setObject(*copy);
-	
+
 	picture->Free();
 	delete copy;
 
