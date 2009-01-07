@@ -17,12 +17,12 @@ __fastcall TcfgWin::TcfgWin(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TcfgWindow::OKClick(TObject *Sender)
 {
-	if(!scaleBinarization->Checked)
-		cfg_->setInt("limitB",125);
+	if(Binarization->Checked)
+		cfg_->setInt("mode",0);
 	else
 	{
-		cfg_->setInt("limitB",1);
-		cfg_->setInt("limitB",EditLimit->Text.ToIntDef(2));
+		cfg_->setInt("mode",1);
+		cfg_->setInt("limitB",limitBShow->Text);
 	}
 	Close();
 }
@@ -35,6 +35,19 @@ void __fastcall TcfgWin::AnulujClick(TObject *Sender)
 void __fastcall TcfgWin::SetConfig(Block* block)
 {
 	cfg_ = block->getConfig();
+
+	if(cfg_->getInt("mode") == 0)
+	{
+		Binarization->Checked = true;
+		limitB->Enabled = false;
+		limitBShow->Enabled = false;
+	}
+	else
+	{
+		BinarizationBalance->Checked = true;
+		limitB->Enabled = true;
+		limitBShow->Enabled = true;
+	}
 	
 	limitB->Position = cfg_->getInt("limitB");
 	limitBShow->Text = IntToStr(cfg_->getInt("limitB"));
@@ -54,14 +67,14 @@ void __fastcall TcfgWin::limitbShowChange(TObject *Sender)
 		limitB->Position = limitB;
 }
 //---------------------------------------------------------------------------
-void __fastcall TcfgWindow::StandardBinarizationClick(TObject *Sender)
+void __fastcall TcfgWindow::BinarizationClick(TObject *Sender)
 {
 	limitB->Enabled = false;
 	limitBShow->Enabled = false;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TcfgWindow::FreeBinarizationClick(TObject *Sender)
+void __fastcall TcfgWindow::BinarizationBalanceClick(TObject *Sender)
 {
 	limitB->Enabled = true;
 	limitBShow->Enabled = true;
@@ -72,4 +85,4 @@ void __fastcall TcfgWin::FormClose(TObject *Sender, TCloseAction &Action)
 		cfg_ = 125;
 		Action = caFree;
 }
-//---------------------------------------------------------------------------
+

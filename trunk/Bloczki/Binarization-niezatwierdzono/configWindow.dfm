@@ -1,10 +1,10 @@
 object cfgWin: TcfgWin
-  Left = 392
-  Top = 0
-  BorderStyle = bsToolWindow
+  Left = 383
+  Top = 258
+  BorderStyle = bsSizeToolWin
   Caption = 'Binarization'
-  ClientHeight = 194
-  ClientWidth = 316
+  ClientHeight = 192
+  ClientWidth = 314
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,9 +13,10 @@ object cfgWin: TcfgWin
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  ShowHint = False
   PixelsPerInch = 96
   TextHeight = 13
-  object GroupBox1: TGroupBox
+  object Binarization: TGroupBox
     Left = 8
     Top = 8
     Width = 306
@@ -57,13 +58,14 @@ object cfgWin: TcfgWin
       Height = 21
       TabOrder = 3
     end
-    object FreeBinarization: TRadioButton
+    object BinarizationBalance: TRadioButton
       Left = 24
       Top = 56
       Width = 201
       Height = 17
       Caption = 'Binaryzacja u'#380'ytkownika (0-255)'
       TabOrder = 4
+      OnClick = BinarizationBalanceClick
     end
     object StandardBinarization: TRadioButton
       Left = 24
@@ -71,7 +73,10 @@ object cfgWin: TcfgWin
       Width = 217
       Height = 17
       Caption = 'Binaryzacja standartowa (pr'#243'g =125)'
+      Checked = True
       TabOrder = 5
+      TabStop = True
+      OnClick = StandardBinarizationClick
     end
   end
 end
