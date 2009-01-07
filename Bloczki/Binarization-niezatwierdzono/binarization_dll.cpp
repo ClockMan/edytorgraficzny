@@ -76,6 +76,7 @@ int __stdcall validate(Block *aBlock)
 		output1.setErrorDescription("Brak obiektu na wejsciu");
 		aBlock->output.push_back(output1);
 
+	// wstepna konfiguracja (nastepna modyfikacja mozliwa w oknie konfigu bloczka)
 		aBlock->getConfig()->addInt("limitB",0);
 		aBlock->getConfig()->addInt("mode",0);
 		return 2;
@@ -93,15 +94,6 @@ int __stdcall validate(Block *aBlock)
 		}
 		else
 		{
-//			if (aBlock->output[0].getOutputType()!= aBlock->input[0].getConnectedType())
-//			{
-//				aBlock->output[0].setOutputType(aBlock->input[0].getConnectedType());
-//				aBlock->input[0].setErrorCode(0);
-//				aBlock->output[0].setErrorCode(0);
-//				aBlock->input[0].setErrorDescription("");
-//				aBlock->output[0].setErrorDescription("");
-//				return 1;
-//			}
 			if(aBlock->input[0].getErrorCode() != 0 || aBlock->output[0].getErrorCode() != 0)
 			{
 				aBlock->input[0].setErrorCode(0);
