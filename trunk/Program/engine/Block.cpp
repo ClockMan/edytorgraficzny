@@ -4,8 +4,7 @@ Block::Block()
 {
 	config=new BlockConfig();
 	blockWindow=NULL;
-	number=0;
-	name="";
+	title="";
 }
 
 Block::Block(const Block &copy)
@@ -14,8 +13,7 @@ Block::Block(const Block &copy)
 	input=copy.input;
 	output=copy.output;
 	blockWindow=NULL;
-	name=copy.name;
-	number=copy.number;
+	title=copy.title;
 }
 
 Block::~Block()
