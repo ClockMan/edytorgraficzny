@@ -76,7 +76,9 @@ int __stdcall validate(Block *aBlock)
 		output1.setErrorDescription("Brak obiektu na wejsciu");
 		aBlock->output.push_back(output1);
 
-		//tu trzeba coœ wpisaæ.
+		aBlock->getConfig()->addInt("limitB",125);
+		aBlock->getConfig()->addInt("mode",0);
+		return 2;
 	}
 		else
 	{
@@ -140,13 +142,29 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-///         dsdsadasdaskkjadsk
-		if(!BinarizationBalance(picture, limitB, firstColorB, secondColorB))
+	int mode(aBlock->getConfig()->getInt("mode"));
+
+	if(mode == 0)
 	{
-		aBlock->output[0].setErrorCode(2);
-		aBlock->output[0].setErrorDescription("Pusta bitmapa");
-		picture->Free();
-		return 2;
+		if(!Binarization(picture))
+		{
+			aBlock->output[0].setErrorCode(2);
+			aBlock->output[0].setErrorDescription("Pusta bitmapa");
+			picture->Free();
+			return 2;
+		}
+	}
+	else
+	{
+		int limitB(aBlock->getConfig()->getInt("limitB"));
+
+		if(!BinarizationBalance(picture,limitB))
+		{
+			aBlock->output[0].setErrorCode(2);
+			aBlock->output[0].setErrorDescription("Pusta bitmapa");
+			picture->Free();
+			return 2;
+		}
 	}
     
 	TypeConfig* copy;

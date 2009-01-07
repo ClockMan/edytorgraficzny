@@ -15,12 +15,14 @@ class TcfgWin : public TForm
 __published:	// IDE-managed Components
 	TButton *OK;
 	TButton *Anuluj;
-	TGroupBox *GroupBox1;
+	TGroupBox *Binarization;
 	TTrackBar *limitB;
 	TEdit *limitBShow;
-	TRadioButton *FreeBinarization;
+	TRadioButton *BinarizationBalance;
 	TRadioButton *StandardBinarization;
 	void __fastcall AnulujClick(TObject *Sender);
+	void __fastcall StandardBinarizationClick(TObject *Sender);
+	void __fastcall BinarizationBalanceClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TcfgWin(TComponent* Owner);
