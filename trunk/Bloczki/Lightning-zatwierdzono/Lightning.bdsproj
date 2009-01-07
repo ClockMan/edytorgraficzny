@@ -289,7 +289,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">1</VersionInfo>
+          <VersionInfo Name="Build">2</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -301,7 +301,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription">Lightning</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.1</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.2</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
@@ -360,6 +360,7 @@
     </BCBPROJECT>
 		<Source>
 			<Source Name="MainSource">Lightning.bpf</Source>
-		</Source>  <buildevents/>
-  </CPlusPlusBuilder.Personality>
+		</Source>
+		<buildevents/>
+	</CPlusPlusBuilder.Personality>
 </BorlandProject>

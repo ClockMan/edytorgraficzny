@@ -18,6 +18,7 @@
 #include <ToolWin.hpp>
 #include <Registry.hpp>
 #include <cgauges.h>
+#include <AppEvnts.hpp>
 
 #define CAPTION "PIWO - Projekt Informatyczny Wilqu & Others 1.0"
 //---------------------------------------------------------------------------
@@ -118,6 +119,7 @@ __published:	// IDE-managed Components
 	TMenuItem *Zamknijwszystkieokna1;
 	TMenuItem *Pokawszystkieokna1;
 	TMenuItem *N2;
+	TApplicationEvents *ApplicationEvents1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Zakocz2Click(TObject *Sender);
 	void __fastcall Zaznaczwszystkiebloki1Click(TObject *Sender);
@@ -163,6 +165,10 @@ __published:	// IDE-managed Components
 	void __fastcall Pokawszystkieokna1Click(TObject *Sender);
 	void __fastcall Oprogramie1Click(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall ApplicationEvents1Message(tagMSG &Msg, bool &Handled);
+	void __fastcall Instrukcjauytkoniwka1Click(TObject *Sender);
+	void __fastcall Dokumentacjatechniczna1Click(TObject *Sender);
+	void __fastcall Oautorach1Click(TObject *Sender);
 
 private:
 	PIWOEngine *piwo;
@@ -171,7 +177,7 @@ private:
 	Graphics::TBitmap *defaultBlockImage;
 	vector<FunctionDLL*> top5Added;
 	vector<TMenuItem*> historyItems;
-
+	POINT mousePos;
 	void  OnLoadProgress(void* Sender, int position, int max, AnsiString info, int id);
 	void  OnFunctionAddClick(void* Sender);
 

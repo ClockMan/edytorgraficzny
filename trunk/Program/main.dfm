@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 553
+  ClientHeight = 573
   ClientWidth = 660
   Color = clBtnFace
   Constraints.MinHeight = 300
@@ -506,19 +506,21 @@ object Form1: TForm1
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 534
+    Top = 554
     Width = 660
     Height = 19
     Panels = <>
     SimplePanel = True
+    ExplicitTop = 534
   end
   object Panel1: TPanel
     Left = 0
-    Top = 428
+    Top = 448
     Width = 660
     Height = 106
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 428
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -922,6 +924,7 @@ object Form1: TForm1
       ImageIndex = 15
       ParentShowHint = False
       ShowHint = True
+      OnClick = Instrukcjauytkoniwka1Click
     end
     object ToolButton25: TToolButton
       Left = 599
@@ -932,6 +935,7 @@ object Form1: TForm1
       ImageIndex = 18
       ParentShowHint = False
       ShowHint = True
+      OnClick = Oautorach1Click
     end
     object ToolButton26: TToolButton
       Left = 628
@@ -947,7 +951,7 @@ object Form1: TForm1
   end
   object Panel2: TPanel
     Left = 0
-    Top = 406
+    Top = 426
     Width = 660
     Height = 22
     Align = alBottom
@@ -955,6 +959,7 @@ object Form1: TForm1
     BorderStyle = bsSingle
     TabOrder = 3
     Visible = False
+    ExplicitTop = 406
     object CGauge1: TCGauge
       Left = 209
       Top = 0
@@ -1221,16 +1226,19 @@ object Form1: TForm1
         Caption = 'Instrukcja u'#380'ytkownika'
         ImageIndex = 27
         ShortCut = 112
+        OnClick = Instrukcjauytkoniwka1Click
       end
       object Dokumentacjatechniczna1: TMenuItem
         Caption = 'Dokumentacja techniczna'
         ImageIndex = 29
         ShortCut = 113
+        OnClick = Dokumentacjatechniczna1Click
       end
       object Oautorach1: TMenuItem
         Caption = 'O autorach'
         ImageIndex = 30
         ShortCut = 114
+        OnClick = Oautorach1Click
       end
       object Oprogramie1: TMenuItem
         Caption = 'O programie'
@@ -4189,5 +4197,10 @@ object Form1: TForm1
       30000300F000FF00003FF00030000700F800FF80007FF80070000F00F800FFC0
       00FFFC00F0003F00FE00FFE003FFFE01F0003F00FFE0FFFF3FFFFF83F800FF00
       00000000000000000000000000000000000000000000}
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnMessage = ApplicationEvents1Message
+    Left = 40
+    Top = 72
   end
 end
