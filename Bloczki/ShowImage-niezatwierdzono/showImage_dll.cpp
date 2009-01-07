@@ -5,7 +5,6 @@
 #pragma hdrstop
 
 #include "showImage.h"
-#include "../../Program/gui/VisualBlock.h"
 #include "imageWindow.h"
 
 
@@ -49,56 +48,15 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 {
 	TimgWindow* imgW;
-	if(!aBlock->getConfig()->getBoolean("create"))
+	if(aBlock->blockWindow == NULL)
 	{
 		imgW = new TimgWindow(owner);
-		imgW->Caption = ((VisualBlock*)owner)->getTitle();
-		aBlock->getConfig()->addInt("imgW",imgW->ComponentIndex);
-		aBlock->getConfig()->setBoolean("create", true);
-		if(sizeof(int) == sizeof(imgW))
-		{
-			aBlock->getConfig()->addInt("imgWPointer", (int)imgW);
-		}
+		aBlock->blockWindow = imgW;
 	}
 	else
 	{
-		imgW = (TimgWindow*)owner->Components[aBlock->getConfig()->getInt("imgW")];
-    }
-
-	if(aBlock->getConfig()->getBoolean("run"))
-	{
-
-		Graphics::TBitmap* picture = new Graphics::TBitmap();
-		AnsiString connectedType(aBlock->input[0].getConnectedType());
-
-		if(connectedType == "Bitmap1bit")
-			picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap1bit::getBitmap(aBlock->input[0].getObject()))));
-
-		else if(connectedType == "Bitmap4bit")
-			picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap4bit::getBitmap(aBlock->input[0].getObject()))));
-
-		else	if(connectedType == "Bitmap8bit")
-			picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap8bit::getBitmap(aBlock->input[0].getObject()))));
-
-		else if(connectedType == "Bitmap16bit")
-			picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap16bit::getBitmap(aBlock->input[0].getObject()))));
-
-		else	if(connectedType == "Bitmap24bit")
-			picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap24bit::getBitmap(aBlock->input[0].getObject()))));
-
-		else	if(connectedType == "Bitmap32bit")
-			picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
-		else
-			return false;
-
-		imgW->PaintImage(picture);
-
-		picture->Free();
+		imgW = (TimgWindow*)aBlock->blockWindow;
 	}
-	else
-	{
-        imgW->ClearImage();
-    }
 
 	imgW->Show();
 	return true;
@@ -121,22 +79,20 @@ int __stdcall validate(Block *aBlock)
 		input1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->input.push_back(input1);
 
-		aBlock->getConfig()->addBoolean("create", false);
-		aBlock->getConfig()->addBoolean("run",false);
 		return 2;
 	}
 	else
-	{   
-		aBlock->getConfig()->setBoolean("run",false);
+	{
 		if(aBlock->input[0].getConnectedType().IsEmpty())
 		{
 			aBlock->input[0].setErrorCode(1);
 			aBlock->input[0].setErrorDescription("Brak obiektu na wejœciu");
-			try {
-				TimgWindow* imgW = (TimgWindow*)aBlock->getConfig()->getInt("imgWPointer");
+			if(aBlock->blockWindow != NULL)
+			{
+				TimgWindow* imgW = (TimgWindow*)aBlock->blockWindow;
 				imgW->ClearImage();
-			} catch(char *s) {
 			}
+
 			return 1;
 		}
 		else if(aBlock->input[0].getErrorCode() != 0)
@@ -176,13 +132,18 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-	try {
-		TimgWindow* imgW = (TimgWindow*)aBlock->getConfig()->getInt("imgWPointer"); 
-		imgW->PaintImage(picture);
-	} catch(char *s) {
+	TimgWindow* imgW;
+	if(aBlock->blockWindow == NULL)
+	{
+		imgW = new TimgWindow(NULL);
+		aBlock->blockWindow = imgW;
 	}
+	else
+	{
+		imgW = (TimgWindow*)aBlock->blockWindow;
+	}
+	imgW->PaintImage(picture);
 
 	picture->Free();
-	aBlock->getConfig()->setBoolean("run",true);
 	return 0;
 }

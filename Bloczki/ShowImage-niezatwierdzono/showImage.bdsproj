@@ -241,7 +241,6 @@
         <FILE FILENAME="..\..\Program\engine\BlockElement.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockElement" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="..\..\Program\engine\BlockInput.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockInput" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="..\..\Program\engine\BlockOutput.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="BlockOutput" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="..\..\Program\gui\VisualBlock.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="VisualBlock" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\..\Program\gui\VisualBlock.h"/>
         <FILE FILENAME="..\..\TypyDanych\Bitmap1bit\Interface\IBitmap1bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap1bit" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="..\..\TypyDanych\Bitmap4bit\Interface\IBitmap4bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap4bit" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="..\..\TypyDanych\Bitmap8bit\Interface\IBitmap8bit.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="IBitmap8bit" FORMNAME="" DESIGNCLASS=""/>
@@ -258,7 +257,7 @@
           <VersionInfo Name="MajorVer">1</VersionInfo>
           <VersionInfo Name="MinorVer">0</VersionInfo>
           <VersionInfo Name="Release">0</VersionInfo>
-          <VersionInfo Name="Build">132</VersionInfo>
+          <VersionInfo Name="Build">179</VersionInfo>
           <VersionInfo Name="Debug">False</VersionInfo>
           <VersionInfo Name="PreRelease">False</VersionInfo>
           <VersionInfo Name="Special">False</VersionInfo>
@@ -270,7 +269,7 @@
         <VersionInfoKeys>
           <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
           <VersionInfoKeys Name="FileDescription">SaveImage</VersionInfoKeys>
-          <VersionInfoKeys Name="FileVersion">1.0.0.132</VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.179</VersionInfoKeys>
           <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
           <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
