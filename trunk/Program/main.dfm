@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'PIWO - Projekt Informatyczny Wilqu & Others 1.0'
-  ClientHeight = 573
+  ClientHeight = 613
   ClientWidth = 660
   Color = clBtnFace
   Constraints.MinHeight = 300
@@ -506,19 +506,21 @@ object Form1: TForm1
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 554
+    Top = 594
     Width = 660
     Height = 19
     Panels = <>
     SimplePanel = True
+    ExplicitTop = 574
   end
   object Panel1: TPanel
     Left = 0
-    Top = 448
+    Top = 488
     Width = 660
     Height = 106
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 468
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -574,10 +576,6 @@ object Form1: TForm1
       object TabSheet2: TTabSheet
         Caption = 'Run log'
         ImageIndex = 6
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ListView2: TListView
           Left = 0
           Top = 0
@@ -616,10 +614,6 @@ object Form1: TForm1
       object TabSheet3: TTabSheet
         Caption = 'Debug log'
         ImageIndex = 5
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ListView3: TListView
           Left = 0
           Top = 0
@@ -957,7 +951,7 @@ object Form1: TForm1
   end
   object Panel2: TPanel
     Left = 0
-    Top = 426
+    Top = 466
     Width = 660
     Height = 22
     Align = alBottom
@@ -965,6 +959,7 @@ object Form1: TForm1
     BorderStyle = bsSingle
     TabOrder = 3
     Visible = False
+    ExplicitTop = 446
     object CGauge1: TCGauge
       Left = 209
       Top = 0
