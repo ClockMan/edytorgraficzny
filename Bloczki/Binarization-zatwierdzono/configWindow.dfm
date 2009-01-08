@@ -29,6 +29,7 @@ object cfgWin: TcfgWin
       Height = 25
       Caption = 'OK'
       TabOrder = 0
+      OnClick = OKClick
     end
     object Anuluj: TButton
       Left = 213
@@ -49,6 +50,7 @@ object cfgWin: TcfgWin
       Max = 255
       ParentCtl3D = False
       TabOrder = 2
+      OnChange = limitBChange
     end
     object limitBShow: TEdit
       Left = 247
@@ -56,6 +58,7 @@ object cfgWin: TcfgWin
       Width = 41
       Height = 21
       TabOrder = 3
+      OnChange = limitBShowChange
     end
     object BinarizationBalance: TRadioButton
       Left = 24
