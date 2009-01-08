@@ -1,0 +1,219 @@
+\hypertarget{classTypeConfig}{
+\section{TypeConfig Class Reference}
+\label{classTypeConfig}\index{TypeConfig@{TypeConfig}}
+}
+{\tt \#include $<$TypeConfig.h$>$}
+
+Inheritance diagram for TypeConfig:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=56pt]{classTypeConfig__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for TypeConfig:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=56pt]{classTypeConfig__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classTypeConfig_b2a221c2d5bf396018399269dd3f3e9d}{TypeConfig} (const AnsiString aName)
+\item 
+\hyperlink{classTypeConfig_e8b6161a3b6b8a1a9991f7240a2ec7a2}{TypeConfig} (const \hyperlink{classTypeConfig}{TypeConfig} \&kopia)
+\item 
+\hyperlink{classTypeConfig_77929bc854791d0879ab952eef688b8f}{TypeConfig} (TStream \&stream)
+\item 
+\hyperlink{classTypeConfig_dfc381c0e5957f32637705ecb900a34c}{$\sim$TypeConfig} ()
+\item 
+bool \hyperlink{classTypeConfig_6d8e08fc2726691b9fd49753504125b2}{saveToStream} (TStream \&aWhere)
+\item 
+bool \hyperlink{classTypeConfig_3ea873062f9be5fbc1001503684f532d}{loadFromStream} (TStream \&aFrom)
+\item 
+const AnsiString \& \hyperlink{classTypeConfig_def1a09e268a7929a3be7529272824c5}{getName} ()
+\item 
+unsigned long \hyperlink{classTypeConfig_c71d61eebbe3f8a18b9615b670e0a1d3}{getId} ()
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+AnsiString \hyperlink{classTypeConfig_de545d5c97e90206890ff72a02d2465c}{nazwa}
+\item 
+unsigned long \hyperlink{classTypeConfig_2feac272551cd0f837f7a8d3d9ca8034}{id}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classTypeConfig}{TypeConfig} - Klasa reprezentujaca typ przesylany do bloku zdefiniowany przez uzytkownika. \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 16 of file TypeConfig.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTypeConfig_b2a221c2d5bf396018399269dd3f3e9d}{
+\index{TypeConfig@{TypeConfig}!TypeConfig@{TypeConfig}}
+\index{TypeConfig@{TypeConfig}!TypeConfig@{TypeConfig}}
+\subsubsection[TypeConfig]{\setlength{\rightskip}{0pt plus 5cm}TypeConfig::TypeConfig (const AnsiString {\em aName})}}
+\label{classTypeConfig_b2a221c2d5bf396018399269dd3f3e9d}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]- nazwa nowego typu. \end{description}
+\end{Desc}
+
+
+Definition at line 8 of file TypeConfig.cpp.
+
+References nazwa.\hypertarget{classTypeConfig_e8b6161a3b6b8a1a9991f7240a2ec7a2}{
+\index{TypeConfig@{TypeConfig}!TypeConfig@{TypeConfig}}
+\index{TypeConfig@{TypeConfig}!TypeConfig@{TypeConfig}}
+\subsubsection[TypeConfig]{\setlength{\rightskip}{0pt plus 5cm}TypeConfig::TypeConfig (const {\bf TypeConfig} \& {\em kopia})}}
+\label{classTypeConfig_e8b6161a3b6b8a1a9991f7240a2ec7a2}
+
+
+Konstruktor kopiujacy. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em kopia}]obiekt ktory zostanie skopiowany \end{description}
+\end{Desc}
+
+
+Definition at line 22 of file TypeConfig.cpp.
+
+References id, and nazwa.\hypertarget{classTypeConfig_77929bc854791d0879ab952eef688b8f}{
+\index{TypeConfig@{TypeConfig}!TypeConfig@{TypeConfig}}
+\index{TypeConfig@{TypeConfig}!TypeConfig@{TypeConfig}}
+\subsubsection[TypeConfig]{\setlength{\rightskip}{0pt plus 5cm}TypeConfig::TypeConfig (TStream \& {\em stream})}}
+\label{classTypeConfig_77929bc854791d0879ab952eef688b8f}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]- strumien z ktorego zostana odczytane dane. \end{description}
+\end{Desc}
+
+
+Definition at line 16 of file TypeConfig.cpp.
+
+References loadFromStream().\hypertarget{classTypeConfig_dfc381c0e5957f32637705ecb900a34c}{
+\index{TypeConfig@{TypeConfig}!$\sim$TypeConfig@{$\sim$TypeConfig}}
+\index{$\sim$TypeConfig@{$\sim$TypeConfig}!TypeConfig@{TypeConfig}}
+\subsubsection[$\sim$TypeConfig]{\setlength{\rightskip}{0pt plus 5cm}TypeConfig::$\sim$TypeConfig ()}}
+\label{classTypeConfig_dfc381c0e5957f32637705ecb900a34c}
+
+
+Destruktor 
+
+Definition at line 28 of file TypeConfig.cpp.
+
+\subsection{Member Function Documentation}
+\hypertarget{classTypeConfig_6d8e08fc2726691b9fd49753504125b2}{
+\index{TypeConfig@{TypeConfig}!saveToStream@{saveToStream}}
+\index{saveToStream@{saveToStream}!TypeConfig@{TypeConfig}}
+\subsubsection[saveToStream]{\setlength{\rightskip}{0pt plus 5cm}bool TypeConfig::saveToStream (TStream \& {\em aWhere})}}
+\label{classTypeConfig_6d8e08fc2726691b9fd49753504125b2}
+
+
+Zapisuje listê obiektow do strumienia. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aWhere}]strumien w ktorym zostana zapisane informacje. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli operacja sie powiodla false - jezeli nie. \end{Desc}
+
+
+Reimplemented from \hyperlink{classBlockConfig_78a3531c448dca0bd61f57fc2034a5c0}{BlockConfig}.
+
+Definition at line 33 of file TypeConfig.cpp.
+
+References id, nazwa, and BlockConfig::saveToStream2().\hypertarget{classTypeConfig_3ea873062f9be5fbc1001503684f532d}{
+\index{TypeConfig@{TypeConfig}!loadFromStream@{loadFromStream}}
+\index{loadFromStream@{loadFromStream}!TypeConfig@{TypeConfig}}
+\subsubsection[loadFromStream]{\setlength{\rightskip}{0pt plus 5cm}bool TypeConfig::loadFromStream (TStream \& {\em aFrom})}}
+\label{classTypeConfig_3ea873062f9be5fbc1001503684f532d}
+
+
+Odczytuje infomracjê o obiektach na liscie z strumienia \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true - jezeli operacja sie powiodla false - jezeli nie. \end{Desc}
+
+
+Reimplemented from \hyperlink{classBlockConfig_fa1e7a52f16ebcb1ceed3b33c5a9734e}{BlockConfig}.
+
+Definition at line 48 of file TypeConfig.cpp.
+
+References BlockConfig::clear(), BlockConfig::loadFromStream2(), and nazwa.
+
+Referenced by TypeConfig().\hypertarget{classTypeConfig_def1a09e268a7929a3be7529272824c5}{
+\index{TypeConfig@{TypeConfig}!getName@{getName}}
+\index{getName@{getName}!TypeConfig@{TypeConfig}}
+\subsubsection[getName]{\setlength{\rightskip}{0pt plus 5cm}const AnsiString \& TypeConfig::getName ()}}
+\label{classTypeConfig_def1a09e268a7929a3be7529272824c5}
+
+
+Pobiera nazwe. \begin{Desc}
+\item[Returns:]nazwa obiektu. \end{Desc}
+
+
+Definition at line 66 of file TypeConfig.cpp.
+
+References nazwa.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classTypeConfig_c71d61eebbe3f8a18b9615b670e0a1d3}{
+\index{TypeConfig@{TypeConfig}!getId@{getId}}
+\index{getId@{getId}!TypeConfig@{TypeConfig}}
+\subsubsection[getId]{\setlength{\rightskip}{0pt plus 5cm}unsigned long TypeConfig::getId ()}}
+\label{classTypeConfig_c71d61eebbe3f8a18b9615b670e0a1d3}
+
+
+Zwraca unikalny id dla tej klasy, jest nim adres w pamieci pod ktorym zostala stworzona 
+
+Definition at line 71 of file TypeConfig.cpp.
+
+References id.
+
+\subsection{Member Data Documentation}
+\hypertarget{classTypeConfig_de545d5c97e90206890ff72a02d2465c}{
+\index{TypeConfig@{TypeConfig}!nazwa@{nazwa}}
+\index{nazwa@{nazwa}!TypeConfig@{TypeConfig}}
+\subsubsection[nazwa]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf TypeConfig::nazwa}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classTypeConfig_de545d5c97e90206890ff72a02d2465c}
+
+
+
+
+Definition at line 19 of file TypeConfig.h.
+
+Referenced by getName(), loadFromStream(), saveToStream(), and TypeConfig().\hypertarget{classTypeConfig_2feac272551cd0f837f7a8d3d9ca8034}{
+\index{TypeConfig@{TypeConfig}!id@{id}}
+\index{id@{id}!TypeConfig@{TypeConfig}}
+\subsubsection[id]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf TypeConfig::id}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classTypeConfig_2feac272551cd0f837f7a8d3d9ca8034}
+
+
+
+
+Definition at line 20 of file TypeConfig.h.
+
+Referenced by getId(), saveToStream(), and TypeConfig().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/engine/\hyperlink{TypeConfig_8h}{TypeConfig.h}\item 
+/PIWO/Program/engine/\hyperlink{TypeConfig_8cpp}{TypeConfig.cpp}\end{CompactItemize}

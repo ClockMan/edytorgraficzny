@@ -1,0 +1,209 @@
+\hypertarget{Connection_8h}{
+\section{/PIWO/Program/gui/Connection.h File Reference}
+\label{Connection_8h}\index{/PIWO/Program/gui/Connection.h@{/PIWO/Program/gui/Connection.h}}
+}
+{\tt \#include $<$SysUtils.hpp$>$}\par
+{\tt \#include $<$Classes.hpp$>$}\par
+{\tt \#include $<$Controls.hpp$>$}\par
+{\tt \#include $<$vector$>$}\par
+{\tt \#include \char`\"{}../engine/BlockInput.h\char`\"{}}\par
+{\tt \#include \char`\"{}../engine/BlockOutput.h\char`\"{}}\par
+{\tt \#include \char`\"{}Line.h\char`\"{}}\par
+{\tt \#include \char`\"{}VisualBlock.h\char`\"{}}\par
+
+
+Include dependency graph for Connection.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{Connection_8h__incl}
+\end{center}
+\end{figure}
+
+
+This graph shows which files directly or indirectly include this file:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{Connection_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classConnection}{Connection}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{Connection_8h_b00477876fb393bb501e5cdf2c3dd390}{CONNECTION\_\-OK\_\-NORMAL}~0x33CC33
+\item 
+\#define \hyperlink{Connection_8h_f9125b98ea55fc4aea8ef73df27f1a13}{CONNECTION\_\-OK\_\-SELECTED}~0x20FF20
+\item 
+\#define \hyperlink{Connection_8h_529b378e03bb2eb7190f7c19c1a86467}{CONNECTION\_\-WARRNING\_\-NORMAL}~61137
+\item 
+\#define \hyperlink{Connection_8h_4533220d4269a55b041d2a98924984e9}{CONNECTION\_\-WARRNING\_\-SELECTED}~65021
+\item 
+\#define \hyperlink{Connection_8h_2233f4351cd7d445f7b5cc129a3aa33d}{CONNECTION\_\-ERROR\_\-NORMAL}~206
+\item 
+\#define \hyperlink{Connection_8h_49b81d66da221f9930a7e56f13eb45ce}{CONNECTION\_\-ERROR\_\-SELECTED}~255
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef void(\_\-\_\-closure $\ast$ \hyperlink{Connection_8h_e18f1161e76df22142d73ed0734bd10c}{Connection\_\-Function} )(void $\ast$)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static const TColor \hyperlink{Connection_8h_6ed6ea9c3159ba44124dbac86618f618}{ConnectionOkNormalColor} = CONNECTION\_\-OK\_\-NORMAL
+\item 
+static const TColor \hyperlink{Connection_8h_d4c99c958d868dcd86be916461609e24}{ConnectionOkSelectedColor} = CONNECTION\_\-OK\_\-SELECTED
+\item 
+static const TColor \hyperlink{Connection_8h_8a3f1370822008c6a871b862f01bccbf}{ConnectionWarrningNormalColor} = CONNECTION\_\-WARRNING\_\-NORMAL
+\item 
+static const TColor \hyperlink{Connection_8h_8a82b0bcaeea557de65e39bf2399c308}{ConnectionWarrningSelectedColor} = CONNECTION\_\-WARRNING\_\-SELECTED
+\item 
+static const TColor \hyperlink{Connection_8h_010346520e0d6678335b6b59f77bc690}{ConnectionErrorNormalColor} = CONNECTION\_\-ERROR\_\-NORMAL
+\item 
+static const TColor \hyperlink{Connection_8h_dc0b2e1af561f6aa5d3396accfd6ed91}{ConnectionErrorSelectedColor} = CONNECTION\_\-ERROR\_\-SELECTED
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{Connection_8h_2233f4351cd7d445f7b5cc129a3aa33d}{
+\index{Connection.h@{Connection.h}!CONNECTION\_\-ERROR\_\-NORMAL@{CONNECTION\_\-ERROR\_\-NORMAL}}
+\index{CONNECTION\_\-ERROR\_\-NORMAL@{CONNECTION\_\-ERROR\_\-NORMAL}!Connection.h@{Connection.h}}
+\subsubsection[CONNECTION\_\-ERROR\_\-NORMAL]{\setlength{\rightskip}{0pt plus 5cm}\#define CONNECTION\_\-ERROR\_\-NORMAL~206}}
+\label{Connection_8h_2233f4351cd7d445f7b5cc129a3aa33d}
+
+
+
+
+Definition at line 16 of file Connection.h.\hypertarget{Connection_8h_49b81d66da221f9930a7e56f13eb45ce}{
+\index{Connection.h@{Connection.h}!CONNECTION\_\-ERROR\_\-SELECTED@{CONNECTION\_\-ERROR\_\-SELECTED}}
+\index{CONNECTION\_\-ERROR\_\-SELECTED@{CONNECTION\_\-ERROR\_\-SELECTED}!Connection.h@{Connection.h}}
+\subsubsection[CONNECTION\_\-ERROR\_\-SELECTED]{\setlength{\rightskip}{0pt plus 5cm}\#define CONNECTION\_\-ERROR\_\-SELECTED~255}}
+\label{Connection_8h_49b81d66da221f9930a7e56f13eb45ce}
+
+
+
+
+Definition at line 17 of file Connection.h.\hypertarget{Connection_8h_b00477876fb393bb501e5cdf2c3dd390}{
+\index{Connection.h@{Connection.h}!CONNECTION\_\-OK\_\-NORMAL@{CONNECTION\_\-OK\_\-NORMAL}}
+\index{CONNECTION\_\-OK\_\-NORMAL@{CONNECTION\_\-OK\_\-NORMAL}!Connection.h@{Connection.h}}
+\subsubsection[CONNECTION\_\-OK\_\-NORMAL]{\setlength{\rightskip}{0pt plus 5cm}\#define CONNECTION\_\-OK\_\-NORMAL~0x33CC33}}
+\label{Connection_8h_b00477876fb393bb501e5cdf2c3dd390}
+
+
+
+
+Definition at line 12 of file Connection.h.\hypertarget{Connection_8h_f9125b98ea55fc4aea8ef73df27f1a13}{
+\index{Connection.h@{Connection.h}!CONNECTION\_\-OK\_\-SELECTED@{CONNECTION\_\-OK\_\-SELECTED}}
+\index{CONNECTION\_\-OK\_\-SELECTED@{CONNECTION\_\-OK\_\-SELECTED}!Connection.h@{Connection.h}}
+\subsubsection[CONNECTION\_\-OK\_\-SELECTED]{\setlength{\rightskip}{0pt plus 5cm}\#define CONNECTION\_\-OK\_\-SELECTED~0x20FF20}}
+\label{Connection_8h_f9125b98ea55fc4aea8ef73df27f1a13}
+
+
+
+
+Definition at line 13 of file Connection.h.\hypertarget{Connection_8h_529b378e03bb2eb7190f7c19c1a86467}{
+\index{Connection.h@{Connection.h}!CONNECTION\_\-WARRNING\_\-NORMAL@{CONNECTION\_\-WARRNING\_\-NORMAL}}
+\index{CONNECTION\_\-WARRNING\_\-NORMAL@{CONNECTION\_\-WARRNING\_\-NORMAL}!Connection.h@{Connection.h}}
+\subsubsection[CONNECTION\_\-WARRNING\_\-NORMAL]{\setlength{\rightskip}{0pt plus 5cm}\#define CONNECTION\_\-WARRNING\_\-NORMAL~61137}}
+\label{Connection_8h_529b378e03bb2eb7190f7c19c1a86467}
+
+
+
+
+Definition at line 14 of file Connection.h.\hypertarget{Connection_8h_4533220d4269a55b041d2a98924984e9}{
+\index{Connection.h@{Connection.h}!CONNECTION\_\-WARRNING\_\-SELECTED@{CONNECTION\_\-WARRNING\_\-SELECTED}}
+\index{CONNECTION\_\-WARRNING\_\-SELECTED@{CONNECTION\_\-WARRNING\_\-SELECTED}!Connection.h@{Connection.h}}
+\subsubsection[CONNECTION\_\-WARRNING\_\-SELECTED]{\setlength{\rightskip}{0pt plus 5cm}\#define CONNECTION\_\-WARRNING\_\-SELECTED~65021}}
+\label{Connection_8h_4533220d4269a55b041d2a98924984e9}
+
+
+
+
+Definition at line 15 of file Connection.h.
+
+\subsection{Typedef Documentation}
+\hypertarget{Connection_8h_e18f1161e76df22142d73ed0734bd10c}{
+\index{Connection.h@{Connection.h}!Connection\_\-Function@{Connection\_\-Function}}
+\index{Connection\_\-Function@{Connection\_\-Function}!Connection.h@{Connection.h}}
+\subsubsection[Connection\_\-Function]{\setlength{\rightskip}{0pt plus 5cm}typedef void(\_\-\_\-closure $\ast$ {\bf Connection\_\-Function})(void $\ast$)}}
+\label{Connection_8h_e18f1161e76df22142d73ed0734bd10c}
+
+
+
+
+Definition at line 26 of file Connection.h.
+
+\subsection{Variable Documentation}
+\hypertarget{Connection_8h_010346520e0d6678335b6b59f77bc690}{
+\index{Connection.h@{Connection.h}!ConnectionErrorNormalColor@{ConnectionErrorNormalColor}}
+\index{ConnectionErrorNormalColor@{ConnectionErrorNormalColor}!Connection.h@{Connection.h}}
+\subsubsection[ConnectionErrorNormalColor]{\setlength{\rightskip}{0pt plus 5cm}const TColor {\bf ConnectionErrorNormalColor} = CONNECTION\_\-ERROR\_\-NORMAL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{Connection_8h_010346520e0d6678335b6b59f77bc690}
+
+
+
+
+Definition at line 23 of file Connection.h.
+
+Referenced by Connection::setSelected(), and Connection::update().\hypertarget{Connection_8h_dc0b2e1af561f6aa5d3396accfd6ed91}{
+\index{Connection.h@{Connection.h}!ConnectionErrorSelectedColor@{ConnectionErrorSelectedColor}}
+\index{ConnectionErrorSelectedColor@{ConnectionErrorSelectedColor}!Connection.h@{Connection.h}}
+\subsubsection[ConnectionErrorSelectedColor]{\setlength{\rightskip}{0pt plus 5cm}const TColor {\bf ConnectionErrorSelectedColor} = CONNECTION\_\-ERROR\_\-SELECTED\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{Connection_8h_dc0b2e1af561f6aa5d3396accfd6ed91}
+
+
+
+
+Definition at line 24 of file Connection.h.
+
+Referenced by Connection::setSelected(), and Connection::update().\hypertarget{Connection_8h_6ed6ea9c3159ba44124dbac86618f618}{
+\index{Connection.h@{Connection.h}!ConnectionOkNormalColor@{ConnectionOkNormalColor}}
+\index{ConnectionOkNormalColor@{ConnectionOkNormalColor}!Connection.h@{Connection.h}}
+\subsubsection[ConnectionOkNormalColor]{\setlength{\rightskip}{0pt plus 5cm}const TColor {\bf ConnectionOkNormalColor} = CONNECTION\_\-OK\_\-NORMAL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{Connection_8h_6ed6ea9c3159ba44124dbac86618f618}
+
+
+
+
+Definition at line 19 of file Connection.h.
+
+Referenced by Connection::setSelected(), and Connection::update().\hypertarget{Connection_8h_d4c99c958d868dcd86be916461609e24}{
+\index{Connection.h@{Connection.h}!ConnectionOkSelectedColor@{ConnectionOkSelectedColor}}
+\index{ConnectionOkSelectedColor@{ConnectionOkSelectedColor}!Connection.h@{Connection.h}}
+\subsubsection[ConnectionOkSelectedColor]{\setlength{\rightskip}{0pt plus 5cm}const TColor {\bf ConnectionOkSelectedColor} = CONNECTION\_\-OK\_\-SELECTED\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{Connection_8h_d4c99c958d868dcd86be916461609e24}
+
+
+
+
+Definition at line 20 of file Connection.h.
+
+Referenced by Connection::setSelected(), and Connection::update().\hypertarget{Connection_8h_8a3f1370822008c6a871b862f01bccbf}{
+\index{Connection.h@{Connection.h}!ConnectionWarrningNormalColor@{ConnectionWarrningNormalColor}}
+\index{ConnectionWarrningNormalColor@{ConnectionWarrningNormalColor}!Connection.h@{Connection.h}}
+\subsubsection[ConnectionWarrningNormalColor]{\setlength{\rightskip}{0pt plus 5cm}const TColor {\bf ConnectionWarrningNormalColor} = CONNECTION\_\-WARRNING\_\-NORMAL\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{Connection_8h_8a3f1370822008c6a871b862f01bccbf}
+
+
+
+
+Definition at line 21 of file Connection.h.
+
+Referenced by Connection::setSelected(), and Connection::update().\hypertarget{Connection_8h_8a82b0bcaeea557de65e39bf2399c308}{
+\index{Connection.h@{Connection.h}!ConnectionWarrningSelectedColor@{ConnectionWarrningSelectedColor}}
+\index{ConnectionWarrningSelectedColor@{ConnectionWarrningSelectedColor}!Connection.h@{Connection.h}}
+\subsubsection[ConnectionWarrningSelectedColor]{\setlength{\rightskip}{0pt plus 5cm}const TColor {\bf ConnectionWarrningSelectedColor} = CONNECTION\_\-WARRNING\_\-SELECTED\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{Connection_8h_8a82b0bcaeea557de65e39bf2399c308}
+
+
+
+
+Definition at line 22 of file Connection.h.
+
+Referenced by Connection::setSelected(), and Connection::update().

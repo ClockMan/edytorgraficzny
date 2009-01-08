@@ -1,0 +1,9 @@
+Kody w Delphi ogromnej iloœci operacji na obrazach, ³¹dtwe do przet³umaczenia na C++
+http://4programmers.net/Delphi/Gotowce/ScanLine_-_kontrast,_nasycenie,_negatyw,_przyciemnienie,_rozjaœnienie,_rozmycie,_sepia,_skala_szaroœci,_wykucie,wyp³owienie,_zamiana_RGB_i_inne..
+
+Troche informacji o DLL
+http://cyfbar.republika.pl/dll.htm
+
+Te¿ troche o DLL
+http://forum.programuj.com/viewtopic.php?p=26980&sid=4c0d8367258f083338511dc1e8257b47
+

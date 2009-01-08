@@ -1,0 +1,144 @@
+\hypertarget{classBlockHistoryOutputElement}{
+\section{BlockHistoryOutputElement Class Reference}
+\label{classBlockHistoryOutputElement}\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+}
+{\tt \#include $<$BlockHistoryOutputElement.h$>$}
+
+Collaboration diagram for BlockHistoryOutputElement:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=96pt]{classBlockHistoryOutputElement__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classBlockHistoryOutputElement_c6a108725145c059f2c3caa4740f7fab}{setData} (\hyperlink{classTypeConfig}{TypeConfig} \&d)
+\item 
+void \hyperlink{classBlockHistoryOutputElement_18ce3d2033c394df5c9e478b97f3d4eb}{setNULL} ()
+\item 
+\hyperlink{classTypeConfig}{TypeConfig} $\ast$ \hyperlink{classBlockHistoryOutputElement_5c3aada39e483d277c9b52c0a4b3c549}{getData} ()
+\item 
+\hyperlink{classBlockHistoryOutputElement_08ab623b57a5a66e65042064c64134c3}{BlockHistoryOutputElement} ()
+\item 
+\hyperlink{classBlockHistoryOutputElement_80f68f40d930d60dddae536a7acb08bf}{$\sim$BlockHistoryOutputElement} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockOutput}{BlockOutput} $\ast$ \hyperlink{classBlockHistoryOutputElement_3bd188f07c6e29c45ebd043c9a8bd755}{output}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classTypeConfig}{TypeConfig} $\ast$ \hyperlink{classBlockHistoryOutputElement_fcac98db485905d1cd9db29212c769a3}{data}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Klasa zawiera historie dla pojedynczego wyjscia bloku 
+
+Definition at line 9 of file BlockHistoryOutputElement.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlockHistoryOutputElement_08ab623b57a5a66e65042064c64134c3}{
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\subsubsection[BlockHistoryOutputElement]{\setlength{\rightskip}{0pt plus 5cm}BlockHistoryOutputElement::BlockHistoryOutputElement ()}}
+\label{classBlockHistoryOutputElement_08ab623b57a5a66e65042064c64134c3}
+
+
+Konstruktor 
+
+Definition at line 6 of file BlockHistoryOutputElement.cpp.
+
+References data, and output.\hypertarget{classBlockHistoryOutputElement_80f68f40d930d60dddae536a7acb08bf}{
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!$\sim$BlockHistoryOutputElement@{$\sim$BlockHistoryOutputElement}}
+\index{$\sim$BlockHistoryOutputElement@{$\sim$BlockHistoryOutputElement}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\subsubsection[$\sim$BlockHistoryOutputElement]{\setlength{\rightskip}{0pt plus 5cm}BlockHistoryOutputElement::$\sim$BlockHistoryOutputElement ()}}
+\label{classBlockHistoryOutputElement_80f68f40d930d60dddae536a7acb08bf}
+
+
+Destruktor 
+
+Definition at line 12 of file BlockHistoryOutputElement.cpp.
+
+References data.
+
+\subsection{Member Function Documentation}
+\hypertarget{classBlockHistoryOutputElement_c6a108725145c059f2c3caa4740f7fab}{
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!setData@{setData}}
+\index{setData@{setData}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\subsubsection[setData]{\setlength{\rightskip}{0pt plus 5cm}void BlockHistoryOutputElement::setData ({\bf TypeConfig} \& {\em d})}}
+\label{classBlockHistoryOutputElement_c6a108725145c059f2c3caa4740f7fab}
+
+
+Ustawia obiekt \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em d}]dane \end{description}
+\end{Desc}
+
+
+Definition at line 17 of file BlockHistoryOutputElement.cpp.
+
+References data.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classBlockHistoryOutputElement_18ce3d2033c394df5c9e478b97f3d4eb}{
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!setNULL@{setNULL}}
+\index{setNULL@{setNULL}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\subsubsection[setNULL]{\setlength{\rightskip}{0pt plus 5cm}void BlockHistoryOutputElement::setNULL ()}}
+\label{classBlockHistoryOutputElement_18ce3d2033c394df5c9e478b97f3d4eb}
+
+
+Czysci obiekt 
+
+Definition at line 28 of file BlockHistoryOutputElement.cpp.
+
+References data.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classBlockHistoryOutputElement_5c3aada39e483d277c9b52c0a4b3c549}{
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!getData@{getData}}
+\index{getData@{getData}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\subsubsection[getData]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeConfig} $\ast$ BlockHistoryOutputElement::getData ()}}
+\label{classBlockHistoryOutputElement_5c3aada39e483d277c9b52c0a4b3c549}
+
+
+Zwraca obiekt \begin{Desc}
+\item[Returns:]NULL lub TypeConfig$\ast$ \end{Desc}
+
+
+Definition at line 23 of file BlockHistoryOutputElement.cpp.
+
+References data.
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlockHistoryOutputElement_fcac98db485905d1cd9db29212c769a3}{
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!data@{data}}
+\index{data@{data}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\subsubsection[data]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeConfig}$\ast$ {\bf BlockHistoryOutputElement::data}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classBlockHistoryOutputElement_fcac98db485905d1cd9db29212c769a3}
+
+
+
+
+Definition at line 12 of file BlockHistoryOutputElement.h.
+
+Referenced by BlockHistoryOutputElement(), getData(), setData(), setNULL(), and $\sim$BlockHistoryOutputElement().\hypertarget{classBlockHistoryOutputElement_3bd188f07c6e29c45ebd043c9a8bd755}{
+\index{BlockHistoryOutputElement@{BlockHistoryOutputElement}!output@{output}}
+\index{output@{output}!BlockHistoryOutputElement@{BlockHistoryOutputElement}}
+\subsubsection[output]{\setlength{\rightskip}{0pt plus 5cm}{\bf BlockOutput}$\ast$ {\bf BlockHistoryOutputElement::output}}}
+\label{classBlockHistoryOutputElement_3bd188f07c6e29c45ebd043c9a8bd755}
+
+
+Wyjscie bloku 
+
+Definition at line 17 of file BlockHistoryOutputElement.h.
+
+Referenced by BlockHistoryOutputElement(), and PIWOEngine::runBlock().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/gui/\hyperlink{BlockHistoryOutputElement_8h}{BlockHistoryOutputElement.h}\item 
+/PIWO/Program/gui/\hyperlink{BlockHistoryOutputElement_8cpp}{BlockHistoryOutputElement.cpp}\end{CompactItemize}

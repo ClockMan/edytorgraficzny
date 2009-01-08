@@ -1,0 +1,193 @@
+\hypertarget{classTypeDLL}{
+\section{TypeDLL Class Reference}
+\label{classTypeDLL}\index{TypeDLL@{TypeDLL}}
+}
+{\tt \#include $<$TypeDLL.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classTypeDLL_ab72ed838b47da3b97580120be8b9089}{TypeDLL} (const AnsiString \&fileDLL)
+\item 
+\hyperlink{classTypeDLL_a4c2e51a5ceb30a96c1b9d5afba93603}{$\sim$TypeDLL} ()
+\item 
+TFrame $\ast$ \hyperlink{classTypeDLL_67cdb99638bd6af8ec8156bad8e9b3d0}{show} (TWinControl $\ast$parent, \hyperlink{classTypeConfig}{TypeConfig} $\ast$aData)
+\item 
+bool \hyperlink{classTypeDLL_b6478c39cb533da91e2b0a3f045067d5}{isValid} (\hyperlink{classTypeConfig}{TypeConfig} $\ast$aData)
+\item 
+AnsiString \hyperlink{classTypeDLL_28c8d6824e3c12c04ae91e43f27fc34b}{getType} ()
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+AnsiString \hyperlink{classTypeDLL_bae421811d0fefe89c4bba6d21474a7a}{type}
+\item 
+HANDLE \hyperlink{classTypeDLL_90d9ea7c7fd718d235f77d300bc572a5}{DLLHandle}
+\item 
+\hyperlink{TypeDLL_8h_e3b92b079373f3c0fae8106774b2c686}{TypeDLL\_\-show} \hyperlink{classTypeDLL_bb1bda3b0b147c761e5354d5ed856c1b}{fshow}
+\item 
+TypeDLL\_\-isValid \hyperlink{classTypeDLL_7f0d7546e2f0c211ad2d70b2dc416540}{fisValid}
+\item 
+TypeDLL\_\-getType \hyperlink{classTypeDLL_66b6a0fb2e18a432f2c59bd055c688d3}{fgetType}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Interfejs pozwalajacy na l¹dowanie i uzywanie biblioteki typu \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 21 of file TypeDLL.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTypeDLL_ab72ed838b47da3b97580120be8b9089}{
+\index{TypeDLL@{TypeDLL}!TypeDLL@{TypeDLL}}
+\index{TypeDLL@{TypeDLL}!TypeDLL@{TypeDLL}}
+\subsubsection[TypeDLL]{\setlength{\rightskip}{0pt plus 5cm}TypeDLL::TypeDLL (const AnsiString \& {\em fileDLL})}}
+\label{classTypeDLL_ab72ed838b47da3b97580120be8b9089}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em file}]sciezka do pliku \item[{\em stype}]\end{description}
+\end{Desc}
+
+
+Definition at line 3 of file TypeDLL.cpp.
+
+References DLLHandle, fgetType, fisValid, and fshow.\hypertarget{classTypeDLL_a4c2e51a5ceb30a96c1b9d5afba93603}{
+\index{TypeDLL@{TypeDLL}!$\sim$TypeDLL@{$\sim$TypeDLL}}
+\index{$\sim$TypeDLL@{$\sim$TypeDLL}!TypeDLL@{TypeDLL}}
+\subsubsection[$\sim$TypeDLL]{\setlength{\rightskip}{0pt plus 5cm}TypeDLL::$\sim$TypeDLL ()}}
+\label{classTypeDLL_a4c2e51a5ceb30a96c1b9d5afba93603}
+
+
+Destruktor 
+
+Definition at line 17 of file TypeDLL.cpp.
+
+References DLLHandle.
+
+\subsection{Member Function Documentation}
+\hypertarget{classTypeDLL_67cdb99638bd6af8ec8156bad8e9b3d0}{
+\index{TypeDLL@{TypeDLL}!show@{show}}
+\index{show@{show}!TypeDLL@{TypeDLL}}
+\subsubsection[show]{\setlength{\rightskip}{0pt plus 5cm}TFrame $\ast$ TypeDLL::show (TWinControl $\ast$ {\em parent}, \/  {\bf TypeConfig} $\ast$ {\em aData})}}
+\label{classTypeDLL_67cdb99638bd6af8ec8156bad8e9b3d0}
+
+
+Wykonuje funkcje show w zaladowanej DLL typu \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em parent}]wskaznik na obiekt wizualny ktory ma zostac uznany za parent - powinno to byc okno \item[{\em aData}]dane \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]zwraca wskaznik na obiekt TFrame, naszym obowiaskiem jest prawidlowo zwolnic go. \end{Desc}
+
+
+Definition at line 22 of file TypeDLL.cpp.
+
+References fshow.
+
+Referenced by THistory::refresh().\hypertarget{classTypeDLL_b6478c39cb533da91e2b0a3f045067d5}{
+\index{TypeDLL@{TypeDLL}!isValid@{isValid}}
+\index{isValid@{isValid}!TypeDLL@{TypeDLL}}
+\subsubsection[isValid]{\setlength{\rightskip}{0pt plus 5cm}bool TypeDLL::isValid ({\bf TypeConfig} $\ast$ {\em aData})}}
+\label{classTypeDLL_b6478c39cb533da91e2b0a3f045067d5}
+
+
+Sprawdza poprawnosc danych. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aData}]dane. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]poprawnosc wykonanej operacji \end{Desc}
+
+
+Definition at line 26 of file TypeDLL.cpp.
+
+References fisValid.
+
+Referenced by PIWOEngine::runBlock().\hypertarget{classTypeDLL_28c8d6824e3c12c04ae91e43f27fc34b}{
+\index{TypeDLL@{TypeDLL}!getType@{getType}}
+\index{getType@{getType}!TypeDLL@{TypeDLL}}
+\subsubsection[getType]{\setlength{\rightskip}{0pt plus 5cm}AnsiString TypeDLL::getType ()}}
+\label{classTypeDLL_28c8d6824e3c12c04ae91e43f27fc34b}
+
+
+Pobiera typ. \begin{Desc}
+\item[Returns:]typ. \end{Desc}
+
+
+Definition at line 30 of file TypeDLL.cpp.
+
+References fgetType.
+
+Referenced by PluginContener::LoadData(), THistory::refresh(), and PIWOEngine::runBlock().
+
+\subsection{Member Data Documentation}
+\hypertarget{classTypeDLL_bae421811d0fefe89c4bba6d21474a7a}{
+\index{TypeDLL@{TypeDLL}!type@{type}}
+\index{type@{type}!TypeDLL@{TypeDLL}}
+\subsubsection[type]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf TypeDLL::type}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTypeDLL_bae421811d0fefe89c4bba6d21474a7a}
+
+
+
+
+Definition at line 24 of file TypeDLL.h.\hypertarget{classTypeDLL_90d9ea7c7fd718d235f77d300bc572a5}{
+\index{TypeDLL@{TypeDLL}!DLLHandle@{DLLHandle}}
+\index{DLLHandle@{DLLHandle}!TypeDLL@{TypeDLL}}
+\subsubsection[DLLHandle]{\setlength{\rightskip}{0pt plus 5cm}HANDLE {\bf TypeDLL::DLLHandle}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTypeDLL_90d9ea7c7fd718d235f77d300bc572a5}
+
+
+
+
+Definition at line 25 of file TypeDLL.h.
+
+Referenced by TypeDLL(), and $\sim$TypeDLL().\hypertarget{classTypeDLL_bb1bda3b0b147c761e5354d5ed856c1b}{
+\index{TypeDLL@{TypeDLL}!fshow@{fshow}}
+\index{fshow@{fshow}!TypeDLL@{TypeDLL}}
+\subsubsection[fshow]{\setlength{\rightskip}{0pt plus 5cm}{\bf TypeDLL\_\-show} {\bf TypeDLL::fshow}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTypeDLL_bb1bda3b0b147c761e5354d5ed856c1b}
+
+
+
+
+Definition at line 26 of file TypeDLL.h.
+
+Referenced by show(), and TypeDLL().\hypertarget{classTypeDLL_7f0d7546e2f0c211ad2d70b2dc416540}{
+\index{TypeDLL@{TypeDLL}!fisValid@{fisValid}}
+\index{fisValid@{fisValid}!TypeDLL@{TypeDLL}}
+\subsubsection[fisValid]{\setlength{\rightskip}{0pt plus 5cm}TypeDLL\_\-isValid {\bf TypeDLL::fisValid}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTypeDLL_7f0d7546e2f0c211ad2d70b2dc416540}
+
+
+
+
+Definition at line 27 of file TypeDLL.h.
+
+Referenced by isValid(), and TypeDLL().\hypertarget{classTypeDLL_66b6a0fb2e18a432f2c59bd055c688d3}{
+\index{TypeDLL@{TypeDLL}!fgetType@{fgetType}}
+\index{fgetType@{fgetType}!TypeDLL@{TypeDLL}}
+\subsubsection[fgetType]{\setlength{\rightskip}{0pt plus 5cm}TypeDLL\_\-getType {\bf TypeDLL::fgetType}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classTypeDLL_66b6a0fb2e18a432f2c59bd055c688d3}
+
+
+
+
+Definition at line 28 of file TypeDLL.h.
+
+Referenced by getType(), and TypeDLL().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/brige/\hyperlink{TypeDLL_8h}{TypeDLL.h}\item 
+/PIWO/Program/brige/\hyperlink{TypeDLL_8cpp}{TypeDLL.cpp}\end{CompactItemize}

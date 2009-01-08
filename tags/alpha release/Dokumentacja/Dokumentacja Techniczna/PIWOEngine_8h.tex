@@ -1,0 +1,184 @@
+\hypertarget{PIWOEngine_8h}{
+\section{/PIWO/Program/gui/PIWOEngine.h File Reference}
+\label{PIWOEngine_8h}\index{/PIWO/Program/gui/PIWOEngine.h@{/PIWO/Program/gui/PIWOEngine.h}}
+}
+{\tt \#include $<$SysUtils.hpp$>$}\par
+{\tt \#include $<$Classes.hpp$>$}\par
+{\tt \#include $<$Controls.hpp$>$}\par
+{\tt \#include $<$Forms.hpp$>$}\par
+{\tt \#include \char`\"{}../brige/PluginContener.h\char`\"{}}\par
+{\tt \#include \char`\"{}VisualBlock.h\char`\"{}}\par
+{\tt \#include \char`\"{}Connection.h\char`\"{}}\par
+{\tt \#include \char`\"{}history.h\char`\"{}}\par
+
+
+Include dependency graph for PIWOEngine.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=420pt]{PIWOEngine_8h__incl}
+\end{center}
+\end{figure}
+
+
+This graph shows which files directly or indirectly include this file:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{PIWOEngine_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classPIWOEngine}{PIWOEngine}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{PIWOEngine_8h_8327c4bf47fc65dfd8590b9566109b44}{PIWOEngineH}
+\item 
+\#define \hyperlink{PIWOEngine_8h_318dcd0c0a579276e1ad2effdbd5a003}{PIWOMAINCLASSTYPE}~TScrollBox
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef const \hyperlink{PIWOEngine_8h_ae0fdfb65731fcd8dad6e5c841767865}{AnsiString}
+\item 
+typedef void(\_\-\_\-closure $\ast$ \hyperlink{PIWOEngine_8h_8273eb67828fc9cc4e2b18b930dada38}{PIWOEngine\_\-RunProgress} )(TObject $\ast$, const AnsiString, const double)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+typedef \hyperlink{PIWOEngine_8h_83030218b6b54cb750b32041e06ead2e}{void} (\_\-\_\-closure $\ast$PIWOEngine\_\-Log)(TObject $\ast$
+\item 
+void \hyperlink{PIWOEngine_8h_7c7d32818ebae2fe8c04f6a654168292}{putString} (const AnsiString \&str, TStream \&stream)
+\item 
+void \hyperlink{PIWOEngine_8h_b52bb01401fbc44c520cbc48a7949b36}{putInt} (const int i, TStream \&stream)
+\item 
+AnsiString \hyperlink{PIWOEngine_8h_de6df329afe49e49a29cc8242f1c2473}{getString} (TStream \&stream)
+\item 
+int \hyperlink{PIWOEngine_8h_5f408adb07e4c71f31021eebf607161d}{getInt} (TStream \&stream)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{PIWOEngine_8h_8327c4bf47fc65dfd8590b9566109b44}{
+\index{PIWOEngine.h@{PIWOEngine.h}!PIWOEngineH@{PIWOEngineH}}
+\index{PIWOEngineH@{PIWOEngineH}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[PIWOEngineH]{\setlength{\rightskip}{0pt plus 5cm}\#define PIWOEngineH}}
+\label{PIWOEngine_8h_8327c4bf47fc65dfd8590b9566109b44}
+
+
+
+
+Definition at line 2 of file PIWOEngine.h.\hypertarget{PIWOEngine_8h_318dcd0c0a579276e1ad2effdbd5a003}{
+\index{PIWOEngine.h@{PIWOEngine.h}!PIWOMAINCLASSTYPE@{PIWOMAINCLASSTYPE}}
+\index{PIWOMAINCLASSTYPE@{PIWOMAINCLASSTYPE}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[PIWOMAINCLASSTYPE]{\setlength{\rightskip}{0pt plus 5cm}\#define PIWOMAINCLASSTYPE~TScrollBox}}
+\label{PIWOEngine_8h_318dcd0c0a579276e1ad2effdbd5a003}
+
+
+
+
+Definition at line 13 of file PIWOEngine.h.
+
+Referenced by VisualBlock::BlockMouseDown(), VisualBlock::BlockMouseUp(), and PIWOEngine::PIWOEngine().
+
+\subsection{Typedef Documentation}
+\hypertarget{PIWOEngine_8h_ae0fdfb65731fcd8dad6e5c841767865}{
+\index{PIWOEngine.h@{PIWOEngine.h}!AnsiString@{AnsiString}}
+\index{AnsiString@{AnsiString}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[AnsiString]{\setlength{\rightskip}{0pt plus 5cm}typedef const AnsiString}}
+\label{PIWOEngine_8h_ae0fdfb65731fcd8dad6e5c841767865}
+
+
+
+
+Definition at line 15 of file PIWOEngine.h.\hypertarget{PIWOEngine_8h_8273eb67828fc9cc4e2b18b930dada38}{
+\index{PIWOEngine.h@{PIWOEngine.h}!PIWOEngine\_\-RunProgress@{PIWOEngine\_\-RunProgress}}
+\index{PIWOEngine\_\-RunProgress@{PIWOEngine\_\-RunProgress}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[PIWOEngine\_\-RunProgress]{\setlength{\rightskip}{0pt plus 5cm}typedef void(\_\-\_\-closure $\ast$ {\bf PIWOEngine\_\-RunProgress})(TObject $\ast$, const AnsiString, const double)}}
+\label{PIWOEngine_8h_8273eb67828fc9cc4e2b18b930dada38}
+
+
+
+
+Definition at line 16 of file PIWOEngine.h.
+
+\subsection{Function Documentation}
+\hypertarget{PIWOEngine_8h_5f408adb07e4c71f31021eebf607161d}{
+\index{PIWOEngine.h@{PIWOEngine.h}!getInt@{getInt}}
+\index{getInt@{getInt}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[getInt]{\setlength{\rightskip}{0pt plus 5cm}int getInt (TStream \& {\em stream})}}
+\label{PIWOEngine_8h_5f408adb07e4c71f31021eebf607161d}
+
+
+Pobiera integer z stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]stream \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]integer \end{Desc}
+
+
+Definition at line 2528 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::loadFromFile().\hypertarget{PIWOEngine_8h_de6df329afe49e49a29cc8242f1c2473}{
+\index{PIWOEngine.h@{PIWOEngine.h}!getString@{getString}}
+\index{getString@{getString}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[getString]{\setlength{\rightskip}{0pt plus 5cm}AnsiString getString (TStream \& {\em stream})}}
+\label{PIWOEngine_8h_de6df329afe49e49a29cc8242f1c2473}
+
+
+Pobiera string z stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]stream \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string \end{Desc}
+
+
+Definition at line 2515 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::loadFromFile().\hypertarget{PIWOEngine_8h_b52bb01401fbc44c520cbc48a7949b36}{
+\index{PIWOEngine.h@{PIWOEngine.h}!putInt@{putInt}}
+\index{putInt@{putInt}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[putInt]{\setlength{\rightskip}{0pt plus 5cm}void putInt (const int {\em i}, \/  TStream \& {\em stream})}}
+\label{PIWOEngine_8h_b52bb01401fbc44c520cbc48a7949b36}
+
+
+Zapisuje integer do stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em i}]integer \item[{\em stream}]stream \end{description}
+\end{Desc}
+
+
+Definition at line 2510 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::saveToFile().\hypertarget{PIWOEngine_8h_7c7d32818ebae2fe8c04f6a654168292}{
+\index{PIWOEngine.h@{PIWOEngine.h}!putString@{putString}}
+\index{putString@{putString}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[putString]{\setlength{\rightskip}{0pt plus 5cm}void putString (const AnsiString \& {\em str}, \/  TStream \& {\em stream})}}
+\label{PIWOEngine_8h_7c7d32818ebae2fe8c04f6a654168292}
+
+
+Zapisuje string do stream \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em str}]string \item[{\em stream}]stream \end{description}
+\end{Desc}
+
+
+Definition at line 2502 of file PIWOEngine.cpp.
+
+Referenced by PIWOEngine::saveToFile().\hypertarget{PIWOEngine_8h_83030218b6b54cb750b32041e06ead2e}{
+\index{PIWOEngine.h@{PIWOEngine.h}!void@{void}}
+\index{void@{void}!PIWOEngine.h@{PIWOEngine.h}}
+\subsubsection[void]{\setlength{\rightskip}{0pt plus 5cm}typedef void (\_\-\_\-closure $\ast$ {\em PIWOEngine\_\-Log})}}
+\label{PIWOEngine_8h_83030218b6b54cb750b32041e06ead2e}
+
+

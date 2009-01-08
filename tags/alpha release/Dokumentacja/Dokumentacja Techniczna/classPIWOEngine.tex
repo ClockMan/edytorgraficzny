@@ -1,0 +1,1221 @@
+\hypertarget{classPIWOEngine}{
+\section{PIWOEngine Class Reference}
+\label{classPIWOEngine}\index{PIWOEngine@{PIWOEngine}}
+}
+{\tt \#include $<$PIWOEngine.h$>$}
+
+Collaboration diagram for PIWOEngine:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classPIWOEngine__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\_\-\_\-fastcall \hyperlink{classPIWOEngine_cdfa1d8927a1dec652d405c4f6162f19}{PIWOEngine} (TComponent $\ast$Owner)
+\item 
+\_\-\_\-fastcall \hyperlink{classPIWOEngine_e7b0e23554e0bbac03efece62653e69f}{$\sim$PIWOEngine} ()
+\item 
+bool \hyperlink{classPIWOEngine_36ccc94c01c411c848b08900254caf70}{AddBlock} (const AnsiString \&name)
+\item 
+bool \hyperlink{classPIWOEngine_d55f140db8722ff1601fa675ec779e1d}{DeleteBlock} (const AnsiString \&fullName)
+\item 
+bool \hyperlink{classPIWOEngine_a11ad8ce77d2e5b026ebc3469bdff0d9}{DeleteSelectedBlocks} ()
+\item 
+bool \hyperlink{classPIWOEngine_edd85509770c459cd621bfeb5eba4ac7}{DeleteAllBlocks} ()
+\item 
+void \hyperlink{classPIWOEngine_27e53e5d565cca55d8663a14906ab720}{SelectAllBlocks} ()
+\item 
+void \hyperlink{classPIWOEngine_b8926ec72c402ff687ac16061c9d35eb}{InvertBlockSelection} ()
+\item 
+void \hyperlink{classPIWOEngine_60d90f58e1d47c5a12547126700799c7}{UnselectAllBlocks} ()
+\item 
+bool \hyperlink{classPIWOEngine_60f3cba63905531e827476ad139ddf62}{DeleteSelectedConnection} ()
+\item 
+bool \hyperlink{classPIWOEngine_93143ee719ccb9645a8d9c197f4fc7b0}{DeleteAllConnections} ()
+\item 
+void \hyperlink{classPIWOEngine_2ec5c192d058a7a44ab82a30fa331c99}{UnselectSelectedConnection} ()
+\item 
+void \hyperlink{classPIWOEngine_2e52cfe4cc826cd43595ca9c7ae979f9}{CancelCustomizationOnSelectedConnections} ()
+\item 
+void \hyperlink{classPIWOEngine_0e28412b868f3042c7bf50e9ee8c40fc}{CancelCustomizationOnAllConnections} ()
+\item 
+void \hyperlink{classPIWOEngine_6e37ad69880f3d9a9ad7cf9b57d894a9}{DuplcateSelectedBlocks} ()
+\item 
+void \hyperlink{classPIWOEngine_3585d1f4c45df99a02c36af9cab8e343}{validateAll} ()
+\item 
+bool \hyperlink{classPIWOEngine_d20139057c6b68e8e4e2fb0d0e04926b}{run} (bool useHistory=true)
+\item 
+bool \hyperlink{classPIWOEngine_b8cd8305728eb8998011af59677084ad}{isRuned} ()
+\item 
+void \hyperlink{classPIWOEngine_134ab9db62730d3a680f24bf33068672}{abort} (bool wait=false)
+\item 
+bool \hyperlink{classPIWOEngine_8505bb4deb5c952d8f93d5b656f385cf}{isAborted} ()
+\item 
+bool \hyperlink{classPIWOEngine_dee854cac7e50d95de9613e2bbdb4676}{saveToFile} (const AnsiString \&filename)
+\item 
+bool \hyperlink{classPIWOEngine_84deceb11d30a25d104a2b34afad27d4}{loadFromFile} (const AnsiString \&filename)
+\item 
+bool \hyperlink{classPIWOEngine_994cb25914cba46f02bdf14909991247}{isChanged} ()
+\item 
+int \hyperlink{classPIWOEngine_070ee971be58a47520dd7e5063e5508e}{getBlockCount} ()
+\item 
+int \hyperlink{classPIWOEngine_1c1eb9af5a92cf907bdce516de31af37}{getConnectionsCount} ()
+\item 
+bool \hyperlink{classPIWOEngine_ff65b56ee08c0ccbdd9724ebc08dc2ad}{isBlockSelected} ()
+\item 
+bool \hyperlink{classPIWOEngine_7bd61a1844a459b79a07a3ecf08d72a3}{isConnectionSelected} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+Graphics::TBitmap $\ast$ \hyperlink{classPIWOEngine_23d5dbc92608ee42ba7975d2454ecbcf}{defaultBlockImage}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_e5b5e665729db134c485ff27305b7888}{OnInformation}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_52bbb80846422f21ab9b03d67ad67a60}{OnDebug}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_37a8c63dad516bc24be59cdca3a1eaa6}{OnSuccess}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_c7a83bdff3736e35b68584bcb3a4b699}{OnWarrning}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_55424b81f56591f23f3b58e0fdd399d2}{OnError}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_02e912fd9ead4eabd48b32f769bd77c1}{OnRunInformation}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_cc1ea09371765860dfc2912dc605f9be}{OnRunDebug}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_faa892e8c9a1a5973a300d2f02143897}{OnRunSuccess}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_ede20b6476b9e1d0db96878e2eee4481}{OnRunWarrning}
+\item 
+PIWOEngine\_\-Log \hyperlink{classPIWOEngine_303f960016f76986cba65e2c0aaea4e1}{OnRunError}
+\item 
+PIWOEngine\_\-Event \hyperlink{classPIWOEngine_ed5f12ba5e4872c5326126080a2cd821}{OnBlockSelected}
+\item 
+PIWOEngine\_\-Event \hyperlink{classPIWOEngine_45e9d4a676e2c489718b23491af65206}{OnConnectionSelected}
+\item 
+PIWOEngine\_\-Event \hyperlink{classPIWOEngine_df70bc69dc41278c1d2b02f308a1ba20}{OnNothingSelected}
+\item 
+PIWOEngine\_\-Event \hyperlink{classPIWOEngine_5322d9b9def723ae036b005c5a3c578e}{OnChanged}
+\item 
+\hyperlink{PIWOEngine_8h_8273eb67828fc9cc4e2b18b930dada38}{PIWOEngine\_\-RunProgress} \hyperlink{classPIWOEngine_c300fdccbd5cf4fa9ad200d10856fd3b}{OnRunProgress}
+\item 
+PIWOEngine\_\-Event \hyperlink{classPIWOEngine_b5d044c03265cf49fc87e58cd2134749}{OnRunStart}
+\item 
+PIWOEngine\_\-Event \hyperlink{classPIWOEngine_7de6e8504739db45b1ba5defeb63d80c}{OnRunEnd}
+\item 
+\hyperlink{classPluginContener}{PluginContener} $\ast$ \hyperlink{classPIWOEngine_6433fe1909e1f8fdecd7ebc9cc0ec4a3}{plugins}
+\item 
+vector$<$ \hyperlink{classTHistory}{THistory} $\ast$ $>$ \hyperlink{classPIWOEngine_dd08ebde966bf33e79750fb1b1dcca08}{historyWindows}
+\item 
+bool \hyperlink{classPIWOEngine_5730b8e65319ad792660fa205495f298}{alwaysRun}
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classPIWOEngine_97f4f39393b6fc49fe33b867b46b9564}{OnVisualBlockConfigClick} (TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_4e51d927289a1bcb9dc8f1153d457e93}{OnVisualBlockInputSelected} (\hyperlink{classVisualInput}{VisualInput} $\ast$input, TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_0b7e4c9ee82bab94f35d8cc5f6cda3f7}{OnVisualBlockOutputSelected} (\hyperlink{classVisualOutput}{VisualOutput} $\ast$output, TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_1a54c292b17426a1690de0500a72d8fa}{OnVisualBlockInputHistoryClick} (\hyperlink{classVisualInput}{VisualInput} $\ast$input, TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_32a93f8cc49a3c9988674e99765d9cee}{OnVisualBlockOutputHistoryClick} (\hyperlink{classVisualOutput}{VisualOutput} $\ast$output, TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_07f70dcb30a6077266626c7f52ce1667}{OnVisualBlockMove} (TObject $\ast$Sender, bool moveAll, int x, int y)
+\item 
+void \hyperlink{classPIWOEngine_2baa1b7c8bb6b91e413b8cc2a7f5b8ea}{OnVisualBlockUnselect} (TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_94a545e2d82c78fffc68c79f53db4a72}{OnVisualBlockSelect} (TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_7ec3c8295c1984c7661c813881fb5bda}{OnVisualBlockSelectAdd} (TObject $\ast$Sender)
+\item 
+void \_\-\_\-fastcall \hyperlink{classPIWOEngine_c0f3009bc8be06d0242546f8a2e6fc94}{onThisClick} (TObject $\ast$Sender)
+\item 
+void \hyperlink{classPIWOEngine_1a8f4608620d249e9982004773bf1fe9}{OnConnectionSelect} (void $\ast$Sender)
+\item 
+void \_\-\_\-fastcall \hyperlink{classPIWOEngine_deb8c8ae4c4d5f69c242f222dc2557bb}{HistoryFormClose} (TObject $\ast$Sender, TCloseAction \&Action)
+\item 
+void \hyperlink{classPIWOEngine_9e8cffc64037b892fbdb1daf3459a31d}{validateBlock} (\hyperlink{classVisualBlock}{VisualBlock} $\ast$block, bool updateInputConnections=true)
+\item 
+\hyperlink{classConnection}{Connection} $\ast$ \hyperlink{classPIWOEngine_7d7bed1c6a1f91bd7c3c4ca7ac696bc9}{getConnectionTo} (\hyperlink{classVisualInput}{VisualInput} $\ast$input)
+\item 
+bool \hyperlink{classPIWOEngine_e993fd1568a25f8ce5e3719212871ae5}{MakeConnection} (\hyperlink{classVisualBlock}{VisualBlock} $\ast$outputBlock, \hyperlink{classVisualOutput}{VisualOutput} $\ast$output, \hyperlink{classVisualBlock}{VisualBlock} $\ast$inputBlock, \hyperlink{classVisualInput}{VisualInput} $\ast$input)
+\item 
+bool \hyperlink{classPIWOEngine_ea240e8aed286fe05d3baf086d9d9c85}{runBlock} (\hyperlink{classVisualBlock}{VisualBlock} $\ast$block, bool fastRun, bool $\ast$useHistory)
+\item 
+bool \hyperlink{classPIWOEngine_f4a1573d29015d4fa8c1a1e37df86de3}{runUsingHistory} ()
+\item 
+bool \hyperlink{classPIWOEngine_302753a45663305fcef14a5c8c348a02}{runNotUsingHistory} ()
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+PIWOMAINCLASSTYPE $\ast$ \hyperlink{classPIWOEngine_d5da32bb11409879f33eca9ebddfc9d6}{area}
+\item 
+vector$<$ \hyperlink{classVisualBlock}{VisualBlock} $\ast$ $>$ \hyperlink{classPIWOEngine_8cc6b573d0eacacc5043891a36b6e820}{blocks}
+\item 
+vector$<$ \hyperlink{classConnection}{Connection} $\ast$ $>$ \hyperlink{classPIWOEngine_192e9886f89d0eee49173cc199afe561}{connections}
+\item 
+\hyperlink{classConnection}{Connection} $\ast$ \hyperlink{classPIWOEngine_89b3e231d010fe4a3672704b68e9fcea}{selectedConnection}
+\item 
+vector$<$ \hyperlink{classVisualBlock}{VisualBlock} $\ast$ $>$ \hyperlink{classPIWOEngine_c2cf186bc174d18bc9764b534bb5879d}{selectedBlocks}
+\item 
+\hyperlink{classVisualBlock}{VisualBlock} $\ast$ \hyperlink{classPIWOEngine_573250b25797190affc38e1e3fdf8bf3}{selectedOutputBlock}
+\item 
+\hyperlink{classVisualBlock}{VisualBlock} $\ast$ \hyperlink{classPIWOEngine_9fe3dcb62ef1ef7860afe06ddca01585}{selectedInputBlock}
+\item 
+\hyperlink{classVisualInput}{VisualInput} $\ast$ \hyperlink{classPIWOEngine_87ae251a3b1c318e8c26e85396fde9e9}{selectedInput}
+\item 
+\hyperlink{classVisualOutput}{VisualOutput} $\ast$ \hyperlink{classPIWOEngine_3008a57c7914a602b34bf470a90d2bb6}{selectedOutput}
+\item 
+bool \hyperlink{classPIWOEngine_58d8519fdc284ac5b088d4b9ead41de1}{isRunning}
+\item 
+bool \hyperlink{classPIWOEngine_fb15e05147a0a299649307876eb97412}{stopRunning}
+\item 
+unsigned int \hyperlink{classPIWOEngine_84d4db25d471839e7cdd44ae0eb2b517}{runProgress}
+\item 
+bool \hyperlink{classPIWOEngine_3d5702db522458d8de52d3dbd0203cdc}{changed}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Glowna klasa projektu, kazda jej instancja symbolizuje osobny projekt 
+
+Definition at line 21 of file PIWOEngine.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPIWOEngine_cdfa1d8927a1dec652d405c4f6162f19}{
+\index{PIWOEngine@{PIWOEngine}!PIWOEngine@{PIWOEngine}}
+\index{PIWOEngine@{PIWOEngine}!PIWOEngine@{PIWOEngine}}
+\subsubsection[PIWOEngine]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-fastcall PIWOEngine::PIWOEngine (TComponent $\ast$ {\em Owner})}}
+\label{classPIWOEngine_cdfa1d8927a1dec652d405c4f6162f19}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Owner}]komponent bedacy parentem i wlascicielem dla projektu \end{description}
+\end{Desc}
+
+
+Definition at line 8 of file PIWOEngine.cpp.
+
+References alwaysRun, area, changed, defaultBlockImage, isRunning, OnBlockSelected, OnConnectionSelected, OnDebug, OnError, OnInformation, OnNothingSelected, OnRunDebug, OnRunEnd, OnRunError, OnRunInformation, OnRunProgress, OnRunStart, OnRunSuccess, OnRunWarrning, OnSuccess, onThisClick(), OnWarrning, PIWOMAINCLASSTYPE, plugins, runProgress, selectedConnection, selectedInput, selectedInputBlock, selectedOutput, selectedOutputBlock, and stopRunning.\hypertarget{classPIWOEngine_e7b0e23554e0bbac03efece62653e69f}{
+\index{PIWOEngine@{PIWOEngine}!$\sim$PIWOEngine@{$\sim$PIWOEngine}}
+\index{$\sim$PIWOEngine@{$\sim$PIWOEngine}!PIWOEngine@{PIWOEngine}}
+\subsubsection[$\sim$PIWOEngine]{\setlength{\rightskip}{0pt plus 5cm}\_\-\_\-fastcall PIWOEngine::$\sim$PIWOEngine ()}}
+\label{classPIWOEngine_e7b0e23554e0bbac03efece62653e69f}
+
+
+Destruktor 
+
+Definition at line 61 of file PIWOEngine.cpp.
+
+References area, blocks, connections, and historyWindows.
+
+\subsection{Member Function Documentation}
+\hypertarget{classPIWOEngine_97f4f39393b6fc49fe33b867b46b9564}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockConfigClick@{OnVisualBlockConfigClick}}
+\index{OnVisualBlockConfigClick@{OnVisualBlockConfigClick}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockConfigClick]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockConfigClick (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_97f4f39393b6fc49fe33b867b46b9564}
+
+
+
+
+Definition at line 397 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, VisualBlock::block, changed, Block::getConfig(), PluginContener::getFunction(), BlockConfig::getRevision(), VisualBlock::getTitle(), VisualBlock::nameOfBlock, OnChanged, OnDebug, OnError, OnWarrning, plugins, run(), FunctionDLL::showConfig(), and validateBlock().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_4e51d927289a1bcb9dc8f1153d457e93}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockInputSelected@{OnVisualBlockInputSelected}}
+\index{OnVisualBlockInputSelected@{OnVisualBlockInputSelected}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockInputSelected]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockInputSelected ({\bf VisualInput} $\ast$ {\em input}, \/  TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_4e51d927289a1bcb9dc8f1153d457e93}
+
+
+
+
+Definition at line 529 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, changed, connections, BlockInput::disconnect(), getConnectionTo(), BlockElement::getDescription(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, MakeConnection(), OnChanged, Connection::outBlock, VisualOutput::output, Connection::output, run(), selectedInput, selectedInputBlock, selectedOutput, selectedOutputBlock, and validateBlock().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_0b7e4c9ee82bab94f35d8cc5f6cda3f7}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockOutputSelected@{OnVisualBlockOutputSelected}}
+\index{OnVisualBlockOutputSelected@{OnVisualBlockOutputSelected}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockOutputSelected]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockOutputSelected ({\bf VisualOutput} $\ast$ {\em output}, \/  TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_0b7e4c9ee82bab94f35d8cc5f6cda3f7}
+
+
+
+
+Definition at line 598 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, changed, connections, BlockInput::disconnect(), getConnectionTo(), BlockElement::getDescription(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, MakeConnection(), OnChanged, Connection::outBlock, VisualOutput::output, Connection::output, run(), selectedInput, selectedInputBlock, selectedOutput, selectedOutputBlock, and validateBlock().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_1a54c292b17426a1690de0500a72d8fa}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockInputHistoryClick@{OnVisualBlockInputHistoryClick}}
+\index{OnVisualBlockInputHistoryClick@{OnVisualBlockInputHistoryClick}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockInputHistoryClick]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockInputHistoryClick ({\bf VisualInput} $\ast$ {\em input}, \/  TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_1a54c292b17426a1690de0500a72d8fa}
+
+
+
+
+Definition at line 679 of file PIWOEngine.cpp.
+
+References THistory::block, BlockElement::getDescription(), BlockElement::getName(), VisualBlock::getTitle(), VisualBlock::history, HistoryFormClose(), historyWindows, VisualInput::input, OnDebug, OnWarrning, plugins, THistory::plugins, and THistory::refresh().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_32a93f8cc49a3c9988674e99765d9cee}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockOutputHistoryClick@{OnVisualBlockOutputHistoryClick}}
+\index{OnVisualBlockOutputHistoryClick@{OnVisualBlockOutputHistoryClick}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockOutputHistoryClick]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockOutputHistoryClick ({\bf VisualOutput} $\ast$ {\em output}, \/  TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_32a93f8cc49a3c9988674e99765d9cee}
+
+
+
+
+Definition at line 713 of file PIWOEngine.cpp.
+
+References THistory::block, BlockElement::getDescription(), BlockElement::getName(), VisualBlock::getTitle(), VisualBlock::history, HistoryFormClose(), historyWindows, OnDebug, OnWarrning, VisualOutput::output, plugins, THistory::plugins, and THistory::refresh().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_07f70dcb30a6077266626c7f52ce1667}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockMove@{OnVisualBlockMove}}
+\index{OnVisualBlockMove@{OnVisualBlockMove}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockMove]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockMove (TObject $\ast$ {\em Sender}, \/  bool {\em moveAll}, \/  int {\em x}, \/  int {\em y})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_07f70dcb30a6077266626c7f52ce1667}
+
+
+
+
+Definition at line 747 of file PIWOEngine.cpp.
+
+References changed, connections, OnChanged, and selectedBlocks.
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_2baa1b7c8bb6b91e413b8cc2a7f5b8ea}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockUnselect@{OnVisualBlockUnselect}}
+\index{OnVisualBlockUnselect@{OnVisualBlockUnselect}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockUnselect]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockUnselect (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_2baa1b7c8bb6b91e413b8cc2a7f5b8ea}
+
+
+
+
+Definition at line 793 of file PIWOEngine.cpp.
+
+References VisualBlock::getTitle(), OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, selectedBlocks, selectedConnection, and VisualBlock::setSelected().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_94a545e2d82c78fffc68c79f53db4a72}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockSelect@{OnVisualBlockSelect}}
+\index{OnVisualBlockSelect@{OnVisualBlockSelect}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockSelect]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockSelect (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_94a545e2d82c78fffc68c79f53db4a72}
+
+
+
+
+Definition at line 815 of file PIWOEngine.cpp.
+
+References connections, OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, selectedBlocks, selectedConnection, and UnselectSelectedConnection().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_7ec3c8295c1984c7661c813881fb5bda}{
+\index{PIWOEngine@{PIWOEngine}!OnVisualBlockSelectAdd@{OnVisualBlockSelectAdd}}
+\index{OnVisualBlockSelectAdd@{OnVisualBlockSelectAdd}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnVisualBlockSelectAdd]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnVisualBlockSelectAdd (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_7ec3c8295c1984c7661c813881fb5bda}
+
+
+
+
+Definition at line 844 of file PIWOEngine.cpp.
+
+References connections, OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, selectedBlocks, selectedConnection, and UnselectSelectedConnection().
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), and loadFromFile().\hypertarget{classPIWOEngine_c0f3009bc8be06d0242546f8a2e6fc94}{
+\index{PIWOEngine@{PIWOEngine}!onThisClick@{onThisClick}}
+\index{onThisClick@{onThisClick}!PIWOEngine@{PIWOEngine}}
+\subsubsection[onThisClick]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall PIWOEngine::onThisClick (TObject $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_c0f3009bc8be06d0242546f8a2e6fc94}
+
+
+
+
+Definition at line 869 of file PIWOEngine.cpp.
+
+References UnselectAllBlocks(), and UnselectSelectedConnection().
+
+Referenced by PIWOEngine().\hypertarget{classPIWOEngine_1a8f4608620d249e9982004773bf1fe9}{
+\index{PIWOEngine@{PIWOEngine}!OnConnectionSelect@{OnConnectionSelect}}
+\index{OnConnectionSelect@{OnConnectionSelect}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnConnectionSelect]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::OnConnectionSelect (void $\ast$ {\em Sender})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_1a8f4608620d249e9982004773bf1fe9}
+
+
+
+
+Definition at line 875 of file PIWOEngine.cpp.
+
+References Connection::BringToFront(), BlockElement::getDescription(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, Connection::outBlock, Connection::output, selectedBlocks, selectedConnection, Connection::setSelected(), and UnselectAllBlocks().
+
+Referenced by DuplcateSelectedBlocks(), loadFromFile(), and MakeConnection().\hypertarget{classPIWOEngine_deb8c8ae4c4d5f69c242f222dc2557bb}{
+\index{PIWOEngine@{PIWOEngine}!HistoryFormClose@{HistoryFormClose}}
+\index{HistoryFormClose@{HistoryFormClose}!PIWOEngine@{PIWOEngine}}
+\subsubsection[HistoryFormClose]{\setlength{\rightskip}{0pt plus 5cm}void \_\-\_\-fastcall PIWOEngine::HistoryFormClose (TObject $\ast$ {\em Sender}, \/  TCloseAction \& {\em Action})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_deb8c8ae4c4d5f69c242f222dc2557bb}
+
+
+
+
+Definition at line 665 of file PIWOEngine.cpp.
+
+References historyWindows, and OnDebug.
+
+Referenced by OnVisualBlockInputHistoryClick(), and OnVisualBlockOutputHistoryClick().\hypertarget{classPIWOEngine_9e8cffc64037b892fbdb1daf3459a31d}{
+\index{PIWOEngine@{PIWOEngine}!validateBlock@{validateBlock}}
+\index{validateBlock@{validateBlock}!PIWOEngine@{PIWOEngine}}
+\subsubsection[validateBlock]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::validateBlock ({\bf VisualBlock} $\ast$ {\em block}, \/  bool {\em updateInputConnections} = {\tt true})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_9e8cffc64037b892fbdb1daf3459a31d}
+
+
+
+
+Definition at line 146 of file PIWOEngine.cpp.
+
+References VisualBlock::block, changed, BlockValidateInputElement::connection, BlockValidateOutputElement::connections, connections, BlockValidateOutputElement::errorCode, BlockValidateInputElement::errorCode, BlockValidateOutputElement::errorDescription, BlockValidateInputElement::errorDescription, BlockElement::getErrorCode(), BlockElement::getErrorDescription(), PluginContener::getFunction(), BlockOutput::getOutputType(), VisualBlock::getTitle(), BlockValidateInputElement::input, Block::input, VisualBlock::nameOfBlock, OnChanged, OnDebug, OnError, BlockValidateOutputElement::output, Block::output, plugins, BlockValidateOutputElement::type, VisualBlock::updateHistory(), and VisualBlock::updateVisualComponents().
+
+Referenced by AddBlock(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), loadFromFile(), MakeConnection(), OnVisualBlockConfigClick(), OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), and validateAll().\hypertarget{classPIWOEngine_7d7bed1c6a1f91bd7c3c4ca7ac696bc9}{
+\index{PIWOEngine@{PIWOEngine}!getConnectionTo@{getConnectionTo}}
+\index{getConnectionTo@{getConnectionTo}!PIWOEngine@{PIWOEngine}}
+\subsubsection[getConnectionTo]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection} $\ast$ PIWOEngine::getConnectionTo ({\bf VisualInput} $\ast$ {\em input})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_7d7bed1c6a1f91bd7c3c4ca7ac696bc9}
+
+
+
+
+Definition at line 895 of file PIWOEngine.cpp.
+
+References connections, and VisualInput::input.
+
+Referenced by OnVisualBlockInputSelected(), and OnVisualBlockOutputSelected().\hypertarget{classPIWOEngine_e993fd1568a25f8ce5e3719212871ae5}{
+\index{PIWOEngine@{PIWOEngine}!MakeConnection@{MakeConnection}}
+\index{MakeConnection@{MakeConnection}!PIWOEngine@{PIWOEngine}}
+\subsubsection[MakeConnection]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::MakeConnection ({\bf VisualBlock} $\ast$ {\em outputBlock}, \/  {\bf VisualOutput} $\ast$ {\em output}, \/  {\bf VisualBlock} $\ast$ {\em inputBlock}, \/  {\bf VisualInput} $\ast$ {\em input})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_e993fd1568a25f8ce5e3719212871ae5}
+
+
+
+
+Definition at line 439 of file PIWOEngine.cpp.
+
+References BlockInput::allowedTypes, area, changed, BlockInput::connect(), connections, Connection::draw(), BlockElement::getDescription(), BlockOutput::getOutputType(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, VisualInput::input, OnBlockSelected, OnChanged, OnConnectionSelect(), OnConnectionSelected, Connection::OnConnectionSelected, OnDebug, OnError, OnInformation, OnNothingSelected, Connection::outBlock, Connection::output, VisualOutput::output, selectedBlocks, selectedConnection, Connection::setSelected(), Connection::update(), and validateBlock().
+
+Referenced by OnVisualBlockInputSelected(), and OnVisualBlockOutputSelected().\hypertarget{classPIWOEngine_ea240e8aed286fe05d3baf086d9d9c85}{
+\index{PIWOEngine@{PIWOEngine}!runBlock@{runBlock}}
+\index{runBlock@{runBlock}!PIWOEngine@{PIWOEngine}}
+\subsubsection[runBlock]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::runBlock ({\bf VisualBlock} $\ast$ {\em block}, \/  bool {\em fastRun}, \/  bool $\ast$ {\em useHistory})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_ea240e8aed286fe05d3baf086d9d9c85}
+
+
+
+
+Definition at line 1500 of file PIWOEngine.cpp.
+
+References VisualBlock::block, blocks, BlockHistory::bottomOutput, VisualBlock::bottomOutput, BlockHistory::configRevision, connections, Block::getConfig(), PluginContener::getFunction(), TypeConfig::getName(), BlockElement::getObject(), BlockConfig::getRevision(), VisualBlock::getTitle(), PluginContener::getType(), TypeDLL::getType(), VisualBlock::history, historyWindows, BlockHistoryInputElement::input, Block::input, TypeDLL::isValid(), BlockHistory::leftInput, VisualBlock::leftInput, VisualBlock::nameOfBlock, OnError, OnRunDebug, OnRunError, OnRunInformation, OnRunProgress, OnRunSuccess, OnRunWarrning, Connection::outBlock, BlockHistoryOutputElement::output, Block::output, Connection::output, plugins, BlockHistory::rightOutput, VisualBlock::rightOutput, FunctionDLL::run(), VisualBlock::runned, runProgress, BlockHistoryOutputElement::setData(), BlockHistoryInputElement::setData(), BlockHistoryOutputElement::setNULL(), BlockHistoryInputElement::setNULL(), VisualBlock::setStatusColor(), stopRunning, BlockHistory::topInput, VisualBlock::topInput, Connection::update(), and VisualBlock::updateVisualComponents().
+
+Referenced by runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_f4a1573d29015d4fa8c1a1e37df86de3}{
+\index{PIWOEngine@{PIWOEngine}!runUsingHistory@{runUsingHistory}}
+\index{runUsingHistory@{runUsingHistory}!PIWOEngine@{PIWOEngine}}
+\subsubsection[runUsingHistory]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::runUsingHistory ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_f4a1573d29015d4fa8c1a1e37df86de3}
+
+
+
+
+Definition at line 1322 of file PIWOEngine.cpp.
+
+References blocks, connections, isRunning, OnError, OnInformation, OnRunEnd, OnRunError, OnRunInformation, OnRunProgress, OnRunStart, OnRunSuccess, OnRunWarrning, OnSuccess, OnWarrning, runBlock(), runProgress, and stopRunning.
+
+Referenced by run().\hypertarget{classPIWOEngine_302753a45663305fcef14a5c8c348a02}{
+\index{PIWOEngine@{PIWOEngine}!runNotUsingHistory@{runNotUsingHistory}}
+\index{runNotUsingHistory@{runNotUsingHistory}!PIWOEngine@{PIWOEngine}}
+\subsubsection[runNotUsingHistory]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::runNotUsingHistory ()\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_302753a45663305fcef14a5c8c348a02}
+
+
+
+
+Definition at line 1411 of file PIWOEngine.cpp.
+
+References blocks, connections, isRunning, OnError, OnInformation, OnRunEnd, OnRunError, OnRunInformation, OnRunProgress, OnRunStart, OnRunSuccess, OnRunWarrning, OnSuccess, OnWarrning, runBlock(), runProgress, and stopRunning.
+
+Referenced by run().\hypertarget{classPIWOEngine_36ccc94c01c411c848b08900254caf70}{
+\index{PIWOEngine@{PIWOEngine}!AddBlock@{AddBlock}}
+\index{AddBlock@{AddBlock}!PIWOEngine@{PIWOEngine}}
+\subsubsection[AddBlock]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::AddBlock (const AnsiString \& {\em name})}}
+\label{classPIWOEngine_36ccc94c01c411c848b08900254caf70}
+
+
+Dodaje blok do projektu \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]nazwa bloku \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true jesli blok zostal dodany \end{Desc}
+
+
+Definition at line 84 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, area, VisualBlock::block, blocks, changed, defaultBlockImage, FunctionDLL::description, FunctionDLL::fullName, PluginContener::getFunction(), VisualBlock::nameOfBlock, VisualBlock::numberOfBlock, VisualBlock::OnBlockMove, OnBlockSelected, OnChanged, VisualBlock::OnConfigClick, OnConnectionSelected, OnDebug, OnInformation, OnNothingSelected, VisualBlock::OnSelect, VisualBlock::OnSelectAdd, VisualBlock::OnUnselect, VisualBlock::OnVInputHistory, OnVisualBlockConfigClick(), OnVisualBlockInputHistoryClick(), OnVisualBlockInputSelected(), OnVisualBlockMove(), OnVisualBlockOutputHistoryClick(), OnVisualBlockOutputSelected(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), VisualBlock::OnVisualInputSelected, VisualBlock::OnVisualOutputSelected, VisualBlock::OnVOutputHistory, FunctionDLL::picture, plugins, run(), selectedBlocks, selectedConnection, VisualBlock::setConfigButtonGlyph(), VisualBlock::setSelected(), VisualBlock::setTitle(), VisualBlock::updateVisualComponents(), FunctionDLL::validate(), and validateBlock().
+
+Referenced by TForm1::OnFunctionAddClick().\hypertarget{classPIWOEngine_d55f140db8722ff1601fa675ec779e1d}{
+\index{PIWOEngine@{PIWOEngine}!DeleteBlock@{DeleteBlock}}
+\index{DeleteBlock@{DeleteBlock}!PIWOEngine@{PIWOEngine}}
+\subsubsection[DeleteBlock]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::DeleteBlock (const AnsiString \& {\em fullName})}}
+\label{classPIWOEngine_d55f140db8722ff1601fa675ec779e1d}
+
+
+Usuwa blok z projektu \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fullName}]tytul bloku (napis widniejacy na nim) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true jesli blok zostal usuniety \end{Desc}
+
+
+Definition at line 902 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, blocks, changed, connections, historyWindows, OnBlockSelected, OnChanged, OnConnectionSelected, OnDebug, OnError, OnInformation, OnNothingSelected, run(), selectedBlocks, selectedConnection, and validateBlock().\hypertarget{classPIWOEngine_a11ad8ce77d2e5b026ebc3469bdff0d9}{
+\index{PIWOEngine@{PIWOEngine}!DeleteSelectedBlocks@{DeleteSelectedBlocks}}
+\index{DeleteSelectedBlocks@{DeleteSelectedBlocks}!PIWOEngine@{PIWOEngine}}
+\subsubsection[DeleteSelectedBlocks]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::DeleteSelectedBlocks ()}}
+\label{classPIWOEngine_a11ad8ce77d2e5b026ebc3469bdff0d9}
+
+
+Usuwa wszystkie zaznaczone bloki \begin{Desc}
+\item[Returns:]true jesli usunieto cos \end{Desc}
+
+
+Definition at line 1005 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, blocks, changed, connections, historyWindows, OnBlockSelected, OnChanged, OnConnectionSelected, OnDebug, OnInformation, OnNothingSelected, run(), selectedBlocks, selectedConnection, and validateBlock().
+
+Referenced by TForm1::FormKeyDown(), TForm1::ToolButton11Click(), TForm1::Usuzaznaczonebloki1Click(), and TForm1::Usuzaznaczonepoczenie1Click().\hypertarget{classPIWOEngine_edd85509770c459cd621bfeb5eba4ac7}{
+\index{PIWOEngine@{PIWOEngine}!DeleteAllBlocks@{DeleteAllBlocks}}
+\index{DeleteAllBlocks@{DeleteAllBlocks}!PIWOEngine@{PIWOEngine}}
+\subsubsection[DeleteAllBlocks]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::DeleteAllBlocks ()}}
+\label{classPIWOEngine_edd85509770c459cd621bfeb5eba4ac7}
+
+
+Usuwa wszywstkie bloki \begin{Desc}
+\item[Returns:]true jesli usunieto cos \end{Desc}
+
+
+Definition at line 1114 of file PIWOEngine.cpp.
+
+References abort(), blocks, changed, connections, historyWindows, OnBlockSelected, OnChanged, OnConnectionSelected, OnDebug, OnInformation, OnNothingSelected, selectedBlocks, and selectedConnection.
+
+Referenced by TForm1::Usubloki1Click().\hypertarget{classPIWOEngine_27e53e5d565cca55d8663a14906ab720}{
+\index{PIWOEngine@{PIWOEngine}!SelectAllBlocks@{SelectAllBlocks}}
+\index{SelectAllBlocks@{SelectAllBlocks}!PIWOEngine@{PIWOEngine}}
+\subsubsection[SelectAllBlocks]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::SelectAllBlocks ()}}
+\label{classPIWOEngine_27e53e5d565cca55d8663a14906ab720}
+
+
+Zaznacza wszystkie bloki 
+
+Definition at line 1147 of file PIWOEngine.cpp.
+
+References blocks, OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, selectedBlocks, and selectedConnection.
+
+Referenced by TForm1::Zaznaczwszystkiebloki1Click().\hypertarget{classPIWOEngine_b8926ec72c402ff687ac16061c9d35eb}{
+\index{PIWOEngine@{PIWOEngine}!InvertBlockSelection@{InvertBlockSelection}}
+\index{InvertBlockSelection@{InvertBlockSelection}!PIWOEngine@{PIWOEngine}}
+\subsubsection[InvertBlockSelection]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::InvertBlockSelection ()}}
+\label{classPIWOEngine_b8926ec72c402ff687ac16061c9d35eb}
+
+
+Odwraca zaznaczenie wszystkich blokow 
+
+Definition at line 1167 of file PIWOEngine.cpp.
+
+References blocks, OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, selectedBlocks, and selectedConnection.
+
+Referenced by TForm1::Odwrzaznaczenieblokw1Click().\hypertarget{classPIWOEngine_60d90f58e1d47c5a12547126700799c7}{
+\index{PIWOEngine@{PIWOEngine}!UnselectAllBlocks@{UnselectAllBlocks}}
+\index{UnselectAllBlocks@{UnselectAllBlocks}!PIWOEngine@{PIWOEngine}}
+\subsubsection[UnselectAllBlocks]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::UnselectAllBlocks ()}}
+\label{classPIWOEngine_60d90f58e1d47c5a12547126700799c7}
+
+
+Odznacza wszystkie bloki 
+
+Definition at line 1194 of file PIWOEngine.cpp.
+
+References OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, selectedBlocks, and selectedConnection.
+
+Referenced by TForm1::Odznaczwszystkiebloki1Click(), OnConnectionSelect(), and onThisClick().\hypertarget{classPIWOEngine_60f3cba63905531e827476ad139ddf62}{
+\index{PIWOEngine@{PIWOEngine}!DeleteSelectedConnection@{DeleteSelectedConnection}}
+\index{DeleteSelectedConnection@{DeleteSelectedConnection}!PIWOEngine@{PIWOEngine}}
+\subsubsection[DeleteSelectedConnection]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::DeleteSelectedConnection ()}}
+\label{classPIWOEngine_60f3cba63905531e827476ad139ddf62}
+
+
+Usuwa zaznaczone polaczenie \begin{Desc}
+\item[Returns:]true jesli jakies polaczenie jest zaznaczone i zostalo usuniete \end{Desc}
+
+
+Definition at line 1212 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, changed, connections, BlockInput::disconnect(), BlockElement::getDescription(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, OnBlockSelected, OnChanged, OnConnectionSelected, OnDebug, OnInformation, OnNothingSelected, Connection::outBlock, Connection::output, run(), selectedBlocks, selectedConnection, and validateBlock().
+
+Referenced by TForm1::FormKeyDown(), TForm1::ToolButton11Click(), TForm1::Usuzaznaczonebloki1Click(), and TForm1::Usuzaznaczonepoczenie1Click().\hypertarget{classPIWOEngine_93143ee719ccb9645a8d9c197f4fc7b0}{
+\index{PIWOEngine@{PIWOEngine}!DeleteAllConnections@{DeleteAllConnections}}
+\index{DeleteAllConnections@{DeleteAllConnections}!PIWOEngine@{PIWOEngine}}
+\subsubsection[DeleteAllConnections]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::DeleteAllConnections ()}}
+\label{classPIWOEngine_93143ee719ccb9645a8d9c197f4fc7b0}
+
+
+Usuwa wszystkie polaczenia \begin{Desc}
+\item[Returns:]true jesli jakies polaczenie zostalo usuniete \end{Desc}
+
+
+Definition at line 1245 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, changed, connections, OnBlockSelected, OnChanged, OnConnectionSelected, OnDebug, OnInformation, OnNothingSelected, run(), selectedBlocks, selectedConnection, and validateBlock().
+
+Referenced by TForm1::Usuwszystkiepoczenia1Click().\hypertarget{classPIWOEngine_2ec5c192d058a7a44ab82a30fa331c99}{
+\index{PIWOEngine@{PIWOEngine}!UnselectSelectedConnection@{UnselectSelectedConnection}}
+\index{UnselectSelectedConnection@{UnselectSelectedConnection}!PIWOEngine@{PIWOEngine}}
+\subsubsection[UnselectSelectedConnection]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::UnselectSelectedConnection ()}}
+\label{classPIWOEngine_2ec5c192d058a7a44ab82a30fa331c99}
+
+
+Odznacza zaznaczone polaczenie, jesl jest takie 
+
+Definition at line 1286 of file PIWOEngine.cpp.
+
+References BlockElement::getDescription(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, OnBlockSelected, OnConnectionSelected, OnDebug, OnNothingSelected, Connection::outBlock, Connection::output, selectedBlocks, selectedConnection, and Connection::setSelected().
+
+Referenced by TForm1::Odznaczzaznaczonepoaczenie1Click(), onThisClick(), OnVisualBlockSelect(), and OnVisualBlockSelectAdd().\hypertarget{classPIWOEngine_2e52cfe4cc826cd43595ca9c7ae979f9}{
+\index{PIWOEngine@{PIWOEngine}!CancelCustomizationOnSelectedConnections@{CancelCustomizationOnSelectedConnections}}
+\index{CancelCustomizationOnSelectedConnections@{CancelCustomizationOnSelectedConnections}!PIWOEngine@{PIWOEngine}}
+\subsubsection[CancelCustomizationOnSelectedConnections]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::CancelCustomizationOnSelectedConnections ()}}
+\label{classPIWOEngine_2e52cfe4cc826cd43595ca9c7ae979f9}
+
+
+Anuluje zmiany wprowadzone przez urzytkownika w zaznaczonym polaczeniu 
+
+Definition at line 1302 of file PIWOEngine.cpp.
+
+References changed, BlockElement::getDescription(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, OnChanged, OnDebug, Connection::outBlock, Connection::output, selectedConnection, and Connection::setCustomizeFalse().
+
+Referenced by TForm1::Zresetujzaznaczonepoczenie1Click().\hypertarget{classPIWOEngine_0e28412b868f3042c7bf50e9ee8c40fc}{
+\index{PIWOEngine@{PIWOEngine}!CancelCustomizationOnAllConnections@{CancelCustomizationOnAllConnections}}
+\index{CancelCustomizationOnAllConnections@{CancelCustomizationOnAllConnections}!PIWOEngine@{PIWOEngine}}
+\subsubsection[CancelCustomizationOnAllConnections]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::CancelCustomizationOnAllConnections ()}}
+\label{classPIWOEngine_0e28412b868f3042c7bf50e9ee8c40fc}
+
+
+Anuluje zmiany wprowadzone przez urzytkownika we wszystkich polaczeniach 
+
+Definition at line 1312 of file PIWOEngine.cpp.
+
+References changed, connections, OnChanged, and OnDebug.
+
+Referenced by TForm1::Zresetujwszystkiepoczenia1Click().\hypertarget{classPIWOEngine_6e37ad69880f3d9a9ad7cf9b57d894a9}{
+\index{PIWOEngine@{PIWOEngine}!DuplcateSelectedBlocks@{DuplcateSelectedBlocks}}
+\index{DuplcateSelectedBlocks@{DuplcateSelectedBlocks}!PIWOEngine@{PIWOEngine}}
+\subsubsection[DuplcateSelectedBlocks]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::DuplcateSelectedBlocks ()}}
+\label{classPIWOEngine_6e37ad69880f3d9a9ad7cf9b57d894a9}
+
+
+Duplikuje zaznaczone bloki 
+
+Definition at line 2074 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, area, VisualBlock::block, blocks, changed, BlockInput::connect(), connections, defaultBlockImage, FunctionDLL::description, Connection::draw(), FunctionDLL::fullName, PluginContener::getFunction(), BlockOutput::getOutputType(), Connection::inBlock, Connection::input, Block::input, Connection::lines, VisualBlock::nameOfBlock, VisualBlock::numberOfBlock, VisualBlock::OnBlockMove, OnBlockSelected, OnChanged, VisualBlock::OnConfigClick, OnConnectionSelect(), OnConnectionSelected, Connection::OnConnectionSelected, OnDebug, OnInformation, OnNothingSelected, VisualBlock::OnSelect, VisualBlock::OnSelectAdd, VisualBlock::OnUnselect, VisualBlock::OnVInputHistory, OnVisualBlockConfigClick(), OnVisualBlockInputHistoryClick(), OnVisualBlockInputSelected(), OnVisualBlockMove(), OnVisualBlockOutputHistoryClick(), OnVisualBlockOutputSelected(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), VisualBlock::OnVisualInputSelected, VisualBlock::OnVisualOutputSelected, VisualBlock::OnVOutputHistory, Connection::outBlock, Connection::output, Block::output, FunctionDLL::picture, plugins, run(), selectedBlocks, selectedConnection, Block::setConfig(), VisualBlock::setConfigButtonGlyph(), VisualBlock::setTitle(), Connection::update(), VisualBlock::updateVisualComponents(), and validateBlock().
+
+Referenced by TForm1::Duplikujbloki1Click().\hypertarget{classPIWOEngine_3585d1f4c45df99a02c36af9cab8e343}{
+\index{PIWOEngine@{PIWOEngine}!validateAll@{validateAll}}
+\index{validateAll@{validateAll}!PIWOEngine@{PIWOEngine}}
+\subsubsection[validateAll]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::validateAll ()}}
+\label{classPIWOEngine_3585d1f4c45df99a02c36af9cab8e343}
+
+
+Sprawsza wszystkie bloki 
+
+Definition at line 2475 of file PIWOEngine.cpp.
+
+References abort(), alwaysRun, blocks, OnInformation, run(), and validateBlock().
+
+Referenced by TForm1::Sprawdprojekt1Click().\hypertarget{classPIWOEngine_d20139057c6b68e8e4e2fb0d0e04926b}{
+\index{PIWOEngine@{PIWOEngine}!run@{run}}
+\index{run@{run}!PIWOEngine@{PIWOEngine}}
+\subsubsection[run]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::run (bool {\em useHistory} = {\tt true})}}
+\label{classPIWOEngine_d20139057c6b68e8e4e2fb0d0e04926b}
+
+
+Uruchamai projekt \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em useHistory}]czy ma uzywac historii \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true jesli uruchomiono bez bledow \end{Desc}
+
+
+Definition at line 2041 of file PIWOEngine.cpp.
+
+References runNotUsingHistory(), and runUsingHistory().
+
+Referenced by AddBlock(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), OnVisualBlockConfigClick(), OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), TForm1::Uruchom3Click(), TForm1::Uruchomwszystko1Click(), and validateAll().\hypertarget{classPIWOEngine_b8cd8305728eb8998011af59677084ad}{
+\index{PIWOEngine@{PIWOEngine}!isRuned@{isRuned}}
+\index{isRuned@{isRuned}!PIWOEngine@{PIWOEngine}}
+\subsubsection[isRuned]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::isRuned ()}}
+\label{classPIWOEngine_b8cd8305728eb8998011af59677084ad}
+
+
+Sprawdza czy projekt ejst aktualnie uruchamiany \begin{Desc}
+\item[Returns:]true jesli ejst aktualnie uruchamiany, w przeciwnym wypadku false \end{Desc}
+
+
+Definition at line 2046 of file PIWOEngine.cpp.
+
+References isRunning.
+
+Referenced by TForm1::blockMenu().\hypertarget{classPIWOEngine_134ab9db62730d3a680f24bf33068672}{
+\index{PIWOEngine@{PIWOEngine}!abort@{abort}}
+\index{abort@{abort}!PIWOEngine@{PIWOEngine}}
+\subsubsection[abort]{\setlength{\rightskip}{0pt plus 5cm}void PIWOEngine::abort (bool {\em wait} = {\tt false})}}
+\label{classPIWOEngine_134ab9db62730d3a680f24bf33068672}
+
+
+Anuluje uruchamianie projektu \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em wait}]czy ma czekac az uruchomienie zostanie anulowane \end{description}
+\end{Desc}
+
+
+Definition at line 2051 of file PIWOEngine.cpp.
+
+References isRunning, OnRunInformation, and stopRunning.
+
+Referenced by AddBlock(), TForm1::Anuluj1Click(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), loadFromFile(), OnVisualBlockConfigClick(), OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), saveToFile(), TForm1::SpeedButton1Click(), and validateAll().\hypertarget{classPIWOEngine_8505bb4deb5c952d8f93d5b656f385cf}{
+\index{PIWOEngine@{PIWOEngine}!isAborted@{isAborted}}
+\index{isAborted@{isAborted}!PIWOEngine@{PIWOEngine}}
+\subsubsection[isAborted]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::isAborted ()}}
+\label{classPIWOEngine_8505bb4deb5c952d8f93d5b656f385cf}
+
+
+Czy juz anulowano uruchomienie projektu \begin{Desc}
+\item[Returns:]true/false \end{Desc}
+
+
+Definition at line 2069 of file PIWOEngine.cpp.
+
+References stopRunning.\hypertarget{classPIWOEngine_dee854cac7e50d95de9613e2bbdb4676}{
+\index{PIWOEngine@{PIWOEngine}!saveToFile@{saveToFile}}
+\index{saveToFile@{saveToFile}!PIWOEngine@{PIWOEngine}}
+\subsubsection[saveToFile]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::saveToFile (const AnsiString \& {\em filename})}}
+\label{classPIWOEngine_dee854cac7e50d95de9613e2bbdb4676}
+
+
+Zapisuje projekt do pliku \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em filename}]sciezka do pliku \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]false jesli nie zapisano \end{Desc}
+
+
+Definition at line 2219 of file PIWOEngine.cpp.
+
+References abort(), blocks, changed, connections, OnDebug, OnError, OnSuccess, putInt(), and putString().
+
+Referenced by TForm1::closeProject(), TForm1::Exportujjakoobraz1Click(), and TForm1::Zapiszjako1Click().\hypertarget{classPIWOEngine_84deceb11d30a25d104a2b34afad27d4}{
+\index{PIWOEngine@{PIWOEngine}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!PIWOEngine@{PIWOEngine}}
+\subsubsection[loadFromFile]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::loadFromFile (const AnsiString \& {\em filename})}}
+\label{classPIWOEngine_84deceb11d30a25d104a2b34afad27d4}
+
+
+Wczytuje projekt z pliku \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em filename}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]false jesli nie wczytano \end{Desc}
+
+
+Definition at line 2311 of file PIWOEngine.cpp.
+
+References abort(), BlockInput::allowedTypes, area, VisualBlock::block, blocks, BlockInput::connect(), connections, defaultBlockImage, FunctionDLL::description, Connection::draw(), FunctionDLL::fullName, Block::getConfig(), PluginContener::getFunction(), getInt(), BlockOutput::getOutputType(), getString(), VisualBlock::getTitle(), Connection::inBlock, Connection::input, Block::input, Connection::lines, BlockConfig::loadFromStream(), VisualBlock::nameOfBlock, VisualBlock::numberOfBlock, VisualBlock::OnBlockMove, VisualBlock::OnConfigClick, OnConnectionSelect(), Connection::OnConnectionSelected, OnDebug, OnError, VisualBlock::OnSelect, VisualBlock::OnSelectAdd, OnSuccess, VisualBlock::OnUnselect, VisualBlock::OnVInputHistory, OnVisualBlockConfigClick(), OnVisualBlockInputHistoryClick(), OnVisualBlockInputSelected(), OnVisualBlockMove(), OnVisualBlockOutputHistoryClick(), OnVisualBlockOutputSelected(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), VisualBlock::OnVisualInputSelected, VisualBlock::OnVisualOutputSelected, VisualBlock::OnVOutputHistory, OnWarrning, Connection::outBlock, Connection::output, Block::output, FunctionDLL::picture, plugins, VisualBlock::setConfigButtonGlyph(), BlockElement::setDescription(), BlockElement::setErrorCode(), BlockElement::setErrorDescription(), BlockOutput::setOutputType(), VisualBlock::setTitle(), Connection::update(), VisualBlock::updateVisualComponents(), and validateBlock().
+
+Referenced by TForm1::FormCreate(), and TForm1::openProject().\hypertarget{classPIWOEngine_994cb25914cba46f02bdf14909991247}{
+\index{PIWOEngine@{PIWOEngine}!isChanged@{isChanged}}
+\index{isChanged@{isChanged}!PIWOEngine@{PIWOEngine}}
+\subsubsection[isChanged]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::isChanged ()}}
+\label{classPIWOEngine_994cb25914cba46f02bdf14909991247}
+
+
+Czy w projekcie wprowadzono zmiany \begin{Desc}
+\item[Returns:]true/false = tak/nie \end{Desc}
+
+
+Definition at line 2465 of file PIWOEngine.cpp.
+
+References changed.
+
+Referenced by TForm1::closeProject().\hypertarget{classPIWOEngine_070ee971be58a47520dd7e5063e5508e}{
+\index{PIWOEngine@{PIWOEngine}!getBlockCount@{getBlockCount}}
+\index{getBlockCount@{getBlockCount}!PIWOEngine@{PIWOEngine}}
+\subsubsection[getBlockCount]{\setlength{\rightskip}{0pt plus 5cm}int PIWOEngine::getBlockCount ()}}
+\label{classPIWOEngine_070ee971be58a47520dd7e5063e5508e}
+
+
+Zwraca ilosc blokow w projekcie \begin{Desc}
+\item[Returns:]ilosc blokow \end{Desc}
+
+
+Definition at line 2470 of file PIWOEngine.cpp.
+
+References blocks.
+
+Referenced by TForm1::blockMenu(), and TForm1::closeProject().\hypertarget{classPIWOEngine_1c1eb9af5a92cf907bdce516de31af37}{
+\index{PIWOEngine@{PIWOEngine}!getConnectionsCount@{getConnectionsCount}}
+\index{getConnectionsCount@{getConnectionsCount}!PIWOEngine@{PIWOEngine}}
+\subsubsection[getConnectionsCount]{\setlength{\rightskip}{0pt plus 5cm}int PIWOEngine::getConnectionsCount ()}}
+\label{classPIWOEngine_1c1eb9af5a92cf907bdce516de31af37}
+
+
+Zwraca ilosc polaczen w projekcie \begin{Desc}
+\item[Returns:]ilosc polaczen \end{Desc}
+
+
+Definition at line 2492 of file PIWOEngine.cpp.
+
+References connections.
+
+Referenced by TForm1::blockMenu().\hypertarget{classPIWOEngine_ff65b56ee08c0ccbdd9724ebc08dc2ad}{
+\index{PIWOEngine@{PIWOEngine}!isBlockSelected@{isBlockSelected}}
+\index{isBlockSelected@{isBlockSelected}!PIWOEngine@{PIWOEngine}}
+\subsubsection[isBlockSelected]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::isBlockSelected ()}}
+\label{classPIWOEngine_ff65b56ee08c0ccbdd9724ebc08dc2ad}
+
+
+Czy jakiekolwiek blok jest zaznacozny \begin{Desc}
+\item[Returns:]true jesli tak, false jesli nie \end{Desc}
+
+
+Definition at line 2487 of file PIWOEngine.cpp.
+
+References selectedBlocks.
+
+Referenced by TForm1::blockMenu().\hypertarget{classPIWOEngine_7bd61a1844a459b79a07a3ecf08d72a3}{
+\index{PIWOEngine@{PIWOEngine}!isConnectionSelected@{isConnectionSelected}}
+\index{isConnectionSelected@{isConnectionSelected}!PIWOEngine@{PIWOEngine}}
+\subsubsection[isConnectionSelected]{\setlength{\rightskip}{0pt plus 5cm}bool PIWOEngine::isConnectionSelected ()}}
+\label{classPIWOEngine_7bd61a1844a459b79a07a3ecf08d72a3}
+
+
+Czy polaczenie jest zaznaczone \begin{Desc}
+\item[Returns:]true jesli tak, false jesli nie \end{Desc}
+
+
+Definition at line 2497 of file PIWOEngine.cpp.
+
+References selectedConnection.
+
+Referenced by TForm1::blockMenu().
+
+\subsection{Member Data Documentation}
+\hypertarget{classPIWOEngine_d5da32bb11409879f33eca9ebddfc9d6}{
+\index{PIWOEngine@{PIWOEngine}!area@{area}}
+\index{area@{area}!PIWOEngine@{PIWOEngine}}
+\subsubsection[area]{\setlength{\rightskip}{0pt plus 5cm}PIWOMAINCLASSTYPE$\ast$ {\bf PIWOEngine::area}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_d5da32bb11409879f33eca9ebddfc9d6}
+
+
+
+
+Definition at line 24 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), loadFromFile(), MakeConnection(), PIWOEngine(), and $\sim$PIWOEngine().\hypertarget{classPIWOEngine_8cc6b573d0eacacc5043891a36b6e820}{
+\index{PIWOEngine@{PIWOEngine}!blocks@{blocks}}
+\index{blocks@{blocks}!PIWOEngine@{PIWOEngine}}
+\subsubsection[blocks]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf VisualBlock}$\ast$$>$ {\bf PIWOEngine::blocks}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_8cc6b573d0eacacc5043891a36b6e820}
+
+
+
+
+Definition at line 25 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DeleteAllBlocks(), DeleteBlock(), DeleteSelectedBlocks(), DuplcateSelectedBlocks(), getBlockCount(), InvertBlockSelection(), loadFromFile(), runBlock(), runNotUsingHistory(), runUsingHistory(), saveToFile(), SelectAllBlocks(), validateAll(), and $\sim$PIWOEngine().\hypertarget{classPIWOEngine_192e9886f89d0eee49173cc199afe561}{
+\index{PIWOEngine@{PIWOEngine}!connections@{connections}}
+\index{connections@{connections}!PIWOEngine@{PIWOEngine}}
+\subsubsection[connections]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Connection}$\ast$$>$ {\bf PIWOEngine::connections}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_192e9886f89d0eee49173cc199afe561}
+
+
+
+
+Definition at line 26 of file PIWOEngine.h.
+
+Referenced by CancelCustomizationOnAllConnections(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), getConnectionsCount(), getConnectionTo(), loadFromFile(), MakeConnection(), OnVisualBlockInputSelected(), OnVisualBlockMove(), OnVisualBlockOutputSelected(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), runBlock(), runNotUsingHistory(), runUsingHistory(), saveToFile(), validateBlock(), and $\sim$PIWOEngine().\hypertarget{classPIWOEngine_89b3e231d010fe4a3672704b68e9fcea}{
+\index{PIWOEngine@{PIWOEngine}!selectedConnection@{selectedConnection}}
+\index{selectedConnection@{selectedConnection}!PIWOEngine@{PIWOEngine}}
+\subsubsection[selectedConnection]{\setlength{\rightskip}{0pt plus 5cm}{\bf Connection}$\ast$ {\bf PIWOEngine::selectedConnection}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_89b3e231d010fe4a3672704b68e9fcea}
+
+
+
+
+Definition at line 27 of file PIWOEngine.h.
+
+Referenced by AddBlock(), CancelCustomizationOnSelectedConnections(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), InvertBlockSelection(), isConnectionSelected(), MakeConnection(), OnConnectionSelect(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), PIWOEngine(), SelectAllBlocks(), UnselectAllBlocks(), and UnselectSelectedConnection().\hypertarget{classPIWOEngine_c2cf186bc174d18bc9764b534bb5879d}{
+\index{PIWOEngine@{PIWOEngine}!selectedBlocks@{selectedBlocks}}
+\index{selectedBlocks@{selectedBlocks}!PIWOEngine@{PIWOEngine}}
+\subsubsection[selectedBlocks]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf VisualBlock}$\ast$$>$ {\bf PIWOEngine::selectedBlocks}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_c2cf186bc174d18bc9764b534bb5879d}
+
+
+
+
+Definition at line 28 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), InvertBlockSelection(), isBlockSelected(), MakeConnection(), OnConnectionSelect(), OnVisualBlockMove(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), SelectAllBlocks(), UnselectAllBlocks(), and UnselectSelectedConnection().\hypertarget{classPIWOEngine_573250b25797190affc38e1e3fdf8bf3}{
+\index{PIWOEngine@{PIWOEngine}!selectedOutputBlock@{selectedOutputBlock}}
+\index{selectedOutputBlock@{selectedOutputBlock}!PIWOEngine@{PIWOEngine}}
+\subsubsection[selectedOutputBlock]{\setlength{\rightskip}{0pt plus 5cm}{\bf VisualBlock}$\ast$ {\bf PIWOEngine::selectedOutputBlock}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_573250b25797190affc38e1e3fdf8bf3}
+
+
+
+
+Definition at line 29 of file PIWOEngine.h.
+
+Referenced by OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), and PIWOEngine().\hypertarget{classPIWOEngine_9fe3dcb62ef1ef7860afe06ddca01585}{
+\index{PIWOEngine@{PIWOEngine}!selectedInputBlock@{selectedInputBlock}}
+\index{selectedInputBlock@{selectedInputBlock}!PIWOEngine@{PIWOEngine}}
+\subsubsection[selectedInputBlock]{\setlength{\rightskip}{0pt plus 5cm}{\bf VisualBlock}$\ast$ {\bf PIWOEngine::selectedInputBlock}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_9fe3dcb62ef1ef7860afe06ddca01585}
+
+
+
+
+Definition at line 30 of file PIWOEngine.h.
+
+Referenced by OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), and PIWOEngine().\hypertarget{classPIWOEngine_87ae251a3b1c318e8c26e85396fde9e9}{
+\index{PIWOEngine@{PIWOEngine}!selectedInput@{selectedInput}}
+\index{selectedInput@{selectedInput}!PIWOEngine@{PIWOEngine}}
+\subsubsection[selectedInput]{\setlength{\rightskip}{0pt plus 5cm}{\bf VisualInput}$\ast$ {\bf PIWOEngine::selectedInput}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_87ae251a3b1c318e8c26e85396fde9e9}
+
+
+
+
+Definition at line 31 of file PIWOEngine.h.
+
+Referenced by OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), and PIWOEngine().\hypertarget{classPIWOEngine_3008a57c7914a602b34bf470a90d2bb6}{
+\index{PIWOEngine@{PIWOEngine}!selectedOutput@{selectedOutput}}
+\index{selectedOutput@{selectedOutput}!PIWOEngine@{PIWOEngine}}
+\subsubsection[selectedOutput]{\setlength{\rightskip}{0pt plus 5cm}{\bf VisualOutput}$\ast$ {\bf PIWOEngine::selectedOutput}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_3008a57c7914a602b34bf470a90d2bb6}
+
+
+
+
+Definition at line 32 of file PIWOEngine.h.
+
+Referenced by OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), and PIWOEngine().\hypertarget{classPIWOEngine_58d8519fdc284ac5b088d4b9ead41de1}{
+\index{PIWOEngine@{PIWOEngine}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!PIWOEngine@{PIWOEngine}}
+\subsubsection[isRunning]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf PIWOEngine::isRunning}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_58d8519fdc284ac5b088d4b9ead41de1}
+
+
+
+
+Definition at line 55 of file PIWOEngine.h.
+
+Referenced by abort(), isRuned(), PIWOEngine(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_fb15e05147a0a299649307876eb97412}{
+\index{PIWOEngine@{PIWOEngine}!stopRunning@{stopRunning}}
+\index{stopRunning@{stopRunning}!PIWOEngine@{PIWOEngine}}
+\subsubsection[stopRunning]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf PIWOEngine::stopRunning}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_fb15e05147a0a299649307876eb97412}
+
+
+
+
+Definition at line 56 of file PIWOEngine.h.
+
+Referenced by abort(), isAborted(), PIWOEngine(), runBlock(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_84d4db25d471839e7cdd44ae0eb2b517}{
+\index{PIWOEngine@{PIWOEngine}!runProgress@{runProgress}}
+\index{runProgress@{runProgress}!PIWOEngine@{PIWOEngine}}
+\subsubsection[runProgress]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf PIWOEngine::runProgress}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_84d4db25d471839e7cdd44ae0eb2b517}
+
+
+
+
+Definition at line 58 of file PIWOEngine.h.
+
+Referenced by PIWOEngine(), runBlock(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_3d5702db522458d8de52d3dbd0203cdc}{
+\index{PIWOEngine@{PIWOEngine}!changed@{changed}}
+\index{changed@{changed}!PIWOEngine@{PIWOEngine}}
+\subsubsection[changed]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf PIWOEngine::changed}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classPIWOEngine_3d5702db522458d8de52d3dbd0203cdc}
+
+
+
+
+Definition at line 59 of file PIWOEngine.h.
+
+Referenced by AddBlock(), CancelCustomizationOnAllConnections(), CancelCustomizationOnSelectedConnections(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), isChanged(), MakeConnection(), OnVisualBlockConfigClick(), OnVisualBlockInputSelected(), OnVisualBlockMove(), OnVisualBlockOutputSelected(), PIWOEngine(), saveToFile(), and validateBlock().\hypertarget{classPIWOEngine_23d5dbc92608ee42ba7975d2454ecbcf}{
+\index{PIWOEngine@{PIWOEngine}!defaultBlockImage@{defaultBlockImage}}
+\index{defaultBlockImage@{defaultBlockImage}!PIWOEngine@{PIWOEngine}}
+\subsubsection[defaultBlockImage]{\setlength{\rightskip}{0pt plus 5cm}Graphics::TBitmap$\ast$ {\bf PIWOEngine::defaultBlockImage}}}
+\label{classPIWOEngine_23d5dbc92608ee42ba7975d2454ecbcf}
+
+
+Domyslny obrazek widniejacy na przycisku konfiguracyjnym bloczkow gdy niemaja ustawionego swojego 
+
+Definition at line 64 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), TForm1::FormCreate(), loadFromFile(), TForm1::newProject(), TForm1::openProject(), and PIWOEngine().\hypertarget{classPIWOEngine_e5b5e665729db134c485ff27305b7888}{
+\index{PIWOEngine@{PIWOEngine}!OnInformation@{OnInformation}}
+\index{OnInformation@{OnInformation}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnInformation]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnInformation}}}
+\label{classPIWOEngine_e5b5e665729db134c485ff27305b7888}
+
+
+Event: Logowanie - Informacja 
+
+Definition at line 68 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), TForm1::FormCreate(), MakeConnection(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runNotUsingHistory(), runUsingHistory(), and validateAll().\hypertarget{classPIWOEngine_52bbb80846422f21ab9b03d67ad67a60}{
+\index{PIWOEngine@{PIWOEngine}!OnDebug@{OnDebug}}
+\index{OnDebug@{OnDebug}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnDebug]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnDebug}}}
+\label{classPIWOEngine_52bbb80846422f21ab9b03d67ad67a60}
+
+
+Event: Logowanie - Debug 
+
+Definition at line 72 of file PIWOEngine.h.
+
+Referenced by AddBlock(), CancelCustomizationOnAllConnections(), CancelCustomizationOnSelectedConnections(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), TForm1::FormCreate(), HistoryFormClose(), InvertBlockSelection(), loadFromFile(), MakeConnection(), TForm1::newProject(), OnConnectionSelect(), OnVisualBlockConfigClick(), OnVisualBlockInputHistoryClick(), OnVisualBlockOutputHistoryClick(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), TForm1::openProject(), PIWOEngine(), saveToFile(), SelectAllBlocks(), UnselectAllBlocks(), UnselectSelectedConnection(), and validateBlock().\hypertarget{classPIWOEngine_37a8c63dad516bc24be59cdca3a1eaa6}{
+\index{PIWOEngine@{PIWOEngine}!OnSuccess@{OnSuccess}}
+\index{OnSuccess@{OnSuccess}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnSuccess]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnSuccess}}}
+\label{classPIWOEngine_37a8c63dad516bc24be59cdca3a1eaa6}
+
+
+Event: Logowanie - Sukces 
+
+Definition at line 76 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), loadFromFile(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runNotUsingHistory(), runUsingHistory(), and saveToFile().\hypertarget{classPIWOEngine_c7a83bdff3736e35b68584bcb3a4b699}{
+\index{PIWOEngine@{PIWOEngine}!OnWarrning@{OnWarrning}}
+\index{OnWarrning@{OnWarrning}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnWarrning]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnWarrning}}}
+\label{classPIWOEngine_c7a83bdff3736e35b68584bcb3a4b699}
+
+
+Event: Logowanie - Ostrzezenie 
+
+Definition at line 80 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), loadFromFile(), TForm1::newProject(), OnVisualBlockConfigClick(), OnVisualBlockInputHistoryClick(), OnVisualBlockOutputHistoryClick(), TForm1::openProject(), PIWOEngine(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_55424b81f56591f23f3b58e0fdd399d2}{
+\index{PIWOEngine@{PIWOEngine}!OnError@{OnError}}
+\index{OnError@{OnError}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnError]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnError}}}
+\label{classPIWOEngine_55424b81f56591f23f3b58e0fdd399d2}
+
+
+Event: Logowanie - Blad 
+
+Definition at line 84 of file PIWOEngine.h.
+
+Referenced by DeleteBlock(), TForm1::FormCreate(), loadFromFile(), MakeConnection(), TForm1::newProject(), OnVisualBlockConfigClick(), TForm1::openProject(), PIWOEngine(), runBlock(), runNotUsingHistory(), runUsingHistory(), saveToFile(), and validateBlock().\hypertarget{classPIWOEngine_02e912fd9ead4eabd48b32f769bd77c1}{
+\index{PIWOEngine@{PIWOEngine}!OnRunInformation@{OnRunInformation}}
+\index{OnRunInformation@{OnRunInformation}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunInformation]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnRunInformation}}}
+\label{classPIWOEngine_02e912fd9ead4eabd48b32f769bd77c1}
+
+
+Event: Logowanie - Podczas uruchamiania - Informacja 
+
+Definition at line 88 of file PIWOEngine.h.
+
+Referenced by abort(), TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runBlock(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_cc1ea09371765860dfc2912dc605f9be}{
+\index{PIWOEngine@{PIWOEngine}!OnRunDebug@{OnRunDebug}}
+\index{OnRunDebug@{OnRunDebug}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunDebug]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnRunDebug}}}
+\label{classPIWOEngine_cc1ea09371765860dfc2912dc605f9be}
+
+
+Event: Logowanie - Podczas uruchamiania - Debug 
+
+Definition at line 92 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), and runBlock().\hypertarget{classPIWOEngine_faa892e8c9a1a5973a300d2f02143897}{
+\index{PIWOEngine@{PIWOEngine}!OnRunSuccess@{OnRunSuccess}}
+\index{OnRunSuccess@{OnRunSuccess}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunSuccess]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnRunSuccess}}}
+\label{classPIWOEngine_faa892e8c9a1a5973a300d2f02143897}
+
+
+Event: Logowanie - Podczas uruchamiania - Sukces 
+
+Definition at line 96 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runBlock(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_ede20b6476b9e1d0db96878e2eee4481}{
+\index{PIWOEngine@{PIWOEngine}!OnRunWarrning@{OnRunWarrning}}
+\index{OnRunWarrning@{OnRunWarrning}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunWarrning]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnRunWarrning}}}
+\label{classPIWOEngine_ede20b6476b9e1d0db96878e2eee4481}
+
+
+Event: Logowanie - Podczas uruchamiania - Ostrzerzenie 
+
+Definition at line 100 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runBlock(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_303f960016f76986cba65e2c0aaea4e1}{
+\index{PIWOEngine@{PIWOEngine}!OnRunError@{OnRunError}}
+\index{OnRunError@{OnRunError}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunError]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Log {\bf PIWOEngine::OnRunError}}}
+\label{classPIWOEngine_303f960016f76986cba65e2c0aaea4e1}
+
+
+Event: Logowanie - Podczas uruchamiania - Blad 
+
+Definition at line 104 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runBlock(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_ed5f12ba5e4872c5326126080a2cd821}{
+\index{PIWOEngine@{PIWOEngine}!OnBlockSelected@{OnBlockSelected}}
+\index{OnBlockSelected@{OnBlockSelected}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnBlockSelected]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Event {\bf PIWOEngine::OnBlockSelected}}}
+\label{classPIWOEngine_ed5f12ba5e4872c5326126080a2cd821}
+
+
+Event: gdy zaznaczono blok 
+
+Definition at line 108 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), TForm1::FormCreate(), InvertBlockSelection(), MakeConnection(), TForm1::newProject(), OnConnectionSelect(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), TForm1::openProject(), PIWOEngine(), SelectAllBlocks(), UnselectAllBlocks(), and UnselectSelectedConnection().\hypertarget{classPIWOEngine_45e9d4a676e2c489718b23491af65206}{
+\index{PIWOEngine@{PIWOEngine}!OnConnectionSelected@{OnConnectionSelected}}
+\index{OnConnectionSelected@{OnConnectionSelected}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnConnectionSelected]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Event {\bf PIWOEngine::OnConnectionSelected}}}
+\label{classPIWOEngine_45e9d4a676e2c489718b23491af65206}
+
+
+Event: gdy zaznaczono polaczenie 
+
+Definition at line 112 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), TForm1::FormCreate(), InvertBlockSelection(), MakeConnection(), TForm1::newProject(), OnConnectionSelect(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), TForm1::openProject(), PIWOEngine(), SelectAllBlocks(), UnselectAllBlocks(), and UnselectSelectedConnection().\hypertarget{classPIWOEngine_df70bc69dc41278c1d2b02f308a1ba20}{
+\index{PIWOEngine@{PIWOEngine}!OnNothingSelected@{OnNothingSelected}}
+\index{OnNothingSelected@{OnNothingSelected}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnNothingSelected]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Event {\bf PIWOEngine::OnNothingSelected}}}
+\label{classPIWOEngine_df70bc69dc41278c1d2b02f308a1ba20}
+
+
+Event: gdy nic nie jest zaznaczone 
+
+Definition at line 116 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), TForm1::FormCreate(), InvertBlockSelection(), MakeConnection(), TForm1::newProject(), OnConnectionSelect(), OnVisualBlockSelect(), OnVisualBlockSelectAdd(), OnVisualBlockUnselect(), TForm1::openProject(), PIWOEngine(), SelectAllBlocks(), UnselectAllBlocks(), and UnselectSelectedConnection().\hypertarget{classPIWOEngine_5322d9b9def723ae036b005c5a3c578e}{
+\index{PIWOEngine@{PIWOEngine}!OnChanged@{OnChanged}}
+\index{OnChanged@{OnChanged}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnChanged]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Event {\bf PIWOEngine::OnChanged}}}
+\label{classPIWOEngine_5322d9b9def723ae036b005c5a3c578e}
+
+
+Event: gdy projekt zostal zmodyfikowany 
+
+Definition at line 120 of file PIWOEngine.h.
+
+Referenced by AddBlock(), CancelCustomizationOnAllConnections(), CancelCustomizationOnSelectedConnections(), DeleteAllBlocks(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), TForm1::FormCreate(), MakeConnection(), TForm1::newProject(), OnVisualBlockConfigClick(), OnVisualBlockInputSelected(), OnVisualBlockMove(), OnVisualBlockOutputSelected(), TForm1::openProject(), and validateBlock().\hypertarget{classPIWOEngine_c300fdccbd5cf4fa9ad200d10856fd3b}{
+\index{PIWOEngine@{PIWOEngine}!OnRunProgress@{OnRunProgress}}
+\index{OnRunProgress@{OnRunProgress}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunProgress]{\setlength{\rightskip}{0pt plus 5cm}{\bf PIWOEngine\_\-RunProgress} {\bf PIWOEngine::OnRunProgress}}}
+\label{classPIWOEngine_c300fdccbd5cf4fa9ad200d10856fd3b}
+
+
+Event: podczas uruchamiania projektu 
+
+Definition at line 124 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runBlock(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_b5d044c03265cf49fc87e58cd2134749}{
+\index{PIWOEngine@{PIWOEngine}!OnRunStart@{OnRunStart}}
+\index{OnRunStart@{OnRunStart}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunStart]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Event {\bf PIWOEngine::OnRunStart}}}
+\label{classPIWOEngine_b5d044c03265cf49fc87e58cd2134749}
+
+
+Event: gdy projekt zostaje uruchomiony 
+
+Definition at line 128 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_7de6e8504739db45b1ba5defeb63d80c}{
+\index{PIWOEngine@{PIWOEngine}!OnRunEnd@{OnRunEnd}}
+\index{OnRunEnd@{OnRunEnd}!PIWOEngine@{PIWOEngine}}
+\subsubsection[OnRunEnd]{\setlength{\rightskip}{0pt plus 5cm}PIWOEngine\_\-Event {\bf PIWOEngine::OnRunEnd}}}
+\label{classPIWOEngine_7de6e8504739db45b1ba5defeb63d80c}
+
+
+Event: gdy projekt zostal uruchomiony 
+
+Definition at line 132 of file PIWOEngine.h.
+
+Referenced by TForm1::FormCreate(), TForm1::newProject(), TForm1::openProject(), PIWOEngine(), runNotUsingHistory(), and runUsingHistory().\hypertarget{classPIWOEngine_6433fe1909e1f8fdecd7ebc9cc0ec4a3}{
+\index{PIWOEngine@{PIWOEngine}!plugins@{plugins}}
+\index{plugins@{plugins}!PIWOEngine@{PIWOEngine}}
+\subsubsection[plugins]{\setlength{\rightskip}{0pt plus 5cm}{\bf PluginContener}$\ast$ {\bf PIWOEngine::plugins}}}
+\label{classPIWOEngine_6433fe1909e1f8fdecd7ebc9cc0ec4a3}
+
+
+Kontener pluginow 
+
+Definition at line 136 of file PIWOEngine.h.
+
+Referenced by AddBlock(), DuplcateSelectedBlocks(), TForm1::FormCreate(), loadFromFile(), TForm1::newProject(), OnVisualBlockConfigClick(), OnVisualBlockInputHistoryClick(), OnVisualBlockOutputHistoryClick(), TForm1::openProject(), PIWOEngine(), runBlock(), and validateBlock().\hypertarget{classPIWOEngine_dd08ebde966bf33e79750fb1b1dcca08}{
+\index{PIWOEngine@{PIWOEngine}!historyWindows@{historyWindows}}
+\index{historyWindows@{historyWindows}!PIWOEngine@{PIWOEngine}}
+\subsubsection[historyWindows]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf THistory}$\ast$$>$ {\bf PIWOEngine::historyWindows}}}
+\label{classPIWOEngine_dd08ebde966bf33e79750fb1b1dcca08}
+
+
+Lista okien histori aktualnie otwartych dla tego projektu 
+
+Definition at line 140 of file PIWOEngine.h.
+
+Referenced by TForm1::blockMenu(), DeleteAllBlocks(), DeleteBlock(), DeleteSelectedBlocks(), HistoryFormClose(), TForm1::HistoryMenuClick(), OnVisualBlockInputHistoryClick(), OnVisualBlockOutputHistoryClick(), TForm1::Pokawszystkieokna1Click(), runBlock(), TForm1::Widok1Click(), TForm1::Zamknijwszystkieokna1Click(), and $\sim$PIWOEngine().\hypertarget{classPIWOEngine_5730b8e65319ad792660fa205495f298}{
+\index{PIWOEngine@{PIWOEngine}!alwaysRun@{alwaysRun}}
+\index{alwaysRun@{alwaysRun}!PIWOEngine@{PIWOEngine}}
+\subsubsection[alwaysRun]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf PIWOEngine::alwaysRun}}}
+\label{classPIWOEngine_5730b8e65319ad792660fa205495f298}
+
+
+Czy trym Auto-run ma być włączony 
+
+Definition at line 144 of file PIWOEngine.h.
+
+Referenced by AddBlock(), TForm1::blockMenu(), DeleteAllConnections(), DeleteBlock(), DeleteSelectedBlocks(), DeleteSelectedConnection(), DuplcateSelectedBlocks(), OnVisualBlockConfigClick(), OnVisualBlockInputSelected(), OnVisualBlockOutputSelected(), PIWOEngine(), TForm1::Uruchom3Click(), and validateAll().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/gui/\hyperlink{PIWOEngine_8h}{PIWOEngine.h}\item 
+/PIWO/Program/gui/\hyperlink{PIWOEngine_8cpp}{PIWOEngine.cpp}\end{CompactItemize}

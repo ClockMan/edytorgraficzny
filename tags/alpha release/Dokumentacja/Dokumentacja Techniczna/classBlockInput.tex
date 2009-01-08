@@ -1,0 +1,180 @@
+\hypertarget{classBlockInput}{
+\section{BlockInput Class Reference}
+\label{classBlockInput}\index{BlockInput@{BlockInput}}
+}
+{\tt \#include $<$BlockInput.h$>$}
+
+Inheritance diagram for BlockInput:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=60pt]{classBlockInput__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for BlockInput:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=60pt]{classBlockInput__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classBlockInput_c5a561d29f79573620b13aa0b1df6138}{BlockInput} (const AnsiString aName)
+\item 
+\hyperlink{classBlockInput_07ca053b809a523114ab262bd049c59a}{BlockInput} (const \hyperlink{classBlockInput}{BlockInput} \&kopia)
+\item 
+\hyperlink{classBlockInput_b3ba18bff508ffeb192d2112accb7e43}{$\sim$BlockInput} ()
+\item 
+bool \hyperlink{classBlockInput_51f032cdaa57631902c512b716c8863c}{connect} (const AnsiString aName)
+\item 
+AnsiString \& \hyperlink{classBlockInput_a18ef5e360b351a058f75cc123532f55}{getConnectedType} ()
+\item 
+void \hyperlink{classBlockInput_438aec4b1b99763da696de529b199c67}{disconnect} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+vector$<$ AnsiString $>$ \hyperlink{classBlockInput_01da6f721998988559aa48370895e419}{allowedTypes}
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+AnsiString \hyperlink{classBlockInput_dbbd1afff5c0211095d49ca4aa00191e}{inputType}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBlockInput}{BlockInput} - Klasa pojemnik przechowujaca wejscia i wyjscia bloku \begin{Desc}
+\item[Author:]Piotr \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 15 of file BlockInput.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBlockInput_c5a561d29f79573620b13aa0b1df6138}{
+\index{BlockInput@{BlockInput}!BlockInput@{BlockInput}}
+\index{BlockInput@{BlockInput}!BlockInput@{BlockInput}}
+\subsubsection[BlockInput]{\setlength{\rightskip}{0pt plus 5cm}BlockInput::BlockInput (const AnsiString {\em aName})}}
+\label{classBlockInput_c5a561d29f79573620b13aa0b1df6138}
+
+
+Konstruktor \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa wejscia bloku \end{description}
+\end{Desc}
+
+
+Definition at line 20 of file BlockInput.cpp.\hypertarget{classBlockInput_07ca053b809a523114ab262bd049c59a}{
+\index{BlockInput@{BlockInput}!BlockInput@{BlockInput}}
+\index{BlockInput@{BlockInput}!BlockInput@{BlockInput}}
+\subsubsection[BlockInput]{\setlength{\rightskip}{0pt plus 5cm}BlockInput::BlockInput (const {\bf BlockInput} \& {\em kopia})}}
+\label{classBlockInput_07ca053b809a523114ab262bd049c59a}
+
+
+Konstruktor kopiujacy \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em copy}]element ktory zostanie skopiowany \end{description}
+\end{Desc}
+
+
+Definition at line 24 of file BlockInput.cpp.
+
+References allowedTypes, and inputType.\hypertarget{classBlockInput_b3ba18bff508ffeb192d2112accb7e43}{
+\index{BlockInput@{BlockInput}!$\sim$BlockInput@{$\sim$BlockInput}}
+\index{$\sim$BlockInput@{$\sim$BlockInput}!BlockInput@{BlockInput}}
+\subsubsection[$\sim$BlockInput]{\setlength{\rightskip}{0pt plus 5cm}BlockInput::$\sim$BlockInput ()}}
+\label{classBlockInput_b3ba18bff508ffeb192d2112accb7e43}
+
+
+Destruktor 
+
+Definition at line 30 of file BlockInput.cpp.
+
+\subsection{Member Function Documentation}
+\hypertarget{classBlockInput_51f032cdaa57631902c512b716c8863c}{
+\index{BlockInput@{BlockInput}!connect@{connect}}
+\index{connect@{connect}!BlockInput@{BlockInput}}
+\subsubsection[connect]{\setlength{\rightskip}{0pt plus 5cm}bool BlockInput::connect (const AnsiString {\em aName})}}
+\label{classBlockInput_51f032cdaa57631902c512b716c8863c}
+
+
+Realizuje polaczenia miêdzy blokami. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]nazwa obiektu z ktorym bedzie polaczone wejscie. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]poprawnosc przeprowadzonej operajci. \end{Desc}
+
+
+Definition at line 3 of file BlockInput.cpp.
+
+References inputType.
+
+Referenced by PIWOEngine::DuplcateSelectedBlocks(), PIWOEngine::loadFromFile(), and PIWOEngine::MakeConnection().\hypertarget{classBlockInput_a18ef5e360b351a058f75cc123532f55}{
+\index{BlockInput@{BlockInput}!getConnectedType@{getConnectedType}}
+\index{getConnectedType@{getConnectedType}!BlockInput@{BlockInput}}
+\subsubsection[getConnectedType]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& BlockInput::getConnectedType ()}}
+\label{classBlockInput_a18ef5e360b351a058f75cc123532f55}
+
+
+Pobiera typ polaczenia. \begin{Desc}
+\item[Returns:]nazwa typu polaczenia. \end{Desc}
+
+
+Definition at line 15 of file BlockInput.cpp.
+
+References inputType.
+
+Referenced by VisualBlock::updateVisualComponents().\hypertarget{classBlockInput_438aec4b1b99763da696de529b199c67}{
+\index{BlockInput@{BlockInput}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!BlockInput@{BlockInput}}
+\subsubsection[disconnect]{\setlength{\rightskip}{0pt plus 5cm}void BlockInput::disconnect ()}}
+\label{classBlockInput_438aec4b1b99763da696de529b199c67}
+
+
+rozlacza bloki 
+
+Definition at line 10 of file BlockInput.cpp.
+
+References inputType.
+
+Referenced by PIWOEngine::DeleteSelectedConnection(), PIWOEngine::OnVisualBlockInputSelected(), and PIWOEngine::OnVisualBlockOutputSelected().
+
+\subsection{Member Data Documentation}
+\hypertarget{classBlockInput_dbbd1afff5c0211095d49ca4aa00191e}{
+\index{BlockInput@{BlockInput}!inputType@{inputType}}
+\index{inputType@{inputType}!BlockInput@{BlockInput}}
+\subsubsection[inputType]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf BlockInput::inputType}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classBlockInput_dbbd1afff5c0211095d49ca4aa00191e}
+
+
+
+
+Definition at line 18 of file BlockInput.h.
+
+Referenced by BlockInput(), connect(), disconnect(), and getConnectedType().\hypertarget{classBlockInput_01da6f721998988559aa48370895e419}{
+\index{BlockInput@{BlockInput}!allowedTypes@{allowedTypes}}
+\index{allowedTypes@{allowedTypes}!BlockInput@{BlockInput}}
+\subsubsection[allowedTypes]{\setlength{\rightskip}{0pt plus 5cm}vector$<$AnsiString$>$ {\bf BlockInput::allowedTypes}}}
+\label{classBlockInput_01da6f721998988559aa48370895e419}
+
+
+lista dozwolonych typow które moga zostac podane na wejscie 
+
+Definition at line 37 of file BlockInput.h.
+
+Referenced by BlockInput(), PIWOEngine::loadFromFile(), PIWOEngine::MakeConnection(), Connection::update(), and VisualBlock::updateVisualComponents().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/engine/\hyperlink{BlockInput_8h}{BlockInput.h}\item 
+/PIWO/Program/engine/\hyperlink{BlockInput_8cpp}{BlockInput.cpp}\end{CompactItemize}

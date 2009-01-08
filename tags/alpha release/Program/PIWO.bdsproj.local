@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-11-26 12:27:46.675.cpp,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.cpp=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.cpp</Transaction>
+    <Transaction>2008-11-26 12:27:46.675.h,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.h=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.h</Transaction>
+    <Transaction>2008-11-26 12:27:46.675.dfm,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Unit1.dfm=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\main.dfm</Transaction>
+    <Transaction>2008-11-26 12:29:30.051.bdsproj,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\PIWO.bdsproj</Transaction>
+    <Transaction>2008-11-26 12:39:46.699.bdsproj,C:\Documents and Settings\User\Moje dokumenty\Borland Studio Projects\PIWO.bdsproj=C:\Documents and Settings\User\Pulpit\Projekt - Piwo\Program\PIWO.bdsproj</Transaction>
+    <Transaction>2008-12-03 16:13:22.250.cpp,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.cpp=D:\System\ClockMan\Pulpit\PIWO\Program\splash.cpp</Transaction>
+    <Transaction>2008-12-03 16:13:22.250.h,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.h=D:\System\ClockMan\Pulpit\PIWO\Program\splash.h</Transaction>
+    <Transaction>2008-12-03 16:13:22.250.dfm,D:\System\ClockMan\Pulpit\PIWO\Program\Unit2.dfm=D:\System\ClockMan\Pulpit\PIWO\Program\splash.dfm</Transaction>
+    <Transaction>2008-12-16 17:41:56.937.cpp,D:\System\ClockMan\Pulpit\PIWO\Program\ScrollBox1.cpp=</Transaction>
+    <Transaction>2008-12-29 13:36:30.687.cpp,D:\System\ClockMan\Pulpit\PIWO\Program\Unit3.cpp=D:\System\ClockMan\Pulpit\PIWO\Program\history.cpp</Transaction>
+    <Transaction>2008-12-29 13:36:30.687.h,D:\System\ClockMan\Pulpit\PIWO\Program\Unit3.h=D:\System\ClockMan\Pulpit\PIWO\Program\history.h</Transaction>
+    <Transaction>2008-12-29 13:36:30.687.dfm,D:\System\ClockMan\Pulpit\PIWO\Program\Unit3.dfm=D:\System\ClockMan\Pulpit\PIWO\Program\history.dfm</Transaction>
+    <Transaction>2008-12-31 20:36:32.794.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap1bit\Interface\IBitmap1bit.cpp=</Transaction>
+    <Transaction>2008-12-31 20:36:36.622.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap4bit\Interface\IBitmap4bit.cpp=</Transaction>
+    <Transaction>2008-12-31 20:36:40.747.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap8bit\Interface\IBitmap8bit.cpp=</Transaction>
+    <Transaction>2008-12-31 20:36:43.716.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap16bit\Interface\IBitmap16bit.cpp=</Transaction>
+    <Transaction>2008-12-31 20:36:47.013.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap24bit\Interface\IBitmap24bit.cpp=</Transaction>
+    <Transaction>2008-12-31 20:36:50.325.cpp,D:\System\ClockMan\Pulpit\PIWO\TypyDanych\Bitmap32bit\Interface\IBitmap32bit.cpp=</Transaction>
+  </Transactions>
+</BorlandProject>

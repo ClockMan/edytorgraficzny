@@ -1,0 +1,188 @@
+\hypertarget{classItem}{
+\section{Item Class Reference}
+\label{classItem}\index{Item@{Item}}
+}
+{\tt \#include $<$Item.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classItem_09e65c0f4048f2199fbc0911247f2ff8}{Item} (const AnsiString aName, void $\ast$aObject, const AnsiString aType)
+\item 
+\hyperlink{classItem_477f972904e0b7f8f6077717d928cc5b}{Item} (const \hyperlink{classItem}{Item} \&copy)
+\item 
+AnsiString \& \hyperlink{classItem_550ef0630b4f3666f6a2a968533d88cd}{getName} ()
+\item 
+void $\ast$ \hyperlink{classItem_22ca3797e0e23bf171710380df10cdaf}{getObject} ()
+\item 
+bool \hyperlink{classItem_bfe885883e2a8c929c253b443af64987}{setObject} (void $\ast$aObject)
+\item 
+AnsiString \& \hyperlink{classItem_0a7a5b69520ece64cbe8cf239f75f384}{getType} ()
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+AnsiString \hyperlink{classItem_56c60afa4532aff7cf72107866590a0c}{name}
+\item 
+void $\ast$ \hyperlink{classItem_c52cee43ddb5e8c46525ef4e15030001}{pointer}
+\item 
+AnsiString \hyperlink{classItem_80c1f64ec1e04d14c8b5e91e519c7cae}{type}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classItem}{Item} - Klasa pojemnik przechowujaca elementy dla listy BlockConfig/TypeConfig UWAGA: Klasa nie zwalnia danych przesylanych jako wskaznik do konstruktora (aObiekt), osoba uzywajaca klasy sama musi to oprogramowac. \begin{Desc}
+\item[Author:]Piotr Zegar \end{Desc}
+\begin{Desc}
+\item[Date:]2008.11.25 \end{Desc}
+\begin{Desc}
+\item[Version:]0.1 \end{Desc}
+
+
+Definition at line 16 of file Item.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classItem_09e65c0f4048f2199fbc0911247f2ff8}{
+\index{Item@{Item}!Item@{Item}}
+\index{Item@{Item}!Item@{Item}}
+\subsubsection[Item]{\setlength{\rightskip}{0pt plus 5cm}Item::Item (const AnsiString {\em aName}, \/  void $\ast$ {\em aObject}, \/  const AnsiString {\em aType})}}
+\label{classItem_09e65c0f4048f2199fbc0911247f2ff8}
+
+
+Konstruktor. Inicjuje pola prywatne nie pozwalajac na ich zmianne, konstruktor wywala wyjatek gdy parametry sa bledne \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aName}]Nazwa pod jaka bed¹ przechowywane te dane, niemoze byc pusta \item[{\em aObiekt}]Obiekt ktory ma zostac powiazany z nazw¹, niemoze byæ NULL \item[{\em aType}]informacja o typie obiektu, nie uzywana wewnatrz klasy, nie mo¿e byc puste \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]Item(Item \&kopia) \end{Desc}
+
+
+Definition at line 29 of file Item.cpp.
+
+References name, pointer, and type.\hypertarget{classItem_477f972904e0b7f8f6077717d928cc5b}{
+\index{Item@{Item}!Item@{Item}}
+\index{Item@{Item}!Item@{Item}}
+\subsubsection[Item]{\setlength{\rightskip}{0pt plus 5cm}Item::Item (const {\bf Item} \& {\em copy})}}
+\label{classItem_477f972904e0b7f8f6077717d928cc5b}
+
+
+Konstruktor kopiujacy Kopiuje obiekt, wymagany dla vector \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em kopia}]obiekt kopiowany \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]Item(string aName, void$\ast$ aObject, string aType) \end{Desc}
+
+
+Definition at line 39 of file Item.cpp.
+
+References name, pointer, and type.
+
+\subsection{Member Function Documentation}
+\hypertarget{classItem_550ef0630b4f3666f6a2a968533d88cd}{
+\index{Item@{Item}!getName@{getName}}
+\index{getName@{getName}!Item@{Item}}
+\subsubsection[getName]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& Item::getName ()}}
+\label{classItem_550ef0630b4f3666f6a2a968533d88cd}
+
+
+Pobiera i zwraca nazwe podawana w konstruktorze, zwracana wartosc nie jest pustym stringiem \begin{Desc}
+\item[Returns:]name \end{Desc}
+
+
+Definition at line 3 of file Item.cpp.
+
+References name.\hypertarget{classItem_22ca3797e0e23bf171710380df10cdaf}{
+\index{Item@{Item}!getObject@{getObject}}
+\index{getObject@{getObject}!Item@{Item}}
+\subsubsection[getObject]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Item::getObject ()}}
+\label{classItem_22ca3797e0e23bf171710380df10cdaf}
+
+
+Pobiera i zwraca wskaznik do danych jakie przechowuje obiekt, zwracana wartosc nie jest nullem \begin{Desc}
+\item[Returns:]wsk \end{Desc}
+
+
+Definition at line 8 of file Item.cpp.
+
+References pointer.
+
+Referenced by BlockConfig::getBitmap(), BlockConfig::getBoolean(), BlockConfig::getDouble(), BlockConfig::getInt(), BlockConfig::getStream(), BlockConfig::getString(), BlockConfig::remove(), BlockConfig::setBitmap(), BlockConfig::setBoolean(), BlockConfig::setDouble(), BlockConfig::setInt(), BlockConfig::setStream(), and BlockConfig::setString().\hypertarget{classItem_bfe885883e2a8c929c253b443af64987}{
+\index{Item@{Item}!setObject@{setObject}}
+\index{setObject@{setObject}!Item@{Item}}
+\subsubsection[setObject]{\setlength{\rightskip}{0pt plus 5cm}bool Item::setObject (void $\ast$ {\em aObject})}}
+\label{classItem_bfe885883e2a8c929c253b443af64987}
+
+
+Ustawia nowy obiekt \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aObiekt}]obiekt ktory zostanie dodany do listy. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true/false w zaleznosci czy obiekt zostal pomyslnei zainicjalizowany \end{Desc}
+
+
+Definition at line 13 of file Item.cpp.
+
+References pointer.
+
+Referenced by BlockConfig::setBitmap(), BlockConfig::setBoolean(), BlockConfig::setDouble(), BlockConfig::setInt(), BlockConfig::setStream(), and BlockConfig::setString().\hypertarget{classItem_0a7a5b69520ece64cbe8cf239f75f384}{
+\index{Item@{Item}!getType@{getType}}
+\index{getType@{getType}!Item@{Item}}
+\subsubsection[getType]{\setlength{\rightskip}{0pt plus 5cm}AnsiString \& Item::getType ()}}
+\label{classItem_0a7a5b69520ece64cbe8cf239f75f384}
+
+
+Pobiera i zwraca nazwe typu danych jaka user powi¹zal z danymi i t¹ nazw¹, nigdy nie zwraca pustego stringu \begin{Desc}
+\item[Returns:]type \end{Desc}
+
+
+Definition at line 24 of file Item.cpp.
+
+References type.
+
+Referenced by BlockConfig::getBitmap(), BlockConfig::getBoolean(), BlockConfig::getDouble(), BlockConfig::getInt(), BlockConfig::getStream(), BlockConfig::getString(), BlockConfig::getType(), BlockConfig::isBitmap(), BlockConfig::isBoolean(), BlockConfig::isDouble(), BlockConfig::isInt(), BlockConfig::isStream(), BlockConfig::isString(), BlockConfig::remove(), BlockConfig::setBitmap(), BlockConfig::setBoolean(), BlockConfig::setDouble(), BlockConfig::setInt(), BlockConfig::setStream(), and BlockConfig::setString().
+
+\subsection{Member Data Documentation}
+\hypertarget{classItem_56c60afa4532aff7cf72107866590a0c}{
+\index{Item@{Item}!name@{name}}
+\index{name@{name}!Item@{Item}}
+\subsubsection[name]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf Item::name}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classItem_56c60afa4532aff7cf72107866590a0c}
+
+
+
+
+Definition at line 19 of file Item.h.
+
+Referenced by getName(), and Item().\hypertarget{classItem_c52cee43ddb5e8c46525ef4e15030001}{
+\index{Item@{Item}!pointer@{pointer}}
+\index{pointer@{pointer}!Item@{Item}}
+\subsubsection[pointer]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf Item::pointer}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classItem_c52cee43ddb5e8c46525ef4e15030001}
+
+
+
+
+Definition at line 20 of file Item.h.
+
+Referenced by getObject(), Item(), and setObject().\hypertarget{classItem_80c1f64ec1e04d14c8b5e91e519c7cae}{
+\index{Item@{Item}!type@{type}}
+\index{type@{type}!Item@{Item}}
+\subsubsection[type]{\setlength{\rightskip}{0pt plus 5cm}AnsiString {\bf Item::type}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classItem_80c1f64ec1e04d14c8b5e91e519c7cae}
+
+
+
+
+Definition at line 21 of file Item.h.
+
+Referenced by getType(), and Item().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/PIWO/Program/engine/\hyperlink{Item_8h}{Item.h}\item 
+/PIWO/Program/engine/\hyperlink{Item_8cpp}{Item.cpp}\end{CompactItemize}

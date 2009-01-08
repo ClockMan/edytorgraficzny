@@ -1,0 +1,4 @@
+Dodawanie obrazów - 2 lub wiêcej wejœæ, 1 wyjœcie - konfiguracja: ewentualnie ile % z ka¿dego obraz ma byæ w obrazie wynikowym (domyœlnie 100%) [konfiguracja nie ejst konieczna], czy normalizowaæ
+Wyrównanie histogramu - 1 wejœc, 1 wyjœæ - konfiguracja: brak
+
+Kto ma pomys³y to prosze uzupe³niæ proponowan¹ listê operacji

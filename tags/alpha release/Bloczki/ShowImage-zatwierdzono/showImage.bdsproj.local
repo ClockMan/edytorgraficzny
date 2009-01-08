@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-12-20 17:45:09.749.cpp,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\SaveImage_dll.cpp</Transaction>
+    <Transaction>2008-12-20 17:45:15.508.bdsproj,C:\Documents and Settings\migdał\Moje dokumenty\Borland Studio Projects\Project1.bdsproj=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\SaveImage.bdsproj</Transaction>
+    <Transaction>2008-12-21 14:33:27.795.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\SaveImg.cpp=</Transaction>
+    <Transaction>2008-12-21 14:33:33.093.hpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\SaveImg.hpp=</Transaction>
+    <Transaction>2008-12-21 14:34:01.934.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\SaveImage.cpp</Transaction>
+    <Transaction>2008-12-21 14:34:01.934.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\SaveImage.h</Transaction>
+    <Transaction>2008-12-23 20:21:26.427.cpp,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\Unit1.cpp=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\configWindow.cpp</Transaction>
+    <Transaction>2008-12-23 20:21:26.427.h,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\Unit1.h=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\configWindow.h</Transaction>
+    <Transaction>2008-12-23 20:21:26.427.dfm,D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\Unit1.dfm=D:\PROJEKT INFORMATYCZNY\piwo\Bloczki\SaveImage\configWindow.dfm</Transaction>
+    <Transaction>2009-01-05 19:18:21.696.cpp,F:\PI\testy\Bloczki\ShowImage\imageWindow.cpp=</Transaction>
+    <Transaction>2009-01-05 19:18:21.719.dfm,F:\PI\testy\Bloczki\ShowImage\imageWindow.dfm=</Transaction>
+    <Transaction>2009-01-05 20:35:54.520.cpp,F:\PI\testy\Bloczki\SaveImage-zatwierdzono\configWindow.cpp=</Transaction>
+    <Transaction>2009-01-05 20:35:54.527.dfm,F:\PI\testy\Bloczki\SaveImage-zatwierdzono\configWindow.dfm=</Transaction>
+    <Transaction>2009-01-05 20:57:54.543.bdsproj,F:\PI\testy\Bloczki\SaveImage-zatwierdzono\SaveImage.bdsproj=F:\PI\testy\Bloczki\test\showImage.bdsproj</Transaction>
+    <Transaction>2009-01-05 21:06:30.706.cpp,F:\PI\testy\Bloczki\ShowImage\imageWindow.cpp=</Transaction>
+    <Transaction>2009-01-05 21:06:30.706.dfm,F:\PI\testy\Bloczki\ShowImage\imageWindow.dfm=</Transaction>
+    <Transaction>2009-01-05 21:06:41.498.cpp,F:\PI\testy\Bloczki\SaveImage-zatwierdzono\SaveImage.cpp=</Transaction>
+    <Transaction>2009-01-05 21:06:50.315.cpp,F:\PI\testy\Bloczki\SaveImage-zatwierdzono\SaveImage_dll.cpp=</Transaction>
+    <Transaction>2009-01-05 21:10:54.891.cpp,F:\PI\testy\Bloczki\test\Unit1.cpp=F:\PI\testy\Bloczki\test\showImage.cpp</Transaction>
+    <Transaction>2009-01-05 21:10:54.891.h,F:\PI\testy\Bloczki\test\Unit1.h=F:\PI\testy\Bloczki\test\showImage.h</Transaction>
+    <Transaction>2009-01-05 22:16:01.662.cpp,F:\PI\testy\Bloczki\test\imageWindow.cpp=</Transaction>
+    <Transaction>2009-01-05 22:16:01.682.dfm,F:\PI\testy\Bloczki\test\imageWindow.dfm=</Transaction>
+    <Transaction>2009-01-05 22:17:24.023.cpp,F:\PI\testy\Bloczki\test\Unit1.cpp=F:\PI\testy\Bloczki\test\imageWindow.cpp</Transaction>
+    <Transaction>2009-01-05 22:17:24.023.h,F:\PI\testy\Bloczki\test\Unit1.h=F:\PI\testy\Bloczki\test\imageWindow.h</Transaction>
+    <Transaction>2009-01-05 22:17:24.023.dfm,F:\PI\testy\Bloczki\test\Unit1.dfm=F:\PI\testy\Bloczki\test\imageWindow.dfm</Transaction>
+    <Transaction>2009-01-07 11:37:34.497.cpp,F:\PI\kod\Program\gui\VisualBlock.cpp=</Transaction>
+    <Transaction>2009-01-08 14:07:59.937.cpp,D:\System\ClockMan\Pulpit\PIWO\Bloczki\ShowImage-niezatwierdzono\showImage.cpp=</Transaction>
+  </Transactions>
+</BorlandProject>

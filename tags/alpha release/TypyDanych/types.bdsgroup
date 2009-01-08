@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">Default.Personality</Option>
+      <Option Name="ProjectType"></Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{B54E1008-C32C-4FF2-8B2E-84B67785FAB1}</Option>
+    </Option>
+  </PersonalityInfo>
+  <Default.Personality>
+    
+    <Projects>
+      <Projects Name="Integer.dll">Integer\DLL\Integer.bdsproj</Projects>
+      <Projects Name="Mask3x3.dll">Mask3x3\DLL\Mask3x3.bdsproj</Projects>
+      <Projects Name="Mask5x5.dll">Mask5x5\DLL\Mask5x5.bdsproj</Projects>
+      <Projects Name="Double.dll">Double\DLL\Double.bdsproj</Projects>
+      <Projects Name="Boolean.dll">Boolean\DLL\Boolean.bdsproj</Projects>
+      <Projects Name="Bitmap32bit.dll">Bitmap32bit\DLL\Bitmap32bit.bdsproj</Projects>
+      <Projects Name="Bitmap24bit.dll">Bitmap24bit\DLL\Bitmap24bit.bdsproj</Projects>
+      <Projects Name="Bitmap16bit.dll">Bitmap16bit\DLL\Bitmap16bit.bdsproj</Projects>
+      <Projects Name="Bitmap8bit.dll">Bitmap8bit\DLL\Bitmap8bit.bdsproj</Projects>
+      <Projects Name="Bitmap4bit.dll">Bitmap4bit\DLL\Bitmap4bit.bdsproj</Projects>
+      <Projects Name="Bitmap1bit.dll">Bitmap1bit\DLL\Bitmap1bit.bdsproj</Projects>
+      <Projects Name="Targets">Integer.dll Mask3x3.dll Mask5x5.dll Double.dll Boolean.dll Bitmap32bit.dll Bitmap24bit.dll Bitmap16bit.dll Bitmap8bit.dll Bitmap4bit.dll Bitmap1bit.dll</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

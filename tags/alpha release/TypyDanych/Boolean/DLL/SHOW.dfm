@@ -1,0 +1,34 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Width = 320
+  Height = 240
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  ParentFont = False
+  TabOrder = 0
+  TabStop = True
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 330
+    Height = 128
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clLime
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -96
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    ExplicitLeft = 56
+    ExplicitTop = 16
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end
