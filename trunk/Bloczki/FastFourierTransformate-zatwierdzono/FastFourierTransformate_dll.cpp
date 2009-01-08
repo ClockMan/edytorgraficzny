@@ -134,10 +134,10 @@ int __stdcall run(Block *aBlock)
 
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
-
+	Graphics::TBitmap** pict;
 	if(picture->Width==picture->Height)
 	{
-		Graphics::TBitmap** pict = Fimage(picture);
+		pict = Fimage(picture);
 		if(pict[0]==NULL || pict[1]==NULL)//na razie dzial tylko dla obrazow NxN
 		{
                 aBlock->output[0].setErrorCode(2);
@@ -164,7 +164,7 @@ int __stdcall run(Block *aBlock)
 
 
 	aBlock->output[0].setObject(*copy1);
-        aBlock->output[1].setObject(*copy2);
+	aBlock->output[1].setObject(*copy2);
 	
 	pict[0]->Free();
     pict[1]->Free();
