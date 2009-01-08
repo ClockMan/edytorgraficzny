@@ -405,64 +405,84 @@ void __fastcall TForm1::Zakocz2Click(TObject *Sender)
 
 void __fastcall TForm1::Zaznaczwszystkiebloki1Click(TObject *Sender)
 {
-   piwo->SelectAllBlocks();	
+   blockMenu(true);
+   piwo->SelectAllBlocks();
+   blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Odznaczwszystkiebloki1Click(TObject *Sender)
 {
+	blockMenu(true);
 	piwo->UnselectAllBlocks();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Odwrzaznaczenieblokw1Click(TObject *Sender)
 {
-	piwo->InvertBlockSelection();	
+	blockMenu(true);
+	piwo->InvertBlockSelection();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Usubloki1Click(TObject *Sender)
 {
-	piwo->DeleteAllBlocks();	
+	blockMenu(true);
+	piwo->DeleteAllBlocks();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Usuzaznaczonebloki1Click(TObject *Sender)
 {
+	blockMenu(true);
 	piwo->DeleteSelectedConnection();
-	piwo->DeleteSelectedBlocks();	
+	piwo->DeleteSelectedBlocks();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Odznaczzaznaczonepoaczenie1Click(TObject *Sender)
 {
-	piwo->UnselectSelectedConnection();	
+	blockMenu(true);
+	piwo->UnselectSelectedConnection();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Usuwszystkiepoczenia1Click(TObject *Sender)
 {
+   blockMenu(true);
    piwo->DeleteAllConnections();
+   blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Usuzaznaczonepoczenie1Click(TObject *Sender)
 {
+	blockMenu(true);
 	piwo->DeleteSelectedConnection();
 	piwo->DeleteSelectedBlocks();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 
 void __fastcall TForm1::Zresetujwszystkiepoczenia1Click(TObject *Sender)
 {
-	piwo->CancelCustomizationOnAllConnections();	
+	blockMenu(true);
+	piwo->CancelCustomizationOnAllConnections();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Zresetujzaznaczonepoczenie1Click(TObject *Sender)
 {
-	piwo->CancelCustomizationOnSelectedConnections();	
+	blockMenu(true);
+	piwo->CancelCustomizationOnSelectedConnections();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
@@ -878,6 +898,7 @@ void __fastcall TForm1::Nowy1Click(TObject *Sender)
 
 void __fastcall TForm1::Zakocz1Click(TObject *Sender)
 {
+  piwo->Enabled=false;
   closeProject();
 }
 
@@ -890,7 +911,9 @@ void __fastcall TForm1::Otwrz1Click(TObject *Sender)
 
 void __fastcall TForm1::Duplikujbloki1Click(TObject *Sender)
 {
-   piwo->DuplcateSelectedBlocks();	
+   blockMenu(true);
+   piwo->DuplcateSelectedBlocks();
+   blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
@@ -898,6 +921,7 @@ void __fastcall TForm1::Exportujjakoobraz1Click(TObject *Sender)
 {
 	if (SaveDialog2->Execute())
 	{
+		 blockMenu(true);
 		 if (!piwo->saveToFile(SaveDialog2->FileName))
 		 {
 			Application->MessageBox("Niemo¿na zapisaæ projektu", "Zapisywanie projektu", MB_OK | MB_ICONERROR);
@@ -910,6 +934,7 @@ void __fastcall TForm1::Exportujjakoobraz1Click(TObject *Sender)
 			Application->Title=Form1->Caption;
 			StatusBar1->SimpleText=SaveDialog2->FileName;
 		 }
+		 blockMenu(false);
 	}
 }
 //---------------------------------------------------------------------------
@@ -921,10 +946,12 @@ void __fastcall TForm1::Zapiszjako1Click(TObject *Sender)
 	  Exportujjakoobraz1Click(Sender);
 	  return;
   }
+  blockMenu(true);
   if (!piwo->saveToFile(fileName))
   {
 	  Application->MessageBox("Niemo¿na zapisaæ projektu", "Zapisywanie projektu", MB_OK | MB_ICONERROR);
   }
+  blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
@@ -984,7 +1011,9 @@ void TForm1::addExt(const AnsiString &ExtMyFile)
 }
 void __fastcall TForm1::Sprawdprojekt1Click(TObject *Sender)
 {
-	piwo->validateAll();	
+	blockMenu(true);
+	piwo->validateAll();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
@@ -996,8 +1025,10 @@ void __fastcall TForm1::Anuluj1Click(TObject *Sender)
 
 void __fastcall TForm1::ToolButton11Click(TObject *Sender)
 {
+	blockMenu(true);
 	piwo->DeleteSelectedBlocks();
-	piwo->DeleteSelectedConnection();	
+	piwo->DeleteSelectedConnection();
+	blockMenu(false);
 }
 //---------------------------------------------------------------------------
 
