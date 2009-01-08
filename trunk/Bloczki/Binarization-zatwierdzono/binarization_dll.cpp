@@ -64,14 +64,14 @@ int __stdcall validate(Block *aBlock)
 		input1.allowedTypes.push_back("Bitmap16bit");
 		input1.allowedTypes.push_back("Bitmap24bit");
 		input1.allowedTypes.push_back("Bitmap32bit");
-		input1.setDescription("Domyslne wejscie");
+		input1.setDescription("Domyœlne wejœcie");
 		input1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejsciu");
 		aBlock->input.push_back(input1);
 
 		BlockOutput output1("output1");
 		output1.setOutputType("Bitmap1bit");
-		output1.setDescription("Domyslne wyjscie");
+		output1.setDescription("Domyœlne wyjœcie");
 		output1.setErrorCode(1);
 		output1.setErrorDescription("Brak obiektu na wejsciu");
 		aBlock->output.push_back(output1);
@@ -81,7 +81,7 @@ int __stdcall validate(Block *aBlock)
 		aBlock->getConfig()->addInt("mode",0);
 		return 2;
 	}
-		else
+	else
 	{
 		if(aBlock->input[0].getConnectedType().IsEmpty())
 		{
@@ -134,7 +134,7 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-	int mode(aBlock->getConfig()->getInt("mode"));
+	int mode=aBlock->getConfig()->getInt("mode");
 
 	if(mode == 0)
 	{
@@ -149,8 +149,7 @@ int __stdcall run(Block *aBlock)
 	else
 	{
 		int limitB(aBlock->getConfig()->getInt("limitB"));
-
-		if(!BinarizationBalance(picture,limit,clWhite,clBlack))
+		if(!BinarizationBalance(picture,limitB,clWhite,clBlack))
 		{
 			aBlock->output[0].setErrorCode(2);
 			aBlock->output[0].setErrorDescription("Pusta bitmapa");
