@@ -135,15 +135,23 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-
-    Graphics::TBitmap** pict = Fimage(picture);
-	if(pict[0]==NULL || pict[1]==NULL || picture->Width!=picture->Height)//na razie dzial tylko dla obrazow NxN
-    {
+	if(picture->Width==picture->Height)
+	{
+		Graphics::TBitmap** pict = Fimage(picture);
+		if(pict[0]==NULL || pict[1]==NULL)//na razie dzial tylko dla obrazow NxN
+		{
                 aBlock->output[0].setErrorCode(2);
                 aBlock->output[0].setErrorDescription("Pusta bitmapa");
                 picture->Free();
                 return 2;
-    }
+		}
+	}
+	else {
+                aBlock->output[0].setErrorCode(2);
+                aBlock->output[0].setErrorDescription("Bitmapa musi byc kwadratowa");
+                picture->Free();
+                return 2;
+	}
 
 	TypeConfig* copy1;
     TypeConfig* copy2;
