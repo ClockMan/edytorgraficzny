@@ -13,21 +13,17 @@ TimgWindow *imgWindow;
 __fastcall TimgWindow::TimgWindow(TComponent* Owner)
 	: TForm(Owner)
 {
-	CursorPosition = new TPoint;   
-	CDown = new TPoint;
-	PictureCDown = new TPoint;
 }
 //---------------------------------------------------------------------------
 
 void TimgWindow::PaintImage(Graphics::TBitmap* picture)
 {
-		ImagePicture->Picture->Graphic = picture;
-		ImagePicture->ClientWidth = ImagePicture->Picture->Width;
-		ImagePicture->ClientHeight = ImagePicture->Picture->Height;
-
+		if (image!=NULL) delete image;
+		image=new Graphics::TBitmap();
+		image->Assign(picture);
+		ImagePicture->Picture->Bitmap=image;
 		ImagePicture->Canvas->Draw(0, 0, picture);
-		LabelSize->Caption = (String)ImagePicture->ClientWidth + " × " + (String)ImagePicture->ClientHeight;
-
+		LabelSize->Caption = IntToStr(image->Width)+ " × " + IntToStr(image->Height);
 		ChangeColor();
 
 	ScrollBoxPicture->BorderStyle = bsSingle;
@@ -36,6 +32,9 @@ void TimgWindow::PaintImage(Graphics::TBitmap* picture)
 
 void TimgWindow::ClearImage()
 {
+	delete image;
+	ImagePicture->Picture->Bitmap=NULL;
+	image=NULL;
 	LabelSize->Caption = "- × -";
     
 	EditX->Text = "0";
@@ -47,7 +46,6 @@ void TimgWindow::ClearImage()
 	LabelR->Caption = "R ";
 	LabelG->Caption = "G ";
 	LabelB->Caption = "B ";
-
 	ScrollBoxPicture->BorderStyle = bsNone;
 }
 //---------------------------------------------------------------------------
@@ -70,6 +68,9 @@ void __fastcall TimgWindow::ImagePictureMouseMove(TObject *Sender,
 
 void __fastcall TimgWindow::FormCreate(TObject *Sender)
 {
+	CursorPosition = new TPoint; //mo¿na je przecie normalnie zadeklarowaæ, i siê stwo¿y, no ale niech zostanie z new
+	CDown = new TPoint;
+	PictureCDown = new TPoint;
 	CursorPosition->x = 0;
 	CursorPosition->y = 0;     
 	CDown->x = 0;
@@ -84,11 +85,12 @@ void __fastcall TimgWindow::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-   void __fastcall TimgWindow::FormDestroy(TObject *Sender)
+void __fastcall TimgWindow::FormDestroy(TObject *Sender)
 {
 	delete CursorPosition;
 	delete CDown;
 	delete PictureCDown;
+	if (image) 	delete image;
 }
 //---------------------------------------------------------------------------
 
@@ -175,3 +177,14 @@ void __fastcall TimgWindow::ImagePictureMouseDown(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TimgWindow::FormClose(TObject *Sender, TCloseAction &Action)
+{
+ Action=caHide;
+}
+//---------------------------------------------------------------------------
+void __fastcall TimgWindow::CreateParams(Controls::TCreateParams &Params)
+{
+   TCustomForm::CreateParams(Params);
+   Params.ExStyle=Params.ExStyle | WS_EX_APPWINDOW;
+   Params.WndParent = GetDesktopWindow();
+}
