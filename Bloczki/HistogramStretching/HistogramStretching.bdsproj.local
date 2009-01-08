@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-12-20 14:19:46.097.cpp,C:\Users\Slawek.Komputer-domowy\Documents\Borland Studio Projects\Unit1.cpp=F:\PI\testy\Bloczki\Negative\negative_dll.cpp</Transaction>
+    <Transaction>2008-12-20 14:19:54.430.bdsproj,C:\Users\Slawek.Komputer-domowy\Documents\Borland Studio Projects\Project1.bdsproj=F:\PI\testy\Bloczki\Negative\negative.bdsproj</Transaction>
+    <Transaction>2008-12-20 15:12:25.830.cpp,F:\PI\testy\Bloczki\Negative\Unit1.cpp=F:\PI\testy\Bloczki\Negative\negative.cpp</Transaction>
+    <Transaction>2008-12-20 15:12:25.830.h,F:\PI\testy\Bloczki\Negative\Unit1.h=F:\PI\testy\Bloczki\Negative\negative.h</Transaction>
+    <Transaction>2008-12-20 15:46:08.669.cpp,F:\PI\testy\TypyDanych\Mask5x5\Interface\IMask5x5.cpp=</Transaction>
+    <Transaction>2008-12-20 15:46:15.262.cpp,F:\PI\testy\TypyDanych\Mask3x3\Interface\IMask3x3.cpp=</Transaction>
+    <Transaction>2008-12-20 15:46:24.653.cpp,F:\PI\testy\TypyDanych\Integer\Interface\IInteger.cpp=</Transaction>
+    <Transaction>2008-12-20 15:46:32.077.cpp,F:\PI\testy\TypyDanych\Boolean\Interface\IBoolean.cpp=</Transaction>
+    <Transaction>2008-12-20 15:46:37.695.cpp,F:\PI\testy\TypyDanych\Double\Interface\IDouble.cpp=</Transaction>
+    <Transaction>2008-12-20 15:48:00.466.cpp,F:\PI\testy\TypyDanych\Mask5x5\Interface\IMask5x5.cpp=</Transaction>
+    <Transaction>2008-12-20 15:48:06.057.cpp,F:\PI\testy\TypyDanych\Mask3x3\Interface\IMask3x3.cpp=</Transaction>
+    <Transaction>2008-12-20 15:48:11.422.cpp,F:\PI\testy\TypyDanych\Integer\Interface\IInteger.cpp=</Transaction>
+    <Transaction>2008-12-20 15:48:18.406.cpp,F:\PI\testy\TypyDanych\Boolean\Interface\IBoolean.cpp=</Transaction>
+    <Transaction>2008-12-20 15:48:24.554.cpp,F:\PI\testy\TypyDanych\Double\Interface\IDouble.cpp=</Transaction>
+    <Transaction>2008-12-27 12:54:26.421.cpp,D:\System\ClockMan\Pulpit\PIWO\Bloczki\Negative\negative.cpp=</Transaction>
+    <Transaction>2009-01-07 23:01:32.093.bdsproj,D:\System\ClockMan\Pulpit\PIWO\Bloczki\HistogramEqualization\negative.bdsproj=D:\System\ClockMan\Pulpit\PIWO\Bloczki\HistogramEqualization\HistogramEqualization.bdsproj</Transaction>
+    <Transaction>2009-01-07 23:05:31.453.bdsproj,D:\System\ClockMan\Pulpit\PIWO\Bloczki\HistogramStretching\HistogramEqualization.bdsproj=D:\System\ClockMan\Pulpit\PIWO\Bloczki\HistogramStretching\HistogramStretching.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
