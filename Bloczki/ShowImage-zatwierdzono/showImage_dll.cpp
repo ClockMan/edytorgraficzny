@@ -47,19 +47,31 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 //---------------------------------------------------------------------------
 bool __stdcall showConfig(TComponent *owner, Block *aBlock)
 {
-	TimgWindow* imgW;
+
 	if(aBlock->blockWindow == NULL)
 	{
-		imgW = new TimgWindow(owner);
-		aBlock->blockWindow = imgW;
+		Application->MessageBoxA("Proszê wpierw uruchomiæ projekt.","Okno informacyjne", MB_ICONINFORMATION | MB_OK);
 	}
 	else
 	{
-		imgW = (TimgWindow*)aBlock->blockWindow;
+		TimgWindow* imgW=(TimgWindow*)aBlock->blockWindow;
+		try{
+		 imgW->WindowState=wsNormal;
+		 imgW->Show();
+		}
+		catch(...)
+		{
+			Application->MessageBoxA("Proszê wpierw uruchomiæ projekt.","Okno informacyjne", MB_ICONINFORMATION | MB_OK);
+			try{
+			  delete imgW;
+			}
+			catch(...)
+			{
+			}
+			aBlock->blockWindow=NULL;
+		}
 	}
-
-	imgW->Show();
-	return true;
+	return true;//zapobiega wyœwietleniu okienka o braku konfiguracji
 }
 //---------------------------------------------------------------------------
 int __stdcall validate(Block *aBlock)
@@ -78,7 +90,6 @@ int __stdcall validate(Block *aBlock)
 		input1.setErrorCode(1);
 		input1.setErrorDescription("Brak obiektu na wejœciu");
 		aBlock->input.push_back(input1);
-
 		return 2;
 	}
 	else
@@ -89,10 +100,15 @@ int __stdcall validate(Block *aBlock)
 			aBlock->input[0].setErrorDescription("Brak obiektu na wejœciu");
 			if(aBlock->blockWindow != NULL)
 			{
-				TimgWindow* imgW = (TimgWindow*)aBlock->blockWindow;
-				imgW->ClearImage();
+				TimgWindow* imgW=(TimgWindow*)aBlock->blockWindow;
+               	try{
+					delete imgW;
+				}
+				catch(...)
+				{
+				}
+				aBlock->blockWindow=NULL;
 			}
-
 			return 1;
 		}
 		else if(aBlock->input[0].getErrorCode() != 0)
@@ -132,10 +148,11 @@ int __stdcall run(Block *aBlock)
 	else	if(connectedType == "Bitmap32bit")
 		picture->Assign(const_cast<Graphics::TBitmap*>(&(IBitmap32bit::getBitmap(aBlock->input[0].getObject()))));
 
-	TimgWindow* imgW;
-	if(aBlock->blockWindow == NULL)
+	TimgWindow* imgW=(TimgWindow*)aBlock->blockWindow;
+	if(imgW == NULL)
 	{
 		imgW = new TimgWindow(NULL);
+		imgW->Caption=aBlock->title+" - Podgl¹d obrazka";
 		aBlock->blockWindow = imgW;
 	}
 	else
@@ -143,7 +160,8 @@ int __stdcall run(Block *aBlock)
 		imgW = (TimgWindow*)aBlock->blockWindow;
 	}
 	imgW->PaintImage(picture);
-
+	imgW->WindowState=wsNormal;
+	imgW->Show();
 	picture->Free();
 	return 0;
 }

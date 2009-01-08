@@ -37,11 +37,14 @@ __published:	// IDE-managed Components
 	void __fastcall FormResize(TObject *Sender);
 	void __fastcall ImagePictureMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall CreateParams(Controls::TCreateParams &Params);
 private:	// User declarations
 	TPoint *CursorPosition; 
 	TPoint *CDown;       
 	TPoint *PictureCDown;
 	void ChangeColor();
+	Graphics::TBitmap *image;
 public:		// User declarations
 	void PaintImage(Graphics::TBitmap* picture);
 	void ClearImage();

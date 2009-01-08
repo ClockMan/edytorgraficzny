@@ -27,5 +27,6 @@
     <Transaction>2009-01-05 22:17:24.023.h,F:\PI\testy\Bloczki\test\Unit1.h=F:\PI\testy\Bloczki\test\imageWindow.h</Transaction>
     <Transaction>2009-01-05 22:17:24.023.dfm,F:\PI\testy\Bloczki\test\Unit1.dfm=F:\PI\testy\Bloczki\test\imageWindow.dfm</Transaction>
     <Transaction>2009-01-07 11:37:34.497.cpp,F:\PI\kod\Program\gui\VisualBlock.cpp=</Transaction>
+    <Transaction>2009-01-08 14:07:59.937.cpp,D:\System\ClockMan\Pulpit\PIWO\Bloczki\ShowImage-niezatwierdzono\showImage.cpp=</Transaction>
   </Transactions>
 </BorlandProject>
