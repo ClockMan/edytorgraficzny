@@ -155,7 +155,7 @@ void TimgWindow::ChangeColor()
 
 	LabelR->Caption = "R " + (String)GetRValue(ImageSquare->Canvas->Brush->Color);
 	LabelG->Caption = "G " + (String)GetGValue(ImageSquare->Canvas->Brush->Color);
-	LabelB->Caption = "B " + (String)GetGValue(ImageSquare->Canvas->Brush->Color);
+	LabelB->Caption = "B " + (String)GetBValue(ImageSquare->Canvas->Brush->Color);
 }
 //---------------------------------------------------------------------------
 
