@@ -8,7 +8,37 @@ Celem projektu jest zrealizowanie programu umożliwiającego cyfrowe przetwarzan
 \item stworzenie dokumentacji
 \item zrealizowanie graficznego interfejsu
 \item implementacja operacji przetwarzania obrazu takich jak: \\
-(wybór pozostawiony dla pozostałych osób z grupy)
+\begin{enumerate}[I]
+\item Balance
+\item Binarization
+\item ChangeBitrate
+\item Contrast
+\item FadedPicture
+\item FastFourierTransformate
+\item GammaCorrection
+\item GrayScale
+\item HistogramEqualization
+\item HistogramStretching
+\item Lightning
+\item Mask3x3Filter
+\item MotionBlur
+\item Negative
+\item NewBoolean
+\item NewDouble
+\item NewInteger
+\item NewMask3x3
+\item NewMask5x5
+\item Noise
+\item OpenImage
+\item Reflection
+\item RotateLeft
+\item RotateRight
+\item Saturation
+\item SaveImage
+\item ShowImage
+\item StatisticsFilters
+\item Subtraction
+\end{enumerate}
 \item dodanie opcji tworzenia własnych dodatków (plug-in)
 \end{enumerate}
 \subsection{Opracowanie wymagań wstępnych}
@@ -32,8 +62,22 @@ Program zostanie napisany w IDE Borland C++, darmowa biblioteka FreeImage umożl
  \item Implementacja GUI - Piotr Zegar
  \item Pisanie wtyczek - pozostałe osoby.
 \end{enumerate}
+
+Prace wykonane przez następne osoby - skrót z logów svn.
+\begin{enumerate}
+ \item Piotr Wilk vel PiotrWilk86 - projekt engine, dokumentacj, projekt pluginów, projekt interfejsó typów, implementacja engine, dokumentacja, nadzorowanie projektu
+ \item Piotr Zegar vel PiotrZSL - projekt engine, dokumentacja, projekt gui, implementacja gui, projekt pluginów, projekt pluginów, projekt interfejsów typów, implementacja dll typów, pluginy: NewInteger, NewBoolean, NewDouble, NewMask3x3, NewMask5x5
+ \item Mateusz Tylek vel banita21 - pluginy: Reflection, GreyScale, OpenImage(+algorytm), SaveImage(+algorytm), implementacja algorytmów: ReflectionHorizontally, ReflectionVertically, GreyScale, GreyBalance, InversionColors, Binarization, BinarizationBalance, MotionBlur, RightRotation, LeftRotation, ColorNoise, MonoNoise, FadedPicture, HistogramEqualization, HistogramStretching, StatisticsFilter, Lightning, Contrast, Saturation, GammaCorrection, RGBBalance, MaskFilter
+ \item Marek Prząda vel marekprzada - pluginy: RotateLeft, RotateRight, MotionBlur, FadedPicture, ChangeBitrate(+ algorytm), Noise, Contrast, GammaCorrection, Lightning, Saturation, Balance, Mask3x3Filter, StatisticsFilters, FFT(+algorytm)
+ \item Sławomir vel slawko.u - pluginy: Negative, ShowImage(+algorytm), Subtraction(+algorytm)
+ \item Mateusz Kocomb vel kermit8545 - pluginy: Binarization
+ \item Wojciech Zbiegieł vel wtz1986  - pluginy: HistogramStretching, HistogramEqualization
+\end{enumerate}
+
 \section{Podział projektu}
 \subsection{Engine}
+Czyli silnik całgeo projektu, to w nim jest zawarta najważniejsza część projektu tak jak konfiguracja bloczków, atomy - czyli elementarne jednostki z których może zostać stworzony obiekt, obiekty przesyłane pomiędzy bloczkami, oraz wejścia i wyjścia bloczków.
+Dokładaliśmy wszelkich starań aby nazwy sugerowały dokładnie to co robią. Mamy nadzieje że dzięki odpowiedniemu nazewnictwu można łatwo zrozumieć co dana klasa, funkjca lub zmienna realizują.
 \begin{figure}[h]
  \centering
  \includegraphics[scale=0.4]{diagram-engine.png}
@@ -42,6 +86,9 @@ Program zostanie napisany w IDE Borland C++, darmowa biblioteka FreeImage umożl
 \end{figure}
 \newpage
 \subsection{BRIGE}
+Brige - jest odpowiedzialny za pluginy (wtyczki). Obsługuję on pliki dll w których znajdują się typy danych danych lub funkjcę realizujące poszczególne algorytmy przetwarzania obrazów.
+Główną opcją jest przeszukiwanie folderów w celu odnalezienie plików dll oraz ini w których jest zawarty opis dll-a. Ta część projektu w głównej mierze narzuca sposób pisania wtyczek, czyli jakie funkcję muszą się znajdować wewnątrz dll oraz definicję tych funkcji czyli jakie argumnety przyjmuje oraz zwraca. Wszystkie algorytmy w programie są uruchamiane poprzez tą klasę,
+to w niej są zawarte wskaźniki do funkcji zawartych w plikach dll.
 \begin{figure}[h]
  \centering
  \includegraphics[scale=0.4]{diagram-brige.png}
@@ -50,6 +97,8 @@ Program zostanie napisany w IDE Borland C++, darmowa biblioteka FreeImage umożl
 \end{figure}
 \newpage
 \subsection{GUI}
+GUI - czyli interfejs graficzny, czyli to co zwykłego śmiertelnika najbardziej interesuję. Znajdują się tu klassy odpowiedzialne miedzy innymi za rysowanie bloczków, połączeń - lini, toolbara, historii.
+Wszystkie operację które użytkownik wykonuję pracując na programie (oprócz tworzenia wtyczek) są realizowane poprzez te obiekty, które komunikują się z brige lub engine. 
 \begin{figure}[h]
  \centering
  \includegraphics[scale=0.3]{diagram-gui.png}
